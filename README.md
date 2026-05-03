@@ -7,7 +7,6 @@ libertad de prensa) y análisis de cambios ideológicos en las elecciones recien
 
 **Por [Lic. Emmanuel Miranda](https://www.linkedin.com/in/emiranda028/)** · Edición Beta · Mayo 2026
 
----
 
 ## 🚀 Demo
 
@@ -15,9 +14,7 @@ Abrí `index.html` en cualquier navegador moderno. No requiere build, ni servido
 
 Una vez publicado:
 - **GitHub Pages**: `https://<tu-usuario>.github.io/atlas-politico-mundial/`
-- **Netlify**: la URL que te asigne tras conectar el repo
 
----
 
 ## 📋 Qué incluye
 
@@ -82,7 +79,6 @@ Una vez publicado:
 - **Las clasificaciones ideológicas** son simplificaciones de un espectro multidimensional. Para análisis riguroso, consultar V-Dem, Manifesto Project o Chapel Hill Expert Survey
 - **Correlación ≠ causalidad**: las asociaciones entre ideología y desempeño que muestran los charts pueden deberse a condiciones iniciales, recursos naturales o historia institucional
 
----
 
 ## 🛠️ Stack técnico
 
@@ -92,47 +88,6 @@ Una vez publicado:
 - **Datos en línea**: GeoJSON desde CDN (jsdelivr / GitHub), fotos de líderes vía MediaWiki API con CORS
 - **Sin dependencias de runtime**: el archivo `index.html` es autocontenido y puede ejecutarse offline una vez cargados los recursos externos en caché
 
-### Por qué un solo archivo HTML
-
-Decisión deliberada por simplicidad de despliegue. El proyecto es estático, no requiere bundler, ni transpilación, ni gestor de paquetes. Esto facilita:
-- Hostear gratis en GitHub Pages, Netlify, Vercel o cualquier servidor estático
-- Auditar el código sin saltar entre módulos
-- Modificar y previsualizar localmente abriendo el archivo en el navegador
-- Garantizar que funcione por años sin mantenimiento de dependencias
-
----
-
-## 📦 Despliegue
-
-### Opción A: GitHub Pages (más simple)
-
-1. Subí los archivos a un repo de GitHub
-2. Andá a `Settings` → `Pages`
-3. En "Source" elegí `Deploy from a branch` → rama `main` → carpeta `/ (root)`
-4. Esperá ~1 minuto y vas a tener tu URL en `https://<usuario>.github.io/<repo>/`
-
-### Opción B: Netlify (más profesional, custom domain)
-
-1. Creá cuenta en [netlify.com](https://www.netlify.com)
-2. `Add new site` → `Import from GitHub` → autorizá Netlify a leer tus repos
-3. Seleccioná el repo. Como no hay build process, dejá los campos vacíos:
-   - Build command: *(vacío)*
-   - Publish directory: `/` o `.`
-4. Click `Deploy site`. Vas a tener una URL `<random>.netlify.app` que podés cambiar a algo como `atlas-politico-mundial.netlify.app`
-5. Si tenés un dominio propio, en `Domain settings` lo conectás
-
-### Opción C: Local
-
-```bash
-# Cualquier servidor estático sirve
-python3 -m http.server 8000
-# o
-npx serve .
-```
-
-Después abrís `http://localhost:8000`
-
----
 
 ## 📜 Licencia
 
@@ -147,7 +102,7 @@ Los datos provienen de fuentes públicas con sus propias licencias (la mayoría 
 **Lic. Emmanuel Miranda**
 [LinkedIn — emiranda028](https://www.linkedin.com/in/emiranda028/)
 
-Atlas elaborado en 2026 en colaboración con Claude (Anthropic) como herramienta de asistencia.
+Atlas elaborado en 2026.
 
 Sugerencias, correcciones de datos o nuevas ideas: bienvenidas vía Issues en este repo.
 
