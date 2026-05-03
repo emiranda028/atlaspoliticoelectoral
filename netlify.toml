@@ -1,0 +1,20 @@
+# Netlify configuration for Atlas Político Mundial
+# https://docs.netlify.com/configure-builds/file-based-configuration/
+
+[build]
+  # No build command needed — site is fully static HTML/CSS/JS
+  publish = "."
+
+# Cache headers for the main file
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+# Serve index.html for any 404 (single-page friendly)
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
