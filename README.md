@@ -5,7 +5,7 @@ ideologías de gobiernos, calendario electoral 2026-2027, indicadores socioecon�
 comparados (PBI, Gini, salario, presión tributaria, pobreza, IDH, deuda pública,
 libertad de prensa) y análisis de cambios ideológicos en las elecciones recientes.
 
-**Por [Mg. Emmanuel Miranda](https://www.linkedin.com/in/emiranda028/), Lic. Martín Paratz y Abg. Ernesto Demian Abbott** · Edición Beta · 2026
+**Por [Mg. Emmanuel Miranda](https://www.linkedin.com/in/emiranda028/), [Lic. Martín Paratz](https://www.linkedin.com/in/martinparatz/) y [Abg. Ernesto Demian Abbott](https://www.linkedin.com/in/abbottdemian/)** · Edición Beta · 2026
 
 ---
 
@@ -212,8 +212,8 @@ Los datos provienen de fuentes públicas con sus propias licencias (la mayoría 
 ## 🙋 Autoría y contacto
 
 - **Mg. Emmanuel Miranda** — [LinkedIn — emiranda028](https://www.linkedin.com/in/emiranda028/)
-- **Lic. Martín Paratz**
-- **Abg. Ernesto Demian Abbott**
+- **Lic. Martín Paratz** — [LinkedIn — martinparatz](https://www.linkedin.com/in/martinparatz/)
+- **Abg. Ernesto Demian Abbott** — [LinkedIn — abbottdemian](https://www.linkedin.com/in/abbottdemian/)
 
 Atlas elaborado en 2026.
 
