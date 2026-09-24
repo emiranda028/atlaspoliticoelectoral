@@ -105,7 +105,7 @@ o `status: "active"` + `view` (tarjeta que abre el especial).
 | Índice de Desarrollo Humano | PNUD HDR 2024 |
 | Deuda pública / PBI | FMI 2024 |
 | Libertad de prensa | RSF Press Freedom Index 2024 |
-| Cartografía base | [datasets/geo-countries](https://github.com/datasets/geo-countries) (GeoJSON), tiles CARTO + OpenStreetMap |
+| Cartografía base | [datasets/geo-countries](https://github.com/datasets/geo-countries) (GeoJSON sobre Natural Earth), sin mapa base de terceros |
 | Fotos de líderes | Wikipedia / Wikimedia Commons (MediaWiki API) |
 
 ### Cobertura

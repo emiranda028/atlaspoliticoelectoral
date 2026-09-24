@@ -1249,7 +1249,7 @@
   #map {
     width: 100%;
     height: 560px;
-    background: var(--bg-deep);
+    background: #DCE5EE;   /* ocean — there is no raster basemap */
   }
   /* Editorial insight band — horizontal strip above the map, no overlap */
   .map-insight-band {
@@ -5557,6 +5557,10 @@
     .search-box { min-width: 0; max-width: 100%; }
     .search-box input { width: 100%; min-width: 0; }
   }
+
+  /* Keep Leaflet's controls (z-index 1000) inside the map so they never
+     float over the sticky filter bar while scrolling */
+  .panel-map { isolation: isolate; z-index: 0; }
 </style>
 </head>
 <body>
@@ -6095,7 +6099,7 @@
       <h4>Banderas y mapa base</h4>
       <p>Banderas SVG de <a href="https://github.com/lipis/flag-icons" target="_blank" rel="noopener">lipis/flag-icons</a>
         vía CDN jsDelivr. Mapa con <a href="https://leafletjs.com" target="_blank" rel="noopener">Leaflet</a> 1.9
-        y tiles de <a href="https://carto.com/attributions" target="_blank" rel="noopener">CARTO</a> sobre OpenStreetMap.</p>
+        con los límites de países dibujados directamente, sin mapa base de terceros.</p>
     </div>
   </div>
 
@@ -6459,8 +6463,7 @@
         Datos económicos: FMI WEO, Banco Mundial, OCDE, CEPAL, PNUD HDR 2024,
         Reporters Sans Frontières (RSF) Press Freedom Index 2024.<br>
         Cartografía: <a href="https://github.com/datasets/geo-countries" target="_blank" rel="noopener">datasets/geo-countries</a>
-        (GeoJSON), tiles de <a href="https://carto.com" target="_blank" rel="noopener">CARTO</a>
-        + OpenStreetMap. Fotografías de líderes: Wikipedia / Wikimedia Commons.</p>
+        (GeoJSON, sobre Natural Earth). Fotografías de líderes: Wikipedia / Wikimedia Commons.</p>
     </div>
     <div class="footer-credit-block">
       <h4>Tecnología y código</h4>
@@ -25749,16 +25752,12 @@ try {
     attributionControl: true
   });
 
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png', {
-    attribution: '© OpenStreetMap · © CARTO',
-    subdomains: 'abcd',
-    opacity: 0.55
-  }).addTo(map);
-
-  // Note: deliberately NOT loading a labels layer.
-  // The labels tiles render names that conflict with our editorial choices
-  // (e.g., "Falkland Islands" instead of "Islas Malvinas"). Country names are
-  // already available via tooltips on hover and the detail panel.
+  // No raster basemap: the country polygons are the map, drawn over a plain
+  // "ocean" background (#map in CSS). This avoids third-party tile services
+  // (CARTO now watermarks requests without an API key) and any label layer
+  // whose names conflict with the atlas' editorial choices (e.g. Malvinas).
+  // Country names are shown in hover tooltips and the detail panel.
+  map.attributionControl.addAttribution('Límites: Natural Earth / datasets/geo-countries');
   window.map = map;  // expose for the SPA router (invalidateSize on view switch)
 } catch (e) {
   console.warn('Leaflet no disponible — el mapa no se renderizará pero el resto del atlas funcionará.', e);
@@ -26092,7 +26091,34 @@ function restyleMap() {
 /* ===========================================================
    DETAIL PANEL
    =========================================================== */
+/* Color legend inside the empty detail panel */
+function renderEmptyLegend() {
+  const legend = document.getElementById('empty-state-legend');
+  if (legend) {
+    const counts = COUNTRIES.reduce((a,c)=>(a[c.ideology]=(a[c.ideology]||0)+1,a),{});
+    legend.innerHTML = Object.entries(IDEOLOGIES)
+      .filter(([id]) => counts[id] > 0)
+      .sort((a,b) => counts[b[0]] - counts[a[0]])
+      .map(([id, def]) => `
+        <div class="empty-state-legend-item">
+          <span class="empty-state-legend-dot" style="background:${def.color}"></span>
+          <span class="empty-state-legend-label">${def.short}</span>
+          <span class="empty-state-legend-count">${counts[id]}</span>
+        </div>
+      `).join('');
+  }
+}
+
+// Initial "Tocá un país" panel, captured before anything replaces it
+const INITIAL_DETAIL_HTML = document.getElementById('panel-detail').innerHTML;
+
 function renderEmptyDetail(name) {
+  if (!name) {
+    // No country selected → back to the initial state (prompt + legend)
+    document.getElementById('panel-detail').innerHTML = INITIAL_DETAIL_HTML;
+    renderEmptyLegend();
+    return;
+  }
   document.getElementById('panel-detail').innerHTML = `
     <div class="empty-state" style="padding:40px 28px">
       <strong style="display:block; font-family:'Newsreader',serif; font-size:22px; color:var(--ink); font-style:italic; margin-bottom:6px">${name}</strong>
@@ -28723,21 +28749,7 @@ async function fetchWikiPhoto(wikiName) {
   renderAnalytics();
   renderHeadlinesTicker();
 
-  // Populate the empty-state legend (color reference for the map)
-  const legend = document.getElementById('empty-state-legend');
-  if (legend) {
-    const counts = COUNTRIES.reduce((a,c)=>(a[c.ideology]=(a[c.ideology]||0)+1,a),{});
-    legend.innerHTML = Object.entries(IDEOLOGIES)
-      .filter(([id]) => counts[id] > 0)
-      .sort((a,b) => counts[b[0]] - counts[a[0]])
-      .map(([id, def]) => `
-        <div class="empty-state-legend-item">
-          <span class="empty-state-legend-dot" style="background:${def.color}"></span>
-          <span class="empty-state-legend-label">${def.short}</span>
-          <span class="empty-state-legend-count">${counts[id]}</span>
-        </div>
-      `).join('');
-  }
+  renderEmptyLegend();
 
   // Fallback genérico: lista de países en lugar del mapa
   function showCountryListFallback(reasonText) {
