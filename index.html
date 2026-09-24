@@ -5826,6 +5826,38 @@
     .especial-card.is-featured::after, .next-card::after { display: none; }
     *, *::before, *::after { transition-duration: 0s !important; }
   }
+
+  /* ===== Especial EE.UU. ===== */
+  .us-hero {
+    background:
+      radial-gradient(circle at 85% 15%, rgba(178,58,58,.55), transparent 35%),
+      radial-gradient(circle at 10% 110%, rgba(42,85,150,.9), transparent 50%),
+      linear-gradient(135deg, #0B1F3A 0%, #13305A 55%, #1B3D6E 100%);
+    background-size: 180% 180%;
+  }
+  .us-hero h2 em { color: #F2B8B5; }
+  .us-offices .office-card { border-top-color: var(--brand-2); }
+  .us-offices .office-num { color: var(--brand-2); }
+  .ballot-note.us-note { background: #E8EEF7; }
+  .us-rating-chip { display: inline-flex; align-items: center; gap: 5px; font-size: 11.5px; color: var(--ink-soft); margin-right: 6px; white-space: nowrap; }
+  .us-rating-chip i { width: 10px; height: 10px; border-radius: 3px; display: inline-block; }
+  .us-race { margin-top: 8px; line-height: 1.5; }
+  .us-race .us-rating-chip { margin-left: 6px; }
+  .us-race-row {
+    display: grid; grid-template-columns: 12px 30px 1fr auto; gap: 8px; align-items: center;
+    width: 100%; padding: 6px 4px; border: 0; border-bottom: 1px solid var(--surface-2);
+    background: none; font: inherit; font-size: 13px; color: inherit; text-align: left; cursor: pointer; border-radius: 6px;
+  }
+  .us-race-row:hover { background: var(--surface-2); }
+  .us-race-row i { width: 12px; height: 12px; border-radius: 3px; }
+  .us-race-st { font-family: var(--font-mono); font-weight: 600; font-size: 12px; }
+  .us-race-name em { font-style: normal; color: var(--muted); font-size: 12px; }
+  .us-race-rt { font-size: 12px; color: var(--muted); }
+  .us-key-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; }
+  .us-key .office-label { font-family: var(--font-serif); font-size: 19px; font-weight: 700; }
+  .us-key .us-rating-chip { margin-top: 10px; }
+  .topic-nav-link.is-special-us .topic-nav-text::before { background: #2A5596; }
+  #us-map .br-map-svg { max-height: 560px; }
 </style>
 </head>
 <body>
@@ -5898,6 +5930,10 @@
       <a href="#brasil" class="topic-nav-link is-special" onclick="window.__scrollToSection(event, 'brasil')">
         <span class="topic-nav-num">★</span>
         <span class="topic-nav-text">Brasil 2026</span>
+      </a>
+      <a href="#eeuu" class="topic-nav-link is-special is-special-us" onclick="window.__scrollToSection(event, 'eeuu')">
+        <span class="topic-nav-num">★</span>
+        <span class="topic-nav-text">EE.UU. 2026</span>
       </a>
       <a href="#nav-map" class="topic-nav-link" onclick="window.__scrollToSection(event, 'nav-map')">
         <span class="topic-nav-num">01</span>
@@ -6310,6 +6346,10 @@
 
   <div class="atlas-view" data-view="brasil">
     <div class="esp" id="esp-brasil"><div class="esp-loading">Cargando especial…</div></div>
+  </div>
+
+  <div class="atlas-view" data-view="eeuu">
+    <div class="esp" id="esp-eeuu"><div class="esp-loading">Cargando especial…</div></div>
   </div>
 
   <div class="atlas-view" data-view="metodologia">
@@ -28816,7 +28856,7 @@ function renderElectionsTimeline() {  const today = new Date();
   // Also marks the corresponding nav link as active.
   // ============ SPA ROUTER ============
   // Maps nav hrefs (#nav-map, #nav-calendar, …) and view ids to canonical views.
-  const VIEW_IDS = ['inicio', 'elecciones', 'analisis', 'cambio', 'metodologia', 'brasil'];
+  const VIEW_IDS = ['inicio', 'elecciones', 'analisis', 'cambio', 'metodologia', 'brasil', 'eeuu'];
   const NAV_TO_VIEW = {
     'nav-map': 'inicio',          // the map now lives on the home view
     'nav-calendar': 'elecciones',
@@ -29377,6 +29417,8 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
   const LIVE_URL = 'data/live.json';
   const BRASIL_URL = 'data/especiales/brasil-2026.json';
   const BR_GEO_URL = 'data/geo/brasil-uf.json';
+  const EEUU_URL = 'data/especiales/eeuu-2026.json';
+  const US_GEO_URL = 'data/geo/usa-states.json';
   const MONTHS = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
   const MONTHS_SHORT = ['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
   const DAYS = ['domingo','lunes','martes','miércoles','jueves','viernes','sábado'];
@@ -29398,6 +29440,10 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
     brMetric: 'voters',
     brSelected: null,
     pollRound: 'r1',
+    eeuu: null,          // data/especiales/eeuu-2026.json
+    usGeo: null,
+    usMetric: 'senate',
+    usSelected: null,
   };
   window.__atlasLive = live; // handy for debugging from the console
 
@@ -29868,7 +29914,7 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
     parties.forEach(p => {
       for (let s = 0; s < p.seats && k < seats.length; s++, k++) {
         const pt = seats[k];
-        circles.push(`<circle cx="${pt.x.toFixed(4)}" cy="${pt.y.toFixed(4)}" r="${dotR.toFixed(4)}" data-party="${esc(p.party)}" style="fill:${leanColor(p.lean)}"><title>${esc(p.party)}${p.name ? ' — ' + esc(p.name) : ''}: ${p.seats}</title></circle>`);
+        circles.push(`<circle cx="${pt.x.toFixed(4)}" cy="${pt.y.toFixed(4)}" r="${dotR.toFixed(4)}" data-party="${esc(p.party)}" style="fill:${p.color || leanColor(p.lean)}"><title>${esc(p.party)}${p.name ? ' — ' + esc(p.name) : ''}: ${p.seats}</title></circle>`);
       }
     });
     for (; k < seats.length; k++) {
@@ -29891,14 +29937,17 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
     return `<div class="blocs-bar">${sums.map(b => `<span style="width:${(b.seats / total * 100).toFixed(2)}%;background:${b.color}" title="${esc(b.label)}: ${b.seats}"></span>`).join('')}</div>
       <div class="blocs-legend">${sums.map(b => `<span>${esc(b.label)}: <b>${b.seats}</b></span>`).join('')}</div>`;
   }
-  function chamberCard(ch, rows, extraHTML) {
-    const parties = sortByLean(ch.parties || []);
+  // opts.partyColors: parties carry their own colour and order (e.g. US D/R),
+  // so no ideological sorting and no left/centre/right blocs bar.
+  function chamberCard(ch, rows, extraHTML, opts) {
+    opts = opts || {};
+    const parties = opts.partyColors ? (ch.parties || []) : sortByLean(ch.parties || []);
     const seated = parties.reduce((a, p) => a + p.seats, 0);
-    const legend = parties.map(p => `<span class="party-chip" data-party="${esc(p.party)}" tabindex="0" title="${esc(p.name || p.party)}"><i style="background:${leanColor(p.lean)}"></i>${esc(p.party)} <b>${p.seats}</b></span>`).join('');
+    const legend = parties.map(p => `<span class="party-chip" data-party="${esc(p.party)}" tabindex="0" title="${esc(p.name || p.party)}"><i style="background:${p.color || leanColor(p.lean)}"></i>${esc(p.party)} <b>${p.seats}</b></span>`).join('');
     return `<div class="chamber-card">
       <div class="chamber-head"><span class="chamber-name">${esc(ch.name)}</span><span class="chamber-meta">${esc(ch.term || '')}</span></div>
       ${hemicycleSVG(parties, ch.total || seated, rows)}
-      ${blocsHTML(parties, ch.total || seated)}
+      ${opts.partyColors ? '' : blocsHTML(parties, ch.total || seated)}
       <div class="party-legend">${legend}</div>
       ${extraHTML || ''}
       <div class="chamber-foot">Bancadas al ${esc(ch.asOf || '—')}${ch.source ? ` · <a href="${esc(ch.source)}" target="_blank" rel="noopener">fuente</a>` : ''}${ch.note ? ' · ' + esc(ch.note) : ''}</div>
@@ -30156,6 +30205,314 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
     return live.geo;
   }
 
+  /* ===================== ESPECIAL EE.UU. 2026 =====================
+     Midterms: House, Senate and governors. US party colours (D blue,
+     R red) are used here on purpose — it's what readers of US elections
+     expect — and every legend says so. */
+  const US_RATINGS = [
+    { id: 'safe-d',   label: 'Segura D',    color: '#1F4E9A' },
+    { id: 'likely-d', label: 'Probable D',  color: '#4F7FC4' },
+    { id: 'lean-d',   label: 'Inclinada D', color: '#9DBBE3' },
+    { id: 'tossup',   label: 'Empate',      color: '#C9A94B' },
+    { id: 'lean-r',   label: 'Inclinada R', color: '#EBA6A6' },
+    { id: 'likely-r', label: 'Probable R',  color: '#D0605F' },
+    { id: 'safe-r',   label: 'Segura R',    color: '#A3252E' },
+  ];
+  const US_NONE = '#E3E6EB';
+  function usRatingKey(r) {
+    const s = String(r || '').toLowerCase();
+    if (!s) return null;
+    if (s.includes('toss')) return 'tossup';
+    const side = /\bd\b|dem/.test(s) ? 'd' : /\br\b|rep/.test(s) ? 'r' : null;
+    if (!side) return null;
+    if (s.includes('safe') || s.includes('solid')) return 'safe-' + side;
+    if (s.includes('likely')) return 'likely-' + side;
+    if (s.includes('lean') || s.includes('tilt')) return 'lean-' + side;
+    return null;
+  }
+  const usRating = r => US_RATINGS.find(x => x.id === usRatingKey(r));
+  const US_PARTY = { D: 'Demócrata', R: 'Republicano', I: 'Independiente' };
+  const US_METRICS = {
+    house:  { label: 'Bancas en la Cámara' },
+    senate: { label: 'Carrera al Senado' },
+    gov:    { label: 'Gobernación' },
+  };
+
+  function usPhase(us, now = new Date()) {
+    const t = now.getTime(), d = us.dates;
+    const open = new Date(d.electionDay).getTime(), last = new Date(d.lastPollsClose || d.electionDay).getTime();
+    if (t < open) return { id: 'campaign', label: 'Campaña en curso', target: d.electionDay, targetLabel: 'para el día de la elección', live: false };
+    if (t < last) return { id: 'voting', label: 'Hoy se vota', target: d.lastPollsClose, targetLabel: 'para el cierre de las últimas urnas', live: true };
+    if (t < last + 3 * 86400000) return { id: 'counting', label: 'Escrutinio en curso', target: d.newCongress, targetLabel: 'para que asuma el nuevo Congreso', live: true };
+    return { id: 'final', label: 'Resultados', target: d.newCongress, targetLabel: 'para que asuma el nuevo Congreso', live: false };
+  }
+
+  function usStateColor(s, metric) {
+    const race = metric === 'senate' ? s.senate : s.governor;
+    if (!race) return US_NONE;
+    const r = usRating(race.rating);
+    return r ? r.color : (race.party === 'D' ? '#9DBBE3' : race.party === 'R' ? '#EBA6A6' : '#C9CED8');
+  }
+  const US_BLUES = ['#EEF2F8', '#D3DDEC', '#A9BEDD', '#7B9BCB', '#4E77B4', '#2A5596'];
+
+  function renderUsMap() {
+    const host = document.getElementById('us-map');
+    const us = live.eeuu;
+    if (!host || !live.usGeo || !us) return;
+    const byId = Object.fromEntries((us.states || []).map(s => [s.id, s]));
+    const metric = live.usMetric;
+    const seats = (us.states || []).map(s => s.houseSeats).filter(v => v != null);
+    const breaks = quantileBreaks(seats, US_BLUES.length);
+    const fill = s => {
+      if (!s) return US_NONE;
+      if (metric === 'house') { let i = 0; while (i < breaks.length && s.houseSeats >= breaks[i]) i++; return US_BLUES[i]; }
+      return usStateColor(s, metric);
+    };
+    host.innerHTML = `<svg class="br-map-svg" viewBox="${live.usGeo.viewBox}" role="img" aria-label="Mapa de EE.UU. por estado: ${esc(US_METRICS[metric].label)}">
+        ${live.usGeo.locations.map(l => `<path d="${l.path}" data-uf="${l.id}" tabindex="0" role="button" aria-label="${esc(l.name)}" style="fill:${fill(byId[l.id])}" class="${live.usSelected === l.id ? 'is-selected' : ''}"></path>`).join('')}
+      </svg><div class="br-tooltip" id="us-tooltip"></div>`;
+    const svg = host.querySelector('svg'), tip = host.querySelector('#us-tooltip');
+    const describe = s => {
+      if (metric === 'house') return `${fmtInt(s.houseSeats)} banca${s.houseSeats === 1 ? '' : 's'} en la Cámara`;
+      const race = metric === 'senate' ? s.senate : s.governor;
+      if (!race) return metric === 'senate' ? 'Sin elección al Senado en 2026' : 'Sin elección a gobernador en 2026';
+      const r = usRating(race.rating);
+      return `${esc(race.incumbent || '')} (${esc(race.party || '')})${r ? ' · ' + r.label : ''}`;
+    };
+    svg.addEventListener('mousemove', ev => {
+      const id = ev.target.getAttribute && ev.target.getAttribute('data-uf');
+      const s = id && byId[id];
+      if (!s) { tip.classList.remove('is-visible'); return; }
+      const rect = host.getBoundingClientRect();
+      tip.innerHTML = `<strong>${esc(s.name)}</strong>${describe(s)}`;
+      tip.style.left = (ev.clientX - rect.left) + 'px';
+      tip.style.top = (ev.clientY - rect.top) + 'px';
+      tip.classList.add('is-visible');
+    });
+    svg.addEventListener('mouseleave', () => tip.classList.remove('is-visible'));
+    const pick = ev => { const id = ev.target.getAttribute && ev.target.getAttribute('data-uf'); if (id) selectUsState(id); };
+    svg.addEventListener('click', pick);
+    svg.addEventListener('keydown', ev => { if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); pick(ev); } });
+
+    const legend = document.getElementById('us-legend');
+    if (legend) {
+      legend.innerHTML = metric === 'house'
+        ? `<span>Bancas por estado:</span><div><div class="br-legend-scale">${US_BLUES.map(c => `<span style="background:${c}"></span>`).join('')}</div>
+           <div class="br-legend-ticks"><span>${Math.min(...seats)}</span><span>${Math.max(...seats)}</span></div></div>`
+        : `<span>Pronóstico${us.ratingsSource ? ' (' + esc(us.ratingsSource) + ')' : ''}:</span>
+           ${US_RATINGS.map(r => `<span class="us-rating-chip"><i style="background:${r.color}"></i>${r.label}</span>`).join('')}
+           <span class="us-rating-chip"><i style="background:${US_NONE}"></i>No se elige</span>`;
+    }
+    renderUsRaces();
+  }
+
+  function selectUsState(id) {
+    live.usSelected = id;
+    document.querySelectorAll('#us-map path').forEach(p => p.classList.toggle('is-selected', p.getAttribute('data-uf') === id));
+    renderUsCard();
+  }
+  function renderUsCard() {
+    const el = document.getElementById('us-state-card');
+    if (!el) return;
+    const s = (live.eeuu.states || []).find(x => x.id === live.usSelected);
+    if (!s) { el.innerHTML = '<div class="uf-empty">Tocá un estado para ver cuántos representantes elige y si vota senador o gobernador este año.</div>'; return; }
+    const raceHTML = (label, race) => {
+      if (!race) return `<div class="us-race"><b>${label}:</b> no se elige en 2026</div>`;
+      const r = usRating(race.rating);
+      return `<div class="us-race"><b>${label}:</b> ${esc(race.incumbent || '')}${race.party ? ` (${esc(US_PARTY[race.party] || race.party)})` : ''}${race.status ? ` · ${esc(race.status)}` : ''}
+        ${r ? `<span class="us-rating-chip"><i style="background:${r.color}"></i>${r.label}</span>` : ''}</div>`;
+    };
+    el.innerHTML = `
+      <div class="uf-card-head"><span class="uf-card-name">${esc(s.name)}</span><span class="uf-card-uf">${s.id}</span></div>
+      <div class="uf-stats">
+        <div class="uf-stat"><div class="uf-stat-v">${fmtInt(s.houseSeats)}</div><div class="uf-stat-l">representantes en la Cámara</div></div>
+        <div class="uf-stat"><div class="uf-stat-v">${fmtInt(s.houseSeats + 2)}</div><div class="uf-stat-l">votos en el Colegio Electoral</div></div>
+      </div>
+      <div class="uf-ballot">${raceHTML('Senado', s.senate)}${raceHTML('Gobernación', s.governor)}</div>
+      ${s.note ? `<div class="uf-gov">${esc(s.note)}</div>` : ''}`;
+  }
+
+  function renderUsRaces() {
+    const el = document.getElementById('us-races');
+    if (!el) return;
+    const metric = live.usMetric === 'gov' ? 'governor' : 'senate';
+    const rows = (live.eeuu.states || []).filter(s => s[metric]).map(s => ({ s, race: s[metric], r: usRating(s[metric].rating) }))
+      .sort((a, b) => US_RATINGS.findIndex(x => x === a.r) - US_RATINGS.findIndex(x => x === b.r) || a.s.name.localeCompare(b.s.name));
+    el.innerHTML = `<div class="uf-rank-title">${metric === 'senate' ? 'Bancas del Senado en juego' : 'Gobernaciones en juego'} · ${rows.length}</div>
+      <div class="uf-rank-list">${rows.map(x => `
+        <button type="button" class="us-race-row" data-uf="${x.s.id}">
+          <i style="background:${x.r ? x.r.color : US_NONE}"></i>
+          <span class="us-race-st">${x.s.id}</span>
+          <span class="us-race-name">${esc(x.race.incumbent || '')} <em>${esc(x.race.party || '')}</em></span>
+          <span class="us-race-rt">${x.r ? x.r.label : '—'}</span>
+        </button>`).join('')}</div>`;
+    el.querySelectorAll('.us-race-row').forEach(b => b.addEventListener('click', () => selectUsState(b.getAttribute('data-uf'))));
+  }
+
+  function renderUsPolls() {
+    const el = document.getElementById('us-polls');
+    const us = live.eeuu;
+    if (!el || !us) return;
+    const gb = (us.polls && us.polls.genericBallot) || [];
+    const avg = k => gb.length ? gb.reduce((a, p) => a + (p[k] || 0), 0) / gb.length : null;
+    const d = avg('D'), r = avg('R');
+    const ap = us.polls && us.polls.approval;
+    el.innerHTML = `
+      <div class="poll-box">
+        <h4>Voto genérico a la Cámara</h4>
+        <div class="muted">Promedio de ${gb.length} encuesta${gb.length === 1 ? '' : 's'} · "¿A qué partido votaría para el Congreso?"</div>
+        ${d != null ? `
+        <div class="pbar"><div class="pbar-top"><span>Demócratas</span><b>${fmtPct(d)}</b></div><div class="pbar-track"><div class="pbar-fill" style="width:${d}%;background:#2A5596"></div></div></div>
+        <div class="pbar"><div class="pbar-top"><span>Republicanos</span><b>${fmtPct(r)}</b></div><div class="pbar-track"><div class="pbar-fill" style="width:${r}%;background:#B23A3A"></div></div></div>` : ''}
+        <span class="poll-src">${gb.map(p => `<a href="${esc(p.url)}" target="_blank" rel="noopener">${esc(p.firm)}</a> (${esc(p.dates)}${p.n ? ', n=' + fmtInt(p.n) : ''}${p.moe ? ', ±' + p.moe + ' pp' : ''}: D ${p.D} · R ${p.R})`).join(' · ')}</span>
+      </div>
+      ${ap ? `<div class="poll-box">
+        <h4>Aprobación de Donald Trump</h4>
+        <div class="muted">${esc(ap.source)}${ap.asOf ? ' · ' + esc(ap.asOf) : ''}</div>
+        <div class="pbar"><div class="pbar-top"><span>Aprueba</span><b>${fmtPct(ap.approve)}</b></div><div class="pbar-track"><div class="pbar-fill" style="width:${ap.approve}%;background:#0F766E"></div></div></div>
+        <div class="pbar"><div class="pbar-top"><span>Desaprueba</span><b>${fmtPct(ap.disapprove)}</b></div><div class="pbar-track"><div class="pbar-fill" style="width:${ap.disapprove}%;background:#5B6A80"></div></div></div>
+        ${ap.url ? `<span class="poll-src"><a href="${esc(ap.url)}" target="_blank" rel="noopener">Fuente</a></span>` : ''}
+      </div>` : ''}`;
+  }
+
+  function renderEeuu() {
+    const root = document.getElementById('esp-eeuu');
+    if (!root) return;
+    const us = live.eeuu;
+    if (!us) {
+      root.innerHTML = `<div class="esp-loading">${live.fetchOk === false && live.lastFetch ? 'No se pudieron cargar los datos del especial.' : 'Cargando especial…'}</div>`;
+      return;
+    }
+    const ph = usPhase(us);
+    const ed = new Date(us.dates.electionDay);
+    const houseParties = (us.house.parties || []), senParties = (us.senate.parties || []);
+    const ctl = (ch) => { const top = [...(ch.parties || [])].sort((a, b) => b.seats - a.seats)[0]; return top ? `${top.party} ${top.seats}` : '—'; };
+    root.innerHTML = `
+      <section class="esp-hero us-hero">
+        <div class="esp-hero-grid">
+          <div>
+            <span class="esp-status"><span class="live-dot"></span>${esc(ph.label)}</span>
+            <h2>EE.UU. <em>Midterms</em> 2026</h2>
+            <p class="esp-hero-lede">${esc(us.lede || '')}</p>
+            <div class="esp-hero-dates">
+              <div class="esp-date-chip">Elección<strong>${fmtDateShort(ed)}</strong></div>
+              <div class="esp-date-chip">Cámara hoy<strong>${esc(ctl(us.house))}</strong></div>
+              <div class="esp-date-chip">Senado hoy<strong>${esc(ctl(us.senate))}</strong></div>
+              <div class="esp-date-chip">Asume el Congreso<strong>${fmtDateShort(new Date(us.dates.newCongress + 'T12:00:00'))} 2027</strong></div>
+            </div>
+          </div>
+          <div class="esp-hero-side">
+            <div class="next-card-kicker">Cuenta regresiva ${esc(ph.targetLabel || '')}</div>
+            ${countdownHTML(ph.target, 'Ya empezó')}
+            <div class="esp-updated" id="us-updated"></div>
+          </div>
+        </div>
+      </section>
+
+      <nav class="esp-nav" aria-label="Secciones del especial">
+        <a href="#us-sec-cargos">Qué se elige</a>
+        <a href="#us-sec-mapa">Mapa por estado</a>
+        <a href="#us-sec-congreso">Congreso hoy</a>
+        <a href="#us-sec-encuestas">Encuestas</a>
+        <a href="#us-sec-claves">Carreras clave</a>
+        <a href="#us-sec-calendario">Calendario</a>
+      </nav>
+
+      <section class="esp-sec" id="us-sec-cargos">
+        <div class="esp-sec-head"><span class="kicker">01 · La boleta</span><h3>Qué se elige</h3><p>${esc(us.officesIntro || '')}</p></div>
+        <div class="offices-grid us-offices">${(us.offices || []).map(o => `
+          <div class="office-card"><div class="office-num">${fmtInt(o.count)}</div><div class="office-label">${esc(o.label)}</div>
+            <div class="office-detail">${esc(o.detail || '')}</div>${o.system ? `<span class="office-system">${esc(o.system)}</span>` : ''}</div>`).join('')}</div>
+        ${us.ballotNote ? `<div class="ballot-note us-note">${esc(us.ballotNote)}</div>` : ''}
+      </section>
+
+      <section class="esp-sec" id="us-sec-mapa">
+        <div class="esp-sec-head"><span class="kicker">02 · El territorio</span><h3>Mapa por estado</h3>
+          <p>Cambiá la capa para ver cuántos representantes elige cada estado, dónde se vota senador y dónde gobernador, y cuán competida está cada carrera. <strong>Colores de partido de EE.UU.:</strong> azul demócrata, rojo republicano.</p></div>
+        <div class="br-map-wrap">
+          <div class="br-map-card">
+            <div class="seg" id="us-metric" role="tablist">
+              ${Object.entries(US_METRICS).map(([k, m]) => `<button type="button" data-metric="${k}" class="${live.usMetric === k ? 'is-active' : ''}">${m.label}</button>`).join('')}
+            </div>
+            <div id="us-map" style="position:relative"><div class="esp-loading">Cargando mapa…</div></div>
+            <div class="br-legend" id="us-legend"></div>
+          </div>
+          <div class="br-side">
+            <div class="uf-card" id="us-state-card"></div>
+            <div class="uf-rank" id="us-races"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="esp-sec" id="us-sec-congreso">
+        <div class="esp-sec-head"><span class="kicker">03 · El Congreso que se renueva</span><h3>Composición actual</h3>
+          <p>Cada punto es una banca. Para controlar la Cámara hacen falta ${fmtInt(us.house.majority || 218)} bancas; en el Senado, ${fmtInt(us.senate.majority || 51)} (o 50 más el voto de desempate del vicepresidente).</p></div>
+        <div class="chambers-grid">
+          ${chamberCard(Object.assign({}, us.house, { parties: houseParties }), 12, '', { partyColors: true })}
+          ${chamberCard(Object.assign({}, us.senate, { parties: senParties }), 5,
+            us.senate.seatsUp ? `<div class="senate-renewal">En 2026 se eligen <b>${us.senate.seatsUp} de ${us.senate.total}</b> bancas del Senado${us.senate.seatsUpNote ? ' (' + esc(us.senate.seatsUpNote) + ')' : ''}.
+              <div class="renewal-bar"><span style="width:${us.senate.seatsUp / us.senate.total * 100}%;background:var(--ink-soft)"></span><span style="flex:1;background:var(--line)"></span></div></div>` : '',
+            { partyColors: true })}
+        </div>
+      </section>
+
+      <section class="esp-sec" id="us-sec-encuestas">
+        <div class="esp-sec-head"><span class="kicker">04 · El clima</span><h3>Qué dicen las encuestas</h3></div>
+        <div class="race-grid" id="us-polls"></div>
+      </section>
+
+      <section class="esp-sec" id="us-sec-claves">
+        <div class="esp-sec-head"><span class="kicker">05 · Dónde mirar</span><h3>Carreras clave</h3></div>
+        <div class="us-key-grid">${(us.keyRaces || []).map(k => `
+          <div class="office-card us-key"><div class="office-label">${esc(k.title)}</div><div class="office-detail">${esc(k.text)}</div>
+            ${k.rating && usRating(k.rating) ? `<span class="us-rating-chip"><i style="background:${usRating(k.rating).color}"></i>${usRating(k.rating).label}</span>` : ''}</div>`).join('')}</div>
+      </section>
+
+      <section class="esp-sec" id="us-sec-calendario">
+        <div class="esp-sec-head"><span class="kicker">06 · Fechas</span><h3>Calendario</h3></div>
+        <ul class="br-cal" id="us-cal"></ul>
+      </section>
+
+      <section class="esp-sec" id="us-sec-sistema">
+        <div class="esp-sec-head"><span class="kicker">07 · Para entender</span><h3>Claves del sistema</h3></div>
+        <ul class="facts-list">${(us.keyFacts || []).map(f => `<li>${esc(f)}</li>`).join('')}</ul>
+        <p class="esp-sources" style="margin-top:18px"><strong>Fuentes:</strong> ${(us.sources || []).map(s => `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.label)}</a>`).join(' · ')}.
+          Mapa base: límites estatales del U.S. Census Bureau vía <a href="https://github.com/topojson/us-atlas" target="_blank" rel="noopener">us-atlas</a> (dominio público).</p>
+      </section>`;
+
+    root.querySelectorAll('#us-metric [data-metric]').forEach(b => b.addEventListener('click', () => {
+      live.usMetric = b.getAttribute('data-metric');
+      root.querySelectorAll('#us-metric [data-metric]').forEach(x => x.classList.toggle('is-active', x === b));
+      renderUsMap();
+    }));
+    root.querySelectorAll('.esp-nav a').forEach(a => a.addEventListener('click', ev => {
+      ev.preventDefault();
+      const t = document.querySelector(a.getAttribute('href'));
+      if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }));
+    wireHemicycleHover(root);
+    renderUsCard();
+    renderUsPolls();
+    // Calendar (same component as Brasil)
+    const cal = document.getElementById('us-cal');
+    if (cal) {
+      const items = (us.calendar || []).map(c => ({ ...c, d: new Date(c.date + 'T12:00:00') })).sort((a, b) => a.d - b.d);
+      const today = startOfDay(new Date());
+      const nextIdx = items.findIndex(i => i.d >= today);
+      cal.innerHTML = items.map((i, idx) => {
+        const n = daysUntil(i.d);
+        return `<li class="${[i.d < today ? 'is-past' : '', idx === nextIdx ? 'is-next' : '', i.key ? 'is-key' : ''].join(' ')}"><span class="br-cal-date">${fmtDateShort(i.d)}${i.d.getFullYear() !== 2026 ? ' ' + i.d.getFullYear() : ''}</span><span class="br-cal-dot"></span>
+          <span><span class="br-cal-label">${esc(i.label)}</span>${n >= 0 && n <= 60 ? `<br><span class="br-cal-in">${inDaysText(n)}</span>` : ''}</span></li>`;
+      }).join('');
+    }
+    const upd = document.getElementById('us-updated');
+    if (upd) upd.textContent = `Datos actualizados ${relTime(new Date(us.updatedAt))}`;
+    tickCountdowns();
+    (live.usGeo ? Promise.resolve(live.usGeo) : fetchJSON(US_GEO_URL).then(g => (live.usGeo = g)))
+      .then(renderUsMap)
+      .catch(() => { const m = document.getElementById('us-map'); if (m) m.innerHTML = '<div class="esp-loading">No se pudo cargar el mapa de estados.</div>'; renderUsRaces(); });
+  }
+
   /* ===================== LIVE RESULTS (TSE) =====================
      On election night the special can read the TSE's public results feed
      directly: set results.tse.round1Url / round2Url in brasil-2026.json.
@@ -30195,9 +30552,11 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
   /* ===================== REFRESH LOOP ===================== */
   function isViewActive(v) { return document.body.getAttribute('data-view') === v; }
   async function refresh() {
-    const [liveRes, brRes] = await Promise.allSettled([fetchJSON(LIVE_URL), fetchJSON(BRASIL_URL)]);
+    const [liveRes, brRes, usRes] = await Promise.allSettled([fetchJSON(LIVE_URL), fetchJSON(BRASIL_URL), fetchJSON(EEUU_URL)]);
     live.lastFetch = new Date();
-    live.fetchOk = liveRes.status === 'fulfilled' || brRes.status === 'fulfilled';
+    live.fetchOk = liveRes.status === 'fulfilled' || brRes.status === 'fulfilled' || usRes.status === 'fulfilled';
+    const prevUs = live.eeuu ? JSON.stringify(live.eeuu) : null;
+    if (usRes.status === 'fulfilled') live.eeuu = usRes.value;
     const prevBr = live.brasil ? JSON.stringify(live.brasil) : null;
     if (liveRes.status === 'fulfilled') live.data = liveRes.value;
     if (brRes.status === 'fulfilled') {
@@ -30211,12 +30570,13 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
       else if (brChanged || !document.querySelector('#esp-brasil .esp-hero')) renderBrasil();
       renderBrUpdated();
     }
+    if (isViewActive('eeuu') && live.eeuu && (JSON.stringify(live.eeuu) !== prevUs || !document.querySelector('#esp-eeuu .esp-hero'))) renderEeuu();
     scheduleRefresh();
   }
   function scheduleRefresh() {
     clearTimeout(live.timer);
     const base = (live.data && live.data.refreshSeconds) || 300;
-    const fast = live.brasil && brasilPhase(live.brasil).live ? 60 : base;
+    const fast = (live.brasil && brasilPhase(live.brasil).live) || (live.eeuu && usPhase(live.eeuu).live) ? 60 : base;
     live.timer = setTimeout(() => { if (!document.hidden) refresh(); else scheduleRefresh(); }, fast * 1000);
   }
   document.addEventListener('visibilitychange', () => {
@@ -30228,6 +30588,7 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
     if (view === 'brasil') {
       if (!document.querySelector('#esp-brasil .esp-hero')) renderBrasil();
     }
+    if (view === 'eeuu' && !document.querySelector('#esp-eeuu .esp-hero')) renderEeuu();
     if (view === 'inicio') renderPortada();
   };
 
@@ -30235,6 +30596,7 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
   initSearch();
   renderPortada();
   if (isViewActive('brasil')) renderBrasil();
+  if (isViewActive('eeuu')) renderEeuu();
   refresh();
   setInterval(tickCountdowns, 1000);
   setInterval(() => { renderNow(); renderFreshness(); renderBrUpdated(); }, 30000);
