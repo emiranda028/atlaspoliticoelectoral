@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-09-24T12:30:00-03:00",
+ "updatedAt": "2026-09-24T14:30:00-03:00",
  "refreshSeconds": 300,
  "specials": [
   {
@@ -14,12 +14,13 @@
   },
   {
    "id": "eeuu-2026",
-   "status": "soon",
+   "status": "active",
    "iso": "USA",
-   "tag": "Próximamente",
+   "tag": "Especial · nuevo",
    "title": "EE.UU. · Midterms",
    "date": "2026-11-03",
-   "blurb": "Las 435 bancas de la Cámara de Representantes, 35 del Senado y 36 gobernaciones: el primer test electoral del segundo mandato de Trump."
+   "blurb": "Toda la Cámara, 35 bancas del Senado y 36 gobernaciones. Mapa por estado con pronósticos, Congreso actual, encuestas y carreras clave.",
+   "view": "eeuu"
   },
   {
    "id": "propuesta",
@@ -31,6 +32,12 @@
   }
  ],
  "notes": [
+  {
+   "date": "2026-09-24",
+   "tag": "Nuevo",
+   "text": "Especial EE.UU. 2026: mapa por estado con los pronósticos del Senado y las gobernaciones, el Congreso actual y las encuestas de septiembre.",
+   "view": "eeuu"
+  },
   {
    "date": "2026-09-24",
    "tag": "Nuevo",

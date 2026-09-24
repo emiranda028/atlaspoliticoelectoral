@@ -5842,6 +5842,7 @@
   .us-rating-chip { display: inline-flex; align-items: center; gap: 5px; font-size: 11.5px; color: var(--ink-soft); margin-right: 6px; white-space: nowrap; }
   .us-rating-chip i { width: 10px; height: 10px; border-radius: 3px; display: inline-block; }
   .us-race { margin-top: 8px; line-height: 1.5; }
+  .us-cands { font-size: 12.5px; color: var(--muted); }
   .us-race .us-rating-chip { margin-left: 6px; }
   .us-race-row {
     display: grid; grid-template-columns: 12px 30px 1fr auto; gap: 8px; align-items: center;
@@ -5858,6 +5859,9 @@
   .us-key .us-rating-chip { margin-top: 10px; }
   .topic-nav-link.is-special-us .topic-nav-text::before { background: #2A5596; }
   #us-map .br-map-svg { max-height: 560px; }
+  #esp-eeuu .esp-sec-head .kicker { color: var(--brand-2); }
+  #esp-eeuu .esp-nav a:hover { border-color: var(--brand-2); color: var(--brand-2); }
+  #esp-eeuu .esp-status .live-dot { background: #F2B8B5; }
 </style>
 </head>
 <body>
@@ -30277,7 +30281,7 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
       const race = metric === 'senate' ? s.senate : s.governor;
       if (!race) return metric === 'senate' ? 'Sin elección al Senado en 2026' : 'Sin elección a gobernador en 2026';
       const r = usRating(race.rating);
-      return `${esc(race.incumbent || '')} (${esc(race.party || '')})${r ? ' · ' + r.label : ''}`;
+      return `${esc(race.incumbent || '')} (${esc(race.party || '')})${r ? ' · ' + r.label + (race.ratingEstimated ? ' (est.)' : '') : ''}`;
     };
     svg.addEventListener('mousemove', ev => {
       const id = ev.target.getAttribute && ev.target.getAttribute('data-uf');
@@ -30319,14 +30323,15 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
     const raceHTML = (label, race) => {
       if (!race) return `<div class="us-race"><b>${label}:</b> no se elige en 2026</div>`;
       const r = usRating(race.rating);
-      return `<div class="us-race"><b>${label}:</b> ${esc(race.incumbent || '')}${race.party ? ` (${esc(US_PARTY[race.party] || race.party)})` : ''}${race.status ? ` · ${esc(race.status)}` : ''}
-        ${r ? `<span class="us-rating-chip"><i style="background:${r.color}"></i>${r.label}</span>` : ''}</div>`;
+      const cands = race.candidates ? Object.entries(race.candidates).map(([p, n]) => `${esc(n)} (${esc(p)})`).join(' vs. ') : '';
+      return `<div class="us-race"><b>${label}:</b> ${esc(race.incumbent || '')}${race.party ? ` (${esc(US_PARTY[race.party] || race.party)})` : ''}${race.status ? ` · ${esc(race.status)}` : ''}${cands ? `<br><span class="us-cands">Candidatos: ${cands}</span>` : ''}
+        ${r ? `<span class="us-rating-chip"><i style="background:${r.color}"></i>${r.label}${race.ratingEstimated ? ' · est.' : ''}</span>` : ''}</div>`;
     };
     el.innerHTML = `
       <div class="uf-card-head"><span class="uf-card-name">${esc(s.name)}</span><span class="uf-card-uf">${s.id}</span></div>
       <div class="uf-stats">
         <div class="uf-stat"><div class="uf-stat-v">${fmtInt(s.houseSeats)}</div><div class="uf-stat-l">representantes en la Cámara</div></div>
-        <div class="uf-stat"><div class="uf-stat-v">${fmtInt(s.houseSeats + 2)}</div><div class="uf-stat-l">votos en el Colegio Electoral</div></div>
+        <div class="uf-stat"><div class="uf-stat-v">${fmtInt(s.id === 'DC' ? 3 : s.houseSeats + 2)}</div><div class="uf-stat-l">votos en el Colegio Electoral</div></div>
       </div>
       <div class="uf-ballot">${raceHTML('Senado', s.senate)}${raceHTML('Gobernación', s.governor)}</div>
       ${s.note ? `<div class="uf-gov">${esc(s.note)}</div>` : ''}`;
@@ -30337,14 +30342,18 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
     if (!el) return;
     const metric = live.usMetric === 'gov' ? 'governor' : 'senate';
     const rows = (live.eeuu.states || []).filter(s => s[metric]).map(s => ({ s, race: s[metric], r: usRating(s[metric].rating) }))
-      .sort((a, b) => US_RATINGS.findIndex(x => x === a.r) - US_RATINGS.findIndex(x => x === b.r) || a.s.name.localeCompare(b.s.name));
+      // most competitive first: distance from "Empate" in the rating scale
+      .sort((a, b) => {
+        const d = x => x.r ? Math.abs(US_RATINGS.indexOf(x.r) - 3) : 9;
+        return d(a) - d(b) || (a.r && b.r ? US_RATINGS.indexOf(a.r) - US_RATINGS.indexOf(b.r) : 0) || a.s.name.localeCompare(b.s.name);
+      });
     el.innerHTML = `<div class="uf-rank-title">${metric === 'senate' ? 'Bancas del Senado en juego' : 'Gobernaciones en juego'} · ${rows.length}</div>
       <div class="uf-rank-list">${rows.map(x => `
         <button type="button" class="us-race-row" data-uf="${x.s.id}">
           <i style="background:${x.r ? x.r.color : US_NONE}"></i>
           <span class="us-race-st">${x.s.id}</span>
           <span class="us-race-name">${esc(x.race.incumbent || '')} <em>${esc(x.race.party || '')}</em></span>
-          <span class="us-race-rt">${x.r ? x.r.label : '—'}</span>
+          <span class="us-race-rt">${x.r ? x.r.label : '—'}${x.race.ratingEstimated ? ' · est.' : ''}</span>
         </button>`).join('')}</div>`;
     el.querySelectorAll('.us-race-row').forEach(b => b.addEventListener('click', () => selectUsState(b.getAttribute('data-uf'))));
   }

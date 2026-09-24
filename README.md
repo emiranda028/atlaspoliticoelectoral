@@ -24,6 +24,7 @@ Una vez publicado:
 ### Visualizaciones principales
 
 - **Portada en vivo**: buscador de países, cuenta regresiva a la próxima gran elección, próximas elecciones y especiales destacados
+- **Especial EE.UU. 2026**: midterms del 3 de noviembre con mapa por estado (bancas, Senado y gobernaciones con pronóstico de Cook), Congreso actual, encuestas y carreras clave
 - **Especial Brasil 2026**: qué se elige, mapa de electores por estado (padrón TSE julio 2026), composición de la Cámara y el Senado en hemiciclos, candidatos, encuestas, resultados en vivo y calendario
 
 - **Mapa mundial interactivo** (Leaflet) coloreado por ideología del ejecutivo, con sectores antárticos según el Tratado Antártico y reasignación territorial (Malvinas y Georgias del Sur como territorio argentino)
@@ -65,6 +66,8 @@ las páginas abiertas se actualizan sin recargar.
 |---------|--------------|
 | `data/live.json` | Especiales destacados en la portada, notas de "Últimas actualizaciones" y cada cuánto se refresca (`refreshSeconds`) |
 | `data/especiales/brasil-2026.json` | Todo el especial Brasil 2026: fechas, padrón por estado, cargos, bancadas, candidatos, encuestas, calendario y resultados |
+| `data/especiales/eeuu-2026.json` | Especial EE.UU. 2026 (midterms): bancas por estado, carreras al Senado y gobernaciones con pronóstico, composición del Congreso, encuestas, carreras clave y calendario |
+| `data/geo/usa-states.json` | Estados de EE.UU. (U.S. Census Bureau vía [us-atlas](https://github.com/topojson/us-atlas), dominio público) |
 | `data/geo/brasil-uf.json` | Contorno de los 27 estados ([svg-maps/brazil](https://github.com/VictorCazanave/svg-maps), CC BY 4.0) |
 
 Lo que depende del reloj se calcula en el navegador: cuentas regresivas, "Se vota pronto" y
