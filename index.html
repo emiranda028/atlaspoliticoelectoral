@@ -6129,6 +6129,45 @@
     .agenda-item, .uf-rank-row, .us-race-row { min-height: 44px; }
     .export-fab, .back-to-top { transform: scale(.9); }
   }
+
+  /* ===== Faces dropping into the specials ===== */
+  .esp-faces { margin: 18px 0 4px; }
+  .esp-faces-title { font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; opacity: .75; margin-bottom: 10px; }
+  .esp-faces-row { display: flex; flex-wrap: wrap; gap: 14px 18px; }
+  .face { display: flex; flex-direction: column; align-items: center; width: 92px; text-align: center; }
+  .face-img {
+    width: 74px; height: 74px; border-radius: 50%;
+    background: #E8EDF4 center 20% / cover no-repeat;
+    border: 3px solid var(--c); box-shadow: 0 6px 16px rgba(0,0,0,.28);
+    display: grid; place-items: center;
+    font-family: var(--font-serif); font-weight: 700; font-size: 24px; color: #13305A;
+  }
+  .face-img.has-photo span { display: none; }
+  .face-name { font-size: 13px; font-weight: 700; margin-top: 8px; line-height: 1.2; }
+  .face-role { font-size: 11px; opacity: .75; margin-top: 2px; line-height: 1.25; }
+  .face-sm { width: auto; flex-shrink: 0; }
+  .face-sm .face-img { width: 44px; height: 44px; font-size: 15px; border-width: 2px; box-shadow: 0 3px 8px rgba(11,22,40,.18); }
+  .cand-main { display: flex; align-items: center; gap: 12px; min-width: 0; }
+  .il-list-head { display: flex; align-items: center; gap: 12px; }
+
+  .fx-drop { opacity: 0; }
+  .fx-drop.is-static { opacity: 1; }
+  .fx-drop.is-dropping { animation: faceDrop 1s cubic-bezier(.3,.9,.4,1) var(--d, 0ms) both; }
+  @keyframes faceDrop {
+    0%   { opacity: 1; transform: translateY(calc(-1 * var(--drop, 400px))) rotate(-14deg); }
+    62%  { transform: translateY(10px) rotate(4deg); }
+    78%  { transform: translateY(-8px) rotate(-2deg); }
+    90%  { transform: translateY(3px) rotate(0); }
+    100% { opacity: 1; transform: none; }
+  }
+  @media (prefers-reduced-motion: reduce) { .fx-drop { opacity: 1 !important; animation: none !important; } }
+  @media (max-width: 600px) {
+    .esp-faces-row { gap: 10px 6px; flex-wrap: nowrap; }
+    .face { width: calc((100% - 18px) / 4); min-width: 0; }
+    .face-img { width: 56px; height: 56px; font-size: 18px; }
+    .face-name { font-size: 12px; }
+    .face-role { font-size: 10.5px; }
+  }
 </style>
 </head>
 <body>
@@ -30473,6 +30512,12 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
             <span class="esp-status"><span class="live-dot"></span>${esc(ph.label)}</span>
             <h2>Brasil <em>2026</em></h2>
             <p class="esp-hero-lede">${esc(br.lede || '')}</p>
+            ${(() => {
+              const order = pollAverages('r1').avgs.map(a => a.key);
+              const cands = ((br.presidential && br.presidential.candidates) || []).filter(c => c.wiki)
+                .sort((a, b) => (order.indexOf(a.id) + 99) % 99 - (order.indexOf(b.id) + 99) % 99).slice(0, 4);
+              return facesRow('Los principales candidatos', cands.map(c => ({ name: c.short || c.name, role: c.party, wiki: c.wiki, color: leanColor(c.lean) })));
+            })()}
             <div class="esp-hero-dates">
               <div class="esp-date-chip">1.ª vuelta<strong>${fmtDateShort(d1)}</strong></div>
               <div class="esp-date-chip">2.ª vuelta<strong>${fmtDateShort(d2)}</strong></div>
@@ -30543,7 +30588,7 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
         <div class="race-grid">
           <div class="cand-list">${((br.presidential && br.presidential.candidates) || []).map(c => `
             <div class="cand-row"><span class="lean" style="background:${leanColor(c.lean)}"></span>
-              <div><div class="cand-name">${esc(c.name)}</div><div class="cand-sub">${esc(c.party)}${c.vice ? ` · vice: ${esc(c.vice)}` : ''}${c.coalition ? `<br>${esc(c.coalition)}` : ''}</div></div>
+              <div class="cand-main">${faceHTML({ name: c.name, wiki: c.wiki, color: leanColor(c.lean) }, 'sm')}<div><div class="cand-name">${esc(c.name)}</div><div class="cand-sub">${esc(c.party)}${c.vice ? ` · vice: ${esc(c.vice)}` : ''}${c.coalition ? `<br>${esc(c.coalition)}` : ''}</div></div></div>
               <span class="cand-num">${c.number ? esc(c.number) : ''}</span></div>`).join('')}</div>
           <div class="poll-box" id="br-polls"></div>
         </div>
@@ -30579,6 +30624,7 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
       if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }));
     wireHemicycleHover(root);
+    activateFaces(root);
     renderUFCard();
     renderPollBox();
     renderResults();
@@ -30599,6 +30645,54 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
   async function ensureBrGeo() {
     if (!live.geo) live.geo = await fetchJSON(BR_GEO_URL);
     return live.geo;
+  }
+
+  /* ===================== FACES: candidates dropping into the cards =====================
+     Photos come from Wikipedia/Wikimedia (same fetcher as the country card);
+     initials are shown until (or if) a photo loads. Each face falls from
+     above the top of the screen and bounces into place when its card
+     becomes visible. Static with prefers-reduced-motion. */
+  const initialsOf = n => String(n || '').split(/\s+/).filter(w => /^[A-ZÁÉÍÓÚÑ]/.test(w)).slice(0, 2).map(w => w[0]).join('');
+  function faceHTML(f, size) {
+    return `<div class="face ${size === 'sm' ? 'face-sm' : ''} fx-drop">
+      <div class="face-img" data-wiki="${esc(f.wiki || '')}" style="--c:${f.color || 'var(--line-strong)'}"><span>${esc(initialsOf(f.name))}</span></div>
+      ${size === 'sm' ? '' : `<div class="face-name">${esc(f.name)}</div>${f.role ? `<div class="face-role">${esc(f.role)}</div>` : ''}`}
+    </div>`;
+  }
+  function facesRow(title, faces) {
+    if (!faces || !faces.length) return '';
+    return `<div class="esp-faces"><div class="esp-faces-title">${esc(title)}</div><div class="esp-faces-row">${faces.map(f => faceHTML(f)).join('')}</div></div>`;
+  }
+  const faceIO = ('IntersectionObserver' in window) ? new IntersectionObserver(entries => {
+    entries.forEach(en => {
+      if (!en.isIntersecting) return;
+      faceIO.unobserve(en.target);
+      en.target.querySelectorAll('.fx-drop:not(.is-dropping)').forEach((el, i) => {
+        const top = el.getBoundingClientRect().top;
+        el.style.setProperty('--drop', Math.max(top + 140, 220) + 'px');
+        el.style.setProperty('--d', (i * 140) + 'ms');
+        el.classList.add('is-dropping');
+      });
+    });
+  }, { threshold: 0.2 }) : null;
+  function activateFaces(root) {
+    root.querySelectorAll('.face-img[data-wiki]').forEach(el => {
+      const w = el.getAttribute('data-wiki');
+      if (!w || typeof fetchWikiPhoto !== 'function') return;
+      fetchWikiPhoto(w).then(src => {
+        if (!src) return;
+        const img = new Image();
+        img.onload = () => { el.style.backgroundImage = `url("${src}")`; el.classList.add('has-photo'); };
+        img.src = src;
+      });
+    });
+    const reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    // group faces by their card so each group drops together when it appears
+    const hosts = new Set([...root.querySelectorAll('.fx-drop')].map(el => el.closest('.esp-faces, .cand-list, .us-key-grid, .office-card') || el.parentElement));
+    hosts.forEach(host => {
+      if (reduced || !faceIO) host.querySelectorAll('.fx-drop').forEach(el => el.classList.add('is-static'));
+      else faceIO.observe(host);
+    });
   }
 
   /* ===================== ESPECIAL EE.UU. 2026 =====================
@@ -30795,6 +30889,7 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
             <span class="esp-status"><span class="live-dot"></span>${esc(ph.label)}</span>
             <h2>EE.UU. <em>Midterms</em> 2026</h2>
             <p class="esp-hero-lede">${esc(us.lede || '')}</p>
+            ${facesRow(us.facesTitle || 'Protagonistas', us.faces)}
             <div class="esp-hero-dates">
               <div class="esp-date-chip">Elección<strong>${fmtDateShort(ed)}</strong></div>
               <div class="esp-date-chip">Cámara hoy<strong>${esc(ctl(us.house))}</strong></div>
@@ -30895,6 +30990,7 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
       if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }));
     wireHemicycleHover(root);
+    activateFaces(root);
     renderUsCard();
     renderUsPolls();
     // Calendar (same component as Brasil)
@@ -31030,6 +31126,7 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
             <span class="esp-status"><span class="live-dot"></span>${esc(ph.label)}</span>
             <h2>Israel <em>2026</em></h2>
             <p class="esp-hero-lede">${esc(il.lede || '')}</p>
+            ${facesRow('Los que pelean el primer puesto', isrAverages(il).filter(l => l.wiki).slice(0, 4).map(l => ({ name: l.faceName || l.leader, role: l.short || l.name, wiki: l.wiki, color: leanColor(l.lean) })))}
             <div class="esp-hero-dates">
               <div class="esp-date-chip">Elección<strong>${fmtDateShort(ed)}</strong></div>
               <div class="esp-date-chip">Bancas<strong>120</strong></div>
@@ -31085,8 +31182,8 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
         <div class="esp-sec-head"><span class="kicker">05 · Quién compite</span><h3>Las principales listas</h3></div>
         <div class="us-key-grid">${(il.lists || []).map(l => `
           <div class="office-card il-list" style="border-top-color:${leanColor(l.lean)}">
-            <div class="office-label">${esc(l.name)}</div>
-            <div class="il-list-leader">${esc(l.leader || '')}</div>
+            <div class="il-list-head">${faceHTML({ name: l.faceName || l.leader, wiki: l.wiki, color: leanColor(l.lean) }, 'sm')}
+              <div><div class="office-label">${esc(l.name)}</div><div class="il-list-leader">${esc(l.leader || '')}</div></div></div>
             <div class="office-detail">${esc(l.desc || '')}</div>
             <span class="us-rating-chip"><i style="background:${leanColor(l.lean)}"></i>${esc((IDEOLOGIES[l.lean] || IDEOLOGIES.other).label)}${l.bloc === 'gobierno' ? ' · bloque de Netanyahu' : l.bloc === 'arabes' ? ' · partido árabe' : l.bloc === 'otros' ? ' · sin alinear' : ' · oposición'}</span>
           </div>`).join('')}</div>
@@ -31111,6 +31208,7 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
       if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }));
     wireHemicycleHover(root);
+    activateFaces(root);
     renderIsrCalculator();
     renderIsrPolls();
     const cal = document.getElementById('il-cal');
