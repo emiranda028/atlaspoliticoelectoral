@@ -5862,6 +5862,68 @@
   #esp-eeuu .esp-sec-head .kicker { color: var(--brand-2); }
   #esp-eeuu .esp-nav a:hover { border-color: var(--brand-2); color: var(--brand-2); }
   #esp-eeuu .esp-status .live-dot { background: #F2B8B5; }
+
+  /* ===== Especial Israel ===== */
+  .il-hero {
+    background:
+      radial-gradient(circle at 85% 20%, rgba(96,165,250,.45), transparent 35%),
+      radial-gradient(circle at 15% 110%, rgba(30,64,175,.85), transparent 50%),
+      linear-gradient(135deg, #0B1F3A 0%, #123A6B 55%, #1D4E89 100%);
+    background-size: 180% 180%;
+    animation: brFlow 16s ease-in-out infinite alternate;
+  }
+  .il-hero h2 em { color: #9CC3F5; }
+  #esp-israel .esp-sec-head .kicker { color: #1D4E89; }
+  #esp-israel .esp-nav a:hover { border-color: #1D4E89; color: #1D4E89; }
+  #esp-israel .esp-status .live-dot { background: #9CC3F5; }
+  .il-offices .office-card { border-top-color: #1D4E89; }
+  .il-offices .office-num { color: #1D4E89; }
+  .ballot-note.il-note { background: #E6EEF8; }
+  .il-knesset { max-width: 860px; }
+  .topic-nav-link.is-special-il .topic-nav-text::before { background: #1D4E89; }
+
+  .il-calc { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 22px; box-shadow: var(--shadow-sm); }
+  .il-calc-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 14px; }
+  .il-calc-total { font-family: var(--font-serif); font-size: 26px; font-weight: 700; color: var(--muted); line-height: 1; }
+  .il-calc-total span { font-size: 56px; color: var(--ink); font-variant-numeric: tabular-nums; }
+  .il-calc-total.is-ok span { color: #0F766E; }
+  .il-calc-verdict { font-weight: 600; margin-top: 6px; color: var(--ink-soft); }
+  .il-calc-total.is-ok + .il-calc-verdict { color: #0F766E; }
+  .il-presets { margin: 0; }
+  .il-meter { position: relative; display: flex; height: 22px; margin: 18px 0 26px; background: var(--surface-2); border-radius: 6px; box-shadow: inset 0 0 0 1px var(--line); }
+  .il-meter span { height: 100%; transition: width .5s cubic-bezier(.2,.8,.2,1); }
+  .il-meter span:first-child { border-radius: 6px 0 0 6px; }
+  .il-meter-61 { position: absolute; top: -6px; bottom: -6px; width: 2px; background: var(--ink); }
+  .il-meter-61 b { position: absolute; top: 100%; left: 50%; transform: translateX(-50%); font-family: var(--font-mono); font-size: 11px; margin-top: 4px; }
+  .il-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+  .il-chip {
+    display: inline-flex; align-items: center; gap: 8px;
+    font: inherit; font-size: 14px; padding: 8px 12px;
+    border: 1.5px solid var(--line-strong); border-radius: 999px;
+    background: var(--surface); color: var(--ink-soft); cursor: pointer;
+    transition: all .18s ease;
+  }
+  .il-chip i { width: 10px; height: 10px; border-radius: 50%; }
+  .il-chip b { font-family: var(--font-mono); font-weight: 600; color: var(--muted); }
+  .il-chip:hover { border-color: var(--ink); transform: translateY(-1px); }
+  .il-chip.is-on { background: var(--ink); border-color: var(--ink); color: #fff; }
+  .il-chip.is-on b { color: #FDBA74; }
+  .il-calc-note { font-size: 13px; color: var(--muted); margin: 14px 0 0; }
+  .il-track { position: relative; overflow: visible; }
+  .il-track i { position: absolute; top: -3px; bottom: -3px; width: 1px; border-left: 1px dashed var(--ink-soft); }
+  .il-poll-table-wrap { overflow-x: auto; margin-top: 10px; }
+  .il-poll-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .il-poll-table th { font-size: 11.5px; font-weight: 600; color: var(--ink-soft); text-align: right; padding: 6px 8px; border-bottom: 2px solid var(--ink); white-space: nowrap; }
+  .il-poll-table th span { font-weight: 400; color: var(--muted); }
+  .il-poll-table th:first-child, .il-poll-table td:first-child { text-align: left; }
+  .il-poll-table td { padding: 6px 8px; border-bottom: 1px solid var(--surface-2); text-align: right; font-family: var(--font-mono); }
+  .il-poll-table td:first-child { font-family: var(--font-sans); white-space: nowrap; }
+  .il-poll-table td i { display: inline-block; width: 9px; height: 9px; border-radius: 50%; margin-right: 7px; }
+  .il-poll-table tfoot td { font-weight: 700; border-top: 2px solid var(--line); border-bottom: 0; }
+  .il-list .office-label { font-family: var(--font-serif); font-size: 19px; font-weight: 700; }
+  .il-list-leader { font-size: 13px; font-weight: 600; color: var(--muted); margin-top: 2px; }
+  .il-list .us-rating-chip { margin-top: 10px; white-space: normal; }
+  @media (prefers-reduced-motion: reduce) { .il-hero { animation: none; } }
 </style>
 </head>
 <body>
@@ -5938,6 +6000,10 @@
       <a href="#eeuu" class="topic-nav-link is-special is-special-us" onclick="window.__scrollToSection(event, 'eeuu')">
         <span class="topic-nav-num">★</span>
         <span class="topic-nav-text">EE.UU. 2026</span>
+      </a>
+      <a href="#israel" class="topic-nav-link is-special is-special-il" onclick="window.__scrollToSection(event, 'israel')">
+        <span class="topic-nav-num">★</span>
+        <span class="topic-nav-text">Israel 2026</span>
       </a>
       <a href="#nav-map" class="topic-nav-link" onclick="window.__scrollToSection(event, 'nav-map')">
         <span class="topic-nav-num">01</span>
@@ -6354,6 +6420,10 @@
 
   <div class="atlas-view" data-view="eeuu">
     <div class="esp" id="esp-eeuu"><div class="esp-loading">Cargando especial…</div></div>
+  </div>
+
+  <div class="atlas-view" data-view="israel">
+    <div class="esp" id="esp-israel"><div class="esp-loading">Cargando especial…</div></div>
   </div>
 
   <div class="atlas-view" data-view="metodologia">
@@ -28860,7 +28930,7 @@ function renderElectionsTimeline() {  const today = new Date();
   // Also marks the corresponding nav link as active.
   // ============ SPA ROUTER ============
   // Maps nav hrefs (#nav-map, #nav-calendar, …) and view ids to canonical views.
-  const VIEW_IDS = ['inicio', 'elecciones', 'analisis', 'cambio', 'metodologia', 'brasil', 'eeuu'];
+  const VIEW_IDS = ['inicio', 'elecciones', 'analisis', 'cambio', 'metodologia', 'brasil', 'eeuu', 'israel'];
   const NAV_TO_VIEW = {
     'nav-map': 'inicio',          // the map now lives on the home view
     'nav-calendar': 'elecciones',
@@ -29423,6 +29493,7 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
   const BR_GEO_URL = 'data/geo/brasil-uf.json';
   const EEUU_URL = 'data/especiales/eeuu-2026.json';
   const US_GEO_URL = 'data/geo/usa-states.json';
+  const ISRAEL_URL = 'data/especiales/israel-2026.json';
   const MONTHS = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
   const MONTHS_SHORT = ['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
   const DAYS = ['domingo','lunes','martes','miércoles','jueves','viernes','sábado'];
@@ -29448,6 +29519,8 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
     usGeo: null,
     usMetric: 'senate',
     usSelected: null,
+    israel: null,        // data/especiales/israel-2026.json
+    ilPicked: null,      // coalition calculator selection
   };
   window.__atlasLive = live; // handy for debugging from the console
 
@@ -30522,6 +30595,214 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
       .catch(() => { const m = document.getElementById('us-map'); if (m) m.innerHTML = '<div class="esp-loading">No se pudo cargar el mapa de estados.</div>'; renderUsRaces(); });
   }
 
+  /* ===================== ESPECIAL ISRAEL 2026 =====================
+     One nationwide district, closed lists, 120 seats, 61 to govern.
+     The centrepiece is a coalition calculator fed by the average of the
+     latest seat polls. Parties use the atlas ideology colours. */
+  function isrPhase(il, now = new Date()) {
+    const t = now.getTime(), d = il.dates;
+    const open = new Date(d.pollsOpen).getTime(), close = new Date(d.pollsClose).getTime();
+    if (t < open) return { id: 'campaign', label: 'Campaña en curso', target: d.pollsOpen, targetLabel: 'para la elección', live: false };
+    if (t < close) return { id: 'voting', label: 'Hoy se vota', target: d.pollsClose, targetLabel: 'para el cierre de urnas', live: true };
+    if (t < close + 3 * 86400000) return { id: 'counting', label: 'Escrutinio en curso', target: d.knessetSworn || d.pollsClose, targetLabel: 'para que asuma la Knéset', live: true };
+    return { id: 'final', label: 'Resultados', target: d.knessetSworn || d.pollsClose, targetLabel: 'para que asuma la Knéset', live: false };
+  }
+  // Average projected seats per list across polls (lists missing in a poll count as 0 there)
+  function isrAverages(il) {
+    const polls = il.polls || [];
+    return (il.lists || []).map(l => {
+      const vals = polls.map(p => (p.seats && p.seats[l.id]) || 0);
+      const avg = vals.length ? vals.reduce((a, b) => a + b, 0) / vals.length : 0;
+      return Object.assign({}, l, { avg, rounded: Math.round(avg) });
+    }).sort((a, b) => b.avg - a.avg);
+  }
+
+  function renderIsrCalculator() {
+    const el = document.getElementById('il-calc');
+    const il = live.israel;
+    if (!el || !il) return;
+    const lists = isrAverages(il).filter(l => l.avg > 0);
+    if (!live.ilPicked) live.ilPicked = new Set(lists.filter(l => l.bloc === 'gobierno').map(l => l.id));
+    const picked = live.ilPicked;
+    const total = lists.filter(l => picked.has(l.id)).reduce((a, l) => a + l.avg, 0);
+    const need = il.system && il.system.majority || 61;
+    const ok = Math.round(total) >= need;
+    const PRESETS = [
+      { id: 'gobierno', label: 'Coalición actual', pick: l => l.bloc === 'gobierno' },
+      { id: 'oposicion', label: 'Oposición sin partidos árabes', pick: l => l.bloc === 'oposicion' },
+      { id: 'oposicion+arabes', label: 'Oposición + partidos árabes', pick: l => l.bloc === 'oposicion' || l.bloc === 'arabes' },
+      { id: 'none', label: 'Vaciar', pick: () => false },
+    ];
+    el.innerHTML = `
+      <div class="il-calc-head">
+        <div>
+          <div class="il-calc-total ${ok ? 'is-ok' : ''}"><span>${Math.round(total)}</span> / 120</div>
+          <div class="il-calc-verdict">${ok ? `✔ Alcanza la mayoría de ${need}` : `Faltan ${need - Math.round(total)} bancas para ${need}`}</div>
+        </div>
+        <div class="seg il-presets">${PRESETS.map(p => `<button type="button" data-preset="${p.id}">${p.label}</button>`).join('')}</div>
+      </div>
+      <div class="il-meter" aria-hidden="true">
+        ${lists.filter(l => picked.has(l.id)).map(l => `<span style="width:${(l.avg / 120 * 100).toFixed(2)}%;background:${leanColor(l.lean)}" title="${esc(l.name)}: ${l.avg.toFixed(1)}"></span>`).join('')}
+        <i class="il-meter-61" style="left:${(need / 120 * 100).toFixed(2)}%"><b>${need}</b></i>
+      </div>
+      <div class="il-chips">${lists.map(l => `
+        <button type="button" class="il-chip ${picked.has(l.id) ? 'is-on' : ''}" data-list="${esc(l.id)}" aria-pressed="${picked.has(l.id)}">
+          <i style="background:${leanColor(l.lean)}"></i>
+          <span class="il-chip-name">${esc(l.short || l.name)}</span>
+          <b>${l.avg.toFixed(1)}</b>
+        </button>`).join('')}</div>
+      <p class="il-calc-note">Bancas promedio de ${(il.polls || []).length} encuestas. Tocá los partidos para armar una coalición. Es un ejercicio aritmético: no todos los partidos están dispuestos a gobernar juntos.</p>`;
+    el.querySelectorAll('[data-list]').forEach(b => b.addEventListener('click', () => {
+      const id = b.getAttribute('data-list');
+      picked.has(id) ? picked.delete(id) : picked.add(id);
+      renderIsrCalculator();
+    }));
+    el.querySelectorAll('[data-preset]').forEach(b => b.addEventListener('click', () => {
+      const pr = PRESETS.find(p => p.id === b.getAttribute('data-preset'));
+      live.ilPicked = new Set(lists.filter(pr.pick).map(l => l.id));
+      renderIsrCalculator();
+    }));
+  }
+
+  function renderIsrPolls() {
+    const el = document.getElementById('il-polls');
+    const il = live.israel;
+    if (!el || !il) return;
+    const avgs = isrAverages(il);
+    const byId = Object.fromEntries(avgs.map(l => [l.id, l]));
+    const max = Math.max(...avgs.map(l => l.avg), 1);
+    el.innerHTML = `
+      <div class="poll-box">
+        <h4>Proyección de bancas · promedio</h4>
+        <div class="muted">${(il.polls || []).length} encuestas de septiembre · la línea marca el umbral de 4 bancas (3,25 %)</div>
+        ${avgs.filter(l => l.avg > 0).map(l => `<div class="pbar"><div class="pbar-top"><span>${esc(l.name)}</span><b>${l.avg.toFixed(1)}</b></div>
+          <div class="pbar-track il-track"><div class="pbar-fill" style="width:${(l.avg / max * 100).toFixed(1)}%;background:${leanColor(l.lean)}"></div><i style="left:${(4 / max * 100).toFixed(1)}%"></i></div></div>`).join('')}
+      </div>
+      <div class="poll-box">
+        <h4>Encuesta por encuesta</h4>
+        <div class="il-poll-table-wrap"><table class="il-poll-table">
+          <thead><tr><th>Partido</th>${(il.polls || []).map(p => `<th title="${esc(p.pollster || '')}">${esc(p.outlet)}<br><span>${esc(p.date)}</span></th>`).join('')}</tr></thead>
+          <tbody>${avgs.filter(l => l.avg > 0).map(l => `<tr><td><i style="background:${leanColor(l.lean)}"></i>${esc(l.short || l.name)}</td>${(il.polls || []).map(p => `<td>${p.seats && p.seats[l.id] != null ? p.seats[l.id] : '—'}</td>`).join('')}</tr>`).join('')}</tbody>
+          <tfoot><tr><td>Coalición actual</td>${(il.polls || []).map(p => `<td>${Object.entries(p.seats || {}).filter(([k]) => byId[k] && byId[k].bloc === 'gobierno').reduce((a, [, v]) => a + v, 0)}</td>`).join('')}</tr></tfoot>
+        </table></div>
+        <span class="poll-src">${(il.polls || []).map(p => p.url ? `<a href="${esc(p.url)}" target="_blank" rel="noopener">${esc(p.outlet)}</a>` : esc(p.outlet)).join(' · ')}</span>
+      </div>`;
+  }
+
+  function renderIsrael() {
+    const root = document.getElementById('esp-israel');
+    if (!root) return;
+    const il = live.israel;
+    if (!il) { root.innerHTML = `<div class="esp-loading">${live.fetchOk === false && live.lastFetch ? 'No se pudieron cargar los datos del especial.' : 'Cargando especial…'}</div>`; return; }
+    const ph = isrPhase(il);
+    const ed = new Date(il.dates.pollsOpen);
+    const kn = il.knesset;
+    const govSeats = (kn.parties || []).filter(p => p.bloc === 'gobierno').reduce((a, p) => a + p.seats, 0);
+    const blocBar = `<div class="senate-renewal">La coalición de gobierno reúne hoy <b>${govSeats} de 120</b> bancas.
+        <div class="renewal-bar"><span style="width:${govSeats / 120 * 100}%;background:var(--ink-soft)"></span><span style="flex:1;background:var(--line)"></span></div></div>`;
+    root.innerHTML = `
+      <section class="esp-hero il-hero">
+        <div class="esp-hero-grid">
+          <div>
+            <span class="esp-status"><span class="live-dot"></span>${esc(ph.label)}</span>
+            <h2>Israel <em>2026</em></h2>
+            <p class="esp-hero-lede">${esc(il.lede || '')}</p>
+            <div class="esp-hero-dates">
+              <div class="esp-date-chip">Elección<strong>${fmtDateShort(ed)}</strong></div>
+              <div class="esp-date-chip">Bancas<strong>120</strong></div>
+              <div class="esp-date-chip">Para gobernar<strong>61</strong></div>
+              <div class="esp-date-chip">Umbral<strong>${esc((il.system && il.system.threshold) || '3,25 %')}</strong></div>
+              ${il.electorate && il.electorate.eligibleVoters ? `<div class="esp-date-chip">Electores<strong>${fmtM(il.electorate.eligibleVoters, 2)}</strong></div>` : ''}
+            </div>
+          </div>
+          <div class="esp-hero-side">
+            <div class="next-card-kicker">Cuenta regresiva ${esc(ph.targetLabel || '')}</div>
+            ${countdownHTML(ph.target, 'Ya empezó')}
+            <div class="esp-updated" id="il-updated"></div>
+          </div>
+        </div>
+      </section>
+
+      <nav class="esp-nav" aria-label="Secciones del especial">
+        <a href="#il-sec-sistema">Cómo se vota</a>
+        <a href="#il-sec-knesset">Knéset actual</a>
+        <a href="#il-sec-calc">Calculadora de coaliciones</a>
+        <a href="#il-sec-encuestas">Encuestas</a>
+        <a href="#il-sec-listas">Listas</a>
+        <a href="#il-sec-calendario">Calendario</a>
+      </nav>
+
+      <section class="esp-sec" id="il-sec-sistema">
+        <div class="esp-sec-head"><span class="kicker">01 · Las reglas</span><h3>Cómo se vota</h3><p>${esc(il.officesIntro || '')}</p></div>
+        <div class="offices-grid il-offices">${(il.offices || []).map(o => `
+          <div class="office-card"><div class="office-num">${esc(o.value)}</div><div class="office-label">${esc(o.label)}</div>
+            <div class="office-detail">${esc(o.detail || '')}</div></div>`).join('')}</div>
+        ${il.ballotNote ? `<div class="ballot-note il-note">${esc(il.ballotNote)}</div>` : ''}
+      </section>
+
+      <section class="esp-sec" id="il-sec-knesset">
+        <div class="esp-sec-head"><span class="kicker">02 · La Knéset que termina</span><h3>Composición actual</h3>
+          <p>Cada punto es una banca, coloreada según la orientación del partido (mismo código de colores que el mapa mundial). Pasá el mouse por un partido para resaltarlo.</p></div>
+        <div class="il-knesset">${chamberCard(kn, 8, blocBar)}</div>
+      </section>
+
+      <section class="esp-sec" id="il-sec-calc">
+        <div class="esp-sec-head"><span class="kicker">03 · La aritmética</span><h3>Calculadora de coaliciones</h3>
+          <p>Nadie gana solo: desde 1949 ningún partido obtuvo 61 bancas. El primer ministro surge de la coalición que logra reunir la mayoría.</p></div>
+        <div class="il-calc" id="il-calc"></div>
+      </section>
+
+      <section class="esp-sec" id="il-sec-encuestas">
+        <div class="esp-sec-head"><span class="kicker">04 · El clima</span><h3>Qué dicen las encuestas</h3></div>
+        <div class="race-grid" id="il-polls"></div>
+      </section>
+
+      <section class="esp-sec" id="il-sec-listas">
+        <div class="esp-sec-head"><span class="kicker">05 · Quién compite</span><h3>Las principales listas</h3></div>
+        <div class="us-key-grid">${(il.lists || []).map(l => `
+          <div class="office-card il-list" style="border-top-color:${leanColor(l.lean)}">
+            <div class="office-label">${esc(l.name)}</div>
+            <div class="il-list-leader">${esc(l.leader || '')}</div>
+            <div class="office-detail">${esc(l.desc || '')}</div>
+            <span class="us-rating-chip"><i style="background:${leanColor(l.lean)}"></i>${esc((IDEOLOGIES[l.lean] || IDEOLOGIES.other).label)}${l.bloc === 'gobierno' ? ' · coalición actual' : l.bloc === 'arabes' ? ' · partido árabe' : ' · oposición'}</span>
+          </div>`).join('')}</div>
+      </section>
+
+      <section class="esp-sec" id="il-sec-calendario">
+        <div class="esp-sec-head"><span class="kicker">06 · Fechas</span><h3>Calendario</h3></div>
+        <ul class="br-cal" id="il-cal"></ul>
+      </section>
+
+      <section class="esp-sec" id="il-sec-claves">
+        <div class="esp-sec-head"><span class="kicker">07 · Para entender</span><h3>Claves del sistema</h3></div>
+        <ul class="facts-list">${(il.keyFacts || []).map(f => `<li>${esc(f)}</li>`).join('')}</ul>
+        <p class="esp-sources" style="margin-top:18px"><strong>Fuentes:</strong> ${(il.sources || []).map(s => `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.label)}</a>`).join(' · ')}.</p>
+      </section>`;
+
+    root.querySelectorAll('.esp-nav a').forEach(a => a.addEventListener('click', ev => {
+      ev.preventDefault();
+      const t = document.querySelector(a.getAttribute('href'));
+      if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }));
+    wireHemicycleHover(root);
+    renderIsrCalculator();
+    renderIsrPolls();
+    const cal = document.getElementById('il-cal');
+    if (cal) {
+      const items = (il.calendar || []).map(c => ({ ...c, d: new Date(c.date + 'T12:00:00') })).sort((a, b) => a.d - b.d);
+      const today = startOfDay(new Date());
+      const nextIdx = items.findIndex(i => i.d >= today);
+      cal.innerHTML = items.map((i, idx) => {
+        const n = daysUntil(i.d);
+        return `<li class="${[i.d < today ? 'is-past' : '', idx === nextIdx ? 'is-next' : '', i.key ? 'is-key' : ''].join(' ')}"><span class="br-cal-date">${fmtDateShort(i.d)}${i.d.getFullYear() !== 2026 ? ' ' + i.d.getFullYear() : ''}</span><span class="br-cal-dot"></span>
+          <span><span class="br-cal-label">${esc(i.label)}</span>${n >= 0 && n <= 60 ? `<br><span class="br-cal-in">${inDaysText(n)}</span>` : ''}</span></li>`;
+      }).join('');
+    }
+    const upd = document.getElementById('il-updated');
+    if (upd) upd.textContent = `Datos actualizados ${relTime(new Date(il.updatedAt))}`;
+    tickCountdowns();
+  }
+
   /* ===================== LIVE RESULTS (TSE) =====================
      On election night the special can read the TSE's public results feed
      directly: set results.tse.round1Url / round2Url in brasil-2026.json.
@@ -30561,9 +30842,11 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
   /* ===================== REFRESH LOOP ===================== */
   function isViewActive(v) { return document.body.getAttribute('data-view') === v; }
   async function refresh() {
-    const [liveRes, brRes, usRes] = await Promise.allSettled([fetchJSON(LIVE_URL), fetchJSON(BRASIL_URL), fetchJSON(EEUU_URL)]);
+    const [liveRes, brRes, usRes, ilRes] = await Promise.allSettled([fetchJSON(LIVE_URL), fetchJSON(BRASIL_URL), fetchJSON(EEUU_URL), fetchJSON(ISRAEL_URL)]);
     live.lastFetch = new Date();
-    live.fetchOk = liveRes.status === 'fulfilled' || brRes.status === 'fulfilled' || usRes.status === 'fulfilled';
+    live.fetchOk = [liveRes, brRes, usRes, ilRes].some(r => r.status === 'fulfilled');
+    const prevIl = live.israel ? JSON.stringify(live.israel) : null;
+    if (ilRes.status === 'fulfilled') live.israel = ilRes.value;
     const prevUs = live.eeuu ? JSON.stringify(live.eeuu) : null;
     if (usRes.status === 'fulfilled') live.eeuu = usRes.value;
     const prevBr = live.brasil ? JSON.stringify(live.brasil) : null;
@@ -30579,13 +30862,14 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
       else if (brChanged || !document.querySelector('#esp-brasil .esp-hero')) renderBrasil();
       renderBrUpdated();
     }
+    if (isViewActive('israel') && live.israel && (JSON.stringify(live.israel) !== prevIl || !document.querySelector('#esp-israel .esp-hero'))) renderIsrael();
     if (isViewActive('eeuu') && live.eeuu && (JSON.stringify(live.eeuu) !== prevUs || !document.querySelector('#esp-eeuu .esp-hero'))) renderEeuu();
     scheduleRefresh();
   }
   function scheduleRefresh() {
     clearTimeout(live.timer);
     const base = (live.data && live.data.refreshSeconds) || 300;
-    const fast = (live.brasil && brasilPhase(live.brasil).live) || (live.eeuu && usPhase(live.eeuu).live) ? 60 : base;
+    const fast = (live.brasil && brasilPhase(live.brasil).live) || (live.eeuu && usPhase(live.eeuu).live) || (live.israel && isrPhase(live.israel).live) ? 60 : base;
     live.timer = setTimeout(() => { if (!document.hidden) refresh(); else scheduleRefresh(); }, fast * 1000);
   }
   document.addEventListener('visibilitychange', () => {
@@ -30598,6 +30882,7 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
       if (!document.querySelector('#esp-brasil .esp-hero')) renderBrasil();
     }
     if (view === 'eeuu' && !document.querySelector('#esp-eeuu .esp-hero')) renderEeuu();
+    if (view === 'israel' && !document.querySelector('#esp-israel .esp-hero')) renderIsrael();
     if (view === 'inicio') renderPortada();
   };
 
@@ -30606,6 +30891,7 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
   renderPortada();
   if (isViewActive('brasil')) renderBrasil();
   if (isViewActive('eeuu')) renderEeuu();
+  if (isViewActive('israel')) renderIsrael();
   refresh();
   setInterval(tickCountdowns, 1000);
   setInterval(() => { renderNow(); renderFreshness(); renderBrUpdated(); }, 30000);
