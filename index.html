@@ -6168,6 +6168,49 @@
     .face-name { font-size: 12px; }
     .face-role { font-size: 10.5px; }
   }
+
+  /* ===== Ficha rápida del mapa (celulares) ===== */
+  .leaflet-interactive:focus { outline: none; }
+  .map-quick {
+    position: fixed; left: 12px; right: 12px;
+    bottom: calc(12px + env(safe-area-inset-bottom, 0px));
+    z-index: 1200; max-width: 460px; margin: 0 auto;
+    background: var(--brand); color: #F4F6FA;
+    border-radius: 14px; box-shadow: 0 18px 50px rgba(11, 22, 40, .45);
+    padding: 6px 6px 12px;
+    transform: translateY(calc(100% + 40px)); opacity: 0;
+    transition: transform .35s cubic-bezier(.2,.8,.2,1), opacity .25s;
+    pointer-events: none;
+  }
+  .map-quick.is-open { transform: none; opacity: 1; pointer-events: auto; }
+  .map-quick .map-tt { padding: 12px 14px 4px; }
+  .map-quick .map-tt-header { padding-right: 34px; border-bottom-color: rgba(244,246,250,.16); }
+  .map-quick .map-tt-name { font-size: 22px; color: #fff; }
+  .map-quick .map-tt-tag { font-size: 11px; padding: 4px 10px; color: #fff !important; border-color: rgba(244,246,250,.35) !important; display: inline-flex; align-items: center; gap: 6px; }
+  .map-quick .map-tt-tag::before { content: ''; width: 9px; height: 9px; border-radius: 50%; background: var(--ideo); box-shadow: 0 0 0 1.5px rgba(255,255,255,.7); }
+  .map-quick .map-tt-leader { font-size: 15px; color: rgba(244,246,250,.85); }
+  .map-quick .map-tt-leader strong { font-size: 16px; color: #fff; }
+  .map-quick .map-tt-party { font-size: 13px; color: rgba(244,246,250,.75); }
+  .map-quick .map-tt-system { font-size: 12px; color: rgba(244,246,250,.8); }
+  .map-quick .map-tt-metrics { gap: 8px 18px; }
+  .map-quick .map-tt-metric { font-size: 16px; }
+  .map-quick .map-tt-mk, .map-quick .map-tt-row .map-tt-k { font-size: 12px; color: rgba(244,246,250,.75); }
+  .map-quick .map-tt-mv { color: #fff; }
+  .map-quick .map-tt-row .map-tt-v { font-size: 15px; color: var(--accent-bright); font-weight: 600; }
+  .map-quick .map-tt-empty { font-size: 15px; color: rgba(244,246,250,.8); padding: 6px 0 4px; }
+  .map-tt-metric { gap: 6px; }
+  .leaflet-tooltip.map-tt-wrap { max-width: 280px; }
+  .map-quick-close {
+    position: absolute; top: 10px; right: 10px; width: 36px; height: 36px;
+    border: 0; border-radius: 50%; background: rgba(244,246,250,.12); color: #fff;
+    font-size: 24px; line-height: 1; cursor: pointer;
+  }
+  .map-quick-open {
+    display: block; width: calc(100% - 28px); margin: 10px 14px 0; padding: 13px;
+    border: 0; border-radius: 10px; background: var(--accent); color: #fff;
+    font: 600 14px/1 var(--font-sans); letter-spacing: .04em; text-transform: uppercase; cursor: pointer;
+  }
+  @media (prefers-reduced-motion: reduce) { .map-quick { transition: none; } }
 </style>
 </head>
 <body>
@@ -26712,6 +26755,87 @@ function getCSSVar(name) {
   return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
 }
 
+function isTouchUI() {
+  return window.matchMedia('(hover: none), (max-width: 760px)').matches;
+}
+
+/* Summary shared by the desktop hover tooltip and the mobile quick card */
+function mapCountrySummaryHTML(country, cta) {
+  const ideo = IDEOLOGIES[country.ideology];
+  const sysCat = SYSTEM_CATEGORIES[classifySystem(country.system)];
+  const sysLabel = sysCat ? sysCat.label : country.system;
+  const fmt = (v, type) => {
+    if (v == null || isNaN(v)) return '—';
+    if (type === 'hdi')  return v.toFixed(3);
+    if (type === 'pct')  return v.toFixed(1) + '%';
+    if (type === 'gini') return v.toFixed(1);
+    if (type === 'gdp')  return (v > 0 ? '+' : '') + v.toFixed(1) + '%';
+    return String(v);
+  };
+  const lastGdp = country.economy?.gdpGrowth?.at(-1)?.pct;
+  let nextElLine = '';
+  if (country.nextElection?.year) {
+    const ne = country.nextElection;
+    const monthNames = ['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
+    const monthLbl = ne.month != null ? monthNames[ne.month] + ' ' : '';
+    nextElLine = `<div class="map-tt-row map-tt-election"><span class="map-tt-k">Próx. elección</span><span class="map-tt-v">${monthLbl}${ne.year}</span></div>`;
+  }
+  const gender = LEADER_GENDER[country.iso];
+  const genderIcon = gender === 'F' ? ' <span class="map-tt-gender-f" title="Mujer">♀</span>' : '';
+  return `
+    <div class="map-tt">
+      <div class="map-tt-header">
+        <div class="map-tt-name">${flagOf(country.iso, 'fi-md')} ${country.name}</div>
+        <div class="map-tt-tag" style="--ideo:${ideo.color}; color:${ideo.color}; border-color:${ideo.color}">${ideo.short}</div>
+      </div>
+      <div class="map-tt-leader">${country.leader.title}: <strong>${country.leader.name}</strong>${genderIcon}<br><span class="map-tt-party">${country.leader.party}</span></div>
+      <div class="map-tt-system">${sysLabel}</div>
+      <div class="map-tt-metrics">
+        <div class="map-tt-metric"><span class="map-tt-mk">PBI</span><span class="map-tt-mv">${fmt(lastGdp, 'gdp')}</span></div>
+        <div class="map-tt-metric"><span class="map-tt-mk">IDH</span><span class="map-tt-mv">${fmt(country.economy?.hdi, 'hdi')}</span></div>
+        <div class="map-tt-metric"><span class="map-tt-mk">Gini</span><span class="map-tt-mv">${fmt(country.economy?.gini, 'gini')}</span></div>
+        <div class="map-tt-metric"><span class="map-tt-mk">Pobreza</span><span class="map-tt-mv">${fmt(country.economy?.povertyRate, 'pct')}</span></div>
+      </div>
+      ${nextElLine}
+      ${cta ? `<div class="map-tt-cta">${cta}</div>` : ''}
+    </div>`;
+}
+
+/* Mobile quick card: fixed to the bottom of the screen, always readable */
+function showMapQuick(country, emptyName) {
+  let el = document.getElementById('map-quick');
+  if (!el) {
+    el = document.createElement('div');
+    el.id = 'map-quick';
+    el.className = 'map-quick';
+    el.setAttribute('role', 'dialog');
+    el.setAttribute('aria-label', 'Resumen del país');
+    document.body.appendChild(el);
+    el.addEventListener('click', ev => {
+      if (ev.target.closest('.map-quick-close')) hideMapQuick();
+      else if (ev.target.closest('#map-quick-open')) {
+        hideMapQuick();
+        const panel = document.getElementById('panel-detail');
+        const nav = document.querySelector('.topic-nav-sticky');
+        if (panel) {
+          panel.scrollTop = 0;
+          const y = panel.getBoundingClientRect().top + window.scrollY - (nav ? nav.offsetHeight : 0) - 8;
+          window.scrollTo({ top: y, behavior: 'smooth' });
+        }
+      }
+    });
+  }
+  el.innerHTML = `<button type="button" class="map-quick-close" aria-label="Cerrar">×</button>` + (country
+    ? mapCountrySummaryHTML(country, '') + `<button type="button" class="map-quick-open" id="map-quick-open">Ver ficha completa ↓</button>`
+    : `<div class="map-tt"><div class="map-tt-name">${emptyName || ''}</div><div class="map-tt-empty">Todavía no cargamos datos de este país.</div></div>`);
+  requestAnimationFrame(() => el.classList.add('is-open'));
+}
+function hideMapQuick() {
+  const el = document.getElementById('map-quick');
+  if (el) el.classList.remove('is-open');
+}
+window.hideMapQuick = hideMapQuick;
+
 function onEachFeature(feature, layer) {
   const iso = getFeatureISO(feature);
   const country = iso ? state.countryByISO[iso] : null;
@@ -26719,66 +26843,15 @@ function onEachFeature(feature, layer) {
   layer.on({
     mouseover: e => {
       e.target.setStyle({ weight: 1.6, color: '#0B1628' });
-      const name = country ? country.name : getFeatureName(feature);
-
-      if (!country) {
-        layer.bindTooltip(
-          `<div class="map-tt"><div class="map-tt-name">${name}</div><div class="map-tt-empty">Sin datos cargados</div></div>`,
-          { sticky: true, direction: 'top', offset: [0, -10], className: 'map-tt-wrap' }
-        ).openTooltip();
-        return;
-      }
-
-      const ideo = IDEOLOGIES[country.ideology];
-      const ideoColor = ideo.color;
-      const sysCat = SYSTEM_CATEGORIES[classifySystem(country.system)];
-      const sysLabel = sysCat ? sysCat.label : country.system;
-
-      const fmt = (v, type) => {
-        if (v == null || isNaN(v)) return '—';
-        if (type === 'hdi')  return v.toFixed(3);
-        if (type === 'pct')  return v.toFixed(1) + '%';
-        if (type === 'gini') return v.toFixed(1);
-        if (type === 'gdp')  return (v > 0 ? '+' : '') + v.toFixed(1) + '%';
-        return String(v);
-      };
-
-      const lastGdp = country.economy?.gdpGrowth?.at(-1)?.pct;
-      const hdi     = country.economy?.hdi;
-      const gini    = country.economy?.gini;
-      const pov     = country.economy?.povertyRate;
-
-      let nextElLine = '';
-      if (country.nextElection?.year) {
-        const ne = country.nextElection;
-        const monthNames = ['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
-        const monthLbl = ne.month != null ? monthNames[ne.month] + ' ' : '';
-        nextElLine = `<div class="map-tt-row map-tt-election"><span class="map-tt-k">Próx. elección</span><span class="map-tt-v">${monthLbl}${ne.year}</span></div>`;
-      }
-
-      const gender = LEADER_GENDER[country.iso];
-      const genderIcon = gender === 'F' ? ' <span class="map-tt-gender-f" title="Mujer">♀</span>' : '';
-
-      const html = `
-        <div class="map-tt">
-          <div class="map-tt-header">
-            <div class="map-tt-name">${flagOf(country.iso, 'fi-md')} ${country.name}</div>
-            <div class="map-tt-tag" style="color:${ideoColor}; border-color:${ideoColor}">${ideo.short}</div>
-          </div>
-          <div class="map-tt-leader">${country.leader.title}: <strong>${country.leader.name}</strong>${genderIcon}<br><span class="map-tt-party">${country.leader.party}</span></div>
-          <div class="map-tt-system">${sysLabel}</div>
-          <div class="map-tt-metrics">
-            <div class="map-tt-metric"><span class="map-tt-mk">PBI</span><span class="map-tt-mv">${fmt(lastGdp, 'gdp')}</span></div>
-            <div class="map-tt-metric"><span class="map-tt-mk">IDH</span><span class="map-tt-mv">${fmt(hdi, 'hdi')}</span></div>
-            <div class="map-tt-metric"><span class="map-tt-mk">Gini</span><span class="map-tt-mv">${fmt(gini, 'gini')}</span></div>
-            <div class="map-tt-metric"><span class="map-tt-mk">Pobreza</span><span class="map-tt-mv">${fmt(pov, 'pct')}</span></div>
-          </div>
-          ${nextElLine}
-          <div class="map-tt-cta">Click para ver ficha completa →</div>
-        </div>`;
-
+      // On touch screens a tap fires mouseover too; the floating tooltip ends
+      // up clipped by the map's edges there, so the tap shows the quick card
+      // (see showMapQuick) instead.
+      if (isTouchUI()) return;
+      const html = country
+        ? mapCountrySummaryHTML(country, 'Click para ver ficha completa →')
+        : `<div class="map-tt"><div class="map-tt-name">${getFeatureName(feature)}</div><div class="map-tt-empty">Sin datos cargados</div></div>`;
       layer.bindTooltip(html, {
-        sticky: true, direction: 'top', offset: [0, -10],
+        sticky: true, direction: 'top', offset: [0, -10], opacity: 1,
         className: 'map-tt-wrap'
       }).openTooltip();
     },
@@ -26789,11 +26862,20 @@ function onEachFeature(feature, layer) {
     click: () => {
       if (!country) {
         renderEmptyDetail(getFeatureName(feature));
+        if (isTouchUI()) showMapQuick(null, getFeatureName(feature));
         return;
       }
       state.selectedISO = iso;
       restyleMap();
       renderDetail(country);
+      if (isTouchUI()) {
+        // Keep the reader on the map: a card slides up with the essentials
+        // and a button that jumps down to the full profile.
+        const b = layer.getBounds();
+        if (b.isValid()) map.flyToBounds(b, { maxZoom: 4, padding: [30, 30], duration: 0.6 });
+        showMapQuick(country);
+        return;
+      }
       // Don't aggressively zoom — just pan
       const bounds = layer.getBounds();
       if (bounds.isValid()) map.flyToBounds(bounds, { maxZoom: 4, padding: [40,40], duration: 0.6 });
@@ -29318,6 +29400,7 @@ function renderElectionsTimeline() {  const today = new Date();
     }
 
     // Views that render lazily (portada, especiales) hook in here
+    if (view !== 'inicio' && window.hideMapQuick) window.hideMapQuick();
     if (window.__onViewShown) window.__onViewShown(view);
 
     // Update the URL hash without adding noise to history when restoring
