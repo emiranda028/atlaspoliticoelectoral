@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-09-24T14:30:00-03:00",
+ "updatedAt": "2026-09-24T15:30:00-03:00",
  "refreshSeconds": 300,
  "specials": [
   {
@@ -23,6 +23,16 @@
    "view": "eeuu"
   },
   {
+   "id": "israel-2026",
+   "view": "israel",
+   "status": "active",
+   "iso": "ISR",
+   "tag": "Especial · nuevo",
+   "title": "Israel 2026",
+   "date": "2026-10-27",
+   "blurb": "120 bancas en un solo distrito y 61 para gobernar. Calculadora de coaliciones con las encuestas de septiembre, Knéset actual y listas."
+  },
+  {
    "id": "propuesta",
    "status": "cta",
    "tag": "Tu idea",
@@ -32,6 +42,12 @@
   }
  ],
  "notes": [
+  {
+   "date": "2026-09-24",
+   "tag": "Nuevo",
+   "text": "Especial Israel 2026: armá tu propia coalición con la calculadora de bancas basada en las encuestas de septiembre.",
+   "view": "israel"
+  },
   {
    "date": "2026-09-24",
    "tag": "Nuevo",

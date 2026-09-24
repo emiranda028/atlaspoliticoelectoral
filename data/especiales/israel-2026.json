@@ -1,0 +1,421 @@
+{
+ "id": "israel-2026",
+ "title": "Elecciones a la Knéset 2026",
+ "updatedAt": "2026-09-24T15:30:00-03:00",
+ "lede": "El 27 de octubre Israel elige los 120 miembros de la Knéset en un único distrito nacional. Ningún partido gobierna solo: el próximo primer ministro saldrá de la coalición que logre reunir 61 bancas. Eisenkot y Netanyahu se disputan el primer lugar en las encuestas.",
+ "dates": {
+  "pollsOpen": "2026-10-27T07:00:00+02:00",
+  "pollsClose": "2026-10-27T22:00:00+02:00",
+  "knessetSworn": "2026-11-18T12:00:00+02:00"
+ },
+ "system": {
+  "seats": 120,
+  "majority": 61,
+  "threshold": "3,25 %"
+ },
+ "officesIntro": "Todo el país es un solo distrito. Cada elector deposita una papeleta con la sigla de una lista cerrada; las bancas se reparten en proporción a los votos entre las listas que superan el umbral.",
+ "offices": [
+  {
+   "value": "120",
+   "label": "Bancas de la Knéset",
+   "detail": "Parlamento unicameral, mandato de 4 años."
+  },
+  {
+   "value": "61",
+   "label": "Mayoría para gobernar",
+   "detail": "El gobierno necesita la confianza de la mayoría absoluta de la Knéset."
+  },
+  {
+   "value": "3,25 %",
+   "label": "Umbral de ingreso",
+   "detail": "Equivale a unas 4 bancas; los votos a listas que no lo superan se pierden."
+  },
+  {
+   "value": "1",
+   "label": "Distrito nacional",
+   "detail": "Listas cerradas: el orden de los candidatos lo decide cada partido."
+  },
+  {
+   "value": "38",
+   "label": "Listas inscriptas",
+   "detail": "Presentadas ante el Comité Central de Elecciones el 7 y 8 de septiembre."
+  }
+ ],
+ "ballotNote": "Después de la elección, el presidente consulta a todas las listas y encarga formar gobierno a quien tenga más apoyos. Por eso importa más la suma de los bloques que quién sale primero.",
+ "knesset": {
+  "name": "25.ª Knéset",
+  "total": 120,
+  "term": "Legislatura 2022–2026",
+  "asOf": "julio 2026, al disolverse",
+  "source": "https://main.knesset.gov.il/en/mk/apps/mklobby/main/current-knesset-mks/factions",
+  "note": "Reparto por facción según fuentes de prensa, sin cotejar todavía con la página oficial de la Knéset. Judaísmo Unido dejó la coalición en julio de 2025.",
+  "parties": [
+   {
+    "party": "Likud",
+    "seats": 32,
+    "lean": "right",
+    "bloc": "gobierno"
+   },
+   {
+    "party": "Yesh Atid",
+    "seats": 24,
+    "lean": "center",
+    "bloc": "oposicion"
+   },
+   {
+    "party": "Shas",
+    "seats": 11,
+    "lean": "right",
+    "bloc": "gobierno"
+   },
+   {
+    "party": "Azul y Blanco",
+    "seats": 8,
+    "lean": "center",
+    "bloc": "oposicion"
+   },
+   {
+    "party": "Sionismo Religioso",
+    "seats": 7,
+    "lean": "far-right",
+    "bloc": "gobierno"
+   },
+   {
+    "party": "Judaísmo Unido de la Torá",
+    "seats": 7,
+    "lean": "right",
+    "bloc": "oposicion"
+   },
+   {
+    "party": "Otzma Yehudit",
+    "seats": 6,
+    "lean": "far-right",
+    "bloc": "gobierno"
+   },
+   {
+    "party": "Yisrael Beiteinu",
+    "seats": 6,
+    "lean": "right",
+    "bloc": "oposicion"
+   },
+   {
+    "party": "Ra'am",
+    "seats": 5,
+    "lean": "center-right",
+    "bloc": "oposicion"
+   },
+   {
+    "party": "Hadash-Ta'al",
+    "seats": 5,
+    "lean": "left",
+    "bloc": "oposicion"
+   },
+   {
+    "party": "Los Demócratas",
+    "seats": 4,
+    "lean": "center-left",
+    "bloc": "oposicion"
+   },
+   {
+    "party": "Nueva Esperanza",
+    "seats": 4,
+    "lean": "right",
+    "bloc": "gobierno"
+   },
+   {
+    "party": "Noam",
+    "seats": 1,
+    "lean": "far-right",
+    "bloc": "gobierno"
+   }
+  ]
+ },
+ "lists": [
+  {
+   "id": "Yashar",
+   "name": "Yashar!",
+   "short": "Yashar",
+   "leader": "Gadi Eisenkot",
+   "lean": "center",
+   "bloc": "oposicion",
+   "desc": "Nuevo partido del exjefe del Estado Mayor, que dejó Unidad Nacional en 2025. Primero o segundo en casi todas las encuestas; apuesta a votantes desencantados del Likud."
+  },
+  {
+   "id": "Likud",
+   "name": "Likud",
+   "short": "Likud",
+   "leader": "Benjamin Netanyahu",
+   "lean": "right",
+   "bloc": "gobierno",
+   "desc": "Partido del primer ministro, derecha nacionalista. Absorbe a Nueva Esperanza de Gideon Sa'ar."
+  },
+  {
+   "id": "B'Yachad",
+   "name": "B'Yachad / Juntos",
+   "short": "Juntos",
+   "leader": "Naftali Bennett (Yair Lapid, n.º 2)",
+   "lean": "center-right",
+   "bloc": "oposicion",
+   "desc": "Fusión de abril de 2026 entre Bennett 2026 y Yesh Atid: dos ex primeros ministros en una misma lista."
+  },
+  {
+   "id": "The Democrats",
+   "name": "Los Demócratas",
+   "short": "Demócratas",
+   "leader": "Yair Golan",
+   "lean": "center-left",
+   "bloc": "oposicion",
+   "desc": "Unión del Partido Laborista y Meretz; principal fuerza de la izquierda sionista."
+  },
+  {
+   "id": "Yisrael Beiteinu",
+   "name": "Yisrael Beiteinu",
+   "short": "Yisrael Beiteinu",
+   "leader": "Avigdor Liberman",
+   "lean": "right",
+   "bloc": "oposicion",
+   "desc": "Derecha laica con base en inmigrantes de la ex URSS; dura en seguridad y contraria a las exenciones de los ultraortodoxos."
+  },
+  {
+   "id": "UTJ",
+   "name": "Judaísmo Unido de la Torá",
+   "short": "Judaísmo Unido",
+   "leader": "Yaakov Asher",
+   "lean": "right",
+   "bloc": "gobierno",
+   "desc": "Ultraortodoxo askenazí. Dejó el gobierno en julio de 2025 por la ley de reclutamiento, pero sigue alineado con Netanyahu."
+  },
+  {
+   "id": "Shas",
+   "name": "Shas",
+   "short": "Shas",
+   "leader": "Aryeh Deri",
+   "lean": "right",
+   "bloc": "gobierno",
+   "desc": "Ultraortodoxo sefardí y mizrají. Dejó sus ministerios en 2025 pero siguió apoyando a la coalición."
+  },
+  {
+   "id": "Otzma Yehudit",
+   "name": "Otzma Yehudit",
+   "short": "Otzma Yehudit",
+   "leader": "Itamar Ben Gvir",
+   "lean": "far-right",
+   "bloc": "gobierno",
+   "desc": "Nacionalismo religioso radical; Ben Gvir es ministro de Seguridad Nacional."
+  },
+  {
+   "id": "Religious Zionism-Zehut",
+   "name": "Sionismo Religioso–Zehut",
+   "short": "Sionismo Religioso",
+   "leader": "Bezalel Smotrich (con Moshe Feiglin)",
+   "lean": "far-right",
+   "bloc": "gobierno",
+   "desc": "Sionismo religioso del ministro de Finanzas, aliado con Zehut de Feiglin; ronda el umbral."
+  },
+  {
+   "id": "Amcha Yisrael",
+   "name": "Amcha Yisrael",
+   "short": "Amcha Yisrael",
+   "leader": "Ofer Winter",
+   "lean": "far-right",
+   "bloc": "gobierno",
+   "desc": "Nuevo partido del general retirado Ofer Winter; oscila alrededor del umbral."
+  },
+  {
+   "id": "Reservists",
+   "name": "Reservistas–Nuevo Partido Económico",
+   "short": "Reservistas",
+   "leader": "Yoaz Hendel y Yaron Zelekha",
+   "lean": "center-right",
+   "bloc": "otros",
+   "desc": "Alianza de Hendel (reservistas) y el economista Zelekha, sin alinearse con ningún bloque; oscila alrededor del umbral."
+  },
+  {
+   "id": "Joint List",
+   "name": "Lista Conjunta (Hadash-Ta'al-Balad)",
+   "short": "Lista Conjunta",
+   "leader": "Yousef Jabareen",
+   "lean": "left",
+   "bloc": "arabes",
+   "desc": "Reeditada en 2026. El Comité Central de Elecciones la inhabilitó el 23 de septiembre; decide la Corte Suprema."
+  },
+  {
+   "id": "Ra'am",
+   "name": "Ra'am (Lista Árabe Unida)",
+   "short": "Ra'am",
+   "leader": "Mansour Abbas",
+   "lean": "center-right",
+   "bloc": "arabes",
+   "desc": "Islamista conservador y pragmático; fue socio del gobierno Bennett-Lapid (2021-22). También inhabilitado el 23 de septiembre, a la espera de la Corte Suprema."
+  }
+ ],
+ "polls": [
+  {
+   "outlet": "Canal 13",
+   "pollster": null,
+   "date": "23 sep",
+   "seats": {
+    "Yashar": 22,
+    "Likud": 18,
+    "B'Yachad": 11,
+    "The Democrats": 11,
+    "Yisrael Beiteinu": 8,
+    "UTJ": 8,
+    "Joint List": 8,
+    "Shas": 7,
+    "Otzma Yehudit": 7,
+    "Religious Zionism-Zehut": 6,
+    "Amcha Yisrael": 5,
+    "Ra'am": 5,
+    "Reservists": 4
+   },
+   "url": "https://www.israelnationalnews.com/news/433564"
+  },
+  {
+   "outlet": "Canal 12",
+   "pollster": "Midgam (Mano Geva)",
+   "date": "22 sep",
+   "seats": {
+    "Yashar": 23,
+    "Likud": 20,
+    "B'Yachad": 13,
+    "Yisrael Beiteinu": 9,
+    "The Democrats": 9,
+    "UTJ": 8,
+    "Shas": 7,
+    "Joint List": 7,
+    "Otzma Yehudit": 6,
+    "Religious Zionism-Zehut": 5,
+    "Ra'am": 5,
+    "Amcha Yisrael": 4,
+    "Reservists": 4
+   },
+   "url": "https://www.haaretz.com/israel-news/elections/2026-09-23/ty-article/israel-election-poll-eisenkots-bloc-beats-netanyahu-as-likud-gains-ground/000001a0-cafa-dfbe-a3ff-ffffd6250000"
+  },
+  {
+   "outlet": "Canal 12",
+   "pollster": "Midgam",
+   "date": "14 sep",
+   "seats": {
+    "Yashar": 23,
+    "Likud": 20,
+    "B'Yachad": 13,
+    "The Democrats": 10,
+    "Yisrael Beiteinu": 8,
+    "UTJ": 8,
+    "Joint List": 8,
+    "Shas": 7,
+    "Otzma Yehudit": 6,
+    "Religious Zionism-Zehut": 5,
+    "Amcha Yisrael": 4,
+    "Ra'am": 4,
+    "Reservists": 4
+   },
+   "url": "https://www.israelnationalnews.com/news/433155"
+  }
+ ],
+ "pollsNote": "Solo encuestas con desglose completo. Algunas cifras de partidos chicos fueron deducidas a partir del total de cada bloque publicado por el medio. Canal 14 (afín al gobierno) da al bloque de Netanyahu 62-63 bancas; no se incluye por falta de desglose con fecha.",
+ "calendar": [
+  {
+   "date": "2026-07-17",
+   "label": "La Knéset aprueba su disolución (62-0) y fija la elección"
+  },
+  {
+   "date": "2026-09-03",
+   "label": "Cierre del padrón (ciudadanía y domicilio)"
+  },
+  {
+   "date": "2026-09-08",
+   "label": "Cierre de la presentación de listas: se inscribieron 38"
+  },
+  {
+   "date": "2026-09-23",
+   "label": "El Comité Central de Elecciones vota inhabilitar a Ra'am y a la Lista Conjunta (18-5) y a Cassif y Abu Shehadeh; apelación ante la Corte Suprema la semana siguiente"
+  },
+  {
+   "date": "2026-09-27",
+   "label": "Listas definitivas tras revisión del Comité Central de Elecciones"
+  },
+  {
+   "date": "2026-10-13",
+   "label": "Inicio de la propaganda electoral en TV y radio (14 días antes)"
+  },
+  {
+   "date": "2026-10-15",
+   "label": "Voto anticipado de diplomáticos y enviados oficiales en el exterior"
+  },
+  {
+   "date": "2026-10-27",
+   "label": "Día de la elección (07:00-22:00); boca de urna de TV a las 22:00",
+   "key": true
+  },
+  {
+   "date": "2026-11-04",
+   "label": "Publicación oficial de resultados",
+   "key": true
+  },
+  {
+   "date": "2026-11-11",
+   "label": "Plazo estimado para que el presidente encargue formar gobierno (7 días después de los resultados)"
+  },
+  {
+   "date": "2026-11-18",
+   "label": "Plazo estimado para que jure la 26.ª Knéset (14 días después de los resultados)"
+  }
+ ],
+ "keyFacts": [
+  "Israel elige 120 diputados en una sola circunscripción nacional con listas cerradas; se necesitan 61 escaños para gobernar.",
+  "El umbral legal es del 3,25% de los votos válidos, lo que equivale a unos 4 escaños como mínimo.",
+  "Los escaños se reparten con el método Bader-Ofer (variante de D'Hondt) y los partidos pueden firmar acuerdos de restos.",
+  "La elección del 27 de octubre de 2026 se celebra en la fecha legal: la 25ª Knéset es la primera desde 1988 en completar su mandato sin elecciones anticipadas.",
+  "Se presentaron 38 listas. En 2022 había 6.788.804 electores habilitados.",
+  "En 2022 votó el 70,63% del padrón y el bloque de Netanyahu obtuvo 64 escaños.",
+  "La coalición perdió a United Torah Judaism en julio de 2025 por la ley de reclutamiento de ultraortodoxos y quedó con 61 escaños.",
+  "Gadi Eisenkot (Yashar) y el Likud de Netanyahu se disputan el primer puesto, con alrededor de 20 escaños cada uno en septiembre.",
+  "Ningún bloque alcanza 61 escaños en las encuestas no afines: los partidos árabes (12-16 escaños) serían decisivos.",
+  "El Comité Central de Elecciones votó excluir a Ra'am y a la Lista Conjunta; la decisión debe pasar por la Corte Suprema, que históricamente ha revocado estas exclusiones."
+ ],
+ "sources": [
+  {
+   "label": "Times of Israel · Knesset expected to dissolve July 17, paving way for Oct 27 election",
+   "url": "https://www.timesofisrael.com/knesset-expected-to-dissolve-july-17-paving-way-for-october-27-election/"
+  },
+  {
+   "label": "JNS · Knesset votes to dissolve, sets Oct. 27 election date",
+   "url": "https://www.jns.org/news/israel-news/knesset-votes-to-dissolve-formally-sets-oct-27-election-date"
+  },
+  {
+   "label": "Jerusalem Post · Dissolution bill passes 62-0",
+   "url": "https://www.jpost.com/israel-news/politics-and-diplomacy/article-902816"
+  },
+  {
+   "label": "Jerusalem Post · Israel 2026 elections timeline and key dates",
+   "url": "https://www.jpost.com/israel-news/politics-and-diplomacy/article-902333"
+  },
+  {
+   "label": "IDI · The Central Elections Committee ahead of the 2026 elections",
+   "url": "https://en.idi.org.il/articles/65189"
+  },
+  {
+   "label": "IDI · Elections 2026 hub",
+   "url": "https://en.idi.org.il/elections-2026/"
+  },
+  {
+   "label": "IDI · Together (Beyachad): the Bennett-Lapid merger",
+   "url": "https://en.idi.org.il/articles/64068"
+  },
+  {
+   "label": "Knesset · Current factions",
+   "url": "https://main.knesset.gov.il/en/mk/apps/mklobby/main/current-knesset-mks/factions"
+  },
+  {
+   "label": "Times of Israel · 38 parties submit slates",
+   "url": "https://www.timesofisrael.com/israels-election-takes-shape-as-38-parties-submit-slates-from-likud-to-joint-list/"
+  },
+  {
+   "label": "Times of Israel · No last-minute mergers",
+   "url": "https://www.timesofisrael.com/no-last-minute-mergers-as-parties-submit-final-knesset-slates-for-election/"
+  }
+ ],
+ "calcNote": "Atención: el 23 de septiembre el Comité Central de Elecciones inhabilitó a Ra'am y a la Lista Conjunta. Si la Corte Suprema confirma la exclusión, esas bancas se redistribuyen entre las demás listas y cambia toda la aritmética."
+}

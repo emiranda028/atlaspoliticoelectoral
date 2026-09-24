@@ -5909,6 +5909,7 @@
   .il-chip.is-on { background: var(--ink); border-color: var(--ink); color: #fff; }
   .il-chip.is-on b { color: #FDBA74; }
   .il-calc-note { font-size: 13px; color: var(--muted); margin: 14px 0 0; }
+  .il-calc-alert { margin-top: 16px; padding: 12px 14px; border-left: 3px solid var(--accent); background: #FFF4EC; border-radius: 0 10px 10px 0; font-size: 14px; line-height: 1.5; }
   .il-track { position: relative; overflow: visible; }
   .il-track i { position: absolute; top: -3px; bottom: -3px; width: 1px; border-left: 1px dashed var(--ink-soft); }
   .il-poll-table-wrap { overflow-x: auto; margin-top: 10px; }
@@ -5924,6 +5925,10 @@
   .il-list-leader { font-size: 13px; font-weight: 600; color: var(--muted); margin-top: 2px; }
   .il-list .us-rating-chip { margin-top: 10px; white-space: normal; }
   @media (prefers-reduced-motion: reduce) { .il-hero { animation: none; } }
+
+  /* Poll/candidate grids in the specials: columns may shrink below the
+     width of their tables (tables scroll inside their own wrapper) */
+  .race-grid > * { min-width: 0; }
 </style>
 </head>
 <body>
@@ -30628,7 +30633,7 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
     const need = il.system && il.system.majority || 61;
     const ok = Math.round(total) >= need;
     const PRESETS = [
-      { id: 'gobierno', label: 'Coalición actual', pick: l => l.bloc === 'gobierno' },
+      { id: 'gobierno', label: 'Bloque de Netanyahu', pick: l => l.bloc === 'gobierno' },
       { id: 'oposicion', label: 'Oposición sin partidos árabes', pick: l => l.bloc === 'oposicion' },
       { id: 'oposicion+arabes', label: 'Oposición + partidos árabes', pick: l => l.bloc === 'oposicion' || l.bloc === 'arabes' },
       { id: 'none', label: 'Vaciar', pick: () => false },
@@ -30651,6 +30656,7 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
           <span class="il-chip-name">${esc(l.short || l.name)}</span>
           <b>${l.avg.toFixed(1)}</b>
         </button>`).join('')}</div>
+      ${il.calcNote ? `<div class="il-calc-alert">${esc(il.calcNote)}</div>` : ''}
       <p class="il-calc-note">Bancas promedio de ${(il.polls || []).length} encuestas. Tocá los partidos para armar una coalición. Es un ejercicio aritmético: no todos los partidos están dispuestos a gobernar juntos.</p>`;
     el.querySelectorAll('[data-list]').forEach(b => b.addEventListener('click', () => {
       const id = b.getAttribute('data-list');
@@ -30683,9 +30689,9 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
         <div class="il-poll-table-wrap"><table class="il-poll-table">
           <thead><tr><th>Partido</th>${(il.polls || []).map(p => `<th title="${esc(p.pollster || '')}">${esc(p.outlet)}<br><span>${esc(p.date)}</span></th>`).join('')}</tr></thead>
           <tbody>${avgs.filter(l => l.avg > 0).map(l => `<tr><td><i style="background:${leanColor(l.lean)}"></i>${esc(l.short || l.name)}</td>${(il.polls || []).map(p => `<td>${p.seats && p.seats[l.id] != null ? p.seats[l.id] : '—'}</td>`).join('')}</tr>`).join('')}</tbody>
-          <tfoot><tr><td>Coalición actual</td>${(il.polls || []).map(p => `<td>${Object.entries(p.seats || {}).filter(([k]) => byId[k] && byId[k].bloc === 'gobierno').reduce((a, [, v]) => a + v, 0)}</td>`).join('')}</tr></tfoot>
+          <tfoot><tr><td>Bloque de Netanyahu</td>${(il.polls || []).map(p => `<td>${Object.entries(p.seats || {}).filter(([k]) => byId[k] && byId[k].bloc === 'gobierno').reduce((a, [, v]) => a + v, 0)}</td>`).join('')}</tr></tfoot>
         </table></div>
-        <span class="poll-src">${(il.polls || []).map(p => p.url ? `<a href="${esc(p.url)}" target="_blank" rel="noopener">${esc(p.outlet)}</a>` : esc(p.outlet)).join(' · ')}</span>
+        <span class="poll-src">Fuentes: ${(il.polls || []).map(p => p.url ? `<a href="${esc(p.url)}" target="_blank" rel="noopener">${esc(p.outlet)} (${esc(p.date)})</a>` : esc(p.outlet)).join(' · ')}${il.pollsNote ? '<br>' + esc(il.pollsNote) : ''}</span>
       </div>`;
   }
 
@@ -30764,7 +30770,7 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
             <div class="office-label">${esc(l.name)}</div>
             <div class="il-list-leader">${esc(l.leader || '')}</div>
             <div class="office-detail">${esc(l.desc || '')}</div>
-            <span class="us-rating-chip"><i style="background:${leanColor(l.lean)}"></i>${esc((IDEOLOGIES[l.lean] || IDEOLOGIES.other).label)}${l.bloc === 'gobierno' ? ' · coalición actual' : l.bloc === 'arabes' ? ' · partido árabe' : ' · oposición'}</span>
+            <span class="us-rating-chip"><i style="background:${leanColor(l.lean)}"></i>${esc((IDEOLOGIES[l.lean] || IDEOLOGIES.other).label)}${l.bloc === 'gobierno' ? ' · bloque de Netanyahu' : l.bloc === 'arabes' ? ' · partido árabe' : l.bloc === 'otros' ? ' · sin alinear' : ' · oposición'}</span>
           </div>`).join('')}</div>
       </section>
 
