@@ -187,10 +187,11 @@
     padding-bottom: 12px; margin-bottom: 16px;
   }
   .masthead-meta {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-sans);
     font-size: 11px; color: var(--muted);
-    text-transform: uppercase; letter-spacing: 0.12em;
+    text-transform: uppercase; letter-spacing: 0.07em;
     display: flex; gap: 20px; flex-wrap: wrap;
+    font-weight: 600;
   }
   .masthead-meta span::before { content: "▪ "; color: var(--accent); }
   .masthead-byline {
@@ -256,10 +257,10 @@
     display: inline-block;
   }
   .masthead-kicker-label {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-sans);
     font-size: 11px;
     text-transform: uppercase;
-    letter-spacing: 0.18em;
+    letter-spacing: 0.07em;
     color: var(--accent);
     font-weight: 600;
   }
@@ -307,10 +308,10 @@
     max-width: 640px;
   }
   .purpose-tag {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-sans);
     font-size: 10.5px;
     text-transform: uppercase;
-    letter-spacing: 0.16em;
+    letter-spacing: 0.07em;
     color: var(--accent);
     font-weight: 700;
     flex-shrink: 0;
@@ -341,10 +342,10 @@
     display: inline-flex;
     align-items: center;
     gap: 7px;
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-sans);
     font-size: 11px;
     text-transform: uppercase;
-    letter-spacing: 0.15em;
+    letter-spacing: 0.07em;
     color: var(--ink-soft);
     font-weight: 600;
     margin-bottom: 6px;
@@ -397,12 +398,12 @@
   }
   .hero-stat-tag {
     color: var(--surface);
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-sans);
     font-size: 11px;
     padding: 3px 8px;
     border-radius: 999px;
     text-transform: uppercase;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.07em;
     font-weight: 600;
   }
 
@@ -620,14 +621,15 @@
     padding: 28px 32px 40px;
   }
   .home-explore-title {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-sans);
     font-size: 11px;
     text-transform: uppercase;
-    letter-spacing: 0.18em;
+    letter-spacing: 0.07em;
     color: var(--muted);
     margin-bottom: 18px;
     padding-bottom: 12px;
     border-bottom: 1px solid var(--line-strong);
+    font-weight: 600;
   }
   .home-explore-grid {
     display: grid;
@@ -741,12 +743,13 @@
     color: var(--accent);
   }
   .elec-stat-lbl {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-sans);
     font-size: 11px;
     text-transform: uppercase;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.07em;
     color: var(--muted);
     margin-top: 6px;
+    font-weight: 600;
   }
   .elec-stat-next {
     font-family: 'Newsreader', serif;
@@ -761,14 +764,15 @@
     padding: 24px 32px 48px;
   }
   .elec-highlights-head {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-sans);
     font-size: 11px;
     text-transform: uppercase;
-    letter-spacing: 0.16em;
+    letter-spacing: 0.07em;
     color: var(--muted);
     margin-bottom: 16px;
     padding-bottom: 10px;
     border-bottom: 1px solid var(--line-strong);
+    font-weight: 600;
   }
   .elec-highlights-grid {
     display: grid;
@@ -921,12 +925,13 @@
     transition: width 0.6s ease;
   }
   .poll-avg-note {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-sans);
     font-size: 11px;
     text-transform: uppercase;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.07em;
     color: var(--muted);
     margin: 14px 0 8px;
+    font-weight: 600;
   }
   .poll-rows {
     display: flex;
@@ -1002,10 +1007,10 @@
     flex-wrap: wrap;
   }
   .elections-timeline-head .kicker {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-sans);
     font-size: 11px;
     text-transform: uppercase;
-    letter-spacing: 0.16em;
+    letter-spacing: 0.07em;
     color: var(--accent);
     font-weight: 500;
   }
@@ -1035,13 +1040,14 @@
     color: var(--ink-soft);
   }
   .elections-this-month-label {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-sans);
     font-style: normal;
     font-size: 11px;
     text-transform: uppercase;
-    letter-spacing: 0.16em;
+    letter-spacing: 0.07em;
     color: var(--accent);
     margin-right: 6px;
+    font-weight: 600;
   }
   .etm-country {
     display: inline-flex;
@@ -1100,15 +1106,16 @@
     z-index: 1;
   }
   .et-month-label {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-sans);
     font-size: 11px;
     text-transform: uppercase;
-    letter-spacing: 0.14em;
+    letter-spacing: 0.07em;
     color: var(--accent);
     margin-bottom: 6px;
     padding-left: 4px;
     height: 14px;
     display: flex; align-items: center;
+    font-weight: 600;
   }
   .et-month-tick {
     width: 1px; height: 6px;
@@ -1206,13 +1213,14 @@
   }
   .stat:last-child { border-right: none; }
   .stat-label {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-sans);
     font-size: 11px;
     text-transform: uppercase;
-    letter-spacing: 0.14em;
+    letter-spacing: 0.07em;
     color: var(--muted);
     display: block;
     margin-bottom: 4px;
+    font-weight: 600;
   }
   .stat-value {
     font-family: 'Newsreader', serif;
@@ -1270,12 +1278,13 @@
     display: inline-flex;
     align-items: center;
     gap: 7px;
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-sans);
     font-size: 10.5px;
     text-transform: uppercase;
-    letter-spacing: 0.16em;
+    letter-spacing: 0.07em;
     color: var(--c-cleft);
     flex-shrink: 0;
+    font-weight: 600;
   }
   .mib-number {
     font-family: 'Newsreader', serif;
@@ -1348,10 +1357,11 @@
     border: 1px solid currentColor;
     border-radius: 999px;
     padding: 1px 7px;
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-sans);
     font-size: 10px;
     text-transform: uppercase;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.07em;
+    font-weight: 600;
   }
   .map-tt-leader {
     font-size: 11.5px;
@@ -1378,14 +1388,15 @@
     margin-left: 2px;
   }
   .map-tt-system {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-sans);
     font-size: 11px;
     text-transform: uppercase;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.07em;
     color: rgba(244, 246, 250, 0.55);
     padding-bottom: 6px;
     margin-bottom: 6px;
     border-bottom: 1px solid rgba(244, 246, 250, 0.08);
+    font-weight: 600;
   }
   .map-tt-metrics {
     display: grid;
@@ -1400,11 +1411,12 @@
     font-size: 11px;
   }
   .map-tt-mk {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-sans);
     font-size: 10.5px;
     text-transform: uppercase;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.07em;
     color: rgba(244, 246, 250, 0.55);
+    font-weight: 600;
   }
   .map-tt-mv {
     font-family: 'Newsreader', serif;
@@ -1421,11 +1433,12 @@
     border-top: 1px solid rgba(244, 246, 250, 0.08);
   }
   .map-tt-row .map-tt-k {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-sans);
     font-size: 10.5px;
     text-transform: uppercase;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.07em;
     color: rgba(244, 246, 250, 0.55);
+    font-weight: 600;
   }
   .map-tt-row .map-tt-v {
     font-family: 'Inter', sans-serif;
@@ -1437,12 +1450,13 @@
     margin-top: 6px;
     padding-top: 6px;
     border-top: 1px dashed rgba(244, 246, 250, 0.18);
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-sans);
     font-size: 10.5px;
     text-transform: uppercase;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.07em;
     color: var(--accent);
     text-align: center;
+    font-weight: 600;
   }
   .map-tt-empty {
     font-family: 'Newsreader', serif;
@@ -1506,10 +1520,10 @@
     gap: 18px;
   }
   .headlines-ticker-label {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-sans);
     font-size: 11px;
     text-transform: uppercase;
-    letter-spacing: 0.16em;
+    letter-spacing: 0.07em;
     color: var(--accent);
     font-weight: 600;
     flex-shrink: 0;
@@ -1671,13 +1685,14 @@
       border: 1px solid var(--line-strong);
       border-radius: 999px;
       color: var(--ink-soft);
-      font-family: 'JetBrains Mono', monospace;
+      font-family: var(--font-sans);
       font-size: 11px;
       text-transform: uppercase;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.07em;
       cursor: pointer;
       transition: all 0.15s;
-    }
+    font-weight: 600;
+  }
     .filters-toggle-btn:hover {
       color: var(--accent);
       border-color: var(--accent);
@@ -1803,14 +1818,15 @@
     color: var(--muted);
     border: 1px solid var(--line-strong);
     border-radius: 999px;
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-sans);
     font-size: 11px;
     text-transform: uppercase;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.07em;
     cursor: pointer;
     opacity: 0.5;
     transition: opacity 0.15s, color 0.15s, border-color 0.15s, background 0.15s;
     z-index: 5;
+    font-weight: 600;
   }
   .chart-card:hover .chart-export-btn { opacity: 1; }
   .chart-export-btn:hover {
@@ -1843,16 +1859,17 @@
     color: var(--ink);
     border: 1px solid var(--line-strong);
     border-radius: 999px;
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-sans);
     font-size: 10.5px;
     text-transform: uppercase;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.07em;
     cursor: pointer;
     box-shadow: 0 4px 14px rgba(11, 22, 40, 0.18);
     opacity: 0;
     transform: translateY(16px) scale(0.92);
     pointer-events: none;
     transition: opacity 0.22s ease, transform 0.22s ease, background 0.15s, color 0.15s;
+    font-weight: 600;
   }
   .export-fab.is-visible {
     opacity: 1;
@@ -1890,11 +1907,12 @@
     letter-spacing: -0.01em;
   }
   .export-wrap .export-header-section {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-sans);
     font-size: 11px;
     text-transform: uppercase;
-    letter-spacing: 0.15em;
+    letter-spacing: 0.07em;
     color: var(--accent);
+    font-weight: 600;
   }
   .export-citation {
     margin-top: 22px;
@@ -1913,12 +1931,13 @@
     margin-bottom: 4px;
   }
   .export-citation-author {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-sans);
     font-size: 11px;
     text-transform: uppercase;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.07em;
     color: var(--accent);
     margin-bottom: 8px;
+    font-weight: 600;
   }
   .export-citation-meta {
     font-size: 11px;
@@ -2057,16 +2076,17 @@
     color: var(--surface);
     border: 1px solid var(--ink);
     border-radius: 999px;
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-sans);
     font-size: 10.5px;
     text-transform: uppercase;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.07em;
     cursor: pointer;
     box-shadow: 0 4px 14px rgba(11, 22, 40, 0.25);
     opacity: 0;
     transform: translateY(16px) scale(0.92);
     pointer-events: none;
     transition: opacity 0.22s ease, transform 0.22s ease, background 0.15s;
+    font-weight: 600;
   }
   .back-to-top.is-visible {
     opacity: 1;
@@ -2099,12 +2119,13 @@
     display: flex; flex-wrap: wrap; gap: 6px; align-items: center;
   }
   .filter-bar-label {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-sans);
     font-size: 11px;
     text-transform: uppercase;
-    letter-spacing: 0.14em;
+    letter-spacing: 0.07em;
     color: var(--muted);
     margin-right: 8px;
+    font-weight: 600;
   }
   .chip {
     font-family: 'Inter', sans-serif;
@@ -2333,14 +2354,15 @@
     text-align: left;
   }
   .empty-state-legend-title {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-sans);
     font-size: 11px;
     text-transform: uppercase;
-    letter-spacing: 0.16em;
+    letter-spacing: 0.07em;
     color: var(--accent);
     text-align: center;
     margin-bottom: 10px;
     font-style: normal;
+    font-weight: 600;
   }
   .empty-state-legend-grid {
     display: grid;
@@ -2391,11 +2413,12 @@
     font-size: 28px; line-height: 1;
   }
   .country-region {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-sans);
     font-size: 11px;
     text-transform: uppercase;
-    letter-spacing: 0.16em;
+    letter-spacing: 0.07em;
     color: var(--muted);
+    font-weight: 600;
   }
   .country-name {
     font-size: 32px; font-weight: 700; line-height: 1.05;
@@ -2431,12 +2454,13 @@
     color: var(--muted);
     border: 1px solid var(--line-strong);
     border-radius: 999px;
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-sans);
     font-size: 11px;
     text-transform: uppercase;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.07em;
     cursor: pointer;
     transition: all 0.15s;
+    font-weight: 600;
   }
   .share-link-btn:hover {
     color: var(--accent);
@@ -2478,11 +2502,12 @@
   }
   .leader-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
   .leader-title {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-sans);
     font-size: 11px;
     text-transform: uppercase;
-    letter-spacing: 0.14em;
+    letter-spacing: 0.07em;
     color: var(--muted);
+    font-weight: 600;
   }
   .leader-name {
     font-family: 'Newsreader', serif;
@@ -2494,14 +2519,15 @@
   .leader-since { font-size: 11px; color: var(--muted); margin-top: 1px; font-family: 'JetBrains Mono', monospace; }
 
   .section-title {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-sans);
     font-size: 11px;
     text-transform: uppercase;
-    letter-spacing: 0.16em;
+    letter-spacing: 0.07em;
     color: var(--accent);
     margin: 18px 0 8px;
     padding-bottom: 4px;
     border-bottom: 1px solid var(--line);
+    font-weight: 600;
   }
 
   .data-row { display: flex; justify-content: space-between; gap: 12px; padding: 5px 0; font-size: 13px; }
@@ -2576,12 +2602,13 @@
     border-radius: 1px;
   }
   .econ-label {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-sans);
     font-size: 11px;
     text-transform: uppercase;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.07em;
     color: var(--muted);
     margin-bottom: 4px;
+    font-weight: 600;
   }
   .econ-value {
     font-family: 'Newsreader', serif;
@@ -2635,9 +2662,10 @@
     font-size: 10px;
     color: var(--muted);
     margin-top: 3px;
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-sans);
     text-transform: uppercase;
-    letter-spacing: 0.06em;
+    letter-spacing: 0.07em;
+    font-weight: 600;
   }
 
   .source-link {
@@ -2666,11 +2694,12 @@
     font-size: 28px; font-style: normal; font-weight: 700;
   }
   .analytics-head .kicker {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-sans);
     font-size: 11px;
     text-transform: uppercase;
-    letter-spacing: 0.16em;
+    letter-spacing: 0.07em;
     color: var(--muted);
+    font-weight: 600;
   }
   .charts-grid {
     display: grid;
@@ -2720,10 +2749,10 @@
     min-width: 1280px;
   }
   .mm-header {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-sans);
     font-size: 11px;
     text-transform: uppercase;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.07em;
     color: var(--muted);
     padding: 8px 10px 10px;
     border-bottom: 1px solid var(--ink);
@@ -2818,14 +2847,15 @@
     .mm-row-label { border-top: 1px solid var(--ink); border-bottom: none; padding-top: 14px; }
     .mm-cell::before {
       content: attr(data-label);
-      font-family: 'JetBrains Mono', monospace;
+      font-family: var(--font-sans);
       font-size: 10.5px;
       text-transform: uppercase;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.07em;
       color: var(--muted);
       display: block;
       margin-bottom: 4px;
-    }
+    font-weight: 600;
+  }
   }
   .chart-card h3 {
     font-size: 18px; font-weight: 600;
@@ -2952,9 +2982,10 @@
     display: flex; gap: 14px;
     font-size: 11px; color: var(--muted);
     margin-top: 8px;
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-sans);
     text-transform: uppercase;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.07em;
+    font-weight: 600;
   }
   .gender-legend-dot {
     width: 9px; height: 9px; display: inline-block;
@@ -2976,11 +3007,12 @@
     gap: 4px;
   }
   .scatter-control-group label {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-sans);
     font-size: 11px;
     text-transform: uppercase;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.07em;
     color: var(--muted);
+    font-weight: 600;
   }
   .scatter-control-group select,
   .scatter-control-group input[type="text"] {
@@ -3034,10 +3066,10 @@
     grid-column: 1 / -1;
   }
   .scatter-context-label {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-sans);
     font-size: 11px;
     text-transform: uppercase;
-    letter-spacing: 0.14em;
+    letter-spacing: 0.07em;
     color: var(--accent);
     margin-bottom: 8px;
     font-weight: 600;
@@ -3298,11 +3330,12 @@
     font-weight: 500;
   }
   .ranking-ideology {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-sans);
     font-size: 11px;
     text-transform: uppercase;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.07em;
     display: flex; align-items: center; gap: 5px;
+    font-weight: 600;
   }
   .ranking-ideology::before {
     content: ""; width: 7px; height: 7px; border-radius: 50%;
@@ -3330,13 +3363,14 @@
     grid-column: 1 / -1;
     text-align: center;
     padding: 12px 0 4px;
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-sans);
     font-size: 11px;
     text-transform: uppercase;
-    letter-spacing: 0.16em;
+    letter-spacing: 0.07em;
     color: var(--muted);
     border-bottom: 1px solid var(--line);
     margin-bottom: 4px;
+    font-weight: 600;
   }
 
   /* Country profile (multi-variable comparison) */
@@ -3376,11 +3410,12 @@
     margin-bottom: 8px;
   }
   .profile-card-label {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-sans);
     font-size: 11px;
     text-transform: uppercase;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.07em;
     color: var(--muted);
+    font-weight: 600;
   }
   .profile-card-rank {
     font-family: 'Newsreader', serif;
@@ -3516,12 +3551,13 @@
     border-top: 1px solid var(--line);
   }
   .women-leaders-title {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-sans);
     font-size: 11px;
     text-transform: uppercase;
-    letter-spacing: 0.14em;
+    letter-spacing: 0.07em;
     color: var(--accent);
     margin-bottom: 10px;
+    font-weight: 600;
   }
   .women-leaders-grid {
     display: grid;
@@ -3590,14 +3626,15 @@
   }
 
   .gender-by-sys-title {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-sans);
     font-size: 11px;
     text-transform: uppercase;
-    letter-spacing: 0.14em;
+    letter-spacing: 0.07em;
     color: var(--muted);
     margin: 16px 0 8px;
     padding-top: 12px;
     border-top: 1px solid var(--line);
+    font-weight: 600;
   }
 
   /* Change-or-continuity */
@@ -3657,18 +3694,19 @@
     padding-bottom: 6px;
   }
   .cc-group-label {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-sans);
     font-size: 11px;
     text-transform: uppercase;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.07em;
     font-weight: 600;
   }
   .cc-group-count {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-sans);
     font-size: 11px;
     color: var(--muted);
     text-transform: uppercase;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.07em;
+    font-weight: 600;
   }
   .cc-group-items {
     display: grid;
@@ -3722,12 +3760,13 @@
   }
   .cc-item-arrow {
     display: flex; align-items: center; gap: 4px;
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-sans);
     font-size: 10px;
     text-transform: uppercase;
-    letter-spacing: 0.04em;
+    letter-spacing: 0.07em;
     line-height: 1.3;
     flex-wrap: wrap;
+    font-weight: 600;
   }
   .cc-item-mag {
     display: inline-block;
@@ -3735,10 +3774,10 @@
     padding: 1px 5px;
     border: 1px solid currentColor;
     border-radius: 999px;
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-sans);
     font-size: 10px;
     font-weight: 600;
-    letter-spacing: 0.06em;
+    letter-spacing: 0.07em;
     text-transform: uppercase;
     flex-shrink: 0;
   }
@@ -3758,10 +3797,10 @@
     display: flex;
     align-items: center;
     gap: 8px;
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-sans);
     font-size: 10.5px;
     text-transform: uppercase;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.07em;
     color: var(--accent);
     font-weight: 600;
   }
@@ -3858,12 +3897,13 @@
     margin-top: 16px;
   }
   .method-block h4 {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-sans);
     font-size: 11px;
     text-transform: uppercase;
-    letter-spacing: 0.16em;
+    letter-spacing: 0.07em;
     color: var(--c-cleft);
     margin-bottom: 8px;
+    font-weight: 600;
   }
   .method-block p {
     font-size: 13px;
@@ -3917,12 +3957,13 @@
     letter-spacing: -0.01em;
   }
   .editorial-summary-meta {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-sans);
     font-size: 11px;
     text-transform: uppercase;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.07em;
     color: rgba(244, 246, 250, 0.5);
     margin-left: auto;
+    font-weight: 600;
   }
   .editorial-content {
     margin-top: 18px;
@@ -4087,10 +4128,10 @@
     border-left: 2px solid rgba(244, 246, 250, 0.15);
   }
   .changelog-date {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-sans);
     font-size: 11px;
     text-transform: uppercase;
-    letter-spacing: 0.16em;
+    letter-spacing: 0.07em;
     color: var(--accent);
     margin-bottom: 8px;
     font-weight: 600;
@@ -4142,12 +4183,13 @@
     border-top: 1px solid rgba(244, 246, 250, 0.15);
   }
   .footer-credit-block h4 {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-sans);
     font-size: 11px;
     text-transform: uppercase;
-    letter-spacing: 0.16em;
+    letter-spacing: 0.07em;
     color: var(--accent);
     margin-bottom: 10px;
+    font-weight: 600;
   }
   .footer-credit-block p {
     font-size: 12.5px;
@@ -4185,12 +4227,13 @@
     color: var(--surface);
     border: 1px solid var(--accent);
     border-radius: 2px;
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-sans);
     font-size: 10.5px;
     text-transform: uppercase;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.07em;
     cursor: pointer;
     transition: all 0.15s;
+    font-weight: 600;
   }
   .dataset-btn:hover {
     background: var(--accent);
@@ -4482,15 +4525,16 @@
     align-items: center;
     flex-wrap: wrap;
     gap: 8px;
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-sans);
     font-size: 11px;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.07em;
     text-transform: uppercase;
     color: var(--ink-soft);
     background: var(--surface);
     border: 1px solid var(--line);
     border-radius: 999px;
     padding: 6px 14px 6px 10px;
+    font-weight: 600;
   }
   .live-pill strong { color: var(--live); font-weight: 600; }
   .live-pill .sep { color: var(--line-strong); }
@@ -4622,12 +4666,13 @@
   }
   .next-card.is-brasil { background: linear-gradient(145deg, #0B4F34 0%, #0E6B45 55%, #13784E 100%); }
   .next-card-kicker {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-sans);
     font-size: 11px;
-    letter-spacing: 0.14em;
+    letter-spacing: 0.07em;
     text-transform: uppercase;
     opacity: .8;
     display: flex; align-items: center; gap: 8px;
+    font-weight: 600;
   }
   .next-card-title {
     font-family: 'Newsreader', serif;
@@ -4743,11 +4788,12 @@
     font-weight: 700;
   }
   .portada-sec-head .kicker {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-sans);
     font-size: 10.5px;
     text-transform: uppercase;
-    letter-spacing: .16em;
+    letter-spacing: 0.07em;
     color: var(--muted);
+    font-weight: 600;
   }
 
   /* Especiales grid */
@@ -4782,13 +4828,14 @@
   .especial-card.is-soon { background: var(--surface-2); border-style: dashed; }
   .especial-tag {
     align-self: flex-start;
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-sans);
     font-size: 10.5px;
-    letter-spacing: .14em;
+    letter-spacing: 0.07em;
     text-transform: uppercase;
     padding: 4px 9px;
     border-radius: 999px;
     background: rgba(11,22,40,.07);
+    font-weight: 600;
   }
   .especial-card.is-featured .especial-tag { background: var(--br-yellow); color: #0B1628; }
   .especial-title {
@@ -4836,7 +4883,9 @@
     padding-right: 10px;
   }
   .agenda-day { font-family: 'Newsreader', serif; font-size: 24px; font-weight: 700; line-height: 1; }
-  .agenda-mon { font-family: 'JetBrains Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: .12em; color: var(--muted); }
+  .agenda-mon { font-family: var(--font-sans); font-size: 11px; text-transform: uppercase; letter-spacing: 0.07em; color: var(--muted);
+    font-weight: 600;
+  }
   .agenda-name { font-weight: 600; font-size: 14.5px; display: flex; align-items: center; gap: 4px; }
   .agenda-type { font-size: 12.5px; color: var(--muted); line-height: 1.3; }
   .agenda-in { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--accent); margin-top: 2px; }
@@ -4855,12 +4904,13 @@
   .feed-when { font-family: 'JetBrains Mono', monospace; font-size: 11.5px; color: var(--muted); padding-top: 3px; }
   .feed-tag {
     display: inline-block;
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-sans);
     font-size: 11px;
     text-transform: uppercase;
-    letter-spacing: .12em;
+    letter-spacing: 0.07em;
     color: var(--accent);
     margin-right: 8px;
+    font-weight: 600;
   }
   .feed-item a { color: inherit; }
 
@@ -4931,10 +4981,11 @@
   }
   .esp-status {
     display: inline-flex; align-items: center; gap: 8px;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px; letter-spacing: .14em; text-transform: uppercase;
+    font-family: var(--font-sans);
+    font-size: 11px; letter-spacing: 0.07em; text-transform: uppercase;
     background: rgba(0,0,0,.25);
     padding: 6px 12px; border-radius: 999px;
+    font-weight: 600;
   }
   .esp-status .live-dot { background: var(--br-yellow); animation-name: livePulseY; }
   @keyframes livePulseY {
@@ -4995,9 +5046,10 @@
   .esp-sec { margin-top: 44px; scroll-margin-top: 70px; }
   .esp-sec-head { margin-bottom: 18px; }
   .esp-sec-head .kicker {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10.5px; letter-spacing: .16em; text-transform: uppercase;
+    font-family: var(--font-sans);
+    font-size: 10.5px; letter-spacing: 0.07em; text-transform: uppercase;
     color: var(--br-green);
+    font-weight: 600;
   }
   .esp-sec-head h3 {
     font-size: clamp(24px, 2.6vw, 32px);
@@ -5149,7 +5201,9 @@
   .uf-empty { color: var(--muted); font-size: 14px; }
 
   .uf-rank { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 14px 16px; }
-  .uf-rank-title { font-family: 'JetBrains Mono', monospace; font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+  .uf-rank-title { font-family: var(--font-sans); font-size: 10.5px; letter-spacing: 0.07em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px;
+    font-weight: 600;
+  }
   .uf-rank-list { max-height: 330px; overflow-y: auto; padding-right: 4px; }
   .uf-rank-row {
     display: grid;
@@ -5561,6 +5615,104 @@
   /* Keep Leaflet's controls (z-index 1000) inside the map so they never
      float over the sticky filter bar while scrolling */
   .panel-map { isolation: isolate; z-index: 0; }
+
+  /* ===========================================================
+     THEME 2026 — sistema unificado
+     One component language across the whole site: white cards with
+     soft borders, Inter for labels, mono only for figures.
+     =========================================================== */
+  /* Filters: one white toolbar */
+  .filters-sticky { background: var(--surface); box-shadow: 0 1px 0 var(--line), 0 4px 14px rgba(11,22,40,.05); }
+  .filter-bar { background: var(--surface); padding: 10px 24px; border-bottom: 1px solid var(--line); }
+  .filter-bar-secondary { padding: 7px 24px; }
+  .filter-bar-label { color: var(--muted); font-size: 11px; min-width: 150px; }
+  .chip, .chip-region, .chip-system { border-radius: 999px; }
+  .chip-region, .chip-system { color: var(--ink-soft); border-color: var(--line-strong); }
+  .filter-active-badge { background: #FFF4EC; border-bottom: 1px solid #F6D5BF; }
+
+  /* Map + detail panel: soft dividers instead of black rules */
+  .layout { border-bottom: 1px solid var(--line); background: var(--surface); }
+  .panel-detail { border-left: 1px solid var(--line) !important; background: var(--surface); }
+  .map-insight-band { border-top: 0; }
+
+  /* Stats under the map: same tiles as the portada */
+  .stats-bar {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 12px;
+    padding: 20px 32px 28px;
+    background: var(--bg);
+    border: 0;
+  }
+  .stat {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    box-shadow: var(--shadow-sm);
+    padding: 16px 18px;
+  }
+  .stat:last-child { border-right: 1px solid var(--line); }
+  .stat-label { color: var(--muted); }
+  .stat-value { font-size: 32px; }
+  .stat-sub { font-size: 13px; }
+
+  /* Country card */
+  .section-title {
+    color: var(--ink);
+    font-size: 11.5px;
+    margin: 22px 0 10px;
+    padding: 0 0 6px 10px;
+    border-bottom: 1px solid var(--line);
+    border-left: 3px solid var(--accent);
+    line-height: 1.2;
+  }
+  .data-row { font-size: 13.5px; padding: 6px 0; border-bottom: 1px solid var(--surface-2); }
+  .data-row .k { color: var(--muted); }
+  .econ-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
+  .econ-cell {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 12px;
+  }
+  .econ-label { font-size: 10.5px; color: var(--muted); }
+  .econ-value { font-size: 23px; font-weight: 700; margin-top: 2px; }
+  .econ-meta { font-size: 11.5px; line-height: 1.4; }
+  .gini-bar-track, .gini-bar-track.hdi, .gini-bar-track.press {
+    height: 6px;
+    border-radius: 3px;
+    background: linear-gradient(to right, #E3E8EF, #5B6A80);
+  }
+  .gini-bar-track.hdi   { background: linear-gradient(to right, #E3E8EF, #0F766E); }
+  .gini-bar-track.press { background: linear-gradient(to right, #5B6A80, #E3E8EF 55%, #0F766E); }
+  .gini-bar-marker { width: 3px; top: -4px; bottom: -4px; background: var(--accent); box-shadow: 0 0 0 2px var(--surface); }
+  .gini-bar-scale {
+    font-family: var(--font-sans);
+    text-transform: none;
+    letter-spacing: 0;
+    font-size: 11px;
+    gap: 8px;
+    margin-top: 5px;
+  }
+  .result-bar { height: 5px; border-radius: 3px; overflow: hidden; }
+  .gdp-bar { border-radius: 3px 3px 0 0; }
+  .gdp-bar.neg { border-radius: 0 0 3px 3px; }
+
+  /* Legend + tip in the empty panel */
+  .empty-state-tip { border-radius: 10px; }
+
+  .econ-meta, .leader-since { font-family: var(--font-sans); font-size: 12px; }
+  .filter-bar-label { min-width: 176px; }
+  .detail-link, .panel-detail a[href^="http"] { font-family: var(--font-sans); }
+
+  /* Text that isn't a figure uses the UI font too */
+  .office-system, .esp-updated, .agenda-in, .br-cal-in, .results-progress-lbl,
+  .feed-when, .poll-row-meta, .elec-stat-lbl {
+    font-family: var(--font-sans);
+    letter-spacing: 0;
+  }
+  .office-system { font-size: 11.5px; font-weight: 500; }
+  .agenda-in, .br-cal-in { font-weight: 600; font-size: 12px; }
 </style>
 </head>
 <body>
@@ -26252,14 +26404,14 @@ function renderDetail(c) {
     <div class="section-title">Poder legislativo · ${c.legislature.type}</div>
     ${upper ? `
       <div style="margin-bottom:8px">
-        <div style="font-family:'Newsreader',serif; font-style:italic; font-size:13.5px; margin-bottom:4px">${upper.name}</div>
+        <div style="font-family:var(--font-sans); font-weight:600; font-size:13.5px; color:var(--ink); margin:6px 0 4px">${upper.name}</div>
         <div class="data-row"><span class="k">Bancas</span><span class="v mono">${upper.seats}</span></div>
         <div class="data-row"><span class="k">Elección</span><span class="v" style="font-size:12px">${upper.method}</span></div>
         <div class="data-row"><span class="k">Mandato</span><span class="v">${upper.term}</span></div>
       </div>` : ''}
     ${lower ? `
       <div>
-        <div style="font-family:'Newsreader',serif; font-style:italic; font-size:13.5px; margin-bottom:4px">${lower.name}</div>
+        <div style="font-family:var(--font-sans); font-weight:600; font-size:13.5px; color:var(--ink); margin:6px 0 4px">${lower.name}</div>
         <div class="data-row"><span class="k">Bancas</span><span class="v mono">${lower.seats}</span></div>
         <div class="data-row"><span class="k">Elección</span><span class="v" style="font-size:12px">${lower.method}</span></div>
         <div class="data-row"><span class="k">Mandato</span><span class="v">${lower.term}</span></div>
@@ -28850,9 +29002,10 @@ function addAntarcticSectors() {
     const color = getCountryColor(s.country);
     const polygon = L.polygon(makeSlice(s.west, s.east), {
       fillColor: color,
-      fillOpacity: 0.62,
-      color: '#64748B',
-      weight: 0.6,
+      fillOpacity: 0.28,
+      color: '#8A97AA',
+      weight: 1,
+      dashArray: '3 4',
       className: 'antarctic-sector'
     }).addTo(map);
 
