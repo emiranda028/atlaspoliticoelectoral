@@ -20,38 +20,48 @@
 <meta name="twitter:description" content="Cartografía interactiva del poder mundial en 2026 — 197 países comparados en 8 dimensiones.">
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,800;9..144,900&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400..800;1,6..72,400..700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
-    /* Editorial warm palette */
-    --bg:           #F2EBDD;
-    --bg-deep:      #EAE0CC;
-    --surface:      #FBF7EE;
-    --surface-2:    #F7F1E2;
-    --ink:          #1A1614;
-    --ink-soft:     #3D362F;
-    --muted:        #6B635A;
-    --line:         #D4C7B0;
-    --line-strong:  #B8A98C;
-    --accent:       #A02B3E;     /* oxblood red */
-    --accent-deep:  #6B0E0E;
+    /* Institutional palette: cool paper, deep navy ink, one warm accent */
+    --bg:           #F4F5F7;
+    --bg-deep:      #E8EBF0;
+    --surface:      #FFFFFF;
+    --surface-2:    #F6F7F9;
+    --ink:          #0B1628;
+    --ink-soft:     #2A3850;
+    --muted:        #5B6A80;
+    --line:         #E1E5EB;
+    --line-strong:  #C4CBD6;
+    --brand:        #0B1F3A;     /* masthead navy */
+    --brand-2:      #13305A;
+    --accent:       #C2410C;     /* signal orange — never used for ideology */
+    --accent-deep:  #9A3412;
+    --accent-bright:#FB923C;     /* accent on dark backgrounds */
 
-    /* Ideology palette */
-    --c-far-left:   #5C0A0A;
-    --c-left:       #A02B3E;
-    --c-cleft:      #D6788A;
-    --c-center:     #C9A24F;
-    --c-cright:     #6E92BD;
-    --c-right:      #2E4A6B;
-    --c-far-right:  #14233A;
-    --c-auth:       #3A3530;
-    --c-dictatorship: #0B0805;
-    --c-monarchy:   #6E4A6E;
-    --c-other:      #A89C85;
-    --c-unknown:    #DDD2BB;
+    --font-serif: 'Newsreader', Georgia, serif;
+    --font-sans:  'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    --font-mono:  'JetBrains Mono', ui-monospace, monospace;
 
-    --shadow-sm:  0 1px 0 rgba(26,22,20,.06), 0 2px 6px rgba(26,22,20,.04);
-    --shadow-md:  0 1px 0 rgba(26,22,20,.08), 0 8px 24px rgba(26,22,20,.08);
+    /* Ideology palette: diverging red → gold → blue, greys for non-democracies */
+    --c-far-left:   #6E1423;
+    --c-left:       #C3283A;
+    --c-cleft:      #E98A94;
+    --c-center:     #D9A53A;
+    --c-cright:     #7EA6D6;
+    --c-right:      #2C5BA3;
+    --c-far-right:  #14284A;
+    --c-auth:       #5F5B58;
+    --c-dictatorship: #1B1B1D;
+    --c-monarchy:   #6D4C8C;
+    --c-other:      #A2A8B2;
+    --c-unknown:    #E2E6EC;
+
+    --radius:     10px;
+    --shadow-sm:  0 1px 2px rgba(11,22,40,.06), 0 1px 1px rgba(11,22,40,.04);
+    --shadow-md:  0 2px 4px rgba(11,22,40,.05), 0 12px 32px rgba(11,22,40,.10);
   }
 
   *, *::before, *::after { box-sizing: border-box; }
@@ -59,15 +69,12 @@
   body {
     background: var(--bg);
     color: var(--ink);
-    font-family: 'IBM Plex Sans', system-ui, sans-serif;
+    font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
     font-size: 15px;
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
-    background-image:
-      radial-gradient(rgba(120,100,70,.05) 1px, transparent 1px);
-    background-size: 4px 4px;
   }
-  h1, h2, h3, h4 { font-family: 'Fraunces', Georgia, serif; font-weight: 600; letter-spacing: -0.01em; margin: 0; }
+  h1, h2, h3, h4 { font-family: 'Newsreader', Georgia, serif; font-weight: 600; letter-spacing: -0.01em; margin: 0; }
 
   /* ===========================================================
      COUNTRY FLAGS (SVG via direct img with absolute CDN URL)
@@ -105,7 +112,7 @@
     height: 26px;
     border-radius: 2px;
   }
-  .mono { font-family: 'IBM Plex Mono', monospace; }
+  .mono { font-family: 'JetBrains Mono', monospace; }
 
   /* ============ HEADER ============ */
   header.masthead {
@@ -166,8 +173,8 @@
     inset: 0;
     background: linear-gradient(100deg,
       var(--bg) 26%,
-      rgba(242,235,221,0.82) 52%,
-      rgba(242,235,221,0.55) 100%);
+      rgba(11,31,58,0.82) 52%,
+      rgba(11,31,58,0.55) 100%);
   }
   .masthead-content {
     position: relative;
@@ -180,7 +187,7 @@
     padding-bottom: 12px; margin-bottom: 16px;
   }
   .masthead-meta {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'JetBrains Mono', monospace;
     font-size: 11px; color: var(--muted);
     text-transform: uppercase; letter-spacing: 0.12em;
     display: flex; gap: 20px; flex-wrap: wrap;
@@ -188,7 +195,7 @@
   .masthead-meta span::before { content: "▪ "; color: var(--accent); }
   .masthead-byline {
     color: inherit;
-    border-bottom: 1px dotted rgba(160, 43, 62, 0.5);
+    border-bottom: 1px dotted rgba(194, 65, 12, 0.5);
     text-decoration: none;
     transition: all 0.15s;
   }
@@ -249,7 +256,7 @@
     display: inline-block;
   }
   .masthead-kicker-label {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'JetBrains Mono', monospace;
     font-size: 10px;
     text-transform: uppercase;
     letter-spacing: 0.18em;
@@ -261,7 +268,7 @@
     font-size: clamp(40px, 5.4vw, 68px);
     line-height: 0.98;
     font-weight: 800;
-    font-style: italic;
+    font-style: normal;
     letter-spacing: -0.03em;
     margin: 0;
   }
@@ -269,10 +276,10 @@
     font-style: normal;
     color: var(--accent);
     font-weight: 900;
-    text-shadow: 0 1px 0 rgba(242, 235, 221, 0.4);
+    text-shadow: 0 1px 0 rgba(244, 246, 250, 0.4);
   }
   .subtitle {
-    font-family: 'Fraunces', serif;
+    font-family: 'Newsreader', serif;
     font-style: italic;
     color: var(--ink-soft);
     font-size: 17px;
@@ -291,7 +298,7 @@
     gap: 10px;
     margin-top: 16px;
     padding: 7px 14px 7px 12px;
-    background: rgba(160, 43, 62, 0.05);
+    background: rgba(194, 65, 12, 0.05);
     border-left: 2px solid var(--accent);
     border-radius: 2px;
     font-size: 13px;
@@ -300,7 +307,7 @@
     max-width: 640px;
   }
   .purpose-tag {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'JetBrains Mono', monospace;
     font-size: 9px;
     text-transform: uppercase;
     letter-spacing: 0.16em;
@@ -308,10 +315,10 @@
     font-weight: 700;
     flex-shrink: 0;
     padding-right: 10px;
-    border-right: 1px solid rgba(160, 43, 62, 0.3);
+    border-right: 1px solid rgba(194, 65, 12, 0.3);
   }
   .purpose-text {
-    font-family: 'Fraunces', serif;
+    font-family: 'Newsreader', serif;
     font-style: italic;
     font-size: 14px;
     color: var(--ink);
@@ -325,7 +332,7 @@
     border-top: 4px solid var(--accent);
     padding: 18px 20px 16px;
     border-radius: 2px;
-    box-shadow: 0 1px 0 rgba(26,22,20,.06), 0 12px 28px rgba(26,22,20,.06);
+    box-shadow: 0 1px 0 rgba(11,22,40,.06), 0 12px 28px rgba(11,22,40,.06);
     position: relative;
     min-width: 280px;
     max-width: 420px;
@@ -334,7 +341,7 @@
     display: inline-flex;
     align-items: center;
     gap: 7px;
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'JetBrains Mono', monospace;
     font-size: 9.5px;
     text-transform: uppercase;
     letter-spacing: 0.15em;
@@ -352,12 +359,12 @@
     box-shadow: 0 0 0 0 var(--accent);
   }
   @keyframes heroPulse {
-    0%, 100% { box-shadow: 0 0 0 0 rgba(160, 43, 62, 0.45); }
-    50%      { box-shadow: 0 0 0 6px rgba(160, 43, 62, 0); }
+    0%, 100% { box-shadow: 0 0 0 0 rgba(194, 65, 12, 0.45); }
+    50%      { box-shadow: 0 0 0 6px rgba(194, 65, 12, 0); }
   }
   .hero-stat-number {
-    font-family: 'Fraunces', serif;
-    font-style: italic;
+    font-family: 'Newsreader', serif;
+    font-style: normal;
     font-weight: 700;
     color: var(--ink);
     line-height: 0.95;
@@ -371,7 +378,7 @@
     color: var(--accent);
   }
   .hero-stat-text {
-    font-family: 'Fraunces', serif;
+    font-family: 'Newsreader', serif;
     font-size: 14px;
     line-height: 1.45;
     color: var(--ink-soft);
@@ -390,7 +397,7 @@
   }
   .hero-stat-tag {
     color: var(--surface);
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'JetBrains Mono', monospace;
     font-size: 9.5px;
     padding: 3px 8px;
     border-radius: 999px;
@@ -470,7 +477,7 @@
     border-top: 1px solid var(--line-strong);
     border-bottom: 1px solid var(--line-strong);
     background: var(--surface);
-    box-shadow: 0 1px 0 rgba(26,22,20,0.04);
+    box-shadow: 0 1px 0 rgba(11,22,40,0.04);
   }
   .topic-nav::-webkit-scrollbar { display: none; }
   .topic-nav-link {
@@ -503,8 +510,8 @@
   .topic-nav-brand:hover { color: var(--accent); }
   .topic-nav-brand svg { flex-shrink: 0; }
   .topic-nav-brand-text {
-    font-family: 'Fraunces', serif;
-    font-style: italic;
+    font-family: 'Newsreader', serif;
+    font-style: normal;
     font-weight: 700;
     font-size: 16px;
     letter-spacing: -0.01em;
@@ -537,17 +544,17 @@
     color: var(--accent);
   }
   .topic-nav-num {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'JetBrains Mono', monospace;
     font-size: 10px;
     font-weight: 600;
     color: var(--accent);
     letter-spacing: 0.1em;
   }
   .topic-nav-text {
-    font-family: 'Fraunces', serif;
+    font-family: 'Newsreader', serif;
     font-size: 15px;
     font-weight: 600;
-    font-style: italic;
+    font-style: normal;
     letter-spacing: -0.005em;
     transition: color 0.15s;
   }
@@ -579,32 +586,32 @@
   body:not([data-view="inicio"]):not([data-view="analisis"]) .filters-sticky {
     display: none;
   }
-  /* Compact masthead on non-home views: the hero collapses to a topbar
-     so the map / charts get the vertical space they deserve */
-  body:not([data-view="inicio"]) .masthead-kicker,
-  body:not([data-view="inicio"]) .subtitle,
-  body:not([data-view="inicio"]) .purpose-line,
-  body:not([data-view="inicio"]) .masthead-hero-stat {
+  /* Compact masthead on every view: the portada below the nav is the
+     hero now, so the masthead works as a slim brand bar */
+  body .masthead-kicker,
+  body .subtitle,
+  body .purpose-line,
+  body .masthead-hero-stat {
     display: none;
   }
-  body:not([data-view="inicio"]) .masthead {
+  body .masthead {
     padding-bottom: 0;
   }
-  body:not([data-view="inicio"]) .masthead-main {
+  body .masthead-main {
     margin-top: 6px;
     align-items: center;
   }
-  body:not([data-view="inicio"]) .masthead-grid {
+  body .masthead-grid {
     grid-template-columns: 1fr;
     align-items: center;
   }
-  body:not([data-view="inicio"]) h1.title {
+  body h1.title {
     font-size: clamp(26px, 3.2vw, 38px);
   }
-  body:not([data-view="inicio"]) .atlas-logo {
+  body .atlas-logo {
     width: 44px; height: 44px; margin-top: 0;
   }
-  body:not([data-view="inicio"]) .atlas-logo svg { width: 44px; height: 44px; }
+  body .atlas-logo svg { width: 44px; height: 44px; }
 
   /* ============ HOME VIEW ============ */
   .home-explore {
@@ -613,7 +620,7 @@
     padding: 28px 32px 40px;
   }
   .home-explore-title {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'JetBrains Mono', monospace;
     font-size: 11px;
     text-transform: uppercase;
     letter-spacing: 0.18em;
@@ -654,7 +661,7 @@
   }
   .home-explore-card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 12px 28px rgba(26, 22, 20, 0.12);
+    box-shadow: 0 12px 28px rgba(11, 22, 40, 0.12);
     border-color: var(--accent);
   }
   .home-explore-card:hover::after { transform: scaleX(1); }
@@ -663,14 +670,14 @@
     color: var(--accent);
   }
   .home-explore-card-num {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'JetBrains Mono', monospace;
     font-size: 10px;
     color: var(--muted);
     letter-spacing: 0.1em;
   }
   .home-explore-card-title {
-    font-family: 'Fraunces', serif;
-    font-style: italic;
+    font-family: 'Newsreader', serif;
+    font-style: normal;
     font-size: 21px;
     font-weight: 700;
     line-height: 1.1;
@@ -682,7 +689,7 @@
   }
   .home-explore-card-arrow {
     margin-top: auto;
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'JetBrains Mono', monospace;
     font-size: 12px;
     color: var(--accent);
     font-weight: 600;
@@ -705,7 +712,7 @@
     padding: 28px 32px 4px;
   }
   .elec-view-intro {
-    font-family: 'Fraunces', serif;
+    font-family: 'Newsreader', serif;
     font-size: 15px;
     line-height: 1.55;
     color: var(--ink-soft);
@@ -727,14 +734,14 @@
   }
   .elec-stat-wide { flex: 1; min-width: 240px; }
   .elec-stat-num {
-    font-family: 'Fraunces', serif;
+    font-family: 'Newsreader', serif;
     font-weight: 800;
     font-size: 30px;
     line-height: 1;
     color: var(--accent);
   }
   .elec-stat-lbl {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'JetBrains Mono', monospace;
     font-size: 9.5px;
     text-transform: uppercase;
     letter-spacing: 0.12em;
@@ -742,8 +749,8 @@
     margin-top: 6px;
   }
   .elec-stat-next {
-    font-family: 'Fraunces', serif;
-    font-style: italic;
+    font-family: 'Newsreader', serif;
+    font-style: normal;
     font-size: 17px;
     color: var(--ink);
     margin-top: 4px;
@@ -754,7 +761,7 @@
     padding: 24px 32px 48px;
   }
   .elec-highlights-head {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'JetBrains Mono', monospace;
     font-size: 11px;
     text-transform: uppercase;
     letter-spacing: 0.16em;
@@ -784,7 +791,7 @@
   .elec-hi-card:hover {
     border-color: var(--accent);
     transform: translateY(-2px);
-    box-shadow: 0 6px 16px rgba(26,22,20,0.08);
+    box-shadow: 0 6px 16px rgba(11,22,40,0.08);
   }
   .elec-hi-flag { flex-shrink: 0; }
   .elec-hi-flag img, .elec-hi-flag .flag-img {
@@ -794,14 +801,14 @@
   }
   .elec-hi-body { min-width: 0; flex: 1; }
   .elec-hi-country {
-    font-family: 'Fraunces', serif;
+    font-family: 'Newsreader', serif;
     font-weight: 700;
     font-size: 15px;
     color: var(--ink);
     line-height: 1.1;
   }
   .elec-hi-date {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'JetBrains Mono', monospace;
     font-size: 10.5px;
     color: var(--accent);
     margin-top: 3px;
@@ -838,7 +845,7 @@
     border-bottom: 1px solid var(--line-strong);
   }
   .polls-sub {
-    font-family: 'Fraunces', serif;
+    font-family: 'Newsreader', serif;
     font-style: italic;
     font-size: 14px;
     color: var(--ink-soft);
@@ -867,7 +874,7 @@
     object-fit: cover; border: 1px solid var(--line);
   }
   .poll-card-country {
-    font-family: 'Fraunces', serif;
+    font-family: 'Newsreader', serif;
     font-weight: 800;
     font-size: 22px;
     line-height: 1;
@@ -886,13 +893,13 @@
     align-items: baseline;
   }
   .poll-cand-name {
-    font-family: 'Fraunces', serif;
+    font-family: 'Newsreader', serif;
     font-weight: 700;
     font-size: 15px;
     color: var(--ink);
   }
   .poll-cand-avg {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'JetBrains Mono', monospace;
     font-weight: 600;
     font-size: 15px;
     color: var(--ink);
@@ -914,7 +921,7 @@
     transition: width 0.6s ease;
   }
   .poll-avg-note {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'JetBrains Mono', monospace;
     font-size: 9.5px;
     text-transform: uppercase;
     letter-spacing: 0.1em;
@@ -949,12 +956,12 @@
     grid-area: meta;
     font-size: 10.5px;
     color: var(--muted);
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'JetBrains Mono', monospace;
   }
   .poll-row-vals {
     grid-area: vals;
     align-self: center;
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'JetBrains Mono', monospace;
     font-weight: 700;
     font-size: 14px;
     display: flex;
@@ -964,7 +971,7 @@
   .poll-row-sep { color: var(--line-strong); font-weight: 400; }
   .poll-row-link { display: none; }
   .poll-note {
-    font-family: 'Fraunces', serif;
+    font-family: 'Newsreader', serif;
     font-size: 13px;
     line-height: 1.5;
     color: var(--ink-soft);
@@ -995,7 +1002,7 @@
     flex-wrap: wrap;
   }
   .elections-timeline-head .kicker {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'JetBrains Mono', monospace;
     font-size: 10px;
     text-transform: uppercase;
     letter-spacing: 0.16em;
@@ -1003,7 +1010,7 @@
     font-weight: 500;
   }
   .elections-timeline-sub {
-    font-family: 'Fraunces', serif;
+    font-family: 'Newsreader', serif;
     font-style: italic;
     font-size: 13px;
     color: var(--ink-soft);
@@ -1013,22 +1020,22 @@
   .elections-this-month {
     margin: 0 0 16px;
     padding: 14px 20px;
-    background: rgba(160, 43, 62, 0.06);
+    background: rgba(194, 65, 12, 0.06);
     border-left: 3px solid var(--accent);
     border-radius: 1px;
-    font-family: 'Fraunces', serif;
+    font-family: 'Newsreader', serif;
     font-style: italic;
     color: var(--ink);
     font-size: 14px;
     line-height: 1.55;
   }
   .elections-this-month.empty {
-    background: rgba(26, 22, 20, 0.03);
+    background: rgba(11, 22, 40, 0.03);
     border-left-color: var(--line-strong);
     color: var(--ink-soft);
   }
   .elections-this-month-label {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'JetBrains Mono', monospace;
     font-style: normal;
     font-size: 10px;
     text-transform: uppercase;
@@ -1041,7 +1048,7 @@
     align-items: center;
     gap: 5px;
     margin-right: 12px;
-    font-family: 'IBM Plex Sans', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-style: normal;
     font-size: 13px;
     cursor: pointer;
@@ -1051,8 +1058,8 @@
   .etm-country:hover { color: var(--accent); }
   .etm-country .flag-img { vertical-align: -2px; }
   .etm-day {
-    font-family: 'IBM Plex Mono', monospace;
-    font-style: italic;
+    font-family: 'JetBrains Mono', monospace;
+    font-style: normal;
     color: var(--accent);
     font-size: 12px;
     margin-right: 3px;
@@ -1067,8 +1074,8 @@
     -webkit-overflow-scrolling: touch;
   }
   .elections-timeline::-webkit-scrollbar { height: 6px; }
-  .elections-timeline::-webkit-scrollbar-track { background: rgba(26,22,20,.05); }
-  .elections-timeline::-webkit-scrollbar-thumb { background: rgba(26,22,20,.18); border-radius: 3px; }
+  .elections-timeline::-webkit-scrollbar-track { background: rgba(11,22,40,.05); }
+  .elections-timeline::-webkit-scrollbar-thumb { background: rgba(11,22,40,.18); border-radius: 3px; }
   .elections-timeline-track {
     display: flex;
     gap: 0;
@@ -1093,7 +1100,7 @@
     z-index: 1;
   }
   .et-month-label {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'JetBrains Mono', monospace;
     font-size: 10px;
     text-transform: uppercase;
     letter-spacing: 0.14em;
@@ -1124,7 +1131,7 @@
     border-radius: 2px;
   }
   .et-event:hover {
-    background: rgba(160, 43, 62, 0.06);
+    background: rgba(194, 65, 12, 0.06);
     border-color: var(--accent);
     transform: translateY(-2px);
   }
@@ -1135,8 +1142,8 @@
     display: block;
   }
   .et-event-day {
-    font-family: 'Fraunces', serif;
-    font-style: italic;
+    font-family: 'Newsreader', serif;
+    font-style: normal;
     font-weight: 600;
     font-size: 16px;
     color: var(--accent);
@@ -1151,14 +1158,14 @@
     font-size: 14px;
   }
   .et-event-iso {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'JetBrains Mono', monospace;
     font-size: 9px;
     color: var(--ink-soft);
     letter-spacing: 0.05em;
     margin-bottom: 2px;
   }
   .et-event-type {
-    font-family: 'Fraunces', serif;
+    font-family: 'Newsreader', serif;
     font-style: italic;
     font-size: 9.5px;
     color: var(--ink);
@@ -1170,7 +1177,7 @@
     height: 22px;
   }
   .et-event-date {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'JetBrains Mono', monospace;
     font-size: 8.5px;
     color: var(--muted);
     margin-top: 3px;
@@ -1179,7 +1186,7 @@
   .et-empty {
     padding: 20px 32px;
     color: var(--ink-soft);
-    font-family: 'Fraunces', serif;
+    font-family: 'Newsreader', serif;
     font-style: italic;
     font-size: 13px;
   }
@@ -1199,7 +1206,7 @@
   }
   .stat:last-child { border-right: none; }
   .stat-label {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'JetBrains Mono', monospace;
     font-size: 10px;
     text-transform: uppercase;
     letter-spacing: 0.14em;
@@ -1208,7 +1215,7 @@
     margin-bottom: 4px;
   }
   .stat-value {
-    font-family: 'Fraunces', serif;
+    font-family: 'Newsreader', serif;
     font-size: 30px;
     font-weight: 600;
     line-height: 1;
@@ -1263,7 +1270,7 @@
     display: inline-flex;
     align-items: center;
     gap: 7px;
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'JetBrains Mono', monospace;
     font-size: 9px;
     text-transform: uppercase;
     letter-spacing: 0.16em;
@@ -1271,8 +1278,8 @@
     flex-shrink: 0;
   }
   .mib-number {
-    font-family: 'Fraunces', serif;
-    font-style: italic;
+    font-family: 'Newsreader', serif;
+    font-style: normal;
     font-weight: 800;
     font-size: 26px;
     line-height: 1;
@@ -1281,10 +1288,10 @@
     flex-shrink: 0;
   }
   .mib-text {
-    font-family: 'Fraunces', serif;
+    font-family: 'Newsreader', serif;
     font-size: 13.5px;
     line-height: 1.4;
-    color: rgba(242, 235, 221, 0.85);
+    color: rgba(244, 246, 250, 0.85);
   }
   .mib-text strong { color: var(--bg); font-weight: 700; }
   @media (max-width: 720px) {
@@ -1292,7 +1299,7 @@
     .mib-number { font-size: 22px; }
     .mib-text { font-size: 12.5px; }
   }
-  .leaflet-container { background: var(--bg-deep) !important; font-family: 'IBM Plex Sans', sans-serif; }
+  .leaflet-container { background: var(--bg-deep) !important; font-family: 'Inter', sans-serif; }
   .leaflet-popup-content-wrapper {
     background: var(--ink);
     color: var(--surface);
@@ -1304,11 +1311,11 @@
   .leaflet-tooltip.map-tt-wrap {
     background: var(--ink);
     color: var(--surface);
-    border: 1px solid rgba(242, 235, 221, 0.18);
+    border: 1px solid rgba(244, 246, 250, 0.18);
     border-radius: 3px;
     box-shadow: 0 6px 22px rgba(0, 0, 0, 0.35);
     padding: 0;
-    font-family: 'IBM Plex Sans', sans-serif;
+    font-family: 'Inter', sans-serif;
     max-width: 260px;
     white-space: normal;
   }
@@ -1322,14 +1329,14 @@
     justify-content: space-between;
     gap: 8px;
     padding-bottom: 6px;
-    border-bottom: 1px solid rgba(242, 235, 221, 0.12);
+    border-bottom: 1px solid rgba(244, 246, 250, 0.12);
     margin-bottom: 7px;
   }
   .map-tt-name {
-    font-family: 'Fraunces', serif;
+    font-family: 'Newsreader', serif;
     font-size: 14px;
     font-weight: 600;
-    font-style: italic;
+    font-style: normal;
     line-height: 1.2;
     flex: 1;
     display: inline-flex;
@@ -1341,7 +1348,7 @@
     border: 1px solid currentColor;
     border-radius: 999px;
     padding: 1px 7px;
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'JetBrains Mono', monospace;
     font-size: 8.5px;
     text-transform: uppercase;
     letter-spacing: 0.08em;
@@ -1349,19 +1356,19 @@
   .map-tt-leader {
     font-size: 11.5px;
     line-height: 1.4;
-    color: rgba(242, 235, 221, 0.95);
+    color: rgba(244, 246, 250, 0.95);
     margin-bottom: 6px;
   }
   .map-tt-leader strong {
     color: var(--surface);
-    font-family: 'IBM Plex Sans', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-weight: 600;
     font-size: 12px;
     display: inline;
     margin: 0;
   }
   .map-tt-party {
-    color: rgba(242, 235, 221, 0.65);
+    color: rgba(244, 246, 250, 0.65);
     font-size: 10.5px;
     font-style: italic;
   }
@@ -1371,14 +1378,14 @@
     margin-left: 2px;
   }
   .map-tt-system {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'JetBrains Mono', monospace;
     font-size: 9.5px;
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    color: rgba(242, 235, 221, 0.55);
+    color: rgba(244, 246, 250, 0.55);
     padding-bottom: 6px;
     margin-bottom: 6px;
-    border-bottom: 1px solid rgba(242, 235, 221, 0.08);
+    border-bottom: 1px solid rgba(244, 246, 250, 0.08);
   }
   .map-tt-metrics {
     display: grid;
@@ -1393,14 +1400,14 @@
     font-size: 11px;
   }
   .map-tt-mk {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'JetBrains Mono', monospace;
     font-size: 9px;
     text-transform: uppercase;
     letter-spacing: 0.08em;
-    color: rgba(242, 235, 221, 0.55);
+    color: rgba(244, 246, 250, 0.55);
   }
   .map-tt-mv {
-    font-family: 'Fraunces', serif;
+    font-family: 'Newsreader', serif;
     font-weight: 600;
     font-feature-settings: "tnum";
     color: var(--surface);
@@ -1411,17 +1418,17 @@
     align-items: baseline;
     margin-top: 4px;
     padding-top: 6px;
-    border-top: 1px solid rgba(242, 235, 221, 0.08);
+    border-top: 1px solid rgba(244, 246, 250, 0.08);
   }
   .map-tt-row .map-tt-k {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'JetBrains Mono', monospace;
     font-size: 9px;
     text-transform: uppercase;
     letter-spacing: 0.08em;
-    color: rgba(242, 235, 221, 0.55);
+    color: rgba(244, 246, 250, 0.55);
   }
   .map-tt-row .map-tt-v {
-    font-family: 'IBM Plex Sans', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-size: 11.5px;
     color: var(--accent);
     font-weight: 500;
@@ -1429,8 +1436,8 @@
   .map-tt-cta {
     margin-top: 6px;
     padding-top: 6px;
-    border-top: 1px dashed rgba(242, 235, 221, 0.18);
-    font-family: 'IBM Plex Mono', monospace;
+    border-top: 1px dashed rgba(244, 246, 250, 0.18);
+    font-family: 'JetBrains Mono', monospace;
     font-size: 9px;
     text-transform: uppercase;
     letter-spacing: 0.1em;
@@ -1438,24 +1445,24 @@
     text-align: center;
   }
   .map-tt-empty {
-    font-family: 'Fraunces', serif;
+    font-family: 'Newsreader', serif;
     font-style: italic;
     font-size: 11px;
-    color: rgba(242, 235, 221, 0.55);
+    color: rgba(244, 246, 250, 0.55);
     padding: 4px 12px 6px;
   }
   .leaflet-popup-content {
     margin: 10px 14px;
-    font-family: 'IBM Plex Sans', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-size: 13px;
   }
-  .leaflet-popup-content strong { font-family: 'Fraunces', serif; font-size: 15px; display: block; margin-bottom: 2px; }
+  .leaflet-popup-content strong { font-family: 'Newsreader', serif; font-size: 15px; display: block; margin-bottom: 2px; }
   .leaflet-popup-tip { background: var(--ink); }
   .leaflet-control-zoom a {
     background: var(--surface) !important;
     color: var(--ink) !important;
     border: 1px solid var(--line-strong) !important;
-    font-family: 'Fraunces', serif !important;
+    font-family: 'Newsreader', serif !important;
   }
   .leaflet-control-attribution {
     background: rgba(251,247,238,.9) !important;
@@ -1468,7 +1475,7 @@
     display: flex; align-items: center; justify-content: center;
     flex-direction: column; gap: 12px;
     z-index: 400;
-    font-family: 'Fraunces', serif;
+    font-family: 'Newsreader', serif;
     font-style: italic;
     color: var(--ink-soft);
   }
@@ -1499,7 +1506,7 @@
     gap: 18px;
   }
   .headlines-ticker-label {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'JetBrains Mono', monospace;
     font-size: 9.5px;
     text-transform: uppercase;
     letter-spacing: 0.16em;
@@ -1521,7 +1528,7 @@
     display: flex;
     align-items: center;
     gap: 10px;
-    font-family: 'Fraunces', Georgia, serif;
+    font-family: 'Newsreader', Georgia, serif;
     font-size: 14.5px;
     font-style: italic;
     color: var(--ink);
@@ -1541,7 +1548,7 @@
   }
   .headline-item strong {
     color: var(--accent);
-    font-family: 'Fraunces', Georgia, serif;
+    font-family: 'Newsreader', Georgia, serif;
     font-weight: 700;
     font-style: normal;
     font-size: 16px;
@@ -1609,12 +1616,12 @@
     top: 47px;
     z-index: 800;
     background: var(--bg);
-    box-shadow: 0 1px 0 var(--line), 0 2px 12px rgba(26, 22, 20, 0.04);
+    box-shadow: 0 1px 0 var(--line), 0 2px 12px rgba(11, 22, 40, 0.04);
     backdrop-filter: blur(6px);
   }
   /* When sticky and not at the top, show subtle shadow below */
   .filters-sticky.is-pinned {
-    box-shadow: 0 1px 0 var(--line-strong), 0 6px 16px rgba(26, 22, 20, 0.10);
+    box-shadow: 0 1px 0 var(--line-strong), 0 6px 16px rgba(11, 22, 40, 0.10);
   }
   /* On desktop the secondary filters are always visible; toggle button hidden */
   .filters-toggle-btn {
@@ -1664,7 +1671,7 @@
       border: 1px solid var(--line-strong);
       border-radius: 999px;
       color: var(--ink-soft);
-      font-family: 'IBM Plex Mono', monospace;
+      font-family: 'JetBrains Mono', monospace;
       font-size: 10px;
       text-transform: uppercase;
       letter-spacing: 0.08em;
@@ -1796,7 +1803,7 @@
     color: var(--muted);
     border: 1px solid var(--line-strong);
     border-radius: 999px;
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'JetBrains Mono', monospace;
     font-size: 9.5px;
     text-transform: uppercase;
     letter-spacing: 0.1em;
@@ -1809,7 +1816,7 @@
   .chart-export-btn:hover {
     color: var(--accent);
     border-color: var(--accent);
-    background: rgba(160, 43, 62, 0.06);
+    background: rgba(194, 65, 12, 0.06);
   }
   .chart-export-btn.is-loading {
     opacity: 0.5;
@@ -1836,12 +1843,12 @@
     color: var(--ink);
     border: 1px solid var(--line-strong);
     border-radius: 999px;
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'JetBrains Mono', monospace;
     font-size: 10.5px;
     text-transform: uppercase;
     letter-spacing: 0.12em;
     cursor: pointer;
-    box-shadow: 0 4px 14px rgba(26, 22, 20, 0.18);
+    box-shadow: 0 4px 14px rgba(11, 22, 40, 0.18);
     opacity: 0;
     transform: translateY(16px) scale(0.92);
     pointer-events: none;
@@ -1875,15 +1882,15 @@
     flex-wrap: wrap;
   }
   .export-wrap .export-header-title {
-    font-family: 'Fraunces', serif;
+    font-family: 'Newsreader', serif;
     font-size: 22px;
     font-weight: 700;
-    font-style: italic;
+    font-style: normal;
     color: var(--ink);
     letter-spacing: -0.01em;
   }
   .export-wrap .export-header-section {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'JetBrains Mono', monospace;
     font-size: 11px;
     text-transform: uppercase;
     letter-spacing: 0.15em;
@@ -1892,21 +1899,21 @@
   .export-citation {
     margin-top: 22px;
     padding: 14px 18px;
-    background: rgba(160, 43, 62, 0.06);
+    background: rgba(194, 65, 12, 0.06);
     border-left: 3px solid var(--accent);
-    font-family: 'IBM Plex Sans', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-size: 11px;
     color: var(--ink-soft);
     line-height: 1.6;
   }
   .export-citation-title {
-    font-family: 'Fraunces', serif;
+    font-family: 'Newsreader', serif;
     font-size: 14px;
     color: var(--ink);
     margin-bottom: 4px;
   }
   .export-citation-author {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'JetBrains Mono', monospace;
     font-size: 10px;
     text-transform: uppercase;
     letter-spacing: 0.12em;
@@ -1919,7 +1926,7 @@
     line-height: 1.55;
   }
   .export-citation-meta em {
-    font-family: 'Fraunces', serif;
+    font-family: 'Newsreader', serif;
     font-style: italic;
     color: var(--ink);
   }
@@ -2003,7 +2010,7 @@
       bottom: 0;
       left: 0;
       right: 0;
-      font-family: 'IBM Plex Mono', monospace;
+      font-family: 'JetBrains Mono', monospace;
       font-size: 8pt;
       color: #888;
       text-align: center;
@@ -2050,12 +2057,12 @@
     color: var(--surface);
     border: 1px solid var(--ink);
     border-radius: 999px;
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'JetBrains Mono', monospace;
     font-size: 10.5px;
     text-transform: uppercase;
     letter-spacing: 0.12em;
     cursor: pointer;
-    box-shadow: 0 4px 14px rgba(26, 22, 20, 0.25);
+    box-shadow: 0 4px 14px rgba(11, 22, 40, 0.25);
     opacity: 0;
     transform: translateY(16px) scale(0.92);
     pointer-events: none;
@@ -2092,7 +2099,7 @@
     display: flex; flex-wrap: wrap; gap: 6px; align-items: center;
   }
   .filter-bar-label {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'JetBrains Mono', monospace;
     font-size: 10px;
     text-transform: uppercase;
     letter-spacing: 0.14em;
@@ -2100,7 +2107,7 @@
     margin-right: 8px;
   }
   .chip {
-    font-family: 'IBM Plex Sans', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-size: 12px;
     padding: 4px 10px;
     border: 1px solid var(--line-strong);
@@ -2159,10 +2166,10 @@
   .filter-active-badge {
     display: block;
     padding: 10px 18px;
-    background: rgba(160, 43, 62, 0.08);
-    border-bottom: 1px solid rgba(160, 43, 62, 0.25);
-    border-top: 1px solid rgba(160, 43, 62, 0.15);
-    font-family: 'IBM Plex Mono', monospace;
+    background: rgba(194, 65, 12, 0.08);
+    border-bottom: 1px solid rgba(194, 65, 12, 0.25);
+    border-top: 1px solid rgba(194, 65, 12, 0.15);
+    font-family: 'JetBrains Mono', monospace;
     font-size: 11px;
     color: var(--ink);
   }
@@ -2211,7 +2218,7 @@
     flex-wrap: wrap;
     gap: 4px 10px;
     padding: 6px 0 2px;
-    border-top: 1px dashed rgba(160, 43, 62, 0.18);
+    border-top: 1px dashed rgba(194, 65, 12, 0.18);
     margin-top: 4px;
   }
   .active-badge-country {
@@ -2220,9 +2227,9 @@
     gap: 4px;
     padding: 2px 6px;
     background: var(--surface);
-    border: 1px solid rgba(160, 43, 62, 0.18);
+    border: 1px solid rgba(194, 65, 12, 0.18);
     border-radius: 1px;
-    font-family: 'IBM Plex Sans', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-size: 11.5px;
     color: var(--ink);
     cursor: pointer;
@@ -2238,7 +2245,7 @@
   .active-badge-empty {
     padding: 8px 0;
     color: var(--muted);
-    font-family: 'Fraunces', serif;
+    font-family: 'Newsreader', serif;
     font-size: 12px;
   }
 
@@ -2252,7 +2259,7 @@
   }
   .search-box input {
     border: none; outline: none; background: transparent;
-    font-family: 'IBM Plex Sans'; font-size: 13px;
+    font-family: 'Inter'; font-size: 13px;
     width: 160px;
     color: var(--ink);
   }
@@ -2267,7 +2274,7 @@
     height: 18px;
     border-radius: 50%;
     cursor: pointer;
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'JetBrains Mono', monospace;
     font-size: 14px;
     line-height: 1;
     display: inline-flex;
@@ -2291,8 +2298,8 @@
     padding: 40px 24px;
     text-align: center;
     color: var(--muted);
-    font-family: 'Fraunces', serif;
-    font-style: italic;
+    font-family: 'Newsreader', serif;
+    font-style: normal;
     font-size: 15px;
   }
   .empty-state::before { content: ""; display: none; }
@@ -2302,14 +2309,14 @@
     opacity: 0.6;
   }
   .empty-state-title {
-    font-family: 'Fraunces', serif;
-    font-style: italic;
+    font-family: 'Newsreader', serif;
+    font-style: normal;
     font-size: 18px;
     color: var(--ink);
     margin-bottom: 6px;
   }
   .empty-state-sub {
-    font-family: 'Fraunces', serif;
+    font-family: 'Newsreader', serif;
     font-style: italic;
     font-size: 13.5px;
     color: var(--muted);
@@ -2326,7 +2333,7 @@
     text-align: left;
   }
   .empty-state-legend-title {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'JetBrains Mono', monospace;
     font-size: 9.5px;
     text-transform: uppercase;
     letter-spacing: 0.16em;
@@ -2342,7 +2349,7 @@
   }
   .empty-state-legend-item {
     display: flex; align-items: center; gap: 8px;
-    font-family: 'IBM Plex Sans', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-style: normal;
     font-size: 11.5px;
   }
@@ -2356,7 +2363,7 @@
     color: var(--ink);
   }
   .empty-state-legend-count {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'JetBrains Mono', monospace;
     font-size: 10.5px;
     color: var(--muted);
     font-weight: 500;
@@ -2364,9 +2371,9 @@
   .empty-state-tip {
     margin-top: 18px;
     padding: 12px 14px;
-    background: rgba(160, 43, 62, 0.06);
+    background: rgba(194, 65, 12, 0.06);
     border-left: 2px solid var(--accent);
-    font-family: 'IBM Plex Sans', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-style: normal;
     font-size: 11.5px;
     color: var(--ink-soft);
@@ -2384,7 +2391,7 @@
     font-size: 28px; line-height: 1;
   }
   .country-region {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'JetBrains Mono', monospace;
     font-size: 10px;
     text-transform: uppercase;
     letter-spacing: 0.16em;
@@ -2392,7 +2399,7 @@
   }
   .country-name {
     font-size: 32px; font-weight: 700; line-height: 1.05;
-    font-style: italic;
+    font-style: normal;
     margin-bottom: 14px;
   }
   .country-card-head {
@@ -2424,7 +2431,7 @@
     color: var(--muted);
     border: 1px solid var(--line-strong);
     border-radius: 999px;
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'JetBrains Mono', monospace;
     font-size: 9.5px;
     text-transform: uppercase;
     letter-spacing: 0.1em;
@@ -2434,7 +2441,7 @@
   .share-link-btn:hover {
     color: var(--accent);
     border-color: var(--accent);
-    background: rgba(160, 43, 62, 0.06);
+    background: rgba(194, 65, 12, 0.06);
   }
   .share-link-btn.is-success {
     color: var(--c-cleft);
@@ -2462,7 +2469,7 @@
     border: 1px solid var(--line);
     box-shadow: 0 0 0 4px var(--surface), 0 0 0 5px var(--line);
     display: flex; align-items: center; justify-content: center;
-    font-family: 'Fraunces', serif;
+    font-family: 'Newsreader', serif;
     font-size: 30px;
     color: var(--ink-soft);
     border-radius: 50%;
@@ -2471,23 +2478,23 @@
   }
   .leader-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
   .leader-title {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'JetBrains Mono', monospace;
     font-size: 10px;
     text-transform: uppercase;
     letter-spacing: 0.14em;
     color: var(--muted);
   }
   .leader-name {
-    font-family: 'Fraunces', serif;
+    font-family: 'Newsreader', serif;
     font-size: 19px;
     font-weight: 600;
     line-height: 1.2;
   }
   .leader-party { font-size: 12px; color: var(--ink-soft); margin-top: 2px; }
-  .leader-since { font-size: 11px; color: var(--muted); margin-top: 1px; font-family: 'IBM Plex Mono', monospace; }
+  .leader-since { font-size: 11px; color: var(--muted); margin-top: 1px; font-family: 'JetBrains Mono', monospace; }
 
   .section-title {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'JetBrains Mono', monospace;
     font-size: 10px;
     text-transform: uppercase;
     letter-spacing: 0.16em;
@@ -2500,7 +2507,7 @@
   .data-row { display: flex; justify-content: space-between; gap: 12px; padding: 5px 0; font-size: 13px; }
   .data-row .k { color: var(--muted); }
   .data-row .v { color: var(--ink); font-weight: 500; text-align: right; }
-  .data-row .v.mono { font-family: 'IBM Plex Mono', monospace; font-weight: 400; font-size: 12.5px; }
+  .data-row .v.mono { font-family: 'JetBrains Mono', monospace; font-weight: 400; font-size: 12.5px; }
 
   .results-list { margin-top: 6px; }
   .result-item {
@@ -2524,7 +2531,7 @@
     position: absolute; left: 0; top: 0; bottom: 0;
     background: var(--accent);
   }
-  .result-pct { font-family: 'IBM Plex Mono', monospace; font-size: 12.5px; font-weight: 500; }
+  .result-pct { font-family: 'JetBrains Mono', monospace; font-size: 12.5px; font-weight: 500; }
 
   .gdp-mini-chart {
     display: grid;
@@ -2549,8 +2556,8 @@
     position: absolute;
   }
   .gdp-bar.neg { background: var(--accent); }
-  .gdp-year { font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; color: var(--muted); margin-top: 4px; }
-  .gdp-val { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; font-weight: 500; margin-top: 1px; }
+  .gdp-year { font-family: 'JetBrains Mono', monospace; font-size: 9.5px; color: var(--muted); margin-top: 4px; }
+  .gdp-val { font-family: 'JetBrains Mono', monospace; font-size: 10.5px; font-weight: 500; margin-top: 1px; }
 
   /* Economic indicators grid (in country card) */
   .econ-grid {
@@ -2569,7 +2576,7 @@
     border-radius: 1px;
   }
   .econ-label {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'JetBrains Mono', monospace;
     font-size: 9.5px;
     text-transform: uppercase;
     letter-spacing: 0.1em;
@@ -2577,7 +2584,7 @@
     margin-bottom: 4px;
   }
   .econ-value {
-    font-family: 'Fraunces', serif;
+    font-family: 'Newsreader', serif;
     font-size: 19px;
     font-weight: 600;
     line-height: 1.05;
@@ -2589,7 +2596,7 @@
     font-size: 10px;
     color: var(--muted);
     margin-top: 3px;
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'JetBrains Mono', monospace;
   }
   .gini-bar { margin-top: 6px; }
   .gini-bar-track {
@@ -2628,14 +2635,14 @@
     font-size: 8.5px;
     color: var(--muted);
     margin-top: 3px;
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'JetBrains Mono', monospace;
     text-transform: uppercase;
     letter-spacing: 0.06em;
   }
 
   .source-link {
     display: inline-block; margin-top: 14px;
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'JetBrains Mono', monospace;
     font-size: 11px;
     color: var(--accent);
     text-decoration: none;
@@ -2656,10 +2663,10 @@
     padding-bottom: 8px;
   }
   .analytics-head h2 {
-    font-size: 28px; font-style: italic; font-weight: 700;
+    font-size: 28px; font-style: normal; font-weight: 700;
   }
   .analytics-head .kicker {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'JetBrains Mono', monospace;
     font-size: 10px;
     text-transform: uppercase;
     letter-spacing: 0.16em;
@@ -2688,7 +2695,7 @@
     line-height: 1.5;
     color: var(--muted);
     font-style: italic;
-    font-family: 'Fraunces', serif;
+    font-family: 'Newsreader', serif;
   }
   .chart-disclaimer strong {
     color: var(--ink-soft);
@@ -2713,7 +2720,7 @@
     min-width: 1280px;
   }
   .mm-header {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'JetBrains Mono', monospace;
     font-size: 10px;
     text-transform: uppercase;
     letter-spacing: 0.1em;
@@ -2732,7 +2739,7 @@
     margin-top: 2px;
     text-transform: none;
     letter-spacing: 0;
-    font-family: 'Fraunces', serif;
+    font-family: 'Newsreader', serif;
     font-style: italic;
   }
   .mm-row-label {
@@ -2751,13 +2758,13 @@
     flex-shrink: 0;
   }
   .mm-row-label-name {
-    font-family: 'IBM Plex Sans', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-size: 12.5px;
     color: var(--ink-soft);
     font-weight: 500;
   }
   .mm-row-label-n {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'JetBrains Mono', monospace;
     font-size: 10px;
     color: var(--muted);
     margin-left: auto;
@@ -2791,13 +2798,13 @@
     background: var(--accent) !important;
   }
   .mm-cell-value {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'JetBrains Mono', monospace;
     font-size: 12px;
     font-weight: 500;
     color: var(--ink);
   }
   .mm-cell-range {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'JetBrains Mono', monospace;
     font-size: 9.5px;
     color: var(--muted);
     margin-top: 1px;
@@ -2811,7 +2818,7 @@
     .mm-row-label { border-top: 1px solid var(--ink); border-bottom: none; padding-top: 14px; }
     .mm-cell::before {
       content: attr(data-label);
-      font-family: 'IBM Plex Mono', monospace;
+      font-family: 'JetBrains Mono', monospace;
       font-size: 9px;
       text-transform: uppercase;
       letter-spacing: 0.1em;
@@ -2829,7 +2836,7 @@
     color: var(--muted);
     font-style: italic;
     margin-bottom: 14px;
-    font-family: 'Fraunces', serif;
+    font-family: 'Newsreader', serif;
   }
 
   /* Custom ideology distribution viz */
@@ -2843,7 +2850,7 @@
     font-size: 12.5px;
   }
   .ideo-row .k { color: var(--ink-soft); }
-  .ideo-row .v { font-family: 'IBM Plex Mono', monospace; text-align: right; font-weight: 500; }
+  .ideo-row .v { font-family: 'JetBrains Mono', monospace; text-align: right; font-weight: 500; }
   .ideo-track {
     height: 14px;
     background: var(--bg-deep);
@@ -2884,12 +2891,12 @@
   .gdp-compare-bar.neg { right: 50%; background: var(--accent); justify-content: flex-start; padding-left: 6px; }
   .gdp-compare-val {
     color: white;
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'JetBrains Mono', monospace;
     font-size: 11px;
     font-weight: 500;
   }
   .gdp-compare-n {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'JetBrains Mono', monospace;
     font-size: 10px;
     color: var(--muted);
   }
@@ -2907,16 +2914,16 @@
   }
   .gender-stat {
     flex: 1;
-    font-family: 'Fraunces', serif;
+    font-family: 'Newsreader', serif;
   }
   .gender-stat-big {
     font-size: 32px; font-weight: 700; line-height: 1;
-    font-style: italic;
+    font-style: normal;
   }
   .gender-stat-big .accent { color: var(--accent); }
   .gender-stat-sub {
     font-size: 12px; color: var(--muted);
-    font-family: 'IBM Plex Sans', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-style: normal;
     margin-top: 4px;
   }
@@ -2940,12 +2947,12 @@
   }
   .gbs-fill-f { background: var(--accent); }
   .gbs-fill-m { background: var(--c-cright); }
-  .gbs-count { font-family: 'IBM Plex Mono', monospace; font-size: 11px; text-align: right; color: var(--muted); }
+  .gbs-count { font-family: 'JetBrains Mono', monospace; font-size: 11px; text-align: right; color: var(--muted); }
   .gender-legend {
     display: flex; gap: 14px;
     font-size: 11px; color: var(--muted);
     margin-top: 8px;
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'JetBrains Mono', monospace;
     text-transform: uppercase;
     letter-spacing: 0.1em;
   }
@@ -2969,7 +2976,7 @@
     gap: 4px;
   }
   .scatter-control-group label {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'JetBrains Mono', monospace;
     font-size: 10px;
     text-transform: uppercase;
     letter-spacing: 0.12em;
@@ -2977,7 +2984,7 @@
   }
   .scatter-control-group select,
   .scatter-control-group input[type="text"] {
-    font-family: 'IBM Plex Sans', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-size: 13px;
     padding: 5px 12px;
     border: 1px solid var(--line-strong);
@@ -3027,7 +3034,7 @@
     grid-column: 1 / -1;
   }
   .scatter-context-label {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'JetBrains Mono', monospace;
     font-size: 9.5px;
     text-transform: uppercase;
     letter-spacing: 0.14em;
@@ -3050,7 +3057,7 @@
     letter-spacing: 0;
     color: var(--muted);
     font-size: 10px;
-    font-family: 'Fraunces', serif;
+    font-family: 'Newsreader', serif;
     font-style: italic;
   }
   .scatter-context-label em {
@@ -3059,14 +3066,14 @@
     letter-spacing: 0;
     font-weight: 400;
     color: var(--ink);
-    font-family: 'Fraunces', serif;
+    font-family: 'Newsreader', serif;
     font-size: 11px;
   }
   .scatter-context-stats {
     display: flex;
     flex-direction: column;
     gap: 6px;
-    font-family: 'IBM Plex Sans', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-size: 12.5px;
     color: var(--ink);
   }
@@ -3076,14 +3083,14 @@
     margin-right: 4px;
   }
   .scatter-context-stats strong {
-    font-family: 'Fraunces', serif;
+    font-family: 'Newsreader', serif;
     font-size: 15px;
     font-weight: 600;
     margin-right: 4px;
     font-feature-settings: "tnum";
   }
   .scatter-context-stats .cdelta {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'JetBrains Mono', monospace;
     font-size: 10.5px;
     color: var(--c-cleft);
     opacity: 0.85;
@@ -3104,7 +3111,7 @@
     border-radius: 1px;
   }
   .scatter-quad-cell .qn {
-    font-family: 'Fraunces', serif;
+    font-family: 'Newsreader', serif;
     font-size: 22px;
     font-weight: 700;
     color: var(--ink);
@@ -3112,13 +3119,13 @@
     margin-bottom: 4px;
   }
   .scatter-quad-cell .ql {
-    font-family: 'IBM Plex Sans', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-size: 9.5px;
     color: var(--muted);
     line-height: 1.3;
   }
   .scatter-quad-cell .ql em {
-    font-family: 'Fraunces', serif;
+    font-family: 'Newsreader', serif;
     font-style: italic;
     color: var(--accent);
     font-size: 10px;
@@ -3136,25 +3143,25 @@
     flex-shrink: 0;
   }
   .scatter-spark-meta {
-    font-family: 'IBM Plex Sans', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-size: 12px;
     color: var(--ink);
     line-height: 1.5;
   }
   .scatter-spark-meta .mono {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'JetBrains Mono', monospace;
     color: var(--muted);
     font-size: 11px;
   }
   .scatter-spark-meta strong {
-    font-family: 'Fraunces', serif;
+    font-family: 'Newsreader', serif;
     font-size: 16px;
     font-weight: 700;
     color: var(--accent);
     font-feature-settings: "tnum";
   }
   .scatter-spark-meta .trend-delta {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'JetBrains Mono', monospace;
     font-size: 10px;
     color: var(--muted);
     opacity: 0.85;
@@ -3164,7 +3171,7 @@
   .scatter-tooltip {
     position: absolute;
     left: 0; top: 0;
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'JetBrains Mono', monospace;
     font-size: 11px;
     padding: 7px 11px;
     background: var(--ink);
@@ -3181,7 +3188,7 @@
   }
   .scatter-tooltip.visible { opacity: 1; }
   .scatter-tooltip strong {
-    font-family: 'Fraunces', serif;
+    font-family: 'Newsreader', serif;
     font-style: italic;
     font-size: 13px;
     display: block;
@@ -3203,7 +3210,7 @@
     gap: 14px;
   }
   .cont-label {
-    font-family: 'Fraunces', serif;
+    font-family: 'Newsreader', serif;
     font-size: 14px;
     font-weight: 500;
     color: var(--ink);
@@ -3225,7 +3232,7 @@
     position: relative;
     display: flex; align-items: center; justify-content: center;
     color: var(--surface);
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'JetBrains Mono', monospace;
     font-size: 10px;
     font-weight: 500;
     cursor: pointer;
@@ -3233,7 +3240,7 @@
   }
   .cont-segment:hover { opacity: 0.85; }
   .cont-count {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'JetBrains Mono', monospace;
     font-size: 11px;
     color: var(--muted);
     text-align: right;
@@ -3258,7 +3265,7 @@
   .ranking-row:hover { background: var(--surface-2); }
   .ranking-row:last-child { border-bottom: none; }
   .ranking-row.is-focused {
-    background: rgba(160, 43, 62, 0.10);
+    background: rgba(194, 65, 12, 0.10);
     border-left: 3px solid var(--accent);
     padding-left: 8px;
     margin-left: -4px;
@@ -3268,8 +3275,8 @@
     font-weight: 600;
   }
   .ranking-pos {
-    font-family: 'Fraunces', serif;
-    font-style: italic;
+    font-family: 'Newsreader', serif;
+    font-style: normal;
     font-size: 18px;
     font-weight: 600;
     color: var(--accent);
@@ -3285,13 +3292,13 @@
     gap: 1px;
   }
   .ranking-country {
-    font-family: 'IBM Plex Sans', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-size: 14px;
     color: var(--ink);
     font-weight: 500;
   }
   .ranking-ideology {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'JetBrains Mono', monospace;
     font-size: 9.5px;
     text-transform: uppercase;
     letter-spacing: 0.1em;
@@ -3302,7 +3309,7 @@
     background: currentColor;
   }
   .ranking-value {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'JetBrains Mono', monospace;
     font-size: 13px;
     font-weight: 500;
     color: var(--ink);
@@ -3323,7 +3330,7 @@
     grid-column: 1 / -1;
     text-align: center;
     padding: 12px 0 4px;
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'JetBrains Mono', monospace;
     font-size: 10px;
     text-transform: uppercase;
     letter-spacing: 0.16em;
@@ -3343,7 +3350,7 @@
   .profile-meta {
     flex: 1;
     min-width: 200px;
-    font-family: 'Fraunces', serif;
+    font-family: 'Newsreader', serif;
     font-style: italic;
     font-size: 13px;
     color: var(--ink-soft);
@@ -3369,21 +3376,21 @@
     margin-bottom: 8px;
   }
   .profile-card-label {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'JetBrains Mono', monospace;
     font-size: 10px;
     text-transform: uppercase;
     letter-spacing: 0.12em;
     color: var(--muted);
   }
   .profile-card-rank {
-    font-family: 'Fraunces', serif;
-    font-style: italic;
+    font-family: 'Newsreader', serif;
+    font-style: normal;
     font-size: 13px;
     color: var(--accent);
     font-weight: 500;
   }
   .profile-card-value {
-    font-family: 'Fraunces', serif;
+    font-family: 'Newsreader', serif;
     font-size: 28px;
     font-weight: 600;
     line-height: 1.05;
@@ -3397,7 +3404,7 @@
     font-size: 22px;
   }
   .profile-card-percentile {
-    font-family: 'IBM Plex Sans', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-size: 11.5px;
     color: var(--ink-soft);
     margin-bottom: 10px;
@@ -3442,19 +3449,19 @@
   .profile-comp-flag { flex-shrink: 0; }
   .profile-comp-name {
     flex: 1;
-    font-family: 'IBM Plex Sans', sans-serif;
+    font-family: 'Inter', sans-serif;
     color: var(--ink-soft);
     overflow: hidden; white-space: nowrap; text-overflow: ellipsis;
   }
   .profile-comp-value {
-    font-family: 'Fraunces', serif;
+    font-family: 'Newsreader', serif;
     font-size: 16px;
     font-weight: 600;
     color: var(--c-cleft);
     font-feature-settings: "tnum";
   }
   .profile-comp-rank {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'JetBrains Mono', monospace;
     font-size: 10px;
     color: var(--c-cleft);
     opacity: 0.85;
@@ -3469,14 +3476,14 @@
   .profile-comp-marker-1 { background: var(--ink) !important; }
   .profile-comp-marker-2 { background: var(--c-cleft) !important; }
   .profile-comp-delta {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'JetBrains Mono', monospace;
     font-size: 10px;
     color: var(--muted);
     text-align: center;
   }
   .profile-comp-delta strong { color: var(--accent); font-size: 11px; }
   .profile-card-context {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'JetBrains Mono', monospace;
     font-size: 10px;
     color: var(--muted);
     line-height: 1.5;
@@ -3509,7 +3516,7 @@
     border-top: 1px solid var(--line);
   }
   .women-leaders-title {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'JetBrains Mono', monospace;
     font-size: 10px;
     text-transform: uppercase;
     letter-spacing: 0.14em;
@@ -3537,7 +3544,7 @@
     border-radius: 50%;
     overflow: hidden;
     display: flex; align-items: center; justify-content: center;
-    font-family: 'Fraunces', serif;
+    font-family: 'Newsreader', serif;
     font-size: 16px;
     color: var(--ink-soft);
     position: relative;
@@ -3567,15 +3574,15 @@
     transform: translateX(8px);
   }
   .women-leader-name {
-    font-family: 'Fraunces', serif;
-    font-style: italic;
+    font-family: 'Newsreader', serif;
+    font-style: normal;
     font-size: 11px;
     color: var(--ink-soft);
     line-height: 1.15;
     font-weight: 500;
   }
   .women-leader-country {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'JetBrains Mono', monospace;
     font-size: 8.5px;
     color: var(--muted);
     line-height: 1.2;
@@ -3583,7 +3590,7 @@
   }
 
   .gender-by-sys-title {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'JetBrains Mono', monospace;
     font-size: 10px;
     text-transform: uppercase;
     letter-spacing: 0.14em;
@@ -3602,15 +3609,15 @@
     border-left: 3px solid var(--accent);
   }
   .cc-summary-headline {
-    font-family: 'Fraunces', serif;
-    font-style: italic;
+    font-family: 'Newsreader', serif;
+    font-style: normal;
     font-size: 16px;
     color: var(--ink);
     line-height: 1.45;
     margin-bottom: 6px;
   }
   .cc-summary-stat {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'JetBrains Mono', monospace;
     font-size: 11.5px;
     color: var(--muted);
     line-height: 1.5;
@@ -3629,7 +3636,7 @@
     height: 100%;
     display: flex; align-items: center; justify-content: center;
     color: var(--surface);
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'JetBrains Mono', monospace;
     font-size: 11px;
     font-weight: 500;
     overflow: hidden;
@@ -3650,14 +3657,14 @@
     padding-bottom: 6px;
   }
   .cc-group-label {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'JetBrains Mono', monospace;
     font-size: 11px;
     text-transform: uppercase;
     letter-spacing: 0.12em;
     font-weight: 600;
   }
   .cc-group-count {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'JetBrains Mono', monospace;
     font-size: 10px;
     color: var(--muted);
     text-transform: uppercase;
@@ -3684,14 +3691,14 @@
   .cc-item:hover {
     border-color: var(--ink-soft);
     transform: translateY(-1px);
-    box-shadow: 0 2px 6px rgba(26,22,20,0.06);
+    box-shadow: 0 2px 6px rgba(11,22,40,0.06);
   }
   .cc-item.is-focused {
-    background: rgba(160, 43, 62, 0.10);
+    background: rgba(194, 65, 12, 0.10);
     border-color: var(--accent);
     border-left-width: 4px;
     border-left-color: var(--accent);
-    box-shadow: 0 0 0 1px var(--accent), 0 4px 12px rgba(160, 43, 62, 0.2);
+    box-shadow: 0 0 0 1px var(--accent), 0 4px 12px rgba(194, 65, 12, 0.2);
     transform: translateY(-2px);
   }
   .cc-item-head {
@@ -3700,7 +3707,7 @@
   }
   .cc-item-flag { flex-shrink: 0; line-height: 1; }
   .cc-item-name {
-    font-family: 'IBM Plex Sans', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-size: 11.5px;
     font-weight: 500;
     color: var(--ink);
@@ -3708,14 +3715,14 @@
     white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
   }
   .cc-item-year {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'JetBrains Mono', monospace;
     font-size: 9px;
     color: var(--muted);
     flex-shrink: 0;
   }
   .cc-item-arrow {
     display: flex; align-items: center; gap: 4px;
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'JetBrains Mono', monospace;
     font-size: 8.5px;
     text-transform: uppercase;
     letter-spacing: 0.04em;
@@ -3728,7 +3735,7 @@
     padding: 1px 5px;
     border: 1px solid currentColor;
     border-radius: 999px;
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'JetBrains Mono', monospace;
     font-size: 7.5px;
     font-weight: 600;
     letter-spacing: 0.06em;
@@ -3740,7 +3747,7 @@
   .cc-method-note {
     margin: 16px 0;
     padding: 0;
-    background: rgba(160, 43, 62, 0.04);
+    background: rgba(194, 65, 12, 0.04);
     border-left: 3px solid var(--accent);
     border-radius: 2px;
   }
@@ -3751,7 +3758,7 @@
     display: flex;
     align-items: center;
     gap: 8px;
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'JetBrains Mono', monospace;
     font-size: 10.5px;
     text-transform: uppercase;
     letter-spacing: 0.1em;
@@ -3769,7 +3776,7 @@
     border-radius: 50%;
     background: var(--accent);
     color: var(--surface);
-    font-family: 'Fraunces', serif;
+    font-family: 'Newsreader', serif;
     font-size: 11px;
     font-style: italic;
     font-weight: 700;
@@ -3786,7 +3793,7 @@
   }
   .cc-method-content strong { color: var(--ink); }
   .cc-method-content em {
-    font-family: 'Fraunces', serif;
+    font-family: 'Newsreader', serif;
     font-style: italic;
     color: var(--ink);
   }
@@ -3810,7 +3817,7 @@
   .cc-method-caveat {
     margin-top: 10px !important;
     padding: 10px 12px;
-    background: rgba(26, 22, 20, 0.04);
+    background: rgba(11, 22, 40, 0.04);
     border-radius: 2px;
     font-size: 11.5px !important;
     color: var(--ink-soft);
@@ -3840,7 +3847,7 @@
     color: var(--bg);
   }
   footer h3 {
-    font-size: 22px; font-style: italic;
+    font-size: 22px; font-style: normal;
     color: var(--bg);
     margin-bottom: 10px;
   }
@@ -3851,7 +3858,7 @@
     margin-top: 16px;
   }
   .method-block h4 {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'JetBrains Mono', monospace;
     font-size: 10px;
     text-transform: uppercase;
     letter-spacing: 0.16em;
@@ -3861,7 +3868,7 @@
   .method-block p {
     font-size: 13px;
     line-height: 1.55;
-    color: rgba(242, 235, 221, 0.8);
+    color: rgba(244, 246, 250, 0.8);
     margin: 0 0 6px;
   }
   .method-block a { color: var(--c-cleft); }
@@ -3871,7 +3878,7 @@
   .changelog {
     margin-top: 32px;
     padding-top: 28px;
-    border-top: 1px solid rgba(242, 235, 221, 0.15);
+    border-top: 1px solid rgba(244, 246, 250, 0.15);
   }
   .editorial-decisions summary,
   .changelog summary {
@@ -3889,7 +3896,7 @@
   .editorial-decisions summary::-webkit-details-marker,
   .changelog summary::-webkit-details-marker { display: none; }
   .editorial-summary-icon {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'JetBrains Mono', monospace;
     color: var(--accent);
     font-size: 14px;
     transition: transform 0.18s ease;
@@ -3902,19 +3909,19 @@
     transform: rotate(90deg);
   }
   .editorial-summary-text {
-    font-family: 'Fraunces', serif;
-    font-style: italic;
+    font-family: 'Newsreader', serif;
+    font-style: normal;
     font-size: 20px;
     color: var(--surface);
     font-weight: 500;
     letter-spacing: -0.01em;
   }
   .editorial-summary-meta {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'JetBrains Mono', monospace;
     font-size: 10px;
     text-transform: uppercase;
     letter-spacing: 0.12em;
-    color: rgba(242, 235, 221, 0.5);
+    color: rgba(244, 246, 250, 0.5);
     margin-left: auto;
   }
   .editorial-content {
@@ -3927,11 +3934,11 @@
     to   { opacity: 1; transform: translateY(0); }
   }
   .editorial-intro {
-    font-family: 'Fraunces', serif;
+    font-family: 'Newsreader', serif;
     font-style: italic;
     font-size: 14px;
     line-height: 1.55;
-    color: rgba(242, 235, 221, 0.8);
+    color: rgba(244, 246, 250, 0.8);
     margin: 0 0 24px;
     padding-left: 14px;
     border-left: 2px solid var(--accent);
@@ -3940,22 +3947,22 @@
   .editorial-section {
     margin-bottom: 22px;
     padding: 14px 16px 12px;
-    background: rgba(242, 235, 221, 0.04);
-    border-left: 3px solid rgba(242, 235, 221, 0.18);
+    background: rgba(244, 246, 250, 0.04);
+    border-left: 3px solid rgba(244, 246, 250, 0.18);
     border-radius: 1px;
     transition: border-color 0.15s, background 0.15s;
   }
   .editorial-section:hover {
     border-left-color: var(--accent);
-    background: rgba(242, 235, 221, 0.06);
+    background: rgba(244, 246, 250, 0.06);
   }
   .editorial-section.editorial-section-highlight {
-    background: rgba(160, 43, 62, 0.08);
+    background: rgba(194, 65, 12, 0.08);
     border-left-color: var(--accent);
     border-left-width: 4px;
   }
   .editorial-section.editorial-section-highlight:hover {
-    background: rgba(160, 43, 62, 0.11);
+    background: rgba(194, 65, 12, 0.11);
   }
   .editorial-section.editorial-section-highlight h5 {
     color: var(--surface);
@@ -3972,7 +3979,7 @@
     position: relative;
     padding: 8px 12px 8px 38px !important;
     margin-bottom: 6px !important;
-    background: rgba(242, 235, 221, 0.04);
+    background: rgba(244, 246, 250, 0.04);
     border-radius: 2px;
     font-size: 12.5px !important;
     line-height: 1.55 !important;
@@ -3987,7 +3994,7 @@
     border-radius: 50%;
     background: var(--accent);
     color: var(--surface);
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'JetBrains Mono', monospace;
     font-size: 11px;
     font-weight: 700;
     display: flex;
@@ -4001,26 +4008,26 @@
     margin-bottom: 2px;
   }
   .method-hierarchy li em {
-    font-family: 'IBM Plex Sans', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-style: normal;
     color: var(--c-cleft);
     font-weight: 500;
   }
   .method-hierarchy-note {
     padding: 10px 12px !important;
-    background: rgba(242, 235, 221, 0.06) !important;
+    background: rgba(244, 246, 250, 0.06) !important;
     border-radius: 2px;
     font-size: 12px !important;
     line-height: 1.55 !important;
-    color: rgba(242, 235, 221, 0.72) !important;
+    color: rgba(244, 246, 250, 0.72) !important;
     margin-top: 12px !important;
   }
   .method-hierarchy-note strong {
     color: var(--accent) !important;
   }
   .editorial-section h5 {
-    font-family: 'Fraunces', serif;
-    font-style: italic;
+    font-family: 'Newsreader', serif;
+    font-style: normal;
     font-weight: 600;
     font-size: 15px;
     color: var(--surface);
@@ -4031,7 +4038,7 @@
   .editorial-section ul {
     font-size: 12.5px;
     line-height: 1.6;
-    color: rgba(242, 235, 221, 0.78);
+    color: rgba(244, 246, 250, 0.78);
     margin: 0 0 6px;
   }
   .editorial-section p:last-child,
@@ -4059,7 +4066,7 @@
     font-weight: 600;
   }
   .editorial-section em {
-    color: rgba(242, 235, 221, 0.95);
+    color: rgba(244, 246, 250, 0.95);
     font-style: italic;
   }
   .editorial-section a {
@@ -4077,10 +4084,10 @@
   .changelog-entry {
     margin-bottom: 22px;
     padding-left: 14px;
-    border-left: 2px solid rgba(242, 235, 221, 0.15);
+    border-left: 2px solid rgba(244, 246, 250, 0.15);
   }
   .changelog-date {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'JetBrains Mono', monospace;
     font-size: 10px;
     text-transform: uppercase;
     letter-spacing: 0.16em;
@@ -4099,14 +4106,14 @@
     margin-bottom: 6px;
     font-size: 12.5px;
     line-height: 1.55;
-    color: rgba(242, 235, 221, 0.78);
+    color: rgba(244, 246, 250, 0.78);
   }
   .changelog-entry ul li::before {
     content: "→";
     position: absolute;
     left: 0;
     color: var(--accent);
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'JetBrains Mono', monospace;
     font-size: 11px;
     top: 2px;
   }
@@ -4132,10 +4139,10 @@
     gap: 24px;
     margin-top: 36px;
     padding-top: 28px;
-    border-top: 1px solid rgba(242, 235, 221, 0.15);
+    border-top: 1px solid rgba(244, 246, 250, 0.15);
   }
   .footer-credit-block h4 {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'JetBrains Mono', monospace;
     font-size: 10px;
     text-transform: uppercase;
     letter-spacing: 0.16em;
@@ -4145,7 +4152,7 @@
   .footer-credit-block p {
     font-size: 12.5px;
     line-height: 1.6;
-    color: rgba(242, 235, 221, 0.7);
+    color: rgba(244, 246, 250, 0.7);
     margin: 0 0 6px;
   }
   .footer-credit-block a {
@@ -4178,7 +4185,7 @@
     color: var(--surface);
     border: 1px solid var(--accent);
     border-radius: 2px;
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'JetBrains Mono', monospace;
     font-size: 10.5px;
     text-transform: uppercase;
     letter-spacing: 0.1em;
@@ -4193,11 +4200,11 @@
   .dataset-note {
     margin-top: 10px !important;
     padding: 10px 12px !important;
-    background: rgba(242, 235, 221, 0.04) !important;
-    border-left: 2px solid rgba(242, 235, 221, 0.18);
+    background: rgba(244, 246, 250, 0.04) !important;
+    border-left: 2px solid rgba(244, 246, 250, 0.18);
     font-size: 11.5px !important;
     line-height: 1.55 !important;
-    color: rgba(242, 235, 221, 0.65) !important;
+    color: rgba(244, 246, 250, 0.65) !important;
   }
   .dataset-note strong {
     color: var(--bg);
@@ -4205,7 +4212,7 @@
   }
   .dataset-note a {
     color: var(--accent);
-    border-bottom-color: rgba(160, 43, 62, 0.4);
+    border-bottom-color: rgba(194, 65, 12, 0.4);
   }
   .dataset-note a:hover {
     color: var(--bg);
@@ -4216,7 +4223,7 @@
     margin-top: 8px !important;
   }
   .footer-credit-links a {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'JetBrains Mono', monospace;
     font-size: 11.5px;
     border-bottom: none !important;
   }
@@ -4224,8 +4231,8 @@
   /* Citation block — special highlighted */
   .citation-block {
     grid-column: span 2;
-    background: rgba(160, 43, 62, 0.08);
-    border: 1px solid rgba(160, 43, 62, 0.3);
+    background: rgba(194, 65, 12, 0.08);
+    border: 1px solid rgba(194, 65, 12, 0.3);
     border-left: 3px solid var(--accent);
     padding: 18px 22px;
     border-radius: 1px;
@@ -4236,10 +4243,10 @@
     background: rgba(0, 0, 0, 0.18);
     padding: 10px 14px;
     border-radius: 1px;
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'JetBrains Mono', monospace;
     font-size: 11.5px;
     line-height: 1.55;
-    color: rgba(242, 235, 221, 0.92);
+    color: rgba(244, 246, 250, 0.92);
     border-left: 2px solid var(--c-cleft);
     word-wrap: break-word;
   }
@@ -4444,6 +4451,995 @@
     .topic-nav-num { font-size: 9.5px; }
     .topic-nav-text { font-size: 13px; }
   }
+
+  /* ===========================================================
+     PORTADA (landing) — live front page above the map.
+     Everything here is filled by JS from the dataset + data/live.json,
+     so the page refreshes itself without a redeploy.
+     =========================================================== */
+  :root {
+    --br-green:  #0E6B45;
+    --br-green-soft: #D9EBDF;
+    --br-yellow: #E2B21C;
+    --br-blue:   #1C3D7A;
+    --live:      #C8102E;
+  }
+  .portada { display: none; }
+  body[data-view="inicio"] .portada { display: block; }
+  .portada-inner {
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: 36px 32px 8px;
+  }
+  .portada-hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+    gap: 40px;
+    align-items: stretch;
+  }
+  .live-pill {
+    display: inline-flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 6px 14px 6px 10px;
+  }
+  .live-pill strong { color: var(--live); font-weight: 600; }
+  .live-pill .sep { color: var(--line-strong); }
+  .live-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--live);
+    box-shadow: 0 0 0 0 rgba(200,16,46,.5);
+    animation: livePulse 1.8s infinite;
+    flex-shrink: 0;
+  }
+  .live-dot.is-stale { background: var(--muted); animation: none; }
+  @keyframes livePulse {
+    0%   { box-shadow: 0 0 0 0 rgba(200,16,46,.45); }
+    70%  { box-shadow: 0 0 0 9px rgba(200,16,46,0); }
+    100% { box-shadow: 0 0 0 0 rgba(200,16,46,0); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .live-dot { animation: none; }
+  }
+  .portada-title {
+    font-family: 'Newsreader', Georgia, serif;
+    font-size: clamp(34px, 4.6vw, 58px);
+    line-height: 1.02;
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    margin: 18px 0 14px;
+    text-wrap: balance;
+  }
+  .portada-title em { color: var(--accent); font-style: italic; }
+  .portada-lede {
+    font-size: 17px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    max-width: 58ch;
+    margin: 0 0 22px;
+  }
+  .portada-search {
+    display: flex;
+    gap: 8px;
+    max-width: 560px;
+    margin-bottom: 16px;
+  }
+  .portada-search input {
+    flex: 1;
+    min-width: 0;
+    font: inherit;
+    font-size: 16px;
+    padding: 13px 16px 13px 42px;
+    border: 1.5px solid var(--line-strong);
+    border-radius: 12px;
+    background: var(--surface) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%236B635A' stroke-width='2' stroke-linecap='round'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cpath d='M20 20l-3.5-3.5'/%3E%3C/svg%3E") no-repeat 14px center;
+    color: var(--ink);
+    transition: border-color .15s, box-shadow .15s;
+  }
+  .portada-search input:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 4px rgba(194,65,12,.12);
+  }
+  .portada-search button {
+    font: inherit;
+    font-weight: 600;
+    font-size: 15px;
+    padding: 0 20px;
+    border: 0;
+    border-radius: 12px;
+    background: var(--ink);
+    color: var(--surface);
+    cursor: pointer;
+    transition: background .15s;
+  }
+  .portada-search button:hover { background: var(--accent); }
+  .portada-search-hint {
+    font-size: 13px;
+    color: var(--muted);
+    margin: -6px 0 18px;
+    min-height: 1.2em;
+  }
+  .portada-search-hint.is-error { color: var(--accent); }
+  .portada-quick {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .quick-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 14px;
+    border: 1px solid var(--line-strong);
+    border-radius: 999px;
+    background: var(--surface);
+    color: var(--ink);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: transform .15s, border-color .15s, background .15s;
+  }
+  .quick-link:hover { border-color: var(--ink); transform: translateY(-1px); }
+  .quick-link .ql-icon { font-size: 15px; line-height: 1; }
+  .quick-link.is-special {
+    background: var(--br-green);
+    border-color: var(--br-green);
+    color: #fff;
+  }
+  .quick-link.is-special:hover { background: #0A5536; }
+
+  /* Countdown card ("Próxima gran elección") */
+  .next-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    background: var(--ink);
+    color: #F4F6FA;
+    border-radius: 18px;
+    padding: 24px 26px;
+    overflow: hidden;
+    isolation: isolate;
+  }
+  .next-card::before {
+    content: '';
+    position: absolute;
+    inset: auto -60px -80px auto;
+    width: 260px; height: 260px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(226,178,28,.35), transparent 65%);
+    z-index: -1;
+  }
+  .next-card.is-brasil { background: linear-gradient(145deg, #0B4F34 0%, #0E6B45 55%, #13784E 100%); }
+  .next-card-kicker {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    opacity: .8;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .next-card-title {
+    font-family: 'Newsreader', serif;
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1.1;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .next-card-title .flag-img { width: 38px; height: 27px; border-radius: 3px; margin: 0; }
+  .next-card-sub { font-size: 14px; opacity: .85; margin-top: -6px; }
+  .countdown {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+  }
+  .countdown-cell {
+    background: rgba(255,255,255,.1);
+    border: 1px solid rgba(255,255,255,.16);
+    border-radius: 12px;
+    padding: 10px 6px 8px;
+    text-align: center;
+  }
+  .countdown-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: clamp(24px, 3vw, 34px);
+    font-weight: 500;
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+  }
+  .countdown-lbl {
+    font-size: 10.5px;
+    text-transform: uppercase;
+    letter-spacing: .12em;
+    opacity: .7;
+    margin-top: 6px;
+  }
+  .countdown-done {
+    grid-column: 1 / -1;
+    font-family: 'Newsreader', serif;
+    font-size: 22px;
+    font-style: normal;
+    padding: 10px 0;
+  }
+  .next-card-facts {
+    display: flex; flex-wrap: wrap; gap: 6px;
+  }
+  .next-card-facts span {
+    font-size: 12.5px;
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: rgba(255,255,255,.12);
+  }
+  .next-card-cta {
+    margin-top: auto;
+    display: inline-flex;
+    align-self: flex-start;
+    align-items: center;
+    gap: 8px;
+    background: var(--br-yellow);
+    color: #0B1628;
+    font-weight: 600;
+    font-size: 14.5px;
+    text-decoration: none;
+    padding: 11px 18px;
+    border-radius: 10px;
+    transition: transform .15s;
+  }
+  .next-card-cta:hover { transform: translateX(3px); }
+
+  /* KPI pulse row */
+  .portada-pulse {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 12px;
+    margin: 32px 0 8px;
+  }
+  .pulse-tile {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 16px 18px;
+    text-align: left;
+    font: inherit;
+    color: inherit;
+    cursor: pointer;
+    transition: border-color .15s, transform .15s;
+  }
+  .pulse-tile:hover { border-color: var(--ink); transform: translateY(-2px); }
+  .pulse-num {
+    font-family: 'Newsreader', serif;
+    font-size: 34px;
+    font-weight: 700;
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+  }
+  .pulse-num small { font-size: 16px; font-weight: 500; color: var(--muted); }
+  .pulse-lbl { font-size: 14px; color: var(--ink-soft); margin-top: 6px; line-height: 1.35; }
+
+  /* Section headings inside the portada */
+  .portada-sec { margin-top: 40px; }
+  .portada-sec-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
+    border-bottom: 1px solid var(--line-strong);
+    padding-bottom: 10px;
+    margin-bottom: 18px;
+  }
+  .portada-sec-head h2 {
+    font-size: 26px;
+    font-style: normal;
+    font-weight: 700;
+  }
+  .portada-sec-head .kicker {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10.5px;
+    text-transform: uppercase;
+    letter-spacing: .16em;
+    color: var(--muted);
+  }
+
+  /* Especiales grid */
+  .especiales-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 16px;
+  }
+  .especial-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-height: 210px;
+    padding: 22px 22px 20px;
+    border-radius: 16px;
+    border: 1px solid var(--line-strong);
+    background: var(--surface);
+    color: var(--ink);
+    text-decoration: none;
+    overflow: hidden;
+    transition: transform .18s, box-shadow .18s;
+  }
+  a.especial-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+  .especial-card.is-featured {
+    background:
+      radial-gradient(circle at 92% 110%, rgba(226,178,28,.55), transparent 40%),
+      linear-gradient(135deg, #0B4F34, #0E6B45 60%, #1C3D7A);
+    color: #fff;
+    border: 0;
+  }
+  .especial-card.is-soon { background: var(--surface-2); border-style: dashed; }
+  .especial-tag {
+    align-self: flex-start;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10.5px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    padding: 4px 9px;
+    border-radius: 999px;
+    background: rgba(11,22,40,.07);
+  }
+  .especial-card.is-featured .especial-tag { background: var(--br-yellow); color: #0B1628; }
+  .especial-title {
+    font-family: 'Newsreader', serif;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1.1;
+  }
+  .especial-card.is-featured .especial-title { font-size: clamp(26px, 3vw, 36px); }
+  .especial-blurb { font-size: 14.5px; line-height: 1.5; opacity: .88; max-width: 52ch; }
+  .especial-meta {
+    margin-top: auto;
+    display: flex; flex-wrap: wrap; gap: 6px 14px;
+    font-size: 13px;
+    font-weight: 500;
+  }
+  .especial-meta .arrow { margin-left: auto; font-size: 18px; }
+
+  /* Agenda: upcoming elections */
+  .agenda-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 10px;
+  }
+  .agenda-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 14px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    text-align: left;
+    font: inherit;
+    color: inherit;
+    cursor: pointer;
+    transition: border-color .15s;
+  }
+  .agenda-item:hover { border-color: var(--ink); }
+  .agenda-date {
+    flex-shrink: 0;
+    width: 50px;
+    text-align: center;
+    border-right: 1px solid var(--line);
+    padding-right: 10px;
+  }
+  .agenda-day { font-family: 'Newsreader', serif; font-size: 24px; font-weight: 700; line-height: 1; }
+  .agenda-mon { font-family: 'JetBrains Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: .12em; color: var(--muted); }
+  .agenda-name { font-weight: 600; font-size: 14.5px; display: flex; align-items: center; gap: 4px; }
+  .agenda-type { font-size: 12.5px; color: var(--muted); line-height: 1.3; }
+  .agenda-in { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--accent); margin-top: 2px; }
+
+  /* News / notes feed from data/live.json */
+  .feed-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; }
+  .feed-item {
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    gap: 16px;
+    padding: 12px 0;
+    border-bottom: 1px dashed var(--line);
+    font-size: 15px;
+    line-height: 1.5;
+  }
+  .feed-when { font-family: 'JetBrains Mono', monospace; font-size: 11.5px; color: var(--muted); padding-top: 3px; }
+  .feed-tag {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: .12em;
+    color: var(--accent);
+    margin-right: 8px;
+  }
+  .feed-item a { color: inherit; }
+
+  .portada-to-map {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 40px 0 0;
+    padding: 14px 0 10px;
+    border-top: 2px solid var(--ink);
+  }
+  .portada-to-map h2 { font-size: 26px; font-style: normal; font-weight: 700; }
+  .portada-to-map p { margin: 0; color: var(--muted); font-size: 14px; }
+
+  @media (max-width: 980px) {
+    .portada-hero { grid-template-columns: 1fr; gap: 24px; }
+    .especiales-grid { grid-template-columns: 1fr 1fr; }
+    .especial-card.is-featured { grid-column: 1 / -1; }
+    .portada-pulse { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+  @media (max-width: 600px) {
+    .portada-inner { padding: 22px 16px 4px; }
+    .portada-lede { font-size: 15.5px; }
+    .portada-search button { padding: 0 14px; }
+    .especiales-grid { grid-template-columns: 1fr; }
+    .next-card { padding: 20px 18px; }
+    .next-card-title { font-size: 23px; }
+    .pulse-num { font-size: 28px; }
+    .feed-item { grid-template-columns: 1fr; gap: 2px; }
+    .portada-sec-head h2, .portada-to-map h2 { font-size: 22px; }
+  }
+
+  /* Highlighted nav link for the active special */
+  .topic-nav-link.is-special .topic-nav-num { color: var(--br-green); }
+  .topic-nav-link.is-special .topic-nav-text::before {
+    content: '';
+    display: inline-block;
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--live);
+    margin-right: 7px;
+    vertical-align: 2px;
+  }
+
+  /* ===========================================================
+     ESPECIAL BRASIL 2026
+     =========================================================== */
+  .esp { max-width: 1320px; margin: 0 auto; padding: 0 32px 56px; }
+  .esp-loading { padding: 80px 0; text-align: center; color: var(--muted); }
+  .esp-hero {
+    position: relative;
+    margin: 28px 0 8px;
+    padding: 34px 34px 30px;
+    border-radius: 22px;
+    color: #fff;
+    background:
+      radial-gradient(circle at 88% 20%, rgba(226,178,28,.45), transparent 32%),
+      radial-gradient(circle at 70% 120%, rgba(28,61,122,.9), transparent 45%),
+      linear-gradient(135deg, #093D28 0%, #0E6B45 55%, #11754B 100%);
+    overflow: hidden;
+    isolation: isolate;
+  }
+  .esp-hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+    gap: 32px;
+    align-items: end;
+  }
+  .esp-status {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; letter-spacing: .14em; text-transform: uppercase;
+    background: rgba(0,0,0,.25);
+    padding: 6px 12px; border-radius: 999px;
+  }
+  .esp-status .live-dot { background: var(--br-yellow); animation-name: livePulseY; }
+  @keyframes livePulseY {
+    0%   { box-shadow: 0 0 0 0 rgba(226,178,28,.6); }
+    70%  { box-shadow: 0 0 0 9px rgba(226,178,28,0); }
+    100% { box-shadow: 0 0 0 0 rgba(226,178,28,0); }
+  }
+  .esp-hero h2 {
+    font-size: clamp(34px, 5vw, 62px);
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -.02em;
+    margin: 16px 0 12px;
+  }
+  .esp-hero h2 em { color: var(--br-yellow); }
+  .esp-hero-lede { font-size: 17px; line-height: 1.55; max-width: 60ch; opacity: .92; margin: 0; }
+  .esp-hero-dates { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+  .esp-date-chip {
+    background: rgba(255,255,255,.12);
+    border: 1px solid rgba(255,255,255,.2);
+    border-radius: 10px;
+    padding: 8px 12px;
+    font-size: 13px;
+    line-height: 1.3;
+  }
+  .esp-date-chip strong { display: block; font-size: 15px; }
+  .esp-hero .countdown-cell { background: rgba(0,0,0,.2); }
+  .esp-hero-side .next-card-kicker { margin-bottom: 10px; }
+  .esp-updated { font-size: 12px; opacity: .75; margin-top: 12px; font-family: 'JetBrains Mono', monospace; }
+
+  .esp-nav {
+    position: sticky;
+    top: 0;
+    z-index: 40;
+    display: flex;
+    gap: 6px;
+    overflow-x: auto;
+    padding: 12px 0;
+    margin-bottom: 8px;
+    background: var(--bg);
+    border-bottom: 1px solid var(--line);
+    scrollbar-width: none;
+  }
+  .esp-nav::-webkit-scrollbar { display: none; }
+  .esp-nav a {
+    flex-shrink: 0;
+    font-size: 13.5px;
+    font-weight: 500;
+    color: var(--ink-soft);
+    text-decoration: none;
+    padding: 7px 13px;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    background: var(--surface);
+  }
+  .esp-nav a:hover { border-color: var(--br-green); color: var(--br-green); }
+
+  .esp-sec { margin-top: 44px; scroll-margin-top: 70px; }
+  .esp-sec-head { margin-bottom: 18px; }
+  .esp-sec-head .kicker {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10.5px; letter-spacing: .16em; text-transform: uppercase;
+    color: var(--br-green);
+  }
+  .esp-sec-head h3 {
+    font-size: clamp(24px, 2.6vw, 32px);
+    font-style: normal;
+    font-weight: 700;
+    margin-top: 4px;
+  }
+  .esp-sec-head p { color: var(--ink-soft); max-width: 72ch; margin: 8px 0 0; line-height: 1.55; }
+
+  /* Offices ("Qué se elige") */
+  .offices-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 12px;
+  }
+  .office-card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-top: 4px solid var(--br-green);
+    border-radius: 14px;
+    padding: 18px 18px 16px;
+  }
+  .office-num {
+    font-family: 'Newsreader', serif;
+    font-size: 44px;
+    font-weight: 800;
+    line-height: 1;
+    color: var(--br-green);
+    font-variant-numeric: tabular-nums;
+  }
+  .office-label { font-weight: 600; font-size: 16px; margin-top: 6px; }
+  .office-detail { font-size: 13.5px; color: var(--ink-soft); margin-top: 6px; line-height: 1.45; }
+  .office-system {
+    display: inline-block;
+    margin-top: 10px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10.5px;
+    letter-spacing: .06em;
+    color: var(--muted);
+    background: var(--surface-2);
+    border-radius: 6px;
+    padding: 3px 7px;
+  }
+  .ballot-note {
+    margin-top: 14px;
+    padding: 14px 16px;
+    background: var(--br-green-soft);
+    border-radius: 12px;
+    font-size: 14.5px;
+    line-height: 1.5;
+  }
+
+  /* Map of voters */
+  .br-map-wrap {
+    display: grid;
+    grid-template-columns: minmax(0, 1.4fr) minmax(280px, 1fr);
+    gap: 22px;
+    align-items: start;
+  }
+  .br-map-card {
+    position: relative;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 16px;
+  }
+  .seg {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    padding: 4px;
+    background: var(--surface-2);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    margin-bottom: 12px;
+  }
+  .seg button {
+    font: inherit;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 6px 12px;
+    border: 0;
+    border-radius: 7px;
+    background: transparent;
+    color: var(--ink-soft);
+    cursor: pointer;
+  }
+  .seg button.is-active { background: var(--ink); color: var(--surface); }
+  .br-map-svg { width: 100%; height: auto; display: block; max-height: 620px; }
+  .br-map-svg path {
+    stroke: var(--surface);
+    stroke-width: 1;
+    cursor: pointer;
+    transition: opacity .15s;
+    vector-effect: non-scaling-stroke;
+  }
+  .br-map-svg path:hover, .br-map-svg path:focus { stroke: var(--ink); stroke-width: 2; outline: none; }
+  .br-map-svg path.is-selected { stroke: var(--ink); stroke-width: 2.5; }
+  .br-map-svg text {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    pointer-events: none;
+    paint-order: stroke;
+    stroke-width: 3px;
+  }
+  .br-legend { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; font-size: 12px; color: var(--muted); margin-top: 8px; }
+  .br-legend-scale { display: flex; }
+  .br-legend-scale span { width: 42px; height: 10px; }
+  .br-legend-scale span:first-child { border-radius: 3px 0 0 3px; }
+  .br-legend-scale span:last-child { border-radius: 0 3px 3px 0; }
+  .br-legend-ticks { display: flex; justify-content: space-between; width: 210px; font-family: 'JetBrains Mono', monospace; font-size: 10.5px; }
+  .br-tooltip {
+    position: absolute;
+    pointer-events: none;
+    background: var(--ink);
+    color: var(--surface);
+    padding: 8px 10px;
+    border-radius: 8px;
+    font-size: 12.5px;
+    line-height: 1.35;
+    opacity: 0;
+    transform: translate(-50%, calc(-100% - 12px));
+    transition: opacity .1s;
+    white-space: nowrap;
+    z-index: 5;
+  }
+  .br-tooltip.is-visible { opacity: 1; }
+  .br-tooltip strong { display: block; font-size: 13.5px; }
+
+  .br-side { display: flex; flex-direction: column; gap: 14px; }
+  .uf-card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 18px;
+  }
+  .uf-card-head { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; }
+  .uf-card-name { font-family: 'Newsreader', serif; font-size: 24px; font-weight: 700; }
+  .uf-card-uf { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--muted); }
+  .uf-card-region { font-size: 13px; color: var(--muted); margin-top: 2px; }
+  .uf-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 14px; }
+  .uf-stat { background: var(--surface-2); border-radius: 10px; padding: 10px 12px; }
+  .uf-stat-v { font-family: 'Newsreader', serif; font-size: 22px; font-weight: 700; line-height: 1.1; font-variant-numeric: tabular-nums; }
+  .uf-stat-l { font-size: 12px; color: var(--muted); margin-top: 2px; line-height: 1.3; }
+  .uf-ballot { margin-top: 14px; font-size: 13.5px; line-height: 1.5; }
+  .uf-ballot b { font-weight: 600; }
+  .uf-gov { margin-top: 10px; font-size: 13.5px; padding-top: 10px; border-top: 1px dashed var(--line); }
+  .uf-empty { color: var(--muted); font-size: 14px; }
+
+  .uf-rank { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 14px 16px; }
+  .uf-rank-title { font-family: 'JetBrains Mono', monospace; font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+  .uf-rank-list { max-height: 330px; overflow-y: auto; padding-right: 4px; }
+  .uf-rank-row {
+    display: grid;
+    grid-template-columns: 30px 1fr 70px;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    padding: 4px 0;
+    border: 0;
+    background: none;
+    font: inherit;
+    font-size: 12.5px;
+    color: inherit;
+    text-align: left;
+    cursor: pointer;
+  }
+  .uf-rank-row:hover .uf-rank-bar-fill, .uf-rank-row.is-selected .uf-rank-bar-fill { background: var(--ink); }
+  .uf-rank-uf { font-family: 'JetBrains Mono', monospace; font-weight: 500; }
+  .uf-rank-bar { height: 8px; background: var(--surface-2); border-radius: 4px; overflow: hidden; }
+  .uf-rank-bar-fill { height: 100%; background: var(--br-green); border-radius: 4px; }
+  .uf-rank-val { font-family: 'JetBrains Mono', monospace; font-size: 11.5px; text-align: right; font-variant-numeric: tabular-nums; }
+  .map-insight {
+    margin-top: 14px;
+    font-size: 14.5px;
+    line-height: 1.55;
+    padding: 14px 16px;
+    border-left: 3px solid var(--br-yellow);
+    background: var(--surface);
+    border-radius: 0 12px 12px 0;
+  }
+
+  /* Chambers (hemicycles) */
+  .chambers-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+    gap: 18px;
+  }
+  .chamber-card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 18px 18px 16px;
+  }
+  .chamber-head { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; }
+  .chamber-name { font-family: 'Newsreader', serif; font-size: 21px; font-weight: 700; }
+  .chamber-meta { font-size: 12.5px; color: var(--muted); }
+  .hemicycle { width: 100%; height: auto; display: block; margin: 8px 0 4px; }
+  .hemicycle circle { transition: opacity .15s; }
+  .hemicycle.is-dimmed circle:not(.is-hl) { opacity: .15; }
+  .hemicycle-total {
+    font-family: 'Newsreader', serif;
+    font-weight: 800;
+    fill: var(--ink);
+  }
+  .hemicycle-total-sub { font-family: 'JetBrains Mono', monospace; fill: var(--muted); letter-spacing: .1em; }
+  .party-legend { display: flex; flex-wrap: wrap; gap: 4px 6px; margin-top: 8px; }
+  .party-chip {
+    display: inline-flex; align-items: center; gap: 6px;
+    font: inherit;
+    font-size: 12.5px;
+    padding: 4px 9px 4px 7px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: var(--bg);
+    color: inherit;
+    cursor: default;
+  }
+  .party-chip i { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+  .party-chip b { font-family: 'JetBrains Mono', monospace; font-weight: 500; font-size: 11.5px; }
+  .blocs-bar { display: flex; height: 14px; border-radius: 7px; overflow: hidden; margin-top: 12px; }
+  .blocs-bar span { height: 100%; }
+  .blocs-legend { display: flex; justify-content: space-between; gap: 8px; font-size: 12px; color: var(--muted); margin-top: 6px; flex-wrap: wrap; }
+  .senate-renewal { margin-top: 12px; font-size: 13.5px; line-height: 1.5; }
+  .renewal-bar { display: flex; height: 12px; border-radius: 6px; overflow: hidden; margin: 8px 0 4px; }
+  .chamber-foot { font-size: 12px; color: var(--muted); margin-top: 10px; }
+
+  /* Presidential race */
+  .race-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 18px; }
+  .cand-list { display: grid; gap: 8px; }
+  .cand-row {
+    display: grid;
+    grid-template-columns: 6px 1fr auto;
+    gap: 12px;
+    align-items: center;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 10px 14px 10px 0;
+    overflow: hidden;
+  }
+  .cand-row .lean { align-self: stretch; }
+  .cand-name { font-weight: 600; font-size: 15px; }
+  .cand-sub { font-size: 12.5px; color: var(--muted); line-height: 1.35; }
+  .cand-num { font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--muted); }
+  .poll-box { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 18px; }
+  .poll-box h4 { font-size: 17px; margin-bottom: 4px; }
+  .poll-box .muted { font-size: 12.5px; color: var(--muted); }
+  .pbar { margin-top: 10px; }
+  .pbar-top { display: flex; justify-content: space-between; font-size: 13.5px; }
+  .pbar-top b { font-family: 'JetBrains Mono', monospace; font-weight: 500; }
+  .pbar-track { height: 10px; background: var(--surface-2); border-radius: 5px; overflow: hidden; margin-top: 4px; }
+  .pbar-fill { height: 100%; border-radius: 5px; transition: width .6s ease; }
+  .poll-src { display: block; margin-top: 12px; font-size: 12.5px; color: var(--muted); }
+  .poll-src a { color: inherit; }
+  .poll-tabs { margin: 10px 0 0; }
+
+  /* Live results */
+  .results-card {
+    background: var(--ink);
+    color: #F4F6FA;
+    border-radius: 18px;
+    padding: 22px 24px;
+  }
+  .results-head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px; }
+  .results-title { font-family: 'Newsreader', serif; font-size: 22px; font-weight: 700; }
+  .results-progress { margin-top: 14px; }
+  .results-progress-track { height: 8px; background: rgba(255,255,255,.12); border-radius: 4px; overflow: hidden; }
+  .results-progress-fill { height: 100%; background: var(--br-yellow); transition: width .6s ease; }
+  .results-progress-lbl { font-family: 'JetBrains Mono', monospace; font-size: 11.5px; opacity: .75; margin-top: 6px; }
+  .results-card .pbar-track { background: rgba(255,255,255,.1); height: 14px; border-radius: 7px; }
+  .results-card .pbar-fill { box-shadow: inset 0 0 0 1.5px rgba(255,255,255,.45); }
+  .results-card .pbar-top { font-size: 15px; }
+  .results-card .pbar { margin-top: 14px; }
+  .results-empty { opacity: .85; font-size: 15px; line-height: 1.55; margin-top: 10px; }
+  .elected-badge { font-size: 11px; background: var(--br-yellow); color: #0B1628; border-radius: 4px; padding: 1px 6px; margin-left: 6px; font-weight: 600; }
+
+  /* Calendar */
+  .br-cal { list-style: none; margin: 0; padding: 0; position: relative; }
+  .br-cal::before { content: ''; position: absolute; left: 88px; top: 6px; bottom: 6px; width: 2px; background: var(--line); }
+  .br-cal li { display: grid; grid-template-columns: 76px 24px 1fr; gap: 0 8px; align-items: start; padding: 8px 0; }
+  .br-cal-date { font-family: 'JetBrains Mono', monospace; font-size: 12px; text-align: right; color: var(--muted); padding-top: 2px; }
+  .br-cal-dot { width: 14px; height: 14px; border-radius: 50%; background: var(--surface); border: 2px solid var(--line-strong); margin: 2px auto 0; position: relative; z-index: 1; }
+  .br-cal li.is-past .br-cal-dot { background: var(--line-strong); }
+  .br-cal li.is-next .br-cal-dot { background: var(--br-yellow); border-color: var(--br-green); box-shadow: 0 0 0 4px rgba(226,178,28,.3); }
+  .br-cal li.is-key .br-cal-label { font-weight: 600; }
+  .br-cal li.is-past .br-cal-label { color: var(--muted); }
+  .br-cal-label { font-size: 14.5px; line-height: 1.45; }
+  .br-cal-in { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--br-green); }
+
+  .facts-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 10px; list-style: none; padding: 0; margin: 0; }
+  .facts-list li { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; font-size: 14px; line-height: 1.5; }
+  .esp-sources { font-size: 13px; color: var(--muted); line-height: 1.7; }
+  .esp-sources a { color: var(--ink-soft); }
+
+  @media (max-width: 980px) {
+    .esp-hero-grid, .br-map-wrap, .chambers-grid, .race-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 600px) {
+    .esp { padding: 0 16px 40px; }
+    .esp-hero { padding: 24px 18px; border-radius: 16px; margin-top: 16px; }
+    .esp-hero-lede { font-size: 15.5px; }
+    .office-num { font-size: 36px; }
+    .br-cal::before { left: 70px; }
+    .br-cal li { grid-template-columns: 58px 24px 1fr; }
+    .uf-stats { grid-template-columns: 1fr 1fr; }
+  }
+
+  .sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
+
+  /* ===========================================================
+     THEME 2026 — institutional portal look.
+     Navy masthead, white navigation, serif headlines (Newsreader),
+     Inter for text and UI. Loaded last so it wins over older rules.
+     =========================================================== */
+  body {
+    font-family: var(--font-sans);
+    font-size: 15.5px;
+    line-height: 1.55;
+    background: var(--bg);
+    color: var(--ink);
+    font-feature-settings: 'cv11', 'ss01', 'tnum' 0;
+    text-rendering: optimizeLegibility;
+  }
+  h1, h2, h3, h4, h5 { font-family: var(--font-serif); font-weight: 600; letter-spacing: -0.015em; }
+  a { text-underline-offset: 3px; }
+  ::selection { background: rgba(251,146,60,.35); }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  /* Masthead: navy band */
+  header.masthead {
+    background: var(--brand);
+    color: #fff;
+    border-bottom: 0;
+    padding: 16px 32px 18px;
+  }
+  .masthead-bg-fade {
+    background: linear-gradient(100deg, var(--brand) 32%, rgba(11,31,58,.86) 62%, rgba(11,31,58,.72) 100%);
+  }
+  .flag-stream { opacity: .28; filter: blur(2px) saturate(.6); }
+  .masthead-top { border-bottom-color: rgba(255,255,255,.12); padding-bottom: 10px; margin-bottom: 10px; }
+  .masthead-meta { color: rgba(255,255,255,.62); font-size: 10.5px; }
+  .masthead-meta span::before { color: var(--accent-bright); }
+  .masthead-byline { color: rgba(255,255,255,.85); border-bottom-color: rgba(255,255,255,.3); }
+  .masthead-byline:hover { color: #fff; border-bottom-color: var(--accent-bright); }
+  .atlas-logo, body .atlas-logo { color: #fff; }
+  .atlas-logo:hover { color: var(--accent-bright); }
+  h1.title, body h1.title {
+    color: #fff;
+    font-family: var(--font-serif);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    font-size: clamp(28px, 3.4vw, 42px);
+  }
+  h1.title em { color: var(--accent-bright); font-style: italic; font-weight: 600; text-shadow: none; }
+
+  /* Navigation: white bar, sans labels, orange underline */
+  .topic-nav-sticky {
+    background: var(--surface);
+    border-top: 0;
+    border-bottom: 1px solid var(--line);
+    box-shadow: 0 1px 3px rgba(11,22,40,.06);
+  }
+  .topic-nav-link { border-right: 0; }
+  .topic-nav-brand { border-right: 1px solid var(--line); }
+  .topic-nav-brand-text { font-family: var(--font-serif); font-weight: 700; }
+  .topic-nav-text {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: -0.005em;
+  }
+  .topic-nav-num { color: var(--muted); font-weight: 500; }
+  .topic-nav-link.is-active .topic-nav-text { color: var(--ink); }
+  .topic-nav-link.is-active .topic-nav-num { color: var(--accent); }
+  .topic-nav-link::after { background: var(--accent) !important; height: 3px !important; }
+
+  /* Filters */
+  .filters-sticky { background: rgba(244,245,247,.92); }
+
+  /* Section headings across views */
+  .analytics-head h2, .portada-sec-head h2, .portada-to-map h2, .esp-sec-head h3, footer h3 {
+    font-family: var(--font-serif);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+  .analytics-head { border-bottom: 2px solid var(--ink); }
+  .portada-sec-head { border-bottom: 2px solid var(--ink); }
+  .portada-title { font-weight: 700; letter-spacing: -0.025em; }
+  .portada-title em { font-style: italic; font-weight: 600; color: var(--accent); }
+  .esp-hero h2 { font-weight: 700; }
+
+  /* Cards: white surfaces, soft shadow, consistent radius */
+  .chart-card, .poll-card, .office-card, .chamber-card, .uf-card, .uf-rank, .br-map-card, .poll-box,
+  .pulse-tile, .agenda-item, .especial-card:not(.is-featured), .facts-list li, .cand-row {
+    background: var(--surface);
+    border-color: var(--line);
+    box-shadow: var(--shadow-sm);
+  }
+  .chart-card { border-radius: var(--radius); }
+  .pulse-tile:hover, .agenda-item:hover { border-color: var(--line-strong); box-shadow: var(--shadow-md); }
+  .next-card:not(.is-brasil) { background: linear-gradient(145deg, var(--brand), var(--brand-2)); }
+  .quick-link { box-shadow: var(--shadow-sm); border-color: var(--line); }
+  .quick-link:hover { border-color: var(--ink); }
+  .portada-search input { border-color: var(--line-strong); background-color: var(--surface); }
+  .portada-search input:focus { border-color: var(--accent); box-shadow: 0 0 0 4px rgba(194,65,12,.14); }
+  .portada-search button { background: var(--brand); }
+  .portada-search button:hover { background: var(--accent); }
+  .results-card { background: var(--brand); }
+
+  /* Insight band + stats */
+  .map-insight-band { background: var(--brand); border-top: 3px solid var(--accent); }
+  .mib-kicker { color: var(--accent-bright); }
+  .stats-bar { border-bottom-color: var(--line); }
+  .stat-value { font-weight: 700; letter-spacing: -0.02em; }
+
+  /* Footer / methodology: navy like the masthead */
+  footer { background: var(--brand); }
+
+  /* Form controls inherit the UI font (browsers default them to system fonts) */
+  button, input, select, textarea { font-family: inherit; }
+  .chip, .chip-region, .chip-system { font-family: var(--font-sans); font-weight: 500; }
+  .chip-region.active, .chip-system.active { background: var(--ink); border-color: var(--ink); color: var(--surface); }
+  .search-box input { font-family: var(--font-sans); }
+
+  .portada-title { letter-spacing: -0.012em; line-height: 1.04; }
+  .portada-hero { align-items: start; }
+  .next-card-cta { margin-top: 6px; }
+  .topic-nav-link.is-special .topic-nav-num { display: none; }
+  .quick-link:not(.is-special) .ql-icon { display: none; }
+
+  /* Newsreader needs little negative tracking; keep headings airy */
+  h1, h2, h3, h4, h5,
+  .analytics-head h2, .portada-sec-head h2, .portada-to-map h2, .esp-sec-head h3, footer h3,
+  .editorial-summary-text, .chart-card h3, .chart-title { letter-spacing: -0.005em; }
+  .portada-title, .esp-hero h2 { letter-spacing: -0.012em; }
+
+  @media (max-width: 600px) {
+    .masthead-top { display: none; }
+    header.masthead { padding: 14px 16px; }
+  }
 </style>
 </head>
 <body>
@@ -4513,6 +5509,10 @@
         </svg>
         <span class="topic-nav-brand-text">Atlas</span>
       </a>
+      <a href="#brasil" class="topic-nav-link is-special" onclick="window.__scrollToSection(event, 'brasil')">
+        <span class="topic-nav-num">★</span>
+        <span class="topic-nav-text">Brasil 2026</span>
+      </a>
       <a href="#nav-map" class="topic-nav-link" onclick="window.__scrollToSection(event, 'nav-map')">
         <span class="topic-nav-num">01</span>
         <span class="topic-nav-text">Mapa</span>
@@ -4534,6 +5534,78 @@
         <span class="topic-nav-text">Metodología</span>
       </a>
     </nav>
+
+<!-- ===== PORTADA — live front page (home view only) =====
+     Filled by the PORTADA / LIVE DATA module at the end of the script,
+     from the dataset + data/live.json (re-fetched periodically). -->
+<section class="portada" id="portada" aria-label="Portada del Atlas">
+  <div class="portada-inner">
+    <div class="portada-hero">
+      <div class="portada-main">
+        <div class="live-pill" id="live-pill">
+          <span class="live-dot" id="live-dot"></span>
+          <strong>En vivo</strong>
+          <span class="sep">·</span>
+          <span id="portada-now">—</span>
+          <span class="sep">·</span>
+          <span id="live-updated">cargando datos…</span>
+        </div>
+        <h2 class="portada-title">Quién gobierna el mundo y <em>quién vota ahora</em>.</h2>
+        <p class="portada-lede">
+          Buscá un país para ver quién lo gobierna, cómo se elige y cuándo vuelve a votar.
+          O entrá a un especial: la cobertura de las elecciones que están pasando, con datos que se actualizan solos.
+        </p>
+        <form class="portada-search" id="portada-search" role="search" autocomplete="off">
+          <label for="portada-search-input" class="sr-only">Buscar país</label>
+          <input id="portada-search-input" type="search" placeholder="Ej: Brasil, Francia, Japón…" list="search-suggestions">
+          <button type="submit">Ver ficha</button>
+        </form>
+        <div class="portada-search-hint" id="portada-search-hint" aria-live="polite"></div>
+        <div class="portada-quick">
+          <a class="quick-link is-special" href="#brasil" onclick="return window.__atlasGoTo('brasil')"><span class="ql-icon">🇧🇷</span> Especial Brasil 2026</a>
+          <a class="quick-link" href="#nav-map" onclick="return window.__portadaToMap()"><span class="ql-icon">🗺️</span> Mapa</a>
+          <a class="quick-link" href="#elecciones" onclick="return window.__atlasGoTo('elecciones')"><span class="ql-icon">🗳️</span> Calendario</a>
+          <a class="quick-link" href="#analisis" onclick="return window.__atlasGoTo('analisis')"><span class="ql-icon">📊</span> Análisis</a>
+          <a class="quick-link" href="#cambio" onclick="return window.__atlasGoTo('cambio')"><span class="ql-icon">🔄</span> ¿Cambio o continuidad?</a>
+        </div>
+      </div>
+      <aside class="next-card" id="next-card" aria-live="polite"></aside>
+    </div>
+
+    <div class="portada-pulse" id="portada-pulse"></div>
+
+    <div class="portada-sec">
+      <div class="portada-sec-head">
+        <h2>Especiales</h2>
+        <span class="kicker">Coberturas a fondo</span>
+      </div>
+      <div class="especiales-grid" id="especiales-grid"></div>
+    </div>
+
+    <div class="portada-sec">
+      <div class="portada-sec-head">
+        <h2>Se vota pronto</h2>
+        <span class="kicker"><a href="#elecciones" onclick="return window.__atlasGoTo('elecciones')" style="color:inherit">Ver calendario completo →</a></span>
+      </div>
+      <div class="agenda-list" id="portada-agenda"></div>
+    </div>
+
+    <div class="portada-sec" id="portada-feed-wrap" hidden>
+      <div class="portada-sec-head">
+        <h2>Últimas actualizaciones</h2>
+        <span class="kicker" id="portada-feed-kicker">Notas del editor</span>
+      </div>
+      <ul class="feed-list" id="portada-feed"></ul>
+    </div>
+
+    <div class="portada-to-map" id="portada-to-map">
+      <div>
+        <h2>Explorá el mapa</h2>
+        <p>Tocá un país para ver su ficha. Filtrá por ideología, continente o sistema de gobierno.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- Sticky global filters — accompany scroll, allow filtering from anywhere -->
 <div class="filters-sticky" id="filters-sticky">
@@ -4848,6 +5920,10 @@
     </div>
 
     </section>
+  </div>
+
+  <div class="atlas-view" data-view="brasil">
+    <div class="esp" id="esp-brasil"><div class="esp-loading">Cargando especial…</div></div>
   </div>
 
   <div class="atlas-view" data-view="metodologia">
@@ -5273,7 +6349,7 @@
       <h4>Tecnología y código</h4>
       <p>HTML / CSS / JavaScript estático, sin frameworks ni dependencias de build.
         Mapa con <a href="https://leafletjs.com" target="_blank" rel="noopener">Leaflet</a> 1.9.
-        Tipografías: Fraunces (serif italic) e IBM Plex (sans &amp; mono) vía Google Fonts.</p>
+        Tipografías: Newsreader (títulos), Inter (texto) y JetBrains Mono (datos) vía Google Fonts.</p>
       <p>Código fuente disponible bajo licencia MIT. El atlas se actualiza con cada elección
         nacional en países de la base. Sugerencias y correcciones bienvenidas.</p>
     </div>
@@ -5410,7 +6486,7 @@ const IDEOLOGIES = {
    Each poll cites firm, client, fieldwork dates, n and margin of error
    where published, plus the source URL. Data is a snapshot; Colombian
    law bans poll publication in the week before the vote, so these are
-   the last legally published rounds. Verified against press (May 2026).
+   the last legally published rounds. Brasil updated with September 2026 polls.
    =========================================================== */
 const POLLS_2026 = {
   brasil: {
@@ -5424,14 +6500,14 @@ const POLLS_2026 = {
       { name: 'Flávio Bolsonaro', party: 'Partido Liberal (PL)', lean: 'far-right' }
     ],
     polls: [
-      { firm: 'Datafolha', client: 'Folha de S.Paulo', dates: '14–16 may', n: 2004, values: [45.0, 45.0],
-        url: 'https://www.aljazeera.com/news/2026/5/16/poll-shows-lula-and-bolsonaro-tied-before-brazils-presidential-election' },
-      { firm: 'Quaest', client: 'Genial Investimentos', dates: 'jun (post-escándalo)', values: [41.0, 29.0],
-        url: 'https://www.as-coa.org/articles/poll-tracker-brazils-2026-presidential-election' },
-      { firm: 'Nexus', client: 'BTG Pactual', dates: '27–29 mar', moe: 2.0, values: [46.0, 46.0],
-        url: 'https://www.riotimesonline.com/brazil-election-poll-tracker-2026/' },
-      { firm: 'CNT / MDA', client: 'Confederación Nacional del Transporte', dates: 'jun', values: [42.0, 33.0],
-        url: 'https://polymarket.com/event/brazil-presidential-election' }
+      { firm: 'AtlasIntel', client: 'Bloomberg', dates: '17–22 sep', n: 5015, moe: 1.0, values: [45.8, 43.4],
+        url: 'https://www.cnnbrasil.com.br/eleicoes/atlas-bloomberg-lula-tem-458-no-1o-turno-flavio-434/' },
+      { firm: 'Quaest', client: 'Genial Investimentos', dates: '17–20 sep', n: 2004, moe: 2.0, values: [37.0, 33.0],
+        url: 'https://www.dgabc.com.br/Noticia/4348267/no-1-turno-lula-tem-37-dos-votos-totais-flavio-33-cury-6-caiado-4-aponta-quaest' },
+      { firm: 'Datafolha', client: 'Folha de S.Paulo', dates: '15–17 sep', n: 2002, moe: 2.0, values: [39.0, 36.0],
+        url: 'https://mais.opovo.com.br/jornal/politica/2026/09/18/datafolha-lula-tem-39-contra-36-de-flavio-bolsonaro-no-1-turno.html' },
+      { firm: 'CNT / MDA', client: 'Confederación Nacional del Transporte', dates: '9–13 sep', n: 2002, moe: 2.2, values: [40.6, 30.4],
+        url: 'https://www.jota.info/eleicoes/eleicoes-2026/pesquisa-cnt-mda-lula-mantem-lideranca-fora-da-margem-de-erro-mas-flavio-avanca' }
     ]
   }
 };
@@ -24766,7 +25842,7 @@ function styleFeature(feature) {
     return {
       fillColor: getCSSVar('--c-unknown'),
       weight: 0.4,
-      color: '#9C8E73',
+      color: '#94A3B8',
       fillOpacity: 0.35
     };
   }
@@ -24774,7 +25850,7 @@ function styleFeature(feature) {
   return {
     fillColor: color,
     weight: state.selectedISO === iso ? 2 : 0.6,
-    color: state.selectedISO === iso ? '#1A1614' : '#7A6E55',
+    color: state.selectedISO === iso ? '#0B1628' : '#64748B',
     fillOpacity: dim ? 0.18 : 0.78,
     opacity: dim ? 0.5 : 1
   };
@@ -24790,7 +25866,7 @@ function onEachFeature(feature, layer) {
 
   layer.on({
     mouseover: e => {
-      e.target.setStyle({ weight: 1.6, color: '#1A1614' });
+      e.target.setStyle({ weight: 1.6, color: '#0B1628' });
       const name = country ? country.name : getFeatureName(feature);
 
       if (!country) {
@@ -24856,7 +25932,7 @@ function onEachFeature(feature, layer) {
     },
     mouseout: e => {
       state.geoLayer.resetStyle(e.target);
-      if (state.selectedISO === iso) e.target.setStyle({ weight: 2, color: '#1A1614' });
+      if (state.selectedISO === iso) e.target.setStyle({ weight: 2, color: '#0B1628' });
     },
     click: () => {
       if (!country) {
@@ -24900,7 +25976,7 @@ function restyleMap() {
 function renderEmptyDetail(name) {
   document.getElementById('panel-detail').innerHTML = `
     <div class="empty-state" style="padding:40px 28px">
-      <strong style="display:block; font-family:Fraunces,serif; font-size:22px; color:var(--ink); font-style:italic; margin-bottom:6px">${name}</strong>
+      <strong style="display:block; font-family:'Newsreader',serif; font-size:22px; color:var(--ink); font-style:italic; margin-bottom:6px">${name}</strong>
       Aún no cargado en la base.<br>
       <span style="font-size:13px; opacity:.7">Sumalo editando el array <code>COUNTRIES</code>.</span>
     </div>`;
@@ -25031,14 +26107,14 @@ function renderDetail(c) {
     <div class="section-title">Poder legislativo · ${c.legislature.type}</div>
     ${upper ? `
       <div style="margin-bottom:8px">
-        <div style="font-family:Fraunces,serif; font-style:italic; font-size:13.5px; margin-bottom:4px">${upper.name}</div>
+        <div style="font-family:'Newsreader',serif; font-style:italic; font-size:13.5px; margin-bottom:4px">${upper.name}</div>
         <div class="data-row"><span class="k">Bancas</span><span class="v mono">${upper.seats}</span></div>
         <div class="data-row"><span class="k">Elección</span><span class="v" style="font-size:12px">${upper.method}</span></div>
         <div class="data-row"><span class="k">Mandato</span><span class="v">${upper.term}</span></div>
       </div>` : ''}
     ${lower ? `
       <div>
-        <div style="font-family:Fraunces,serif; font-style:italic; font-size:13.5px; margin-bottom:4px">${lower.name}</div>
+        <div style="font-family:'Newsreader',serif; font-style:italic; font-size:13.5px; margin-bottom:4px">${lower.name}</div>
         <div class="data-row"><span class="k">Bancas</span><span class="v mono">${lower.seats}</span></div>
         <div class="data-row"><span class="k">Elección</span><span class="v" style="font-size:12px">${lower.method}</span></div>
         <div class="data-row"><span class="k">Mandato</span><span class="v">${lower.term}</span></div>
@@ -25573,14 +26649,14 @@ function initScatter(metrics) {
     for (let i = 0; i <= 5; i++) {
       const xVal = xLo + (xHi - xLo) * i / 5;
       const yVal = yLo + (yHi - yLo) * i / 5;
-      xTicks.push(`<text x="${xPos(xVal).toFixed(1)}" y="${PAD_T + innerH + 18}" font-family="'IBM Plex Mono', monospace" font-size="10" fill="var(--muted)" text-anchor="middle">${fmtVal(xM, xVal)}</text>`);
-      yTicks.push(`<text x="${PAD_L - 8}" y="${yPos(yVal).toFixed(1) + 4}" font-family="'IBM Plex Mono', monospace" font-size="10" fill="var(--muted)" text-anchor="end">${fmtVal(yM, yVal)}</text>`);
+      xTicks.push(`<text x="${xPos(xVal).toFixed(1)}" y="${PAD_T + innerH + 18}" font-family="'JetBrains Mono', monospace" font-size="10" fill="var(--muted)" text-anchor="middle">${fmtVal(xM, xVal)}</text>`);
+      yTicks.push(`<text x="${PAD_L - 8}" y="${yPos(yVal).toFixed(1) + 4}" font-family="'JetBrains Mono', monospace" font-size="10" fill="var(--muted)" text-anchor="end">${fmtVal(yM, yVal)}</text>`);
     }
 
     // Axes labels
     const axisLabels = `
-      <text x="${PAD_L + innerW / 2}" y="${H - 8}" font-family="'Fraunces', serif" font-style="italic" font-size="13" fill="var(--ink-soft)" text-anchor="middle">${xM.label} — ${xM.sub}</text>
-      <text x="${15}" y="${PAD_T + innerH / 2}" font-family="'Fraunces', serif" font-style="italic" font-size="13" fill="var(--ink-soft)" text-anchor="middle" transform="rotate(-90 15,${PAD_T + innerH / 2})">${yM.label} — ${yM.sub}</text>
+      <text x="${PAD_L + innerW / 2}" y="${H - 8}" font-family="'Newsreader', serif" font-style="italic" font-size="13" fill="var(--ink-soft)" text-anchor="middle">${xM.label} — ${xM.sub}</text>
+      <text x="${15}" y="${PAD_T + innerH / 2}" font-family="'Newsreader', serif" font-style="italic" font-size="13" fill="var(--ink-soft)" text-anchor="middle" transform="rotate(-90 15,${PAD_T + innerH / 2})">${yM.label} — ${yM.sub}</text>
     `;
 
     // Frame
@@ -25607,12 +26683,12 @@ function initScatter(metrics) {
     if (worldXAvg != null && worldXAvg >= xLo && worldXAvg <= xHi) {
       const x = xPos(worldXAvg).toFixed(1);
       avgLines += `<line x1="${x}" y1="${PAD_T}" x2="${x}" y2="${PAD_T + innerH}" stroke="var(--accent)" stroke-width="1" stroke-dasharray="4,3" opacity="0.55"/>`;
-      avgLines += `<text x="${x}" y="${PAD_T - 6}" font-family="'IBM Plex Mono', monospace" font-size="9" fill="var(--accent)" text-anchor="middle" opacity="0.85">prom. mundial</text>`;
+      avgLines += `<text x="${x}" y="${PAD_T - 6}" font-family="'JetBrains Mono', monospace" font-size="9" fill="var(--accent)" text-anchor="middle" opacity="0.85">prom. mundial</text>`;
     }
     if (worldYAvg != null && worldYAvg >= yLo && worldYAvg <= yHi) {
       const y = yPos(worldYAvg).toFixed(1);
       avgLines += `<line x1="${PAD_L}" y1="${y}" x2="${PAD_L + innerW}" y2="${y}" stroke="var(--accent)" stroke-width="1" stroke-dasharray="4,3" opacity="0.55"/>`;
-      avgLines += `<text x="${PAD_L + innerW + 4}" y="${parseFloat(y) + 3}" font-family="'IBM Plex Mono', monospace" font-size="9" fill="var(--accent)" text-anchor="start" opacity="0.85">prom. mundial</text>`;
+      avgLines += `<text x="${PAD_L + innerW + 4}" y="${parseFloat(y) + 3}" font-family="'JetBrains Mono', monospace" font-size="9" fill="var(--accent)" text-anchor="start" opacity="0.85">prom. mundial</text>`;
     }
     // Second crosshair for the filtered subset (continent / system / ideology) — only if filter active
     if (hasFilter && subsetXAvg != null && subsetYAvg != null) {
@@ -26293,7 +27369,7 @@ function initProfile(metrics) {
         <path class="profile-sparkline-line" d="${linePath}"/>
         ${dots}
       </svg>
-      <div style="display:flex; justify-content:space-between; font-family:'IBM Plex Mono', monospace; font-size:9.5px; color:var(--muted); padding: 0 4px;">
+      <div style="display:flex; justify-content:space-between; font-family:'JetBrains Mono', monospace; font-size:9.5px; color:var(--muted); padding: 0 4px;">
         <span>${firstYear}: ${firstVal > 0 ? '+' : ''}${firstVal.toFixed(1)}%</span>
         <span>${lastYear}: <strong style="color:var(--ink)">${lastVal > 0 ? '+' : ''}${lastVal.toFixed(1)}%</strong></span>
       </div>
@@ -26950,6 +28026,62 @@ function renderPolls() {
   grid.innerHTML = cards;
 }
 
+/* Known national election dates 2026-2028 — shared by the calendar and the portada. */
+const KNOWN_ELECTION_DATES = {
+  // ============ 2026 ============
+  'BRA': { day: 4,  month: 9,  year: 2026 },   // Brasil — generales 1ra vuelta (TSE)
+  'USA': { day: 3,  month: 10, year: 2026 },   // EE.UU. midterms — 3 nov 2026
+  'COL': { day: 31, month: 4,  year: 2026 },   // Colombia — presidencial 1ra vuelta
+  'PER': { day: 7,  month: 5,  year: 2026 },   // Perú — presidencial 2da vuelta
+  'SWE': { day: 13, month: 8,  year: 2026 },   // Suecia — generales 13 sep 2026
+  'DNK': { day: 1,  month: 9,  year: 2026 },   // Dinamarca — antes 31 oct 2026
+  'BGD': { day: 1,  month: 1,  year: 2026 },   // Bangladés — feb 2026
+  'CRI': { day: 1,  month: 1,  year: 2026 },   // Costa Rica — feb 2026 (ya pasó)
+  'STP': { day: 12, month: 6,  year: 2026 },   // Santo Tomé — presidencial jul
+  'CPV': { day: 19, month: 3,  year: 2026 },   // Cabo Verde — legislativas abr
+  'NIC': { day: 1,  month: 10, year: 2026 },   // Nicaragua — nov 2026
+  'GMB': { day: 1,  month: 11, year: 2026 },   // Gambia — dic 2026
+  'BFA': { day: 1,  month: 5,  year: 2029 },   // Postergada (junta militar)
+  'ETH': { day: 1,  month: 5,  year: 2026 },   // Etiopía — jun 2026
+  'NPL': { day: 1,  month: 1,  year: 2026 },   // Nepal — post-crisis (feb)
+  'MAR': { day: 1,  month: 8,  year: 2026 },   // Marruecos — sep 2026
+  'BHS': { day: 1,  month: 8,  year: 2026 },   // Bahamas — sep 2026
+  'BHR': { day: 1,  month: 10, year: 2026 },   // Baréin — nov 2026
+  'CYP': { day: 24, month: 4,  year: 2026 },   // Chipre — parlamentarias 24 may 2026
+  'BIH': { day: 4,  month: 9,  year: 2026 },   // Bosnia — generales oct 2026
+  'COG': { day: 21, month: 2,  year: 2026 },   // Congo Brazzaville — mar 2026
+  'KGZ': { day: 25, month: 0,  year: 2026 },   // Kirguistán — ene 2026
+  'LCA': { day: 1,  month: 6,  year: 2026 },   // Santa Lucía — jul 2026
+  'NZL': { day: 17, month: 9,  year: 2026 },   // Nueva Zelanda — oct 2026
+  'ZMB': { day: 13, month: 7,  year: 2026 },   // Zambia — ago 2026
+  'PSE': { day: 1,  month: 9,  year: 2026 },   // Palestina (programada)
+  'LBN': { day: 18, month: 4,  year: 2026 },   // Líbano — parlamentarias may 2026
+  'ISR': { day: 27, month: 9,  year: 2026 },   // Israel — legal deadline 27 oct 2026
+  'RUS': { day: 20, month: 8,  year: 2026 },   // Rusia — legislativas sep 2026
+  'LVA': { day: 3,  month: 9,  year: 2026 },   // Letonia — generales oct 2026
+  'SVN': { day: 1,  month: 5,  year: 2026 },   // Eslovenia — parlamentarias jun 2026
+  'FJI': { day: 1,  month: 9,  year: 2026 },   // Fiyi — oct 2026
+  'HTI': { day: 1,  month: 10, year: 2026 },   // Haití — nov 2026 (interino)
+  'PHL': { day: 11, month: 4,  year: 2025 },   // Filipinas — ya pasó
+  'MMR': { day: 28, month: 11, year: 2025 },   // Myanmar (junta) — dic 2025
+  'CAF': { day: 28, month: 11, year: 2025 },   // Centroafricana — dic 2025
+
+  // ============ 2027 ============
+  'NGA': { day: 16, month: 0,  year: 2027 },   // Nigeria — presidencial 16 ene 2027
+  'FRA': { day: 11, month: 3,  year: 2027 },   // Francia — presidencial abr 2027
+  'ARG': { day: 24, month: 9,  year: 2027 },   // Argentina — presidencial 24 oct 2027
+  'SYR': { day: 1,  month: 4,  year: 2027 },   // Siria — may 2027 (transición)
+  'KEN': { day: 10, month: 7,  year: 2027 },   // Kenia — ago 2027
+  'POL': { day: 15, month: 9,  year: 2027 },   // Polonia — parlamentarias oct 2027
+  'ESP': { day: 25, month: 6,  year: 2027 },   // España — generales jul 2027 (legal)
+  'ITA': { day: 30, month: 5,  year: 2027 },   // Italia — generales 2027
+
+  // ============ 2028 ============
+  'KOR': { day: 1,  month: 4,  year: 2028 },   // Corea del Sur — may 2028
+  'TWN': { day: 8,  month: 0,  year: 2028 },   // Taiwán — presidencial ene 2028
+  'JPN': { day: 1,  month: 9,  year: 2028 },   // Japón — generales (estimado)
+};
+
 function renderElectionsTimeline() {  const today = new Date();
   const monthMap = {ene:0,feb:1,mar:2,abr:3,may:4,jun:5,jul:6,ago:7,sep:8,oct:9,nov:10,dic:11,
                     jan:0,apr:3,aug:7,dec:11};
@@ -26960,60 +28092,7 @@ function renderElectionsTimeline() {  const today = new Date();
   // Day is the actual scheduled date when known.
   // Confirmed dates verified against ElectionGuide.org, Wikipedia and national
   // electoral commissions. Month index is 0-based (Jan=0, Dec=11).
-  const KNOWN_DATES = {
-    // ============ 2026 ============
-    'BRA': { day: 4,  month: 9,  year: 2026 },   // Brasil — generales 1ra vuelta (TSE)
-    'USA': { day: 3,  month: 10, year: 2026 },   // EE.UU. midterms — 3 nov 2026
-    'COL': { day: 31, month: 4,  year: 2026 },   // Colombia — presidencial 1ra vuelta
-    'PER': { day: 7,  month: 5,  year: 2026 },   // Perú — presidencial 2da vuelta
-    'SWE': { day: 13, month: 8,  year: 2026 },   // Suecia — generales 13 sep 2026
-    'DNK': { day: 1,  month: 9,  year: 2026 },   // Dinamarca — antes 31 oct 2026
-    'BGD': { day: 1,  month: 1,  year: 2026 },   // Bangladés — feb 2026
-    'CRI': { day: 1,  month: 1,  year: 2026 },   // Costa Rica — feb 2026 (ya pasó)
-    'STP': { day: 12, month: 6,  year: 2026 },   // Santo Tomé — presidencial jul
-    'CPV': { day: 19, month: 3,  year: 2026 },   // Cabo Verde — legislativas abr
-    'NIC': { day: 1,  month: 10, year: 2026 },   // Nicaragua — nov 2026
-    'GMB': { day: 1,  month: 11, year: 2026 },   // Gambia — dic 2026
-    'BFA': { day: 1,  month: 5,  year: 2029 },   // Postergada (junta militar)
-    'ETH': { day: 1,  month: 5,  year: 2026 },   // Etiopía — jun 2026
-    'NPL': { day: 1,  month: 1,  year: 2026 },   // Nepal — post-crisis (feb)
-    'MAR': { day: 1,  month: 8,  year: 2026 },   // Marruecos — sep 2026
-    'BHS': { day: 1,  month: 8,  year: 2026 },   // Bahamas — sep 2026
-    'BHR': { day: 1,  month: 10, year: 2026 },   // Baréin — nov 2026
-    'CYP': { day: 24, month: 4,  year: 2026 },   // Chipre — parlamentarias 24 may 2026
-    'BIH': { day: 4,  month: 9,  year: 2026 },   // Bosnia — generales oct 2026
-    'COG': { day: 21, month: 2,  year: 2026 },   // Congo Brazzaville — mar 2026
-    'KGZ': { day: 25, month: 0,  year: 2026 },   // Kirguistán — ene 2026
-    'LCA': { day: 1,  month: 6,  year: 2026 },   // Santa Lucía — jul 2026
-    'NZL': { day: 17, month: 9,  year: 2026 },   // Nueva Zelanda — oct 2026
-    'ZMB': { day: 13, month: 7,  year: 2026 },   // Zambia — ago 2026
-    'PSE': { day: 1,  month: 9,  year: 2026 },   // Palestina (programada)
-    'LBN': { day: 18, month: 4,  year: 2026 },   // Líbano — parlamentarias may 2026
-    'ISR': { day: 27, month: 9,  year: 2026 },   // Israel — legal deadline 27 oct 2026
-    'RUS': { day: 20, month: 8,  year: 2026 },   // Rusia — legislativas sep 2026
-    'LVA': { day: 3,  month: 9,  year: 2026 },   // Letonia — generales oct 2026
-    'SVN': { day: 1,  month: 5,  year: 2026 },   // Eslovenia — parlamentarias jun 2026
-    'FJI': { day: 1,  month: 9,  year: 2026 },   // Fiyi — oct 2026
-    'HTI': { day: 1,  month: 10, year: 2026 },   // Haití — nov 2026 (interino)
-    'PHL': { day: 11, month: 4,  year: 2025 },   // Filipinas — ya pasó
-    'MMR': { day: 28, month: 11, year: 2025 },   // Myanmar (junta) — dic 2025
-    'CAF': { day: 28, month: 11, year: 2025 },   // Centroafricana — dic 2025
-
-    // ============ 2027 ============
-    'NGA': { day: 16, month: 0,  year: 2027 },   // Nigeria — presidencial 16 ene 2027
-    'FRA': { day: 11, month: 3,  year: 2027 },   // Francia — presidencial abr 2027
-    'ARG': { day: 24, month: 9,  year: 2027 },   // Argentina — presidencial 24 oct 2027
-    'SYR': { day: 1,  month: 4,  year: 2027 },   // Siria — may 2027 (transición)
-    'KEN': { day: 10, month: 7,  year: 2027 },   // Kenia — ago 2027
-    'POL': { day: 15, month: 9,  year: 2027 },   // Polonia — parlamentarias oct 2027
-    'ESP': { day: 25, month: 6,  year: 2027 },   // España — generales jul 2027 (legal)
-    'ITA': { day: 30, month: 5,  year: 2027 },   // Italia — generales 2027
-
-    // ============ 2028 ============
-    'KOR': { day: 1,  month: 4,  year: 2028 },   // Corea del Sur — may 2028
-    'TWN': { day: 8,  month: 0,  year: 2028 },   // Taiwán — presidencial ene 2028
-    'JPN': { day: 1,  month: 9,  year: 2028 },   // Japón — generales (estimado)
-  };
+  const KNOWN_DATES = KNOWN_ELECTION_DATES;
 
   // Parse a string like "Generales (12 dic)" → {day: 12, month: 11}
   function parseDate(typeStr) {
@@ -27325,7 +28404,7 @@ function renderElectionsTimeline() {  const today = new Date();
   // Also marks the corresponding nav link as active.
   // ============ SPA ROUTER ============
   // Maps nav hrefs (#nav-map, #nav-calendar, …) and view ids to canonical views.
-  const VIEW_IDS = ['inicio', 'elecciones', 'analisis', 'cambio', 'metodologia'];
+  const VIEW_IDS = ['inicio', 'elecciones', 'analisis', 'cambio', 'metodologia', 'brasil'];
   const NAV_TO_VIEW = {
     'nav-map': 'inicio',          // the map now lives on the home view
     'nav-calendar': 'elecciones',
@@ -27356,6 +28435,9 @@ function renderElectionsTimeline() {  const today = new Date();
     if (view === 'inicio' && window.map && window.map.invalidateSize) {
       setTimeout(() => { try { window.map.invalidateSize(); } catch(e){} }, 60);
     }
+
+    // Views that render lazily (portada, especiales) hook in here
+    if (window.__onViewShown) window.__onViewShown(view);
 
     // Update the URL hash without adding noise to history when restoring
     if (!opts.skipHash) {
@@ -27549,7 +28631,7 @@ async function fetchWikiPhoto(wikiName) {
     const list = document.createElement('div');
     list.style.cssText = 'padding:24px; display:grid; grid-template-columns:repeat(auto-fill,minmax(180px,1fr)); gap:8px; background:var(--bg-deep); position:absolute; inset:0; top:60px; overflow-y:auto; z-index:500';
     list.innerHTML = COUNTRIES.map(c => `
-      <button onclick="window._show('${c.iso}')" style="text-align:left; padding:10px 12px; background:var(--surface); border:1px solid var(--line); cursor:pointer; font-family:'IBM Plex Sans'; font-size:13px">
+      <button onclick="window._show('${c.iso}')" style="text-align:left; padding:10px 12px; background:var(--surface); border:1px solid var(--line); cursor:pointer; font-family:'Inter'; font-size:13px">
         <div>${flagOf(c.iso)} ${c.name}</div>
         <div style="font-size:10px; color:${IDEOLOGIES[c.ideology].color}; text-transform:uppercase; letter-spacing:.1em; margin-top:2px">${IDEOLOGIES[c.ideology].short}</div>
       </button>`).join('');
@@ -27627,7 +28709,7 @@ function addAntarcticSectors() {
 
   function getCountryColor(iso) {
     const c = state.countryByISO[iso];
-    if (!c) return '#7A6E55';
+    if (!c) return '#64748B';
     return getCSSVar(IDEOLOGIES[c.ideology].color.replace('var(','').replace(')',''));
   }
 
@@ -27638,7 +28720,7 @@ function addAntarcticSectors() {
     const polygon = L.polygon(makeSlice(s.west, s.east), {
       fillColor: color,
       fillOpacity: 0.62,
-      color: '#7A6E55',
+      color: '#64748B',
       weight: 0.6,
       className: 'antarctic-sector'
     }).addTo(map);
@@ -27663,7 +28745,7 @@ function addAntarcticSectors() {
   const unclaimedPoly = L.polygon(makeSlice(-150, -90), {
     fillColor: unclaimedColor,
     fillOpacity: 0.4,
-    color: '#7A6E55',
+    color: '#64748B',
     weight: 0.4,
     dashArray: '3,3'
   }).addTo(map);
@@ -27706,8 +28788,8 @@ async function exportSectionAsPNG(sectionEl, sectionTitle) {
 
   // Resolve CSS variable values up front so the wrap doesn't depend on cascade
   const styles = getComputedStyle(document.body);
-  const bgColor = styles.getPropertyValue('--bg').trim() || '#F2EBDD';
-  const inkColor = styles.getPropertyValue('--ink').trim() || '#1A1614';
+  const bgColor = styles.getPropertyValue('--bg').trim() || '#F4F5F7';
+  const inkColor = styles.getPropertyValue('--ink').trim() || '#0B1628';
   const accentColor = styles.getPropertyValue('--accent').trim() || '#A02B3E';
 
   // Wrapper visible on-screen but absolutely positioned at a far offscreen
@@ -27725,13 +28807,13 @@ async function exportSectionAsPNG(sectionEl, sectionTitle) {
     color: ${inkColor};
     padding: 32px 32px 24px;
     box-sizing: border-box;
-    font-family: 'IBM Plex Sans', sans-serif;
+    font-family: 'Inter', sans-serif;
     z-index: -1;
   `;
   wrap.innerHTML = `
     <div class="export-header" style="border-bottom: 2px solid ${inkColor}; padding-bottom: 12px; margin-bottom: 18px; display: flex; justify-content: space-between; align-items: baseline; gap: 16px; flex-wrap: wrap;">
-      <div class="export-header-title" style="font-family: 'Fraunces', Georgia, serif; font-size: 22px; font-weight: 700; font-style: italic; color: ${inkColor}; letter-spacing: -0.01em;">Atlas Político Mundial <span style="color: ${accentColor}">·</span> 2026</div>
-      <div class="export-header-section" style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.15em; color: ${accentColor};">${sectionTitle || ''}</div>
+      <div class="export-header-title" style="font-family: 'Newsreader', Georgia, serif; font-size: 22px; font-weight: 700; font-style: italic; color: ${inkColor}; letter-spacing: -0.01em;">Atlas Político Mundial <span style="color: ${accentColor}">·</span> 2026</div>
+      <div class="export-header-section" style="font-family: 'JetBrains Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.15em; color: ${accentColor};">${sectionTitle || ''}</div>
     </div>
   `;
   // Clone and append the section content
@@ -27877,6 +28959,880 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
   fab.addEventListener('click', () => {
     if (window.exportFullAtlasPDF) window.exportFullAtlasPDF();
   });
+})();
+
+/* ===========================================================
+   PORTADA + LIVE DATA + ESPECIALES
+   The front page and the "especiales" read their editable data from
+   JSON files next to index.html:
+     data/live.json                      → portada: notes, featured specials, refresh cadence
+     data/especiales/brasil-2026.json    → Brasil 2026 special (and its live results)
+     data/geo/brasil-uf.json             → Brazil states outline (SVG paths, CC BY 4.0)
+   Both JSON files are re-fetched periodically (faster on election day),
+   so updating a JSON in the repo updates every open page — no redeploy of
+   the HTML, no reload. Countdowns and "se vota pronto" are computed from
+   the clock. If the files can't be fetched (e.g. opened via file://) the
+   portada still works from the embedded dataset.
+   =========================================================== */
+(function () {
+  const LIVE_URL = 'data/live.json';
+  const BRASIL_URL = 'data/especiales/brasil-2026.json';
+  const BR_GEO_URL = 'data/geo/brasil-uf.json';
+  const MONTHS = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+  const MONTHS_SHORT = ['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
+  const DAYS = ['domingo','lunes','martes','miércoles','jueves','viernes','sábado'];
+  const LEAN_ORDER = ['far-left','left','center-left','center','center-right','right','far-right','authoritarian','dictatorship','other'];
+  const BLOCS = [
+    { id: 'izq', label: 'Izquierda y centroizq.', leans: ['far-left','left','center-left'], color: 'var(--c-left)' },
+    { id: 'cen', label: 'Centro', leans: ['center','other'], color: 'var(--c-center)' },
+    { id: 'der', label: 'Centroder. y derecha', leans: ['center-right','right','far-right'], color: 'var(--c-right)' },
+  ];
+  const GREENS = ['#E4F1E8','#BFDDC9','#8FC3A4','#5BA27C','#2E7D57','#0B5A3A'];
+
+  const live = {
+    data: null,          // data/live.json
+    brasil: null,        // data/especiales/brasil-2026.json
+    geo: null,           // Brazil states outline
+    lastFetch: null,
+    fetchOk: false,
+    timer: null,
+    brMetric: 'voters',
+    brSelected: null,
+    pollRound: 'r1',
+  };
+  window.__atlasLive = live; // handy for debugging from the console
+
+  const esc = s => String(s ?? '').replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
+  const fmtInt = n => n == null ? '—' : Math.round(n).toLocaleString('es-AR');
+  const fmtM = (n, d = 1) => n == null ? '—' : (n / 1e6).toLocaleString('es-AR', { maximumFractionDigits: d, minimumFractionDigits: d }) + ' M';
+  const fmtPct = (n, d = 1) => n == null ? '—' : n.toLocaleString('es-AR', { maximumFractionDigits: d, minimumFractionDigits: d }) + '%';
+  const leanColor = lean => (IDEOLOGIES[lean] || IDEOLOGIES.other).color;
+  const norm = s => String(s || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().trim();
+  const startOfDay = d => new Date(d.getFullYear(), d.getMonth(), d.getDate());
+
+  async function fetchJSON(url) {
+    const res = await fetch(url + (url.includes('?') ? '&' : '?') + 't=' + Date.now(), { cache: 'no-store' });
+    if (!res.ok) throw new Error(`HTTP ${res.status} — ${url}`);
+    return res.json();
+  }
+
+  function relTime(date) {
+    if (!date) return '';
+    const s = Math.round((Date.now() - date.getTime()) / 1000);
+    if (s < 60) return 'hace instantes';
+    const m = Math.round(s / 60);
+    if (m < 60) return `hace ${m} min`;
+    const h = Math.round(m / 60);
+    if (h < 24) return `hace ${h} h`;
+    const d = Math.round(h / 24);
+    return d === 1 ? 'ayer' : `hace ${d} días`;
+  }
+  function fmtDateShort(d) { return `${d.getDate()} ${MONTHS_SHORT[d.getMonth()]}`; }
+  function fmtDateLong(d) { return `${DAYS[d.getDay()]} ${d.getDate()} de ${MONTHS[d.getMonth()]}`; }
+  function daysUntil(d) { return Math.round((startOfDay(d) - startOfDay(new Date())) / 86400000); }
+  function inDaysText(n) { return n === 0 ? 'hoy' : n === 1 ? 'mañana' : `en ${n} días`; }
+
+  /* ---------- Upcoming elections, from the calendar dataset ---------- */
+  function upcomingElections(limitDays) {
+    const today = startOfDay(new Date());
+    return COUNTRIES
+      .filter(c => c.nextElection && KNOWN_ELECTION_DATES[c.iso])
+      .map(c => {
+        const k = KNOWN_ELECTION_DATES[c.iso];
+        // The calendar stores month-only estimates as day 1: flag them so we
+        // don't show a precise countdown for a date nobody has set yet.
+        return { country: c, date: new Date(k.year, k.month, k.day || 15), type: c.nextElection.type, estimated: !k.day || k.day === 1 };
+      })
+      .filter(e => !/no prevista|postergad/i.test(e.type || ''))
+      .filter(e => e.date >= today && (limitDays == null || (e.date - today) / 86400000 <= limitDays))
+      .sort((a, b) => a.date - b.date);
+  }
+
+  /* ---------- Countdown engine: any [data-countdown] element ticks ---------- */
+  function countdownHTML(targetISO, doneText) {
+    return `<div class="countdown" data-countdown="${esc(targetISO)}" data-done="${esc(doneText || '¡Es hoy!')}">
+      ${['días','horas','min','seg'].map(l => `<div class="countdown-cell"><div class="countdown-num">–</div><div class="countdown-lbl">${l}</div></div>`).join('')}
+    </div>`;
+  }
+  function tickCountdowns() {
+    document.querySelectorAll('[data-countdown]').forEach(el => {
+      const diff = new Date(el.getAttribute('data-countdown')).getTime() - Date.now();
+      if (diff <= 0) {
+        if (!el.querySelector('.countdown-done')) el.innerHTML = `<div class="countdown-done">${esc(el.getAttribute('data-done'))}</div>`;
+        return;
+      }
+      const parts = [Math.floor(diff / 86400000), Math.floor(diff / 3600000) % 24, Math.floor(diff / 60000) % 60, Math.floor(diff / 1000) % 60];
+      const nums = el.querySelectorAll('.countdown-num');
+      if (nums.length !== 4) return;
+      parts.forEach((v, i) => { const t = i === 0 ? String(v) : String(v).padStart(2, '0'); if (nums[i].textContent !== t) nums[i].textContent = t; });
+    });
+  }
+
+  /* ---------- Brasil election phase, derived from the clock ---------- */
+  function brasilPhase(br, now = new Date()) {
+    const d = br.dates;
+    const t = now.getTime();
+    const r1o = new Date(d.firstRoundOpen).getTime(), r1c = new Date(d.firstRoundClose).getTime();
+    const r2o = new Date(d.runoffOpen).getTime(), r2c = new Date(d.runoffClose).getTime();
+    const r1 = (br.results && br.results.round1) || {};
+    const r2 = (br.results && br.results.round2) || {};
+    if (t < r1o) return { id: 'campaign', label: 'Campaña en curso', target: d.firstRoundOpen, targetLabel: 'para la 1.ª vuelta', live: false };
+    if (t < r1c) return { id: 'voting', label: 'Hoy se vota · urnas abiertas', target: d.firstRoundClose, targetLabel: 'para el cierre de urnas', live: true };
+    if (r1.status !== 'final' && t < r1c + 2 * 86400000) return { id: 'counting', label: 'Escrutinio en vivo · 1.ª vuelta', target: d.runoffOpen, targetLabel: 'para la 2.ª vuelta', live: true };
+    if (t < r2o) return { id: 'runoff-campaign', label: r1.runoff === false ? 'Presidente electo en 1.ª vuelta' : 'Rumbo a la 2.ª vuelta', target: d.runoffOpen, targetLabel: 'para la 2.ª vuelta', live: false };
+    if (t < r2c) return { id: 'voting', label: 'Hoy se vota · 2.ª vuelta', target: d.runoffClose, targetLabel: 'para el cierre de urnas', live: true };
+    if (r2.status !== 'final' && t < r2c + 2 * 86400000) return { id: 'counting', label: 'Escrutinio en vivo · 2.ª vuelta', target: d.inauguration, targetLabel: 'para la asunción', live: true };
+    return { id: 'final', label: 'Resultados finales', target: d.inauguration, targetLabel: 'para la asunción', live: false };
+  }
+
+  /* ===================== PORTADA ===================== */
+  function renderNow() {
+    const el = document.getElementById('portada-now');
+    if (!el) return;
+    const n = new Date();
+    el.textContent = `${DAYS[n.getDay()]} ${n.getDate()} ${MONTHS_SHORT[n.getMonth()]} · ${String(n.getHours()).padStart(2,'0')}:${String(n.getMinutes()).padStart(2,'0')}`;
+  }
+
+  function renderFreshness() {
+    const el = document.getElementById('live-updated');
+    const dot = document.getElementById('live-dot');
+    if (!el) return;
+    const stamps = [live.data && live.data.updatedAt, live.brasil && live.brasil.updatedAt].filter(Boolean).map(s => new Date(s));
+    if (!live.fetchOk && !stamps.length) {
+      el.textContent = 'datos del atlas (sin conexión a la fuente en vivo)';
+      if (dot) dot.classList.add('is-stale');
+      return;
+    }
+    const newest = stamps.length ? new Date(Math.max(...stamps)) : null;
+    el.textContent = newest ? `actualizado ${relTime(newest)}` : 'conectado';
+    if (dot) dot.classList.toggle('is-stale', !live.fetchOk);
+  }
+
+  function renderNextCard() {
+    const card = document.getElementById('next-card');
+    if (!card) return;
+    const br = live.brasil;
+    if (br) {
+      const ph = brasilPhase(br);
+      const facts = (br.offices || []).slice(0, 4).map(o => `<span>${fmtInt(o.count)} ${esc(o.short || o.label)}</span>`).join('');
+      card.className = 'next-card is-brasil';
+      card.innerHTML = `
+        <div class="next-card-kicker"><span class="live-dot" style="background:var(--br-yellow)"></span>${esc(ph.label)}</div>
+        <div class="next-card-title">${flagOf('BRA')} Brasil elige presidente</div>
+        <div class="next-card-sub">${fmtDateLong(new Date(br.dates.firstRoundOpen))} · ${fmtM(br.electorate && br.electorate.total)} de electores · faltan…</div>
+        ${countdownHTML(ph.target, 'Ya empezó')}
+        <div class="next-card-facts">${facts}</div>
+        <a class="next-card-cta" href="#brasil" onclick="return window.__atlasGoTo('brasil')">Abrir el especial <span aria-hidden="true">→</span></a>`;
+      // Say what the countdown is for
+      const sub = card.querySelector('.next-card-sub');
+      if (sub) sub.textContent = sub.textContent.replace('faltan…', ph.targetLabel ? `cuenta regresiva ${ph.targetLabel}` : '');
+    } else {
+      const next = upcomingElections().find(e => !e.estimated) || upcomingElections()[0];
+      card.className = 'next-card';
+      if (!next) { card.innerHTML = '<div class="next-card-kicker">Sin elecciones próximas en la base</div>'; return; }
+      const target = new Date(next.date.getFullYear(), next.date.getMonth(), next.date.getDate(), 8).toISOString();
+      card.innerHTML = `
+        <div class="next-card-kicker">Próxima elección nacional</div>
+        <div class="next-card-title">${flagOf(next.country.iso)} ${esc(next.country.name)}</div>
+        <div class="next-card-sub">${esc(next.type)} · ${fmtDateLong(next.date)}</div>
+        ${countdownHTML(target, 'Se vota hoy')}
+        <a class="next-card-cta" href="#" onclick="window.__atlasJumpTo && window.__atlasJumpTo('${next.country.iso}');return false;">Ver ficha del país <span aria-hidden="true">→</span></a>`;
+    }
+    tickCountdowns();
+  }
+
+  function renderPulse() {
+    const el = document.getElementById('portada-pulse');
+    if (!el) return;
+    const soon = upcomingElections(60).filter(e => !e.estimated);
+    const restOfYear = upcomingElections().filter(e => e.date.getFullYear() === new Date().getFullYear());
+    const electors = restOfYear.reduce((s, e) => s + (e.country.electors || 0), 0);
+    const nonDemo = COUNTRIES.filter(c => c.ideology === 'authoritarian' || c.ideology === 'dictatorship').length;
+    const women = COUNTRIES.filter(c => (c.leader && c.leader.gender) === 'F').length;
+    const tiles = [
+      { num: soon.length, lbl: 'elecciones nacionales con fecha confirmada en los próximos 60 días', go: "window.__atlasGoTo('elecciones')" },
+      { num: electors ? fmtM(electors, 0).replace(' M', '<small> M</small>') : '—', lbl: `personas habilitadas para votar en lo que queda de ${new Date().getFullYear()}`, go: "window.__atlasGoTo('elecciones')" },
+      { num: `${COUNTRIES.length - nonDemo}<small> / ${COUNTRIES.length}</small>`, lbl: 'países con gobiernos surgidos de elecciones competitivas', go: "window.__atlasGoTo('analisis')" },
+      { num: women, lbl: 'mujeres al frente de un gobierno', go: "window.__atlasGoTo('analisis')" },
+    ];
+    el.innerHTML = tiles.map(t => `<button class="pulse-tile" type="button" onclick="${t.go}"><div class="pulse-num">${t.num}</div><div class="pulse-lbl">${t.lbl}</div></button>`).join('');
+  }
+
+  const DEFAULT_SPECIALS = [
+    { id: 'brasil-2026', view: 'brasil', status: 'active', tag: 'Especial · en vivo', title: 'Brasil 2026', blurb: 'Presidente, 27 gobernadores, 54 senadores y 513 diputados federales. Mapa de electores, composición del Congreso, encuestas y resultados en vivo.', date: '2026-10-04' },
+  ];
+  function renderEspeciales() {
+    const grid = document.getElementById('especiales-grid');
+    if (!grid) return;
+    const list = (live.data && live.data.specials) || DEFAULT_SPECIALS;
+    grid.innerHTML = list.map((s, i) => {
+      const isActive = s.status === 'active' && s.view;
+      const cls = ['especial-card', i === 0 && isActive ? 'is-featured' : '', !isActive ? 'is-soon' : ''].join(' ');
+      const d = s.date ? new Date(s.date + 'T12:00:00') : null;
+      const dn = d ? daysUntil(d) : null;
+      const when = d ? (dn > 0 ? `${fmtDateShort(d)} · ${inDaysText(dn)}` : dn === 0 ? 'hoy' : fmtDateShort(d)) : '';
+      const inner = `
+        <span class="especial-tag">${esc(s.tag || (isActive ? 'Especial' : 'Próximamente'))}</span>
+        <div class="especial-title">${s.iso ? flagOf(s.iso, 'fi-md') : ''}${esc(s.title)}</div>
+        <div class="especial-blurb">${esc(s.blurb || '')}</div>
+        <div class="especial-meta">${when ? `<span>${esc(when)}</span>` : ''}${isActive || s.url ? '<span class="arrow" aria-hidden="true">→</span>' : ''}</div>`;
+      if (isActive) return `<a class="${cls}" href="#${esc(s.view)}" onclick="return window.__atlasGoTo('${esc(s.view)}')">${inner}</a>`;
+      if (s.url) return `<a class="${cls}" href="${esc(s.url)}" target="_blank" rel="noopener">${inner}</a>`;
+      return `<div class="${cls}">${inner}</div>`;
+    }).join('');
+  }
+
+  function renderAgenda() {
+    const el = document.getElementById('portada-agenda');
+    if (!el) return;
+    const items = upcomingElections(120).slice(0, 8);
+    if (!items.length) { el.innerHTML = '<p class="uf-empty">No hay elecciones nacionales con fecha en los próximos meses.</p>'; return; }
+    el.innerHTML = items.map(e => {
+      const n = daysUntil(e.date);
+      const go = e.country.iso === 'BRA' && live.brasil ? "window.__atlasGoTo('brasil')" : `window.__atlasJumpTo && window.__atlasJumpTo('${e.country.iso}')`;
+      return `<button class="agenda-item" type="button" onclick="${go}">
+        <div class="agenda-date"><div class="agenda-day">${e.estimated ? '~' : e.date.getDate()}</div><div class="agenda-mon">${MONTHS_SHORT[e.date.getMonth()]}</div></div>
+        <div>
+          <div class="agenda-name">${flagOf(e.country.iso, 'fi-md')}${esc(e.country.name)}</div>
+          <div class="agenda-type">${esc(e.type)}</div>
+          <div class="agenda-in">${e.estimated ? 'fecha a confirmar' : inDaysText(n)}</div>
+        </div>
+      </button>`;
+    }).join('');
+  }
+
+  function renderFeed() {
+    const wrap = document.getElementById('portada-feed-wrap');
+    const ul = document.getElementById('portada-feed');
+    if (!wrap || !ul) return;
+    const notes = (live.data && live.data.notes) || [];
+    wrap.hidden = !notes.length;
+    ul.innerHTML = notes.slice(0, 6).map(n => {
+      const d = n.date ? new Date(n.date) : null;
+      const when = d ? `${fmtDateShort(d)}${n.date.length > 10 ? ' · ' + String(d.getHours()).padStart(2,'0') + ':' + String(d.getMinutes()).padStart(2,'0') : ''}` : '';
+      const body = n.view
+        ? `<a href="#${esc(n.view)}" onclick="return window.__atlasGoTo('${esc(n.view)}')">${esc(n.text)}</a>`
+        : n.url ? `<a href="${esc(n.url)}" target="_blank" rel="noopener">${esc(n.text)}</a>` : esc(n.text);
+      return `<li class="feed-item"><span class="feed-when">${esc(when)}</span><span>${n.tag ? `<span class="feed-tag">${esc(n.tag)}</span>` : ''}${body}</span></li>`;
+    }).join('');
+  }
+
+  function renderPortada() {
+    renderNow();
+    renderFreshness();
+    renderNextCard();
+    renderPulse();
+    renderEspeciales();
+    renderAgenda();
+    renderFeed();
+  }
+
+  /* Portada search → country card on the map */
+  function findCountry(q) {
+    const nq = norm(q);
+    if (!nq) return null;
+    return COUNTRIES.find(c => norm(c.name) === nq || c.iso.toLowerCase() === nq)
+      || COUNTRIES.find(c => norm(c.name).startsWith(nq))
+      || COUNTRIES.find(c => norm(c.name).includes(nq));
+  }
+  function initSearch() {
+    const form = document.getElementById('portada-search');
+    const input = document.getElementById('portada-search-input');
+    const hint = document.getElementById('portada-search-hint');
+    if (!form || !input) return;
+    form.addEventListener('submit', ev => {
+      ev.preventDefault();
+      const c = findCountry(input.value);
+      if (!c) {
+        hint.textContent = `No encontramos "${input.value}". Probá con el nombre en español (ej: "Alemania").`;
+        hint.classList.add('is-error');
+        return;
+      }
+      hint.classList.remove('is-error');
+      hint.innerHTML = c.iso === 'BRA'
+        ? `Mostrando ${esc(c.name)} en el mapa. También podés abrir el <a href="#brasil" onclick="return window.__atlasGoTo('brasil')">especial Brasil 2026</a>.`
+        : `Mostrando ${esc(c.name)} en el mapa.`;
+      if (window.__atlasJumpTo) window.__atlasJumpTo(c.iso);
+    });
+  }
+  window.__portadaToMap = function () {
+    const el = document.getElementById('portada-to-map');
+    if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 8, behavior: 'smooth' });
+    return false;
+  };
+
+  /* ===================== ESPECIAL BRASIL ===================== */
+  function brStates() {
+    const br = live.brasil;
+    return (br && br.states) || [];
+  }
+  function brMetricValue(s, metric) {
+    if (metric === 'voters') return s.voters;
+    if (metric === 'deputies') return s.fedDeputies;
+    if (metric === 'perSeat') return s.voters && s.fedDeputies ? s.voters / s.fedDeputies : null;
+    return null;
+  }
+  const BR_METRICS = {
+    voters:   { label: 'Electores', fmt: v => fmtInt(v), short: v => v >= 1e6 ? fmtM(v) : Math.round(v / 1000) + ' mil' },
+    deputies: { label: 'Diputados federales', fmt: v => fmtInt(v), short: v => fmtInt(v) },
+    perSeat:  { label: 'Electores por banca', fmt: v => fmtInt(v), short: v => Math.round(v / 1000) + ' mil' },
+  };
+  // State legislature size follows the Constitution (art. 27): 3× the federal
+  // deputies up to 36, then +1 per federal deputy above 12. DF has 24.
+  function stateDeputies(s) {
+    if (s.stateDeputies) return s.stateDeputies;
+    const f = s.fedDeputies;
+    if (!f) return null;
+    return f <= 12 ? 3 * f : 36 + (f - 12);
+  }
+
+  function quantileBreaks(values, k) {
+    const v = values.filter(x => x != null).sort((a, b) => a - b);
+    const out = [];
+    for (let i = 1; i < k; i++) out.push(v[Math.floor(i * v.length / k)]);
+    return out;
+  }
+  function colorFor(v, breaks) {
+    if (v == null) return 'var(--c-unknown)';
+    let i = 0;
+    while (i < breaks.length && v >= breaks[i]) i++;
+    return GREENS[i];
+  }
+
+  function renderBrMap() {
+    const host = document.getElementById('br-map');
+    if (!host || !live.geo) return;
+    const states = brStates();
+    const byUF = Object.fromEntries(states.map(s => [s.uf, s]));
+    const metric = live.brMetric;
+    const vals = states.map(s => brMetricValue(s, metric));
+    const breaks = quantileBreaks(vals, GREENS.length);
+    const [minV, maxV] = [Math.min(...vals.filter(v => v != null)), Math.max(...vals.filter(v => v != null))];
+
+    const paths = live.geo.locations.map(loc => {
+      const s = byUF[loc.id];
+      const v = s ? brMetricValue(s, metric) : null;
+      return `<path d="${loc.path}" data-uf="${loc.id}" tabindex="0" role="button" aria-label="${esc(loc.name)}"
+        style="fill:${colorFor(v, breaks)}" class="${live.brSelected === loc.id ? 'is-selected' : ''}"></path>`;
+    }).join('');
+    host.innerHTML = `<svg class="br-map-svg" viewBox="${live.geo.viewBox}" role="img" aria-label="Mapa de Brasil por estado: ${esc(BR_METRICS[metric].label)}">${paths}<g class="br-labels"></g></svg>
+      <div class="br-tooltip" id="br-tooltip"></div>`;
+
+    // Labels at each state's bbox centre (skip the tiny ones; tooltip covers them)
+    const svg = host.querySelector('svg');
+    const g = svg.querySelector('.br-labels');
+    svg.querySelectorAll('path').forEach(p => {
+      let bb;
+      try { bb = p.getBBox(); } catch (e) { return; }
+      if (!bb || bb.width < 26 || bb.height < 18) return;
+      const uf = p.getAttribute('data-uf');
+      const s = byUF[uf];
+      const v = s ? brMetricValue(s, metric) : null;
+      const dark = v != null && breaks.filter(b => v >= b).length >= 3;
+      const cx = bb.x + bb.width / 2 + (uf === 'PE' ? 20 : uf === 'RJ' ? 6 : 0);
+      const cy = bb.y + bb.height / 2 + (uf === 'GO' ? 18 : uf === 'PA' ? 10 : 0);
+      g.insertAdjacentHTML('beforeend',
+        `<text x="${cx}" y="${cy}" text-anchor="middle" dominant-baseline="middle" style="fill:${dark ? '#fff' : '#0B1628'};stroke:${dark ? 'rgba(0,0,0,.25)' : 'rgba(255,255,255,.6)'}">${uf}</text>`);
+    });
+
+    const tip = host.querySelector('#br-tooltip');
+    const showTip = (ev, uf) => {
+      const s = byUF[uf];
+      if (!s) return;
+      const rect = host.getBoundingClientRect();
+      tip.innerHTML = `<strong>${esc(s.name)}</strong>${esc(BR_METRICS[metric].label)}: ${BR_METRICS[metric].fmt(brMetricValue(s, metric))}`;
+      tip.style.left = (ev.clientX - rect.left) + 'px';
+      tip.style.top = (ev.clientY - rect.top) + 'px';
+      tip.classList.add('is-visible');
+    };
+    svg.addEventListener('mousemove', ev => {
+      const uf = ev.target.getAttribute && ev.target.getAttribute('data-uf');
+      if (uf) showTip(ev, uf); else tip.classList.remove('is-visible');
+    });
+    svg.addEventListener('mouseleave', () => tip.classList.remove('is-visible'));
+    svg.addEventListener('click', ev => {
+      const uf = ev.target.getAttribute && ev.target.getAttribute('data-uf');
+      if (uf) selectUF(uf);
+    });
+    svg.addEventListener('keydown', ev => {
+      const uf = ev.target.getAttribute && ev.target.getAttribute('data-uf');
+      if (uf && (ev.key === 'Enter' || ev.key === ' ')) { ev.preventDefault(); selectUF(uf); }
+    });
+
+    // Legend
+    const legend = document.getElementById('br-legend');
+    if (legend) {
+      const f = BR_METRICS[metric].short;
+      legend.innerHTML = `<span>${esc(BR_METRICS[metric].label)}:</span>
+        <div><div class="br-legend-scale">${GREENS.map(c => `<span style="background:${c}"></span>`).join('')}</div>
+        <div class="br-legend-ticks"><span>${f(minV)}</span><span>${f(maxV)}</span></div></div>`;
+    }
+    renderUFRank();
+    renderMapInsight();
+  }
+
+  function renderUFRank() {
+    const el = document.getElementById('br-rank');
+    if (!el) return;
+    const metric = live.brMetric;
+    const rows = brStates().map(s => ({ s, v: brMetricValue(s, metric) })).filter(r => r.v != null).sort((a, b) => b.v - a.v);
+    const max = rows.length ? rows[0].v : 1;
+    el.innerHTML = `<div class="uf-rank-title">Ranking · ${esc(BR_METRICS[metric].label)}</div>
+      <div class="uf-rank-list">${rows.map(r => `
+        <button type="button" class="uf-rank-row ${live.brSelected === r.s.uf ? 'is-selected' : ''}" data-uf="${r.s.uf}" title="${esc(r.s.name)}">
+          <span class="uf-rank-uf">${r.s.uf}</span>
+          <span class="uf-rank-bar"><span class="uf-rank-bar-fill" style="display:block;width:${(r.v / max * 100).toFixed(1)}%"></span></span>
+          <span class="uf-rank-val">${BR_METRICS[metric].short(r.v)}</span>
+        </button>`).join('')}</div>`;
+    el.querySelectorAll('.uf-rank-row').forEach(b => b.addEventListener('click', () => selectUF(b.getAttribute('data-uf'))));
+  }
+
+  function renderMapInsight() {
+    const el = document.getElementById('br-map-insight');
+    if (!el) return;
+    const rows = brStates().filter(s => s.voters && s.fedDeputies).map(s => ({ s, v: s.voters / s.fedDeputies })).sort((a, b) => b.v - a.v);
+    if (rows.length < 2) { el.hidden = true; return; }
+    const hi = rows[0], lo = rows[rows.length - 1];
+    const total = live.brasil.electorate.total;
+    const top3 = [...brStates()].sort((a, b) => (b.voters || 0) - (a.voters || 0)).slice(0, 3);
+    const top3share = top3.reduce((a, s) => a + s.voters, 0) / total * 100;
+    el.hidden = false;
+    el.innerHTML = `<strong>Dos datos para entender el mapa.</strong> ${top3.map(s => s.name).join(', ')} concentran el
+      <strong>${fmtPct(top3share, 0)}</strong> del electorado: son decisivos para la presidencial.
+      Pero en la Cámara cada estado tiene un piso de 8 y un techo de 70 bancas: en ${esc(hi.s.name)} hacen falta
+      <strong>${fmtInt(hi.v)}</strong> electores por diputado; en ${esc(lo.s.name)}, <strong>${fmtInt(lo.v)}</strong>.
+      Un voto de ${esc(lo.s.name)} pesa <strong>${(hi.v / lo.v).toFixed(0)} veces</strong> más para elegir diputados.`;
+  }
+
+  function selectUF(uf) {
+    live.brSelected = uf;
+    document.querySelectorAll('#br-map path').forEach(p => p.classList.toggle('is-selected', p.getAttribute('data-uf') === uf));
+    document.querySelectorAll('#br-rank .uf-rank-row').forEach(p => p.classList.toggle('is-selected', p.getAttribute('data-uf') === uf));
+    renderUFCard();
+  }
+
+  function renderUFCard() {
+    const el = document.getElementById('br-uf-card');
+    if (!el) return;
+    const s = brStates().find(x => x.uf === live.brSelected);
+    if (!s) {
+      el.innerHTML = `<div class="uf-empty">Tocá un estado en el mapa (o en el ranking) para ver cuántos electores tiene, cuántas bancas reparte y qué se vota ahí.</div>`;
+      return;
+    }
+    const total = live.brasil.electorate.total;
+    const sd = stateDeputies(s);
+    const isDF = s.uf === 'DF';
+    const gov = s.governor
+      ? `<div class="uf-gov">Gobierno actual: <b>${esc(s.governor.name)}</b>${s.governor.party ? ` (${esc(s.governor.party)})` : ''}${s.governor.note ? ` · ${esc(s.governor.note)}` : ''}</div>`
+      : '';
+    el.innerHTML = `
+      <div class="uf-card-head"><span class="uf-card-name">${esc(s.name)}</span><span class="uf-card-uf">${s.uf}</span></div>
+      <div class="uf-card-region">Región ${esc(s.region || '')}${s.capital ? ' · capital: ' + esc(s.capital) : ''}</div>
+      <div class="uf-stats">
+        <div class="uf-stat"><div class="uf-stat-v">${fmtInt(s.voters)}</div><div class="uf-stat-l">electores</div></div>
+        <div class="uf-stat"><div class="uf-stat-v">${fmtPct(s.voters / total * 100)}</div><div class="uf-stat-l">del padrón nacional</div></div>
+        <div class="uf-stat"><div class="uf-stat-v">${fmtInt(s.fedDeputies)}</div><div class="uf-stat-l">diputados federales</div></div>
+        <div class="uf-stat"><div class="uf-stat-v">${fmtInt(s.voters / s.fedDeputies)}</div><div class="uf-stat-l">electores por banca federal</div></div>
+      </div>
+      <div class="uf-ballot">En la urna, cada elector de ${esc(s.name)} vota por: <b>presidente</b>, <b>${isDF ? 'gobernador del DF' : 'gobernador'}</b>,
+        <b>2 senadores</b>, <b>1 diputado federal</b> (de ${fmtInt(s.fedDeputies)} bancas) y <b>1 diputado ${isDF ? 'distrital' : 'estadual'}</b>${sd ? ` (de ${fmtInt(sd)} bancas)` : ''}.</div>
+      ${gov}`;
+  }
+
+  /* Hemicycle: seats laid out on concentric arcs, filled left→right by party
+     order (parties sorted along the ideological axis, left to right). */
+  function hemicycleSVG(parties, total, rows) {
+    const r0 = 0.36;
+    const radii = Array.from({ length: rows }, (_, i) => r0 + (1 - r0) * (rows === 1 ? 1 : i / (rows - 1)));
+    const sumR = radii.reduce((a, b) => a + b, 0);
+    const perRow = radii.map(r => Math.round(total * r / sumR));
+    let diff = total - perRow.reduce((a, b) => a + b, 0);
+    for (let i = rows - 1; diff !== 0; i = (i - 1 + rows) % rows) { perRow[i] += Math.sign(diff); diff -= Math.sign(diff); }
+    const seats = [];
+    radii.forEach((r, i) => {
+      const n = perRow[i];
+      for (let j = 0; j < n; j++) {
+        const a = n === 1 ? Math.PI / 2 : Math.PI - (Math.PI * j / (n - 1));
+        seats.push({ a, x: r * Math.cos(a), y: -r * Math.sin(a) });
+      }
+    });
+    seats.sort((p, q) => q.a - p.a || (p.x * p.x + p.y * p.y) - (q.x * q.x + q.y * q.y));
+    const dotR = Math.min((1 - r0) / rows * 0.42, Math.PI * radii[0] / Math.max(perRow[0] - 1, 1) * 0.42);
+    let k = 0;
+    const circles = [];
+    parties.forEach(p => {
+      for (let s = 0; s < p.seats && k < seats.length; s++, k++) {
+        const pt = seats[k];
+        circles.push(`<circle cx="${pt.x.toFixed(4)}" cy="${pt.y.toFixed(4)}" r="${dotR.toFixed(4)}" data-party="${esc(p.party)}" style="fill:${leanColor(p.lean)}"><title>${esc(p.party)}${p.name ? ' — ' + esc(p.name) : ''}: ${p.seats}</title></circle>`);
+      }
+    });
+    for (; k < seats.length; k++) {
+      const pt = seats[k];
+      circles.push(`<circle cx="${pt.x.toFixed(4)}" cy="${pt.y.toFixed(4)}" r="${dotR.toFixed(4)}" style="fill:var(--c-unknown)"><title>Vacante / sin datos</title></circle>`);
+    }
+    return `<svg class="hemicycle" viewBox="-1.06 -1.06 2.12 1.12" role="img" aria-label="Composición por partido, ${total} bancas">
+      ${circles.join('')}
+      <text class="hemicycle-total" x="0" y="-0.08" text-anchor="middle" font-size="0.26">${total}</text>
+      <text class="hemicycle-total-sub" x="0" y="0.02" text-anchor="middle" font-size="0.06">BANCAS</text>
+    </svg>`;
+  }
+  function sortByLean(parties) {
+    // Unclassified groups ("Otros") sit in the middle of the arc, not past the far right
+    const pos = l => l === 'other' ? LEAN_ORDER.indexOf('center') + 0.5 : LEAN_ORDER.indexOf(l);
+    return [...parties].sort((a, b) => (pos(a.lean) - pos(b.lean)) || (b.seats - a.seats));
+  }
+  function blocsHTML(parties, total) {
+    const sums = BLOCS.map(b => ({ ...b, seats: parties.filter(p => b.leans.includes(p.lean)).reduce((a, p) => a + p.seats, 0) }));
+    return `<div class="blocs-bar">${sums.map(b => `<span style="width:${(b.seats / total * 100).toFixed(2)}%;background:${b.color}" title="${esc(b.label)}: ${b.seats}"></span>`).join('')}</div>
+      <div class="blocs-legend">${sums.map(b => `<span>${esc(b.label)}: <b>${b.seats}</b></span>`).join('')}</div>`;
+  }
+  function chamberCard(ch, rows, extraHTML) {
+    const parties = sortByLean(ch.parties || []);
+    const seated = parties.reduce((a, p) => a + p.seats, 0);
+    const legend = parties.map(p => `<span class="party-chip" data-party="${esc(p.party)}" tabindex="0" title="${esc(p.name || p.party)}"><i style="background:${leanColor(p.lean)}"></i>${esc(p.party)} <b>${p.seats}</b></span>`).join('');
+    return `<div class="chamber-card">
+      <div class="chamber-head"><span class="chamber-name">${esc(ch.name)}</span><span class="chamber-meta">${esc(ch.term || '')}</span></div>
+      ${hemicycleSVG(parties, ch.total || seated, rows)}
+      ${blocsHTML(parties, ch.total || seated)}
+      <div class="party-legend">${legend}</div>
+      ${extraHTML || ''}
+      <div class="chamber-foot">Bancadas al ${esc(ch.asOf || '—')}${ch.source ? ` · <a href="${esc(ch.source)}" target="_blank" rel="noopener">fuente</a>` : ''}${ch.note ? ' · ' + esc(ch.note) : ''}</div>
+    </div>`;
+  }
+  function wireHemicycleHover(root) {
+    root.querySelectorAll('.chamber-card').forEach(card => {
+      const svg = card.querySelector('.hemicycle');
+      card.querySelectorAll('.party-chip').forEach(chip => {
+        const on = () => {
+          const p = chip.getAttribute('data-party');
+          svg.classList.add('is-dimmed');
+          svg.querySelectorAll('circle').forEach(c => c.classList.toggle('is-hl', c.getAttribute('data-party') === p));
+        };
+        const off = () => svg.classList.remove('is-dimmed');
+        chip.addEventListener('mouseenter', on); chip.addEventListener('focus', on);
+        chip.addEventListener('mouseleave', off); chip.addEventListener('blur', off);
+      });
+    });
+  }
+
+  function pollAverages(round) {
+    const br = live.brasil;
+    const polls = ((br.presidential && br.presidential.polls) || []).filter(p => p[round]);
+    const keys = {};
+    polls.forEach(p => Object.entries(p[round]).forEach(([k, v]) => { (keys[k] = keys[k] || []).push(v); }));
+    return {
+      polls,
+      avgs: Object.entries(keys).map(([k, vs]) => ({ key: k, v: vs.reduce((a, b) => a + b, 0) / vs.length, n: vs.length })).sort((a, b) => b.v - a.v),
+    };
+  }
+  function candByKey(key) {
+    const list = (live.brasil.presidential && live.brasil.presidential.candidates) || [];
+    return list.find(c => c.id === key) || { name: key, lean: 'other' };
+  }
+  function renderPollBox() {
+    const el = document.getElementById('br-polls');
+    if (!el) return;
+    const { polls, avgs } = pollAverages(live.pollRound);
+    if (!polls.length) { el.innerHTML = '<p class="muted">Sin encuestas cargadas para este escenario.</p>'; return; }
+    const max = Math.max(...avgs.map(a => a.v), 1);
+    const scen = live.pollRound === 'r2' ? (live.brasil.presidential.runoffScenario || 'Escenario de 2.ª vuelta') : 'Intención de voto estimulada, 1.ª vuelta';
+    el.innerHTML = `
+      <div class="seg poll-tabs" role="tablist">
+        <button type="button" data-round="r1" class="${live.pollRound === 'r1' ? 'is-active' : ''}">1.ª vuelta</button>
+        <button type="button" data-round="r2" class="${live.pollRound === 'r2' ? 'is-active' : ''}">2.ª vuelta</button>
+      </div>
+      <h4>Promedio de ${polls.length} encuesta${polls.length > 1 ? 's' : ''}</h4>
+      <div class="muted">${esc(scen)} · % de votos totales</div>
+      ${avgs.map(a => {
+        const c = candByKey(a.key);
+        return `<div class="pbar"><div class="pbar-top"><span>${esc(c.short || c.name)}</span><b>${fmtPct(a.v)}</b></div>
+          <div class="pbar-track"><div class="pbar-fill" style="width:${(a.v / max * 100).toFixed(1)}%;background:${leanColor(c.lean)}"></div></div></div>`;
+      }).join('')}
+      <span class="poll-src">${polls.map(p => `<a href="${esc(p.url)}" target="_blank" rel="noopener">${esc(p.firm)}</a> (${esc(p.dates)}${p.n ? ', n=' + fmtInt(p.n) : ''}${p.moe ? ', ±' + p.moe + ' pp' : ''})`).join(' · ')}</span>`;
+    el.querySelectorAll('[data-round]').forEach(b => b.addEventListener('click', () => { live.pollRound = b.getAttribute('data-round'); renderPollBox(); }));
+  }
+
+  function currentResults() {
+    const r = (live.brasil && live.brasil.results) || {};
+    if (r.round2 && r.round2.status && r.round2.status !== 'pending') return { round: 2, data: r.round2 };
+    return { round: 1, data: r.round1 || { status: 'pending' } };
+  }
+  function renderResults() {
+    const el = document.getElementById('br-results');
+    if (!el) return;
+    const br = live.brasil;
+    const ph = brasilPhase(br);
+    const { round, data } = currentResults();
+    const cands = (data.candidates || []).slice().sort((a, b) => (b.pct || 0) - (a.pct || 0));
+    const head = `<div class="results-head">
+        <span class="results-title">Presidencial · ${round}.ª vuelta</span>
+        <span class="esp-status"><span class="live-dot"></span>${esc(data.status === 'final' ? 'Resultado final' : data.status === 'live' ? 'Escrutinio en curso' : ph.label)}</span>
+      </div>`;
+    if (!cands.length) {
+      const close = new Date(round === 2 ? br.dates.runoffClose : br.dates.firstRoundClose);
+      el.innerHTML = `<div class="results-card">${head}
+        <p class="results-empty">Los resultados oficiales del TSE aparecerán acá a partir del cierre de las urnas,
+        el <strong>${fmtDateLong(close)} a las ${close.toLocaleTimeString('es-AR', { hour: '2-digit', minute: '2-digit', hour12: false, timeZone: 'America/Sao_Paulo' })} h de Brasilia</strong>
+        (${close.toLocaleTimeString('es-AR', { hour: '2-digit', minute: '2-digit', hour12: false })} h en tu hora local).
+        Esta sección se actualiza sola: no hace falta recargar la página.</p></div>`;
+      return;
+    }
+    const pctCounted = data.pctCounted;
+    el.innerHTML = `<div class="results-card">${head}
+      ${pctCounted != null ? `<div class="results-progress"><div class="results-progress-track"><div class="results-progress-fill" style="width:${pctCounted}%"></div></div>
+        <div class="results-progress-lbl">${fmtPct(pctCounted, 2)} de secciones escrutadas${data.updatedAt ? ' · ' + esc(data.updatedAt) : ''}</div></div>` : ''}
+      ${cands.map(c => `<div class="pbar"><div class="pbar-top"><span>${esc(c.name)}${c.party ? ` <span style="opacity:.6">(${esc(c.party)})</span>` : ''}${c.elected ? '<span class="elected-badge">ELECTO</span>' : ''}</span>
+        <b>${fmtPct(c.pct, 2)}${c.votes ? ` · ${fmtInt(c.votes)}` : ''}</b></div>
+        <div class="pbar-track"><div class="pbar-fill" style="width:${Math.min(c.pct || 0, 100)}%;background:${leanColor(c.lean || (candByKey(c.id || '').lean))}"></div></div></div>`).join('')}
+      <div class="results-progress-lbl" style="margin-top:14px">% de votos válidos · Fuente: ${esc(data.source || 'TSE')}</div>
+    </div>`;
+  }
+
+  function renderBrCalendar() {
+    const el = document.getElementById('br-cal');
+    if (!el) return;
+    const items = (live.brasil.calendar || []).map(c => ({ ...c, d: new Date(c.date + 'T12:00:00') })).sort((a, b) => a.d - b.d);
+    const today = startOfDay(new Date());
+    const nextIdx = items.findIndex(i => i.d >= today);
+    el.innerHTML = items.map((i, idx) => {
+      const n = daysUntil(i.d);
+      const cls = [i.d < today ? 'is-past' : '', idx === nextIdx ? 'is-next' : '', i.key ? 'is-key' : ''].join(' ');
+      return `<li class="${cls}"><span class="br-cal-date">${fmtDateShort(i.d)}${i.d.getFullYear() !== 2026 ? ' ' + i.d.getFullYear() : ''}</span><span class="br-cal-dot"></span>
+        <span><span class="br-cal-label">${esc(i.label)}</span>${n >= 0 && n <= 60 ? `<br><span class="br-cal-in">${inDaysText(n)}</span>` : ''}</span></li>`;
+    }).join('');
+  }
+
+  function renderBrasil() {
+    const root = document.getElementById('esp-brasil');
+    if (!root) return;
+    const br = live.brasil;
+    if (!br) {
+      root.innerHTML = `<div class="esp-loading">${live.fetchOk === false && live.lastFetch
+        ? 'No se pudieron cargar los datos del especial. Si abriste el atlas como archivo local, servilo con <code>python3 -m http.server</code> (ver README).'
+        : 'Cargando especial…'}</div>`;
+      return;
+    }
+    const ph = brasilPhase(br);
+    const d1 = new Date(br.dates.firstRoundOpen), d2 = new Date(br.dates.runoffOpen), di = new Date(br.dates.inauguration);
+    const chamber = br.chamber, senate = br.senate;
+    const senateUp = senate && senate.seatsUp;
+    const senateExtra = senateUp ? `<div class="senate-renewal">En 2026 se renuevan <b>${senateUp} de ${senate.total}</b> bancas (dos tercios: 2 por estado). Las otras ${senate.total - senateUp} tienen mandato hasta 2031.
+        <div class="renewal-bar"><span style="width:${senateUp / senate.total * 100}%;background:var(--br-green)"></span><span style="flex:1;background:var(--line)"></span></div></div>` : '';
+
+    root.innerHTML = `
+      <section class="esp-hero">
+        <div class="esp-hero-grid">
+          <div>
+            <span class="esp-status"><span class="live-dot"></span>${esc(ph.label)}</span>
+            <h2>Brasil <em>2026</em></h2>
+            <p class="esp-hero-lede">${esc(br.lede || '')}</p>
+            <div class="esp-hero-dates">
+              <div class="esp-date-chip">1.ª vuelta<strong>${fmtDateShort(d1)}</strong></div>
+              <div class="esp-date-chip">2.ª vuelta<strong>${fmtDateShort(d2)}</strong></div>
+              <div class="esp-date-chip">Electores<strong>${fmtM(br.electorate.total)}</strong></div>
+              <div class="esp-date-chip">Asunción<strong>${fmtDateShort(di)} ${di.getFullYear()}</strong></div>
+            </div>
+          </div>
+          <div class="esp-hero-side">
+            <div class="next-card-kicker">Cuenta regresiva ${esc(ph.targetLabel || '')}</div>
+            ${countdownHTML(ph.target, 'Ya empezó')}
+            <div class="esp-updated" id="br-updated"></div>
+          </div>
+        </div>
+      </section>
+
+      <nav class="esp-nav" aria-label="Secciones del especial">
+        <a href="#br-sec-cargos">Qué se elige</a>
+        <a href="#br-sec-mapa">Mapa de electores</a>
+        <a href="#br-sec-congreso">Congreso hoy</a>
+        <a href="#br-sec-presidencial">Presidencial</a>
+        <a href="#br-sec-resultados">Resultados</a>
+        <a href="#br-sec-calendario">Calendario</a>
+        <a href="#br-sec-claves">Claves</a>
+      </nav>
+
+      <section class="esp-sec" id="br-sec-cargos">
+        <div class="esp-sec-head"><span class="kicker">01 · La boleta</span><h3>Qué se elige</h3>
+          <p>${esc(br.officesIntro || '')}</p></div>
+        <div class="offices-grid">${(br.offices || []).map(o => `
+          <div class="office-card"><div class="office-num">${fmtInt(o.count)}</div><div class="office-label">${esc(o.label)}</div>
+            <div class="office-detail">${esc(o.detail || '')}</div>${o.system ? `<span class="office-system">${esc(o.system)}</span>` : ''}</div>`).join('')}</div>
+        ${br.ballotNote ? `<div class="ballot-note">${esc(br.ballotNote)}</div>` : ''}
+      </section>
+
+      <section class="esp-sec" id="br-sec-mapa">
+        <div class="esp-sec-head"><span class="kicker">02 · El padrón</span><h3>Mapa de electores</h3>
+          <p>${fmtInt(br.electorate.total)} personas pueden votar${br.electorate.abroad ? `, ${fmtInt(br.electorate.abroad)} de ellas en el exterior` : ''} (padrón ${esc(br.electorate.asOf || '')}).
+          Cambiá la variable para ver cómo se reparte el poder entre los 26 estados y el Distrito Federal.</p></div>
+        <div class="br-map-wrap">
+          <div class="br-map-card">
+            <div class="seg" id="br-metric" role="tablist">
+              ${Object.entries(BR_METRICS).map(([k, m]) => `<button type="button" data-metric="${k}" class="${live.brMetric === k ? 'is-active' : ''}">${m.label}</button>`).join('')}
+            </div>
+            <div id="br-map" style="position:relative"><div class="esp-loading">Cargando mapa…</div></div>
+            <div class="br-legend" id="br-legend"></div>
+          </div>
+          <div class="br-side">
+            <div class="uf-card" id="br-uf-card"></div>
+            <div class="uf-rank" id="br-rank"></div>
+          </div>
+        </div>
+        <div class="map-insight" id="br-map-insight" hidden></div>
+      </section>
+
+      <section class="esp-sec" id="br-sec-congreso">
+        <div class="esp-sec-head"><span class="kicker">03 · El Congreso que termina</span><h3>Composición actual de las cámaras</h3>
+          <p>Cada punto es una banca, coloreada según la orientación del partido (mismo código de colores que el mapa mundial). Pasá el mouse por un partido para resaltarlo.</p></div>
+        <div class="chambers-grid">
+          ${chamber ? chamberCard(chamber, 12) : ''}
+          ${senate ? chamberCard(senate, 6, senateExtra) : ''}
+        </div>
+      </section>
+
+      <section class="esp-sec" id="br-sec-presidencial">
+        <div class="esp-sec-head"><span class="kicker">04 · La carrera</span><h3>Candidatos a presidente</h3>
+          <p>${esc((br.presidential && br.presidential.intro) || '')}</p></div>
+        <div class="race-grid">
+          <div class="cand-list">${((br.presidential && br.presidential.candidates) || []).map(c => `
+            <div class="cand-row"><span class="lean" style="background:${leanColor(c.lean)}"></span>
+              <div><div class="cand-name">${esc(c.name)}</div><div class="cand-sub">${esc(c.party)}${c.vice ? ` · vice: ${esc(c.vice)}` : ''}${c.coalition ? `<br>${esc(c.coalition)}` : ''}</div></div>
+              <span class="cand-num">${c.number ? esc(c.number) : ''}</span></div>`).join('')}</div>
+          <div class="poll-box" id="br-polls"></div>
+        </div>
+      </section>
+
+      <section class="esp-sec" id="br-sec-resultados">
+        <div class="esp-sec-head"><span class="kicker">05 · Noche electoral</span><h3>Resultados en vivo</h3></div>
+        <div id="br-results"></div>
+      </section>
+
+      <section class="esp-sec" id="br-sec-calendario">
+        <div class="esp-sec-head"><span class="kicker">06 · Fechas</span><h3>Calendario electoral</h3></div>
+        <ul class="br-cal" id="br-cal"></ul>
+      </section>
+
+      <section class="esp-sec" id="br-sec-claves">
+        <div class="esp-sec-head"><span class="kicker">07 · Para entender</span><h3>Claves del sistema</h3></div>
+        <ul class="facts-list">${(br.keyFacts || []).map(f => `<li>${esc(f)}</li>`).join('')}</ul>
+        <p class="esp-sources" style="margin-top:18px"><strong>Fuentes:</strong> ${(br.sources || []).map(s => `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.label)}</a>`).join(' · ')}.
+          Mapa base: <a href="https://github.com/VictorCazanave/svg-maps" target="_blank" rel="noopener">svg-maps/brazil</a> (CC BY 4.0).</p>
+      </section>`;
+
+    root.querySelectorAll('#br-metric [data-metric]').forEach(b => b.addEventListener('click', () => {
+      live.brMetric = b.getAttribute('data-metric');
+      root.querySelectorAll('#br-metric [data-metric]').forEach(x => x.classList.toggle('is-active', x === b));
+      renderBrMap();
+    }));
+    root.querySelectorAll('.esp-nav a').forEach(a => a.addEventListener('click', ev => {
+      ev.preventDefault();
+      const t = document.querySelector(a.getAttribute('href'));
+      if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }));
+    wireHemicycleHover(root);
+    renderUFCard();
+    renderPollBox();
+    renderResults();
+    renderBrCalendar();
+    renderBrUpdated();
+    tickCountdowns();
+    ensureBrGeo().then(renderBrMap).catch(() => {
+      const m = document.getElementById('br-map');
+      if (m) m.innerHTML = '<div class="esp-loading">No se pudo cargar el mapa de estados.</div>';
+      renderUFRank();
+      renderMapInsight();
+    });
+  }
+  function renderBrUpdated() {
+    const el = document.getElementById('br-updated');
+    if (el && live.brasil) el.textContent = `Datos actualizados ${relTime(new Date(live.brasil.updatedAt))}${live.lastFetch ? ' · revisado ' + relTime(live.lastFetch) : ''}`;
+  }
+  async function ensureBrGeo() {
+    if (!live.geo) live.geo = await fetchJSON(BR_GEO_URL);
+    return live.geo;
+  }
+
+  /* ===================== LIVE RESULTS (TSE) =====================
+     On election night the special can read the TSE's public results feed
+     directly: set results.tse.round1Url / round2Url in brasil-2026.json.
+     If the browser can't reach it (CORS / network), the values typed into
+     results.round1 / round2 of the JSON are used instead. */
+  async function pullTSE(br) {
+    const tse = br.results && br.results.tse;
+    if (!tse) return;
+    const ph = brasilPhase(br);
+    if (!ph.live) return;
+    const round = new Date() >= new Date(br.dates.runoffOpen) ? 2 : 1;
+    const url = round === 2 ? tse.round2Url : tse.round1Url;
+    if (!url) return;
+    try {
+      const res = await fetch(url, { cache: 'no-store' });
+      if (!res.ok) return;
+      const j = await res.json();
+      const num = s => s == null ? null : parseFloat(String(s).replace(/\./g, '').replace(',', '.'));
+      const candidates = (j.cand || []).map(c => {
+        const known = ((br.presidential && br.presidential.candidates) || []).find(k => k.number && String(k.number) === String(c.n));
+        return { id: known && known.id, name: known ? known.name : c.nm, party: known && known.party, lean: known && known.lean,
+                 votes: num(c.vap), pct: parseFloat(String(c.pvap || '0').replace(',', '.')), elected: String(c.e || '').toLowerCase() === 's' };
+      });
+      if (!candidates.length) return;
+      br.results['round' + round] = Object.assign({}, br.results['round' + round], {
+        status: parseFloat(String(j.pst || '0').replace(',', '.')) >= 100 ? 'final' : 'live',
+        pctCounted: parseFloat(String(j.pst || '0').replace(',', '.')),
+        updatedAt: [j.dg, j.hg].filter(Boolean).join(' ') + ' (hora de Brasilia)',
+        source: 'TSE — resultados.tse.jus.br',
+        candidates,
+      });
+    } catch (e) {
+      console.warn('[Atlas] TSE feed unavailable, using JSON values:', e.message);
+    }
+  }
+
+  /* ===================== REFRESH LOOP ===================== */
+  function isViewActive(v) { return document.body.getAttribute('data-view') === v; }
+  async function refresh() {
+    const [liveRes, brRes] = await Promise.allSettled([fetchJSON(LIVE_URL), fetchJSON(BRASIL_URL)]);
+    live.lastFetch = new Date();
+    live.fetchOk = liveRes.status === 'fulfilled' || brRes.status === 'fulfilled';
+    const prevBr = live.brasil ? JSON.stringify(live.brasil) : null;
+    if (liveRes.status === 'fulfilled') live.data = liveRes.value;
+    if (brRes.status === 'fulfilled') {
+      await pullTSE(brRes.value);
+      live.brasil = brRes.value;
+    }
+    renderPortada();
+    const brChanged = live.brasil && JSON.stringify(live.brasil) !== prevBr;
+    if (isViewActive('brasil')) {
+      if (brChanged && prevBr) { renderResults(); renderPollBox(); renderBrCalendar(); }
+      else if (brChanged || !document.querySelector('#esp-brasil .esp-hero')) renderBrasil();
+      renderBrUpdated();
+    }
+    scheduleRefresh();
+  }
+  function scheduleRefresh() {
+    clearTimeout(live.timer);
+    const base = (live.data && live.data.refreshSeconds) || 300;
+    const fast = live.brasil && brasilPhase(live.brasil).live ? 60 : base;
+    live.timer = setTimeout(() => { if (!document.hidden) refresh(); else scheduleRefresh(); }, fast * 1000);
+  }
+  document.addEventListener('visibilitychange', () => {
+    // Coming back to the tab after a while → refresh immediately
+    if (!document.hidden && live.lastFetch && Date.now() - live.lastFetch.getTime() > 60000) refresh();
+  });
+
+  window.__onViewShown = function (view) {
+    if (view === 'brasil') {
+      if (!document.querySelector('#esp-brasil .esp-hero')) renderBrasil();
+    }
+    if (view === 'inicio') renderPortada();
+  };
+
+  // Boot
+  initSearch();
+  renderPortada();
+  if (isViewActive('brasil')) renderBrasil();
+  refresh();
+  setInterval(tickCountdowns, 1000);
+  setInterval(() => { renderNow(); renderFreshness(); renderBrUpdated(); }, 30000);
 })();
 </script>
 

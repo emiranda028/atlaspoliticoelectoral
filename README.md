@@ -23,6 +23,9 @@ Una vez publicado:
 
 ### Visualizaciones principales
 
+- **Portada en vivo**: buscador de países, cuenta regresiva a la próxima gran elección, próximas elecciones y especiales destacados
+- **Especial Brasil 2026**: qué se elige, mapa de electores por estado (padrón TSE julio 2026), composición de la Cámara y el Senado en hemiciclos, candidatos, encuestas, resultados en vivo y calendario
+
 - **Mapa mundial interactivo** (Leaflet) coloreado por ideología del ejecutivo, con sectores antárticos según el Tratado Antártico y reasignación territorial (Malvinas y Georgias del Sur como territorio argentino)
 - **Calendario electoral** 2026-2027 con día específico cuando está confirmado, ordenado cronológicamente y clickeable
 - **Filtros duales**: por ideología (10 categorías) y por continente (5 continentes), funcionando en simultáneo
@@ -48,6 +51,42 @@ Una vez publicado:
 - **Reino Unido sin sector antártico propio** (su reclamo está totalmente cubierto por Argentina + Chile)
 - **Verbos descriptivos honestos**: para variables como pobreza o desigualdad, se usa "más pobreza que" en lugar de "mejor que" para evitar valoraciones engañosas
 - **Símbolo monetario USD** explícito (no `$`) para evitar confusión con pesos en Latinoamérica
+
+---
+
+## 🔴 Portada en vivo y especiales
+
+La portada (vista *Inicio*) y los **especiales** leen datos editables desde archivos JSON
+al lado de `index.html`, y los vuelven a pedir solos cada 5 minutos (cada 1 minuto durante
+una noche electoral). **Para actualizar el sitio alcanza con editar un JSON y hacer push**:
+las páginas abiertas se actualizan sin recargar.
+
+| Archivo | Qué controla |
+|---------|--------------|
+| `data/live.json` | Especiales destacados en la portada, notas de "Últimas actualizaciones" y cada cuánto se refresca (`refreshSeconds`) |
+| `data/especiales/brasil-2026.json` | Todo el especial Brasil 2026: fechas, padrón por estado, cargos, bancadas, candidatos, encuestas, calendario y resultados |
+| `data/geo/brasil-uf.json` | Contorno de los 27 estados ([svg-maps/brazil](https://github.com/VictorCazanave/svg-maps), CC BY 4.0) |
+
+Lo que depende del reloj se calcula en el navegador: cuentas regresivas, "Se vota pronto" y
+la fase del especial (campaña → se vota → escrutinio → 2.ª vuelta → resultado final).
+
+### Noche electoral (Brasil)
+
+En `results` de `brasil-2026.json` hay dos opciones:
+
+1. **Feed del TSE**: pegar en `results.tse.round1Url` / `round2Url` la URL del JSON público de
+   resultados del TSE. Durante el escrutinio el especial la consulta cada minuto.
+2. **Carga manual** (si el navegador no puede leer el feed del TSE): completar
+   `results.round1.candidates` con `{ "id", "name", "party", "pct", "votes" }`, más `pctCounted`
+   y `status` (`"live"` o `"final"`), y hacer push.
+
+### Agregar un especial nuevo
+
+Sumá una entrada en `specials` de `data/live.json` con `status: "soon"` (tarjeta "Próximamente")
+o `status: "active"` + `view` (tarjeta que abre el especial).
+
+> Los especiales se cargan con `fetch`, así que necesitan el sitio servido por HTTP (GitHub Pages,
+> Netlify o `python3 -m http.server`). Abierto como archivo local, el resto del atlas funciona igual.
 
 ---
 
@@ -88,7 +127,8 @@ Una vez publicado:
 
 - **HTML / CSS / JavaScript estático** (sin frameworks, sin proceso de build)
 - **[Leaflet](https://leafletjs.com)** 1.9 para el mapa interactivo
-- **Tipografías**: Fraunces (serif italic editorial) e IBM Plex Sans/Mono (Google Fonts)
+- **Tipografías**: Newsreader (títulos), Inter (texto e interfaz) y JetBrains Mono (datos y etiquetas), vía Google Fonts
+- **Paleta**: azul marino institucional, acento naranja y una paleta ideológica divergente rojo → dorado → azul (definida como variables CSS en `:root`)
 - **Datos en línea**: GeoJSON desde CDN (jsdelivr / GitHub), fotos de líderes vía MediaWiki API con CORS
 - **Sin dependencias de runtime**: el archivo `index.html` es autocontenido y puede ejecutarse offline una vez cargados los recursos externos en caché
 

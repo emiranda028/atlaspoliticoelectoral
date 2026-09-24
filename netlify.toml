@@ -18,3 +18,10 @@
   from = "/*"
   to = "/index.html"
   status = 200
+
+# Live data files: always revalidate so open pages pick up edits quickly
+[[headers]]
+  for = "/data/*"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+    Access-Control-Allow-Origin = "*"

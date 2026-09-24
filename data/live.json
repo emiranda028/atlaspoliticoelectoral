@@ -1,0 +1,53 @@
+{
+ "updatedAt": "2026-09-24T12:30:00-03:00",
+ "refreshSeconds": 300,
+ "specials": [
+  {
+   "id": "brasil-2026",
+   "view": "brasil",
+   "status": "active",
+   "iso": "BRA",
+   "tag": "Especial · en vivo",
+   "title": "Brasil 2026",
+   "date": "2026-10-04",
+   "blurb": "Presidente, 27 gobernadores, 54 senadores y 513 diputados federales. Mapa de electores por estado, el Congreso que se renueva, candidatos, encuestas y resultados en vivo."
+  },
+  {
+   "id": "eeuu-2026",
+   "status": "soon",
+   "iso": "USA",
+   "tag": "Próximamente",
+   "title": "EE.UU. · Midterms",
+   "date": "2026-11-03",
+   "blurb": "Las 435 bancas de la Cámara de Representantes, 35 del Senado y 36 gobernaciones: el primer test electoral del segundo mandato de Trump."
+  },
+  {
+   "id": "propuesta",
+   "status": "cta",
+   "tag": "Tu idea",
+   "title": "¿Qué elección querés ver?",
+   "url": "https://github.com/emiranda028/atlaspoliticoelectoral/issues",
+   "blurb": "Proponé el próximo especial o avisanos si encontrás un dato para corregir."
+  }
+ ],
+ "notes": [
+  {
+   "date": "2026-09-24",
+   "tag": "Nuevo",
+   "text": "Especial Brasil 2026: mapa de electores por estado, composición del Congreso, candidatos y encuestas de septiembre.",
+   "view": "brasil"
+  },
+  {
+   "date": "2026-09-22",
+   "tag": "Encuestas",
+   "text": "AtlasIntel/Bloomberg (17–22 sep): Lula 45,8% y Flávio Bolsonaro 43,4% en primera vuelta; empate técnico en el balotaje (47,7% a 47,4%).",
+   "view": "brasil"
+  },
+  {
+   "date": "2026-09-11",
+   "tag": "Brasil",
+   "text": "El TSE rechazó por unanimidad la candidatura de Pablo Marçal (PRTB): quedan 12 fórmulas presidenciales.",
+   "view": "brasil"
+  }
+ ]
+}
