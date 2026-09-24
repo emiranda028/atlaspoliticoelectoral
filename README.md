@@ -5,7 +5,7 @@ ideologías de gobiernos, calendario electoral 2026-2027, indicadores socioecon�
 comparados (PBI, Gini, salario, presión tributaria, pobreza, IDH, deuda pública,
 libertad de prensa) y análisis de cambios ideológicos en las elecciones recientes.
 
-**Por [Lic. Emmanuel Miranda](https://www.linkedin.com/in/emiranda028/)** · Edición Beta · Mayo 2026
+**Por [Mg. Emmanuel Miranda](https://www.linkedin.com/in/emiranda028/), Lic. Martín Paratz y Abg. Ernesto Demian Abbott** · Edición Beta · 2026
 
 ---
 
@@ -205,14 +205,15 @@ Después abrís `http://localhost:8000`
 
 Código fuente bajo [licencia MIT](LICENSE) — usalo, modificá, redistribuí libremente.
 
-Los datos provienen de fuentes públicas con sus propias licencias (la mayoría CC-BY o equivalentes). La curaduría editorial y las clasificaciones ideológicas son responsabilidad del autor.
+Los datos provienen de fuentes públicas con sus propias licencias (la mayoría CC-BY o equivalentes). La curaduría editorial y las clasificaciones ideológicas son responsabilidad de los autores.
 
 ---
 
 ## 🙋 Autoría y contacto
 
-**Lic. Emmanuel Miranda**
-[LinkedIn — emiranda028](https://www.linkedin.com/in/emiranda028/)
+- **Mg. Emmanuel Miranda** — [LinkedIn — emiranda028](https://www.linkedin.com/in/emiranda028/)
+- **Lic. Martín Paratz**
+- **Abg. Ernesto Demian Abbott**
 
 Atlas elaborado en 2026.
 
@@ -223,26 +224,27 @@ Sugerencias, correcciones de datos o nuevas ideas: bienvenidas vía Issues en es
 ## 📚 Cómo citar este atlas
 
 Si usás este atlas en un artículo, presentación, trabajo académico o publicación,
-agradezco el reconocimiento. Estos son los formatos sugeridos:
+agradecemos el reconocimiento. Estos son los formatos sugeridos:
 
 ### Formato APA (7ma edición)
 
 ```
-Miranda, E. (2026). Atlas Político Mundial 2026 [Visualización interactiva de datos].
+Miranda, E., Paratz, M. y Abbott, E. D. (2026). Atlas Político Mundial 2026
+   [Visualización interactiva de datos].
    Recuperado de https://atlaspoliticoelectoral.com
 ```
 
 ### Formato breve (notas al pie, redes sociales)
 
 ```
-Miranda, E. (2026). Atlas Político Mundial 2026. emiranda028 / GitHub.
+Miranda, E., Paratz, M. y Abbott, E. D. (2026). Atlas Político Mundial 2026. atlaspoliticoelectoral.com
 ```
 
 ### BibTeX (LaTeX)
 
 ```bibtex
 @misc{miranda2026atlas,
-  author = {Miranda, Emmanuel},
+  author = {Miranda, Emmanuel and Paratz, Mart{\'i}n and Abbott, Ernesto Demian},
   title  = {Atlas Pol{\'i}tico Mundial 2026},
   year   = {2026},
   note   = {Visualizaci{\'o}n interactiva de datos},
@@ -250,7 +252,7 @@ Miranda, E. (2026). Atlas Político Mundial 2026. emiranda028 / GitHub.
 }
 ```
 
-Para colaboraciones académicas o periodísticas que excedan la simple cita, contactame
+Para colaboraciones académicas o periodísticas que excedan la simple cita, contactanos
 por [LinkedIn](https://www.linkedin.com/in/emiranda028/).
 
 ---
