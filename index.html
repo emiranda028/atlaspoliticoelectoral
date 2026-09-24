@@ -187,10 +187,11 @@
     padding-bottom: 12px; margin-bottom: 16px;
   }
   .masthead-meta {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-sans);
     font-size: 11px; color: var(--muted);
-    text-transform: uppercase; letter-spacing: 0.12em;
+    text-transform: uppercase; letter-spacing: 0.07em;
     display: flex; gap: 20px; flex-wrap: wrap;
+    font-weight: 600;
   }
   .masthead-meta span::before { content: "▪ "; color: var(--accent); }
   .masthead-byline {
@@ -256,10 +257,10 @@
     display: inline-block;
   }
   .masthead-kicker-label {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-sans);
     font-size: 11px;
     text-transform: uppercase;
-    letter-spacing: 0.18em;
+    letter-spacing: 0.07em;
     color: var(--accent);
     font-weight: 600;
   }
@@ -307,10 +308,10 @@
     max-width: 640px;
   }
   .purpose-tag {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-sans);
     font-size: 10.5px;
     text-transform: uppercase;
-    letter-spacing: 0.16em;
+    letter-spacing: 0.07em;
     color: var(--accent);
     font-weight: 700;
     flex-shrink: 0;
@@ -341,10 +342,10 @@
     display: inline-flex;
     align-items: center;
     gap: 7px;
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-sans);
     font-size: 11px;
     text-transform: uppercase;
-    letter-spacing: 0.15em;
+    letter-spacing: 0.07em;
     color: var(--ink-soft);
     font-weight: 600;
     margin-bottom: 6px;
@@ -397,12 +398,12 @@
   }
   .hero-stat-tag {
     color: var(--surface);
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-sans);
     font-size: 11px;
     padding: 3px 8px;
     border-radius: 999px;
     text-transform: uppercase;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.07em;
     font-weight: 600;
   }
 
@@ -620,14 +621,15 @@
     padding: 28px 32px 40px;
   }
   .home-explore-title {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-sans);
     font-size: 11px;
     text-transform: uppercase;
-    letter-spacing: 0.18em;
+    letter-spacing: 0.07em;
     color: var(--muted);
     margin-bottom: 18px;
     padding-bottom: 12px;
     border-bottom: 1px solid var(--line-strong);
+    font-weight: 600;
   }
   .home-explore-grid {
     display: grid;
@@ -741,12 +743,13 @@
     color: var(--accent);
   }
   .elec-stat-lbl {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-sans);
     font-size: 11px;
     text-transform: uppercase;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.07em;
     color: var(--muted);
     margin-top: 6px;
+    font-weight: 600;
   }
   .elec-stat-next {
     font-family: 'Newsreader', serif;
@@ -761,14 +764,15 @@
     padding: 24px 32px 48px;
   }
   .elec-highlights-head {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-sans);
     font-size: 11px;
     text-transform: uppercase;
-    letter-spacing: 0.16em;
+    letter-spacing: 0.07em;
     color: var(--muted);
     margin-bottom: 16px;
     padding-bottom: 10px;
     border-bottom: 1px solid var(--line-strong);
+    font-weight: 600;
   }
   .elec-highlights-grid {
     display: grid;
@@ -921,12 +925,13 @@
     transition: width 0.6s ease;
   }
   .poll-avg-note {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-sans);
     font-size: 11px;
     text-transform: uppercase;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.07em;
     color: var(--muted);
     margin: 14px 0 8px;
+    font-weight: 600;
   }
   .poll-rows {
     display: flex;
@@ -1002,10 +1007,10 @@
     flex-wrap: wrap;
   }
   .elections-timeline-head .kicker {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-sans);
     font-size: 11px;
     text-transform: uppercase;
-    letter-spacing: 0.16em;
+    letter-spacing: 0.07em;
     color: var(--accent);
     font-weight: 500;
   }
@@ -1035,13 +1040,14 @@
     color: var(--ink-soft);
   }
   .elections-this-month-label {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-sans);
     font-style: normal;
     font-size: 11px;
     text-transform: uppercase;
-    letter-spacing: 0.16em;
+    letter-spacing: 0.07em;
     color: var(--accent);
     margin-right: 6px;
+    font-weight: 600;
   }
   .etm-country {
     display: inline-flex;
@@ -1100,15 +1106,16 @@
     z-index: 1;
   }
   .et-month-label {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-sans);
     font-size: 11px;
     text-transform: uppercase;
-    letter-spacing: 0.14em;
+    letter-spacing: 0.07em;
     color: var(--accent);
     margin-bottom: 6px;
     padding-left: 4px;
     height: 14px;
     display: flex; align-items: center;
+    font-weight: 600;
   }
   .et-month-tick {
     width: 1px; height: 6px;
@@ -1206,13 +1213,14 @@
   }
   .stat:last-child { border-right: none; }
   .stat-label {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-sans);
     font-size: 11px;
     text-transform: uppercase;
-    letter-spacing: 0.14em;
+    letter-spacing: 0.07em;
     color: var(--muted);
     display: block;
     margin-bottom: 4px;
+    font-weight: 600;
   }
   .stat-value {
     font-family: 'Newsreader', serif;
@@ -1270,12 +1278,13 @@
     display: inline-flex;
     align-items: center;
     gap: 7px;
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-sans);
     font-size: 10.5px;
     text-transform: uppercase;
-    letter-spacing: 0.16em;
+    letter-spacing: 0.07em;
     color: var(--c-cleft);
     flex-shrink: 0;
+    font-weight: 600;
   }
   .mib-number {
     font-family: 'Newsreader', serif;
@@ -1348,10 +1357,11 @@
     border: 1px solid currentColor;
     border-radius: 999px;
     padding: 1px 7px;
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-sans);
     font-size: 10px;
     text-transform: uppercase;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.07em;
+    font-weight: 600;
   }
   .map-tt-leader {
     font-size: 11.5px;
@@ -1378,14 +1388,15 @@
     margin-left: 2px;
   }
   .map-tt-system {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-sans);
     font-size: 11px;
     text-transform: uppercase;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.07em;
     color: rgba(244, 246, 250, 0.55);
     padding-bottom: 6px;
     margin-bottom: 6px;
     border-bottom: 1px solid rgba(244, 246, 250, 0.08);
+    font-weight: 600;
   }
   .map-tt-metrics {
     display: grid;
@@ -1400,11 +1411,12 @@
     font-size: 11px;
   }
   .map-tt-mk {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-sans);
     font-size: 10.5px;
     text-transform: uppercase;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.07em;
     color: rgba(244, 246, 250, 0.55);
+    font-weight: 600;
   }
   .map-tt-mv {
     font-family: 'Newsreader', serif;
@@ -1421,11 +1433,12 @@
     border-top: 1px solid rgba(244, 246, 250, 0.08);
   }
   .map-tt-row .map-tt-k {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-sans);
     font-size: 10.5px;
     text-transform: uppercase;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.07em;
     color: rgba(244, 246, 250, 0.55);
+    font-weight: 600;
   }
   .map-tt-row .map-tt-v {
     font-family: 'Inter', sans-serif;
@@ -1437,12 +1450,13 @@
     margin-top: 6px;
     padding-top: 6px;
     border-top: 1px dashed rgba(244, 246, 250, 0.18);
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-sans);
     font-size: 10.5px;
     text-transform: uppercase;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.07em;
     color: var(--accent);
     text-align: center;
+    font-weight: 600;
   }
   .map-tt-empty {
     font-family: 'Newsreader', serif;
@@ -1506,10 +1520,10 @@
     gap: 18px;
   }
   .headlines-ticker-label {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-sans);
     font-size: 11px;
     text-transform: uppercase;
-    letter-spacing: 0.16em;
+    letter-spacing: 0.07em;
     color: var(--accent);
     font-weight: 600;
     flex-shrink: 0;
@@ -1671,13 +1685,14 @@
       border: 1px solid var(--line-strong);
       border-radius: 999px;
       color: var(--ink-soft);
-      font-family: 'JetBrains Mono', monospace;
+      font-family: var(--font-sans);
       font-size: 11px;
       text-transform: uppercase;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.07em;
       cursor: pointer;
       transition: all 0.15s;
-    }
+    font-weight: 600;
+  }
     .filters-toggle-btn:hover {
       color: var(--accent);
       border-color: var(--accent);
@@ -1803,14 +1818,15 @@
     color: var(--muted);
     border: 1px solid var(--line-strong);
     border-radius: 999px;
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-sans);
     font-size: 11px;
     text-transform: uppercase;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.07em;
     cursor: pointer;
     opacity: 0.5;
     transition: opacity 0.15s, color 0.15s, border-color 0.15s, background 0.15s;
     z-index: 5;
+    font-weight: 600;
   }
   .chart-card:hover .chart-export-btn { opacity: 1; }
   .chart-export-btn:hover {
@@ -1843,16 +1859,17 @@
     color: var(--ink);
     border: 1px solid var(--line-strong);
     border-radius: 999px;
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-sans);
     font-size: 10.5px;
     text-transform: uppercase;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.07em;
     cursor: pointer;
     box-shadow: 0 4px 14px rgba(11, 22, 40, 0.18);
     opacity: 0;
     transform: translateY(16px) scale(0.92);
     pointer-events: none;
     transition: opacity 0.22s ease, transform 0.22s ease, background 0.15s, color 0.15s;
+    font-weight: 600;
   }
   .export-fab.is-visible {
     opacity: 1;
@@ -1890,11 +1907,12 @@
     letter-spacing: -0.01em;
   }
   .export-wrap .export-header-section {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-sans);
     font-size: 11px;
     text-transform: uppercase;
-    letter-spacing: 0.15em;
+    letter-spacing: 0.07em;
     color: var(--accent);
+    font-weight: 600;
   }
   .export-citation {
     margin-top: 22px;
@@ -1913,12 +1931,13 @@
     margin-bottom: 4px;
   }
   .export-citation-author {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-sans);
     font-size: 11px;
     text-transform: uppercase;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.07em;
     color: var(--accent);
     margin-bottom: 8px;
+    font-weight: 600;
   }
   .export-citation-meta {
     font-size: 11px;
@@ -2057,16 +2076,17 @@
     color: var(--surface);
     border: 1px solid var(--ink);
     border-radius: 999px;
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-sans);
     font-size: 10.5px;
     text-transform: uppercase;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.07em;
     cursor: pointer;
     box-shadow: 0 4px 14px rgba(11, 22, 40, 0.25);
     opacity: 0;
     transform: translateY(16px) scale(0.92);
     pointer-events: none;
     transition: opacity 0.22s ease, transform 0.22s ease, background 0.15s;
+    font-weight: 600;
   }
   .back-to-top.is-visible {
     opacity: 1;
@@ -2099,12 +2119,13 @@
     display: flex; flex-wrap: wrap; gap: 6px; align-items: center;
   }
   .filter-bar-label {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-sans);
     font-size: 11px;
     text-transform: uppercase;
-    letter-spacing: 0.14em;
+    letter-spacing: 0.07em;
     color: var(--muted);
     margin-right: 8px;
+    font-weight: 600;
   }
   .chip {
     font-family: 'Inter', sans-serif;
@@ -2333,14 +2354,15 @@
     text-align: left;
   }
   .empty-state-legend-title {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-sans);
     font-size: 11px;
     text-transform: uppercase;
-    letter-spacing: 0.16em;
+    letter-spacing: 0.07em;
     color: var(--accent);
     text-align: center;
     margin-bottom: 10px;
     font-style: normal;
+    font-weight: 600;
   }
   .empty-state-legend-grid {
     display: grid;
@@ -2391,11 +2413,12 @@
     font-size: 28px; line-height: 1;
   }
   .country-region {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-sans);
     font-size: 11px;
     text-transform: uppercase;
-    letter-spacing: 0.16em;
+    letter-spacing: 0.07em;
     color: var(--muted);
+    font-weight: 600;
   }
   .country-name {
     font-size: 32px; font-weight: 700; line-height: 1.05;
@@ -2431,12 +2454,13 @@
     color: var(--muted);
     border: 1px solid var(--line-strong);
     border-radius: 999px;
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-sans);
     font-size: 11px;
     text-transform: uppercase;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.07em;
     cursor: pointer;
     transition: all 0.15s;
+    font-weight: 600;
   }
   .share-link-btn:hover {
     color: var(--accent);
@@ -2478,11 +2502,12 @@
   }
   .leader-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
   .leader-title {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-sans);
     font-size: 11px;
     text-transform: uppercase;
-    letter-spacing: 0.14em;
+    letter-spacing: 0.07em;
     color: var(--muted);
+    font-weight: 600;
   }
   .leader-name {
     font-family: 'Newsreader', serif;
@@ -2494,14 +2519,15 @@
   .leader-since { font-size: 11px; color: var(--muted); margin-top: 1px; font-family: 'JetBrains Mono', monospace; }
 
   .section-title {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-sans);
     font-size: 11px;
     text-transform: uppercase;
-    letter-spacing: 0.16em;
+    letter-spacing: 0.07em;
     color: var(--accent);
     margin: 18px 0 8px;
     padding-bottom: 4px;
     border-bottom: 1px solid var(--line);
+    font-weight: 600;
   }
 
   .data-row { display: flex; justify-content: space-between; gap: 12px; padding: 5px 0; font-size: 13px; }
@@ -2576,12 +2602,13 @@
     border-radius: 1px;
   }
   .econ-label {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-sans);
     font-size: 11px;
     text-transform: uppercase;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.07em;
     color: var(--muted);
     margin-bottom: 4px;
+    font-weight: 600;
   }
   .econ-value {
     font-family: 'Newsreader', serif;
@@ -2635,9 +2662,10 @@
     font-size: 10px;
     color: var(--muted);
     margin-top: 3px;
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-sans);
     text-transform: uppercase;
-    letter-spacing: 0.06em;
+    letter-spacing: 0.07em;
+    font-weight: 600;
   }
 
   .source-link {
@@ -2666,11 +2694,12 @@
     font-size: 28px; font-style: normal; font-weight: 700;
   }
   .analytics-head .kicker {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-sans);
     font-size: 11px;
     text-transform: uppercase;
-    letter-spacing: 0.16em;
+    letter-spacing: 0.07em;
     color: var(--muted);
+    font-weight: 600;
   }
   .charts-grid {
     display: grid;
@@ -2720,10 +2749,10 @@
     min-width: 1280px;
   }
   .mm-header {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-sans);
     font-size: 11px;
     text-transform: uppercase;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.07em;
     color: var(--muted);
     padding: 8px 10px 10px;
     border-bottom: 1px solid var(--ink);
@@ -2818,14 +2847,15 @@
     .mm-row-label { border-top: 1px solid var(--ink); border-bottom: none; padding-top: 14px; }
     .mm-cell::before {
       content: attr(data-label);
-      font-family: 'JetBrains Mono', monospace;
+      font-family: var(--font-sans);
       font-size: 10.5px;
       text-transform: uppercase;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.07em;
       color: var(--muted);
       display: block;
       margin-bottom: 4px;
-    }
+    font-weight: 600;
+  }
   }
   .chart-card h3 {
     font-size: 18px; font-weight: 600;
@@ -2952,9 +2982,10 @@
     display: flex; gap: 14px;
     font-size: 11px; color: var(--muted);
     margin-top: 8px;
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-sans);
     text-transform: uppercase;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.07em;
+    font-weight: 600;
   }
   .gender-legend-dot {
     width: 9px; height: 9px; display: inline-block;
@@ -2976,11 +3007,12 @@
     gap: 4px;
   }
   .scatter-control-group label {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-sans);
     font-size: 11px;
     text-transform: uppercase;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.07em;
     color: var(--muted);
+    font-weight: 600;
   }
   .scatter-control-group select,
   .scatter-control-group input[type="text"] {
@@ -3034,10 +3066,10 @@
     grid-column: 1 / -1;
   }
   .scatter-context-label {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-sans);
     font-size: 11px;
     text-transform: uppercase;
-    letter-spacing: 0.14em;
+    letter-spacing: 0.07em;
     color: var(--accent);
     margin-bottom: 8px;
     font-weight: 600;
@@ -3298,11 +3330,12 @@
     font-weight: 500;
   }
   .ranking-ideology {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-sans);
     font-size: 11px;
     text-transform: uppercase;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.07em;
     display: flex; align-items: center; gap: 5px;
+    font-weight: 600;
   }
   .ranking-ideology::before {
     content: ""; width: 7px; height: 7px; border-radius: 50%;
@@ -3330,13 +3363,14 @@
     grid-column: 1 / -1;
     text-align: center;
     padding: 12px 0 4px;
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-sans);
     font-size: 11px;
     text-transform: uppercase;
-    letter-spacing: 0.16em;
+    letter-spacing: 0.07em;
     color: var(--muted);
     border-bottom: 1px solid var(--line);
     margin-bottom: 4px;
+    font-weight: 600;
   }
 
   /* Country profile (multi-variable comparison) */
@@ -3376,11 +3410,12 @@
     margin-bottom: 8px;
   }
   .profile-card-label {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-sans);
     font-size: 11px;
     text-transform: uppercase;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.07em;
     color: var(--muted);
+    font-weight: 600;
   }
   .profile-card-rank {
     font-family: 'Newsreader', serif;
@@ -3516,12 +3551,13 @@
     border-top: 1px solid var(--line);
   }
   .women-leaders-title {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-sans);
     font-size: 11px;
     text-transform: uppercase;
-    letter-spacing: 0.14em;
+    letter-spacing: 0.07em;
     color: var(--accent);
     margin-bottom: 10px;
+    font-weight: 600;
   }
   .women-leaders-grid {
     display: grid;
@@ -3590,14 +3626,15 @@
   }
 
   .gender-by-sys-title {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-sans);
     font-size: 11px;
     text-transform: uppercase;
-    letter-spacing: 0.14em;
+    letter-spacing: 0.07em;
     color: var(--muted);
     margin: 16px 0 8px;
     padding-top: 12px;
     border-top: 1px solid var(--line);
+    font-weight: 600;
   }
 
   /* Change-or-continuity */
@@ -3657,18 +3694,19 @@
     padding-bottom: 6px;
   }
   .cc-group-label {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-sans);
     font-size: 11px;
     text-transform: uppercase;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.07em;
     font-weight: 600;
   }
   .cc-group-count {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-sans);
     font-size: 11px;
     color: var(--muted);
     text-transform: uppercase;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.07em;
+    font-weight: 600;
   }
   .cc-group-items {
     display: grid;
@@ -3722,12 +3760,13 @@
   }
   .cc-item-arrow {
     display: flex; align-items: center; gap: 4px;
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-sans);
     font-size: 10px;
     text-transform: uppercase;
-    letter-spacing: 0.04em;
+    letter-spacing: 0.07em;
     line-height: 1.3;
     flex-wrap: wrap;
+    font-weight: 600;
   }
   .cc-item-mag {
     display: inline-block;
@@ -3735,10 +3774,10 @@
     padding: 1px 5px;
     border: 1px solid currentColor;
     border-radius: 999px;
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-sans);
     font-size: 10px;
     font-weight: 600;
-    letter-spacing: 0.06em;
+    letter-spacing: 0.07em;
     text-transform: uppercase;
     flex-shrink: 0;
   }
@@ -3758,10 +3797,10 @@
     display: flex;
     align-items: center;
     gap: 8px;
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-sans);
     font-size: 10.5px;
     text-transform: uppercase;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.07em;
     color: var(--accent);
     font-weight: 600;
   }
@@ -3858,12 +3897,13 @@
     margin-top: 16px;
   }
   .method-block h4 {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-sans);
     font-size: 11px;
     text-transform: uppercase;
-    letter-spacing: 0.16em;
+    letter-spacing: 0.07em;
     color: var(--c-cleft);
     margin-bottom: 8px;
+    font-weight: 600;
   }
   .method-block p {
     font-size: 13px;
@@ -3917,12 +3957,13 @@
     letter-spacing: -0.01em;
   }
   .editorial-summary-meta {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-sans);
     font-size: 11px;
     text-transform: uppercase;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.07em;
     color: rgba(244, 246, 250, 0.5);
     margin-left: auto;
+    font-weight: 600;
   }
   .editorial-content {
     margin-top: 18px;
@@ -4087,10 +4128,10 @@
     border-left: 2px solid rgba(244, 246, 250, 0.15);
   }
   .changelog-date {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-sans);
     font-size: 11px;
     text-transform: uppercase;
-    letter-spacing: 0.16em;
+    letter-spacing: 0.07em;
     color: var(--accent);
     margin-bottom: 8px;
     font-weight: 600;
@@ -4142,12 +4183,13 @@
     border-top: 1px solid rgba(244, 246, 250, 0.15);
   }
   .footer-credit-block h4 {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-sans);
     font-size: 11px;
     text-transform: uppercase;
-    letter-spacing: 0.16em;
+    letter-spacing: 0.07em;
     color: var(--accent);
     margin-bottom: 10px;
+    font-weight: 600;
   }
   .footer-credit-block p {
     font-size: 12.5px;
@@ -4185,12 +4227,13 @@
     color: var(--surface);
     border: 1px solid var(--accent);
     border-radius: 2px;
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-sans);
     font-size: 10.5px;
     text-transform: uppercase;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.07em;
     cursor: pointer;
     transition: all 0.15s;
+    font-weight: 600;
   }
   .dataset-btn:hover {
     background: var(--accent);
@@ -4482,15 +4525,16 @@
     align-items: center;
     flex-wrap: wrap;
     gap: 8px;
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-sans);
     font-size: 11px;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.07em;
     text-transform: uppercase;
     color: var(--ink-soft);
     background: var(--surface);
     border: 1px solid var(--line);
     border-radius: 999px;
     padding: 6px 14px 6px 10px;
+    font-weight: 600;
   }
   .live-pill strong { color: var(--live); font-weight: 600; }
   .live-pill .sep { color: var(--line-strong); }
@@ -4622,12 +4666,13 @@
   }
   .next-card.is-brasil { background: linear-gradient(145deg, #0B4F34 0%, #0E6B45 55%, #13784E 100%); }
   .next-card-kicker {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-sans);
     font-size: 11px;
-    letter-spacing: 0.14em;
+    letter-spacing: 0.07em;
     text-transform: uppercase;
     opacity: .8;
     display: flex; align-items: center; gap: 8px;
+    font-weight: 600;
   }
   .next-card-title {
     font-family: 'Newsreader', serif;
@@ -4743,11 +4788,12 @@
     font-weight: 700;
   }
   .portada-sec-head .kicker {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-sans);
     font-size: 10.5px;
     text-transform: uppercase;
-    letter-spacing: .16em;
+    letter-spacing: 0.07em;
     color: var(--muted);
+    font-weight: 600;
   }
 
   /* Especiales grid */
@@ -4782,13 +4828,14 @@
   .especial-card.is-soon { background: var(--surface-2); border-style: dashed; }
   .especial-tag {
     align-self: flex-start;
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-sans);
     font-size: 10.5px;
-    letter-spacing: .14em;
+    letter-spacing: 0.07em;
     text-transform: uppercase;
     padding: 4px 9px;
     border-radius: 999px;
     background: rgba(11,22,40,.07);
+    font-weight: 600;
   }
   .especial-card.is-featured .especial-tag { background: var(--br-yellow); color: #0B1628; }
   .especial-title {
@@ -4836,7 +4883,9 @@
     padding-right: 10px;
   }
   .agenda-day { font-family: 'Newsreader', serif; font-size: 24px; font-weight: 700; line-height: 1; }
-  .agenda-mon { font-family: 'JetBrains Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: .12em; color: var(--muted); }
+  .agenda-mon { font-family: var(--font-sans); font-size: 11px; text-transform: uppercase; letter-spacing: 0.07em; color: var(--muted);
+    font-weight: 600;
+  }
   .agenda-name { font-weight: 600; font-size: 14.5px; display: flex; align-items: center; gap: 4px; }
   .agenda-type { font-size: 12.5px; color: var(--muted); line-height: 1.3; }
   .agenda-in { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--accent); margin-top: 2px; }
@@ -4855,12 +4904,13 @@
   .feed-when { font-family: 'JetBrains Mono', monospace; font-size: 11.5px; color: var(--muted); padding-top: 3px; }
   .feed-tag {
     display: inline-block;
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-sans);
     font-size: 11px;
     text-transform: uppercase;
-    letter-spacing: .12em;
+    letter-spacing: 0.07em;
     color: var(--accent);
     margin-right: 8px;
+    font-weight: 600;
   }
   .feed-item a { color: inherit; }
 
@@ -4931,10 +4981,11 @@
   }
   .esp-status {
     display: inline-flex; align-items: center; gap: 8px;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px; letter-spacing: .14em; text-transform: uppercase;
+    font-family: var(--font-sans);
+    font-size: 11px; letter-spacing: 0.07em; text-transform: uppercase;
     background: rgba(0,0,0,.25);
     padding: 6px 12px; border-radius: 999px;
+    font-weight: 600;
   }
   .esp-status .live-dot { background: var(--br-yellow); animation-name: livePulseY; }
   @keyframes livePulseY {
@@ -4995,9 +5046,10 @@
   .esp-sec { margin-top: 44px; scroll-margin-top: 70px; }
   .esp-sec-head { margin-bottom: 18px; }
   .esp-sec-head .kicker {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10.5px; letter-spacing: .16em; text-transform: uppercase;
+    font-family: var(--font-sans);
+    font-size: 10.5px; letter-spacing: 0.07em; text-transform: uppercase;
     color: var(--br-green);
+    font-weight: 600;
   }
   .esp-sec-head h3 {
     font-size: clamp(24px, 2.6vw, 32px);
@@ -5149,7 +5201,9 @@
   .uf-empty { color: var(--muted); font-size: 14px; }
 
   .uf-rank { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 14px 16px; }
-  .uf-rank-title { font-family: 'JetBrains Mono', monospace; font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+  .uf-rank-title { font-family: var(--font-sans); font-size: 10.5px; letter-spacing: 0.07em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px;
+    font-weight: 600;
+  }
   .uf-rank-list { max-height: 330px; overflow-y: auto; padding-right: 4px; }
   .uf-rank-row {
     display: grid;
@@ -5561,6 +5615,253 @@
   /* Keep Leaflet's controls (z-index 1000) inside the map so they never
      float over the sticky filter bar while scrolling */
   .panel-map { isolation: isolate; z-index: 0; }
+
+  /* ===========================================================
+     THEME 2026 — sistema unificado
+     One component language across the whole site: white cards with
+     soft borders, Inter for labels, mono only for figures.
+     =========================================================== */
+  /* Filters: one white toolbar */
+  .filters-sticky { background: var(--surface); box-shadow: 0 1px 0 var(--line), 0 4px 14px rgba(11,22,40,.05); }
+  .filter-bar { background: var(--surface); padding: 10px 24px; border-bottom: 1px solid var(--line); }
+  .filter-bar-secondary { padding: 7px 24px; }
+  .filter-bar-label { color: var(--muted); font-size: 11px; min-width: 150px; }
+  .chip, .chip-region, .chip-system { border-radius: 999px; }
+  .chip-region, .chip-system { color: var(--ink-soft); border-color: var(--line-strong); }
+  .filter-active-badge { background: #FFF4EC; border-bottom: 1px solid #F6D5BF; }
+
+  /* Map + detail panel: soft dividers instead of black rules */
+  .layout { border-bottom: 1px solid var(--line); background: var(--surface); }
+  .panel-detail { border-left: 1px solid var(--line) !important; background: var(--surface); }
+  .map-insight-band { border-top: 0; }
+
+  /* Stats under the map: same tiles as the portada */
+  .stats-bar {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 12px;
+    padding: 20px 32px 28px;
+    background: var(--bg);
+    border: 0;
+  }
+  .stat {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    box-shadow: var(--shadow-sm);
+    padding: 16px 18px;
+  }
+  .stat:last-child { border-right: 1px solid var(--line); }
+  .stat-label { color: var(--muted); }
+  .stat-value { font-size: 32px; }
+  .stat-sub { font-size: 13px; }
+
+  /* Country card */
+  .section-title {
+    color: var(--ink);
+    font-size: 11.5px;
+    margin: 22px 0 10px;
+    padding: 0 0 6px 10px;
+    border-bottom: 1px solid var(--line);
+    border-left: 3px solid var(--accent);
+    line-height: 1.2;
+  }
+  .data-row { font-size: 13.5px; padding: 6px 0; border-bottom: 1px solid var(--surface-2); }
+  .data-row .k { color: var(--muted); }
+  .econ-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
+  .econ-cell {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 12px;
+  }
+  .econ-label { font-size: 10.5px; color: var(--muted); }
+  .econ-value { font-size: 23px; font-weight: 700; margin-top: 2px; }
+  .econ-meta { font-size: 11.5px; line-height: 1.4; }
+  .gini-bar-track, .gini-bar-track.hdi, .gini-bar-track.press {
+    height: 6px;
+    border-radius: 3px;
+    background: linear-gradient(to right, #E3E8EF, #5B6A80);
+  }
+  .gini-bar-track.hdi   { background: linear-gradient(to right, #E3E8EF, #0F766E); }
+  .gini-bar-track.press { background: linear-gradient(to right, #5B6A80, #E3E8EF 55%, #0F766E); }
+  .gini-bar-marker { width: 3px; top: -4px; bottom: -4px; background: var(--accent); box-shadow: 0 0 0 2px var(--surface); }
+  .gini-bar-scale {
+    font-family: var(--font-sans);
+    text-transform: none;
+    letter-spacing: 0;
+    font-size: 11px;
+    gap: 8px;
+    margin-top: 5px;
+  }
+  .result-bar { height: 5px; border-radius: 3px; overflow: hidden; }
+  .gdp-bar { border-radius: 3px 3px 0 0; }
+  .gdp-bar.neg { border-radius: 0 0 3px 3px; }
+
+  /* Legend + tip in the empty panel */
+  .empty-state-tip { border-radius: 10px; }
+
+  .econ-meta, .leader-since { font-family: var(--font-sans); font-size: 12px; }
+  .filter-bar-label { min-width: 176px; }
+  .detail-link, .panel-detail a[href^="http"] { font-family: var(--font-sans); }
+
+  /* Text that isn't a figure uses the UI font too */
+  .office-system, .esp-updated, .agenda-in, .br-cal-in, .results-progress-lbl,
+  .feed-when, .poll-row-meta, .elec-stat-lbl {
+    font-family: var(--font-sans);
+    letter-spacing: 0;
+  }
+  .office-system { font-size: 11.5px; font-weight: 500; }
+  .agenda-in, .br-cal-in { font-weight: 600; font-size: 12px; }
+
+  /* ===========================================================
+     THEME 2026 — movimiento y tarjetas
+     Count-up numbers, growing bars, staggered reveal, hover lift,
+     shine sweep on featured cards. All disabled with reduced motion.
+     =========================================================== */
+  /* Profile cards */
+  .profile-card, .profile-card.signature {
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    background: var(--surface);
+    padding: 18px 18px 16px;
+    box-shadow: var(--shadow-sm);
+  }
+  .profile-card-label { color: var(--muted); }
+  .profile-card-rank {
+    font-family: var(--font-sans);
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--accent);
+    background: #FFF1E8;
+    border-radius: 999px;
+    padding: 3px 9px;
+  }
+  .profile-card-value { font-size: 34px; font-weight: 700; letter-spacing: -0.01em; }
+  .profile-card-percentile { font-family: var(--font-sans); font-size: 13px; color: var(--ink-soft); }
+  .profile-card-bar {
+    position: relative;
+    height: 8px;
+    border-radius: 4px;
+    background: var(--surface-2);
+    box-shadow: inset 0 0 0 1px var(--line);
+    overflow: visible;
+    margin: 14px 0 6px;
+  }
+  .profile-card-bar-fill {
+    position: absolute; left: 0; top: 0; bottom: 0;
+    border-radius: 4px;
+    background: linear-gradient(90deg, #FDBA74, var(--accent));
+  }
+  .profile-card-bar-marker {
+    top: -4px !important; bottom: -4px !important;
+    width: 4px !important;
+    border-radius: 2px;
+    background: var(--ink) !important;
+    box-shadow: 0 0 0 2px var(--surface);
+    transition: left .9s cubic-bezier(.2,.8,.2,1);
+  }
+  .profile-card-bar-avg { width: 2px !important; top: -3px !important; bottom: -3px !important; border-radius: 1px; }
+  .profile-card-bar-avg[style*="--c-cright"] { background: var(--ink-soft) !important; }
+  .profile-card-bar-legend { display: flex; gap: 12px; font-size: 11px; color: var(--muted); margin-bottom: 10px; }
+  .profile-card-bar-legend i { display: inline-block; width: 2px; height: 10px; margin-right: 5px; vertical-align: -1px; background: var(--ink-soft); }
+  .profile-card-context { font-family: var(--font-sans); font-size: 12.5px; border-top: 1px solid var(--line); padding-top: 10px; }
+  .profile-card-context .neighbor { padding: 5px 8px; border-radius: 6px; margin: 0 -8px; transition: background .15s; }
+  .profile-card-context .neighbor:hover { background: var(--surface-2); }
+  .profile-card-context .neighbor.is-self { background: #FFF1E8; color: var(--ink); font-weight: 700; }
+  .profile-card-context .nval { font-family: var(--font-mono); }
+  .profile-card-avgs { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+  .profile-card-avgs span { background: var(--surface-2); border: 1px solid var(--line); border-radius: 999px; padding: 3px 9px; font-size: 11.5px; color: var(--ink-soft); }
+  .profile-card-avgs b { color: var(--ink); font-weight: 600; margin-right: 3px; }
+
+  /* Hover lift for every card family */
+  .chart-card, .profile-card, .stat, .pulse-tile, .office-card, .chamber-card, .uf-card,
+  .poll-card, .cc-item, .agenda-item, .especial-card, .econ-cell, .elec-highlights-grid > *, .facts-list li {
+    transition: transform .25s cubic-bezier(.2,.8,.2,1), box-shadow .25s ease, border-color .25s ease;
+  }
+  .profile-card:hover, .stat:hover, .office-card:hover, .econ-cell:hover, .poll-card:hover,
+  .elec-highlights-grid > *:hover, .facts-list li:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--line-strong);
+  }
+
+  /* Shine sweep on featured cards */
+  .especial-card.is-featured, .next-card, .esp-hero { position: relative; overflow: hidden; }
+  .especial-card.is-featured::after, .next-card::after {
+    content: '';
+    position: absolute; top: 0; bottom: 0; left: -60%;
+    width: 45%;
+    background: linear-gradient(100deg, transparent, rgba(255,255,255,.18), transparent);
+    transform: skewX(-18deg);
+    pointer-events: none;
+    transition: left .9s ease;
+  }
+  .especial-card.is-featured:hover::after, .next-card:hover::after { left: 120%; }
+
+  /* Slow living gradient on the Brasil pieces */
+  .especial-card.is-featured, .next-card.is-brasil, .esp-hero {
+    background-size: 180% 180%;
+    animation: brFlow 16s ease-in-out infinite alternate;
+  }
+  @keyframes brFlow { from { background-position: 0% 40%; } to { background-position: 100% 60%; } }
+
+  /* Countdown tick */
+  .countdown-num.is-tick { animation: cdTick .45s cubic-bezier(.2,.8,.2,1); }
+  @keyframes cdTick { from { transform: translateY(-6px); opacity: .35; } to { transform: none; opacity: 1; } }
+
+  /* Scroll reveal (class added by JS) */
+  .fx-reveal { opacity: 0; transform: translateY(14px); }
+  .fx-reveal.fx-in {
+    opacity: 1; transform: none;
+    transition: opacity .6s ease, transform .6s cubic-bezier(.2,.8,.2,1);
+    transition-delay: var(--fx-delay, 0ms);
+  }
+  /* Bars that grow (JS sets the final width after the element is visible) */
+  .fx-grow { transition: width 1.1s cubic-bezier(.2,.8,.2,1) !important; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .fx-reveal { opacity: 1 !important; transform: none !important; }
+    .especial-card.is-featured, .next-card.is-brasil, .esp-hero, .countdown-num.is-tick { animation: none !important; }
+    .especial-card.is-featured::after, .next-card::after { display: none; }
+    *, *::before, *::after { transition-duration: 0s !important; }
+  }
+
+  /* ===== Especial EE.UU. ===== */
+  .us-hero {
+    background:
+      radial-gradient(circle at 85% 15%, rgba(178,58,58,.55), transparent 35%),
+      radial-gradient(circle at 10% 110%, rgba(42,85,150,.9), transparent 50%),
+      linear-gradient(135deg, #0B1F3A 0%, #13305A 55%, #1B3D6E 100%);
+    background-size: 180% 180%;
+  }
+  .us-hero h2 em { color: #F2B8B5; }
+  .us-offices .office-card { border-top-color: var(--brand-2); }
+  .us-offices .office-num { color: var(--brand-2); }
+  .ballot-note.us-note { background: #E8EEF7; }
+  .us-rating-chip { display: inline-flex; align-items: center; gap: 5px; font-size: 11.5px; color: var(--ink-soft); margin-right: 6px; white-space: nowrap; }
+  .us-rating-chip i { width: 10px; height: 10px; border-radius: 3px; display: inline-block; }
+  .us-race { margin-top: 8px; line-height: 1.5; }
+  .us-cands { font-size: 12.5px; color: var(--muted); }
+  .us-race .us-rating-chip { margin-left: 6px; }
+  .us-race-row {
+    display: grid; grid-template-columns: 12px 30px 1fr auto; gap: 8px; align-items: center;
+    width: 100%; padding: 6px 4px; border: 0; border-bottom: 1px solid var(--surface-2);
+    background: none; font: inherit; font-size: 13px; color: inherit; text-align: left; cursor: pointer; border-radius: 6px;
+  }
+  .us-race-row:hover { background: var(--surface-2); }
+  .us-race-row i { width: 12px; height: 12px; border-radius: 3px; }
+  .us-race-st { font-family: var(--font-mono); font-weight: 600; font-size: 12px; }
+  .us-race-name em { font-style: normal; color: var(--muted); font-size: 12px; }
+  .us-race-rt { font-size: 12px; color: var(--muted); }
+  .us-key-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; }
+  .us-key .office-label { font-family: var(--font-serif); font-size: 19px; font-weight: 700; }
+  .us-key .us-rating-chip { margin-top: 10px; }
+  .topic-nav-link.is-special-us .topic-nav-text::before { background: #2A5596; }
+  #us-map .br-map-svg { max-height: 560px; }
+  #esp-eeuu .esp-sec-head .kicker { color: var(--brand-2); }
+  #esp-eeuu .esp-nav a:hover { border-color: var(--brand-2); color: var(--brand-2); }
+  #esp-eeuu .esp-status .live-dot { background: #F2B8B5; }
 </style>
 </head>
 <body>
@@ -5633,6 +5934,10 @@
       <a href="#brasil" class="topic-nav-link is-special" onclick="window.__scrollToSection(event, 'brasil')">
         <span class="topic-nav-num">★</span>
         <span class="topic-nav-text">Brasil 2026</span>
+      </a>
+      <a href="#eeuu" class="topic-nav-link is-special is-special-us" onclick="window.__scrollToSection(event, 'eeuu')">
+        <span class="topic-nav-num">★</span>
+        <span class="topic-nav-text">EE.UU. 2026</span>
       </a>
       <a href="#nav-map" class="topic-nav-link" onclick="window.__scrollToSection(event, 'nav-map')">
         <span class="topic-nav-num">01</span>
@@ -6045,6 +6350,10 @@
 
   <div class="atlas-view" data-view="brasil">
     <div class="esp" id="esp-brasil"><div class="esp-loading">Cargando especial…</div></div>
+  </div>
+
+  <div class="atlas-view" data-view="eeuu">
+    <div class="esp" id="esp-eeuu"><div class="esp-loading">Cargando especial…</div></div>
   </div>
 
   <div class="atlas-view" data-view="metodologia">
@@ -26252,14 +26561,14 @@ function renderDetail(c) {
     <div class="section-title">Poder legislativo · ${c.legislature.type}</div>
     ${upper ? `
       <div style="margin-bottom:8px">
-        <div style="font-family:'Newsreader',serif; font-style:italic; font-size:13.5px; margin-bottom:4px">${upper.name}</div>
+        <div style="font-family:var(--font-sans); font-weight:600; font-size:13.5px; color:var(--ink); margin:6px 0 4px">${upper.name}</div>
         <div class="data-row"><span class="k">Bancas</span><span class="v mono">${upper.seats}</span></div>
         <div class="data-row"><span class="k">Elección</span><span class="v" style="font-size:12px">${upper.method}</span></div>
         <div class="data-row"><span class="k">Mandato</span><span class="v">${upper.term}</span></div>
       </div>` : ''}
     ${lower ? `
       <div>
-        <div style="font-family:'Newsreader',serif; font-style:italic; font-size:13.5px; margin-bottom:4px">${lower.name}</div>
+        <div style="font-family:var(--font-sans); font-weight:600; font-size:13.5px; color:var(--ink); margin:6px 0 4px">${lower.name}</div>
         <div class="data-row"><span class="k">Bancas</span><span class="v mono">${lower.seats}</span></div>
         <div class="data-row"><span class="k">Elección</span><span class="v" style="font-size:12px">${lower.method}</span></div>
         <div class="data-row"><span class="k">Mandato</span><span class="v">${lower.term}</span></div>
@@ -27445,8 +27754,10 @@ function initProfile(metrics) {
           <div class="profile-card-bar">
             ${blockAvgPct != null ? `<div class="profile-card-bar-avg" style="left:${blockAvgPct}%; background:${ideoColor}" title="Promedio ${ideoLabel}: ${fmtVal(m, blockAvg)}"></div>` : ''}
             <div class="profile-card-bar-avg" style="left:${wAvgPct}%; background:var(--c-cright)" title="Promedio mundial: ${fmtVal(m, wAvg)}"></div>
+            <div class="profile-card-bar-fill" style="width:${Math.max(0, Math.min(100, pctOnBar)).toFixed(1)}%"></div>
             <div class="profile-card-bar-marker" style="left:${pctOnBar}%"></div>
           </div>
+          <div class="profile-card-bar-legend"><span><i class="lg-world"></i>promedio mundial</span>${blockAvgPct != null ? `<span><i style="background:${ideoColor}"></i>${ideoLabel}</span>` : ''}</div>
         `}
         ${comparisonBlock}
         <div class="profile-card-context">
@@ -27455,7 +27766,7 @@ function initProfile(metrics) {
               <span>${rank > 1 ? '#' + (rank - 1) : '—'} ${flagOf(aboveCountry.iso)} ${aboveCountry.name}</span>
               <span class="nval">${fmtVal(m, above.value)}</span>
             </div>` : ''}
-          <div class="neighbor" style="color:var(--ink); font-weight:600">
+          <div class="neighbor is-self">
             <span>#${rank} ${flagOf(c.iso)} ${c.name}</span>
             <span class="nval">${fmtVal(m, value)}</span>
           </div>
@@ -27464,7 +27775,7 @@ function initProfile(metrics) {
               <span>#${rank + 1} ${flagOf(belowCountry.iso)} ${belowCountry.name}</span>
               <span class="nval">${fmtVal(m, below.value)}</span>
             </div>` : ''}
-          <div style="margin-top: 6px"><strong>Mundial:</strong> ${fmtVal(m, wAvg)}${blockAvg != null ? ` · <strong>${ideoLabel}:</strong> ${fmtVal(m, blockAvg)}` : ''}</div>
+          <div class="profile-card-avgs"><span><b>Mundial</b> ${fmtVal(m, wAvg)}</span>${blockAvg != null ? `<span><b>${ideoLabel}</b> ${fmtVal(m, blockAvg)}</span>` : ''}</div>
         </div>
       </div>`;
     }).join('');
@@ -28549,7 +28860,7 @@ function renderElectionsTimeline() {  const today = new Date();
   // Also marks the corresponding nav link as active.
   // ============ SPA ROUTER ============
   // Maps nav hrefs (#nav-map, #nav-calendar, …) and view ids to canonical views.
-  const VIEW_IDS = ['inicio', 'elecciones', 'analisis', 'cambio', 'metodologia', 'brasil'];
+  const VIEW_IDS = ['inicio', 'elecciones', 'analisis', 'cambio', 'metodologia', 'brasil', 'eeuu'];
   const NAV_TO_VIEW = {
     'nav-map': 'inicio',          // the map now lives on the home view
     'nav-calendar': 'elecciones',
@@ -28850,9 +29161,10 @@ function addAntarcticSectors() {
     const color = getCountryColor(s.country);
     const polygon = L.polygon(makeSlice(s.west, s.east), {
       fillColor: color,
-      fillOpacity: 0.62,
-      color: '#64748B',
-      weight: 0.6,
+      fillOpacity: 0.28,
+      color: '#8A97AA',
+      weight: 1,
+      dashArray: '3 4',
       className: 'antarctic-sector'
     }).addTo(map);
 
@@ -29109,6 +29421,8 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
   const LIVE_URL = 'data/live.json';
   const BRASIL_URL = 'data/especiales/brasil-2026.json';
   const BR_GEO_URL = 'data/geo/brasil-uf.json';
+  const EEUU_URL = 'data/especiales/eeuu-2026.json';
+  const US_GEO_URL = 'data/geo/usa-states.json';
   const MONTHS = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
   const MONTHS_SHORT = ['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
   const DAYS = ['domingo','lunes','martes','miércoles','jueves','viernes','sábado'];
@@ -29130,6 +29444,10 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
     brMetric: 'voters',
     brSelected: null,
     pollRound: 'r1',
+    eeuu: null,          // data/especiales/eeuu-2026.json
+    usGeo: null,
+    usMetric: 'senate',
+    usSelected: null,
   };
   window.__atlasLive = live; // handy for debugging from the console
 
@@ -29195,7 +29513,13 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
       const parts = [Math.floor(diff / 86400000), Math.floor(diff / 3600000) % 24, Math.floor(diff / 60000) % 60, Math.floor(diff / 1000) % 60];
       const nums = el.querySelectorAll('.countdown-num');
       if (nums.length !== 4) return;
-      parts.forEach((v, i) => { const t = i === 0 ? String(v) : String(v).padStart(2, '0'); if (nums[i].textContent !== t) nums[i].textContent = t; });
+      parts.forEach((v, i) => {
+        const t = i === 0 ? String(v) : String(v).padStart(2, '0');
+        if (nums[i].textContent !== t) {
+          nums[i].textContent = t;
+          nums[i].classList.remove('is-tick'); void nums[i].offsetWidth; nums[i].classList.add('is-tick');
+        }
+      });
     });
   }
 
@@ -29594,7 +29918,7 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
     parties.forEach(p => {
       for (let s = 0; s < p.seats && k < seats.length; s++, k++) {
         const pt = seats[k];
-        circles.push(`<circle cx="${pt.x.toFixed(4)}" cy="${pt.y.toFixed(4)}" r="${dotR.toFixed(4)}" data-party="${esc(p.party)}" style="fill:${leanColor(p.lean)}"><title>${esc(p.party)}${p.name ? ' — ' + esc(p.name) : ''}: ${p.seats}</title></circle>`);
+        circles.push(`<circle cx="${pt.x.toFixed(4)}" cy="${pt.y.toFixed(4)}" r="${dotR.toFixed(4)}" data-party="${esc(p.party)}" style="fill:${p.color || leanColor(p.lean)}"><title>${esc(p.party)}${p.name ? ' — ' + esc(p.name) : ''}: ${p.seats}</title></circle>`);
       }
     });
     for (; k < seats.length; k++) {
@@ -29617,14 +29941,17 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
     return `<div class="blocs-bar">${sums.map(b => `<span style="width:${(b.seats / total * 100).toFixed(2)}%;background:${b.color}" title="${esc(b.label)}: ${b.seats}"></span>`).join('')}</div>
       <div class="blocs-legend">${sums.map(b => `<span>${esc(b.label)}: <b>${b.seats}</b></span>`).join('')}</div>`;
   }
-  function chamberCard(ch, rows, extraHTML) {
-    const parties = sortByLean(ch.parties || []);
+  // opts.partyColors: parties carry their own colour and order (e.g. US D/R),
+  // so no ideological sorting and no left/centre/right blocs bar.
+  function chamberCard(ch, rows, extraHTML, opts) {
+    opts = opts || {};
+    const parties = opts.partyColors ? (ch.parties || []) : sortByLean(ch.parties || []);
     const seated = parties.reduce((a, p) => a + p.seats, 0);
-    const legend = parties.map(p => `<span class="party-chip" data-party="${esc(p.party)}" tabindex="0" title="${esc(p.name || p.party)}"><i style="background:${leanColor(p.lean)}"></i>${esc(p.party)} <b>${p.seats}</b></span>`).join('');
+    const legend = parties.map(p => `<span class="party-chip" data-party="${esc(p.party)}" tabindex="0" title="${esc(p.name || p.party)}"><i style="background:${p.color || leanColor(p.lean)}"></i>${esc(p.party)} <b>${p.seats}</b></span>`).join('');
     return `<div class="chamber-card">
       <div class="chamber-head"><span class="chamber-name">${esc(ch.name)}</span><span class="chamber-meta">${esc(ch.term || '')}</span></div>
       ${hemicycleSVG(parties, ch.total || seated, rows)}
-      ${blocsHTML(parties, ch.total || seated)}
+      ${opts.partyColors ? '' : blocsHTML(parties, ch.total || seated)}
       <div class="party-legend">${legend}</div>
       ${extraHTML || ''}
       <div class="chamber-foot">Bancadas al ${esc(ch.asOf || '—')}${ch.source ? ` · <a href="${esc(ch.source)}" target="_blank" rel="noopener">fuente</a>` : ''}${ch.note ? ' · ' + esc(ch.note) : ''}</div>
@@ -29882,6 +30209,319 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
     return live.geo;
   }
 
+  /* ===================== ESPECIAL EE.UU. 2026 =====================
+     Midterms: House, Senate and governors. US party colours (D blue,
+     R red) are used here on purpose — it's what readers of US elections
+     expect — and every legend says so. */
+  const US_RATINGS = [
+    { id: 'safe-d',   label: 'Segura D',    color: '#1F4E9A' },
+    { id: 'likely-d', label: 'Probable D',  color: '#4F7FC4' },
+    { id: 'lean-d',   label: 'Inclinada D', color: '#9DBBE3' },
+    { id: 'tossup',   label: 'Empate',      color: '#C9A94B' },
+    { id: 'lean-r',   label: 'Inclinada R', color: '#EBA6A6' },
+    { id: 'likely-r', label: 'Probable R',  color: '#D0605F' },
+    { id: 'safe-r',   label: 'Segura R',    color: '#A3252E' },
+  ];
+  const US_NONE = '#E3E6EB';
+  function usRatingKey(r) {
+    const s = String(r || '').toLowerCase();
+    if (!s) return null;
+    if (s.includes('toss')) return 'tossup';
+    const side = /\bd\b|dem/.test(s) ? 'd' : /\br\b|rep/.test(s) ? 'r' : null;
+    if (!side) return null;
+    if (s.includes('safe') || s.includes('solid')) return 'safe-' + side;
+    if (s.includes('likely')) return 'likely-' + side;
+    if (s.includes('lean') || s.includes('tilt')) return 'lean-' + side;
+    return null;
+  }
+  const usRating = r => US_RATINGS.find(x => x.id === usRatingKey(r));
+  const US_PARTY = { D: 'Demócrata', R: 'Republicano', I: 'Independiente' };
+  const US_METRICS = {
+    house:  { label: 'Bancas en la Cámara' },
+    senate: { label: 'Carrera al Senado' },
+    gov:    { label: 'Gobernación' },
+  };
+
+  function usPhase(us, now = new Date()) {
+    const t = now.getTime(), d = us.dates;
+    const open = new Date(d.electionDay).getTime(), last = new Date(d.lastPollsClose || d.electionDay).getTime();
+    if (t < open) return { id: 'campaign', label: 'Campaña en curso', target: d.electionDay, targetLabel: 'para el día de la elección', live: false };
+    if (t < last) return { id: 'voting', label: 'Hoy se vota', target: d.lastPollsClose, targetLabel: 'para el cierre de las últimas urnas', live: true };
+    if (t < last + 3 * 86400000) return { id: 'counting', label: 'Escrutinio en curso', target: d.newCongress, targetLabel: 'para que asuma el nuevo Congreso', live: true };
+    return { id: 'final', label: 'Resultados', target: d.newCongress, targetLabel: 'para que asuma el nuevo Congreso', live: false };
+  }
+
+  function usStateColor(s, metric) {
+    const race = metric === 'senate' ? s.senate : s.governor;
+    if (!race) return US_NONE;
+    const r = usRating(race.rating);
+    return r ? r.color : (race.party === 'D' ? '#9DBBE3' : race.party === 'R' ? '#EBA6A6' : '#C9CED8');
+  }
+  const US_BLUES = ['#EEF2F8', '#D3DDEC', '#A9BEDD', '#7B9BCB', '#4E77B4', '#2A5596'];
+
+  function renderUsMap() {
+    const host = document.getElementById('us-map');
+    const us = live.eeuu;
+    if (!host || !live.usGeo || !us) return;
+    const byId = Object.fromEntries((us.states || []).map(s => [s.id, s]));
+    const metric = live.usMetric;
+    const seats = (us.states || []).map(s => s.houseSeats).filter(v => v != null);
+    const breaks = quantileBreaks(seats, US_BLUES.length);
+    const fill = s => {
+      if (!s) return US_NONE;
+      if (metric === 'house') { let i = 0; while (i < breaks.length && s.houseSeats >= breaks[i]) i++; return US_BLUES[i]; }
+      return usStateColor(s, metric);
+    };
+    host.innerHTML = `<svg class="br-map-svg" viewBox="${live.usGeo.viewBox}" role="img" aria-label="Mapa de EE.UU. por estado: ${esc(US_METRICS[metric].label)}">
+        ${live.usGeo.locations.map(l => `<path d="${l.path}" data-uf="${l.id}" tabindex="0" role="button" aria-label="${esc(l.name)}" style="fill:${fill(byId[l.id])}" class="${live.usSelected === l.id ? 'is-selected' : ''}"></path>`).join('')}
+      </svg><div class="br-tooltip" id="us-tooltip"></div>`;
+    const svg = host.querySelector('svg'), tip = host.querySelector('#us-tooltip');
+    const describe = s => {
+      if (metric === 'house') return `${fmtInt(s.houseSeats)} banca${s.houseSeats === 1 ? '' : 's'} en la Cámara`;
+      const race = metric === 'senate' ? s.senate : s.governor;
+      if (!race) return metric === 'senate' ? 'Sin elección al Senado en 2026' : 'Sin elección a gobernador en 2026';
+      const r = usRating(race.rating);
+      return `${esc(race.incumbent || '')} (${esc(race.party || '')})${r ? ' · ' + r.label + (race.ratingEstimated ? ' (est.)' : '') : ''}`;
+    };
+    svg.addEventListener('mousemove', ev => {
+      const id = ev.target.getAttribute && ev.target.getAttribute('data-uf');
+      const s = id && byId[id];
+      if (!s) { tip.classList.remove('is-visible'); return; }
+      const rect = host.getBoundingClientRect();
+      tip.innerHTML = `<strong>${esc(s.name)}</strong>${describe(s)}`;
+      tip.style.left = (ev.clientX - rect.left) + 'px';
+      tip.style.top = (ev.clientY - rect.top) + 'px';
+      tip.classList.add('is-visible');
+    });
+    svg.addEventListener('mouseleave', () => tip.classList.remove('is-visible'));
+    const pick = ev => { const id = ev.target.getAttribute && ev.target.getAttribute('data-uf'); if (id) selectUsState(id); };
+    svg.addEventListener('click', pick);
+    svg.addEventListener('keydown', ev => { if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); pick(ev); } });
+
+    const legend = document.getElementById('us-legend');
+    if (legend) {
+      legend.innerHTML = metric === 'house'
+        ? `<span>Bancas por estado:</span><div><div class="br-legend-scale">${US_BLUES.map(c => `<span style="background:${c}"></span>`).join('')}</div>
+           <div class="br-legend-ticks"><span>${Math.min(...seats)}</span><span>${Math.max(...seats)}</span></div></div>`
+        : `<span>Pronóstico${us.ratingsSource ? ' (' + esc(us.ratingsSource) + ')' : ''}:</span>
+           ${US_RATINGS.map(r => `<span class="us-rating-chip"><i style="background:${r.color}"></i>${r.label}</span>`).join('')}
+           <span class="us-rating-chip"><i style="background:${US_NONE}"></i>No se elige</span>`;
+    }
+    renderUsRaces();
+  }
+
+  function selectUsState(id) {
+    live.usSelected = id;
+    document.querySelectorAll('#us-map path').forEach(p => p.classList.toggle('is-selected', p.getAttribute('data-uf') === id));
+    renderUsCard();
+  }
+  function renderUsCard() {
+    const el = document.getElementById('us-state-card');
+    if (!el) return;
+    const s = (live.eeuu.states || []).find(x => x.id === live.usSelected);
+    if (!s) { el.innerHTML = '<div class="uf-empty">Tocá un estado para ver cuántos representantes elige y si vota senador o gobernador este año.</div>'; return; }
+    const raceHTML = (label, race) => {
+      if (!race) return `<div class="us-race"><b>${label}:</b> no se elige en 2026</div>`;
+      const r = usRating(race.rating);
+      const cands = race.candidates ? Object.entries(race.candidates).map(([p, n]) => `${esc(n)} (${esc(p)})`).join(' vs. ') : '';
+      return `<div class="us-race"><b>${label}:</b> ${esc(race.incumbent || '')}${race.party ? ` (${esc(US_PARTY[race.party] || race.party)})` : ''}${race.status ? ` · ${esc(race.status)}` : ''}${cands ? `<br><span class="us-cands">Candidatos: ${cands}</span>` : ''}
+        ${r ? `<span class="us-rating-chip"><i style="background:${r.color}"></i>${r.label}${race.ratingEstimated ? ' · est.' : ''}</span>` : ''}</div>`;
+    };
+    el.innerHTML = `
+      <div class="uf-card-head"><span class="uf-card-name">${esc(s.name)}</span><span class="uf-card-uf">${s.id}</span></div>
+      <div class="uf-stats">
+        <div class="uf-stat"><div class="uf-stat-v">${fmtInt(s.houseSeats)}</div><div class="uf-stat-l">representantes en la Cámara</div></div>
+        <div class="uf-stat"><div class="uf-stat-v">${fmtInt(s.id === 'DC' ? 3 : s.houseSeats + 2)}</div><div class="uf-stat-l">votos en el Colegio Electoral</div></div>
+      </div>
+      <div class="uf-ballot">${raceHTML('Senado', s.senate)}${raceHTML('Gobernación', s.governor)}</div>
+      ${s.note ? `<div class="uf-gov">${esc(s.note)}</div>` : ''}`;
+  }
+
+  function renderUsRaces() {
+    const el = document.getElementById('us-races');
+    if (!el) return;
+    const metric = live.usMetric === 'gov' ? 'governor' : 'senate';
+    const rows = (live.eeuu.states || []).filter(s => s[metric]).map(s => ({ s, race: s[metric], r: usRating(s[metric].rating) }))
+      // most competitive first: distance from "Empate" in the rating scale
+      .sort((a, b) => {
+        const d = x => x.r ? Math.abs(US_RATINGS.indexOf(x.r) - 3) : 9;
+        return d(a) - d(b) || (a.r && b.r ? US_RATINGS.indexOf(a.r) - US_RATINGS.indexOf(b.r) : 0) || a.s.name.localeCompare(b.s.name);
+      });
+    el.innerHTML = `<div class="uf-rank-title">${metric === 'senate' ? 'Bancas del Senado en juego' : 'Gobernaciones en juego'} · ${rows.length}</div>
+      <div class="uf-rank-list">${rows.map(x => `
+        <button type="button" class="us-race-row" data-uf="${x.s.id}">
+          <i style="background:${x.r ? x.r.color : US_NONE}"></i>
+          <span class="us-race-st">${x.s.id}</span>
+          <span class="us-race-name">${esc(x.race.incumbent || '')} <em>${esc(x.race.party || '')}</em></span>
+          <span class="us-race-rt">${x.r ? x.r.label : '—'}${x.race.ratingEstimated ? ' · est.' : ''}</span>
+        </button>`).join('')}</div>`;
+    el.querySelectorAll('.us-race-row').forEach(b => b.addEventListener('click', () => selectUsState(b.getAttribute('data-uf'))));
+  }
+
+  function renderUsPolls() {
+    const el = document.getElementById('us-polls');
+    const us = live.eeuu;
+    if (!el || !us) return;
+    const gb = (us.polls && us.polls.genericBallot) || [];
+    const avg = k => gb.length ? gb.reduce((a, p) => a + (p[k] || 0), 0) / gb.length : null;
+    const d = avg('D'), r = avg('R');
+    const ap = us.polls && us.polls.approval;
+    el.innerHTML = `
+      <div class="poll-box">
+        <h4>Voto genérico a la Cámara</h4>
+        <div class="muted">Promedio de ${gb.length} encuesta${gb.length === 1 ? '' : 's'} · "¿A qué partido votaría para el Congreso?"</div>
+        ${d != null ? `
+        <div class="pbar"><div class="pbar-top"><span>Demócratas</span><b>${fmtPct(d)}</b></div><div class="pbar-track"><div class="pbar-fill" style="width:${d}%;background:#2A5596"></div></div></div>
+        <div class="pbar"><div class="pbar-top"><span>Republicanos</span><b>${fmtPct(r)}</b></div><div class="pbar-track"><div class="pbar-fill" style="width:${r}%;background:#B23A3A"></div></div></div>` : ''}
+        <span class="poll-src">${gb.map(p => `<a href="${esc(p.url)}" target="_blank" rel="noopener">${esc(p.firm)}</a> (${esc(p.dates)}${p.n ? ', n=' + fmtInt(p.n) : ''}${p.moe ? ', ±' + p.moe + ' pp' : ''}: D ${p.D} · R ${p.R})`).join(' · ')}</span>
+      </div>
+      ${ap ? `<div class="poll-box">
+        <h4>Aprobación de Donald Trump</h4>
+        <div class="muted">${esc(ap.source)}${ap.asOf ? ' · ' + esc(ap.asOf) : ''}</div>
+        <div class="pbar"><div class="pbar-top"><span>Aprueba</span><b>${fmtPct(ap.approve)}</b></div><div class="pbar-track"><div class="pbar-fill" style="width:${ap.approve}%;background:#0F766E"></div></div></div>
+        <div class="pbar"><div class="pbar-top"><span>Desaprueba</span><b>${fmtPct(ap.disapprove)}</b></div><div class="pbar-track"><div class="pbar-fill" style="width:${ap.disapprove}%;background:#5B6A80"></div></div></div>
+        ${ap.url ? `<span class="poll-src"><a href="${esc(ap.url)}" target="_blank" rel="noopener">Fuente</a></span>` : ''}
+      </div>` : ''}`;
+  }
+
+  function renderEeuu() {
+    const root = document.getElementById('esp-eeuu');
+    if (!root) return;
+    const us = live.eeuu;
+    if (!us) {
+      root.innerHTML = `<div class="esp-loading">${live.fetchOk === false && live.lastFetch ? 'No se pudieron cargar los datos del especial.' : 'Cargando especial…'}</div>`;
+      return;
+    }
+    const ph = usPhase(us);
+    const ed = new Date(us.dates.electionDay);
+    const houseParties = (us.house.parties || []), senParties = (us.senate.parties || []);
+    const ctl = (ch) => { const top = [...(ch.parties || [])].sort((a, b) => b.seats - a.seats)[0]; return top ? `${top.party} ${top.seats}` : '—'; };
+    root.innerHTML = `
+      <section class="esp-hero us-hero">
+        <div class="esp-hero-grid">
+          <div>
+            <span class="esp-status"><span class="live-dot"></span>${esc(ph.label)}</span>
+            <h2>EE.UU. <em>Midterms</em> 2026</h2>
+            <p class="esp-hero-lede">${esc(us.lede || '')}</p>
+            <div class="esp-hero-dates">
+              <div class="esp-date-chip">Elección<strong>${fmtDateShort(ed)}</strong></div>
+              <div class="esp-date-chip">Cámara hoy<strong>${esc(ctl(us.house))}</strong></div>
+              <div class="esp-date-chip">Senado hoy<strong>${esc(ctl(us.senate))}</strong></div>
+              <div class="esp-date-chip">Asume el Congreso<strong>${fmtDateShort(new Date(us.dates.newCongress + 'T12:00:00'))} 2027</strong></div>
+            </div>
+          </div>
+          <div class="esp-hero-side">
+            <div class="next-card-kicker">Cuenta regresiva ${esc(ph.targetLabel || '')}</div>
+            ${countdownHTML(ph.target, 'Ya empezó')}
+            <div class="esp-updated" id="us-updated"></div>
+          </div>
+        </div>
+      </section>
+
+      <nav class="esp-nav" aria-label="Secciones del especial">
+        <a href="#us-sec-cargos">Qué se elige</a>
+        <a href="#us-sec-mapa">Mapa por estado</a>
+        <a href="#us-sec-congreso">Congreso hoy</a>
+        <a href="#us-sec-encuestas">Encuestas</a>
+        <a href="#us-sec-claves">Carreras clave</a>
+        <a href="#us-sec-calendario">Calendario</a>
+      </nav>
+
+      <section class="esp-sec" id="us-sec-cargos">
+        <div class="esp-sec-head"><span class="kicker">01 · La boleta</span><h3>Qué se elige</h3><p>${esc(us.officesIntro || '')}</p></div>
+        <div class="offices-grid us-offices">${(us.offices || []).map(o => `
+          <div class="office-card"><div class="office-num">${fmtInt(o.count)}</div><div class="office-label">${esc(o.label)}</div>
+            <div class="office-detail">${esc(o.detail || '')}</div>${o.system ? `<span class="office-system">${esc(o.system)}</span>` : ''}</div>`).join('')}</div>
+        ${us.ballotNote ? `<div class="ballot-note us-note">${esc(us.ballotNote)}</div>` : ''}
+      </section>
+
+      <section class="esp-sec" id="us-sec-mapa">
+        <div class="esp-sec-head"><span class="kicker">02 · El territorio</span><h3>Mapa por estado</h3>
+          <p>Cambiá la capa para ver cuántos representantes elige cada estado, dónde se vota senador y dónde gobernador, y cuán competida está cada carrera. <strong>Colores de partido de EE.UU.:</strong> azul demócrata, rojo republicano.</p></div>
+        <div class="br-map-wrap">
+          <div class="br-map-card">
+            <div class="seg" id="us-metric" role="tablist">
+              ${Object.entries(US_METRICS).map(([k, m]) => `<button type="button" data-metric="${k}" class="${live.usMetric === k ? 'is-active' : ''}">${m.label}</button>`).join('')}
+            </div>
+            <div id="us-map" style="position:relative"><div class="esp-loading">Cargando mapa…</div></div>
+            <div class="br-legend" id="us-legend"></div>
+          </div>
+          <div class="br-side">
+            <div class="uf-card" id="us-state-card"></div>
+            <div class="uf-rank" id="us-races"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="esp-sec" id="us-sec-congreso">
+        <div class="esp-sec-head"><span class="kicker">03 · El Congreso que se renueva</span><h3>Composición actual</h3>
+          <p>Cada punto es una banca. Para controlar la Cámara hacen falta ${fmtInt(us.house.majority || 218)} bancas; en el Senado, ${fmtInt(us.senate.majority || 51)} (o 50 más el voto de desempate del vicepresidente).</p></div>
+        <div class="chambers-grid">
+          ${chamberCard(Object.assign({}, us.house, { parties: houseParties }), 12, '', { partyColors: true })}
+          ${chamberCard(Object.assign({}, us.senate, { parties: senParties }), 5,
+            us.senate.seatsUp ? `<div class="senate-renewal">En 2026 se eligen <b>${us.senate.seatsUp} de ${us.senate.total}</b> bancas del Senado${us.senate.seatsUpNote ? ' (' + esc(us.senate.seatsUpNote) + ')' : ''}.
+              <div class="renewal-bar"><span style="width:${us.senate.seatsUp / us.senate.total * 100}%;background:var(--ink-soft)"></span><span style="flex:1;background:var(--line)"></span></div></div>` : '',
+            { partyColors: true })}
+        </div>
+      </section>
+
+      <section class="esp-sec" id="us-sec-encuestas">
+        <div class="esp-sec-head"><span class="kicker">04 · El clima</span><h3>Qué dicen las encuestas</h3></div>
+        <div class="race-grid" id="us-polls"></div>
+      </section>
+
+      <section class="esp-sec" id="us-sec-claves">
+        <div class="esp-sec-head"><span class="kicker">05 · Dónde mirar</span><h3>Carreras clave</h3></div>
+        <div class="us-key-grid">${(us.keyRaces || []).map(k => `
+          <div class="office-card us-key"><div class="office-label">${esc(k.title)}</div><div class="office-detail">${esc(k.text)}</div>
+            ${k.rating && usRating(k.rating) ? `<span class="us-rating-chip"><i style="background:${usRating(k.rating).color}"></i>${usRating(k.rating).label}</span>` : ''}</div>`).join('')}</div>
+      </section>
+
+      <section class="esp-sec" id="us-sec-calendario">
+        <div class="esp-sec-head"><span class="kicker">06 · Fechas</span><h3>Calendario</h3></div>
+        <ul class="br-cal" id="us-cal"></ul>
+      </section>
+
+      <section class="esp-sec" id="us-sec-sistema">
+        <div class="esp-sec-head"><span class="kicker">07 · Para entender</span><h3>Claves del sistema</h3></div>
+        <ul class="facts-list">${(us.keyFacts || []).map(f => `<li>${esc(f)}</li>`).join('')}</ul>
+        <p class="esp-sources" style="margin-top:18px"><strong>Fuentes:</strong> ${(us.sources || []).map(s => `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.label)}</a>`).join(' · ')}.
+          Mapa base: límites estatales del U.S. Census Bureau vía <a href="https://github.com/topojson/us-atlas" target="_blank" rel="noopener">us-atlas</a> (dominio público).</p>
+      </section>`;
+
+    root.querySelectorAll('#us-metric [data-metric]').forEach(b => b.addEventListener('click', () => {
+      live.usMetric = b.getAttribute('data-metric');
+      root.querySelectorAll('#us-metric [data-metric]').forEach(x => x.classList.toggle('is-active', x === b));
+      renderUsMap();
+    }));
+    root.querySelectorAll('.esp-nav a').forEach(a => a.addEventListener('click', ev => {
+      ev.preventDefault();
+      const t = document.querySelector(a.getAttribute('href'));
+      if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }));
+    wireHemicycleHover(root);
+    renderUsCard();
+    renderUsPolls();
+    // Calendar (same component as Brasil)
+    const cal = document.getElementById('us-cal');
+    if (cal) {
+      const items = (us.calendar || []).map(c => ({ ...c, d: new Date(c.date + 'T12:00:00') })).sort((a, b) => a.d - b.d);
+      const today = startOfDay(new Date());
+      const nextIdx = items.findIndex(i => i.d >= today);
+      cal.innerHTML = items.map((i, idx) => {
+        const n = daysUntil(i.d);
+        return `<li class="${[i.d < today ? 'is-past' : '', idx === nextIdx ? 'is-next' : '', i.key ? 'is-key' : ''].join(' ')}"><span class="br-cal-date">${fmtDateShort(i.d)}${i.d.getFullYear() !== 2026 ? ' ' + i.d.getFullYear() : ''}</span><span class="br-cal-dot"></span>
+          <span><span class="br-cal-label">${esc(i.label)}</span>${n >= 0 && n <= 60 ? `<br><span class="br-cal-in">${inDaysText(n)}</span>` : ''}</span></li>`;
+      }).join('');
+    }
+    const upd = document.getElementById('us-updated');
+    if (upd) upd.textContent = `Datos actualizados ${relTime(new Date(us.updatedAt))}`;
+    tickCountdowns();
+    (live.usGeo ? Promise.resolve(live.usGeo) : fetchJSON(US_GEO_URL).then(g => (live.usGeo = g)))
+      .then(renderUsMap)
+      .catch(() => { const m = document.getElementById('us-map'); if (m) m.innerHTML = '<div class="esp-loading">No se pudo cargar el mapa de estados.</div>'; renderUsRaces(); });
+  }
+
   /* ===================== LIVE RESULTS (TSE) =====================
      On election night the special can read the TSE's public results feed
      directly: set results.tse.round1Url / round2Url in brasil-2026.json.
@@ -29921,9 +30561,11 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
   /* ===================== REFRESH LOOP ===================== */
   function isViewActive(v) { return document.body.getAttribute('data-view') === v; }
   async function refresh() {
-    const [liveRes, brRes] = await Promise.allSettled([fetchJSON(LIVE_URL), fetchJSON(BRASIL_URL)]);
+    const [liveRes, brRes, usRes] = await Promise.allSettled([fetchJSON(LIVE_URL), fetchJSON(BRASIL_URL), fetchJSON(EEUU_URL)]);
     live.lastFetch = new Date();
-    live.fetchOk = liveRes.status === 'fulfilled' || brRes.status === 'fulfilled';
+    live.fetchOk = liveRes.status === 'fulfilled' || brRes.status === 'fulfilled' || usRes.status === 'fulfilled';
+    const prevUs = live.eeuu ? JSON.stringify(live.eeuu) : null;
+    if (usRes.status === 'fulfilled') live.eeuu = usRes.value;
     const prevBr = live.brasil ? JSON.stringify(live.brasil) : null;
     if (liveRes.status === 'fulfilled') live.data = liveRes.value;
     if (brRes.status === 'fulfilled') {
@@ -29937,12 +30579,13 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
       else if (brChanged || !document.querySelector('#esp-brasil .esp-hero')) renderBrasil();
       renderBrUpdated();
     }
+    if (isViewActive('eeuu') && live.eeuu && (JSON.stringify(live.eeuu) !== prevUs || !document.querySelector('#esp-eeuu .esp-hero'))) renderEeuu();
     scheduleRefresh();
   }
   function scheduleRefresh() {
     clearTimeout(live.timer);
     const base = (live.data && live.data.refreshSeconds) || 300;
-    const fast = live.brasil && brasilPhase(live.brasil).live ? 60 : base;
+    const fast = (live.brasil && brasilPhase(live.brasil).live) || (live.eeuu && usPhase(live.eeuu).live) ? 60 : base;
     live.timer = setTimeout(() => { if (!document.hidden) refresh(); else scheduleRefresh(); }, fast * 1000);
   }
   document.addEventListener('visibilitychange', () => {
@@ -29954,6 +30597,7 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
     if (view === 'brasil') {
       if (!document.querySelector('#esp-brasil .esp-hero')) renderBrasil();
     }
+    if (view === 'eeuu' && !document.querySelector('#esp-eeuu .esp-hero')) renderEeuu();
     if (view === 'inicio') renderPortada();
   };
 
@@ -29961,9 +30605,105 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
   initSearch();
   renderPortada();
   if (isViewActive('brasil')) renderBrasil();
+  if (isViewActive('eeuu')) renderEeuu();
   refresh();
   setInterval(tickCountdowns, 1000);
   setInterval(() => { renderNow(); renderFreshness(); renderBrUpdated(); }, 30000);
+})();
+
+/* ===========================================================
+   MOTION — count-up numbers, growing bars and staggered reveal.
+   Works on anything rendered now or later (charts re-render on
+   every filter change), via a MutationObserver. Each element is
+   animated once per render. Respects prefers-reduced-motion.
+   =========================================================== */
+(function () {
+  if (!('IntersectionObserver' in window)) return;
+  const reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduced) return;
+
+  const NUM_SEL = '.pulse-num, .stat-value, .office-num, .profile-card-value, .econ-value, .uf-stat-v, .elec-stat-num, .gender-stat-big, .cc-summary-stat strong, .poll-cand-avg, .hemicycle-total';
+  const BAR_SEL = '.ideo-fill, .pbar-fill, .uf-rank-bar-fill, .result-bar-fill, .poll-bar-fill, .results-progress-fill, .profile-card-bar-fill, .mm-bar-fill, .continent-seg, .renewal-bar span:first-child';
+  const CARD_SEL = '.chart-card, .profile-card, .stat, .pulse-tile, .office-card, .chamber-card, .especial-card, .agenda-item, .cc-item, .poll-card, .econ-cell, .elec-highlights-grid > *, .facts-list li, .uf-card, .uf-rank, .br-map-card';
+
+  // Parse the first number in a string, remembering how it was written
+  // ("1.480" → thousands with '.', "45,8" → decimal ',', "0.865" → decimal '.').
+  function parseNum(tok) {
+    let dec = 0, decSep = null, grp = null, v;
+    if (/^\d{1,3}(\.\d{3})+$/.test(tok)) { grp = '.'; v = +tok.replace(/\./g, ''); }
+    else if (/^\d{1,3}(,\d{3})+$/.test(tok)) { grp = ','; v = +tok.replace(/,/g, ''); }
+    else if (/^\d+,\d+$/.test(tok)) { decSep = ','; dec = tok.split(',')[1].length; v = +tok.replace(',', '.'); }
+    else if (/^\d+\.\d+$/.test(tok)) { decSep = '.'; dec = tok.split('.')[1].length; v = +tok; }
+    else if (/^\d+$/.test(tok)) { v = +tok; }
+    else return null;
+    return { v, dec, decSep, grp };
+  }
+  function fmt(n, f) {
+    let s = n.toFixed(f.dec);
+    if (f.decSep === ',') s = s.replace('.', ',');
+    if (f.grp) s = s.replace(/\B(?=(\d{3})+(?!\d))/g, f.grp);
+    return s;
+  }
+  function countUp(el) {
+    // animate the first text node that holds a number
+    const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
+    let node, m;
+    while ((node = walker.nextNode())) { m = node.nodeValue.match(/\d[\d.,]*\d|\d/); if (m) break; }
+    if (!node || !m) return;
+    const f = parseNum(m[0]);
+    if (!f || f.v === 0) return;
+    const before = node.nodeValue.slice(0, m.index), after = node.nodeValue.slice(m.index + m[0].length);
+    const t0 = performance.now(), dur = 1100;
+    const step = now => {
+      const k = Math.min(1, (now - t0) / dur), e = 1 - Math.pow(1 - k, 3);
+      node.nodeValue = before + fmt(f.v * e, f) + after;
+      if (k < 1) requestAnimationFrame(step);
+      else node.nodeValue = before + m[0] + after;   // exact original text
+    };
+    node.nodeValue = before + fmt(0, f) + after;
+    requestAnimationFrame(step);
+  }
+
+  const pendingBars = new Map();   // container → bars waiting to grow
+  const BAR_HOST = '.uf-rank, .chart-card, .poll-box, .poll-card, .profile-card, .results-card, .uf-card, .chamber-card, .esp-sec, .layout, .panel-detail';
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(en => {
+      if (!en.isIntersecting) return;
+      const el = en.target;
+      io.unobserve(el);
+      if (el.dataset.fx === 'num') countUp(el);
+      else if (el.dataset.fx === 'card') el.classList.add('fx-in');
+      // Bars grow together when their container shows up (works for lists
+      // with their own scroll, where single rows may never intersect)
+      (pendingBars.get(el) || []).forEach(bar => { bar.classList.add('fx-grow'); bar.style.width = bar.dataset.fxW; });
+      pendingBars.delete(el);
+    });
+  }, { threshold: 0.15 });
+
+  function prime(root) {
+    if (!(root instanceof Element)) return;
+    const pick = sel => (root.matches(sel) ? [root] : []).concat([...root.querySelectorAll(sel)]);
+    pick(NUM_SEL).forEach(el => { if (el.dataset.fx) return; el.dataset.fx = 'num'; io.observe(el); });
+    pick(BAR_SEL).forEach(el => {
+      if (el.dataset.fx || !el.style.width) return;
+      el.dataset.fx = 'bar'; el.dataset.fxW = el.style.width; el.style.width = '0%';
+      const host = el.closest(BAR_HOST) || el;
+      if (!pendingBars.has(host)) pendingBars.set(host, []);
+      pendingBars.get(host).push(el);
+      io.unobserve(host); io.observe(host);   // re-observe so a visible host fires again
+    });
+    const cards = pick(CARD_SEL).filter(el => !el.dataset.fx);
+    cards.forEach((el, i) => {
+      el.dataset.fx = 'card';
+      el.classList.add('fx-reveal');
+      el.style.setProperty('--fx-delay', Math.min(i % 8, 7) * 55 + 'ms');
+      io.observe(el);
+    });
+  }
+
+  const mo = new MutationObserver(muts => muts.forEach(m => m.addedNodes.forEach(prime)));
+  mo.observe(document.body, { childList: true, subtree: true });
+  prime(document.body);
 })();
 </script>
 

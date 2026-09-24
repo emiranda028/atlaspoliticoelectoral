@@ -1,0 +1,1129 @@
+{
+ "id": "eeuu-2026",
+ "title": "Elecciones de medio término de EE.UU. 2026",
+ "updatedAt": "2026-09-24T14:30:00-03:00",
+ "lede": "El 3 de noviembre los estadounidenses renuevan toda la Cámara de Representantes, un tercio del Senado y 36 gobernaciones. Es el primer gran examen del segundo mandato de Donald Trump, con el control del Congreso en juego.",
+ "dates": {
+  "electionDay": "2026-11-03T06:00:00-05:00",
+  "lastPollsClose": "2026-11-04T01:00:00-05:00",
+  "newCongress": "2027-01-03"
+ },
+ "ratingsSource": "Cook Political Report al 23 sep 2026; «est.» = estimación del atlas",
+ "officesIntro": "Las elecciones de medio término caen a mitad del mandato presidencial. No se elige presidente: se vota el Congreso completo en la Cámara, un tercio del Senado, gobernaciones, legislaturas estaduales y cientos de consultas populares.",
+ "offices": [
+  {
+   "count": 435,
+   "label": "Representantes",
+   "detail": "Toda la Cámara, por distritos uninominales. Mayoría: 218. Mandato de 2 años.",
+   "system": "Mayoría simple por distrito"
+  },
+  {
+   "count": 35,
+   "label": "Senadores",
+   "detail": "33 bancas regulares (clase II) más dos especiales: Ohio (escaño de JD Vance) y Florida (escaño de Marco Rubio). Mandato de 6 años.",
+   "system": "Mayoría simple por estado"
+  },
+  {
+   "count": 36,
+   "label": "Gobernadores",
+   "detail": "18 hoy en manos demócratas y 18 republicanas; 15 gobernadores no pueden buscar la reelección por límite de mandatos.",
+   "system": "Mayoría simple (salvo excepciones)"
+  },
+  {
+   "count": 6064,
+   "label": "Legisladores estaduales",
+   "detail": "88 de las 99 cámaras legislativas estaduales, en 46 estados.",
+   "system": "Según cada estado"
+  },
+  {
+   "count": 145,
+   "label": "Consultas populares",
+   "detail": "Medidas estaduales certificadas para la boleta de noviembre (164 en todo 2026).",
+   "system": "Voto directo"
+  }
+ ],
+ "ballotNote": "No hay un organismo electoral nacional: cada estado organiza su elección, fija sus reglas de registro, voto anticipado y por correo, y cuenta sus votos. Por eso los horarios y los tiempos del escrutinio varían mucho entre estados.",
+ "states": [
+  {
+   "id": "AL",
+   "name": "Alabama",
+   "houseSeats": 7,
+   "senate": {
+    "incumbent": "Tommy Tuberville",
+    "party": "R",
+    "status": "no se presenta",
+    "rating": "Solid R",
+    "ratingEstimated": true
+   },
+   "governor": {
+    "incumbent": "Kay Ivey",
+    "party": "R",
+    "status": "límite de mandatos",
+    "rating": "Solid R",
+    "ratingEstimated": true,
+    "candidates": {
+     "R": "Tommy Tuberville"
+    }
+   }
+  },
+  {
+   "id": "AK",
+   "name": "Alaska",
+   "houseSeats": 1,
+   "senate": {
+    "incumbent": "Dan Sullivan",
+    "party": "R",
+    "status": "busca la reelección",
+    "rating": "Toss-up",
+    "candidates": {
+     "R": "Dan Sullivan",
+     "D": "Mary Peltola"
+    }
+   },
+   "governor": {
+    "incumbent": "Mike Dunleavy",
+    "party": "R",
+    "status": "límite de mandatos",
+    "rating": "Toss-up",
+    "candidates": {
+     "D": "Jonathan Kreiss-Tomkins",
+     "R": "Bernadette Wilson"
+    }
+   }
+  },
+  {
+   "id": "AZ",
+   "name": "Arizona",
+   "houseSeats": 9,
+   "governor": {
+    "incumbent": "Katie Hobbs",
+    "party": "D",
+    "status": "busca la reelección",
+    "rating": "Toss-up",
+    "ratingEstimated": true,
+    "candidates": {
+     "D": "Katie Hobbs",
+     "R": "Andy Biggs"
+    }
+   }
+  },
+  {
+   "id": "AR",
+   "name": "Arkansas",
+   "houseSeats": 4,
+   "senate": {
+    "incumbent": "Tom Cotton",
+    "party": "R",
+    "status": "busca la reelección",
+    "rating": "Solid R",
+    "ratingEstimated": true
+   },
+   "governor": {
+    "incumbent": "Sarah Huckabee Sanders",
+    "party": "R",
+    "status": "busca la reelección",
+    "rating": "Solid R",
+    "ratingEstimated": true
+   }
+  },
+  {
+   "id": "CA",
+   "name": "California",
+   "houseSeats": 52,
+   "governor": {
+    "incumbent": "Gavin Newsom",
+    "party": "D",
+    "status": "límite de mandatos",
+    "rating": "Solid D",
+    "ratingEstimated": true,
+    "candidates": {
+     "D": "Xavier Becerra",
+     "R": "Steve Hilton"
+    }
+   }
+  },
+  {
+   "id": "CO",
+   "name": "Colorado",
+   "houseSeats": 8,
+   "senate": {
+    "incumbent": "John Hickenlooper",
+    "party": "D",
+    "status": "busca la reelección",
+    "rating": "Solid D",
+    "ratingEstimated": true
+   },
+   "governor": {
+    "incumbent": "Jared Polis",
+    "party": "D",
+    "status": "límite de mandatos",
+    "rating": "Solid D",
+    "ratingEstimated": true
+   }
+  },
+  {
+   "id": "CT",
+   "name": "Connecticut",
+   "houseSeats": 5,
+   "governor": {
+    "incumbent": "Ned Lamont",
+    "party": "D",
+    "status": "busca la reelección",
+    "rating": "Likely D",
+    "ratingEstimated": true
+   }
+  },
+  {
+   "id": "DE",
+   "name": "Delaware",
+   "houseSeats": 1,
+   "senate": {
+    "incumbent": "Chris Coons",
+    "party": "D",
+    "status": "busca la reelección",
+    "rating": "Solid D",
+    "ratingEstimated": true
+   }
+  },
+  {
+   "id": "FL",
+   "name": "Florida",
+   "houseSeats": 28,
+   "senate": {
+    "incumbent": "Ashley Moody",
+    "party": "R",
+    "status": "elección especial",
+    "rating": "Likely R",
+    "ratingEstimated": true,
+    "candidates": {
+     "R": "Ashley Moody",
+     "D": "Angie Nixon"
+    }
+   },
+   "governor": {
+    "incumbent": "Ron DeSantis",
+    "party": "R",
+    "status": "límite de mandatos",
+    "rating": "Solid R",
+    "ratingEstimated": true
+   }
+  },
+  {
+   "id": "GA",
+   "name": "Georgia",
+   "houseSeats": 14,
+   "senate": {
+    "incumbent": "Jon Ossoff",
+    "party": "D",
+    "status": "busca la reelección",
+    "rating": "Likely D",
+    "candidates": {
+     "D": "Jon Ossoff",
+     "R": "Mike Collins"
+    }
+   },
+   "governor": {
+    "incumbent": "Brian Kemp",
+    "party": "R",
+    "status": "límite de mandatos",
+    "rating": "Toss-up",
+    "ratingEstimated": true,
+    "candidates": {
+     "R": "Rick Jackson",
+     "D": "Keisha Lance Bottoms"
+    }
+   }
+  },
+  {
+   "id": "HI",
+   "name": "Hawái",
+   "houseSeats": 2,
+   "governor": {
+    "incumbent": "Josh Green",
+    "party": "D",
+    "status": "busca la reelección",
+    "rating": "Solid D",
+    "ratingEstimated": true
+   }
+  },
+  {
+   "id": "ID",
+   "name": "Idaho",
+   "houseSeats": 2,
+   "senate": {
+    "incumbent": "Jim Risch",
+    "party": "R",
+    "status": "busca la reelección",
+    "rating": "Solid R",
+    "ratingEstimated": true
+   },
+   "governor": {
+    "incumbent": "Brad Little",
+    "party": "R",
+    "status": "busca la reelección",
+    "rating": "Solid R",
+    "ratingEstimated": true
+   }
+  },
+  {
+   "id": "IL",
+   "name": "Illinois",
+   "houseSeats": 17,
+   "senate": {
+    "incumbent": "Dick Durbin",
+    "party": "D",
+    "status": "no se presenta",
+    "rating": "Solid D",
+    "ratingEstimated": true,
+    "candidates": {
+     "D": "Juliana Stratton"
+    }
+   },
+   "governor": {
+    "incumbent": "JB Pritzker",
+    "party": "D",
+    "status": "busca la reelección",
+    "rating": "Solid D",
+    "ratingEstimated": true
+   }
+  },
+  {
+   "id": "IN",
+   "name": "Indiana",
+   "houseSeats": 9
+  },
+  {
+   "id": "IA",
+   "name": "Iowa",
+   "houseSeats": 4,
+   "senate": {
+    "incumbent": "Joni Ernst",
+    "party": "R",
+    "status": "no se presenta",
+    "rating": "Toss-up",
+    "candidates": {
+     "R": "Ashley Hinson",
+     "D": "Josh Turek"
+    }
+   },
+   "governor": {
+    "incumbent": "Kim Reynolds",
+    "party": "R",
+    "status": "no se presenta",
+    "rating": "Lean D",
+    "candidates": {
+     "D": "Rob Sand",
+     "R": "Zach Lahn"
+    }
+   }
+  },
+  {
+   "id": "KS",
+   "name": "Kansas",
+   "houseSeats": 4,
+   "senate": {
+    "incumbent": "Roger Marshall",
+    "party": "R",
+    "status": "busca la reelección",
+    "rating": "Lean R",
+    "candidates": {
+     "R": "Roger Marshall",
+     "D": "Adam Hamilton"
+    }
+   },
+   "governor": {
+    "incumbent": "Laura Kelly",
+    "party": "D",
+    "status": "límite de mandatos",
+    "rating": "Lean R",
+    "ratingEstimated": true,
+    "candidates": {
+     "D": "Cindy Holscher",
+     "R": "Ty Masterson"
+    }
+   }
+  },
+  {
+   "id": "KY",
+   "name": "Kentucky",
+   "houseSeats": 6,
+   "senate": {
+    "incumbent": "Mitch McConnell",
+    "party": "R",
+    "status": "no se presenta",
+    "rating": "Solid R",
+    "ratingEstimated": true,
+    "candidates": {
+     "R": "Andy Barr",
+     "D": "Charles Booker"
+    }
+   }
+  },
+  {
+   "id": "LA",
+   "name": "Luisiana",
+   "houseSeats": 6,
+   "senate": {
+    "incumbent": "Bill Cassidy",
+    "party": "R",
+    "status": "perdió la primaria",
+    "rating": "Solid R",
+    "ratingEstimated": true,
+    "candidates": {
+     "R": "Julia Letlow"
+    }
+   }
+  },
+  {
+   "id": "ME",
+   "name": "Maine",
+   "houseSeats": 2,
+   "senate": {
+    "incumbent": "Susan Collins",
+    "party": "R",
+    "status": "busca la reelección",
+    "rating": "Toss-up",
+    "candidates": {
+     "R": "Susan Collins",
+     "D": "Troy Jackson"
+    }
+   },
+   "governor": {
+    "incumbent": "Janet Mills",
+    "party": "D",
+    "status": "límite de mandatos",
+    "rating": "Lean D",
+    "ratingEstimated": true
+   }
+  },
+  {
+   "id": "MD",
+   "name": "Maryland",
+   "houseSeats": 8,
+   "governor": {
+    "incumbent": "Wes Moore",
+    "party": "D",
+    "status": "busca la reelección",
+    "rating": "Solid D",
+    "ratingEstimated": true
+   }
+  },
+  {
+   "id": "MA",
+   "name": "Massachusetts",
+   "houseSeats": 9,
+   "senate": {
+    "incumbent": "Ed Markey",
+    "party": "D",
+    "status": "busca la reelección",
+    "rating": "Solid D",
+    "ratingEstimated": true,
+    "candidates": {
+     "D": "Ed Markey",
+     "R": "John Deaton"
+    }
+   },
+   "governor": {
+    "incumbent": "Maura Healey",
+    "party": "D",
+    "status": "busca la reelección",
+    "rating": "Solid D",
+    "ratingEstimated": true
+   }
+  },
+  {
+   "id": "MI",
+   "name": "Míchigan",
+   "houseSeats": 13,
+   "senate": {
+    "incumbent": "Gary Peters",
+    "party": "D",
+    "status": "no se presenta",
+    "rating": "Toss-up",
+    "candidates": {
+     "D": "Abdul El-Sayed",
+     "R": "Mike Rogers"
+    }
+   },
+   "governor": {
+    "incumbent": "Gretchen Whitmer",
+    "party": "D",
+    "status": "límite de mandatos",
+    "rating": "Toss-up",
+    "ratingEstimated": true,
+    "candidates": {
+     "D": "Jocelyn Benson",
+     "R": "John James"
+    }
+   }
+  },
+  {
+   "id": "MN",
+   "name": "Minnesota",
+   "houseSeats": 8,
+   "senate": {
+    "incumbent": "Tina Smith",
+    "party": "D",
+    "status": "no se presenta",
+    "rating": "Likely D",
+    "ratingEstimated": true,
+    "candidates": {
+     "D": "Peggy Flanagan"
+    }
+   },
+   "governor": {
+    "incumbent": "Tim Walz",
+    "party": "D",
+    "status": "no se presenta",
+    "rating": "Likely D",
+    "ratingEstimated": true,
+    "candidates": {
+     "D": "Amy Klobuchar",
+     "R": "Lisa Demuth"
+    }
+   }
+  },
+  {
+   "id": "MS",
+   "name": "Mississippi",
+   "houseSeats": 4,
+   "senate": {
+    "incumbent": "Cindy Hyde-Smith",
+    "party": "R",
+    "status": "busca la reelección",
+    "rating": "Solid R",
+    "ratingEstimated": true
+   }
+  },
+  {
+   "id": "MO",
+   "name": "Misuri",
+   "houseSeats": 8
+  },
+  {
+   "id": "MT",
+   "name": "Montana",
+   "houseSeats": 2,
+   "senate": {
+    "incumbent": "Steve Daines",
+    "party": "R",
+    "status": "no se presenta",
+    "rating": "Solid R",
+    "ratingEstimated": true
+   }
+  },
+  {
+   "id": "NE",
+   "name": "Nebraska",
+   "houseSeats": 3,
+   "senate": {
+    "incumbent": "Pete Ricketts",
+    "party": "R",
+    "status": "busca la reelección",
+    "rating": "Likely R",
+    "ratingEstimated": true,
+    "candidates": {
+     "R": "Pete Ricketts",
+     "I": "Dan Osborn"
+    }
+   },
+   "governor": {
+    "incumbent": "Jim Pillen",
+    "party": "R",
+    "status": "busca la reelección",
+    "rating": "Solid R",
+    "ratingEstimated": true
+   }
+  },
+  {
+   "id": "NV",
+   "name": "Nevada",
+   "houseSeats": 4,
+   "governor": {
+    "incumbent": "Joe Lombardo",
+    "party": "R",
+    "status": "busca la reelección",
+    "rating": "Toss-up",
+    "candidates": {
+     "R": "Joe Lombardo",
+     "D": "Aaron Ford"
+    }
+   }
+  },
+  {
+   "id": "NH",
+   "name": "New Hampshire",
+   "houseSeats": 2,
+   "senate": {
+    "incumbent": "Jeanne Shaheen",
+    "party": "D",
+    "status": "no se presenta",
+    "rating": "Toss-up",
+    "candidates": {
+     "D": "Chris Pappas",
+     "R": "John E. Sununu"
+    }
+   },
+   "governor": {
+    "incumbent": "Kelly Ayotte",
+    "party": "R",
+    "status": "busca la reelección",
+    "rating": "Lean R",
+    "ratingEstimated": true
+   }
+  },
+  {
+   "id": "NJ",
+   "name": "Nueva Jersey",
+   "houseSeats": 12,
+   "senate": {
+    "incumbent": "Cory Booker",
+    "party": "D",
+    "status": "busca la reelección",
+    "rating": "Solid D",
+    "ratingEstimated": true
+   }
+  },
+  {
+   "id": "NM",
+   "name": "Nuevo México",
+   "houseSeats": 3,
+   "senate": {
+    "incumbent": "Ben Ray Luján",
+    "party": "D",
+    "status": "busca la reelección",
+    "rating": "Solid D",
+    "ratingEstimated": true
+   },
+   "governor": {
+    "incumbent": "Michelle Lujan Grisham",
+    "party": "D",
+    "status": "límite de mandatos",
+    "rating": "Likely D",
+    "ratingEstimated": true
+   }
+  },
+  {
+   "id": "NY",
+   "name": "Nueva York",
+   "houseSeats": 26,
+   "governor": {
+    "incumbent": "Kathy Hochul",
+    "party": "D",
+    "status": "busca la reelección",
+    "rating": "Likely D",
+    "ratingEstimated": true
+   }
+  },
+  {
+   "id": "NC",
+   "name": "Carolina del Norte",
+   "houseSeats": 14,
+   "senate": {
+    "incumbent": "Thom Tillis",
+    "party": "R",
+    "status": "no se presenta",
+    "rating": "Lean D",
+    "candidates": {
+     "D": "Roy Cooper",
+     "R": "Michael Whatley"
+    }
+   }
+  },
+  {
+   "id": "ND",
+   "name": "Dakota del Norte",
+   "houseSeats": 1
+  },
+  {
+   "id": "OH",
+   "name": "Ohio",
+   "houseSeats": 15,
+   "senate": {
+    "incumbent": "Jon Husted",
+    "party": "R",
+    "status": "elección especial",
+    "rating": "Toss-up",
+    "candidates": {
+     "R": "Jon Husted",
+     "D": "Sherrod Brown"
+    }
+   },
+   "governor": {
+    "incumbent": "Mike DeWine",
+    "party": "R",
+    "status": "límite de mandatos",
+    "rating": "Toss-up",
+    "candidates": {
+     "R": "Vivek Ramaswamy",
+     "D": "Amy Acton"
+    }
+   }
+  },
+  {
+   "id": "OK",
+   "name": "Oklahoma",
+   "houseSeats": 5,
+   "senate": {
+    "incumbent": "Alan Armstrong",
+    "party": "R",
+    "status": "no se presenta",
+    "rating": "Solid R",
+    "ratingEstimated": true,
+    "candidates": {
+     "R": "Kevin Hern"
+    }
+   },
+   "governor": {
+    "incumbent": "Kevin Stitt",
+    "party": "R",
+    "status": "límite de mandatos",
+    "rating": "Solid R",
+    "ratingEstimated": true
+   }
+  },
+  {
+   "id": "OR",
+   "name": "Oregón",
+   "houseSeats": 6,
+   "senate": {
+    "incumbent": "Jeff Merkley",
+    "party": "D",
+    "status": "busca la reelección",
+    "rating": "Solid D",
+    "ratingEstimated": true
+   },
+   "governor": {
+    "incumbent": "Tina Kotek",
+    "party": "D",
+    "status": "busca la reelección",
+    "rating": "Likely D",
+    "ratingEstimated": true
+   }
+  },
+  {
+   "id": "PA",
+   "name": "Pensilvania",
+   "houseSeats": 17,
+   "governor": {
+    "incumbent": "Josh Shapiro",
+    "party": "D",
+    "status": "busca la reelección",
+    "rating": "Likely D",
+    "ratingEstimated": true,
+    "candidates": {
+     "D": "Josh Shapiro",
+     "R": "Stacy Garrity"
+    }
+   }
+  },
+  {
+   "id": "RI",
+   "name": "Rhode Island",
+   "houseSeats": 2,
+   "senate": {
+    "incumbent": "Jack Reed",
+    "party": "D",
+    "status": "busca la reelección",
+    "rating": "Solid D",
+    "ratingEstimated": true
+   },
+   "governor": {
+    "incumbent": "Dan McKee",
+    "party": "D",
+    "status": "busca la reelección",
+    "rating": "Solid D",
+    "ratingEstimated": true
+   }
+  },
+  {
+   "id": "SC",
+   "name": "Carolina del Sur",
+   "houseSeats": 7,
+   "senate": {
+    "incumbent": "Darline Graham",
+    "party": "R",
+    "status": "busca la reelección",
+    "rating": "Likely R",
+    "candidates": {
+     "R": "Darline Graham",
+     "D": "Annie Andrews"
+    }
+   },
+   "governor": {
+    "incumbent": "Henry McMaster",
+    "party": "R",
+    "status": "límite de mandatos",
+    "rating": "Solid R",
+    "ratingEstimated": true
+   }
+  },
+  {
+   "id": "SD",
+   "name": "Dakota del Sur",
+   "houseSeats": 1,
+   "senate": {
+    "incumbent": "Mike Rounds",
+    "party": "R",
+    "status": "busca la reelección",
+    "rating": "Solid R",
+    "ratingEstimated": true
+   },
+   "governor": {
+    "incumbent": "Larry Rhoden",
+    "party": "R",
+    "status": "busca la reelección",
+    "rating": "Solid R",
+    "ratingEstimated": true,
+    "candidates": {
+     "R": "Larry Rhoden"
+    }
+   }
+  },
+  {
+   "id": "TN",
+   "name": "Tennessee",
+   "houseSeats": 9,
+   "senate": {
+    "incumbent": "Bill Hagerty",
+    "party": "R",
+    "status": "busca la reelección",
+    "rating": "Solid R",
+    "ratingEstimated": true
+   },
+   "governor": {
+    "incumbent": "Bill Lee",
+    "party": "R",
+    "status": "límite de mandatos",
+    "rating": "Solid R",
+    "ratingEstimated": true
+   }
+  },
+  {
+   "id": "TX",
+   "name": "Texas",
+   "houseSeats": 38,
+   "senate": {
+    "incumbent": "John Cornyn",
+    "party": "R",
+    "status": "perdió la primaria",
+    "rating": "Toss-up",
+    "candidates": {
+     "R": "Ken Paxton",
+     "D": "James Talarico"
+    }
+   },
+   "governor": {
+    "incumbent": "Greg Abbott",
+    "party": "R",
+    "status": "busca la reelección",
+    "rating": "Likely R"
+   }
+  },
+  {
+   "id": "UT",
+   "name": "Utah",
+   "houseSeats": 4
+  },
+  {
+   "id": "VT",
+   "name": "Vermont",
+   "houseSeats": 1,
+   "governor": {
+    "incumbent": "Phil Scott",
+    "party": "R",
+    "status": "busca la reelección",
+    "rating": "Likely R",
+    "ratingEstimated": true
+   }
+  },
+  {
+   "id": "VA",
+   "name": "Virginia",
+   "houseSeats": 11,
+   "senate": {
+    "incumbent": "Mark Warner",
+    "party": "D",
+    "status": "busca la reelección",
+    "rating": "Solid D",
+    "ratingEstimated": true
+   }
+  },
+  {
+   "id": "WA",
+   "name": "Washington",
+   "houseSeats": 10
+  },
+  {
+   "id": "WV",
+   "name": "Virginia Occidental",
+   "houseSeats": 2,
+   "senate": {
+    "incumbent": "Shelley Moore Capito",
+    "party": "R",
+    "status": "busca la reelección",
+    "rating": "Solid R",
+    "ratingEstimated": true
+   }
+  },
+  {
+   "id": "WI",
+   "name": "Wisconsin",
+   "houseSeats": 8,
+   "governor": {
+    "incumbent": "Tony Evers",
+    "party": "D",
+    "status": "no se presenta",
+    "rating": "Toss-up",
+    "ratingEstimated": true,
+    "candidates": {
+     "D": "David Crowley",
+     "R": "Tom Tiffany"
+    }
+   }
+  },
+  {
+   "id": "WY",
+   "name": "Wyoming",
+   "houseSeats": 1,
+   "senate": {
+    "incumbent": "Cynthia Lummis",
+    "party": "R",
+    "status": "no se presenta",
+    "rating": "Solid R",
+    "ratingEstimated": true
+   },
+   "governor": {
+    "incumbent": "Mark Gordon",
+    "party": "R",
+    "status": "límite de mandatos",
+    "rating": "Solid R",
+    "ratingEstimated": true
+   }
+  },
+  {
+   "id": "DC",
+   "name": "Distrito de Columbia",
+   "houseSeats": 0,
+   "note": "Tiene una delegada sin voto en la Cámara y 3 votos en el Colegio Electoral; no elige senadores."
+  }
+ ],
+ "house": {
+  "name": "Cámara de Representantes",
+  "total": 435,
+  "majority": 218,
+  "term": "119.º Congreso (2025–2027)",
+  "asOf": "21 sep 2026",
+  "source": "https://pressgallery.house.gov/member-data/party-breakdown",
+  "note": "El independiente es Kevin Kiley (CA-3), que dejó el Partido Republicano pero sigue en la bancada republicana. Vacantes: FL-20 y TX-23.",
+  "parties": [
+   {
+    "party": "Demócratas",
+    "seats": 214,
+    "color": "#2A5596"
+   },
+   {
+    "party": "Vacantes",
+    "seats": 2,
+    "color": "#D5DAE2"
+   },
+   {
+    "party": "Independiente",
+    "seats": 1,
+    "color": "#8A8FA0"
+   },
+   {
+    "party": "Republicanos",
+    "seats": 218,
+    "color": "#B23A3A"
+   }
+  ]
+ },
+ "senate": {
+  "name": "Senado",
+  "total": 100,
+  "majority": 51,
+  "seatsUp": 35,
+  "seatsUpNote": "22 republicanas y 13 demócratas; los demócratas necesitan ganar 4 netas",
+  "term": "Mandatos de 6 años",
+  "asOf": "sep 2026",
+  "source": "https://www.congresscountdown.com/info/party-breakdown",
+  "note": "Los 2 independientes votan con la bancada demócrata. Con 50-50 desempata el vicepresidente, JD Vance.",
+  "parties": [
+   {
+    "party": "Demócratas",
+    "seats": 45,
+    "color": "#2A5596"
+   },
+   {
+    "party": "Independientes (con D)",
+    "seats": 2,
+    "color": "#6F8FC0"
+   },
+   {
+    "party": "Republicanos",
+    "seats": 53,
+    "color": "#B23A3A"
+   }
+  ]
+ },
+ "polls": {
+  "genericBallot": [
+   {
+    "firm": "Emerson College",
+    "dates": "21–22 sep",
+    "n": 1000,
+    "moe": 3.0,
+    "D": 53,
+    "R": 42,
+    "url": "https://emersoncollegepolling.com/september-2026-national-poll-democrats/"
+   },
+   {
+    "firm": "Economist/YouGov",
+    "dates": "18–21 sep",
+    "D": 52,
+    "R": 38,
+    "url": "https://yougov.com/en-us/articles/55604-democrats-hold-14-point-lead-likely-voters-2026-midterms-congressional-election-september-18-21-2026-economist-yougov-poll"
+   },
+   {
+    "firm": "Marist (NPR/PBS News)",
+    "dates": "14–15 sep",
+    "D": 53,
+    "R": 41,
+    "url": "https://maristpoll.marist.edu/polls/2026-midterm-elections-september-2026/"
+   },
+   {
+    "firm": "Fox News",
+    "dates": "publicada el 16 sep",
+    "moe": 3.0,
+    "D": 51,
+    "R": 44,
+    "url": "https://politicalwire.com/2026/09/16/democrats-maintain-lead-on-generic-ballot/"
+   }
+  ],
+  "approval": {
+   "source": "Promedio Silver Bulletin",
+   "approve": 38.5,
+   "disapprove": 58.9,
+   "asOf": "18 sep 2026",
+   "url": "https://www.natesilver.net/p/trump-approval-ratings-nate-silver-bulletin"
+  }
+ },
+ "keyRaces": [
+  {
+   "title": "Senado · Texas",
+   "text": "Ken Paxton (R), que derrotó al senador John Cornyn en la primaria, enfrenta a James Talarico (D); Cook la considera Toss-up desde agosto.",
+   "rating": "Toss-up"
+  },
+  {
+   "title": "Senado · Carolina del Norte",
+   "text": "Escaño abierto de Thom Tillis: el exgobernador Roy Cooper (D) contra Michael Whatley (R); Cook: Lean D, la mejor oportunidad demócrata de ganar un escaño.",
+   "rating": "Lean D"
+  },
+  {
+   "title": "Senado · Maine",
+   "text": "Susan Collins (R), la única republicana en un estado que ganó Harris, contra Troy Jackson (D), designado tras la retirada de Graham Platner; Toss-up.",
+   "rating": "Toss-up"
+  },
+  {
+   "title": "Senado · Ohio (especial)",
+   "text": "Jon Husted (R), designado para el escaño de JD Vance, contra el exsenador Sherrod Brown (D); Toss-up.",
+   "rating": "Toss-up"
+  },
+  {
+   "title": "Senado · Iowa",
+   "text": "Escaño abierto de Joni Ernst: Ashley Hinson (R) contra Josh Turek (D); Toss-up desde agosto en un estado que Trump ganó por 13 puntos.",
+   "rating": "Toss-up"
+  },
+  {
+   "title": "Senado · Michigan",
+   "text": "Escaño abierto de Gary Peters: el progresista Abdul El-Sayed (D) contra Mike Rogers (R); principal objetivo republicano.",
+   "rating": "Toss-up"
+  },
+  {
+   "title": "Senado · New Hampshire",
+   "text": "Escaño abierto de Jeanne Shaheen: Chris Pappas (D) contra el exsenador John E. Sununu (R); Cook lo pasó a Toss-up el 15 de septiembre.",
+   "rating": "Toss-up"
+  },
+  {
+   "title": "Senado · Alaska",
+   "text": "Dan Sullivan (R) contra la exrepresentante Mary Peltola (D) con voto preferencial; Toss-up.",
+   "rating": "Toss-up"
+  },
+  {
+   "title": "Gobernación · Georgia",
+   "text": "Escaño abierto de Brian Kemp: Rick Jackson (R) contra Keisha Lance Bottoms (D), que sería la primera gobernadora afroamericana del país."
+  },
+  {
+   "title": "Gobernación · Ohio",
+   "text": "Escaño abierto de Mike DeWine: Vivek Ramaswamy (R) contra Amy Acton (D); Toss-up según Cook, con Acton levemente arriba en encuestas de septiembre.",
+   "rating": "Toss-up"
+  }
+ ],
+ "calendar": [
+  {
+   "date": "2026-09-18",
+   "label": "Empieza el voto anticipado presencial en Idaho, Minnesota, Dakota del Sur y Virginia"
+  },
+  {
+   "date": "2026-10-15",
+   "label": "A mediados de octubre abre el voto anticipado en la mayoría de los estados"
+  },
+  {
+   "date": "2026-10-29",
+   "label": "Último estado en abrir el voto anticipado (Kentucky)"
+  },
+  {
+   "date": "2026-11-03",
+   "label": "Día de la elección · las primeras urnas cierran a las 18 h del Este (partes de Indiana y Kentucky)",
+   "key": true
+  },
+  {
+   "date": "2027-01-03",
+   "label": "Asume el 120.º Congreso",
+   "key": true
+  }
+ ],
+ "keyFacts": [
+  "Los 435 escaños de la Cámara de Representantes se renuevan cada dos años; la mayoría es de 218.",
+  "Los senadores cumplen mandatos de seis años y el Senado se renueva por tercios: en 2026 votan los 33 escaños de la clase II y dos elecciones especiales (Ohio y Florida), 35 en total.",
+  "Cada estado tiene dos senadores; los escaños de la Cámara se reparten según la población del censo de 2020 (California 52, Texas 38, Florida 28, Nueva York 26).",
+  "En caso de empate 50-50 en el Senado, decide el vicepresidente (hoy JD Vance); los demócratas necesitan una ganancia neta de 4 escaños para obtener la mayoría.",
+  "Se eligen 36 gobernadores; 15 no pueden buscar la reelección por límite de mandatos.",
+  "Las elecciones las organizan los estados y condados, no un organismo nacional: cada estado fija sus reglas de registro, voto anticipado y por correo, y sus horarios.",
+  "El voto anticipado presencial comenzó el 18 de septiembre en Idaho, Minnesota, Dakota del Sur y Virginia; la mayoría de los estados lo abre a mediados de octubre.",
+  "Desde la Segunda Guerra Mundial, el partido del presidente perdió escaños en la Cámara en 18 de 20 elecciones de medio mandato; las excepciones fueron 1998 y 2002.",
+  "Varios estados redibujaron sus distritos a mitad de década (Texas, California con la Prop. 50, Misuri, Carolina del Norte, Ohio, Utah, Florida y Tennessee), algo inusual antes del próximo censo.",
+  "La participación en las elecciones de medio mandato ronda el 46-50% del electorado habilitado: 2018 fue la más alta desde 1914 (~49-50%) y 2022 rondó el 46%."
+ ],
+ "sources": [
+  {
+   "label": "Ballotpedia · Senado 2026",
+   "url": "https://ballotpedia.org/United_States_Senate_elections,_2026"
+  },
+  {
+   "label": "Ballotpedia · gobernaciones 2026",
+   "url": "https://ballotpedia.org/Gubernatorial_elections,_2026"
+  },
+  {
+   "label": "House Press Gallery · composición",
+   "url": "https://pressgallery.house.gov/member-data/party-breakdown"
+  },
+  {
+   "label": "Cook Political Report",
+   "url": "https://www.cookpolitical.com/ratings"
+  },
+  {
+   "label": "Silver Bulletin · aprobación",
+   "url": "https://www.natesilver.net/p/trump-approval-ratings-nate-silver-bulletin"
+  },
+  {
+   "label": "CEIR · fechas de voto anticipado",
+   "url": "https://electioninnovation.org/research/dates-for-2026-early-in-person-and-mail-voting/"
+  },
+  {
+   "label": "Ballotpedia · redistribución 2025-26",
+   "url": "https://ballotpedia.org/Redistricting_ahead_of_the_2026_elections"
+  }
+ ]
+}
