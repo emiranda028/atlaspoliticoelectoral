@@ -138,7 +138,9 @@
    "leader": "Gadi Eisenkot",
    "lean": "center",
    "bloc": "oposicion",
-   "desc": "Nuevo partido del exjefe del Estado Mayor, que dejó Unidad Nacional en 2025. Primero o segundo en casi todas las encuestas; apuesta a votantes desencantados del Likud."
+   "desc": "Nuevo partido del exjefe del Estado Mayor, que dejó Unidad Nacional en 2025. Primero o segundo en casi todas las encuestas; apuesta a votantes desencantados del Likud.",
+   "wiki": "Gadi_Eisenkot",
+   "faceName": "Gadi Eisenkot"
   },
   {
    "id": "Likud",
@@ -147,7 +149,9 @@
    "leader": "Benjamin Netanyahu",
    "lean": "right",
    "bloc": "gobierno",
-   "desc": "Partido del primer ministro, derecha nacionalista. Absorbe a Nueva Esperanza de Gideon Sa'ar."
+   "desc": "Partido del primer ministro, derecha nacionalista. Absorbe a Nueva Esperanza de Gideon Sa'ar.",
+   "wiki": "Benjamin_Netanyahu",
+   "faceName": "Benjamin Netanyahu"
   },
   {
    "id": "B'Yachad",
@@ -156,7 +160,9 @@
    "leader": "Naftali Bennett (Yair Lapid, n.º 2)",
    "lean": "center-right",
    "bloc": "oposicion",
-   "desc": "Fusión de abril de 2026 entre Bennett 2026 y Yesh Atid: dos ex primeros ministros en una misma lista."
+   "desc": "Fusión de abril de 2026 entre Bennett 2026 y Yesh Atid: dos ex primeros ministros en una misma lista.",
+   "wiki": "Naftali_Bennett",
+   "faceName": "Naftali Bennett"
   },
   {
    "id": "The Democrats",
@@ -165,7 +171,9 @@
    "leader": "Yair Golan",
    "lean": "center-left",
    "bloc": "oposicion",
-   "desc": "Unión del Partido Laborista y Meretz; principal fuerza de la izquierda sionista."
+   "desc": "Unión del Partido Laborista y Meretz; principal fuerza de la izquierda sionista.",
+   "wiki": "Yair_Golan",
+   "faceName": "Yair Golan"
   },
   {
    "id": "Yisrael Beiteinu",
@@ -174,7 +182,9 @@
    "leader": "Avigdor Liberman",
    "lean": "right",
    "bloc": "oposicion",
-   "desc": "Derecha laica con base en inmigrantes de la ex URSS; dura en seguridad y contraria a las exenciones de los ultraortodoxos."
+   "desc": "Derecha laica con base en inmigrantes de la ex URSS; dura en seguridad y contraria a las exenciones de los ultraortodoxos.",
+   "wiki": "Avigdor_Liberman",
+   "faceName": "Avigdor Liberman"
   },
   {
    "id": "UTJ",
@@ -183,7 +193,9 @@
    "leader": "Yaakov Asher",
    "lean": "right",
    "bloc": "gobierno",
-   "desc": "Ultraortodoxo askenazí. Dejó el gobierno en julio de 2025 por la ley de reclutamiento, pero sigue alineado con Netanyahu."
+   "desc": "Ultraortodoxo askenazí. Dejó el gobierno en julio de 2025 por la ley de reclutamiento, pero sigue alineado con Netanyahu.",
+   "wiki": "Yaakov_Asher",
+   "faceName": "Yaakov Asher"
   },
   {
    "id": "Shas",
@@ -192,7 +204,9 @@
    "leader": "Aryeh Deri",
    "lean": "right",
    "bloc": "gobierno",
-   "desc": "Ultraortodoxo sefardí y mizrají. Dejó sus ministerios en 2025 pero siguió apoyando a la coalición."
+   "desc": "Ultraortodoxo sefardí y mizrají. Dejó sus ministerios en 2025 pero siguió apoyando a la coalición.",
+   "wiki": "Aryeh_Deri",
+   "faceName": "Aryeh Deri"
   },
   {
    "id": "Otzma Yehudit",
@@ -201,7 +215,9 @@
    "leader": "Itamar Ben Gvir",
    "lean": "far-right",
    "bloc": "gobierno",
-   "desc": "Nacionalismo religioso radical; Ben Gvir es ministro de Seguridad Nacional."
+   "desc": "Nacionalismo religioso radical; Ben Gvir es ministro de Seguridad Nacional.",
+   "wiki": "Itamar_Ben-Gvir",
+   "faceName": "Itamar Ben Gvir"
   },
   {
    "id": "Religious Zionism-Zehut",
@@ -210,7 +226,9 @@
    "leader": "Bezalel Smotrich (con Moshe Feiglin)",
    "lean": "far-right",
    "bloc": "gobierno",
-   "desc": "Sionismo religioso del ministro de Finanzas, aliado con Zehut de Feiglin; ronda el umbral."
+   "desc": "Sionismo religioso del ministro de Finanzas, aliado con Zehut de Feiglin; ronda el umbral.",
+   "wiki": "Bezalel_Smotrich",
+   "faceName": "Bezalel Smotrich"
   },
   {
    "id": "Amcha Yisrael",
@@ -219,7 +237,9 @@
    "leader": "Ofer Winter",
    "lean": "far-right",
    "bloc": "gobierno",
-   "desc": "Nuevo partido del general retirado Ofer Winter; oscila alrededor del umbral."
+   "desc": "Nuevo partido del general retirado Ofer Winter; oscila alrededor del umbral.",
+   "wiki": "Ofer_Winter",
+   "faceName": "Ofer Winter"
   },
   {
    "id": "Reservists",
@@ -228,7 +248,9 @@
    "leader": "Yoaz Hendel y Yaron Zelekha",
    "lean": "center-right",
    "bloc": "otros",
-   "desc": "Alianza de Hendel (reservistas) y el economista Zelekha, sin alinearse con ningún bloque; oscila alrededor del umbral."
+   "desc": "Alianza de Hendel (reservistas) y el economista Zelekha, sin alinearse con ningún bloque; oscila alrededor del umbral.",
+   "wiki": "Yoaz_Hendel",
+   "faceName": "Yoaz Hendel"
   },
   {
    "id": "Joint List",
@@ -237,7 +259,9 @@
    "leader": "Yousef Jabareen",
    "lean": "left",
    "bloc": "arabes",
-   "desc": "Reeditada en 2026. El Comité Central de Elecciones la inhabilitó el 23 de septiembre; decide la Corte Suprema."
+   "desc": "Reeditada en 2026. El Comité Central de Elecciones la inhabilitó el 23 de septiembre; decide la Corte Suprema.",
+   "wiki": "Yousef_Jabareen",
+   "faceName": "Yousef Jabareen"
   },
   {
    "id": "Ra'am",
@@ -246,7 +270,9 @@
    "leader": "Mansour Abbas",
    "lean": "center-right",
    "bloc": "arabes",
-   "desc": "Islamista conservador y pragmático; fue socio del gobierno Bennett-Lapid (2021-22). También inhabilitado el 23 de septiembre, a la espera de la Corte Suprema."
+   "desc": "Islamista conservador y pragmático; fue socio del gobierno Bennett-Lapid (2021-22). También inhabilitado el 23 de septiembre, a la espera de la Corte Suprema.",
+   "wiki": "Mansour_Abbas",
+   "faceName": "Mansour Abbas"
   }
  ],
  "polls": [

@@ -1328,5 +1328,32 @@
    "Alec Oxenford, embajador en Washington, dijo que Milei viajó 18 veces a EE.UU. desde que asumió y que se reunió seis veces con Trump, entre ellas una visita oficial a la Casa Blanca."
   ],
   "note": "Nota de datos: 2024 son cifras provisorias del INDEC citadas por la CAC; 2025, INDEC. Enero–mayo 2026: el intercambio total con EE.UU. llegó a USD 3.981 M (+46,6 % interanual)."
- }
+ },
+ "faces": [
+  {
+   "name": "Mike Johnson",
+   "role": "Presidente de la Cámara (R)",
+   "wiki": "Mike_Johnson_(Louisiana_politician)",
+   "color": "#B23A3A"
+  },
+  {
+   "name": "Hakeem Jeffries",
+   "role": "Líder demócrata en la Cámara",
+   "wiki": "Hakeem_Jeffries",
+   "color": "#2A5596"
+  },
+  {
+   "name": "John Thune",
+   "role": "Líder de la mayoría en el Senado (R)",
+   "wiki": "John_Thune",
+   "color": "#B23A3A"
+  },
+  {
+   "name": "Chuck Schumer",
+   "role": "Líder demócrata en el Senado",
+   "wiki": "Chuck_Schumer",
+   "color": "#2A5596"
+  }
+ ],
+ "facesTitle": "Quiénes se disputan el Congreso"
 }

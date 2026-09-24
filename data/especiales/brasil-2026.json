@@ -571,7 +571,8 @@
     "number": "13",
     "vice": "Geraldo Alckmin (PSB)",
     "coalition": "PT, PCdoB, PV, PSOL, Rede, PSB y PDT",
-    "lean": "center-left"
+    "lean": "center-left",
+    "wiki": "Luiz_Inácio_Lula_da_Silva"
    },
    {
     "id": "flavio",
@@ -580,7 +581,8 @@
     "party": "PL",
     "number": "22",
     "vice": "Alfredo Gaspar (PL)",
-    "lean": "far-right"
+    "lean": "far-right",
+    "wiki": "Flávio_Bolsonaro"
    },
    {
     "id": "cury",
@@ -589,7 +591,8 @@
     "party": "Avante",
     "number": "70",
     "vice": "Júlio Delgado (Avante)",
-    "lean": "center"
+    "lean": "center",
+    "wiki": "Augusto_Cury"
    },
    {
     "id": "caiado",
@@ -598,7 +601,8 @@
     "party": "PSD",
     "number": "55",
     "vice": "Gilberto Kassab (PSD)",
-    "lean": "right"
+    "lean": "right",
+    "wiki": "Ronaldo_Caiado"
    },
    {
     "id": "renan",
@@ -606,7 +610,8 @@
     "short": "Renan Santos",
     "party": "Missão",
     "vice": "Coronel Aroldo Medina",
-    "lean": "right"
+    "lean": "right",
+    "wiki": "Renan_Santos"
    },
    {
     "id": "zema",
@@ -615,7 +620,8 @@
     "party": "Novo",
     "number": "30",
     "vice": "Eduardo Girão (Novo)",
-    "lean": "right"
+    "lean": "right",
+    "wiki": "Romeu_Zema"
    },
    {
     "id": "samara",
@@ -624,7 +630,8 @@
     "party": "UP",
     "number": "80",
     "vice": "Raquel Brício",
-    "lean": "far-left"
+    "lean": "far-left",
+    "wiki": "Samara_Martins"
    },
    {
     "id": "hertz",
