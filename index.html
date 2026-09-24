@@ -5931,7 +5931,7 @@
   .race-grid > * { min-width: 0; }
 
   /* ===== Relación con Argentina (shared by every special) ===== */
-  .arg-grid { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); gap: 16px; margin-bottom: 16px; }
+  .arg-grid { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); gap: 16px; margin-bottom: 16px; align-items: start; }
   .arg-grid > * { min-width: 0; }
   .arg-card { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 20px; box-shadow: var(--shadow-sm); }
   .arg-card-title { font-family: var(--font-serif); font-size: 19px; font-weight: 700; margin-bottom: 4px; }
@@ -5975,8 +5975,8 @@
   .arg-prod-top em { font-style: normal; font-weight: 400; color: var(--muted); font-size: 11.5px; }
   .arg-fill-exp { background: #6CACE4; }
   .arg-fill-imp { background: #5B6A80; }
-  .arg-fig { display: flex; gap: 10px; align-items: baseline; padding: 8px 0; border-bottom: 1px solid var(--surface-2); font-size: 13.5px; }
-  .arg-fig b { font-family: var(--font-serif); font-size: 20px; white-space: nowrap; }
+  .arg-fig { display: flex; flex-direction: column; gap: 2px; padding: 10px 0; border-bottom: 1px solid var(--surface-2); font-size: 13px; color: var(--muted); }
+  .arg-fig b { font-family: var(--font-serif); font-size: 20px; color: var(--ink); line-height: 1.2; overflow-wrap: anywhere; }
   .arg-facts { margin: 12px 0 0; padding-left: 18px; font-size: 13.5px; line-height: 1.55; color: var(--ink-soft); }
   .arg-facts li { margin-bottom: 4px; }
   @media (max-width: 980px) { .arg-grid { grid-template-columns: minmax(0, 1fr); } }
@@ -30907,7 +30907,8 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
   function argProducts(list, cls) {
     if (!list || !list.length) return '<p class="uf-empty">Sin desglose disponible.</p>';
     // Bars use the bilateral share when every item has it; otherwise the USD value
-    const byPct = list.every(p => p.pctOfBilateral != null);
+    // (if no item has a USD value, fall back to the shares that do exist)
+    const byPct = list.every(p => p.pctOfBilateral != null) || !list.some(p => p.valueMUSD != null);
     const val = p => byPct ? p.pctOfBilateral : p.valueMUSD;
     const max = Math.max(...list.map(p => val(p) || 0), 1);
     return list.map(p => `
@@ -30928,7 +30929,7 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
     const person = (p, label, flagIso) => p && p.name ? `
       <div class="arg-amb">
         <div class="arg-amb-flag">${flagOf(flagIso, 'fi-lg')}</div>
-        <div><div class="arg-amb-label">${label}</div><div class="arg-amb-name">${esc(p.name)}</div>
+        <div><div class="arg-amb-label">${p.role ? esc(p.role) : label}</div><div class="arg-amb-name">${esc(p.name)}</div>
           <div class="arg-amb-meta">${p.since ? 'Desde ' + esc(p.since) : ''}${p.note ? (p.since ? ' · ' : '') + esc(p.note) : ''}</div></div>
       </div>` : '';
     return `
@@ -30948,8 +30949,8 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
       </div>
 
       <div class="arg-kpis">
-        <div class="stat"><span class="stat-label">Exportaciones ${last.year || ''}</span><div class="stat-value">${fmtMUSD(last.exports)}</div><div class="stat-sub">${sh.exportsPct != null ? `${fmtPct(sh.exportsPct)} del total exportado por Argentina` : ''}${sh.rankAsExportDestination ? ` · ${sh.rankAsExportDestination}.º destino` : ''}</div></div>
-        <div class="stat"><span class="stat-label">Importaciones ${last.year || ''}</span><div class="stat-value">${fmtMUSD(last.imports)}</div><div class="stat-sub">${sh.importsPct != null ? `${fmtPct(sh.importsPct)} del total importado por Argentina` : ''}${sh.rankAsImportOrigin ? ` · ${sh.rankAsImportOrigin}.º origen` : ''}</div></div>
+        <div class="stat"><span class="stat-label">Exportaciones ${last.year || ''}</span><div class="stat-value">${fmtMUSD(last.exports)}</div><div class="stat-sub">${sh.exportsPct != null ? `${fmtPct(sh.exportsPct)} del total exportado por Argentina` : esc(t.kpiNote || '')}${sh.rankAsExportDestination ? ` · ${sh.rankAsExportDestination}.º destino` : ''}</div></div>
+        <div class="stat"><span class="stat-label">Importaciones ${last.year || ''}</span><div class="stat-value">${fmtMUSD(last.imports)}</div><div class="stat-sub">${sh.importsPct != null ? `${fmtPct(sh.importsPct)} del total importado por Argentina` : esc(t.kpiNote || '')}${sh.rankAsImportOrigin ? ` · ${sh.rankAsImportOrigin}.º origen` : ''}</div></div>
         <div class="stat"><span class="stat-label">Saldo ${last.year || ''}</span><div class="stat-value arg-bal-kpi ${bal >= 0 ? 'is-pos' : 'is-neg'}">${bal >= 0 ? '+' : '−'}${fmtMUSD(Math.abs(bal))}</div><div class="stat-sub">${bal >= 0 ? 'superávit para Argentina' : 'déficit para Argentina'}</div></div>
         ${t.ytd2026 && t.ytd2026.exports != null ? `<div class="stat"><span class="stat-label">${esc(t.ytd2026.period || '2026')}</span><div class="stat-value">${fmtMUSD((t.ytd2026.exports || 0) + (t.ytd2026.imports || 0))}</div><div class="stat-sub">intercambio total · saldo ${(t.ytd2026.balance != null ? t.ytd2026.balance : t.ytd2026.exports - t.ytd2026.imports) >= 0 ? '+' : '−'}${fmtMUSD(Math.abs(t.ytd2026.balance != null ? t.ytd2026.balance : t.ytd2026.exports - t.ytd2026.imports)).replace('USD ', '')}</div></div>` : ''}
       </div>
