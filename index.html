@@ -5929,6 +5929,57 @@
   /* Poll/candidate grids in the specials: columns may shrink below the
      width of their tables (tables scroll inside their own wrapper) */
   .race-grid > * { min-width: 0; }
+
+  /* ===== Relación con Argentina (shared by every special) ===== */
+  .arg-grid { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); gap: 16px; margin-bottom: 16px; align-items: start; }
+  .arg-grid > * { min-width: 0; }
+  .arg-card { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 20px; box-shadow: var(--shadow-sm); }
+  .arg-card-title { font-family: var(--font-serif); font-size: 19px; font-weight: 700; margin-bottom: 4px; }
+  .arg-card-sub { font-size: 12.5px; color: var(--muted); margin-bottom: 12px; }
+  .arg-card-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 12px; }
+  .arg-flags .flag-img { margin-right: 4px; }
+  .arg-level { font-size: 12px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; padding: 5px 11px; border-radius: 999px; }
+  .arg-level.is-ally  { background: #DDF3EC; color: #0F766E; }
+  .arg-level.is-prag  { background: #E3ECF8; color: #1D4E89; }
+  .arg-level.is-tense { background: #FFEDE0; color: #B4410C; }
+  .arg-level.is-far   { background: var(--surface-2); color: var(--muted); }
+  .arg-summary { font-size: 15px; line-height: 1.6; color: var(--ink-soft); margin: 0 0 12px; }
+  .arg-miles { list-style: none; padding: 0; margin: 0 0 12px; border-left: 2px solid var(--line); }
+  .arg-miles li { position: relative; padding: 4px 0 8px 16px; font-size: 13.5px; line-height: 1.45; }
+  .arg-miles li::before { content: ''; position: absolute; left: -5px; top: 9px; width: 8px; height: 8px; border-radius: 50%; background: #6CACE4; box-shadow: 0 0 0 2px var(--surface); }
+  .arg-miles li span { display: block; font-family: var(--font-mono); font-size: 11.5px; color: var(--muted); }
+  .arg-agreements { display: flex; flex-wrap: wrap; gap: 6px; }
+  .arg-agreements span { font-size: 12.5px; background: var(--surface-2); border: 1px solid var(--line); border-radius: 8px; padding: 5px 9px; line-height: 1.35; }
+  .arg-amb { display: flex; gap: 14px; align-items: flex-start; padding: 14px 0; border-bottom: 1px solid var(--surface-2); }
+  .arg-amb:last-child { border-bottom: 0; }
+  .arg-amb-flag .flag-img { width: 40px; height: 28px; border-radius: 4px; }
+  .arg-amb-label { font-size: 11px; font-weight: 600; letter-spacing: .07em; text-transform: uppercase; color: var(--muted); }
+  .arg-amb-name { font-family: var(--font-serif); font-size: 20px; font-weight: 700; margin-top: 2px; }
+  .arg-amb-meta { font-size: 13px; color: var(--ink-soft); margin-top: 3px; line-height: 1.45; }
+  .arg-kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 12px; margin-bottom: 16px; }
+  .arg-kpis .stat-value { font-size: 26px; }
+  .arg-bal-kpi.is-pos { color: #0F766E; }
+  .arg-bal-kpi.is-neg { color: #B4410C; }
+  .arg-chart { width: 100%; height: auto; display: block; margin-top: 8px; }
+  .arg-bar-exp { fill: #6CACE4; background: #6CACE4; }
+  .arg-bar-imp { fill: #5B6A80; background: #5B6A80; }
+  .arg-base { stroke: var(--line-strong); }
+  .arg-axis { font-family: var(--font-mono); font-size: 12px; fill: var(--ink-soft); }
+  .arg-bal { font-family: var(--font-mono); font-size: 11.5px; font-weight: 600; }
+  .arg-bal.is-pos { fill: #0F766E; } .arg-bal.is-neg { fill: #B4410C; }
+  .arg-legend { display: flex; flex-wrap: wrap; gap: 14px; font-size: 12px; color: var(--muted); margin-top: 6px; }
+  .arg-legend i { display: inline-block; width: 10px; height: 10px; border-radius: 3px; margin-right: 6px; vertical-align: -1px; }
+  .arg-prod { margin-bottom: 10px; }
+  .arg-prod-top { display: flex; justify-content: space-between; gap: 12px; font-size: 13.5px; margin-bottom: 4px; }
+  .arg-prod-top b { font-family: var(--font-mono); font-weight: 600; white-space: nowrap; }
+  .arg-prod-top em { font-style: normal; font-weight: 400; color: var(--muted); font-size: 11.5px; }
+  .arg-fill-exp { background: #6CACE4; }
+  .arg-fill-imp { background: #5B6A80; }
+  .arg-fig { display: flex; flex-direction: column; gap: 2px; padding: 10px 0; border-bottom: 1px solid var(--surface-2); font-size: 13px; color: var(--muted); }
+  .arg-fig b { font-family: var(--font-serif); font-size: 20px; color: var(--ink); line-height: 1.2; overflow-wrap: anywhere; }
+  .arg-facts { margin: 12px 0 0; padding-left: 18px; font-size: 13.5px; line-height: 1.55; color: var(--ink-soft); }
+  .arg-facts li { margin-bottom: 4px; }
+  @media (max-width: 980px) { .arg-grid { grid-template-columns: minmax(0, 1fr); } }
 </style>
 </head>
 <body>
@@ -30184,6 +30235,7 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
         <a href="#br-sec-presidencial">Presidencial</a>
         <a href="#br-sec-resultados">Resultados</a>
         <a href="#br-sec-calendario">Calendario</a>
+        <a href="#br-sec-arg">Argentina</a>
         <a href="#br-sec-claves">Claves</a>
       </nav>
 
@@ -30247,8 +30299,10 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
         <ul class="br-cal" id="br-cal"></ul>
       </section>
 
+      ${argSection('br', '07', br.argentina, 'BRA', 'Brasil')}
+
       <section class="esp-sec" id="br-sec-claves">
-        <div class="esp-sec-head"><span class="kicker">07 · Para entender</span><h3>Claves del sistema</h3></div>
+        <div class="esp-sec-head"><span class="kicker">08 · Para entender</span><h3>Claves del sistema</h3></div>
         <ul class="facts-list">${(br.keyFacts || []).map(f => `<li>${esc(f)}</li>`).join('')}</ul>
         <p class="esp-sources" style="margin-top:18px"><strong>Fuentes:</strong> ${(br.sources || []).map(s => `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.label)}</a>`).join(' · ')}.
           Mapa base: <a href="https://github.com/VictorCazanave/svg-maps" target="_blank" rel="noopener">svg-maps/brazil</a> (CC BY 4.0).</p>
@@ -30503,6 +30557,7 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
         <a href="#us-sec-encuestas">Encuestas</a>
         <a href="#us-sec-claves">Carreras clave</a>
         <a href="#us-sec-calendario">Calendario</a>
+        <a href="#us-sec-arg">Argentina</a>
       </nav>
 
       <section class="esp-sec" id="us-sec-cargos">
@@ -30560,8 +30615,10 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
         <ul class="br-cal" id="us-cal"></ul>
       </section>
 
+      ${argSection('us', '07', us.argentina, 'USA', 'Estados Unidos')}
+
       <section class="esp-sec" id="us-sec-sistema">
-        <div class="esp-sec-head"><span class="kicker">07 · Para entender</span><h3>Claves del sistema</h3></div>
+        <div class="esp-sec-head"><span class="kicker">08 · Para entender</span><h3>Claves del sistema</h3></div>
         <ul class="facts-list">${(us.keyFacts || []).map(f => `<li>${esc(f)}</li>`).join('')}</ul>
         <p class="esp-sources" style="margin-top:18px"><strong>Fuentes:</strong> ${(us.sources || []).map(s => `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.label)}</a>`).join(' · ')}.
           Mapa base: límites estatales del U.S. Census Bureau vía <a href="https://github.com/topojson/us-atlas" target="_blank" rel="noopener">us-atlas</a> (dominio público).</p>
@@ -30736,6 +30793,7 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
         <a href="#il-sec-encuestas">Encuestas</a>
         <a href="#il-sec-listas">Listas</a>
         <a href="#il-sec-calendario">Calendario</a>
+        <a href="#il-sec-arg">Argentina</a>
       </nav>
 
       <section class="esp-sec" id="il-sec-sistema">
@@ -30779,8 +30837,10 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
         <ul class="br-cal" id="il-cal"></ul>
       </section>
 
+      ${argSection('il', '07', il.argentina, 'ISR', 'Israel')}
+
       <section class="esp-sec" id="il-sec-claves">
-        <div class="esp-sec-head"><span class="kicker">07 · Para entender</span><h3>Claves del sistema</h3></div>
+        <div class="esp-sec-head"><span class="kicker">08 · Para entender</span><h3>Claves del sistema</h3></div>
         <ul class="facts-list">${(il.keyFacts || []).map(f => `<li>${esc(f)}</li>`).join('')}</ul>
         <p class="esp-sources" style="margin-top:18px"><strong>Fuentes:</strong> ${(il.sources || []).map(s => `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.label)}</a>`).join(' · ')}.</p>
       </section>`;
@@ -30807,6 +30867,117 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
     const upd = document.getElementById('il-updated');
     if (upd) upd.textContent = `Datos actualizados ${relTime(new Date(il.updatedAt))}`;
     tickCountdowns();
+  }
+
+  /* ===================== RELACIÓN CON ARGENTINA =====================
+     Shared section for every special: political alignment, ambassadors,
+     goods trade (INDEC) with Argentina's share, and what each side sells.
+     Neutral colours on purpose: sky blue = what Argentina sells,
+     slate = what Argentina buys; balance green/orange by sign. */
+  const ARG_LEVELS = {
+    'aliado estrecho':          { cls: 'is-ally',  label: 'Aliado estrecho' },
+    'cooperación pragmática':   { cls: 'is-prag',  label: 'Cooperación pragmática' },
+    'relación tensa':           { cls: 'is-tense', label: 'Relación tensa' },
+    'distante':                 { cls: 'is-far',   label: 'Relación distante' },
+  };
+  const fmtMUSD = v => v == null ? '—' : 'USD ' + (Math.abs(v) >= 1000
+    ? (v / 1000).toLocaleString('es-AR', { maximumFractionDigits: 2, minimumFractionDigits: 1 }) + ' mil M'
+    : Math.round(v).toLocaleString('es-AR') + ' M');
+
+  function argTradeChart(years) {
+    if (!years || !years.length) return '';
+    const W = 520, H = 210, PAD_L = 8, PAD_B = 34, PAD_T = 26;
+    const max = Math.max(...years.map(y => Math.max(y.exports || 0, y.imports || 0)), 1);
+    const gw = (W - PAD_L * 2) / years.length, bw = Math.min(44, gw / 3.2);
+    const y = v => PAD_T + (H - PAD_T - PAD_B) * (1 - v / max);
+    const bars = years.map((yr, i) => {
+      const cx = PAD_L + gw * i + gw / 2;
+      const bal = (yr.balance != null ? yr.balance : (yr.exports || 0) - (yr.imports || 0));
+      return `
+        <rect x="${cx - bw - 3}" y="${y(yr.exports || 0)}" width="${bw}" height="${H - PAD_B - y(yr.exports || 0)}" rx="4" class="arg-bar-exp"><title>Exportaciones ${yr.year}: ${fmtMUSD(yr.exports)}</title></rect>
+        <rect x="${cx + 3}" y="${y(yr.imports || 0)}" width="${bw}" height="${H - PAD_B - y(yr.imports || 0)}" rx="4" class="arg-bar-imp"><title>Importaciones ${yr.year}: ${fmtMUSD(yr.imports)}</title></rect>
+        <text x="${cx}" y="${H - PAD_B + 16}" text-anchor="middle" class="arg-axis">${yr.year}</text>
+        <text x="${cx}" y="${H - 4}" text-anchor="middle" class="arg-bal ${bal >= 0 ? 'is-pos' : 'is-neg'}">${bal >= 0 ? '+' : '−'}${fmtMUSD(Math.abs(bal)).replace('USD ', '')}</text>`;
+    }).join('');
+    return `<svg class="arg-chart" viewBox="0 0 ${W} ${H}" role="img" aria-label="Exportaciones e importaciones por año">
+      <line x1="0" x2="${W}" y1="${H - PAD_B}" y2="${H - PAD_B}" class="arg-base"/>${bars}</svg>
+      <div class="arg-legend"><span><i class="arg-bar-exp"></i>Exportaciones argentinas</span><span><i class="arg-bar-imp"></i>Importaciones argentinas</span><span>Debajo: saldo del año</span></div>`;
+  }
+
+  function argProducts(list, cls) {
+    if (!list || !list.length) return '<p class="uf-empty">Sin desglose disponible.</p>';
+    // Bars use the bilateral share when every item has it; otherwise the USD value
+    // (if no item has a USD value, fall back to the shares that do exist)
+    const byPct = list.every(p => p.pctOfBilateral != null) || !list.some(p => p.valueMUSD != null);
+    const val = p => byPct ? p.pctOfBilateral : p.valueMUSD;
+    const max = Math.max(...list.map(p => val(p) || 0), 1);
+    return list.map(p => `
+      <div class="arg-prod">
+        <div class="arg-prod-top"><span>${esc(p.product)}${p.year ? ` <em>(${esc(p.year)})</em>` : ''}</span><b>${p.pctOfBilateral != null ? fmtPct(p.pctOfBilateral) : ''}${p.valueMUSD != null ? ` <em>${fmtMUSD(p.valueMUSD)}</em>` : ''}</b></div>
+        ${val(p) != null ? `<div class="pbar-track"><div class="pbar-fill ${cls}" style="width:${(val(p) / max * 100).toFixed(1)}%"></div></div>` : ''}
+      </div>`).join('');
+  }
+
+  function argRelationHTML(rel, iso, countryName) {
+    if (!rel) return '<p class="uf-empty">Sin datos de la relación bilateral.</p>';
+    const a = rel.alignment || {}, amb = rel.ambassadors || {}, t = rel.trade || {};
+    const lvl = ARG_LEVELS[a.level] || null;
+    const years = (t.years || []).filter(y => y.exports != null || y.imports != null);
+    const last = years[years.length - 1] || {};
+    const bal = last.balance != null ? last.balance : (last.exports || 0) - (last.imports || 0);
+    const sh = t.shareOfArgentinaTotal2025 || t.share || {};
+    const person = (p, label, flagIso) => p && p.name ? `
+      <div class="arg-amb">
+        <div class="arg-amb-flag">${flagOf(flagIso, 'fi-lg')}</div>
+        <div><div class="arg-amb-label">${p.role ? esc(p.role) : label}</div><div class="arg-amb-name">${esc(p.name)}</div>
+          <div class="arg-amb-meta">${p.since ? 'Desde ' + esc(p.since) : ''}${p.note ? (p.since ? ' · ' : '') + esc(p.note) : ''}</div></div>
+      </div>` : '';
+    return `
+      <div class="arg-grid">
+        <div class="arg-card arg-align">
+          <div class="arg-card-head"><span class="arg-flags">${flagOf('ARG', 'fi-md')}${flagOf(iso, 'fi-md')}</span>
+            ${lvl ? `<span class="arg-level ${lvl.cls}">${lvl.label}</span>` : ''}</div>
+          <p class="arg-summary">${esc(a.summary || '')}</p>
+          ${(a.milestones || []).length ? `<ul class="arg-miles">${a.milestones.map(m => `<li><span>${esc(m.date)}</span>${esc(m.text)}</li>`).join('')}</ul>` : ''}
+          ${(a.agreements || []).length ? `<div class="arg-agreements">${a.agreements.map(x => `<span>${esc(x)}</span>`).join('')}</div>` : ''}
+        </div>
+        <div class="arg-card">
+          <div class="arg-card-title">Embajadores</div>
+          ${person(amb.argentineInCountry, `Embajador/a argentino/a en ${esc(countryName)}`, 'ARG')}
+          ${person(amb.countryInArgentina, `Embajador/a de ${esc(countryName)} en Argentina`, iso)}
+        </div>
+      </div>
+
+      <div class="arg-kpis">
+        <div class="stat"><span class="stat-label">Exportaciones ${last.year || ''}</span><div class="stat-value">${fmtMUSD(last.exports)}</div><div class="stat-sub">${sh.exportsPct != null ? `${fmtPct(sh.exportsPct)} del total exportado por Argentina` : esc(t.kpiNote || '')}${sh.rankAsExportDestination ? ` · ${sh.rankAsExportDestination}.º destino` : ''}</div></div>
+        <div class="stat"><span class="stat-label">Importaciones ${last.year || ''}</span><div class="stat-value">${fmtMUSD(last.imports)}</div><div class="stat-sub">${sh.importsPct != null ? `${fmtPct(sh.importsPct)} del total importado por Argentina` : esc(t.kpiNote || '')}${sh.rankAsImportOrigin ? ` · ${sh.rankAsImportOrigin}.º origen` : ''}</div></div>
+        <div class="stat"><span class="stat-label">Saldo ${last.year || ''}</span><div class="stat-value arg-bal-kpi ${bal >= 0 ? 'is-pos' : 'is-neg'}">${bal >= 0 ? '+' : '−'}${fmtMUSD(Math.abs(bal))}</div><div class="stat-sub">${bal >= 0 ? 'superávit para Argentina' : 'déficit para Argentina'}</div></div>
+        ${t.ytd2026 && t.ytd2026.exports != null ? `<div class="stat"><span class="stat-label">${esc(t.ytd2026.period || '2026')}</span><div class="stat-value">${fmtMUSD((t.ytd2026.exports || 0) + (t.ytd2026.imports || 0))}</div><div class="stat-sub">intercambio total · saldo ${(t.ytd2026.balance != null ? t.ytd2026.balance : t.ytd2026.exports - t.ytd2026.imports) >= 0 ? '+' : '−'}${fmtMUSD(Math.abs(t.ytd2026.balance != null ? t.ytd2026.balance : t.ytd2026.exports - t.ytd2026.imports)).replace('USD ', '')}</div></div>` : ''}
+      </div>
+
+      <div class="arg-grid">
+        <div class="arg-card"><div class="arg-card-title">Balanza comercial de bienes</div>${argTradeChart(years)}</div>
+        <div class="arg-card">
+          <div class="arg-card-title">Servicios y otros vínculos</div>
+          <p class="arg-summary">${esc((t.services && t.services.note) || '')}</p>
+          ${((t.services && t.services.figures) || []).map(f => `<div class="arg-fig"><b>${esc(f.value)}</b><span>${esc(f.label)}</span></div>`).join('')}
+          ${(rel.keyFacts || []).length ? `<ul class="arg-facts">${rel.keyFacts.map(f => `<li>${esc(f)}</li>`).join('')}</ul>` : ''}
+        </div>
+      </div>
+
+      <div class="arg-grid">
+        <div class="arg-card"><div class="arg-card-title">Qué le vende Argentina</div><div class="arg-card-sub">${esc(t.exportsCaption || '% de las exportaciones argentinas a ' + countryName)}</div>${argProducts(t.topExports2025 || t.topExports, 'arg-fill-exp')}</div>
+        <div class="arg-card"><div class="arg-card-title">Qué le compra Argentina</div><div class="arg-card-sub">${esc(t.importsCaption || '% de las importaciones argentinas desde ' + countryName)}</div>${argProducts(t.topImports2025 || t.topImports, 'arg-fill-imp')}</div>
+      </div>
+      <p class="esp-sources"><strong>Fuentes:</strong> ${t.sourceUrl ? `<a href="${esc(t.sourceUrl)}" target="_blank" rel="noopener">${esc(t.source || 'INDEC')}</a>` : esc(t.source || '')}${(a.sources || []).map(s => ` · <a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.label)}</a>`).join('')}${rel.note ? `<br>${esc(rel.note)}` : ''}</p>`;
+  }
+
+  function argSection(prefix, num, rel, iso, countryName) {
+    return `<section class="esp-sec" id="${prefix}-sec-arg">
+      <div class="esp-sec-head"><span class="kicker">${num} · Relación con Argentina</span><h3>Argentina y ${esc(countryName)}</h3>
+        <p>Vínculo político, embajadores y comercio bilateral: qué le vendemos, qué le compramos y cuánto pesa en el total del comercio exterior argentino.</p></div>
+      ${argRelationHTML(rel, iso, countryName)}
+    </section>`;
   }
 
   /* ===================== LIVE RESULTS (TSE) =====================
@@ -30916,7 +31087,7 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
 
   const NUM_SEL = '.pulse-num, .stat-value, .office-num, .profile-card-value, .econ-value, .uf-stat-v, .elec-stat-num, .gender-stat-big, .cc-summary-stat strong, .poll-cand-avg, .hemicycle-total';
   const BAR_SEL = '.ideo-fill, .pbar-fill, .uf-rank-bar-fill, .result-bar-fill, .poll-bar-fill, .results-progress-fill, .profile-card-bar-fill, .mm-bar-fill, .continent-seg, .renewal-bar span:first-child';
-  const CARD_SEL = '.chart-card, .profile-card, .stat, .pulse-tile, .office-card, .chamber-card, .especial-card, .agenda-item, .cc-item, .poll-card, .econ-cell, .elec-highlights-grid > *, .facts-list li, .uf-card, .uf-rank, .br-map-card';
+  const CARD_SEL = '.arg-card, .chart-card, .profile-card, .stat, .pulse-tile, .office-card, .chamber-card, .especial-card, .agenda-item, .cc-item, .poll-card, .econ-cell, .elec-highlights-grid > *, .facts-list li, .uf-card, .uf-rank, .br-map-card';
 
   // Parse the first number in a string, remembering how it was written
   // ("1.480" → thousands with '.', "45,8" → decimal ',', "0.865" → decimal '.').
@@ -30957,7 +31128,7 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
   }
 
   const pendingBars = new Map();   // container → bars waiting to grow
-  const BAR_HOST = '.uf-rank, .chart-card, .poll-box, .poll-card, .profile-card, .results-card, .uf-card, .chamber-card, .esp-sec, .layout, .panel-detail';
+  const BAR_HOST = '.arg-card, .uf-rank, .chart-card, .poll-box, .poll-card, .profile-card, .results-card, .uf-card, .chamber-card, .esp-sec, .layout, .panel-detail';
   const io = new IntersectionObserver(entries => {
     entries.forEach(en => {
       if (!en.isIntersecting) return;

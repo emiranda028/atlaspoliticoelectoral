@@ -1,7 +1,7 @@
 {
  "id": "israel-2026",
  "title": "Elecciones a la Knéset 2026",
- "updatedAt": "2026-09-24T15:30:00-03:00",
+ "updatedAt": "2026-09-24T17:00:00-03:00",
  "lede": "El 27 de octubre Israel elige los 120 miembros de la Knéset en un único distrito nacional. Ningún partido gobierna solo: el próximo primer ministro saldrá de la coalición que logre reunir 61 bancas. Eisenkot y Netanyahu se disputan el primer lugar en las encuestas.",
  "dates": {
   "pollsOpen": "2026-10-27T07:00:00+02:00",
@@ -417,5 +417,169 @@
    "url": "https://www.timesofisrael.com/no-last-minute-mergers-as-parties-submit-final-knesset-slates-for-election/"
   }
  ],
- "calcNote": "Atención: el 23 de septiembre el Comité Central de Elecciones inhabilitó a Ra'am y a la Lista Conjunta. Si la Corte Suprema confirma la exclusión, esas bancas se redistribuyen entre las demás listas y cambia toda la aritmética."
+ "calcNote": "Atención: el 23 de septiembre el Comité Central de Elecciones inhabilitó a Ra'am y a la Lista Conjunta. Si la Corte Suprema confirma la exclusión, esas bancas se redistribuyen entre las demás listas y cambia toda la aritmética.",
+ "argentina": {
+  "alignment": {
+   "summary": "Desde diciembre de 2023 el gobierno de Javier Milei mantiene un alineamiento explícito con el gobierno de Benjamin Netanyahu: Milei visitó Israel en febrero de 2024, junio de 2025 (discurso en la Knesset y Premio Génesis) y abril de 2026, cuando ambos firmaron en Jerusalén los 'Acuerdos de Isaac', un marco estratégico de cooperación en seguridad, lucha contra el terrorismo, tecnología y comercio abierto a otros países de América Latina. El traslado de la embajada argentina a Jerusalén, anunciado para 2026, no se concretó: en enero de 2026 se informó su suspensión por fricciones vinculadas a la exploración petrolera de la israelí Navitas en Malvinas, y en abril de 2026 Milei solo reiteró la voluntad de mudarla 'apenas las condiciones lo permitan'; la sede sigue en Herzliya. En la ONU, Argentina votó junto a Israel y Estados Unidos contra resoluciones como la de la solución de dos Estados (septiembre de 2025). La relación se enmarca además en el reclamo de justicia por los atentados contra la Embajada de Israel (1992) y la AMIA (1994), cuyo juicio en ausencia a los acusados iraníes y libanés fue convalidado judicialmente en septiembre de 2026.",
+   "level": "aliado estrecho",
+   "milestones": [
+    {
+     "date": "2024-02-06",
+     "text": "Primer viaje de Milei a Israel como presidente; reza en el Muro de los Lamentos y confirma la intención de mudar la embajada a Jerusalén."
+    },
+    {
+     "date": "2025-06-11",
+     "text": "Ante la Knesset, Milei anuncia que la embajada argentina se trasladará a Jerusalén Occidental en 2026; recibe el Premio Génesis."
+    },
+    {
+     "date": "2025-09-12",
+     "text": "Argentina vota en contra, junto a Israel y EE.UU., de la resolución de la Asamblea General de la ONU que respalda la solución de dos Estados (142 a favor, 10 en contra)."
+    },
+    {
+     "date": "2026-01",
+     "text": "Se informa que el Gobierno frena el traslado de la embajada a Jerusalén por tensiones ligadas al proyecto petrolero de la israelí Navitas Petroleum en Malvinas."
+    },
+    {
+     "date": "2026-04-19",
+     "text": "Tercera visita de Milei: firma con Netanyahu los 'Acuerdos de Isaac', memorandos sobre inteligencia artificial y servicios aéreos; la embajada no se muda y Milei la condiciona a que 'las condiciones lo permitan'."
+    },
+    {
+     "date": "2026-09",
+     "text": "La Cancillería condecora con la Orden de Mayo al embajador israelí Eyal Sela al concluir su misión de cuatro años en Buenos Aires."
+    }
+   ],
+   "agreements": [
+    "Tratado de Libre Comercio Mercosur–Israel (firmado en diciembre de 2007; vigente para Argentina desde el 9 de septiembre de 2011)",
+    "Acuerdo administrativo complementario al TLC Mercosur–Israel formalizado el 12 de junio de 2025 (arancel cero para la mayoría de las exportaciones argentinas, según la prensa)",
+    "Acuerdos de Isaac (Jerusalén, 19 de abril de 2026): marco estratégico en seguridad, lucha contra el terrorismo, antisemitismo y narcotráfico, innovación y comercio",
+    "Memorando de entendimiento en inteligencia artificial y convenio de servicios aéreos (abril de 2026)",
+    "Línea de crédito/seguro de US$150 millones de la aseguradora estatal israelí ASHRA para exportadores israelíes que operan en Argentina (anunciada el 20 de abril de 2026)",
+    "Vuelo directo EL AL Tel Aviv–Buenos Aires desde el 29 de noviembre de 2026 (dos frecuencias semanales, Boeing 787-9)"
+   ],
+   "sources": [
+    {
+     "label": "Cancillería argentina · Argentina e Israel lanzan los Acuerdos de Isaac",
+     "url": "https://www.cancilleria.gob.ar/es/actualidad/noticias/argentina-e-israel-lanzan-los-acuerdos-de-isaac-para-fortalecer-la-cooperacion"
+    },
+    {
+     "label": "Argentina.gob.ar · Milei anunció que en 2026 la Argentina mudará su embajada a Jerusalén Occidental",
+     "url": "https://www.argentina.gob.ar/noticias/el-presidente-javier-milei-anuncio-que-en-2026-la-argentina-mudara-su-embajada-en-israel"
+    },
+    {
+     "label": "La Nación · Milei reiteró la voluntad de trasladar la embajada 'apenas las condiciones lo permitan' (19/04/2026)",
+     "url": "https://www.lanacion.com.ar/politica/milei-visito-el-muro-de-los-lamentos-nid19042026/"
+    },
+    {
+     "label": "Times of Israel · Milei, Netanyahu announce Tel Aviv-Buenos Aires flights, ink Isaac Accords",
+     "url": "https://www.timesofisrael.com/milei-netanyahu-announce-tel-aviv-buenos-aires-flights-ink-strategic-isaac-accords/"
+    },
+    {
+     "label": "Escenario Mundial · Argentina frena el traslado de su embajada a Jerusalén (11/01/2026)",
+     "url": "https://www.escenariomundial.com/2026/01/11/argentina-frena-el-traslado-de-su-embajada-a-jerusalen-por-tensiones-vinculadas-a-la-exploracion-petrolera-en-las-islas-malvinas/"
+    }
+   ]
+  },
+  "ambassadors": {
+   "argentineInCountry": {
+    "name": "Axel Wahnish",
+    "since": "2024",
+    "note": "Rabino y amigo personal de Milei. La embajada sigue en Herzliya: el traslado a Jerusalén no se concretó."
+   },
+   "countryInArgentina": {
+    "name": "Eyal Sela",
+    "role": "Embajador de Israel en Argentina (misión concluida en septiembre de 2026)",
+    "since": "2022",
+    "note": "Recibió la Orden de Mayo al concluir sus cuatro años de misión. No se confirmó públicamente a su sucesor."
+   }
+  },
+  "trade": {
+   "source": "INDEC vía prensa (2023) y ONU Comtrade (2024)",
+   "sourceUrl": "https://aduananews.com/israel-y-argentina-cifras-de-su-comercio-bilateral/",
+   "years": [
+    {
+     "year": 2023,
+     "exports": 341,
+     "imports": 184,
+     "balance": 157
+    },
+    {
+     "year": 2024,
+     "exports": 438.9,
+     "imports": 138.9,
+     "balance": 300.0
+    }
+   ],
+   "ytd2026": null,
+   "shareOfArgentinaTotal2025": {},
+   "topExports": [
+    {
+     "product": "Carne y cueros bovinos (principalmente carne kosher)",
+     "valueMUSD": 439,
+     "pctOfBilateral": null,
+     "year": "2025"
+    },
+    {
+     "product": "Residuos de la industria alimenticia (pellets para forraje)",
+     "valueMUSD": 45.6,
+     "pctOfBilateral": null,
+     "year": "2024"
+    },
+    {
+     "product": "Maíz en grano",
+     "valueMUSD": null,
+     "pctOfBilateral": 5.9,
+     "year": "2023"
+    }
+   ],
+   "exportsCaption": "Principales productos vendidos a Israel, en USD (el año de cada dato entre paréntesis)",
+   "topImports": [
+    {
+     "product": "Productos químicos (incl. herbicidas)",
+     "valueMUSD": 34.0,
+     "pctOfBilateral": null,
+     "year": "2024"
+    },
+    {
+     "product": "Máquinas y material eléctrico",
+     "valueMUSD": 22.1,
+     "pctOfBilateral": null,
+     "year": "2024"
+    },
+    {
+     "product": "Plásticos (polietileno)",
+     "valueMUSD": 18.6,
+     "pctOfBilateral": null,
+     "year": "2024"
+    }
+   ],
+   "importsCaption": "Principales productos comprados a Israel, en USD (ONU Comtrade 2024)",
+   "services": {
+    "note": "No hay estadística oficial pública de comercio de servicios bilateral hallada. La cooperación se concentra en seguridad, inteligencia y lucha antiterrorista (Acuerdos de Isaac), inteligencia artificial (memorando de abril de 2026), conectividad aérea (vuelo directo EL AL desde noviembre de 2026) y financiamiento: Israel abrió una línea de USD 150 M vía la aseguradora estatal ASHRA para exportadores israelíes que operan en Argentina. En 2025 la Asociación de Industriales de Israel firmó un memorando con la UIA y se anunció una misión binacional de innovación y tecnología para 2026.",
+    "figures": [
+     {
+      "label": "Línea de crédito/seguro ASHRA para operaciones en Argentina",
+      "value": "USD 150 millones"
+     },
+     {
+      "label": "Vuelo directo EL AL Tel Aviv–Buenos Aires",
+      "value": "Desde 29/11/2026, 2 frecuencias semanales"
+     },
+     {
+      "label": "Exportaciones bovinas a Israel 2025",
+      "value": "USD 439 millones"
+     }
+    ]
+   },
+   "kpiNote": "ONU Comtrade 2024 (no hay total 2025 del INDEC)"
+  },
+  "keyFacts": [
+   "Argentina tiene la mayor comunidad judía de América Latina; las estimaciones van de unas 180.000 personas (Sergio DellaPergola, 2019) a cerca de 250.000-300.000 según otras fuentes comunitarias.",
+   "El atentado contra la AMIA (18 de julio de 1994) dejó 85 muertos; en 2025 se sancionó la Ley 27.784 de juicio en ausencia y en septiembre de 2026 la justicia convalidó su constitucionalidad para juzgar a los acusados iraníes y un libanés de Hezbollah.",
+   "El atentado contra la Embajada de Israel en Buenos Aires (17 de marzo de 1992) dejó 29 muertos.",
+   "La embajada argentina en Israel sigue en Herzliya; solo EE.UU., Guatemala, Honduras, Kosovo, Papúa Nueva Guinea y Paraguay concretaron sedes en Jerusalén según la prensa.",
+   "Israel es uno de los principales destinos de la carne vacuna argentina (carne kosher), con la habilitación de cortes con hueso ampliando la demanda desde 2025-2026.",
+   "El 29 de noviembre de 2026 EL AL inaugura el primer vuelo directo de la historia entre Buenos Aires y Tel Aviv."
+  ],
+  "note": "Nota de datos: no se encontró el total bilateral 2025 del INDEC. 2023: INDEC citado por la prensa; 2024: ONU Comtrade, que puede diferir de la estadística oficial argentina. Solo el complejo carne y cueros bovinos vendió USD 439 M a Israel en 2025 (Bolsa de Comercio de Rosario), por lo que el total 2025 superaría la cifra de 2024."
+ }
 }

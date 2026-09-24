@@ -85,6 +85,13 @@ En `results` de `brasil-2026.json` hay dos opciones:
    `results.round1.candidates` con `{ "id", "name", "party", "pct", "votes" }`, más `pctCounted`
    y `status` (`"live"` o `"final"`), y hacer push.
 
+### Relación con Argentina
+
+Cada especial tiene una clave `argentina` en su JSON con la sección bilateral: `alignment`
+(resumen, nivel, hitos, acuerdos), `ambassadors` (con `role` opcional cuando no hay embajador
+en funciones), `trade` (años, % del total argentino, productos que se venden y compran,
+servicios) y `keyFacts`. Actualizar el comercio cuando el INDEC publique nuevos datos.
+
 ### Agregar un especial nuevo
 
 Sumá una entrada en `specials` de `data/live.json` con `status: "soon"` (tarjeta "Próximamente")

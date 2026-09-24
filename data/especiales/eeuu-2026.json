@@ -1,7 +1,7 @@
 {
  "id": "eeuu-2026",
  "title": "Elecciones de medio término de EE.UU. 2026",
- "updatedAt": "2026-09-24T14:30:00-03:00",
+ "updatedAt": "2026-09-24T17:00:00-03:00",
  "lede": "El 3 de noviembre los estadounidenses renuevan toda la Cámara de Representantes, un tercio del Senado y 36 gobernaciones. Es el primer gran examen del segundo mandato de Donald Trump, con el control del Congreso en juego.",
  "dates": {
   "electionDay": "2026-11-03T06:00:00-05:00",
@@ -1125,5 +1125,208 @@
    "label": "Ballotpedia · redistribución 2025-26",
    "url": "https://ballotpedia.org/Redistricting_ahead_of_the_2026_elections"
   }
- ]
+ ],
+ "argentina": {
+  "alignment": {
+   "summary": "Desde 2024 el gobierno de Javier Milei hizo de la relación con Washington el eje de su política exterior, y con el regreso de Donald Trump ambos gobiernos la definieron como una alianza estratégica. En octubre de 2025, antes de las legislativas, el Tesoro de EE.UU. firmó con el BCRA un acuerdo de estabilización cambiaria (swap) por hasta USD 20.000 millones y compró pesos en el mercado; el tramo activado (unos USD 2.500 millones) se canceló en diciembre de 2025. El 13 de noviembre de 2025 se anunció un marco para un acuerdo de comercio e inversión recíprocos, que se firmó en Washington el 5 de febrero de 2026. A septiembre de 2026 el acuerdo seguía sin ratificación del Congreso argentino: el Gobierno buscaba renegociar algunos términos tras el fallo de la Corte Suprema estadounidense sobre los aranceles globales, y Washington rechazaba reabrirlo.",
+   "level": "aliado estrecho",
+   "milestones": [
+    {
+     "date": "2025-09-23",
+     "text": "Trump recibe a Milei en la Asamblea General de la ONU y le expresa su \"respaldo completo\"; el Tesoro anuncia su apoyo financiero a la Argentina."
+    },
+    {
+     "date": "2025-10-14",
+     "text": "Milei, recibido en la Casa Blanca; Trump condiciona la ayuda al resultado de las legislativas del 26 de octubre."
+    },
+    {
+     "date": "2025-10-20",
+     "text": "El BCRA y el Tesoro de EE.UU. firman un acuerdo de estabilización cambiaria (swap) por hasta USD 20.000 millones."
+    },
+    {
+     "date": "2025-11-13",
+     "text": "Declaración conjunta: marco para un Acuerdo de Comercio e Inversión Recíprocos."
+    },
+    {
+     "date": "2026-02-05",
+     "text": "El canciller Pablo Quirno y el representante comercial Jamieson Greer firman en Washington el Acuerdo de Comercio e Inversión Recíprocos."
+    },
+    {
+     "date": "2026-09",
+     "text": "El acuerdo comercial sigue sin ratificación del Congreso argentino: el Gobierno busca renegociar términos y EE.UU. lo rechaza (Bloomberg/Ámbito)."
+    }
+   ],
+   "agreements": [
+    "Acuerdo de estabilización cambiaria (swap) BCRA–Tesoro de EE.UU. por hasta USD 20.000 millones (20/10/2025); se activó un tramo de unos USD 2.500 millones, cancelado en diciembre de 2025. No hay confirmación pública de que el acuerdo marco haya terminado.",
+    "Marco para un Acuerdo de Comercio e Inversión Recíprocos (declaración conjunta del 13/11/2025).",
+    "Acuerdo de Comercio e Inversión Recíprocos firmado el 5/2/2026. Elimina aranceles recíprocos para 1.675 productos argentinos y amplía a 100.000 t la cuota de carne bovina. Argentina reduce aranceles en más de 200 posiciones. A septiembre de 2026 está pendiente de ratificación legislativa.",
+    "Adhesión al Tratado de Cooperación en materia de Patentes (PCT), un compromiso del acuerdo comercial: Diputados lo aprobó con cambios en agosto de 2026 y volvió al Senado."
+   ],
+   "sources": [
+    {
+     "label": "Cancillería · Argentina y EE.UU. firmaron un acuerdo sobre comercio e inversiones recíprocos (5/2/2026)",
+     "url": "https://www.cancilleria.gob.ar/es/destacados/argentina-y-estados-unidos-firmaron-un-acuerdo-sobre-comercio-e-inversiones-reciprocos"
+    },
+    {
+     "label": "USTR · Fact Sheet: Framework for an Agreement on Reciprocal Trade and Investment (nov. 2025)",
+     "url": "https://ustr.gov/about/policy-offices/press-office/fact-sheets/2025/november/fact-sheet-united-states-and-argentina-agree-framework-agreement-reciprocal-trade-and-investment"
+    },
+    {
+     "label": "Embajada de EE.UU. · Framework for a US–Argentina Agreement on Reciprocal Trade and Investment",
+     "url": "https://ar.usembassy.gov/framework-for-a-united-states-argentina-agreement-on-reciprocal-trade-and-investment/"
+    },
+    {
+     "label": "La Nación · El Banco Central firmó el swap con el Tesoro de EE.UU. por US$20.000 millones (20/10/2025)",
+     "url": "https://www.lanacion.com.ar/economia/el-banco-central-firmo-el-swap-con-el-tesoro-de-estados-unidos-por-us20000-millones-nid20102025/"
+    },
+    {
+     "label": "La Nación · El BCRA canceló el tramo activado del swap (9/1/2026)",
+     "url": "https://www.lanacion.com.ar/economia/dolar/el-banco-central-confirmo-que-cancelo-el-tramo-activado-del-swap-con-el-tesoro-estadounidense-nid09012026/"
+    }
+   ]
+  },
+  "ambassadors": {
+   "argentineInCountry": {
+    "name": "Alec Oxenford",
+    "since": "junio 2025",
+    "note": "Empresario, fundador de OLX y Letgo. Reemplazó a Gerardo Werthein."
+   },
+   "countryInArgentina": {
+    "name": "Peter Lamelas",
+    "since": "noviembre 2025",
+    "note": "Médico y empresario cubano-estadounidense de Florida; presentó cartas credenciales el 4 de noviembre de 2025."
+   }
+  },
+  "trade": {
+   "source": "INDEC, Intercambio Comercial Argentino",
+   "sourceUrl": "https://www.indec.gob.ar/uploads/informesdeprensa/ica_01_26ABE4F7373E.pdf",
+   "years": [
+    {
+     "year": 2024,
+     "exports": 6395,
+     "imports": 6163,
+     "balance": 232
+    },
+    {
+     "year": 2025,
+     "exports": 8338,
+     "imports": 6704,
+     "balance": 1634
+    }
+   ],
+   "ytd2026": null,
+   "shareOfArgentinaTotal2025": {
+    "exportsPct": 9.6,
+    "importsPct": 8.8,
+    "rankAsExportDestination": 3,
+    "rankAsImportOrigin": 3
+   },
+   "topExports": [
+    {
+     "product": "Aceites crudos de petróleo",
+     "valueMUSD": null,
+     "pctOfBilateral": 31.2,
+     "year": "2024"
+    },
+    {
+     "product": "Oro para uso no monetario (en bruto)",
+     "valueMUSD": null,
+     "pctOfBilateral": null
+    },
+    {
+     "product": "Naftas y otros productos del complejo petrolero-petroquímico",
+     "valueMUSD": null,
+     "pctOfBilateral": 3.3,
+     "year": "2024"
+    },
+    {
+     "product": "Carbonato de litio y otros productos del complejo litio",
+     "valueMUSD": null,
+     "pctOfBilateral": null
+    },
+    {
+     "product": "Carne bovina congelada deshuesada",
+     "valueMUSD": null,
+     "pctOfBilateral": null
+    },
+    {
+     "product": "Aceite de soja y aceite de girasol",
+     "valueMUSD": null,
+     "pctOfBilateral": null
+    },
+    {
+     "product": "Vinos sin espumar",
+     "valueMUSD": null,
+     "pctOfBilateral": 2.9,
+     "year": "2024"
+    }
+   ],
+   "exportsCaption": "Principales productos exportados a EE.UU. % de 2024 donde hay dato publicado (INDEC); en 2025 la energía fue el 47 % de lo vendido (BCR).",
+   "topImports": [
+    {
+     "product": "Vehículos automotores, autopartes e insumos automotrices",
+     "valueMUSD": null,
+     "pctOfBilateral": null
+    },
+    {
+     "product": "Medicamentos y productos inmunológicos",
+     "valueMUSD": null,
+     "pctOfBilateral": null
+    },
+    {
+     "product": "Gasoil y combustibles refinados",
+     "valueMUSD": null,
+     "pctOfBilateral": null
+    },
+    {
+     "product": "Componentes de bienes de capital (partes de bombas, cajas de cambio)",
+     "valueMUSD": null,
+     "pctOfBilateral": null
+    },
+    {
+     "product": "Fertilizantes e insecticidas",
+     "valueMUSD": null,
+     "pctOfBilateral": null
+    },
+    {
+     "product": "Hulla bituminosa",
+     "valueMUSD": null,
+     "pctOfBilateral": null
+    },
+    {
+     "product": "Copolímeros de etileno y manufacturas plásticas",
+     "valueMUSD": null,
+     "pctOfBilateral": null
+    },
+    {
+     "product": "Neumáticos",
+     "valueMUSD": null,
+     "pctOfBilateral": null
+    }
+   ],
+   "importsCaption": "Principales rubros importados desde EE.UU. (sin montos por producto publicados para 2025)",
+   "services": {
+    "note": "EE.UU. es el principal destino de las exportaciones argentinas de servicios basados en el conocimiento (software, servicios profesionales, diseño, I+D). La Economía del Conocimiento exportó unos USD 9.600 M en 2025, un récord; es el tercer complejo exportador del país y más de la mitad de los servicios exportados. Según estimaciones de prensa, entre el 25% y el 30% va a EE.UU. El acuerdo de 2026 incluye disposiciones sobre comercio digital y servicios. En turismo, 'EE.UU. y Canadá' aportó el 14,6% del turismo receptivo en marzo de 2025 (INDEC, ETI); no se verificó una cifra anual solo de EE.UU.",
+    "figures": [
+     {
+      "label": "Exportaciones de servicios de la Economía del Conocimiento, 2025 (total mundial)",
+      "value": "USD 9.600 millones"
+     },
+     {
+      "label": "Turismo receptivo desde EE.UU. y Canadá (marzo de 2025)",
+      "value": "14,6% de los turistas no residentes"
+     }
+    ]
+   }
+  },
+  "keyFacts": [
+   "En 2025 EE.UU. fue el tercer socio comercial de la Argentina, detrás de Brasil y China: recibió el 9,6% de las exportaciones y aportó el 8,8% de las importaciones.",
+   "Las exportaciones a EE.UU. alcanzaron en 2025 un récord de USD 8.338 millones (+29% i.a.), con un superávit bilateral récord. En 2024 se había registrado el primer superávit con EE.UU. desde 2005.",
+   "La energía fue el 47% de lo exportado a EE.UU. en 2025, una proporción que no se veía desde 2005 (BCR).",
+   "EE.UU. es el principal inversor extranjero en la Argentina: stock de inversión directa de USD 12.600 millones (dato de 2022) y más de 265 empresas estadounidenses en el país (Departamento de Estado, Investment Climate Statement 2024).",
+   "El acuerdo firmado en febrero de 2026 elimina aranceles recíprocos para 1.675 productos argentinos (unos USD 1.013 millones en exportaciones) y amplía a 100.000 t la cuota de carne bovina, pero a septiembre de 2026 no había sido ratificado por el Congreso.",
+   "Alec Oxenford, embajador en Washington, dijo que Milei viajó 18 veces a EE.UU. desde que asumió y que se reunió seis veces con Trump, entre ellas una visita oficial a la Casa Blanca."
+  ],
+  "note": "Nota de datos: 2024 son cifras provisorias del INDEC citadas por la CAC; 2025, INDEC. Enero–mayo 2026: el intercambio total con EE.UU. llegó a USD 3.981 M (+46,6 % interanual)."
+ }
 }
