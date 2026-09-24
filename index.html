@@ -30906,11 +30906,14 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
 
   function argProducts(list, cls) {
     if (!list || !list.length) return '<p class="uf-empty">Sin desglose disponible.</p>';
-    const max = Math.max(...list.map(p => p.pctOfBilateral || 0), 1);
+    // Bars use the bilateral share when every item has it; otherwise the USD value
+    const byPct = list.every(p => p.pctOfBilateral != null);
+    const val = p => byPct ? p.pctOfBilateral : p.valueMUSD;
+    const max = Math.max(...list.map(p => val(p) || 0), 1);
     return list.map(p => `
       <div class="arg-prod">
-        <div class="arg-prod-top"><span>${esc(p.product)}</span><b>${p.pctOfBilateral != null ? fmtPct(p.pctOfBilateral) : ''}${p.valueMUSD != null ? ` <em>${fmtMUSD(p.valueMUSD)}</em>` : ''}</b></div>
-        ${p.pctOfBilateral != null ? `<div class="pbar-track"><div class="pbar-fill ${cls}" style="width:${(p.pctOfBilateral / max * 100).toFixed(1)}%"></div></div>` : ''}
+        <div class="arg-prod-top"><span>${esc(p.product)}${p.year ? ` <em>(${esc(p.year)})</em>` : ''}</span><b>${p.pctOfBilateral != null ? fmtPct(p.pctOfBilateral) : ''}${p.valueMUSD != null ? ` <em>${fmtMUSD(p.valueMUSD)}</em>` : ''}</b></div>
+        ${val(p) != null ? `<div class="pbar-track"><div class="pbar-fill ${cls}" style="width:${(val(p) / max * 100).toFixed(1)}%"></div></div>` : ''}
       </div>`).join('');
   }
 
@@ -30962,8 +30965,8 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
       </div>
 
       <div class="arg-grid">
-        <div class="arg-card"><div class="arg-card-title">Qué le vende Argentina</div><div class="arg-card-sub">% de las exportaciones argentinas a ${esc(countryName)}</div>${argProducts(t.topExports2025 || t.topExports, 'arg-fill-exp')}</div>
-        <div class="arg-card"><div class="arg-card-title">Qué le compra Argentina</div><div class="arg-card-sub">% de las importaciones argentinas desde ${esc(countryName)}</div>${argProducts(t.topImports2025 || t.topImports, 'arg-fill-imp')}</div>
+        <div class="arg-card"><div class="arg-card-title">Qué le vende Argentina</div><div class="arg-card-sub">${esc(t.exportsCaption || '% de las exportaciones argentinas a ' + countryName)}</div>${argProducts(t.topExports2025 || t.topExports, 'arg-fill-exp')}</div>
+        <div class="arg-card"><div class="arg-card-title">Qué le compra Argentina</div><div class="arg-card-sub">${esc(t.importsCaption || '% de las importaciones argentinas desde ' + countryName)}</div>${argProducts(t.topImports2025 || t.topImports, 'arg-fill-imp')}</div>
       </div>
       <p class="esp-sources"><strong>Fuentes:</strong> ${t.sourceUrl ? `<a href="${esc(t.sourceUrl)}" target="_blank" rel="noopener">${esc(t.source || 'INDEC')}</a>` : esc(t.source || '')}${(a.sources || []).map(s => ` · <a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.label)}</a>`).join('')}${rel.note ? `<br>${esc(rel.note)}` : ''}</p>`;
   }
