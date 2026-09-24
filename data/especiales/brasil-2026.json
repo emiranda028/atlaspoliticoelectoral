@@ -1,0 +1,855 @@
+{
+ "id": "brasil-2026",
+ "title": "Elecciones generales de Brasil 2026",
+ "updatedAt": "2026-09-24T12:30:00-03:00",
+ "lede": "La elección más grande de América Latina: 158,7 millones de electores eligen el mismo día, y en urna electrónica, presidente, 27 gobernadores, 54 senadores y 1.572 diputados federales, estaduales y distritales.",
+ "dates": {
+  "firstRoundOpen": "2026-10-04T08:00:00-03:00",
+  "firstRoundClose": "2026-10-04T17:00:00-03:00",
+  "runoffOpen": "2026-10-25T08:00:00-03:00",
+  "runoffClose": "2026-10-25T17:00:00-03:00",
+  "inauguration": "2027-01-05T00:00:00-03:00"
+ },
+ "electorate": {
+  "total": 158745463,
+  "abroad": 918876,
+  "asOf": "julio 2026",
+  "womenPct": 52.81,
+  "biometricsPct": 89.01,
+  "source": "https://www.tse.jus.br/comunicacao/noticias/2026/Julho/mais-de-158-milhoes-de-eleitores-estao-aptos-votar-nas-eleicoes-2026",
+  "note": "Padrón cerrado por el TSE (julio 2026). Las cifras por estado vienen de los TRE; su suma difiere del total nacional en menos de 0,01%."
+ },
+ "officesIntro": "El 4 de octubre se renuevan casi todos los cargos federales y estaduales. Presidente y gobernadores necesitan más del 50% de los votos válidos; si nadie lo logra, hay segunda vuelta el 25 de octubre entre los dos más votados.",
+ "offices": [
+  {
+   "id": "pres",
+   "count": 1,
+   "label": "Presidente (y vice)",
+   "short": "presidente",
+   "detail": "Mandato 2027–2030. Lula busca un cuarto mandato; el TSE aprobó 12 fórmulas.",
+   "system": "Mayoría absoluta · dos vueltas"
+  },
+  {
+   "id": "gov",
+   "count": 27,
+   "label": "Gobernadores",
+   "short": "gobernadores",
+   "detail": "26 estados y el Distrito Federal, con la misma regla de dos vueltas que la presidencial.",
+   "system": "Mayoría absoluta · dos vueltas"
+  },
+  {
+   "id": "sen",
+   "count": 54,
+   "label": "Senadores",
+   "short": "senadores",
+   "detail": "Dos tercios del Senado: 2 por estado. Cada elector marca dos nombres y ganan los dos más votados. Mandato de 8 años.",
+   "system": "Mayoría simple"
+  },
+  {
+   "id": "dep",
+   "count": 513,
+   "label": "Diputados federales",
+   "short": "diputados",
+   "detail": "Entre 8 (piso) y 70 (techo) por estado. El reparto de 2022 se mantiene: el STF postergó la redistribución por el Censo 2022 hasta 2030.",
+   "system": "Representación proporcional · lista abierta"
+  },
+  {
+   "id": "est",
+   "count": 1059,
+   "label": "Diputados estaduales y distritales",
+   "short": "diputados estaduales",
+   "detail": "1.035 en las 26 asambleas legislativas estaduales y 24 en la Cámara Legislativa del DF.",
+   "system": "Representación proporcional · lista abierta"
+  }
+ ],
+ "ballotNote": "En la urna electrónica cada elector marca 6 votos, en este orden: diputado federal, diputado estadual (o distrital), senador 1, senador 2, gobernador y presidente. Los 918.876 electores que votan en el exterior eligen solo presidente.",
+ "states": [
+  {
+   "uf": "SP",
+   "name": "São Paulo",
+   "region": "Sudeste",
+   "capital": "São Paulo",
+   "voters": 34105332,
+   "fedDeputies": 70,
+   "stateDeputies": 94,
+   "governor": {
+    "name": "Tarcísio de Freitas",
+    "party": "Republicanos",
+    "note": "busca la reelección"
+   }
+  },
+  {
+   "uf": "MG",
+   "name": "Minas Gerais",
+   "region": "Sudeste",
+   "capital": "Belo Horizonte",
+   "voters": 16379547,
+   "fedDeputies": 53,
+   "stateDeputies": 77,
+   "governor": {
+    "name": "Mateus Simões",
+    "party": null,
+    "note": "asumió en 2026 tras la renuncia del titular"
+   }
+  },
+  {
+   "uf": "RJ",
+   "name": "Rio de Janeiro",
+   "region": "Sudeste",
+   "capital": "Río de Janeiro",
+   "voters": 12857388,
+   "fedDeputies": 46,
+   "stateDeputies": 70,
+   "governor": {
+    "name": "Ricardo Couto de Castro",
+    "party": null,
+    "note": "interino, presidente del TJ-RJ"
+   }
+  },
+  {
+   "uf": "BA",
+   "name": "Bahia",
+   "region": "Nordeste",
+   "capital": "Salvador",
+   "voters": 11321934,
+   "fedDeputies": 39,
+   "stateDeputies": 63,
+   "governor": {
+    "name": "Jerônimo Rodrigues",
+    "party": "PT",
+    "note": "busca la reelección"
+   }
+  },
+  {
+   "uf": "PR",
+   "name": "Paraná",
+   "region": "Sul",
+   "capital": "Curitiba",
+   "voters": 8609026,
+   "fedDeputies": 30,
+   "stateDeputies": 54,
+   "governor": {
+    "name": "Ratinho Júnior",
+    "party": "PSD"
+   }
+  },
+  {
+   "uf": "RS",
+   "name": "Rio Grande do Sul",
+   "region": "Sul",
+   "capital": "Porto Alegre",
+   "voters": 8526233,
+   "fedDeputies": 31,
+   "stateDeputies": 55,
+   "governor": {
+    "name": "Eduardo Leite",
+    "party": "PSD"
+   }
+  },
+  {
+   "uf": "PE",
+   "name": "Pernambuco",
+   "region": "Nordeste",
+   "capital": "Recife",
+   "voters": 7225744,
+   "fedDeputies": 25,
+   "stateDeputies": 49,
+   "governor": {
+    "name": "Raquel Lyra",
+    "party": "PSD",
+    "note": "busca la reelección"
+   }
+  },
+  {
+   "uf": "CE",
+   "name": "Ceará",
+   "region": "Nordeste",
+   "capital": "Fortaleza",
+   "voters": 6998494,
+   "fedDeputies": 22,
+   "stateDeputies": 46,
+   "governor": {
+    "name": "Elmano de Freitas",
+    "party": "PT",
+    "note": "busca la reelección"
+   }
+  },
+  {
+   "uf": "PA",
+   "name": "Pará",
+   "region": "Norte",
+   "capital": "Belém",
+   "voters": 6265355,
+   "fedDeputies": 17,
+   "stateDeputies": 41,
+   "governor": {
+    "name": "Hana Ghassan",
+    "party": "MDB",
+    "note": "asumió en 2026 tras la renuncia del titular"
+   }
+  },
+  {
+   "uf": "SC",
+   "name": "Santa Catarina",
+   "region": "Sul",
+   "capital": "Florianópolis",
+   "voters": 5725753,
+   "fedDeputies": 16,
+   "stateDeputies": 40,
+   "governor": {
+    "name": "Jorginho Mello",
+    "party": "PL",
+    "note": "busca la reelección"
+   }
+  },
+  {
+   "uf": "MA",
+   "name": "Maranhão",
+   "region": "Nordeste",
+   "capital": "São Luís",
+   "voters": 5186562,
+   "fedDeputies": 18,
+   "stateDeputies": 42,
+   "governor": {
+    "name": "Carlos Brandão",
+    "party": "PSB"
+   }
+  },
+  {
+   "uf": "GO",
+   "name": "Goiás",
+   "region": "Centro-Oeste",
+   "capital": "Goiânia",
+   "voters": 5081043,
+   "fedDeputies": 17,
+   "stateDeputies": 41,
+   "governor": {
+    "name": "Daniel Vilela",
+    "party": "MDB",
+    "note": "asumió en 2026 tras la renuncia del titular"
+   }
+  },
+  {
+   "uf": "PB",
+   "name": "Paraíba",
+   "region": "Nordeste",
+   "capital": "João Pessoa",
+   "voters": 3247397,
+   "fedDeputies": 12,
+   "stateDeputies": 36,
+   "governor": {
+    "name": "Lucas Ribeiro",
+    "party": "PP",
+    "note": "asumió en 2026 tras la renuncia del titular"
+   }
+  },
+  {
+   "uf": "ES",
+   "name": "Espírito Santo",
+   "region": "Sudeste",
+   "capital": "Vitória",
+   "voters": 2990490,
+   "fedDeputies": 10,
+   "stateDeputies": 30,
+   "governor": {
+    "name": "Ricardo Ferraço",
+    "party": "MDB",
+    "note": "asumió en 2026 tras la renuncia del titular"
+   }
+  },
+  {
+   "uf": "AM",
+   "name": "Amazonas",
+   "region": "Norte",
+   "capital": "Manaos",
+   "voters": 2801182,
+   "fedDeputies": 8,
+   "stateDeputies": 24,
+   "governor": {
+    "name": "Roberto Cidade",
+    "party": "União Brasil",
+    "note": "electo por la Asamblea en mayo de 2026"
+   }
+  },
+  {
+   "uf": "PI",
+   "name": "Piauí",
+   "region": "Nordeste",
+   "capital": "Teresina",
+   "voters": 2709740,
+   "fedDeputies": 10,
+   "stateDeputies": 30,
+   "governor": {
+    "name": "Rafael Fonteles",
+    "party": "PT",
+    "note": "busca la reelección"
+   }
+  },
+  {
+   "uf": "RN",
+   "name": "Rio Grande do Norte",
+   "region": "Nordeste",
+   "capital": "Natal",
+   "voters": 2660565,
+   "fedDeputies": 8,
+   "stateDeputies": 24,
+   "governor": {
+    "name": "Fátima Bezerra",
+    "party": "PT"
+   }
+  },
+  {
+   "uf": "MT",
+   "name": "Mato Grosso",
+   "region": "Centro-Oeste",
+   "capital": "Cuiabá",
+   "voters": 2638230,
+   "fedDeputies": 8,
+   "stateDeputies": 24,
+   "governor": {
+    "name": "Otaviano Pivetta",
+    "party": "Republicanos",
+    "note": "asumió en 2026 tras la renuncia del titular"
+   }
+  },
+  {
+   "uf": "AL",
+   "name": "Alagoas",
+   "region": "Nordeste",
+   "capital": "Maceió",
+   "voters": 2441794,
+   "fedDeputies": 9,
+   "stateDeputies": 27,
+   "governor": {
+    "name": "Paulo Dantas",
+    "party": "MDB"
+   }
+  },
+  {
+   "uf": "DF",
+   "name": "Distrito Federal",
+   "region": "Centro-Oeste",
+   "capital": "Brasilia",
+   "voters": 2253732,
+   "fedDeputies": 8,
+   "stateDeputies": 24,
+   "governor": {
+    "name": "Celina Leão",
+    "party": "PP",
+    "note": "asumió en 2026 tras la renuncia del titular"
+   }
+  },
+  {
+   "uf": "MS",
+   "name": "Mato Grosso do Sul",
+   "region": "Centro-Oeste",
+   "capital": "Campo Grande",
+   "voters": 2024884,
+   "fedDeputies": 8,
+   "stateDeputies": 24,
+   "governor": {
+    "name": "Eduardo Riedel",
+    "party": "PP",
+    "note": "busca la reelección"
+   }
+  },
+  {
+   "uf": "SE",
+   "name": "Sergipe",
+   "region": "Nordeste",
+   "capital": "Aracaju",
+   "voters": 1740240,
+   "fedDeputies": 8,
+   "stateDeputies": 24,
+   "governor": {
+    "name": "Fábio Mitidieri",
+    "party": "PSD",
+    "note": "busca la reelección"
+   }
+  },
+  {
+   "uf": "RO",
+   "name": "Rondônia",
+   "region": "Norte",
+   "capital": "Porto Velho",
+   "voters": 1267105,
+   "fedDeputies": 8,
+   "stateDeputies": 24,
+   "governor": {
+    "name": "Marcos Rocha",
+    "party": "União Brasil"
+   }
+  },
+  {
+   "uf": "TO",
+   "name": "Tocantins",
+   "region": "Norte",
+   "capital": "Palmas",
+   "voters": 1182307,
+   "fedDeputies": 8,
+   "stateDeputies": 24,
+   "governor": {
+    "name": "Wanderlei Barbosa",
+    "party": "Republicanos"
+   }
+  },
+  {
+   "uf": "AC",
+   "name": "Acre",
+   "region": "Norte",
+   "capital": "Rio Branco",
+   "voters": 614631,
+   "fedDeputies": 8,
+   "stateDeputies": 24,
+   "governor": {
+    "name": "Mailza Assis",
+    "party": "PP",
+    "note": "asumió en 2026 tras la renuncia del titular"
+   }
+  },
+  {
+   "uf": "AP",
+   "name": "Amapá",
+   "region": "Norte",
+   "capital": "Macapá",
+   "voters": 577534,
+   "fedDeputies": 8,
+   "stateDeputies": 24,
+   "governor": {
+    "name": "Clécio Luís",
+    "party": "União Brasil",
+    "note": "busca la reelección"
+   }
+  },
+  {
+   "uf": "RR",
+   "name": "Roraima",
+   "region": "Norte",
+   "capital": "Boa Vista",
+   "voters": 401574,
+   "fedDeputies": 8,
+   "stateDeputies": 24,
+   "governor": {
+    "name": "Soldado Sampaio",
+    "party": "Republicanos",
+    "note": "interino · busca la reelección"
+   }
+  }
+ ],
+ "chamber": {
+  "name": "Cámara de Diputados",
+  "total": 513,
+  "term": "Legislatura 2023–2027",
+  "asOf": "abril 2026, tras la ventana de cambio de partido",
+  "source": "https://www.camara.leg.br/deputados/liderancas-e-bancadas-partidarias/bancadas-atuais",
+  "note": "PL, PT, PP y Podemos coinciden en todas las fuentes; para PSD, União, Republicanos, MDB, PSB y PSDB las fuentes difieren en ±2 bancas. «Otros» agrupa PSOL, PDT, PCdoB, PV, Novo, Avante, Solidariedade, Cidadania, PRD y Rede.",
+  "parties": [
+   {
+    "party": "PT",
+    "name": "Partido dos Trabalhadores",
+    "seats": 67,
+    "lean": "center-left"
+   },
+   {
+    "party": "PSB",
+    "name": "Partido Socialista Brasileiro",
+    "seats": 20,
+    "lean": "center-left"
+   },
+   {
+    "party": "MDB",
+    "name": "Movimento Democrático Brasileiro",
+    "seats": 37,
+    "lean": "center"
+   },
+   {
+    "party": "Otros",
+    "name": "Partidos con menos de 15 bancas",
+    "seats": 58,
+    "lean": "other"
+   },
+   {
+    "party": "PSD",
+    "name": "Partido Social Democrático",
+    "seats": 47,
+    "lean": "center-right"
+   },
+   {
+    "party": "União",
+    "name": "União Brasil",
+    "seats": 44,
+    "lean": "center-right"
+   },
+   {
+    "party": "Podemos",
+    "name": "Podemos",
+    "seats": 24,
+    "lean": "center-right"
+   },
+   {
+    "party": "PSDB",
+    "name": "Partido da Social Democracia Brasileira",
+    "seats": 19,
+    "lean": "center-right"
+   },
+   {
+    "party": "PP",
+    "name": "Progressistas",
+    "seats": 54,
+    "lean": "right"
+   },
+   {
+    "party": "Republicanos",
+    "name": "Republicanos",
+    "seats": 42,
+    "lean": "right"
+   },
+   {
+    "party": "PL",
+    "name": "Partido Liberal",
+    "seats": 101,
+    "lean": "far-right"
+   }
+  ]
+ },
+ "senate": {
+  "name": "Senado Federal",
+  "total": 81,
+  "seatsUp": 54,
+  "term": "81 bancas · mandato de 8 años",
+  "asOf": "abril 2026",
+  "source": "https://www12.senado.leg.br/radio/1/noticia/2026/01/29/pl-ultrapassa-psd-e-se-torna-o-maior-partido-do-senado",
+  "note": "Se detallan los cinco partidos más grandes; «Otros» agrupa União, Republicanos, Podemos, PSB, PSDB, Novo, PDT y otros.",
+  "parties": [
+   {
+    "party": "PT",
+    "name": "Partido dos Trabalhadores",
+    "seats": 9,
+    "lean": "center-left"
+   },
+   {
+    "party": "MDB",
+    "name": "Movimento Democrático Brasileiro",
+    "seats": 10,
+    "lean": "center"
+   },
+   {
+    "party": "Otros",
+    "name": "Otros partidos",
+    "seats": 26,
+    "lean": "other"
+   },
+   {
+    "party": "PSD",
+    "name": "Partido Social Democrático",
+    "seats": 14,
+    "lean": "center-right"
+   },
+   {
+    "party": "PP",
+    "name": "Progressistas",
+    "seats": 7,
+    "lean": "right"
+   },
+   {
+    "party": "PL",
+    "name": "Partido Liberal",
+    "seats": 15,
+    "lean": "far-right"
+   }
+  ]
+ },
+ "presidential": {
+  "intro": "El TSE aprobó 12 fórmulas presidenciales; la de Pablo Marçal (PRTB) fue rechazada por unanimidad el 11 de septiembre. Las encuestas muestran una carrera polarizada entre Lula, que busca un cuarto mandato, y Flávio Bolsonaro.",
+  "runoffScenario": "Escenario Lula vs. Flávio Bolsonaro",
+  "candidates": [
+   {
+    "id": "lula",
+    "name": "Luiz Inácio Lula da Silva",
+    "short": "Lula",
+    "party": "PT",
+    "number": "13",
+    "vice": "Geraldo Alckmin (PSB)",
+    "coalition": "PT, PCdoB, PV, PSOL, Rede, PSB y PDT",
+    "lean": "center-left"
+   },
+   {
+    "id": "flavio",
+    "name": "Flávio Bolsonaro",
+    "short": "Flávio Bolsonaro",
+    "party": "PL",
+    "number": "22",
+    "vice": "Alfredo Gaspar (PL)",
+    "lean": "far-right"
+   },
+   {
+    "id": "cury",
+    "name": "Augusto Cury",
+    "short": "Augusto Cury",
+    "party": "Avante",
+    "number": "70",
+    "vice": "Júlio Delgado (Avante)",
+    "lean": "center"
+   },
+   {
+    "id": "caiado",
+    "name": "Ronaldo Caiado",
+    "short": "Ronaldo Caiado",
+    "party": "PSD",
+    "number": "55",
+    "vice": "Gilberto Kassab (PSD)",
+    "lean": "right"
+   },
+   {
+    "id": "renan",
+    "name": "Renan Santos",
+    "short": "Renan Santos",
+    "party": "Missão",
+    "vice": "Coronel Aroldo Medina",
+    "lean": "right"
+   },
+   {
+    "id": "zema",
+    "name": "Romeu Zema",
+    "short": "Romeu Zema",
+    "party": "Novo",
+    "number": "30",
+    "vice": "Eduardo Girão (Novo)",
+    "lean": "right"
+   },
+   {
+    "id": "samara",
+    "name": "Samara Martins",
+    "short": "Samara Martins",
+    "party": "UP",
+    "number": "80",
+    "vice": "Raquel Brício",
+    "lean": "far-left"
+   },
+   {
+    "id": "hertz",
+    "name": "Hertz Dias",
+    "party": "PSTU",
+    "number": "16",
+    "vice": "Vanessa Portugal",
+    "lean": "far-left"
+   },
+   {
+    "id": "edmilson",
+    "name": "Edmilson Costa",
+    "party": "PCB",
+    "number": "21",
+    "vice": "Cleusa Santos",
+    "lean": "far-left"
+   },
+   {
+    "id": "rui",
+    "name": "Rui Costa Pimenta",
+    "party": "PCO",
+    "number": "29",
+    "vice": "Antônio Carlos",
+    "lean": "far-left"
+   },
+   {
+    "id": "grassi",
+    "name": "Wilson Grassi",
+    "party": "Democrata",
+    "vice": "Suêd Haidar",
+    "lean": "other"
+   },
+   {
+    "id": "clariana",
+    "name": "Clariana Barão",
+    "party": "DC",
+    "number": "27",
+    "vice": "Fabiana Torquato",
+    "lean": "other"
+   }
+  ],
+  "polls": [
+   {
+    "firm": "AtlasIntel/Bloomberg",
+    "dates": "17–22 sep",
+    "n": 5015,
+    "moe": 1,
+    "url": "https://www.cnnbrasil.com.br/eleicoes/atlas-bloomberg-lula-tem-458-no-1o-turno-flavio-434/",
+    "r1": {
+     "lula": 45.8,
+     "flavio": 43.4,
+     "renan": 4.6,
+     "cury": 2.1,
+     "caiado": 1.4,
+     "zema": 0.9
+    },
+    "r2": {
+     "lula": 47.7,
+     "flavio": 47.4
+    }
+   },
+   {
+    "firm": "Genial/Quaest",
+    "dates": "17–20 sep",
+    "n": 2004,
+    "moe": 2,
+    "url": "https://www.dgabc.com.br/Noticia/4348267/no-1-turno-lula-tem-37-dos-votos-totais-flavio-33-cury-6-caiado-4-aponta-quaest",
+    "r1": {
+     "lula": 37,
+     "flavio": 33,
+     "cury": 6,
+     "caiado": 4,
+     "renan": 3,
+     "zema": 1,
+     "samara": 1
+    },
+    "r2": {
+     "lula": 41,
+     "flavio": 42
+    }
+   },
+   {
+    "firm": "Datafolha",
+    "dates": "15–17 sep",
+    "n": 2002,
+    "moe": 2,
+    "url": "https://mais.opovo.com.br/jornal/politica/2026/09/18/datafolha-lula-tem-39-contra-36-de-flavio-bolsonaro-no-1-turno.html",
+    "r1": {
+     "lula": 39,
+     "flavio": 36
+    },
+    "r2": {
+     "lula": 46,
+     "flavio": 44
+    }
+   },
+   {
+    "firm": "CNT/MDA",
+    "dates": "9–13 sep",
+    "n": 2002,
+    "moe": 2.2,
+    "url": "https://www.jota.info/eleicoes/eleicoes-2026/pesquisa-cnt-mda-lula-mantem-lideranca-fora-da-margem-de-erro-mas-flavio-avanca",
+    "r1": {
+     "lula": 40.6,
+     "flavio": 30.4
+    },
+    "r2": {
+     "lula": 47.3,
+     "flavio": 40.0
+    }
+   }
+  ]
+ },
+ "results": {
+  "round1": {
+   "status": "pending",
+   "runoff": null,
+   "candidates": []
+  },
+  "round2": {
+   "status": "pending",
+   "candidates": []
+  },
+  "tse": {
+   "round1Url": "",
+   "round2Url": "",
+   "help": "En la noche electoral, pegar acá la URL del JSON público de resultados del TSE (resultados.tse.jus.br/oficial/…/br-c0001-e…-r.json). Si el navegador no puede leerla, cargar los valores a mano en round1/round2.candidates: [{\"id\":\"lula\",\"name\":\"Lula\",\"party\":\"PT\",\"pct\":0,\"votes\":0}] y pctCounted."
+  }
+ },
+ "calendar": [
+  {
+   "date": "2026-04-04",
+   "label": "Vence el plazo para que los funcionarios que compiten dejen sus cargos: renunciaron 11 gobernadores"
+  },
+  {
+   "date": "2026-05-06",
+   "label": "Cierre del padrón electoral (altas, traslados y biometría)"
+  },
+  {
+   "date": "2026-07-20",
+   "label": "Arrancan las convenciones partidarias (hasta el 5 de agosto)"
+  },
+  {
+   "date": "2026-08-15",
+   "label": "Vence el registro de candidaturas: 20.506 pedidos"
+  },
+  {
+   "date": "2026-08-16",
+   "label": "Empieza la campaña oficial",
+   "key": true
+  },
+  {
+   "date": "2026-08-28",
+   "label": "Empieza la propaganda gratuita en radio y TV"
+  },
+  {
+   "date": "2026-09-11",
+   "label": "El TSE rechaza la candidatura de Pablo Marçal: quedan 12 fórmulas presidenciales"
+  },
+  {
+   "date": "2026-10-01",
+   "label": "Último día de propaganda en radio y TV · debate final en TV Globo"
+  },
+  {
+   "date": "2026-10-04",
+   "label": "1.ª vuelta: todos los cargos",
+   "key": true
+  },
+  {
+   "date": "2026-10-25",
+   "label": "2.ª vuelta para presidente y gobernadores (donde haga falta)",
+   "key": true
+  },
+  {
+   "date": "2027-01-05",
+   "label": "Asume el presidente: por primera vez el 5 de enero (enmienda constitucional 111/2021)",
+   "key": true
+  },
+  {
+   "date": "2027-01-06",
+   "label": "Asumen los gobernadores"
+  },
+  {
+   "date": "2027-02-01",
+   "label": "Asume el nuevo Congreso"
+  }
+ ],
+ "keyFacts": [
+  "158.745.463 electores habilitados, un récord (+1,46% frente a 2022). 918.876 votan en el exterior.",
+  "Las mujeres son el 52,8% del padrón. El 89% de los electores tiene la biometría registrada, aunque no es obligatoria para votar.",
+  "El voto es obligatorio de 18 a 69 años y optativo para quienes tienen 16 y 17 años, más de 70 o no saben leer y escribir.",
+  "El voto es 100% electrónico desde 2000: el TSE suele tener el resultado presidencial pocas horas después del cierre.",
+  "Hay 20.506 pedidos de candidatura: 13 a presidente, 195 a gobernador, 314 a senador, 7.627 a diputado federal y 11.090 a diputado estadual.",
+  "En las elecciones de diputados no se permiten alianzas electorales; sí las federaciones, que funcionan como un solo partido durante 4 años. Hay 5 registradas, entre ellas União Progressista (União Brasil + PP).",
+  "La Cámara se mantiene en 513 bancas: Lula vetó la ampliación a 531 y el STF confirmó el reparto de 2022 para esta elección.",
+  "Desde 2002, todas las elecciones presidenciales de Brasil se definieron en segunda vuelta."
+ ],
+ "sources": [
+  {
+   "label": "TSE · padrón 2026",
+   "url": "https://www.tse.jus.br/comunicacao/noticias/2026/Julho/mais-de-158-milhoes-de-eleitores-estao-aptos-votar-nas-eleicoes-2026"
+  },
+  {
+   "label": "TSE · candidaturas presidenciales",
+   "url": "https://www.tse.jus.br/comunicacao/noticias/2026/Setembro/eleicoes-2026-tem-12-candidaturas-na-disputa-pela-presidencia-da-republica"
+  },
+  {
+   "label": "TSE · electores en el exterior",
+   "url": "https://www.tse.jus.br/comunicacao/noticias/2026/Setembro/faltam-24-dias-mais-de-918-mil-brasileiros-estao-aptos-a-votar-no-exterior"
+  },
+  {
+   "label": "STF · 513 bancas",
+   "url": "https://noticias.stf.jus.br/postsnoticias/supremo-mantem-numero-de-deputados-federais-para-2026/"
+  },
+  {
+   "label": "Cámara de Diputados · bancadas",
+   "url": "https://www.camara.leg.br/deputados/liderancas-e-bancadas-partidarias/bancadas-atuais"
+  },
+  {
+   "label": "Nexo · ventana partidaria 2026",
+   "url": "https://www.nexojornal.com.br/grafico/2026/04/08/janela-partidaria-2026-deputados-federais-trocas-partido"
+  },
+  {
+   "label": "Senado · bancadas",
+   "url": "https://www12.senado.leg.br/radio/1/noticia/2026/01/29/pl-ultrapassa-psd-e-se-torna-o-maior-partido-do-senado"
+  }
+ ]
+}
