@@ -6039,6 +6039,96 @@
   .intro-skip:hover { background: rgba(255,255,255,.16); color: #fff; }
   body.intro-open { overflow: hidden; }
   @media (prefers-reduced-motion: reduce) { .intro { display: none !important; } }
+
+  /* ===========================================================
+     MÓVIL — compact header, discoverable navigation, non-sticky
+     filters, one-row chip scrollers and bigger tap targets.
+     =========================================================== */
+  .nav-menu-btn { display: none; }
+  .nav-sheet[hidden] { display: none; }
+  .nav-sheet { position: fixed; inset: 0; z-index: 4000; background: rgba(7,21,42,.55); display: flex; align-items: flex-end; }
+  .nav-sheet-panel {
+    width: 100%; max-height: 88vh; overflow-y: auto;
+    background: var(--surface); border-radius: 20px 20px 0 0;
+    padding: 8px 16px calc(20px + env(safe-area-inset-bottom));
+    animation: sheetUp .28s cubic-bezier(.2,.8,.2,1);
+  }
+  @keyframes sheetUp { from { transform: translateY(40px); opacity: 0; } }
+  .nav-sheet-head { display: flex; justify-content: space-between; align-items: center; padding: 10px 0 6px; font-family: var(--font-serif); font-size: 22px; font-weight: 700; }
+  .nav-sheet-close { font: inherit; font-size: 18px; width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--line); background: var(--surface-2); cursor: pointer; }
+  .nav-sheet-group { font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin: 14px 0 6px; }
+  .nav-sheet a { display: block; padding: 12px 14px; margin-bottom: 6px; border-radius: 12px; border: 1px solid var(--line); text-decoration: none; color: var(--ink); background: var(--surface); }
+  .nav-sheet a:active, .nav-sheet a.is-current { background: #FFF1E8; border-color: #F6D5BF; }
+  .nav-sheet a b { display: block; font-size: 16px; }
+  .nav-sheet a span { display: block; font-size: 13px; color: var(--muted); margin-top: 2px; }
+  body.sheet-open { overflow: hidden; }
+
+  @media (max-width: 760px) {
+    /* header: one slim line */
+    header.masthead { padding: 10px 16px !important; }
+    .masthead-main { margin-top: 0 !important; gap: 10px !important; align-items: center !important; }
+    body .atlas-logo, body .atlas-logo svg { width: 32px !important; height: 32px !important; }
+    h1.title, body h1.title { font-size: 23px !important; white-space: nowrap; }
+    .topic-nav-sticky { margin-top: 0 !important; padding: 0 0 0 12px !important; }
+
+    /* nav: fade on the right + sticky "Secciones" button */
+    .topic-nav { -webkit-mask-image: none; }
+    .topic-nav-link { padding: 12px 14px 12px 0 !important; margin-right: 12px !important; }
+    .topic-nav-text { font-size: 14px !important; }
+    .nav-menu-btn {
+      display: inline-flex; align-items: center; gap: 6px;
+      position: sticky; right: 0; margin-left: auto; flex-shrink: 0;
+      font: inherit; font-size: 13.5px; font-weight: 700; color: #fff;
+      background: var(--brand); border: 0; padding: 0 14px; cursor: pointer;
+      box-shadow: -18px 0 14px -2px var(--surface);
+    }
+
+    /* portada */
+    .portada-inner { padding-top: 16px; }
+    .live-pill { font-size: 10px; padding: 5px 10px; gap: 6px; flex-wrap: nowrap; white-space: nowrap; }
+    .live-pill #live-updated, .live-pill .sep:last-of-type { display: none; }
+    .portada-title { margin-top: 12px; }
+    .portada-quick, .esp-nav, .filter-bar, .filter-bar-secondary {
+      flex-wrap: nowrap !important; overflow-x: auto; -webkit-overflow-scrolling: touch;
+      scrollbar-width: none; scroll-snap-type: x proximity;
+    }
+    .portada-hero > *, .portada-main { min-width: 0; }
+    .portada-quick::-webkit-scrollbar, .filter-bar::-webkit-scrollbar { display: none; }
+    .quick-link { flex-shrink: 0; padding: 11px 15px; }
+    .portada-pulse { gap: 8px; }
+    .pulse-tile { padding: 14px; }
+
+    /* filters: not sticky on phones, chips in one swipeable row */
+    .filters-sticky { position: relative !important; top: auto !important; box-shadow: 0 1px 0 var(--line); }
+    .filter-bar { padding: 10px 16px !important; gap: 8px !important; }
+    .filter-bar-label { min-width: 0 !important; flex-shrink: 0; font-size: 10px !important; }
+    .chip, .chip-region, .chip-system { flex-shrink: 0; font-size: 13px !important; padding: 7px 12px !important; }
+    .search-box { order: -1; flex: 0 0 100%; margin: 0 0 4px !important; }
+    .filter-bar#filter-bar { flex-wrap: wrap !important; overflow: visible; }
+    #filter-bar .chips-scroll, #filter-bar { row-gap: 8px; }
+    .filters-toggle-btn { flex-shrink: 0; }
+
+    /* "El mundo hoy" had zero height on phones */
+    .headlines-ticker-track { height: 52px !important; min-height: 52px; flex: 1 1 100%; }
+    .headline-item { display: block; white-space: normal; font-size: 14px; line-height: 1.35; }
+    .headline-item > * { display: inline; margin-right: 4px; }
+
+    /* specials: inner nav below the main nav when stuck */
+    .esp-nav { top: 43px; padding: 10px 0; }
+    .esp-nav a { padding: 9px 14px; }
+    .esp { padding: 0 14px 40px; }
+    .esp-hero h2 { font-size: 40px; }
+    .countdown-num { font-size: 26px; }
+
+    /* section headings: kicker under the title, not squeezed beside it */
+    .analytics-head, .portada-sec-head { flex-direction: column; align-items: flex-start; gap: 4px; }
+    .analytics-head h2 { font-size: 26px !important; }
+
+    /* comfortable tap targets */
+    .seg button { padding: 9px 12px; font-size: 13.5px; }
+    .agenda-item, .uf-rank-row, .us-race-row { min-height: 44px; }
+    .export-fab, .back-to-top { transform: scale(.9); }
+  }
 </style>
 </head>
 <body>
@@ -6229,8 +6319,29 @@
         <span class="topic-nav-num">05</span>
         <span class="topic-nav-text">Metodología</span>
       </a>
+      <button type="button" class="nav-menu-btn" id="nav-menu-btn" aria-haspopup="dialog" aria-controls="nav-sheet">
+        <svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true"><path d="M3 5h14M3 10h14M3 15h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        <span>Secciones</span>
+      </button>
     </nav>
 
+
+<!-- Mobile section sheet: every section, big tap targets -->
+<div class="nav-sheet" id="nav-sheet" role="dialog" aria-modal="true" aria-label="Secciones del atlas" hidden>
+  <div class="nav-sheet-panel">
+    <div class="nav-sheet-head"><span>Secciones</span><button type="button" class="nav-sheet-close" id="nav-sheet-close" aria-label="Cerrar">✕</button></div>
+    <div class="nav-sheet-group">Especiales</div>
+    <a href="#brasil" data-go="brasil"><b>Brasil 2026</b><span>Elecciones generales del 4 de octubre</span></a>
+    <a href="#eeuu" data-go="eeuu"><b>EE.UU. 2026</b><span>Midterms del 3 de noviembre</span></a>
+    <a href="#israel" data-go="israel"><b>Israel 2026</b><span>Knéset, 27 de octubre · calculadora de coaliciones</span></a>
+    <div class="nav-sheet-group">El atlas</div>
+    <a href="#inicio" data-go="inicio"><b>Inicio y mapa</b><span>Portada, buscador y mapa mundial</span></a>
+    <a href="#elecciones" data-go="elecciones"><b>Calendario electoral</b><span>Quién vota y cuándo</span></a>
+    <a href="#analisis" data-go="analisis"><b>Análisis</b><span>Ideologías, sistemas, rankings y perfiles</span></a>
+    <a href="#cambio" data-go="cambio"><b>¿Cambio o continuidad?</b><span>Los giros ideológicos desde 2023</span></a>
+    <a href="#metodologia" data-go="metodologia"><b>Metodología</b><span>Fuentes, criterios y cómo citar</span></a>
+  </div>
+</div>
 <!-- ===== PORTADA — live front page (home view only) =====
      Filled by the PORTADA / LIVE DATA module at the end of the script,
      from the dataset + data/live.json (re-fetched periodically). -->
@@ -31316,6 +31427,30 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
   const mo = new MutationObserver(muts => muts.forEach(m => m.addedNodes.forEach(prime)));
   mo.observe(document.body, { childList: true, subtree: true });
   prime(document.body);
+})();
+
+/* ===========================================================
+   MOBILE SECTION SHEET
+   =========================================================== */
+(function () {
+  const btn = document.getElementById('nav-menu-btn');
+  const sheet = document.getElementById('nav-sheet');
+  if (!btn || !sheet) return;
+  const open = () => {
+    const cur = document.body.getAttribute('data-view');
+    sheet.querySelectorAll('[data-go]').forEach(a => a.classList.toggle('is-current', a.getAttribute('data-go') === cur));
+    sheet.hidden = false; document.body.classList.add('sheet-open');
+  };
+  const close = () => { sheet.hidden = true; document.body.classList.remove('sheet-open'); };
+  btn.addEventListener('click', open);
+  document.getElementById('nav-sheet-close').addEventListener('click', close);
+  sheet.addEventListener('click', e => { if (e.target === sheet) close(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && !sheet.hidden) close(); });
+  sheet.querySelectorAll('[data-go]').forEach(a => a.addEventListener('click', e => {
+    e.preventDefault(); close();
+    const v = a.getAttribute('data-go');
+    if (window.__atlasGoTo) window.__atlasGoTo(v);
+  }));
 })();
 </script>
 
