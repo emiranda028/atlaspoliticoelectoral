@@ -24,6 +24,7 @@ Una vez publicado:
 ### Visualizaciones principales
 
 - **Portada en vivo**: buscador de países, cuenta regresiva a la próxima gran elección, próximas elecciones y especiales destacados
+- **Especial Israel 2026**: elección a la Knéset del 27 de octubre con calculadora interactiva de coaliciones (promedio de encuestas, umbral de 61), Knéset actual en hemiciclo, encuestas por medio y listas
 - **Especial EE.UU. 2026**: midterms del 3 de noviembre con mapa por estado (bancas, Senado y gobernaciones con pronóstico de Cook), Congreso actual, encuestas y carreras clave
 - **Especial Brasil 2026**: qué se elige, mapa de electores por estado (padrón TSE julio 2026), composición de la Cámara y el Senado en hemiciclos, candidatos, encuestas, resultados en vivo y calendario
 
@@ -67,6 +68,7 @@ las páginas abiertas se actualizan sin recargar.
 | `data/live.json` | Especiales destacados en la portada, notas de "Últimas actualizaciones" y cada cuánto se refresca (`refreshSeconds`) |
 | `data/especiales/brasil-2026.json` | Todo el especial Brasil 2026: fechas, padrón por estado, cargos, bancadas, candidatos, encuestas, calendario y resultados |
 | `data/especiales/eeuu-2026.json` | Especial EE.UU. 2026 (midterms): bancas por estado, carreras al Senado y gobernaciones con pronóstico, composición del Congreso, encuestas, carreras clave y calendario |
+| `data/especiales/israel-2026.json` | Especial Israel 2026: sistema electoral, Knéset actual, listas, encuestas de bancas (alimentan la calculadora de coaliciones) y calendario |
 | `data/geo/usa-states.json` | Estados de EE.UU. (U.S. Census Bureau vía [us-atlas](https://github.com/topojson/us-atlas), dominio público) |
 | `data/geo/brasil-uf.json` | Contorno de los 27 estados ([svg-maps/brazil](https://github.com/VictorCazanave/svg-maps), CC BY 4.0) |
 
