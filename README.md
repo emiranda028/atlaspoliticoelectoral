@@ -127,7 +127,8 @@ o `status: "active"` + `view` (tarjeta que abre el especial).
 
 - **HTML / CSS / JavaScript estático** (sin frameworks, sin proceso de build)
 - **[Leaflet](https://leafletjs.com)** 1.9 para el mapa interactivo
-- **Tipografías**: Fraunces (serif italic editorial) e IBM Plex Sans/Mono (Google Fonts)
+- **Tipografías**: Newsreader (títulos), Inter (texto e interfaz) y JetBrains Mono (datos y etiquetas), vía Google Fonts
+- **Paleta**: azul marino institucional, acento naranja y una paleta ideológica divergente rojo → dorado → azul (definida como variables CSS en `:root`)
 - **Datos en línea**: GeoJSON desde CDN (jsdelivr / GitHub), fotos de líderes vía MediaWiki API con CORS
 - **Sin dependencias de runtime**: el archivo `index.html` es autocontenido y puede ejecutarse offline una vez cargados los recursos externos en caché
 
