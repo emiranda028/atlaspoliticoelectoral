@@ -14,7 +14,7 @@ libertad de prensa) y análisis de cambios ideológicos en las elecciones recien
 Abrí `index.html` en cualquier navegador moderno. No requiere build, ni servidor, ni instalación.
 
 Una vez publicado:
-- **GitHub Pages**: `https://<tu-usuario>.github.io/atlas-politico-mundial/`
+- **Sitio**: [atlaspoliticoelectoral.com](https://atlaspoliticoelectoral.com) (GitHub Pages con dominio propio)
 - **Netlify**: la URL que te asigne tras conectar el repo
 
 ---
@@ -163,6 +163,21 @@ Decisión deliberada por simplicidad de despliegue. El proyecto es estático, no
 3. En "Source" elegí `Deploy from a branch` → rama `main` → carpeta `/ (root)`
 4. Esperá ~1 minuto y vas a tener tu URL en `https://<usuario>.github.io/<repo>/`
 
+### Dominio propio (atlaspoliticoelectoral.com)
+
+El archivo `CNAME` en la raíz le indica a GitHub Pages el dominio. En el DNS del dominio
+(Hostinger → Dominios → DNS / Nameservers) van estos registros:
+
+| Tipo | Nombre | Apunta a |
+|------|--------|----------|
+| A | @ | 185.199.108.153 |
+| A | @ | 185.199.109.153 |
+| A | @ | 185.199.110.153 |
+| A | @ | 185.199.111.153 |
+| CNAME | www | emiranda028.github.io |
+
+Después, en GitHub → Settings → Pages: confirmar el dominio y activar *Enforce HTTPS*.
+
 ### Opción B: Netlify (más profesional, custom domain)
 
 1. Creá cuenta en [netlify.com](https://www.netlify.com)
@@ -214,7 +229,7 @@ agradezco el reconocimiento. Estos son los formatos sugeridos:
 
 ```
 Miranda, E. (2026). Atlas Político Mundial 2026 [Visualización interactiva de datos].
-   Recuperado de https://[tu-url-aquí]
+   Recuperado de https://atlaspoliticoelectoral.com
 ```
 
 ### Formato breve (notas al pie, redes sociales)
@@ -231,7 +246,7 @@ Miranda, E. (2026). Atlas Político Mundial 2026. emiranda028 / GitHub.
   title  = {Atlas Pol{\'i}tico Mundial 2026},
   year   = {2026},
   note   = {Visualizaci{\'o}n interactiva de datos},
-  url    = {https://[tu-url-aquí]}
+  url    = {https://atlaspoliticoelectoral.com}
 }
 ```
 
