@@ -6211,6 +6211,129 @@
     font: 600 14px/1 var(--font-sans); letter-spacing: .04em; text-transform: uppercase; cursor: pointer;
   }
   @media (prefers-reduced-motion: reduce) { .map-quick { transition: none; } }
+
+  /* ===== Ficha completa del país (modal grande) ===== */
+  html.ficha-open, html.ficha-open body { overflow: hidden; }
+  .ficha-modal { position: fixed; inset: 0; z-index: 1500; display: flex; align-items: center; justify-content: center; padding: 24px; }
+  .ficha-modal[hidden] { display: none; }
+  .ficha-backdrop { position: absolute; inset: 0; background: rgba(11, 22, 40, .55); backdrop-filter: blur(3px); opacity: 0; transition: opacity .22s; }
+  .ficha-dialog {
+    position: relative; width: min(1180px, 100%); max-height: calc(100vh - 48px); overflow-y: auto; overscroll-behavior: contain;
+    background: var(--bg); border-radius: 16px; box-shadow: 0 30px 80px rgba(11, 22, 40, .45);
+    transform: translateY(24px) scale(.985); opacity: 0; transition: transform .28s cubic-bezier(.2,.8,.2,1), opacity .22s;
+  }
+  .ficha-modal.is-open .ficha-backdrop { opacity: 1; }
+  .ficha-modal.is-open .ficha-dialog { transform: none; opacity: 1; }
+  .ficha-bar { position: sticky; top: 0; z-index: 2; display: flex; justify-content: space-between; align-items: center; padding: 10px 14px; background: var(--brand); }
+  .ficha-back { border: 0; background: none; color: rgba(244,246,250,.85); font: 600 13px var(--font-sans); letter-spacing: .03em; cursor: pointer; padding: 6px 4px; }
+  .ficha-back:hover { color: #fff; }
+  .ficha-close { width: 38px; height: 38px; border: 0; border-radius: 50%; background: rgba(244,246,250,.12); color: #fff; font-size: 26px; line-height: 1; cursor: pointer; }
+  .ficha-close:hover { background: rgba(244,246,250,.22); }
+  .ficha-head {
+    display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 28px; align-items: center;
+    padding: 18px 36px 34px; background: var(--brand); color: #F4F6FA; border-bottom: 4px solid var(--ideo);
+  }
+  .ficha-kicker { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; font: 600 12px var(--font-sans); letter-spacing: .08em; text-transform: uppercase; color: rgba(244,246,250,.7); }
+  .ficha-name { font-family: var(--font-serif); font-size: clamp(38px, 5.5vw, 64px); line-height: 1.02; margin: 10px 0 16px; color: #fff; font-weight: 600; letter-spacing: -.01em; }
+  .ficha-tags { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+  .ficha-ideo { display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px; border-radius: 999px; border: 1px solid rgba(244,246,250,.3); font: 600 12px var(--font-sans); letter-spacing: .07em; text-transform: uppercase; }
+  .ficha-ideo i { width: 10px; height: 10px; border-radius: 50%; background: var(--ideo); box-shadow: 0 0 0 2px rgba(255,255,255,.6); }
+  .ficha-head .share-link-btn { color: #F4F6FA; border-color: rgba(244,246,250,.3); background: transparent; }
+  .ficha-leader { display: flex; gap: 20px; align-items: center; background: rgba(244,246,250,.06); border: 1px solid rgba(244,246,250,.12); border-radius: 14px; padding: 18px; }
+  .ficha-photo { width: 104px !important; height: 104px !important; flex: 0 0 104px; font-size: 34px !important; border: 3px solid var(--ideo) !important; }
+  .ficha-leader-title { font: 600 11.5px var(--font-sans); letter-spacing: .08em; text-transform: uppercase; color: var(--accent-bright); }
+  .ficha-leader-name { font-family: var(--font-serif); font-size: 26px; font-weight: 600; line-height: 1.15; margin: 4px 0; color: #fff; }
+  .ficha-leader-party { font-size: 14.5px; color: rgba(244,246,250,.85); }
+  .ficha-leader-since { font-size: 13px; color: rgba(244,246,250,.6); margin-top: 3px; }
+  .ficha-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; padding: 24px 36px 12px; align-items: start; grid-auto-flow: row dense; }
+  .ficha-special { display: inline-block; margin-top: 14px; padding: 10px 16px; border-radius: 10px; background: var(--brand); color: #fff !important; font: 600 13px var(--font-sans); letter-spacing: .03em; text-decoration: none; }
+  .ficha-special:hover { background: var(--accent); }
+  .ficha-card { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 18px 20px; min-width: 0; }
+  .ficha-card.is-wide { grid-column: span 2; }
+  .ficha-card-title { font: 700 12px var(--font-sans); letter-spacing: .09em; text-transform: uppercase; color: var(--ink); padding-left: 10px; border-left: 3px solid var(--accent); margin-bottom: 12px; }
+  .ficha-card-title.ficha-sub { margin-top: 18px; }
+  .ficha-card .data-row .v { font-size: 13.5px; }
+  .ficha-chamber { padding: 10px 0 4px; border-top: 1px solid var(--line); }
+  .ficha-chamber:first-of-type { border-top: 0; }
+  .ficha-chamber-name { font: 600 14px var(--font-sans); color: var(--ink); }
+  .ficha-chamber-seats { font-family: var(--font-serif); font-size: 15px; color: var(--muted); margin: 2px 0 4px; }
+  .ficha-chamber-seats b { font-size: 26px; color: var(--ink); }
+  .ficha-next { background: linear-gradient(180deg, #FFF7ED, var(--surface) 70%); border-color: #FED7AA; }
+  .ficha-next-when { font-family: var(--font-serif); font-size: 30px; font-weight: 600; color: var(--ink); line-height: 1.1; }
+  .ficha-est { font: 600 10.5px var(--font-sans); letter-spacing: .07em; text-transform: uppercase; color: var(--accent); vertical-align: middle; border: 1px solid currentColor; border-radius: 999px; padding: 2px 8px; }
+  .ficha-next-type { font-size: 15px; color: var(--ink); margin: 8px 0 0; line-height: 1.45; }
+  .ficha-next-stake { font-family: var(--font-serif); font-size: 19px; font-style: italic; color: var(--accent); margin: 12px 0 6px; line-height: 1.35; }
+  .ficha-next-sum { font-size: 14.5px; line-height: 1.6; color: var(--ink-soft, var(--ink)); margin: 0 0 12px; }
+  .ficha-next-facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 10px; margin-bottom: 12px; }
+  .ficha-next-facts div, .ficha-next-cands { display: flex; flex-direction: column; gap: 3px; }
+  .ficha-next-facts span, .ficha-next-cands > span { font: 600 11px var(--font-sans); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+  .ficha-next-facts b { font-size: 14.5px; color: var(--ink); font-weight: 600; }
+  .ficha-next-cands { flex-direction: row; flex-wrap: wrap; gap: 6px; align-items: center; }
+  .ficha-next-cands > span { flex-basis: 100%; }
+  .ficha-next-cands em { font-style: normal; font-size: 13.5px; font-weight: 600; background: var(--surface); border: 1px solid var(--line-strong); border-radius: 999px; padding: 5px 12px; color: var(--ink); }
+  .ficha-next-cands small { font-weight: 400; color: var(--muted); }
+  .ficha-next-polls { font-size: 13px; color: var(--muted); margin: 12px 0 0; line-height: 1.5; }
+  .ficha-econ { grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)) !important; }
+  .econ-of { font-size: 13px; color: var(--muted); font-weight: 400; }
+  .ficha-source { margin: 4px 36px 28px; display: inline-block; }
+  @media (max-width: 980px) {
+    .ficha-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .ficha-head { grid-template-columns: 1fr; gap: 18px; }
+  }
+  @media (max-width: 760px) {
+    .ficha-modal { padding: 0; align-items: stretch; }
+    .ficha-dialog { max-height: none; height: 100%; border-radius: 0; }
+    .ficha-head { padding: 12px 18px 22px; }
+    .ficha-grid { grid-template-columns: 1fr; padding: 16px 14px 8px; gap: 12px; }
+    .ficha-card.is-wide { grid-column: auto; }
+    .ficha-leader { padding: 14px; gap: 14px; }
+    .ficha-photo { width: 76px !important; height: 76px !important; flex-basis: 76px; font-size: 26px !important; }
+    .ficha-leader-name { font-size: 21px; }
+    .ficha-next-when { font-size: 26px; }
+    .ficha-source { margin: 4px 16px 28px; }
+  }
+  .ficha-modal .fx-reveal { opacity: 1 !important; transform: none !important; }
+  @media (prefers-reduced-motion: reduce) { .ficha-dialog, .ficha-backdrop { transition: none; } }
+
+  /* ===== Calendario: qué se vota ===== */
+  .elec-highlights-sub { font-size: 15px; color: var(--muted); margin: -4px 0 18px; max-width: 760px; line-height: 1.55; }
+  .elec-highlights-grid:has(.eb-card) { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+  .eb-card { display: grid; grid-template-columns: 88px minmax(0, 1fr); gap: 18px; background: var(--surface); border: 1px solid var(--line); border-top: 4px solid var(--ideo); border-radius: 12px; padding: 18px 20px; min-width: 0; }
+  .eb-date { text-align: center; border-right: 1px solid var(--line); padding-right: 14px; display: flex; flex-direction: column; gap: 2px; }
+  .eb-date b { font-family: var(--font-serif); font-size: 44px; line-height: 1; color: var(--ink); }
+  .eb-date span { font: 600 12px var(--font-sans); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+  .eb-date i { font-style: normal; font: 600 11px var(--font-sans); color: var(--accent); margin-top: 6px; }
+  .eb-top { display: flex; align-items: center; gap: 10px; }
+  .eb-top h4 { font-family: var(--font-serif); font-size: 24px; margin: 0; color: var(--ink); font-weight: 600; }
+  .eb-offices { font-size: 14.5px; color: var(--ink); margin: 8px 0 0; line-height: 1.45; }
+  .eb-stake { font-family: var(--font-serif); font-style: italic; font-size: 17px; color: var(--accent); margin: 10px 0 4px; line-height: 1.35; }
+  .eb-sum { font-size: 14px; line-height: 1.6; color: var(--ink-soft); margin: 6px 0 10px; }
+  .eb-facts { display: flex; flex-direction: column; gap: 4px; font-size: 13.5px; color: var(--ink-soft); }
+  .eb-facts em { font-style: normal; font: 600 10.5px var(--font-sans); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-right: 8px; }
+  .eb-facts b { color: var(--ink); font-weight: 600; }
+  .eb-cands { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+  .eb-cands span { font-size: 12.5px; font-weight: 600; color: var(--ink); background: var(--bg); border: 1px solid var(--line-strong); border-radius: 999px; padding: 4px 11px; }
+  .eb-cands small { font-weight: 400; color: var(--muted); }
+  .eb-polls { font-size: 12.5px; color: var(--muted); line-height: 1.5; margin: 10px 0 0; }
+  .eb-polls strong { color: var(--ink-soft); }
+  .eb-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; margin-top: 14px; }
+  .eb-btn { border: 1px solid var(--brand); background: var(--surface); color: var(--brand); border-radius: 8px; padding: 8px 12px; font: 600 12.5px var(--font-sans); cursor: pointer; }
+  .eb-btn:hover { background: var(--brand); color: #fff; }
+  .eb-btn-special { background: var(--brand); color: #fff; }
+  .eb-btn-special:hover { background: var(--accent); border-color: var(--accent); }
+  .eb-flag { font: 600 10.5px var(--font-sans); letter-spacing: .06em; text-transform: uppercase; color: var(--accent); border: 1px dashed currentColor; border-radius: 999px; padding: 2px 8px; }
+  .eb-src { font-size: 11.5px; color: var(--muted); flex-basis: 100%; }
+  .eb-src a { color: var(--muted); }
+  .eb-more { grid-column: 1 / -1; justify-self: center; border: 1px solid var(--line-strong); background: var(--surface); border-radius: 999px; padding: 12px 22px; font: 600 14px var(--font-sans); color: var(--ink); cursor: pointer; }
+  .eb-more:hover { border-color: var(--brand); }
+  @media (max-width: 980px) { .elec-highlights-grid:has(.eb-card) { grid-template-columns: 1fr; } }
+  @media (max-width: 760px) {
+    .eb-card { grid-template-columns: 1fr; gap: 10px; padding: 16px; }
+    .eb-date { flex-direction: row; align-items: baseline; gap: 8px; border-right: 0; border-bottom: 1px solid var(--line); padding: 0 0 10px; text-align: left; flex-wrap: wrap; }
+    .eb-date b { font-size: 32px; }
+    .eb-date i { margin: 0 0 0 auto; }
+    .eb-top h4 { font-size: 21px; }
+  }
 </style>
 </head>
 <body>
@@ -6612,7 +6735,8 @@
   </div>
 </section>
 <section class="elec-highlights-section">
-  <div class="elec-highlights-head">Próximas ocho elecciones</div>
+  <div class="elec-highlights-head">Qué se vota en cada elección</div>
+  <p class="elec-highlights-sub">Qué cargos se eligen, cuántos electores votan, quién gobierna hoy y quiénes compiten. Tocá una elección para ver la ficha completa del país.</p>
   <div class="elec-highlights-grid" id="elections-highlights"></div>
 </section>
 <section class="polls-section" id="polls-section">
@@ -9581,8 +9705,8 @@ const COUNTRIES = [
       ]
     },
     nextElection: {
-      year: 2026,
-      type: "General (nov 2026)"
+      year: 2027,
+      type: "Sin elecciones previstas (postergadas)"
     },
     electors: 4480000,
     economy: {
@@ -10924,35 +11048,40 @@ const COUNTRIES = [
       }
     },
     lastElection: {
-      year: 2022,
-      type: "Generales (11 sep)",
-      turnout: 84.2,
+      year: 2026,
+      type: "Parlamentarias (13 sep)",
+      turnout: 84.9,
       results: [
         {
           party: "Socialdemócratas",
-          pct: 30.3,
-          seats: 107
-        },
-        {
-          party: "Demócratas de Suecia",
-          pct: 20.5,
-          seats: 73
+          pct: 28.02,
+          seats: 99
         },
         {
           party: "Moderados",
-          pct: 19.1,
-          seats: 68
+          pct: 19.85,
+          seats: 70
+        },
+        {
+          party: "Demócratas de Suecia",
+          pct: 17.48,
+          seats: 62
+        },
+        {
+          party: "Partido de la Izquierda",
+          pct: 8.4,
+          seats: 30
         },
         {
           party: "Partido del Centro",
-          pct: 6.7,
-          seats: 24
+          pct: 7.03,
+          seats: 25
         }
       ]
     },
     nextElection: {
-      year: 2026,
-      type: "Generales (sep 2026)"
+      year: 2030,
+      type: "Parlamentarias (septiembre)"
     },
     electors: 7700000,
     economy: {
@@ -11126,35 +11255,40 @@ const COUNTRIES = [
       }
     },
     lastElection: {
-      year: 2022,
-      type: "Parlamentarias (1 nov)",
-      turnout: 84.2,
+      year: 2026,
+      type: "Parlamentarias (24 mar)",
+      turnout: 83.99,
       results: [
         {
           party: "Socialdemócratas",
-          pct: 27.5,
-          seats: 50
+          pct: 21.85,
+          seats: 38
         },
         {
-          party: "Liberal (Venstre)",
-          pct: 13.3,
-          seats: 23
+          party: "Partido Popular Socialista (SF)",
+          pct: 11.59,
+          seats: 20
         },
         {
-          party: "Moderados",
-          pct: 9.3,
+          party: "Venstre",
+          pct: 10.14,
+          seats: 18
+        },
+        {
+          party: "Alianza Liberal",
+          pct: 9.37,
           seats: 16
         },
         {
-          party: "Demócratas de Dinamarca",
-          pct: 8.1,
-          seats: 14
+          party: "Partido Popular Danés",
+          pct: 9.1,
+          seats: 16
         }
       ]
     },
     nextElection: {
-      year: 2026,
-      type: "Parlamentarias (a más tardar)"
+      year: 2030,
+      type: "Parlamentarias (a más tardar en marzo)"
     },
     electors: 4300000,
     economy: {
@@ -12616,7 +12750,7 @@ const COUNTRIES = [
     },
     nextElection: {
       year: 2026,
-      type: "Generales"
+      type: "Generales (7 nov 2026)"
     },
     electors: 3700000,
     economy: {
@@ -12694,31 +12828,40 @@ const COUNTRIES = [
       }
     },
     lastElection: {
-      year: 2024,
-      type: "Presidencial (15-17 mar)",
-      turnout: 77.5,
+      year: 2026,
+      type: "Legislativas – Duma (18-20 sep)",
+      turnout: 59.68,
       results: [
         {
-          party: "Putin (Independiente)",
-          pct: 87.3
+          party: "Rusia Unida",
+          pct: 57.83,
+          seats: 349
         },
         {
-          party: "Kharitonov (KPRF)",
-          pct: 4.3
+          party: "Partido Comunista (KPRF)",
+          pct: 13.85,
+          seats: 37
         },
         {
-          party: "Davankov (NL)",
-          pct: 3.8
+          party: "Partido Liberal Democrático (LDPR)",
+          pct: 9.16,
+          seats: 23
         },
         {
-          party: "Slutsky (LDPR)",
-          pct: 3.2
+          party: "Gente Nueva",
+          pct: 8.01,
+          seats: 19
+        },
+        {
+          party: "Rusia Justa",
+          pct: 5.23,
+          seats: 17
         }
       ]
     },
     nextElection: {
-      year: 2026,
-      type: "Duma Estatal (sep 2026)"
+      year: 2031,
+      type: "Legislativas – Duma (septiembre)"
     },
     electors: 112300000,
     economy: {
@@ -13462,30 +13605,40 @@ const COUNTRIES = [
       }
     },
     lastElection: {
-      year: 2021,
-      type: "Legislativas (8 sep)",
-      turnout: 50.4,
+      year: 2026,
+      type: "Legislativas (23 sep)",
+      turnout: 38.02,
       results: [
         {
-          party: "RNI (Akhannouch)",
-          pct: 24.7,
-          seats: 102
+          party: "Autenticidad y Modernidad (PAM)",
+          pct: null,
+          seats: 97
         },
         {
-          party: "PAM",
-          pct: 22.4,
-          seats: 87
+          party: "Reagrupamiento Nacional de Independientes (RNI)",
+          pct: null,
+          seats: 66
         },
         {
           party: "Istiqlal",
-          pct: 19.9,
-          seats: 81
+          pct: null,
+          seats: 65
+        },
+        {
+          party: "Justicia y Desarrollo (PJD)",
+          pct: null,
+          seats: 54
+        },
+        {
+          party: "Unión Socialista de Fuerzas Populares (USFP)",
+          pct: null,
+          seats: 26
         }
       ]
     },
     nextElection: {
-      year: 2026,
-      type: "Legislativas (sep)"
+      year: 2031,
+      type: "Legislativas"
     },
     electors: 18000000,
     economy: {
@@ -13636,7 +13789,7 @@ const COUNTRIES = [
       title: "Primer Ministro",
       name: "Anutin Charnvirakul",
       party: "Bhumjaithai",
-      since: "2025-09-07",
+      since: "2026-03-19",
       gender: "M",
       wikiName: "Anutin_Charnvirakul"
     },
@@ -13657,29 +13810,39 @@ const COUNTRIES = [
       }
     },
     lastElection: {
-      year: 2023,
-      type: "Generales (14 mayo)",
-      turnout: 75.2,
+      year: 2026,
+      type: "Generales (8 feb)",
+      turnout: 71.4,
       results: [
         {
-          party: "Move Forward (MFP)",
-          pct: 38.0,
-          seats: 151
+          party: "Bhumjaithai",
+          pct: 17.9,
+          seats: 192
+        },
+        {
+          party: "Partido del Pueblo",
+          pct: 30.56,
+          seats: 120
         },
         {
           party: "Pheu Thai",
-          pct: 28.6,
-          seats: 141
+          pct: 15.43,
+          seats: 74
         },
         {
-          party: "Bhumjaithai",
-          pct: 8.6,
-          seats: 71
+          party: "Kla Tham",
+          pct: 1.79,
+          seats: 58
+        },
+        {
+          party: "Demócrata",
+          pct: 10.91,
+          seats: 21
         }
       ]
     },
     nextElection: {
-      year: 2027,
+      year: 2030,
       type: "Generales (a más tardar)"
     },
     electors: 52000000,
@@ -14887,8 +15050,8 @@ const COUNTRIES = [
       ]
     },
     nextElection: {
-      year: 2027,
-      type: "Presidencial"
+      year: 2026,
+      type: "Parlamentarias anticipadas (25 oct 2026)"
     },
     electors: 6500000,
     economy: {
@@ -17320,8 +17483,8 @@ const COUNTRIES = [
       ]
     },
     nextElection: {
-      year: 2026,
-      type: "Generales programadas (28 dic 2025)"
+      year: 2030,
+      type: "Generales (sin fecha; las últimas se votaron en fases entre dic 2025 y ene 2026)"
     },
     electors: null,
     economy: {
@@ -17774,12 +17937,12 @@ const COUNTRIES = [
     region: "Europa",
     system: "República parlamentaria",
     leader: {
-      title: "Primera Ministra",
-      name: "Evika Siliņa",
-      party: "Nueva Unidad (JV)",
-      since: "2023-09-15",
+      title: "Primer ministro",
+      name: "Andris Kulbergs",
+      party: "Lista Unida (independiente)",
+      since: "2026-05-28",
       gender: "F",
-      wikiName: "Evika_Siliņa"
+      wikiName: "Andris_Kulbergs"
     },
     ideology: "center-right",
     legislature: {
@@ -18006,7 +18169,7 @@ const COUNTRIES = [
     },
     nextElection: {
       year: 2026,
-      type: "Presidencial (programada nov)"
+      type: "Presidencial y legislativa (13 dic 2026, sujeta a seguridad)"
     },
     electors: null,
     economy: {
@@ -18202,8 +18365,8 @@ const COUNTRIES = [
       ]
     },
     nextElection: {
-      year: 2026,
-      type: "Generales"
+      year: 2027,
+      type: "Generales (entre dic 2026 y feb 2027)"
     },
     electors: 700000,
     economy: {
@@ -18843,24 +19006,23 @@ const COUNTRIES = [
       }
     },
     lastElection: {
-      year: 2022,
-      type: "Generales (26 mar)",
-      turnout: 85.5,
+      year: 2026,
+      type: "Generales (30 may)",
       results: [
         {
-          party: "Laboristas (Abela)",
-          pct: 55.1,
-          seats: 44
+          party: "Partido Laborista",
+          pct: 51.8,
+          seats: 42
         },
         {
-          party: "Nacionalista",
-          pct: 41.7,
-          seats: 35
+          party: "Partido Nacionalista",
+          pct: 44.7,
+          seats: 37
         }
       ]
     },
     nextElection: {
-      year: 2027,
+      year: 2031,
       type: "Generales (a más tardar)"
     },
     electors: 380000,
@@ -21416,8 +21578,8 @@ const COUNTRIES = [
       ]
     },
     nextElection: {
-      year: 2026,
-      type: "Parlamentarias (nov)"
+      year: 2027,
+      type: "Parlamentarias (postergadas a fines de 2027)"
     },
     electors: 350000,
     economy: {
@@ -22395,7 +22557,7 @@ const COUNTRIES = [
     },
     nextElection: {
       year: 2026,
-      type: "Presidencial (dic 2026)"
+      type: "Presidencial (5 dic 2026)"
     },
     electors: 970000,
     economy: {
@@ -23118,25 +23280,25 @@ const COUNTRIES = [
       }
     },
     lastElection: {
-      year: 2021,
-      type: "Generales (16 sep)",
-      turnout: 65.0,
+      year: 2026,
+      type: "Generales (12 may)",
+      turnout: 58,
       results: [
         {
-          party: "PLP (Davis)",
-          pct: 52.5,
-          seats: 32
+          party: "Partido Liberal Progresista (PLP)",
+          pct: 51.21,
+          seats: 33
         },
         {
-          party: "FNM",
-          pct: 36.2,
-          seats: 7
+          party: "Movimiento Nacional Libre (FNM)",
+          pct: 35.28,
+          seats: 8
         }
       ]
     },
     nextElection: {
-      year: 2026,
-      type: "Generales (sep)"
+      year: 2031,
+      type: "Generales"
     },
     electors: 280000,
     economy: {
@@ -23214,24 +23376,18 @@ const COUNTRIES = [
       }
     },
     lastElection: {
-      year: 2022,
-      type: "Generales (19 ene)",
-      turnout: 49.7,
+      year: 2026,
+      type: "Generales (11 feb)",
       results: [
         {
-          party: "BLP (Mottley)",
-          pct: 68.7,
+          party: "Barbados Labour Party (BLP)",
+          pct: 69.8,
           seats: 30
-        },
-        {
-          party: "DLP",
-          pct: 26.7,
-          seats: 0
         }
       ]
     },
     nextElection: {
-      year: 2027,
+      year: 2031,
       type: "Generales"
     },
     electors: 270000,
@@ -26813,18 +26969,17 @@ function showMapQuick(country, emptyName) {
     document.body.appendChild(el);
     el.addEventListener('click', ev => {
       if (ev.target.closest('.map-quick-close')) hideMapQuick();
-      else if (ev.target.closest('#map-quick-open')) {
+      else if (ev.target.closest('#map-quick-open') && el.__country) {
+        const c = el.__country;
         hideMapQuick();
-        const panel = document.getElementById('panel-detail');
-        const nav = document.querySelector('.topic-nav-sticky');
-        if (panel) {
-          panel.scrollTop = 0;
-          const y = panel.getBoundingClientRect().top + window.scrollY - (nav ? nav.offsetHeight : 0) - 8;
-          window.scrollTo({ top: y, behavior: 'smooth' });
-        }
+        openFicha(c);
+        const url = new URL(window.location.href);
+        url.searchParams.set('country', c.iso);
+        window.history.pushState({ iso: c.iso }, '', url.toString());
       }
     });
   }
+  el.__country = country;
   el.innerHTML = `<button type="button" class="map-quick-close" aria-label="Cerrar">×</button>` + (country
     ? mapCountrySummaryHTML(country, '') + `<button type="button" class="map-quick-open" id="map-quick-open">Ver ficha completa ↓</button>`
     : `<div class="map-tt"><div class="map-tt-name">${emptyName || ''}</div><div class="map-tt-empty">Todavía no cargamos datos de este país.</div></div>`);
@@ -26876,24 +27031,12 @@ function onEachFeature(feature, layer) {
         showMapQuick(country);
         return;
       }
-      // Don't aggressively zoom — just pan
       const bounds = layer.getBounds();
       if (bounds.isValid()) map.flyToBounds(bounds, { maxZoom: 4, padding: [40,40], duration: 0.6 });
-      // Scroll the layout into view so the panel-detail is visible from the top.
-      // This matters most on narrow screens where the panel sits below the map,
-      // and when the user clicked from a chart far below the map.
-      const layout = document.querySelector('.layout');
-      const sticky = document.getElementById('filters-sticky');
-      if (layout) {
-        const stickyHeight = sticky?.offsetHeight || 0;
-        const layoutRect = layout.getBoundingClientRect();
-        // Only auto-scroll if layout top is significantly off-screen
-        // (avoid jarring scrolls when user is already looking at the map)
-        if (layoutRect.top < -50 || layoutRect.top > window.innerHeight * 0.4) {
-          const targetY = layoutRect.top + window.scrollY - stickyHeight - 8;
-          window.scrollTo({ top: targetY, behavior: 'smooth' });
-        }
-      }
+      openFicha(country);
+      const url = new URL(window.location.href);
+      url.searchParams.set('country', iso);
+      window.history.pushState({ iso }, '', url.toString());
       const panel = document.getElementById('panel-detail');
       if (panel) panel.scrollTop = 0;
     }
@@ -26993,6 +27136,22 @@ function renderPressBar(score) {
   </div>`;
 }
 
+/* Result bars; when only seats are known (no vote %), bars show seat share */
+function resultsListHTML(lastEl, color) {
+  const rs = (lastEl && lastEl.results) || [];
+  const seatTotal = rs.reduce((a, r) => a + (r.seats || 0), 0) || 1;
+  return rs.map((r, i) => {
+    const hasPct = r.pct != null;
+    const w = hasPct ? Math.min(r.pct, 100) : (r.seats || 0) / seatTotal * 100;
+    return `
+    <div class="result-item">
+      <span>${r.party}${r.seats && hasPct ? ` <span class="mono" style="color:var(--muted); font-size:11px">· ${r.seats} bancas</span>` : ''}</span>
+      <span class="result-pct">${hasPct ? r.pct.toFixed(1) + '%' : (r.seats != null ? r.seats + ' bancas' : '—')}</span>
+      <div class="result-bar"><div class="result-bar-fill" style="width:${w.toFixed(1)}%; background:${i === 0 ? color : 'var(--muted)'}"></div></div>
+    </div>`;
+  }).join('');
+}
+
 function renderDetail(c) {
   const ideo = IDEOLOGIES[c.ideology];
   const ideoColor = ideo.color;
@@ -27000,12 +27159,7 @@ function renderDetail(c) {
   const initials = c.leader.name.split(' ').slice(0,2).map(w=>w[0]).join('');
   const photoId = `leader-photo-${c.iso}`;
 
-  const resultsBars = (lastEl?.results||[]).map((r,i) => `
-    <div class="result-item">
-      <span>${r.party}${r.seats ? ` <span class="mono" style="color:var(--muted); font-size:11px">· ${r.seats} bancas</span>` : ''}</span>
-      <span class="result-pct">${r.pct.toFixed(1)}%</span>
-      <div class="result-bar"><div class="result-bar-fill" style="width:${Math.min(r.pct,100)}%; background:${i===0 ? ideoColor : 'var(--muted)'}"></div></div>
-    </div>`).join('');
+  const resultsBars = resultsListHTML(lastEl, ideoColor);
 
   // Mini GDP chart
   const growth = c.economy?.gdpGrowth || [];
@@ -27162,6 +27316,222 @@ function renderDetail(c) {
     });
   }
 }
+
+/* ===========================================================
+   FICHA COMPLETA — the country profile opens large, over the map
+   Opened by a click on the map (desktop), by "Ver ficha completa" on the
+   mobile quick card, and by every jump from calendar, search or charts.
+   Closing it (×, Esc, backdrop) returns to the map where it was.
+   =========================================================== */
+const MONTHS_ES = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+
+const FICHA_SPECIALS = { BRA: ['brasil', 'Brasil 2026'], USA: ['eeuu', 'EE.UU. 2026'], ISR: ['israel', 'Israel 2026'] };
+function fichaNextElectionHTML(c) {
+  const sp = FICHA_SPECIALS[c.iso];
+  const spLink = sp ? `<a class="ficha-special" href="#${sp[0]}" onclick="window.closeFicha(); window.__atlasGoTo('${sp[0]}'); return false;">★ Ver el especial ${sp[1]} →</a>` : '';
+  return fichaNextElectionInner(c) + spLink;
+}
+function fichaNextElectionInner(c) {
+  const ne = c.nextElection || {};
+  const b = (window.CAL_BRIEFS || {})[c.iso];
+  const k = KNOWN_ELECTION_DATES[c.iso];
+  let when = ne.year ? String(ne.year) : '—';
+  if (b && b.date) {
+    const d = new Date(b.date + 'T12:00:00');
+    when = (b.dateConfirmed ? d.getDate() + ' de ' : '') + MONTHS_ES[d.getMonth()] + ' ' + d.getFullYear();
+  } else if (k && k.year === ne.year) {
+    when = (k.day ? k.day + ' de ' : '') + MONTHS_ES[k.month] + ' ' + k.year;
+  }
+  if (!b) {
+    return `<div class="ficha-next-when">${when}</div><div class="ficha-next-type">${ne.type || ''}</div>`;
+  }
+  if (b.status === 'held') {
+    const d = b.date ? new Date(b.date + 'T12:00:00') : null;
+    return `<div class="ficha-next-type"><b>Última votación:</b> ${d ? d.getDate() + ' de ' + MONTHS_ES[d.getMonth()] + ' ' + d.getFullYear() : ''}${b.offices ? ' · ' + b.offices : ''}</div>
+      ${b.result ? `<p class="ficha-next-stake">${b.result}</p>` : ''}
+      ${b.summary ? `<p class="ficha-next-sum">${b.summary}</p>` : ''}
+      <div class="ficha-next-facts"><div><span>Próxima elección</span><b>${ne.year || '—'} · ${ne.type || ''}</b></div></div>`;
+  }
+  if (b.status === 'postponed' && !b.date) when = 'Postergada';
+  const inc = b.incumbent || {};
+  const incTxt = inc.name ? `${inc.name}${inc.note ? ' — ' + inc.note : ''}` : '';
+  return `
+    <div class="ficha-next-when">${when}${b.dateConfirmed === false ? ' <span class="ficha-est">fecha estimada</span>' : ''}</div>
+    ${b.offices ? `<div class="ficha-next-type"><b>Se elige:</b> ${b.offices}</div>` : ''}
+    ${b.stake ? `<p class="ficha-next-stake">${b.stake}</p>` : ''}
+    ${b.summary ? `<p class="ficha-next-sum">${b.summary}</p>` : ''}
+    <div class="ficha-next-facts">
+      ${b.electorate ? `<div><span>Electores</span><b>${fmtNum(b.electorate)}</b></div>` : ''}
+      ${incTxt ? `<div><span>Quién gobierna</span><b>${incTxt}</b></div>` : ''}
+    </div>
+    ${(b.contenders || []).length ? `<div class="ficha-next-cands"><span>Principales contendientes</span>${b.contenders.map(x => `<em>${x.name}${x.party && x.party !== x.name ? ` <small>${x.party}</small>` : ''}</em>`).join('')}</div>` : ''}
+    ${b.polls ? `<p class="ficha-next-polls">${b.polls}</p>` : ''}`;
+}
+
+function countryFichaHTML(c) {
+  const ideo = IDEOLOGIES[c.ideology];
+  const lastEl = c.lastElection || {};
+  const initials = c.leader.name.split(' ').slice(0, 2).map(w => w[0]).join('');
+  const gender = LEADER_GENDER[c.iso];
+  const sysCat = SYSTEM_CATEGORIES[classifySystem(c.system)];
+  const e = c.economy || {};
+  const results = resultsListHTML(lastEl, ideo.color);
+  const growth = e.gdpGrowth || [];
+  const maxAbs = Math.max(...growth.map(g => Math.abs(g.pct)), 5);
+  const gdpBars = growth.map(g => {
+    const h = Math.abs(g.pct) / maxAbs * 25, neg = g.pct < 0;
+    return `<div class="gdp-bar-cell"><div class="gdp-bar-track"><div class="gdp-bar-zero"></div>
+      <div class="gdp-bar ${neg ? 'neg' : ''}" style="${neg ? 'top:50%;' : 'bottom:50%;'}height:${h}px"></div></div>
+      <div class="gdp-year">'${String(g.year).slice(2)}</div>
+      <div class="gdp-val" style="color:${neg ? 'var(--accent)' : 'var(--ink)'}">${g.pct.toFixed(1)}</div></div>`;
+  }).join('');
+  const chamber = (ch) => ch ? `
+    <div class="ficha-chamber">
+      <div class="ficha-chamber-name">${ch.name}</div>
+      <div class="ficha-chamber-seats"><b>${ch.seats}</b> bancas</div>
+      <div class="data-row"><span class="k">Elección</span><span class="v">${ch.method}</span></div>
+      <div class="data-row"><span class="k">Mandato</span><span class="v">${ch.term}</span></div>
+    </div>` : '';
+  const econ = (label, val, meta, extra) => `
+    <div class="econ-cell">
+      <div class="econ-label">${label}</div>
+      <div class="econ-value ${val == null ? 'na' : ''}">${val == null ? '—' : val}</div>
+      <div class="econ-meta">${val == null ? 'sin dato' : meta}</div>${val == null ? '' : (extra || '')}
+    </div>`;
+
+  return `
+  <header class="ficha-head" style="--ideo:${ideo.color}">
+    <div class="ficha-head-main">
+      <div class="ficha-kicker">${flagOf(c.iso, 'fi-md')}<span>${c.region}</span><span>·</span><span>${sysCat ? sysCat.label : c.system}</span></div>
+      <h2 class="ficha-name" id="ficha-title">${c.name}</h2>
+      <div class="ficha-tags">
+        <span class="ficha-ideo"><i></i>${ideo.label}</span>
+        <button class="share-link-btn" onclick="window.__copyCountryLink('${c.iso}', this)" title="Copiar link directo a este país"><span>Copiar link</span></button>
+      </div>
+    </div>
+    <div class="ficha-leader">
+      <div class="leader-photo ficha-photo" data-photo-iso="${c.iso}">${initials}</div>
+      <div>
+        <div class="ficha-leader-title">${c.leader.title}${gender === 'F' ? ' ♀' : ''}</div>
+        <div class="ficha-leader-name">${c.leader.name}</div>
+        <div class="ficha-leader-party">${c.leader.party}</div>
+        <div class="ficha-leader-since">en el cargo desde ${new Date(c.leader.since).toLocaleDateString('es-AR', { year: 'numeric', month: 'long' })}</div>
+      </div>
+    </div>
+  </header>
+
+  <div class="ficha-grid">
+    <section class="ficha-card ficha-next ${window.CAL_BRIEFS && window.CAL_BRIEFS[c.iso] ? 'is-wide' : ''}">
+      <div class="ficha-card-title">${window.CAL_BRIEFS && window.CAL_BRIEFS[c.iso] && window.CAL_BRIEFS[c.iso].status === 'held' ? 'Elección reciente' : 'Próxima elección'}</div>
+      ${fichaNextElectionHTML(c)}
+    </section>
+
+    <section class="ficha-card">
+      <div class="ficha-card-title">Última elección${lastEl.year ? ' · ' + lastEl.year : ''}</div>
+      <div class="data-row"><span class="k">Tipo</span><span class="v">${lastEl.type || '—'}</span></div>
+      ${lastEl.turnout ? `<div class="data-row"><span class="k">Participación</span><span class="v mono">${lastEl.turnout}%</span></div>` : ''}
+      <div class="results-list">${results}</div>
+    </section>
+
+    <section class="ficha-card">
+      <div class="ficha-card-title">Sistema de gobierno</div>
+      <div class="data-row"><span class="k">Tipo</span><span class="v">${c.system}</span></div>
+      <div class="data-row"><span class="k">Padrón</span><span class="v mono">${fmtNum(c.electors)}</span></div>
+      <div class="ficha-card-title ficha-sub">Poder legislativo · ${c.legislature.type}</div>
+      ${chamber(c.legislature.upper)}${chamber(c.legislature.lower)}
+    </section>
+
+    <section class="ficha-card">
+      <div class="ficha-card-title">Crecimiento del PBI</div>
+      <div class="gdp-mini-chart">${gdpBars}</div>
+    </section>
+
+    <section class="ficha-card is-wide">
+      <div class="ficha-card-title">Indicadores socioeconómicos</div>
+      <div class="econ-grid ficha-econ">
+        ${econ('Coeficiente de Gini', e.gini != null ? e.gini.toFixed(1) : null, `desigualdad · ${e.giniYear}`, e.gini != null ? renderGiniBar(e.gini) : '')}
+        ${econ('IDH', e.hdi != null ? e.hdi.toFixed(3) : null, `desarrollo humano · ${e.hdiYear}`, e.hdi != null ? renderHdiBar(e.hdi) : '')}
+        ${econ('Pobreza', e.povertyRate != null ? e.povertyRate.toFixed(1) + '%' : null, `bajo línea nacional · ${e.povertyYear}`)}
+        ${econ('Salario promedio', e.wageUsdMonth != null ? 'USD ' + e.wageUsdMonth.toLocaleString('es-AR') : null, `USD/mes · ${e.wageYear}`)}
+        ${econ('Presión tributaria', e.taxBurden != null ? e.taxBurden.toFixed(1) + '%' : null, `del PBI · ${e.taxBurdenYear}`)}
+        ${econ('Deuda pública', e.publicDebt != null ? e.publicDebt.toFixed(1) + '%' : null, `del PBI · ${e.publicDebtYear}`)}
+        ${econ('Libertad de prensa (RSF)', e.pressFreedom != null ? e.pressFreedom.toFixed(1) + '<span class="econ-of">/100</span>' : null, `mayor = más libre · RSF ${e.pressFreedomYear}`, e.pressFreedom != null ? renderPressBar(e.pressFreedom) : '')}
+      </div>
+    </section>
+  </div>
+  ${c.site ? `<a class="source-link ficha-source" href="${c.site}" target="_blank" rel="noopener">↗ Sitio electoral oficial</a>` : ''}`;
+}
+
+/* Election briefs for the calendar and the ficha (data/calendario.json) */
+(function loadCalBriefs() {
+  fetch('data/calendario.json?v=' + Date.now(), { cache: 'no-store' })
+    .then(r => r.ok ? r.json() : null)
+    .then(d => {
+      if (!d || !d.briefs) return;
+      window.CAL_BRIEFS = d.briefs;
+      if (state.countryByISO && Object.keys(state.countryByISO).length) {
+        try { renderElectionsTimeline(); } catch (e) { console.warn('[Atlas] calendario', e); }
+      }
+    })
+    .catch(() => {});
+})();
+
+let fichaLastFocus = null;
+function openFicha(c) {
+  let modal = document.getElementById('ficha-modal');
+  if (!modal) {
+    modal = document.createElement('div');
+    modal.id = 'ficha-modal';
+    modal.className = 'ficha-modal';
+    modal.hidden = true;
+    modal.innerHTML = `<div class="ficha-backdrop" data-close></div>
+      <div class="ficha-dialog" role="dialog" aria-modal="true" aria-labelledby="ficha-title">
+        <div class="ficha-bar"><button type="button" class="ficha-back" data-close>← Volver al mapa</button><button type="button" class="ficha-close" data-close aria-label="Cerrar ficha">×</button></div>
+        <div class="ficha-body" id="ficha-body"></div>
+      </div>`;
+    document.body.appendChild(modal);
+    modal.addEventListener('click', ev => { if (ev.target.closest('[data-close]')) closeFicha(); });
+    document.addEventListener('keydown', ev => { if (ev.key === 'Escape' && !modal.hidden) closeFicha(); });
+  }
+  if (window.hideMapQuick) window.hideMapQuick();
+  const body = modal.querySelector('#ficha-body');
+  body.innerHTML = countryFichaHTML(c);
+  body.scrollTop = 0;
+  modal.querySelector('.ficha-dialog').scrollTop = 0;
+  if (modal.hidden) fichaLastFocus = document.activeElement;
+  modal.hidden = false;
+  document.documentElement.classList.add('ficha-open');
+  requestAnimationFrame(() => modal.classList.add('is-open'));
+  modal.querySelector('.ficha-close').focus({ preventScroll: true });
+
+  if (c.leader.wikiName) {
+    fetchWikiPhoto(c.leader.wikiName).then(src => {
+      if (!src) return;
+      const el = body.querySelector(`[data-photo-iso="${c.iso}"]`);
+      if (!el) return;
+      const img = new Image();
+      img.onload = () => { if (el.isConnected) el.innerHTML = `<img src="${src}" alt="${c.leader.name}">`; };
+      img.src = src;
+    });
+  }
+}
+
+function closeFicha(opts) {
+  const modal = document.getElementById('ficha-modal');
+  if (!modal || modal.hidden) return;
+  modal.classList.remove('is-open');
+  document.documentElement.classList.remove('ficha-open');
+  setTimeout(() => { if (!modal.classList.contains('is-open')) modal.hidden = true; }, 220);
+  if (!(opts && opts.keepURL)) {
+    const url = new URL(window.location.href);
+    if (url.searchParams.has('country')) {
+      url.searchParams.delete('country');
+      window.history.replaceState({}, '', url.toString());
+    }
+  }
+  if (fichaLastFocus && fichaLastFocus.focus) { try { fichaLastFocus.focus({ preventScroll: true }); } catch (e) {} }
+}
+window.closeFicha = closeFicha;
 
 /* ===========================================================
    ANALYTICS — distribution & GDP comparison
@@ -28997,25 +29367,20 @@ const KNOWN_ELECTION_DATES = {
   'COL': { day: 31, month: 4,  year: 2026 },   // Colombia — presidencial 1ra vuelta
   'PER': { day: 7,  month: 5,  year: 2026 },   // Perú — presidencial 2da vuelta
   'SWE': { day: 13, month: 8,  year: 2026 },   // Suecia — generales 13 sep 2026
-  'DNK': { day: 1,  month: 9,  year: 2026 },   // Dinamarca — antes 31 oct 2026
   'BGD': { day: 1,  month: 1,  year: 2026 },   // Bangladés — feb 2026
   'CRI': { day: 1,  month: 1,  year: 2026 },   // Costa Rica — feb 2026 (ya pasó)
   'STP': { day: 12, month: 6,  year: 2026 },   // Santo Tomé — presidencial jul
   'CPV': { day: 19, month: 3,  year: 2026 },   // Cabo Verde — legislativas abr
-  'NIC': { day: 1,  month: 10, year: 2026 },   // Nicaragua — nov 2026
-  'GMB': { day: 1,  month: 11, year: 2026 },   // Gambia — dic 2026
   'BFA': { day: 1,  month: 5,  year: 2029 },   // Postergada (junta militar)
   'ETH': { day: 1,  month: 5,  year: 2026 },   // Etiopía — jun 2026
   'NPL': { day: 1,  month: 1,  year: 2026 },   // Nepal — post-crisis (feb)
   'MAR': { day: 1,  month: 8,  year: 2026 },   // Marruecos — sep 2026
   'BHS': { day: 1,  month: 8,  year: 2026 },   // Bahamas — sep 2026
-  'BHR': { day: 1,  month: 10, year: 2026 },   // Baréin — nov 2026
   'CYP': { day: 24, month: 4,  year: 2026 },   // Chipre — parlamentarias 24 may 2026
   'BIH': { day: 4,  month: 9,  year: 2026 },   // Bosnia — generales oct 2026
   'COG': { day: 21, month: 2,  year: 2026 },   // Congo Brazzaville — mar 2026
   'KGZ': { day: 25, month: 0,  year: 2026 },   // Kirguistán — ene 2026
   'LCA': { day: 1,  month: 6,  year: 2026 },   // Santa Lucía — jul 2026
-  'NZL': { day: 17, month: 9,  year: 2026 },   // Nueva Zelanda — oct 2026
   'ZMB': { day: 13, month: 7,  year: 2026 },   // Zambia — ago 2026
   'PSE': { day: 1,  month: 9,  year: 2026 },   // Palestina (programada)
   'LBN': { day: 18, month: 4,  year: 2026 },   // Líbano — parlamentarias may 2026
@@ -29023,22 +29388,31 @@ const KNOWN_ELECTION_DATES = {
   'RUS': { day: 20, month: 8,  year: 2026 },   // Rusia — legislativas sep 2026
   'LVA': { day: 3,  month: 9,  year: 2026 },   // Letonia — generales oct 2026
   'SVN': { day: 1,  month: 5,  year: 2026 },   // Eslovenia — parlamentarias jun 2026
-  'FJI': { day: 1,  month: 9,  year: 2026 },   // Fiyi — oct 2026
-  'HTI': { day: 1,  month: 10, year: 2026 },   // Haití — nov 2026 (interino)
   'PHL': { day: 11, month: 4,  year: 2025 },   // Filipinas — ya pasó
   'MMR': { day: 28, month: 11, year: 2025 },   // Myanmar (junta) — dic 2025
   'CAF': { day: 28, month: 11, year: 2025 },   // Centroafricana — dic 2025
 
+  'NZL': { day: 7, month: 10, year: 2026 },   // actualizado sep 2026
+  'HTI': { day: 13, month: 11, year: 2026 },   // actualizado sep 2026
+  'GMB': { day: 5, month: 11, year: 2026 },   // actualizado sep 2026
+  'SRB': { day: 25, month: 9, year: 2026 },   // actualizado sep 2026
   // ============ 2027 ============
   'NGA': { day: 16, month: 0,  year: 2027 },   // Nigeria — presidencial 16 ene 2027
-  'FRA': { day: 11, month: 3,  year: 2027 },   // Francia — presidencial abr 2027
   'ARG': { day: 24, month: 9,  year: 2027 },   // Argentina — presidencial 24 oct 2027
   'SYR': { day: 1,  month: 4,  year: 2027 },   // Siria — may 2027 (transición)
-  'KEN': { day: 10, month: 7,  year: 2027 },   // Kenia — ago 2027
   'POL': { day: 15, month: 9,  year: 2027 },   // Polonia — parlamentarias oct 2027
   'ESP': { day: 25, month: 6,  year: 2027 },   // España — generales jul 2027 (legal)
   'ITA': { day: 30, month: 5,  year: 2027 },   // Italia — generales 2027
 
+  'FJI': { day: 1, month: 0, year: 2027 },   // estimado: entre dic 2026 y feb 2027
+  'FRA': { day: 18, month: 3, year: 2027 },   // actualizado sep 2026
+  'MEX': { day: 6, month: 5, year: 2027 },   // actualizado sep 2026
+  'FIN': { day: 18, month: 3, year: 2027 },   // actualizado sep 2026
+  'EST': { day: 7, month: 2, year: 2027 },   // actualizado sep 2026
+  'CHE': { day: 24, month: 9, year: 2027 },   // actualizado sep 2026
+  'KEN': { day: 10, month: 7, year: 2027 },   // actualizado sep 2026
+  'BDI': { day: 3, month: 4, year: 2027 },   // actualizado sep 2026
+  'FSM': { day: 2, month: 2, year: 2027 },   // actualizado sep 2026
   // ============ 2028 ============
   'KOR': { day: 1,  month: 4,  year: 2028 },   // Corea del Sur — may 2028
   'TWN': { day: 8,  month: 0,  year: 2028 },   // Taiwán — presidencial ene 2028
@@ -29079,7 +29453,13 @@ function renderElectionsTimeline() {  const today = new Date();
       // Try known dates first
       let day, month, year;
       const known = KNOWN_DATES[c.iso];
-      if (known && known.year === c.nextElection.year) {
+      const brief = (window.CAL_BRIEFS || {})[c.iso];
+      if (brief && brief.date && brief.status === 'upcoming') {
+        const d = new Date(brief.date + 'T12:00:00');
+        day = brief.dateConfirmed ? d.getDate() : null;
+        month = d.getMonth();
+        year = d.getFullYear();
+      } else if (known && known.year === c.nextElection.year) {
         day = known.day;
         month = known.month;
         year = known.year;
@@ -29093,6 +29473,9 @@ function renderElectionsTimeline() {  const today = new Date();
       return { country: c, date, month, day, year };
     })
     .filter(e => {
+      // Held, postponed with no new date, or no vote due → out of the calendar
+      const brief = (window.CAL_BRIEFS || {})[e.country.iso];
+      if (brief && (brief.status === 'held' || (brief.status !== 'upcoming' && !brief.date))) return false;
       // An election "drops off" the calendar once it has happened.
       const startOfToday = new Date(today.getFullYear(), today.getMonth(), today.getDate());
       if (e.day != null) {
@@ -29204,27 +29587,52 @@ function renderElectionsTimeline() {  const today = new Date();
     </div>`;
   }).join('');
 
-  // ===== Highlights grid + stats below the timeline (fills the calendar view) =====
+  // ===== "Qué se vota": one card per upcoming election =====
   const highlightsEl = document.getElementById('elections-highlights');
   const statsEl = document.getElementById('elections-stats');
   if (highlightsEl) {
-    const next12 = upcoming.slice(0, 8);
-    highlightsEl.innerHTML = next12.map(e => {
-      const c = e.country;
-      const dayTxt = e.day != null
-        ? `${e.day} ${monthNames[e.month].toLowerCase()} ${e.year}`
-        : `${monthNames[e.month].toLowerCase()} ${e.year}`;
-      const ideo = IDEOLOGIES[c.ideology];
-      return `<div class="elec-hi-card" onclick="window.__atlasJumpTo && window.__atlasJumpTo('${c.iso}')">
-        <div class="elec-hi-flag">${flagOf(c.iso, 'fi-md')}</div>
-        <div class="elec-hi-body">
-          <div class="elec-hi-country">${c.name}</div>
-          <div class="elec-hi-date">${dayTxt}</div>
-          <div class="elec-hi-type">${c.nextElection.type.replace(/\(.+?\)/g,'').trim()}</div>
+    const BRIEFS = window.CAL_BRIEFS || {};
+    const SPECIALS = { BRA: ['brasil', 'Brasil 2026'], USA: ['eeuu', 'EE.UU. 2026'], ISR: ['israel', 'Israel 2026'] };
+    const startOfToday = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+    // Rich cards cover the next ~15 months; the timeline above keeps the long view
+    const horizonEnd = new Date(today.getFullYear() + 1, 11, 31);
+    const pool = upcoming.filter(e => e.date <= horizonEnd || BRIEFS[e.country.iso]);
+    const shown = window.__calShowAll ? pool : pool.slice(0, 12);
+    const card = e => {
+      const c = e.country, b = BRIEFS[c.iso], ideo = IDEOLOGIES[c.ideology];
+      const days = Math.round((e.date - startOfToday) / 86400000);
+      const when = e.day != null
+        ? (days === 0 ? 'hoy' : days === 1 ? 'mañana' : days < 60 ? `en ${days} días` : '')
+        : '';
+      const sp = SPECIALS[c.iso];
+      const inc = b && b.incumbent;
+      const incLine = inc && inc.name
+        ? `<span><em>Gobierna</em><b>${inc.name}</b>${inc.note ? ` · ${inc.note}` : ''}</span>`
+        : `<span><em>Gobierna</em><b>${c.leader.name}</b> · ${c.leader.party}</span>`;
+      return `<article class="eb-card" style="--ideo:${ideo.color}">
+        <div class="eb-date"><b>${e.day != null ? e.day : '?'}</b><span>${monthNames[e.month].toLowerCase()} ${e.year}</span>${when ? `<i>${when}</i>` : ''}${e.day == null ? `<i>${b && b.dateConfirmed === false ? 'fecha estimada' : 'día sin confirmar'}</i>` : ''}</div>
+        <div class="eb-main">
+          <div class="eb-top">${flagOf(c.iso, 'fi-md')}<h4>${c.name}</h4></div>
+          <div class="eb-offices"><strong>Se elige:</strong> ${b && b.offices ? b.offices : c.nextElection.type.replace(/\(.+?\)/g, '').trim()}</div>
+          ${b && b.stake ? `<p class="eb-stake">${b.stake}</p>` : ''}
+          ${b && b.summary ? `<p class="eb-sum">${b.summary}</p>` : ''}
+          <div class="eb-facts">
+            ${b && b.electorate ? `<span><em>Electores</em><b>${fmtNum(b.electorate)}</b></span>` : ''}
+            ${incLine}
+          </div>
+          ${b && (b.contenders || []).length ? `<div class="eb-cands">${b.contenders.slice(0, 5).map(x => `<span>${x.name}${x.party && x.party !== x.name ? ` <small>${x.party}</small>` : ''}</span>`).join('')}</div>` : ''}
+          ${b && b.polls ? `<p class="eb-polls"><strong>Encuestas:</strong> ${b.polls}</p>` : ''}
+          <div class="eb-actions">
+            ${sp ? `<button type="button" class="eb-btn eb-btn-special" onclick="window.__atlasGoTo('${sp[0]}')">★ Especial ${sp[1]} →</button>` : ''}
+            <button type="button" class="eb-btn" onclick="window.__atlasJumpTo && window.__atlasJumpTo('${c.iso}')">Ficha del país →</button>
+            ${b && b.verified === false ? '<span class="eb-flag">datos preliminares</span>' : ''}
+            ${b && (b.sources || []).length ? `<span class="eb-src">Fuentes: ${b.sources.slice(0, 3).map(s => `<a href="${s.url}" target="_blank" rel="noopener">${s.label}</a>`).join(' · ')}</span>` : ''}
+          </div>
         </div>
-        <span class="elec-hi-ideo" style="background:${ideo.color}"></span>
-      </div>`;
-    }).join('');
+      </article>`;
+    };
+    highlightsEl.innerHTML = shown.map(card).join('') + (pool.length > shown.length
+      ? `<button type="button" class="eb-more" onclick="window.__calShowAll = true; renderElectionsTimeline();">Ver las ${pool.length - shown.length} elecciones siguientes ↓</button>` : '');
   }
   if (statsEl) {
     const y2026 = upcoming.filter(e => e.year === 2026).length;
@@ -29262,16 +29670,8 @@ function renderElectionsTimeline() {  const today = new Date();
         }
       });
     }
-    // Smart scroll (skipped when restoring from URL on page load)
-    if (!opts.fromURL) {
-      const layout = document.querySelector('.layout');
-      const sticky = document.getElementById('filters-sticky');
-      if (layout) {
-        const stickyHeight = sticky?.offsetHeight || 0;
-        const targetY = layout.getBoundingClientRect().top + window.scrollY - stickyHeight - 8;
-        window.scrollTo({ top: targetY, behavior: 'smooth' });
-      }
-    }
+    // The full profile opens large over the map
+    openFicha(c);
     const panel = document.getElementById('panel-detail');
     if (panel) panel.scrollTop = 0;
 
@@ -29401,6 +29801,7 @@ function renderElectionsTimeline() {  const today = new Date();
 
     // Views that render lazily (portada, especiales) hook in here
     if (view !== 'inicio' && window.hideMapQuick) window.hideMapQuick();
+    if (view !== 'inicio' && window.closeFicha) window.closeFicha({ keepURL: true });
     if (window.__onViewShown) window.__onViewShown(view);
 
     // Update the URL hash without adding noise to history when restoring
@@ -29484,6 +29885,7 @@ function renderElectionsTimeline() {  const today = new Date();
     } else {
       // No country in URL → reset to empty state
       state.selectedISO = null;
+      closeFicha({ keepURL: true });
       renderEmptyDetail();
       if (state.geoLayer) restyleMap();
     }
