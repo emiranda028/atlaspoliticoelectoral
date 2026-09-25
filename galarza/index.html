@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Municipalidad de General Galarza</title>
+<meta name="description" content="Sitio oficial de la Municipalidad de General Galarza, Entre Ríos. Trámites, reclamos, servicios, turismo y portal de transparencia.">
+<meta name="theme-color" content="#0E4D3A">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/styles.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230E4D3A'/%3E%3Crect y='27' width='32' height='5' fill='%23D98E04'/%3E%3Ctext x='16' y='21' font-family='Arial' font-weight='700' font-size='13' fill='white' text-anchor='middle'%3EGG%3C/text%3E%3C/svg%3E">
+<script src="data/tramites.js" defer></script>
+<script src="data/transparencia.js" defer></script>
+<script src="assets/js/layout.js" defer></script>
+<script src="assets/js/home.js" defer></script>
+</head>
+<body>
+<div id="site-top"></div>
+<noscript><p class="wrap"><a href="tramites.html">Trámites</a> · <a href="vivir.html">Vivir en Galarza</a> · <a href="turismo.html">Turismo</a> · <a href="municipio.html">Municipio</a> · <a href="transparencia.html">Transparencia</a> · <a href="contacto.html">Contacto</a></p></noscript>
+
+<main id="main">
+  <!-- ========== Hero: buscador centrado en lo que el vecino necesita ========== -->
+  <section class="hero">
+    <div class="wrap">
+      <span class="eyebrow">Municipalidad de General Galarza · Entre Ríos</span>
+      <h1>¿Qué necesitás hacer hoy?</h1>
+      <p class="lead">Trámites, pagos, reclamos y servicios del municipio, explicados en simple y en un solo lugar.</p>
+
+      <div class="search-box" role="search">
+        <label for="q" class="sr-only">Buscar un trámite o servicio</label>
+        <svg class="s-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M11 19a8 8 0 1 1 0-16 8 8 0 0 1 0 16Zm10 2-4.35-4.35"/></svg>
+        <input id="q" type="search" autocomplete="off" placeholder="Ej.: licencia de conducir, pagar tasa, luminaria rota…"
+               role="combobox" aria-expanded="false" aria-controls="q-results" aria-autocomplete="list">
+        <div class="search-results" id="q-results" role="listbox"></div>
+      </div>
+      <div class="quick-tags" aria-label="Búsquedas frecuentes">
+        <a href="tramites.html#tasa-inmobiliaria">Pagar tasa inmobiliaria</a>
+        <a href="tramites.html#licencia-conducir">Licencia de conducir</a>
+        <a href="contacto.html#reclamos">Luminaria rota</a>
+        <a href="vivir.html#residuos">Días de recolección</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== Accesos rápidos por necesidad ========== -->
+  <div class="wrap">
+    <nav class="quick-grid" aria-label="Accesos rápidos">
+      <a class="quick-card" href="tramites.html?cat=tasas"><span class="qi" data-icon="receipt"></span><strong>Pagar tasas</strong><span>Inmobiliaria, comercio, planes de pago y libre deuda.</span></a>
+      <a class="quick-card" href="contacto.html#reclamos"><span class="qi" data-icon="bulb"></span><strong>Hacer un reclamo</strong><span>Luminarias, calles, residuos. Seguí el estado con tu número.</span></a>
+      <a class="quick-card" href="tramites.html#licencia-conducir"><span class="qi" data-icon="car"></span><strong>Licencia de conducir</strong><span>Original, renovación o duplicado. Requisitos y turnos.</span></a>
+      <a class="quick-card" href="tramites.html#habilitacion-comercial"><span class="qi" data-icon="store"></span><strong>Habilitar un comercio</strong><span>Paso a paso para abrir tu negocio en Galarza.</span></a>
+      <a class="quick-card" href="vivir.html#salud"><span class="qi" data-icon="heart"></span><strong>Salud</strong><span>Centro de salud, turnos, vacunación y guardias.</span></a>
+      <a class="quick-card" href="vivir.html#residuos"><span class="qi" data-icon="trash"></span><strong>Residuos y reciclado</strong><span>Días de recolección por zona y puntos limpios.</span></a>
+      <a class="quick-card" href="tramites.html#permiso-edificacion"><span class="qi" data-icon="home"></span><strong>Construir o ampliar</strong><span>Permisos de obra, planos y conexiones de servicios.</span></a>
+      <a class="quick-card" href="transparencia.html"><span class="qi" data-icon="chart"></span><strong>Transparencia</strong><span>En qué se usa cada peso: presupuesto, obras y compras.</span></a>
+    </nav>
+  </div>
+
+  <!-- ========== Aviso destacado ========== -->
+  <section class="block" style="padding-bottom:0">
+    <div class="wrap">
+      <div class="notice" role="note">
+        <span data-icon="calendar"></span>
+        <p><strong>5 de octubre: aniversario de General Galarza.</strong> Celebramos un nuevo año de la fundación del pueblo (1912) con actividades en el Parque Paseo del Ferrocarril. <a href="#agenda">Ver agenda</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== Noticias + agenda ========== -->
+  <section class="block">
+    <div class="wrap">
+      <div class="section-head">
+        <div><span class="eyebrow">Actualidad</span><h2>Novedades del municipio</h2></div>
+        <a class="link-more" href="#">Todas las noticias</a>
+      </div>
+      <!-- Noticias de muestra: reemplazar por las publicaciones reales del área de Prensa -->
+      <div class="news-layout">
+        <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));" id="news">
+          <article class="card news-card">
+            <div class="thumb" data-icon="users" data-size="56"></div>
+            <div class="body">
+              <span class="pill brand">Gobierno</span>
+              <h3 class="mt-1">Apertura del período legislativo 2026</h3>
+              <p class="muted">El intendente Fabián Menescardi inauguró las sesiones ordinarias del Concejo Deliberante con eje en la unidad y el desarrollo turístico.</p>
+              <span class="meta">Marzo 2026</span>
+            </div>
+          </article>
+          <article class="card news-card">
+            <div class="thumb" data-icon="train" data-size="56"></div>
+            <div class="body">
+              <span class="pill info">Cultura</span>
+              <h3 class="mt-1">Temporada de ferias en el Paseo del Ferrocarril</h3>
+              <p class="muted">Emprendedores locales pueden inscribirse para participar de las ferias mensuales en la vieja estación.</p>
+              <span class="meta">Septiembre 2026</span>
+            </div>
+          </article>
+          <article class="card news-card">
+            <div class="thumb" data-icon="bulb" data-size="56"></div>
+            <div class="body">
+              <span class="pill warn">Obras</span>
+              <h3 class="mt-1">Licitación para luminarias LED</h3>
+              <p class="muted">Se abrió la licitación pública para renovar el alumbrado. Los pliegos están disponibles en el portal de transparencia.</p>
+              <span class="meta">Septiembre 2026</span>
+            </div>
+          </article>
+        </div>
+
+        <aside id="agenda" aria-labelledby="agenda-t">
+          <h3 id="agenda-t">Agenda</h3>
+          <ul class="agenda">
+            <li><span class="date"><b>05</b><small>oct</small></span><div><div class="ag-t">Aniversario de General Galarza</div><div class="ag-m">Parque Paseo del Ferrocarril</div></div></li>
+            <li><span class="date"><b>12</b><small>oct</small></span><div><div class="ag-t">Feria de emprendedores</div><div class="ag-m">Centro Cultural Estación · 16 h</div></div></li>
+            <li><span class="date"><b>30</b><small>oct</small></span><div><div class="ag-t">Jornada de castración gratuita</div><div class="ag-m">Con turno previo</div></div></li>
+            <li><span class="date"><b>dic</b><small>2026</small></span><div><div class="ag-t">Fiesta de la Ornamentación Navideña</div><div class="ag-m">Todo el pueblo</div></div></li>
+          </ul>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== Teléfonos útiles ========== -->
+  <section class="block alt" aria-labelledby="tel-t">
+    <div class="wrap">
+      <div class="section-head"><div><span class="eyebrow">Tené a mano</span><h2 id="tel-t">Teléfonos útiles</h2></div></div>
+      <div class="phones">
+        <a class="phone" href="tel:911"><b>911</b><span>Emergencias<small>Policía</small></span></a>
+        <a class="phone" href="tel:107"><b>107</b><span>Emergencias médicas<small>Ambulancia</small></span></a>
+        <a class="phone" href="tel:100"><b>100</b><span>Bomberos<small>Incendios y rescates</small></span></a>
+        <a class="phone" href="tel:+543444481565"><b style="color:var(--brand-2);font-size:1rem">481565</b><span>Municipalidad<small>(03444) · Lun a vie 7 a 13 h</small></span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== Transparencia (resumen en vivo desde los datos) ========== -->
+  <section class="block" aria-labelledby="tr-t">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">Cuentas claras</span>
+          <h2 id="tr-t">¿En qué se usa tu plata?</h2>
+          <p>La misma información que el municipio presenta al Tribunal de Cuentas de Entre Ríos, en lenguaje claro.</p>
+        </div>
+        <a class="btn" href="transparencia.html">Ir al portal de transparencia</a>
+      </div>
+      <div class="kpis" id="home-kpis"></div>
+      <p class="muted" id="home-kpis-note" style="font-size:.86rem"></p>
+    </div>
+  </section>
+
+  <!-- ========== Galarza en números ========== -->
+  <section class="block alt">
+    <div class="wrap">
+      <div class="two-col" style="align-items:center">
+        <div>
+          <span class="eyebrow">Nuestro pueblo</span>
+          <h2>General Galarza</h2>
+          <p>Fundado el 5 de octubre de 1912 alrededor de la estación del ferrocarril —originalmente llamada San Guillermo—, General Galarza está en el departamento Gualeguay, sobre la ruta nacional 12. Su nombre homenajea a un general entrerriano que combatió junto a Ramírez y Urquiza.</p>
+          <a class="btn secondary" href="turismo.html">Conocé Galarza</a>
+        </div>
+        <div class="kpis" style="margin:0">
+          <div class="kpi"><div class="k-l">Fundación</div><div class="k-v">1912</div><div class="k-s">5 de octubre</div></div>
+          <div class="kpi"><div class="k-l">Habitantes</div><div class="k-v">+5.000</div><div class="k-s">casco urbano y zona rural</div></div>
+          <div class="kpi"><div class="k-l">Distancia a Gualeguay</div><div class="k-v">50 km</div><div class="k-s">por RN 12</div></div>
+          <div class="kpi"><div class="k-l">Código postal</div><div class="k-v">2843</div><div class="k-s">Entre Ríos</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div id="site-foot"></div>
+</body>
+</html>

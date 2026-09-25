@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Portal de Transparencia · General Galarza</title>
+<meta name="description" content="Presupuesto, ejecución, rendiciones al Tribunal de Cuentas de Entre Ríos, compras, obras y personal de la Municipalidad de General Galarza.">
+<meta name="theme-color" content="#0E4D3A">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/styles.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230E4D3A'/%3E%3Crect y='27' width='32' height='5' fill='%23D98E04'/%3E%3Ctext x='16' y='21' font-family='Arial' font-weight='700' font-size='13' fill='white' text-anchor='middle'%3EGG%3C/text%3E%3C/svg%3E">
+<script src="data/transparencia.js" defer></script>
+<script src="assets/js/layout.js" defer></script>
+<script src="assets/js/transparencia.js" defer></script>
+</head>
+<body>
+<div id="site-top"></div>
+<div class="demo-banner hidden" id="demo-banner" role="note"><div class="wrap">
+  <strong>Versión de demostración:</strong> las cifras de este portal son ilustrativas y deben reemplazarse por las planillas oficiales presentadas al Tribunal de Cuentas de Entre Ríos.
+</div></div>
+
+<main id="main">
+  <header class="page-head">
+    <div class="wrap">
+      <nav class="crumbs" aria-label="Ubicación"><a href="index.html">Inicio</a> › Transparencia</nav>
+      <span class="eyebrow">Portal de Transparencia</span>
+      <h1>Cuentas claras, a la vista de todos</h1>
+      <p>Publicamos la misma información presupuestaria y contable que el municipio rinde ante el Tribunal de Cuentas de Entre Ríos, explicada para que cualquier vecino la entienda y descargable para quien quiera analizarla.</p>
+    </div>
+  </header>
+
+  <section class="block" style="padding-top:28px">
+    <div class="wrap">
+      <div class="toolbar">
+        <div class="muted" id="updated" style="font-size:.9rem"></div>
+        <label style="display:flex;gap:10px;align-items:center;font-weight:700">Ejercicio
+          <select id="year" class="field" style="width:auto;padding:9px 12px"></select>
+        </label>
+      </div>
+
+      <div class="tabs" role="tablist" aria-label="Secciones del portal">
+        <button class="tab" role="tab" id="tab-resumen"     aria-controls="resumen"     aria-selected="true">Resumen</button>
+        <button class="tab" role="tab" id="tab-presupuesto" aria-controls="presupuesto" aria-selected="false">Presupuesto y ejecución</button>
+        <button class="tab" role="tab" id="tab-tcer"        aria-controls="tcer"        aria-selected="false">Rendiciones al TCER</button>
+        <button class="tab" role="tab" id="tab-compras"     aria-controls="compras"     aria-selected="false">Compras</button>
+        <button class="tab" role="tab" id="tab-obras"       aria-controls="obras"       aria-selected="false">Obras</button>
+        <button class="tab" role="tab" id="tab-personal"    aria-controls="personal"    aria-selected="false">Personal</button>
+        <button class="tab" role="tab" id="tab-documentos"  aria-controls="documentos"  aria-selected="false">Documentos</button>
+        <button class="tab" role="tab" id="tab-acceso"      aria-controls="acceso"      aria-selected="false">Pedir información</button>
+      </div>
+
+      <!-- ===================== RESUMEN ===================== -->
+      <div role="tabpanel" id="resumen" aria-labelledby="tab-resumen">
+        <div class="kpis" id="kpis"></div>
+        <div class="two-col">
+          <div class="card">
+            <h3>¿De dónde viene la plata?</h3>
+            <p class="muted" style="font-size:.9rem">Recursos percibidos por origen.</p>
+            <div class="bars" id="origen"></div>
+          </div>
+          <div class="card">
+            <h3>¿En qué se gasta?</h3>
+            <p class="muted" style="font-size:.9rem">Gasto comprometido por área de gobierno.</p>
+            <div class="bars" id="areas"></div>
+          </div>
+        </div>
+        <div class="card mt-2">
+          <h3>¿Qué es cada cosa?</h3>
+          <div class="grid grid-3 mt-1" style="gap:20px">
+            <div><strong>Presupuestado</strong><p class="muted">Lo que el Concejo Deliberante autorizó a recaudar y gastar en el año, por ordenanza.</p></div>
+            <div><strong>Comprometido</strong><p class="muted">Gasto ya asumido: hay una orden de compra, contrato o sueldo que pagar.</p></div>
+            <div><strong>Pagado</strong><p class="muted">Lo que efectivamente salió de la tesorería municipal.</p></div>
+            <div><strong>Deuda flotante</strong><p class="muted">Compromisos de corto plazo pendientes de pago (proveedores, facturas del mes).</p></div>
+            <div><strong>Deuda consolidada</strong><p class="muted">Préstamos de largo plazo tomados por el municipio.</p></div>
+            <div><strong>Tribunal de Cuentas</strong><p class="muted">Organismo provincial de control externo que revisa y aprueba las cuentas de los municipios.</p></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===================== PRESUPUESTO ===================== -->
+      <div role="tabpanel" id="presupuesto" aria-labelledby="tab-presupuesto" hidden>
+        <p id="pres-intro" class="muted"></p>
+
+        <h2 class="mt-2">Recursos</h2>
+        <div class="legend"><span><i style="background:color-mix(in srgb,var(--brand-2) 28%,transparent)"></i>Presupuestado</span><span><i style="background:var(--brand-2)"></i>Percibido</span></div>
+        <div class="card"><div class="bars" id="rec-bars"></div></div>
+        <div class="toolbar mt-1"><span></span><button class="btn secondary small" data-csv="recursos">⬇ Descargar CSV</button></div>
+        <div class="table-wrap"><table class="data" id="rec-table"></table></div>
+
+        <h2 class="mt-2">Gastos por objeto</h2>
+        <p class="muted">Clasificación por tipo de gasto, como la informan las planillas de ejecución presupuestaria.</p>
+        <div class="legend"><span><i style="background:color-mix(in srgb,var(--brand-2) 28%,transparent)"></i>Presupuestado</span><span><i style="background:var(--brand-2)"></i>Comprometido</span></div>
+        <div class="card"><div class="bars" id="gas-bars"></div></div>
+        <div class="toolbar mt-1"><span></span><button class="btn secondary small" data-csv="gastos">⬇ Descargar CSV</button></div>
+        <div class="table-wrap"><table class="data" id="gas-table"></table></div>
+
+        <div class="two-col mt-2">
+          <div>
+            <h2>Situación del Tesoro</h2>
+            <div class="table-wrap"><table class="data" id="tesoro"></table></div>
+          </div>
+          <div>
+            <h2>Deuda</h2>
+            <div class="table-wrap"><table class="data" id="deuda"></table></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===================== TCER ===================== -->
+      <div role="tabpanel" id="tcer" aria-labelledby="tab-tcer" hidden>
+        <div class="two-col">
+          <div>
+            <h2>Rendiciones al Tribunal de Cuentas</h2>
+            <p>El municipio está obligado a rendir cuentas ante el <strong>Tribunal de Cuentas de Entre Ríos (TCER)</strong>, órgano de control externo con autonomía funcional. Durante el año presenta las planillas de ejecución presupuestaria (recursos percibidos, gastos comprometidos y deuda) y, antes del <strong>30 de abril</strong> de cada año, la rendición anual de cuentas del ejercicio anterior.</p>
+            <p class="muted">Acá podés ver qué se presentó, cuándo y en qué estado está cada rendición.</p>
+          </div>
+          <div class="card" id="tcer-status"></div>
+        </div>
+        <h3 class="mt-2">Historial de presentaciones</h3>
+        <div class="table-wrap"><table class="data" id="tcer-table"></table></div>
+        <p class="muted mt-1" style="font-size:.88rem">Estados: <span class="pill ok">Presentado</span> entregado en término · <span class="pill info">Aprobado</span> con resolución favorable del TCER · <span class="pill warn">Pendiente</span> aún no vence · <span class="pill bad">Observado</span> con observaciones a responder.</p>
+      </div>
+
+      <!-- ===================== COMPRAS ===================== -->
+      <div role="tabpanel" id="compras" aria-labelledby="tab-compras" hidden>
+        <div class="toolbar">
+          <div><h2 class="mt-0" style="margin-bottom:4px">Compras y contrataciones</h2><p class="muted" style="margin:0">Licitaciones, concursos de precios y contrataciones directas.</p></div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap">
+            <select id="compras-f" class="field" style="width:auto;padding:9px 12px" aria-label="Filtrar por estado"></select>
+            <button class="btn secondary small" data-csv="compras">⬇ CSV</button>
+          </div>
+        </div>
+        <div class="table-wrap"><table class="data" id="compras-table"></table></div>
+      </div>
+
+      <!-- ===================== OBRAS ===================== -->
+      <div role="tabpanel" id="obras" aria-labelledby="tab-obras" hidden>
+        <div class="toolbar">
+          <div><h2 class="mt-0" style="margin-bottom:4px">Obras públicas</h2><p class="muted" style="margin:0">Monto, financiamiento y avance físico de cada obra.</p></div>
+          <button class="btn secondary small" data-csv="obras">⬇ CSV</button>
+        </div>
+        <div class="grid grid-2" id="obras-list"></div>
+      </div>
+
+      <!-- ===================== PERSONAL ===================== -->
+      <div role="tabpanel" id="personal" aria-labelledby="tab-personal" hidden>
+        <h2>Personal municipal</h2>
+        <p class="muted" id="personal-intro"></p>
+        <div class="kpis" id="personal-kpis"></div>
+        <div class="card"><div class="bars" id="personal-bars"></div></div>
+        <p class="mt-1">La escala salarial vigente y las declaraciones juradas de funcionarios están en <a href="#documentos" data-goto="documentos">Documentos</a>.</p>
+      </div>
+
+      <!-- ===================== DOCUMENTOS ===================== -->
+      <div role="tabpanel" id="documentos" aria-labelledby="tab-documentos" hidden>
+        <div class="toolbar">
+          <div><h2 class="mt-0" style="margin-bottom:4px">Biblioteca de documentos</h2><p class="muted" style="margin:0">Ordenanzas de presupuesto, rendiciones, balances y resoluciones del Tribunal de Cuentas.</p></div>
+          <select id="docs-f" class="field" style="width:auto;padding:9px 12px" aria-label="Filtrar por categoría"></select>
+        </div>
+        <ul class="doc-list" id="docs-list"></ul>
+        <div class="card mt-2">
+          <h3>Datos abiertos</h3>
+          <p>Todas las tablas del portal se pueden descargar en formato CSV (compatible con Excel y LibreOffice) para reutilizarlas libremente.</p>
+          <div style="display:flex;gap:8px;flex-wrap:wrap">
+            <button class="btn secondary small" data-csv="recursos">Recursos</button>
+            <button class="btn secondary small" data-csv="gastos">Gastos por objeto</button>
+            <button class="btn secondary small" data-csv="areas">Gastos por área</button>
+            <button class="btn secondary small" data-csv="presentaciones">Rendiciones TCER</button>
+            <button class="btn secondary small" data-csv="compras">Compras</button>
+            <button class="btn secondary small" data-csv="obras">Obras</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===================== ACCESO ===================== -->
+      <div role="tabpanel" id="acceso" aria-labelledby="tab-acceso" hidden>
+        <div class="two-col">
+          <div>
+            <h2>Solicitud de acceso a la información pública</h2>
+            <p>Cualquier persona puede pedir información que produzca o tenga en su poder el municipio, <strong>sin necesidad de explicar para qué</strong> y sin costo.</p>
+            <ul class="check-list">
+              <li>No hace falta abogado ni patrocinio.</li>
+              <li>Te respondemos por escrito en el plazo que fija la normativa vigente.</li>
+              <li>Si la información ya está publicada, te indicamos dónde encontrarla.</li>
+            </ul>
+            <p class="muted mt-1">También podés presentar la solicitud en papel en Mesa de Entradas (25 de Mayo y Juan Carlos Burone).</p>
+          </div>
+          <form class="card" id="acceso-form" novalidate>
+            <div class="form-row">
+              <div><label for="a-nombre">Nombre y apellido</label><input id="a-nombre" class="field" required autocomplete="name"></div>
+              <div><label for="a-dni">DNI</label><input id="a-dni" class="field" inputmode="numeric" autocomplete="off"></div>
+            </div>
+            <div class="form-row">
+              <div><label for="a-mail">Correo electrónico</label><input id="a-mail" type="email" class="field" required autocomplete="email"></div>
+              <div><label for="a-tel">Teléfono (opcional)</label><input id="a-tel" type="tel" class="field" autocomplete="tel"></div>
+            </div>
+            <label for="a-pedido" class="form-label">¿Qué información necesitás?</label>
+            <textarea id="a-pedido" class="field" required placeholder="Describí lo más concreto posible: tema, período, documento…"></textarea>
+            <p class="muted" style="font-size:.84rem;margin-top:10px">Tus datos se usan solo para responder esta solicitud.</p>
+            <button class="btn" type="submit">Enviar solicitud</button>
+            <p id="acceso-msg" role="status" class="mt-1" style="margin-bottom:0"></p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div id="site-foot"></div>
+</body>
+</html>

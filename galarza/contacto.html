@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contacto y reclamos · General Galarza</title>
+<meta name="description" content="Contacto de la Municipalidad de General Galarza y formulario de reclamos: alumbrado, calles, residuos, arbolado.">
+<meta name="theme-color" content="#0E4D3A">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/styles.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230E4D3A'/%3E%3Crect y='27' width='32' height='5' fill='%23D98E04'/%3E%3Ctext x='16' y='21' font-family='Arial' font-weight='700' font-size='13' fill='white' text-anchor='middle'%3EGG%3C/text%3E%3C/svg%3E">
+<script src="assets/js/layout.js" defer></script>
+<script src="assets/js/contacto.js" defer></script>
+</head>
+<body>
+<div id="site-top"></div>
+
+<main id="main">
+  <header class="page-head">
+    <div class="wrap">
+      <nav class="crumbs" aria-label="Ubicación"><a href="index.html">Inicio</a> › Contacto y reclamos</nav>
+      <span class="eyebrow">Estamos para escucharte</span>
+      <h1>Contacto y reclamos</h1>
+      <p>Avisanos de un problema en tu barrio o escribinos con una consulta. Cada reclamo recibe un número para que puedas seguirlo.</p>
+    </div>
+  </header>
+
+  <section class="block">
+    <div class="wrap two-col" style="align-items:start">
+      <div id="reclamos">
+        <h2>Hacer un reclamo</h2>
+        <form class="card" id="reclamo-form" novalidate>
+          <fieldset style="border:0;padding:0;margin:0 0 14px">
+            <legend class="form-label">¿Qué pasa?</legend>
+            <div class="filters" id="tipo" role="radiogroup" style="margin:0">
+              <label class="chip"><input type="radio" name="tipo" value="Alumbrado" class="sr-only" required>💡 Alumbrado</label>
+              <label class="chip"><input type="radio" name="tipo" value="Calles y cunetas" class="sr-only">🚧 Calles y cunetas</label>
+              <label class="chip"><input type="radio" name="tipo" value="Residuos" class="sr-only">🗑️ Residuos</label>
+              <label class="chip"><input type="radio" name="tipo" value="Arbolado y espacios verdes" class="sr-only">🌳 Arbolado</label>
+              <label class="chip"><input type="radio" name="tipo" value="Agua y cloacas" class="sr-only">🚰 Agua y cloacas</label>
+              <label class="chip"><input type="radio" name="tipo" value="Animales sueltos" class="sr-only">🐕 Animales</label>
+              <label class="chip"><input type="radio" name="tipo" value="Otro" class="sr-only">Otro</label>
+            </div>
+          </fieldset>
+          <div class="form-row">
+            <div><label for="r-dir">Dirección o referencia</label><input id="r-dir" class="field" required placeholder="Ej.: San Martín entre 25 de Mayo y Belgrano"></div>
+          </div>
+          <label for="r-desc" class="form-label">Contanos qué pasa</label>
+          <textarea id="r-desc" class="field" required placeholder="Ej.: la luminaria de la esquina está apagada desde hace una semana."></textarea>
+          <div class="form-row mt-1">
+            <div><label for="r-nombre">Tu nombre</label><input id="r-nombre" class="field" required autocomplete="name"></div>
+            <div><label for="r-tel">Teléfono o correo</label><input id="r-tel" class="field" required autocomplete="tel"></div>
+          </div>
+          <button class="btn" type="submit">Enviar reclamo</button>
+          <p id="reclamo-msg" role="status" class="mt-1" style="margin-bottom:0"></p>
+        </form>
+      </div>
+
+      <div class="stack">
+        <h2>Municipalidad</h2>
+        <div class="card">
+          <ul class="check-list" style="gap:12px">
+            <li><strong>Dirección:</strong> 25 de Mayo y Juan Carlos Burone, CP 2843, General Galarza, Entre Ríos.</li>
+            <li><strong>Teléfono / fax:</strong> <a href="tel:+543444481565">(03444) 481565</a></li>
+            <li><strong>Horario de atención:</strong> lunes a viernes de 7 a 13 h.</li>
+          </ul>
+          <p class="mt-1" style="margin-bottom:0"><a class="btn secondary small" href="https://www.openstreetmap.org/search?query=General%20Galarza%2C%20Entre%20R%C3%ADos" rel="noopener">Ver en el mapa</a></p>
+        </div>
+        <div class="card">
+          <h3>Seguí tu reclamo</h3>
+          <p class="muted">Ingresá el número que recibiste al enviarlo.</p>
+          <form id="seguir-form" style="display:flex;gap:8px;flex-wrap:wrap">
+            <label for="s-num" class="sr-only">Número de reclamo</label>
+            <input id="s-num" class="field" style="flex:1;min-width:160px" placeholder="GG-2026-000123">
+            <button class="btn secondary" type="submit">Consultar</button>
+          </form>
+          <p id="seguir-msg" role="status" class="mt-1" style="margin-bottom:0"></p>
+        </div>
+        <div class="notice info"><span data-icon="info"></span><p><strong>¿Es una emergencia?</strong> Llamá al <a href="tel:911">911</a> (policía), <a href="tel:107">107</a> (salud) o <a href="tel:100">100</a> (bomberos).</p></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div id="site-foot"></div>
+</body>
+</html>

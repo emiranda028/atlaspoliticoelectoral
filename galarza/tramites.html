@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Guía de trámites · General Galarza</title>
+<meta name="description" content="Todos los trámites de la Municipalidad de General Galarza: requisitos, pasos, dónde hacerlos y cuánto cuestan.">
+<meta name="theme-color" content="#0E4D3A">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/styles.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230E4D3A'/%3E%3Crect y='27' width='32' height='5' fill='%23D98E04'/%3E%3Ctext x='16' y='21' font-family='Arial' font-weight='700' font-size='13' fill='white' text-anchor='middle'%3EGG%3C/text%3E%3C/svg%3E">
+<script src="data/tramites.js" defer></script>
+<script src="assets/js/layout.js" defer></script>
+<script src="assets/js/tramites.js" defer></script>
+</head>
+<body>
+<div id="site-top"></div>
+
+<main id="main">
+  <header class="page-head">
+    <div class="wrap">
+      <nav class="crumbs" aria-label="Ubicación"><a href="index.html">Inicio</a> › Trámites</nav>
+      <span class="eyebrow">Guía de trámites</span>
+      <h1>Todo lo que podés hacer con el municipio</h1>
+      <p>Qué llevar, dónde ir, cuánto cuesta y si se puede hacer por internet. Buscá por lo que necesitás, no por la oficina.</p>
+    </div>
+  </header>
+
+  <section class="block">
+    <div class="wrap">
+      <div class="toolbar">
+        <div style="flex:1;min-width:min(100%,320px)">
+          <label for="tq" class="form-label">Buscar un trámite</label>
+          <input id="tq" class="field" type="search" placeholder="Ej.: carnet, habilitación, poda, escritura…" autocomplete="off">
+        </div>
+        <label style="display:flex;gap:8px;align-items:center;font-weight:600;align-self:end;min-height:48px">
+          <input type="checkbox" id="only-online"> Solo los que se inician online
+        </label>
+      </div>
+      <div class="filters" id="cats" role="group" aria-label="Filtrar por categoría"></div>
+      <p class="muted" id="count" aria-live="polite"></p>
+      <div id="list"></div>
+
+      <div class="notice info mt-2">
+        <span data-icon="info"></span>
+        <p><strong>¿No encontrás tu trámite?</strong> Llamá al <a href="tel:+543444481565">(03444) 481565</a> o acercate a Mesa de Entradas (25 de Mayo y Juan Carlos Burone) de lunes a viernes de 7 a 13 h.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div id="site-foot"></div>
+</body>
+</html>
