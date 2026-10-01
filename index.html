@@ -2,6 +2,205 @@
 <html lang="es">
 <head>
 <meta charset="utf-8">
+<script>
+/* ===== IDIOMAS (es · en · pt) =====
+   The site is written in Spanish. For English and Portuguese, every piece of
+   visible text (static or rendered later by JS) is looked up in
+   i18n/<lang>.json and swapped in place. Numbers are matched as {0}, {1}…
+   placeholders so one entry covers "en 8 días" and "en 30 días"; inline
+   elements inside a sentence become [[0]], [[1]]… and are kept as they are
+   (with their own text translated separately). The dictionary is built with
+   i18n/harvest.js — see README. */
+(function () {
+  var LANGS = ['es', 'en', 'pt'];
+  var qs = new URLSearchParams(location.search);
+  var lang = (qs.get('lang') || '').toLowerCase();
+  if (LANGS.indexOf(lang) >= 0) { try { localStorage.setItem('atlas-lang', lang); } catch (e) {} }
+  else { try { lang = localStorage.getItem('atlas-lang') || ''; } catch (e) {} }
+  if (LANGS.indexOf(lang) < 0) lang = /^pt/i.test(navigator.language || '') ? 'pt' : 'es';
+  window.ATLAS_LANG = lang;
+  document.documentElement.lang = lang === 'pt' ? 'pt-BR' : lang;
+
+  var NUM = /\d+(?:[.,]\d+)*/g;
+  var LETTER = /[A-Za-zÀ-ÖØ-öø-ÿ]/;
+  var SKIP = { SCRIPT: 1, STYLE: 1, NOSCRIPT: 1, TEXTAREA: 1, CODE: 1, PRE: 1, svg_style: 1 };
+  var ATTRS = ['title', 'placeholder', 'aria-label', 'alt'];
+
+  // Month and weekday names next to a number become {M} / {D}, so one entry
+  // covers every date ("jueves 1 oct", "4 de octubre de 2026"…)
+  var MES = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+  var MES3 = ['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
+  var DIA = ['domingo','lunes','martes','miércoles','jueves','viernes','sábado'];
+  var OUT = {
+    en: { m: ['January','February','March','April','May','June','July','August','September','October','November','December'], m3: ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'], d: ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'] },
+    pt: { m: ['janeiro','fevereiro','março','abril','maio','junho','julho','agosto','setembro','outubro','novembro','dezembro'], m3: ['jan','fev','mar','abr','mai','jun','jul','ago','set','out','nov','dez'], d: ['domingo','segunda-feira','terça-feira','quarta-feira','quinta-feira','sexta-feira','sábado'] }
+  };
+  var DATE_RE = /(^|[^A-Za-zÀ-ÿ])(enero|febrero|marzo|abril|mayo|junio|julio|agosto|septiembre|setiembre|octubre|noviembre|diciembre|ene|feb|mar|abr|may|jun|jul|ago|sept?|oct|nov|dic|domingo|lunes|martes|miércoles|jueves|viernes|sábado)(?![A-Za-zÀ-ÿ])/gi;
+  function dateWords(text, list) {
+    return text.replace(DATE_RE, function (m, pre, w, off, all) {
+      var before = all.slice(Math.max(0, off - 6), off + pre.length), after = all.slice(off + m.length, off + m.length + 8);
+      var lw = w.toLowerCase(), near = /[\d}]\s*(de\s+|del\s+)?$/i.test(before) || /^\.?,?\s*(de\s+)?[\d'{]/i.test(after);
+      if (DIA.indexOf(lw) >= 0) { if (!/^,?\s*[\d{]/.test(after)) return m; list.push({ t: 'd', i: DIA.indexOf(lw), w: w }); return pre + '{D}'; }
+      if (!near) return m;
+      var i = MES.indexOf(lw), short = false;
+      if (lw === 'setiembre') i = 8;
+      if (i < 0) { i = MES3.indexOf(lw.slice(0, 3)); short = true; }
+      if (i < 0) return m;
+      list.push({ t: 'm', i: i, short: short, w: w }); return pre + '{M}';
+    });
+  }
+  function caseLike(src, out) { return src === src.toUpperCase() ? out.toUpperCase() : (src[0] === src[0].toUpperCase() ? out[0].toUpperCase() + out.slice(1) : out); }
+  function keyOf(text) {
+    var nums = [], dates = [];
+    var k = dateWords(String(text).replace(/\s+/g, ' ').trim(), dates).replace(NUM, function (m) { nums.push(m); return '{' + (nums.length - 1) + '}'; });
+    return { k: k, nums: nums, dates: dates };
+  }
+  function fill(t, nums, dates) {
+    var o = OUT[lang], q = { m: (dates || []).filter(function (d) { return d.t === 'm'; }), d: (dates || []).filter(function (d) { return d.t === 'd'; }) };
+    t = t.replace(/\{(\d+)\}/g, function (m, i) { return nums[+i] != null ? nums[+i] : m; });
+    return t.replace(/\{([MD])\}/g, function (m, ty) {
+      var d = q[ty.toLowerCase()].shift(); if (!d || !o) return d ? d.w : m;
+      var w = d.t === 'd' ? o.d[d.i] : (d.short ? o.m3[d.i] : o.m[d.i]);
+      return caseLike(d.w, w);
+    });
+  }
+  window.__i18nNormDates = function (s) { return dateWords(s, []); };
+  function skippable(el) {
+    for (var n = el; n && n.nodeType === 1; n = n.parentNode) {
+      if (SKIP[n.nodeName] || n.getAttribute('translate') === 'no' || (n.classList && n.classList.contains('notranslate'))) return true;
+    }
+    return false;
+  }
+  // An element is "mixed" when it holds text with letters next to child elements:
+  // the sentence is translated as a whole, keeping the children in place.
+  function isMixed(el) {
+    var txt = false, elem = false;
+    for (var c = el.firstChild; c; c = c.nextSibling) {
+      if (c.nodeType === 3 && LETTER.test(c.nodeValue)) txt = true;
+      else if (c.nodeType === 1) elem = true;
+    }
+    return txt && elem;
+  }
+  function mixedKey(el) {
+    var parts = [], kids = [], nums = [], dates = [];
+    var num = function (m) { nums.push(m); return '{' + (nums.length - 1) + '}'; };
+    for (var c = el.firstChild; c; c = c.nextSibling) {
+      if (c.nodeType === 3) parts.push(dateWords(c.nodeValue, dates).replace(NUM, num));
+      else if (c.nodeType === 1) { parts.push('[[' + kids.length + ']]'); kids.push(c); }
+    }
+    var k = parts.join('').replace(/\s+/g, ' ').trim();
+    return { k: k, nums: nums, dates: dates, kids: kids };
+  }
+
+  var dict = null, done = new WeakMap(), attrDone = new WeakMap();
+
+  function walk(root, onText, onMixed, onAttrs) {
+    if (!root) return;
+    if (root.nodeType === 3) { if (root.parentNode && root.parentNode.nodeType === 1 && !skippable(root.parentNode) && !isMixed(root.parentNode)) onText(root); return; }
+    if (root.nodeType !== 1 || skippable(root)) return;
+    var stack = [root];
+    while (stack.length) {
+      var el = stack.pop();
+      if (SKIP[el.nodeName] || el.getAttribute('translate') === 'no' || (el.classList && el.classList.contains('notranslate'))) continue;
+      onAttrs(el);
+      var mixed = isMixed(el);
+      if (mixed) onMixed(el);
+      for (var c = el.lastChild; c; c = c.previousSibling) {
+        if (c.nodeType === 1) stack.push(c);
+        else if (c.nodeType === 3 && !mixed && LETTER.test(c.nodeValue)) onText(c);
+      }
+    }
+  }
+
+  function tText(node) {
+    if (done.get(node) === node.nodeValue) return;
+    var o = keyOf(node.nodeValue), t = dict[o.k];
+    if (t == null) return;
+    var lead = node.nodeValue.match(/^\s*/)[0], trail = node.nodeValue.match(/\s*$/)[0];
+    var v = lead + fill(t, o.nums, o.dates) + trail;
+    node.nodeValue = v; done.set(node, v);
+  }
+  function tMixed(el) {
+    // already rebuilt and untouched since?
+    var allDone = true;
+    for (var c = el.firstChild; c; c = c.nextSibling) if (c.nodeType === 3 && LETTER.test(c.nodeValue) && done.get(c) !== c.nodeValue) { allDone = false; break; }
+    if (allDone) return;
+    var o = mixedKey(el), t = dict[o.k];
+    if (t == null) return;
+    var out = fill(t, o.nums, o.dates).split(/\[\[(\d+)\]\]/), frag = document.createDocumentFragment(), used = [];
+    for (var i = 0; i < out.length; i++) {
+      if (i % 2) { var kid = o.kids[+out[i]]; if (kid && used.indexOf(kid) < 0) { frag.appendChild(kid); used.push(kid); } }
+      else if (out[i]) { var tn = document.createTextNode(out[i]); done.set(tn, out[i]); frag.appendChild(tn); }
+    }
+    o.kids.forEach(function (k) { if (used.indexOf(k) < 0) frag.appendChild(k); });
+    while (el.firstChild) el.removeChild(el.firstChild);
+    el.appendChild(frag);
+  }
+  function tAttrs(el) {
+    for (var i = 0; i < ATTRS.length; i++) {
+      var a = ATTRS[i], v = el.getAttribute(a);
+      if (!v || !LETTER.test(v)) continue;
+      var rec = attrDone.get(el) || {};
+      if (rec[a] === v) continue;
+      var o = keyOf(v), t = dict[o.k];
+      if (t == null) continue;
+      var nv = fill(t, o.nums, o.dates); el.setAttribute(a, nv); rec[a] = nv; attrDone.set(el, rec);
+    }
+  }
+  function translate(root) { walk(root, tText, tMixed, tAttrs); }
+
+  // Harvest mode: list every key on the page (used by i18n/harvest.js)
+  window.__i18nCollect = function (root) {
+    var keys = {};
+    walk(root || document.body,
+      function (n) { keys[keyOf(n.nodeValue).k] = 1; },
+      function (el) { keys[mixedKey(el).k] = 1; },
+      function (el) { ATTRS.forEach(function (a) { var v = el.getAttribute(a); if (v && LETTER.test(v)) keys[keyOf(v).k] = 1; }); });
+    return Object.keys(keys);
+  };
+  window.__i18nKey = function (s) { return keyOf(s).k; };
+  // Translate a string from JS (for document.title and similar)
+  window.__t = function (s) { if (!dict) return s; var o = keyOf(s), t = dict[o.k]; return t == null ? s : fill(t, o.nums, o.dates); };
+
+  window.__setLang = function (l) {
+    try { localStorage.setItem('atlas-lang', l); } catch (e) {}
+    var u = new URL(location.href);
+    if (l === 'es') u.searchParams.delete('lang'); else u.searchParams.set('lang', l);
+    location.href = u.toString();
+  };
+
+  if (lang === 'es') return;
+  document.documentElement.classList.add('i18n-wait');
+  var reveal = function () { document.documentElement.classList.remove('i18n-wait'); };
+  setTimeout(reveal, 3000);
+
+  var ready = new Promise(function (r) { if (document.readyState !== 'loading') r(); else document.addEventListener('DOMContentLoaded', r); });
+  var load = fetch('i18n/' + lang + '.json', { cache: 'no-cache' }).then(function (r) { return r.json(); });
+  Promise.all([load, ready]).then(function (res) {
+    dict = res[0] || {};
+    var pending = new Set(), scheduled = false;
+    var mo = new MutationObserver(function (recs) {
+      recs.forEach(function (r) {
+        if (r.type === 'childList') r.addedNodes.forEach(function (n) { pending.add(n.nodeType === 3 ? n.parentNode : n); });
+        else if (r.type === 'characterData') pending.add(r.target.parentNode);
+        else if (r.type === 'attributes') pending.add(r.target);
+      });
+      if (!scheduled) { scheduled = true; queueMicrotask(flush); }
+    });
+    function flush() {
+      scheduled = false;
+      var roots = Array.from(pending); pending.clear();
+      roots.forEach(function (n) { if (n && n.isConnected) translate(n); });
+      mo.takeRecords();
+    }
+    translate(document.body);
+    document.title = window.__t(document.title);
+    mo.observe(document.body, { childList: true, subtree: true, characterData: true, attributes: true, attributeFilter: ATTRS });
+    reveal();
+  }).catch(function (e) { console.warn('[Atlas] idioma', e); reveal(); });
+})();
+</script>
+<style>html.i18n-wait body { opacity: 0; } body { transition: opacity .15s; }</style>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Atlas Político Mundial · 2026 — por Emmanuel Miranda, Martín Paratz y Ernesto Demian Abbott</title>
 <meta name="description" content="Cartografía interactiva del poder mundial en 2026: 197 países, sistemas electorales, ideologías de gobiernos, indicadores socioeconómicos comparados. Por Mg. Emmanuel Miranda, Lic. Martín Paratz y Abg. Ernesto Demian Abbott.">
@@ -10,6 +209,9 @@
 
 <!-- Open Graph / Facebook -->
 <link rel="canonical" href="https://atlaspoliticoelectoral.com/">
+<link rel="alternate" hreflang="es" href="https://atlaspoliticoelectoral.com/">
+<link rel="alternate" hreflang="en" href="https://atlaspoliticoelectoral.com/?lang=en">
+<link rel="alternate" hreflang="pt" href="https://atlaspoliticoelectoral.com/?lang=pt">
 <meta property="og:url" content="https://atlaspoliticoelectoral.com/">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Atlas Político Mundial · 2026">
@@ -6334,6 +6536,21 @@
     .eb-date i { margin: 0 0 0 auto; }
     .eb-top h4 { font-size: 21px; }
   }
+
+  /* ===== Selector de idioma ===== */
+  .lang-switch { display: inline-flex; gap: 2px; border: 1px solid rgba(244,246,250,.3); border-radius: 999px; padding: 2px; margin-left: 14px; vertical-align: middle; }
+  .lang-switch button { border: 0; background: none; color: rgba(244,246,250,.75); font: 600 11px var(--font-sans); letter-spacing: .08em; padding: 4px 9px; border-radius: 999px; cursor: pointer; }
+  .lang-switch button:hover { color: #fff; }
+  .lang-switch button.is-on { background: #F4F6FA; color: var(--brand); }
+  .lang-switch-nav { margin: 0 0 0 auto; align-self: center; border-color: var(--line-strong); flex-shrink: 0; }
+  .lang-switch-nav button { color: var(--muted); }
+  .lang-switch-nav button:hover { color: var(--ink); }
+  .lang-switch-nav button.is-on { background: var(--brand); color: #fff; }
+  .lang-switch-sheet { margin: 0 8px 0 auto; border-color: var(--line-strong); }
+  .lang-switch-sheet button { color: var(--muted); font-size: 13px; padding: 7px 12px; }
+  .lang-switch-sheet button.is-on { background: var(--brand); color: #fff; }
+  .masthead .lang-switch { display: none; }
+  @media (max-width: 760px) { .lang-switch-nav { display: none; } .masthead .lang-switch { display: inline-flex; margin: 8px 0 0; } }
 </style>
 </head>
 <body>
@@ -6446,6 +6663,7 @@
       </div>
       <div class="masthead-meta">
         <span>Por <a href="https://www.linkedin.com/in/emiranda028/" target="_blank" rel="noopener" class="masthead-byline">Mg. Emmanuel Miranda</a>, <a href="https://www.linkedin.com/in/martinparatz/" target="_blank" rel="noopener" class="masthead-byline">Lic. Martín Paratz</a> y <a href="https://www.linkedin.com/in/abbottdemian/" target="_blank" rel="noopener" class="masthead-byline">Abg. Ernesto Demian Abbott</a></span>
+        <div class="lang-switch notranslate" role="group" aria-label="Idioma / Language"><button type="button" data-lang="es" lang="es">ES</button><button type="button" data-lang="en" lang="en">EN</button><button type="button" data-lang="pt" lang="pt">PT</button></div>
       </div>
     </div>
     <div class="masthead-main">
@@ -6524,6 +6742,7 @@
         <span class="topic-nav-num">05</span>
         <span class="topic-nav-text">Metodología</span>
       </a>
+      <div class="lang-switch lang-switch-nav notranslate" role="group" aria-label="Idioma / Language"><button type="button" data-lang="es" lang="es">ES</button><button type="button" data-lang="en" lang="en">EN</button><button type="button" data-lang="pt" lang="pt">PT</button></div>
       <button type="button" class="nav-menu-btn" id="nav-menu-btn" aria-haspopup="dialog" aria-controls="nav-sheet">
         <svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true"><path d="M3 5h14M3 10h14M3 15h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
         <span>Secciones</span>
@@ -6534,7 +6753,7 @@
 <!-- Mobile section sheet: every section, big tap targets -->
 <div class="nav-sheet" id="nav-sheet" role="dialog" aria-modal="true" aria-label="Secciones del atlas" hidden>
   <div class="nav-sheet-panel">
-    <div class="nav-sheet-head"><span>Secciones</span><button type="button" class="nav-sheet-close" id="nav-sheet-close" aria-label="Cerrar">✕</button></div>
+    <div class="nav-sheet-head"><span>Secciones</span><div class="lang-switch lang-switch-sheet notranslate" role="group" aria-label="Idioma / Language"><button type="button" data-lang="es" lang="es">ES</button><button type="button" data-lang="en" lang="en">EN</button><button type="button" data-lang="pt" lang="pt">PT</button></div><button type="button" class="nav-sheet-close" id="nav-sheet-close" aria-label="Cerrar">✕</button></div>
     <div class="nav-sheet-group">Especiales</div>
     <a href="#brasil" data-go="brasil"><b>Brasil 2026</b><span>Elecciones generales del 4 de octubre</span></a>
     <a href="#eeuu" data-go="eeuu"><b>EE.UU. 2026</b><span>Midterms del 3 de noviembre</span></a>
@@ -32053,5 +32272,15 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
   </svg>
   <span class="back-to-top-label">Inicio</span>
 </button>
+<script>
+/* Language switcher buttons */
+(function () {
+  document.querySelectorAll('.lang-switch button').forEach(b => {
+    b.classList.toggle('is-on', b.dataset.lang === (window.ATLAS_LANG || 'es'));
+    b.setAttribute('aria-pressed', b.dataset.lang === (window.ATLAS_LANG || 'es') ? 'true' : 'false');
+    b.addEventListener('click', () => { if (b.dataset.lang !== window.ATLAS_LANG) window.__setLang(b.dataset.lang); });
+  });
+})();
+</script>
 </body>
 </html>
