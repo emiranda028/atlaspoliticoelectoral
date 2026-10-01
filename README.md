@@ -272,3 +272,15 @@ Mejoras planeadas para próximas iteraciones:
 - [ ] Vista alternativa con proyección polar para Antártida sin distorsión Mercator
 
 Si tenés feedback o querés contribuir con datos verificados, abrí un Issue.
+
+## Idiomas (español · English · português)
+
+El sitio se escribe en español. Con el selector **ES · EN · PT** (o `?lang=en` / `?lang=pt` en la URL) cada texto visible se reemplaza por su traducción desde `i18n/en.json` o `i18n/pt.json`, incluido lo que se genera después con JavaScript (fichas, calendario, especiales). La elección se recuerda en el navegador; quien tiene el navegador en portugués entra directo en PT.
+
+- Las claves son las frases en español con los números como `{0}`, `{1}`…, los meses y días como `{M}` / `{D}` y los elementos dentro de una frase (negritas, links, banderas) como `[[0]]`, `[[1]]`…; así una entrada sirve para todas las fechas y cifras.
+- Un texto sin traducción se muestra en español: nada se rompe.
+- Para que algo no se traduzca (nombres propios), se le pone `translate="no"`.
+
+**Cuando cambian textos o datos:**
+1. Serví el sitio (`npx http-server -p 8765 -s .`) y corré `node i18n/harvest.js`: recorre todas las secciones y fichas y deja en `i18n/missing-en.json` / `missing-pt.json` las frases nuevas sin traducir.
+2. Traducí esas frases (respetando `{0}`, `{M}`, `[[0]]`) y agregalas a `i18n/en.json` / `i18n/pt.json`.

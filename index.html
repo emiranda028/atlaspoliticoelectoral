@@ -49,6 +49,12 @@
       list.push({ t: 'm', i: i, short: short, w: w }); return pre + '{M}';
     });
   }
+  function enNum(n) {
+    if (lang !== 'en') return n;
+    if (/^\d+,\d{1,2}$/.test(n)) return n.replace(',', '.');
+    if (/^[1-9]\d{0,2}(\.\d{3})+$/.test(n)) return n.replace(/\./g, ',');
+    return n;
+  }
   function caseLike(src, out) { return src === src.toUpperCase() ? out.toUpperCase() : (src[0] === src[0].toUpperCase() ? out[0].toUpperCase() + out.slice(1) : out); }
   function keyOf(text) {
     var nums = [], dates = [];
@@ -57,7 +63,7 @@
   }
   function fill(t, nums, dates) {
     var o = OUT[lang], q = { m: (dates || []).filter(function (d) { return d.t === 'm'; }), d: (dates || []).filter(function (d) { return d.t === 'd'; }) };
-    t = t.replace(/\{(\d+)\}/g, function (m, i) { return nums[+i] != null ? nums[+i] : m; });
+    t = t.replace(/\{(\d+)\}/g, function (m, i) { return nums[+i] != null ? enNum(nums[+i]) : m; });
     return t.replace(/\{([MD])\}/g, function (m, ty) {
       var d = q[ty.toLowerCase()].shift(); if (!d || !o) return d ? d.w : m;
       var w = d.t === 'd' ? o.d[d.i] : (d.short ? o.m3[d.i] : o.m[d.i]);
@@ -108,6 +114,7 @@
       for (var c = el.lastChild; c; c = c.previousSibling) {
         if (c.nodeType === 1) stack.push(c);
         else if (c.nodeType === 3 && !mixed && LETTER.test(c.nodeValue)) onText(c);
+        else if (c.nodeType === 3 && lang === 'en' && onText === tText && /\d[.,]\d/.test(c.nodeValue)) enNumNode(c);
       }
     }
   }
@@ -119,6 +126,13 @@
     var lead = node.nodeValue.match(/^\s*/)[0], trail = node.nodeValue.match(/\s*$/)[0];
     var v = lead + fill(t, o.nums, o.dates) + trail;
     node.nodeValue = v; done.set(node, v);
+  }
+  // Number-only text in English: 158.745.463 → 158,745,463 · 158,7 → 158.7
+  function enNumNode(node) {
+    if (done.get(node) === node.nodeValue) return;
+    var v = node.nodeValue.replace(NUM, enNum);
+    if (v !== node.nodeValue) node.nodeValue = v;
+    done.set(node, v);
   }
   function tMixed(el) {
     // already rebuilt and untouched since?
@@ -6662,7 +6676,7 @@
         <span id="meta-count">— países en base</span>
       </div>
       <div class="masthead-meta">
-        <span>Por <a href="https://www.linkedin.com/in/emiranda028/" target="_blank" rel="noopener" class="masthead-byline">Mg. Emmanuel Miranda</a>, <a href="https://www.linkedin.com/in/martinparatz/" target="_blank" rel="noopener" class="masthead-byline">Lic. Martín Paratz</a> y <a href="https://www.linkedin.com/in/abbottdemian/" target="_blank" rel="noopener" class="masthead-byline">Abg. Ernesto Demian Abbott</a></span>
+        <span>Por <a translate="no" href="https://www.linkedin.com/in/emiranda028/" target="_blank" rel="noopener" class="masthead-byline">Mg. Emmanuel Miranda</a>, <a translate="no" href="https://www.linkedin.com/in/martinparatz/" target="_blank" rel="noopener" class="masthead-byline">Lic. Martín Paratz</a> y <a translate="no" href="https://www.linkedin.com/in/abbottdemian/" target="_blank" rel="noopener" class="masthead-byline">Abg. Ernesto Demian Abbott</a></span>
         <div class="lang-switch notranslate" role="group" aria-label="Idioma / Language"><button type="button" data-lang="es" lang="es">ES</button><button type="button" data-lang="en" lang="en">EN</button><button type="button" data-lang="pt" lang="pt">PT</button></div>
       </div>
     </div>
@@ -7571,9 +7585,9 @@
         Curaduría de datos, decisiones editoriales y diseño analítico: de los autores.
         Versión web — Mayo 2026.</p>
       <p class="footer-credit-links">
-        <a href="https://www.linkedin.com/in/emiranda028/" target="_blank" rel="noopener">↗ LinkedIn — Emmanuel Miranda</a><br>
-        <a href="https://www.linkedin.com/in/martinparatz/" target="_blank" rel="noopener">↗ LinkedIn — Martín Paratz</a><br>
-        <a href="https://www.linkedin.com/in/abbottdemian/" target="_blank" rel="noopener">↗ LinkedIn — Ernesto Demian Abbott</a>
+        <a translate="no" href="https://www.linkedin.com/in/emiranda028/" target="_blank" rel="noopener">↗ LinkedIn — Emmanuel Miranda</a><br>
+        <a translate="no" href="https://www.linkedin.com/in/martinparatz/" target="_blank" rel="noopener">↗ LinkedIn — Martín Paratz</a><br>
+        <a translate="no" href="https://www.linkedin.com/in/abbottdemian/" target="_blank" rel="noopener">↗ LinkedIn — Ernesto Demian Abbott</a>
       </p>
     </div>
     <div class="footer-credit-block">
@@ -7631,7 +7645,7 @@
         históricos: IDH, Gini, salarios, pobreza, deuda pública, libertad de prensa, evolución del PBI 2020-2025,
         composición legislativa, resultados electorales detallados) está disponible bajo demanda para
         proyectos académicos, periodísticos o de investigación.
-        <a href="https://www.linkedin.com/in/emiranda028/" target="_blank" rel="noopener">Contactanos por LinkedIn</a>
+        <a translate="no" href="https://www.linkedin.com/in/emiranda028/" target="_blank" rel="noopener">Contactanos por LinkedIn</a>
         comentando tu uso previsto.</p>
     </div>
   </div>

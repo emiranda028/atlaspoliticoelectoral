@@ -61,6 +61,7 @@ const ROOT = path.join(__dirname, '..');
     await grab('#panel-detail'); await grab('#i18n-scratch');
   }
   await p.evaluate(() => { showMapQuick(null, 'x'); }); await grab('#map-quick');
+  await p.evaluate(() => { openFicha(state.countryByISO.BRA); }); await grab('#ficha-modal'); await p.evaluate(() => closeFicha());
   await p.evaluate(() => { renderEmptyDetail(); }); await grab('#panel-detail');
   await p.evaluate(() => { document.getElementById('nav-sheet').hidden = false; }); await grab('#nav-sheet');
   keys.add(await p.evaluate(() => window.__i18nKey(document.title)));
