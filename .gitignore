@@ -20,3 +20,4 @@ build/
 # Local dev
 .env
 .env.local
+i18n/missing-*.json
