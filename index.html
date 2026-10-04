@@ -31204,7 +31204,7 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
   const BR_PARTY_LEAN = {
     PT: 'center-left', PCdoB: 'left', PSOL: 'left', Rede: 'left', PV: 'center-left', PSB: 'center-left', PDT: 'center-left', UP: 'left', PSTU: 'left', PCB: 'left', PCO: 'left',
     MDB: 'center', Cidadania: 'center', Avante: 'center', Solidariedade: 'center', Mobiliza: 'center', PMB: 'center',
-    PSD: 'center-right', 'União': 'center-right', Podemos: 'center-right', PSDB: 'center-right',
+    PSD: 'center-right', 'União': 'center-right', Podemos: 'center-right', PODE: 'center-right', PSDB: 'center-right', UNIÃO: 'center-right', REPUBLICANOS: 'right', NOVO: 'right', CIDADANIA: 'center', AVANTE: 'center', SOLIDARIEDADE: 'center', REDE: 'left',
     PP: 'right', Republicanos: 'right', Novo: 'right', PRD: 'right', 'Missão': 'right', Agir: 'right', DC: 'right',
     PL: 'far-right', PRTB: 'far-right',
   };
@@ -31248,7 +31248,7 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
       const r = st[loc.id] && st[loc.id][kind];
       const lead = r && r.cands && r.cands[0];
       const fill = lead && r.pct > 0 ? (kind === 'pres' ? candColor(lead) : partyColor(lead.party)) : 'var(--c-unknown)';
-      const op = r && r.pct ? Math.max(0.45, Math.min(1, 0.45 + r.pct / 180)) : 1;
+      const op = small ? 1 : r && r.pct ? Math.max(0.45, Math.min(1, 0.45 + r.pct / 180)) : 1;
       const tip = lead ? `${loc.name}: ${titleCase(lead.name)} (${lead.party}) ${fmtPct(lead.pct)} · ${fmtPct(r.pct, 0)} escrutado` : loc.name;
       return `<path d="${loc.path}" data-uf="${loc.id}" style="fill:${fill};fill-opacity:${op.toFixed(2)}"><title>${esc(tip)}</title></path>`;
     }).join('');
@@ -31297,10 +31297,10 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
         <div class="nt-head"><h4>El Legislativo: cómo quedaría el Congreso</h4></div>
         <div class="chambers-grid">
           ${chamberParties.length ? chamberCard({ name: 'Cámara de Diputados', total: 513, term: 'Legislatura 2027–2031', parties: chamberParties,
-              asOf: R.updatedAt ? new Date(R.updatedAt).toLocaleTimeString('es-AR', { hour: '2-digit', minute: '2-digit' }) + ' h' : '—',
+              asOf: R.updatedAt ? new Date(R.updatedAt).toLocaleTimeString('es-AR', { hour: '2-digit', minute: '2-digit', hour12: false }) + ' h' : '—',
               note: anyProj ? `Proyección del Atlas con el conteo parcial (${rep} de 27 estados): cociente electoral y D'Hondt por estado, federaciones como una sola lista. Cambia hasta el final del escrutinio.` : 'Electos según el TSE.' }, 12) : ''}
           ${senParties.length ? chamberCard({ name: 'Senado · las 54 bancas en juego', total: 54, term: '2 por estado · mandato 2027–2035', parties: senParties,
-              asOf: R.updatedAt ? new Date(R.updatedAt).toLocaleTimeString('es-AR', { hour: '2-digit', minute: '2-digit' }) + ' h' : '—',
+              asOf: R.updatedAt ? new Date(R.updatedAt).toLocaleTimeString('es-AR', { hour: '2-digit', minute: '2-digit', hour12: false }) + ' h' : '—',
               note: 'Los dos más votados de cada estado. Las otras 27 bancas siguen hasta 2031.' }, 4) : ''}
         </div>
       </div>

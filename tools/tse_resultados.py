@@ -22,7 +22,7 @@ UFS = ['AC','AL','AM','AP','BA','CE','DF','ES','GO','MA','MG','MS','MT','PA','PB
 SEATS = {'SP':70,'MG':53,'RJ':46,'BA':39,'RS':31,'PR':30,'PE':25,'CE':22,'MA':18,'GO':17,'PA':17,'SC':16,'PB':12,'ES':10,'PI':10,'AL':9,
          'AC':8,'AM':8,'AP':8,'DF':8,'MS':8,'MT':8,'RN':8,'RO':8,'RR':8,'SE':8,'TO':8}
 # Party numbers (first two digits of every candidate number)
-PARTY = {'10':'Republicanos','11':'PP','12':'PDT','13':'PT','15':'MDB','16':'PSTU','18':'Rede','19':'Podemos','21':'PCB','22':'PL',
+PARTY = {'10':'Republicanos','11':'PP','12':'PDT','13':'PT','15':'MDB','16':'PSTU','18':'Rede','19':'Podemos','20':'Podemos','21':'PCB','22':'PL',
          '23':'Cidadania','25':'PRD','27':'DC','28':'PRTB','29':'PCO','30':'Novo','33':'Mobiliza','35':'PMB','36':'Agir','40':'PSB',
          '43':'PV','44':'União','45':'PSDB','50':'PSOL','55':'PSD','65':'PCdoB','70':'Avante','77':'Solidariedade','80':'UP','14':'Missão'}
 # Federations: one list for seat allocation
