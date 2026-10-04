@@ -31218,7 +31218,7 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
 
   function brResHasData() {
     const r = live.brRes;
-    return !!(r && r.president && r.president.cands && r.president.cands.length);
+    return !!(r && r.president && r.president.pct > 0 && r.president.cands && r.president.cands.length);
   }
   // National result from the summary file → br.results.round<n> (unless the
   // direct TSE fetch already filled it with fresher numbers)
