@@ -109,7 +109,13 @@ def simple(j, top=None):
                       'votes': int(votes) if votes is not None else None, 'pct': num(c.get('pvap')),
                       'e': str(c.get('e', '')).lower() == 's', 'st': c.get('st') or ''})
     cands.sort(key=lambda c: -(c['votes'] or 0))
-    return {'pct': counted(j), 'tse': ' '.join(x for x in [j.get('dg'), j.get('hg')] if x),
+    e, v = j.get('e') if isinstance(j.get('e'), dict) else {}, j.get('v') if isinstance(j.get('v'), dict) else {}
+    turnout = None
+    if e.get('pc') or e.get('c'):
+        turnout = {'pct': num(e.get('pc')), 'voters': int(num(e.get('c')) or 0), 'electorate': int(num(e.get('te')) or 0),
+                   'abstPct': num(e.get('pa')),
+                   'blank': int(num(v.get('vb')) or 0), 'null': int(num(v.get('vn')) or 0), 'valid': int(num(v.get('vv')) or 0), 'total': int(num(v.get('tv')) or 0)}
+    return {'turnout': turnout, 'pct': counted(j), 'tse': ' '.join(x for x in [j.get('dg'), j.get('hg')] if x),
             'cands': cands[:top] if top else cands}
 
 def majoritarian_status(r, seats):

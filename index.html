@@ -6674,6 +6674,21 @@
   @media (max-width: 1100px) { .nh-congress { grid-template-columns: 1fr; } }
   @media (max-width: 860px) { .nh-grid { grid-template-columns: 1fr; } .nh-congress .chambers-grid { grid-template-columns: 1fr; } }
   @media (max-width: 760px) { .nh-head { padding: 16px; } .nh-card { padding: 14px; } .nh-diff-head, .nh-diff-row { grid-template-columns: 80px 1fr auto; } }
+
+  .turnout { border-radius: 12px; padding: 12px 14px; margin-top: 12px; }
+  .turnout-light { background: var(--bg); border: 1px solid var(--line); }
+  .turnout-dark { background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.18); color: #F4F6FA; }
+  .turnout-main { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; }
+  .turnout-k { font: 700 11px var(--font-sans); letter-spacing: .1em; text-transform: uppercase; opacity: .8; }
+  .turnout-main b { font-family: var(--font-serif); font-size: 26px; }
+  .turnout-cmp { font-size: 12.5px; opacity: .75; }
+  .turnout-track { height: 8px; border-radius: 4px; background: var(--line); margin: 8px 0; overflow: hidden; }
+  .turnout-dark .turnout-track { background: rgba(255,255,255,.15); }
+  .turnout-track div { height: 100%; background: #0E7A4F; border-radius: 4px; }
+  .turnout-dark .turnout-track div { background: #F2C200; }
+  .turnout-facts { display: flex; flex-wrap: wrap; gap: 4px 14px; font-size: 13px; }
+  .turnout-facts b { font-family: var(--font-mono); }
+  .turnout-note { font-size: 11.5px; opacity: .6; margin-top: 4px; }
 </style>
 </head>
 <body>
@@ -30984,6 +30999,7 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
     if (metric === 'voters') return s.voters;
     if (metric === 'deputies') return s.fedDeputies;
     if (metric === 'perSeat') return s.voters && s.fedDeputies ? s.voters / s.fedDeputies : null;
+    if (metric === 'turnRes') { const r = live.brRes && live.brRes.states && live.brRes.states[s.uf] && live.brRes.states[s.uf].pres; return r && r.pct > 0 && r.turnout ? r.turnout.pct : null; }
     if (BR_METRICS[metric] && BR_METRICS[metric].result) { const l = brLead(s.uf, BR_METRICS[metric].result); return l ? l.c.pct : null; }
     return null;
   }
@@ -30991,6 +31007,7 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
     voters:   { label: 'Electores', fmt: v => fmtInt(v), short: v => v >= 1e6 ? fmtM(v) : Math.round(v / 1000) + ' mil' },
     deputies: { label: 'Diputados federales', fmt: v => fmtInt(v), short: v => fmtInt(v) },
     perSeat:  { label: 'Electores por banca', fmt: v => fmtInt(v), short: v => Math.round(v / 1000) + ' mil' },
+    turnRes:  { label: 'Participación', live: true, fmt: v => fmtPct(v), short: v => fmtPct(v) },
     presRes:  { label: 'Resultado · Presidente', result: 'pres', fmt: v => fmtPct(v), short: v => fmtPct(v) },
     govRes:   { label: 'Resultado · Gobernador', result: 'gov', fmt: v => fmtPct(v), short: v => fmtPct(v) },
   };
@@ -31104,7 +31121,7 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
     const projSlot = document.getElementById('br-proj-slot');
     if (projSlot) projSlot.innerHTML = BR_METRICS[metric].result === 'pres' ? projectionHTML('light') : '';
     renderUFRank();
-    if (BR_METRICS[metric].result) { const ins = document.getElementById('br-map-insight'); if (ins) ins.hidden = true; } else renderMapInsight();
+    if (BR_METRICS[metric].result || BR_METRICS[metric].live) { const ins = document.getElementById('br-map-insight'); if (ins) ins.hidden = true; } else renderMapInsight();
   }
 
   function renderUFRank() {
@@ -31169,7 +31186,8 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
         <div class="uf-res-row"><span>${esc(titleCase(c.name))} <small>${esc(c.party)}</small></span><b>${fmtPct(c.pct)}</b>
         <div class="uf-res-track"><div style="width:${Math.min(c.pct || 0, 100)}%;background:${kind === 'pres' ? candColor(c) : partyColor(c.party)}"></div></div></div>`).join('')}</div>`;
     };
-    const results = resLine('pres', 'Presidente') + resLine('gov', s.uf === 'DF' ? 'Gobernador del DF' : 'Gobernador');
+    const pl = brLead(s.uf, 'pres');
+    const results = resLine('pres', 'Presidente') + resLine('gov', s.uf === 'DF' ? 'Gobernador del DF' : 'Gobernador') + (pl && pl.r.turnout ? turnoutHTML(pl.r.turnout, 'light') : '');
     el.innerHTML = `${results ? `<div class="uf-card-head"><span class="uf-card-name">${esc(s.name)}</span><span class="uf-card-uf">${s.uf}</span></div>${results}<hr class="uf-res-sep">` : ''}
       <div class="uf-card-head"${results ? ' hidden' : ''}><span class="uf-card-name">${esc(s.name)}</span><span class="uf-card-uf">${s.uf}</span></div>
       <div class="uf-card-region">Región ${esc(s.region || '')}${s.capital ? ' · capital: ' + esc(s.capital) : ''}</div>
@@ -31373,6 +31391,23 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
     </div>`;
   }
 
+
+  // Turnout (TSE "e"/"v" blocks): share of the electorate in the counted
+  // sections that voted, plus blank and null votes
+  const BR_TURNOUT_2022 = 79.05; // 1.ª vuelta 2022 (TSE)
+  function turnoutHTML(t, mode) {
+    if (!t || t.pct == null) return '';
+    const bl = t.total ? t.blank / t.total * 100 : null, nu = t.total ? t.null / t.total * 100 : null;
+    const d = t.pct - BR_TURNOUT_2022;
+    return `<div class="turnout turnout-${mode}">
+      <div class="turnout-main"><span class="turnout-k">Participación</span><b>${fmtPct(t.pct, 2)}</b>
+        <span class="turnout-cmp">${d >= 0 ? '▲' : '▼'} ${fmtPct(Math.abs(d), 1).replace('%', '')} pts vs. 2022 (${fmtPct(BR_TURNOUT_2022, 2)})</span></div>
+      <div class="turnout-track"><div style="width:${Math.min(t.pct, 100)}%"></div></div>
+      <div class="turnout-facts">${t.voters ? `<span><b>${fmtM(t.voters)}</b> votaron</span>` : ''}${t.abstPct != null ? `<span>Abstención <b>${fmtPct(t.abstPct, 1)}</b></span>` : ''}${bl != null ? `<span>Blancos <b>${fmtPct(bl, 1)}</b></span>` : ''}${nu != null ? `<span>Nulos <b>${fmtPct(nu, 1)}</b></span>` : ''}</div>
+      <div class="turnout-note">Sobre las secciones ya escrutadas.</div>
+    </div>`;
+  }
+
   function brNightMapSVG(kind, small) {
     if (!live.geo || !live.brRes) return '';
     const st = live.brRes.states || {};
@@ -31551,8 +31586,9 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
           ${cands.map(c => `<div class="pbar"><div class="pbar-top"><span>${esc(c.name)} <small>${esc(c.party || '')}</small>${c.elected ? ' <em class="nh-won">ELECTO</em>' : ''}</span><b>${fmtPct(c.pct, 2)}</b></div>
             <div class="pbar-track"><div class="pbar-fill" style="width:${Math.min(c.pct || 0, 100)}%;background:${BR_CAND_COLOR[c.n] || leanColor(c.lean)}"></div></div></div>`).join('')}
           ${round === 1 ? projectionHTML('light') : ''}
+          ${turnoutHTML(R.president && R.president.turnout, 'light')}
           <div class="nh-mini">
-            <span><b>${gEl}</b> gobernadores electos</span><span><b>${gRo}</b> estados van a 2.ª vuelta</span><span><b>${27 - gEl - gRo}</b> en escrutinio</span>
+            <span><b>${gEl}</b> ${gEl === 1 ? 'gobernador electo' : 'gobernadores electos'}</span><span><b>${gRo}</b> ${gRo === 1 ? 'estado va' : 'estados van'} a 2.ª vuelta</span><span><b>${27 - gEl - gRo}</b> en escrutinio</span>
           </div>
         </div>
         <div class="nh-card nh-map">
@@ -31606,6 +31642,7 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
         <div class="pbar-track"><div class="pbar-fill" style="width:${Math.min(c.pct || 0, 100)}%;background:${BR_CAND_COLOR[c.n] || leanColor(c.lean || (candByKey(c.id || '').lean))}"></div></div></div>`).join('')}
       <div class="results-progress-lbl" style="margin-top:14px">% de votos válidos · Fuente: ${esc(data.source || 'TSE')}</div>
       ${round === 1 ? projectionHTML('dark') : ''}
+      ${turnoutHTML(live.brRes && live.brRes.president && live.brRes.president.turnout, 'dark')}
     </div>`;
   }
 
@@ -31635,7 +31672,7 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
     }
     const ph = brasilPhase(br);
     if (brResHasData() && !live.brMetricTouched) live.brMetric = 'presRes';
-    if (!brResHasData() && BR_METRICS[live.brMetric].result) live.brMetric = 'voters';
+    if (!brResHasData() && (BR_METRICS[live.brMetric].result || BR_METRICS[live.brMetric].live)) live.brMetric = 'voters';
     const d1 = new Date(br.dates.firstRoundOpen), d2 = new Date(br.dates.runoffOpen), di = new Date(br.dates.inauguration);
     const chamber = br.chamber, senate = br.senate;
     const senateUp = senate && senate.seatsUp;
@@ -31697,7 +31734,7 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
         <div class="br-map-wrap">
           <div class="br-map-card">
             <div class="seg" id="br-metric" role="tablist">
-              ${Object.entries(BR_METRICS).filter(([k, m]) => !m.result || brResHasData()).map(([k, m]) => `<button type="button" data-metric="${k}" class="${live.brMetric === k ? 'is-active' : ''}${m.result ? ' is-result' : ''}">${m.label}</button>`).join('')}
+              ${Object.entries(BR_METRICS).filter(([k, m]) => !(m.result || m.live) || brResHasData()).map(([k, m]) => `<button type="button" data-metric="${k}" class="${live.brMetric === k ? 'is-active' : ''}${m.result ? ' is-result' : ''}">${m.label}</button>`).join('')}
             </div>
             <div id="br-proj-slot">${BR_METRICS[live.brMetric].result === 'pres' ? projectionHTML('light') : ''}</div>
             <div id="br-map" style="position:relative"><div class="esp-loading">Cargando mapa…</div></div>
@@ -32543,7 +32580,7 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
     renderPortada();
     const brChanged = live.brasil && JSON.stringify(live.brasil) + JSON.stringify(live.brRes || {}) !== prevBr;
     if (isViewActive('brasil')) {
-      if (brChanged && prevBr && (!brResHasData() || document.querySelector('#br-metric .is-result'))) { renderResults(); renderNight(); renderPollBox(); renderBrCalendar(); if (BR_METRICS[live.brMetric].result) { renderBrMap(); renderUFCard(); } }
+      if (brChanged && prevBr && (!brResHasData() || document.querySelector('#br-metric .is-result'))) { renderResults(); renderNight(); renderPollBox(); renderBrCalendar(); if (BR_METRICS[live.brMetric].result || BR_METRICS[live.brMetric].live) { renderBrMap(); renderUFCard(); } }
       else if (brChanged || !document.querySelector('#esp-brasil .esp-hero')) renderBrasil();
       renderBrUpdated();
     }
