@@ -6601,6 +6601,22 @@
     .nt-block { padding: 16px 14px; }
     .nt-govs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   }
+
+  .br-map-svg .br-label-pct { font-size: 11px; font-weight: 700; }
+  .uf-rank-val { white-space: nowrap; }
+  #br-metric button.is-result { font-weight: 700; }
+  #br-metric button.is-result.is-active { background: var(--br-green, #0B6E3A); }
+  .nt-legend-row { flex-direction: row; flex-wrap: wrap; gap: 6px 16px; }
+  .nt-legend-row span b { margin-left: 4px; }
+  .uf-res { margin: 10px 0 4px; }
+  .uf-res-title { font: 700 12px var(--font-sans); letter-spacing: .07em; text-transform: uppercase; color: var(--ink); margin-bottom: 6px; }
+  .uf-res-title small { font-weight: 500; letter-spacing: 0; text-transform: none; color: var(--muted); margin-left: 6px; }
+  .uf-res-row { display: grid; grid-template-columns: 1fr auto; gap: 2px 8px; font-size: 14px; margin-bottom: 6px; }
+  .uf-res-row small { color: var(--muted); }
+  .uf-res-row b { font-family: var(--font-mono); }
+  .uf-res-track { grid-column: 1 / -1; height: 7px; background: var(--line); border-radius: 4px; overflow: hidden; }
+  .uf-res-track div { height: 100%; border-radius: 4px; }
+  .uf-res-sep { border: 0; border-top: 1px solid var(--line); margin: 12px 0; }
 </style>
 </head>
 <body>
@@ -30909,13 +30925,21 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
     if (metric === 'voters') return s.voters;
     if (metric === 'deputies') return s.fedDeputies;
     if (metric === 'perSeat') return s.voters && s.fedDeputies ? s.voters / s.fedDeputies : null;
+    if (BR_METRICS[metric] && BR_METRICS[metric].result) { const l = brLead(s.uf, BR_METRICS[metric].result); return l ? l.c.pct : null; }
     return null;
   }
   const BR_METRICS = {
     voters:   { label: 'Electores', fmt: v => fmtInt(v), short: v => v >= 1e6 ? fmtM(v) : Math.round(v / 1000) + ' mil' },
     deputies: { label: 'Diputados federales', fmt: v => fmtInt(v), short: v => fmtInt(v) },
     perSeat:  { label: 'Electores por banca', fmt: v => fmtInt(v), short: v => Math.round(v / 1000) + ' mil' },
+    presRes:  { label: 'Resultado · Presidente', result: 'pres', fmt: v => fmtPct(v), short: v => fmtPct(v) },
+    govRes:   { label: 'Resultado · Gobernador', result: 'gov', fmt: v => fmtPct(v), short: v => fmtPct(v) },
   };
+  // Leader of a state in the live results (president or governor race)
+  function brLead(uf, kind) {
+    const r = live.brRes && live.brRes.states && live.brRes.states[uf] && live.brRes.states[uf][kind];
+    return r && r.pct > 0 && r.cands && r.cands.length ? { r, c: r.cands[0], c2: r.cands[1] } : null;
+  }
   // State legislature size follows the Constitution (art. 27): 3× the federal
   // deputies up to 36, then +1 per federal deputy above 12. DF has 24.
   function stateDeputies(s) {
@@ -30951,8 +30975,11 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
     const paths = live.geo.locations.map(loc => {
       const s = byUF[loc.id];
       const v = s ? brMetricValue(s, metric) : null;
+      const kind = BR_METRICS[metric].result;
+      const lead = kind ? brLead(loc.id, kind) : null;
+      const fill = kind ? (lead ? (kind === 'pres' ? candColor(lead.c) : partyColor(lead.c.party)) : 'var(--c-unknown)') : colorFor(v, breaks);
       return `<path d="${loc.path}" data-uf="${loc.id}" tabindex="0" role="button" aria-label="${esc(loc.name)}"
-        style="fill:${colorFor(v, breaks)}" class="${live.brSelected === loc.id ? 'is-selected' : ''}"></path>`;
+        style="fill:${fill}" class="${live.brSelected === loc.id ? 'is-selected' : ''}"></path>`;
     }).join('');
     host.innerHTML = `<svg class="br-map-svg" viewBox="${live.geo.viewBox}" role="img" aria-label="Mapa de Brasil por estado: ${esc(BR_METRICS[metric].label)}">${paths}<g class="br-labels"></g></svg>
       <div class="br-tooltip" id="br-tooltip"></div>`;
@@ -30967,11 +30994,14 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
       const uf = p.getAttribute('data-uf');
       const s = byUF[uf];
       const v = s ? brMetricValue(s, metric) : null;
-      const dark = v != null && breaks.filter(b => v >= b).length >= 3;
+      const isRes = !!BR_METRICS[metric].result;
+      const dark = isRes ? v != null : v != null && breaks.filter(b => v >= b).length >= 3;
       const cx = bb.x + bb.width / 2 + (uf === 'PE' ? 20 : uf === 'RJ' ? 6 : 0);
       const cy = bb.y + bb.height / 2 + (uf === 'GO' ? 18 : uf === 'PA' ? 10 : 0);
+      const big = bb.width >= 40 && bb.height >= 34;
       g.insertAdjacentHTML('beforeend',
-        `<text x="${cx}" y="${cy}" text-anchor="middle" dominant-baseline="middle" style="fill:${dark ? '#fff' : '#0B1628'};stroke:${dark ? 'rgba(0,0,0,.25)' : 'rgba(255,255,255,.6)'}">${uf}</text>`);
+        `<text x="${cx}" y="${isRes && big ? cy - 7 : cy}" text-anchor="middle" dominant-baseline="middle" style="fill:${dark ? '#fff' : '#0B1628'};stroke:${dark ? 'rgba(0,0,0,.25)' : 'rgba(255,255,255,.6)'}">${uf}</text>`
+        + (isRes && big && v != null ? `<text class="br-label-pct" x="${cx}" y="${cy + 9}" text-anchor="middle" dominant-baseline="middle" style="fill:#fff;stroke:rgba(0,0,0,.3)">${Math.round(v)}%</text>` : ''));
     });
 
     const tip = host.querySelector('#br-tooltip');
@@ -30979,7 +31009,10 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
       const s = byUF[uf];
       if (!s) return;
       const rect = host.getBoundingClientRect();
-      tip.innerHTML = `<strong>${esc(s.name)}</strong>${esc(BR_METRICS[metric].label)}: ${BR_METRICS[metric].fmt(brMetricValue(s, metric))}`;
+      const kind = BR_METRICS[metric].result, l = kind ? brLead(uf, kind) : null;
+      tip.innerHTML = kind
+        ? `<strong>${esc(s.name)}</strong>${l ? `${esc(titleCase(l.c.name))} (${esc(l.c.party)}) ${fmtPct(l.c.pct)}${l.c2 ? `<br>${esc(titleCase(l.c2.name))} (${esc(l.c2.party)}) ${fmtPct(l.c2.pct)}` : ''}<br>${fmtPct(l.r.pct, 1)} escrutado` : 'Sin datos todavía'}`
+        : `<strong>${esc(s.name)}</strong>${esc(BR_METRICS[metric].label)}: ${BR_METRICS[metric].fmt(brMetricValue(s, metric))}`;
       tip.style.left = (ev.clientX - rect.left) + 'px';
       tip.style.top = (ev.clientY - rect.top) + 'px';
       tip.classList.add('is-visible');
@@ -31000,14 +31033,16 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
 
     // Legend
     const legend = document.getElementById('br-legend');
-    if (legend) {
+    if (legend && BR_METRICS[metric].result) {
+      legend.innerHTML = `<div class="nt-legend nt-legend-row">${brNightLegend(BR_METRICS[metric].result)}</div>`;
+    } else if (legend) {
       const f = BR_METRICS[metric].short;
       legend.innerHTML = `<span>${esc(BR_METRICS[metric].label)}:</span>
         <div><div class="br-legend-scale">${GREENS.map(c => `<span style="background:${c}"></span>`).join('')}</div>
         <div class="br-legend-ticks"><span>${f(minV)}</span><span>${f(maxV)}</span></div></div>`;
     }
     renderUFRank();
-    renderMapInsight();
+    if (BR_METRICS[metric].result) { const ins = document.getElementById('br-map-insight'); if (ins) ins.hidden = true; } else renderMapInsight();
   }
 
   function renderUFRank() {
@@ -31016,12 +31051,12 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
     const metric = live.brMetric;
     const rows = brStates().map(s => ({ s, v: brMetricValue(s, metric) })).filter(r => r.v != null).sort((a, b) => b.v - a.v);
     const max = rows.length ? rows[0].v : 1;
-    el.innerHTML = `<div class="uf-rank-title">Ranking · ${esc(BR_METRICS[metric].label)}</div>
+    el.innerHTML = `<div class="uf-rank-title">${BR_METRICS[metric].result ? 'Quién lidera y con cuánto · ' + esc(BR_METRICS[metric].label.replace('Resultado · ', '')) : 'Ranking · ' + esc(BR_METRICS[metric].label)}</div>
       <div class="uf-rank-list">${rows.map(r => `
         <button type="button" class="uf-rank-row ${live.brSelected === r.s.uf ? 'is-selected' : ''}" data-uf="${r.s.uf}" title="${esc(r.s.name)}">
           <span class="uf-rank-uf">${r.s.uf}</span>
-          <span class="uf-rank-bar"><span class="uf-rank-bar-fill" style="display:block;width:${(r.v / max * 100).toFixed(1)}%"></span></span>
-          <span class="uf-rank-val">${BR_METRICS[metric].short(r.v)}</span>
+          <span class="uf-rank-bar"><span class="uf-rank-bar-fill" style="display:block;width:${(r.v / max * 100).toFixed(1)}%${BR_METRICS[metric].result ? ';background:' + (l => l ? (BR_METRICS[metric].result === 'pres' ? candColor(l.c) : partyColor(l.c.party)) : '')(brLead(r.s.uf, BR_METRICS[metric].result)) : ''}"></span></span>
+          <span class="uf-rank-val">${BR_METRICS[metric].result ? (l => l ? esc(titleCase(l.c.name).split(' ').slice(-1)[0]) + ' ' : '')(brLead(r.s.uf, BR_METRICS[metric].result)) : ''}${BR_METRICS[metric].short(r.v)}</span>
         </button>`).join('')}</div>`;
     el.querySelectorAll('.uf-rank-row').forEach(b => b.addEventListener('click', () => selectUF(b.getAttribute('data-uf'))));
   }
@@ -31064,8 +31099,17 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
     const gov = s.governor
       ? `<div class="uf-gov">Gobierno actual: <b>${esc(s.governor.name)}</b>${s.governor.party ? ` (${esc(s.governor.party)})` : ''}${s.governor.note ? ` · ${esc(s.governor.note)}` : ''}</div>`
       : '';
-    el.innerHTML = `
-      <div class="uf-card-head"><span class="uf-card-name">${esc(s.name)}</span><span class="uf-card-uf">${s.uf}</span></div>
+    const resLine = (kind, label) => {
+      const l = brLead(s.uf, kind);
+      if (!l) return '';
+      const cs = l.r.cands.slice(0, 3);
+      return `<div class="uf-res"><div class="uf-res-title">${label} <small>${fmtPct(l.r.pct, 1)} escrutado</small></div>${cs.map(c => `
+        <div class="uf-res-row"><span>${esc(titleCase(c.name))} <small>${esc(c.party)}</small></span><b>${fmtPct(c.pct)}</b>
+        <div class="uf-res-track"><div style="width:${Math.min(c.pct || 0, 100)}%;background:${kind === 'pres' ? candColor(c) : partyColor(c.party)}"></div></div></div>`).join('')}</div>`;
+    };
+    const results = resLine('pres', 'Presidente') + resLine('gov', s.uf === 'DF' ? 'Gobernador del DF' : 'Gobernador');
+    el.innerHTML = `${results ? `<div class="uf-card-head"><span class="uf-card-name">${esc(s.name)}</span><span class="uf-card-uf">${s.uf}</span></div>${results}<hr class="uf-res-sep">` : ''}
+      <div class="uf-card-head"${results ? ' hidden' : ''}><span class="uf-card-name">${esc(s.name)}</span><span class="uf-card-uf">${s.uf}</span></div>
       <div class="uf-card-region">Región ${esc(s.region || '')}${s.capital ? ' · capital: ' + esc(s.capital) : ''}</div>
       <div class="uf-stats">
         <div class="uf-stat"><div class="uf-stat-v">${fmtInt(s.voters)}</div><div class="uf-stat-l">electores</div></div>
@@ -31284,6 +31328,15 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
           <div class="nt-legend">${brNightLegend(live.brNightMap)}<p class="muted">Color del candidato (o del partido) que va primero en cada estado; más claro = menos votos contados. Pasá el mouse para ver el detalle.</p></div></div>
       </div>
       <div class="nt-block">
+        <div class="nt-head"><h4>Presidente: quién gana en cada estado</h4></div>
+        <div class="nt-govs">${Object.keys(st).sort().map(uf => ({ uf, l: brLead(uf, 'pres') })).filter(x => x.l).map(x => {
+          const c = x.l.c, c2 = x.l.c2;
+          return `<div class="nt-gov" style="--c:${candColor(c)}"><div class="nt-gov-top"><b>${x.uf}</b><span class="nt-badge">${fmtPct(x.l.r.pct, 0)} escrutado</span></div>
+            <div class="nt-gov-name">${esc(titleCase(c.name))} <small>${esc(c.party)}</small></div>
+            <div class="nt-gov-pct">${fmtPct(c.pct)}${c2 ? ` <small>· ${esc(titleCase(c2.name))} ${fmtPct(c2.pct)}</small>` : ''}</div></div>`;
+        }).join('')}</div>
+      </div>
+      <div class="nt-block">
         <div class="nt-head"><h4>El Ejecutivo: los 27 gobernadores</h4></div>
         <div class="nt-govs">${govs.map(x => {
           const c = x.g.cands[0], c2 = x.g.cands[1];
@@ -31387,6 +31440,8 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
       return;
     }
     const ph = brasilPhase(br);
+    if (brResHasData() && !live.brMetricTouched) live.brMetric = 'presRes';
+    if (!brResHasData() && BR_METRICS[live.brMetric].result) live.brMetric = 'voters';
     const d1 = new Date(br.dates.firstRoundOpen), d2 = new Date(br.dates.runoffOpen), di = new Date(br.dates.inauguration);
     const chamber = br.chamber, senate = br.senate;
     const senateUp = senate && senate.seatsUp;
@@ -31448,7 +31503,7 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
         <div class="br-map-wrap">
           <div class="br-map-card">
             <div class="seg" id="br-metric" role="tablist">
-              ${Object.entries(BR_METRICS).map(([k, m]) => `<button type="button" data-metric="${k}" class="${live.brMetric === k ? 'is-active' : ''}">${m.label}</button>`).join('')}
+              ${Object.entries(BR_METRICS).filter(([k, m]) => !m.result || brResHasData()).map(([k, m]) => `<button type="button" data-metric="${k}" class="${live.brMetric === k ? 'is-active' : ''}${m.result ? ' is-result' : ''}">${m.label}</button>`).join('')}
             </div>
             <div id="br-map" style="position:relative"><div class="esp-loading">Cargando mapa…</div></div>
             <div class="br-legend" id="br-legend"></div>
@@ -31504,6 +31559,7 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
 
     root.querySelectorAll('#br-metric [data-metric]').forEach(b => b.addEventListener('click', () => {
       live.brMetric = b.getAttribute('data-metric');
+      live.brMetricTouched = true;
       root.querySelectorAll('#br-metric [data-metric]').forEach(x => x.classList.toggle('is-active', x === b));
       renderBrMap();
     }));
@@ -32292,7 +32348,7 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
     renderPortada();
     const brChanged = live.brasil && JSON.stringify(live.brasil) + JSON.stringify(live.brRes || {}) !== prevBr;
     if (isViewActive('brasil')) {
-      if (brChanged && prevBr) { renderResults(); renderNight(); renderPollBox(); renderBrCalendar(); }
+      if (brChanged && prevBr && (!brResHasData() || document.querySelector('#br-metric .is-result'))) { renderResults(); renderNight(); renderPollBox(); renderBrCalendar(); if (BR_METRICS[live.brMetric].result) { renderBrMap(); renderUFCard(); } }
       else if (brChanged || !document.querySelector('#esp-brasil .esp-hero')) renderBrasil();
       renderBrUpdated();
     }
