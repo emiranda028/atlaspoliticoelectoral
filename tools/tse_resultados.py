@@ -139,6 +139,45 @@ def dhondt_projection(cands, seats):
             out[c['party']] = out.get(c['party'], 0) + 1
     return out
 
+def project_president(got, national):
+    """Projection to 100%: in each state, the sections still to count are
+    assumed to vote like the ones already counted there; states with nothing
+    counted get their electorate × the turnout seen so far, split like the
+    national count. Votes from abroad are left out (≈0,6% of the roll)."""
+    if not national or not national.get('pct'): return None
+    try:
+        voters = {s['uf']: s['voters'] for s in json.load(open(CFG))['states']}
+    except Exception:
+        voters = {}
+    proj, names, rep_votes, rep_voters, missing = {}, {}, 0.0, 0, []
+    for uf in UFS:
+        j = got.get((uf, 'pres'))
+        if not j: missing.append(uf); continue
+        d = simple(j)
+        if not d['pct'] or d['pct'] <= 0: missing.append(uf); continue
+        f = 100.0 / d['pct']
+        tot = 0.0
+        for c in d['cands']:
+            v = (c['votes'] or 0) * f
+            proj[c['n']] = proj.get(c['n'], 0.0) + v
+            names[c['n']] = (c['name'], c['party'])
+            tot += v
+        rep_votes += tot
+        rep_voters += voters.get(uf, 0)
+    if not proj: return None
+    per_voter = rep_votes / rep_voters if rep_voters else 0
+    nat = {c['n']: (c['pct'] or 0) / 100 for c in national['cands']}
+    for uf in missing:
+        est = voters.get(uf, 0) * per_voter
+        for n, sh in nat.items():
+            proj[n] = proj.get(n, 0.0) + est * sh
+    total = sum(proj.values()) or 1
+    cands = sorted(({'n': n, 'name': names.get(n, ('', ''))[0] or next((c['name'] for c in national['cands'] if c['n'] == n), n),
+                     'party': names.get(n, ('', ''))[1] or next((c['party'] for c in national['cands'] if c['n'] == n), ''),
+                     'pct': round(100 * v / total, 2), 'votes': int(v)} for n, v in proj.items()), key=lambda c: -c['pct'])
+    return {'cands': cands, 'statesMissing': missing,
+            'method': 'Lo que falta contar en cada estado vota como lo ya contado allí'}
+
 def one_pass():
     codes = discover()
     jobs = {('BR', 'pres'): url(codes, 'br', 1, 'federal')}
@@ -182,6 +221,7 @@ def one_pass():
             if seats: rep += 1
             for p, n in seats.items(): chamber[p] = chamber.get(p, 0) + n
         out['states'][uf] = st
+    out['president']['projection'] = project_president(got, out['president'])
     out['chamber'] = {'seats': chamber, 'statesReporting': rep}
     out['senate'] = {'seats': senate}
     tmp = OUT + '.tmp'

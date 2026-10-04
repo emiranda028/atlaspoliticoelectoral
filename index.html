@@ -6620,6 +6620,22 @@
   .uf-res-track { grid-column: 1 / -1; height: 7px; background: var(--line); border-radius: 4px; overflow: hidden; }
   .uf-res-track div { height: 100%; border-radius: 4px; }
   .uf-res-sep { border: 0; border-top: 1px solid var(--line); margin: 12px 0; }
+
+  .proj { border-radius: 12px; padding: 12px 14px; margin-top: 14px; }
+  .proj-dark { background: rgba(255,255,255,.07); border: 1px dashed rgba(255,255,255,.3); color: #F4F6FA; }
+  .proj-compact { background: rgba(0,0,0,.18); border: 1px dashed rgba(255,255,255,.35); color: #F4F6FA; margin: 4px 0 10px; padding: 10px 12px; }
+  .proj-light { background: #FFF7ED; border: 1px dashed #FDBA74; color: var(--ink); margin: 12px 0 6px; }
+  .proj-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; }
+  .proj-kicker { font: 700 11px var(--font-sans); letter-spacing: .1em; text-transform: uppercase; color: var(--accent-bright); }
+  .proj-light .proj-kicker { color: var(--accent); }
+  .proj-head b { font-family: var(--font-serif); font-size: 18px; font-weight: 600; }
+  .proj-compact .proj-head b { font-size: 15px; }
+  .proj-rows { display: flex; flex-wrap: wrap; gap: 6px 16px; margin: 8px 0 6px; font-size: 14px; }
+  .proj-row { display: inline-flex; align-items: center; gap: 6px; }
+  .proj-row i { width: 10px; height: 10px; border-radius: 3px; }
+  .proj-row b { font-family: var(--font-mono); }
+  .proj-note { font-size: 12px; opacity: .75; line-height: 1.45; }
+  .proj-compact .proj-note { display: none; }
 </style>
 </head>
 <body>
@@ -31045,6 +31061,8 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
         <div><div class="br-legend-scale">${GREENS.map(c => `<span style="background:${c}"></span>`).join('')}</div>
         <div class="br-legend-ticks"><span>${f(minV)}</span><span>${f(maxV)}</span></div></div>`;
     }
+    const projSlot = document.getElementById('br-proj-slot');
+    if (projSlot) projSlot.innerHTML = BR_METRICS[metric].result === 'pres' ? projectionHTML('light') : '';
     renderUFRank();
     if (BR_METRICS[metric].result) { const ins = document.getElementById('br-map-insight'); if (ins) ins.hidden = true; } else renderMapInsight();
   }
@@ -31289,6 +31307,32 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
     });
   }
 
+
+  // Projection to 100% (computed by tools/tse_resultados.py): what the
+  // national result would be if each state's uncounted sections voted like
+  // the ones already counted there. Hidden once the count is ~complete.
+  function brProjection() {
+    const R = live.brRes, p = R && R.president;
+    if (!p || !p.projection || !p.projection.cands || !p.projection.cands.length) return null;
+    if (!(p.pct > 0) || p.pct >= 99.5) return null;
+    return { counted: p.pct, cands: p.projection.cands, missing: p.projection.statesMissing || [] };
+  }
+  function projectionHTML(mode) {
+    const pr = brProjection();
+    if (!pr) return '';
+    const top = pr.cands.slice(0, mode === 'compact' ? 2 : 3);
+    const a = pr.cands[0], b = pr.cands[1];
+    const nm = c => titleCase(c.name);
+    const verdict = a.pct > 50
+      ? `${esc(nm(a))} ganaría en primera vuelta`
+      : `Habría segunda vuelta entre ${esc(nm(a))} y ${esc(nm(b))}`;
+    return `<div class="proj proj-${mode}">
+      <div class="proj-head"><span class="proj-kicker">Proyección al 100%</span><b>${verdict}</b></div>
+      <div class="proj-rows">${top.map(c => `<span class="proj-row"><i style="background:${candColor(c)}"></i>${esc(nm(c))} <b>${fmtPct(c.pct)}</b></span>`).join('')}</div>
+      <div class="proj-note">Estimación del Atlas con el ${fmtPct(pr.counted, 1)} escrutado: supone que lo que falta contar en cada estado vota como lo ya contado allí${pr.missing.length ? ` (sin datos aún: ${pr.missing.join(', ')})` : ''}. No es un resultado oficial.</div>
+    </div>`;
+  }
+
   function brNightMapSVG(kind, small) {
     if (!live.geo || !live.brRes) return '';
     const st = live.brRes.states || {};
@@ -31379,6 +31423,7 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
       <div class="nc-res">${cands.map(c => `<div class="nc-row"><span>${esc(c.name)} <small>${esc(c.party || '')}</small>${c.elected ? ' <em>ELECTO</em>' : ''}</span><b>${fmtPct(c.pct, 2)}</b>
         <div class="nc-track"><div style="width:${Math.min(c.pct || 0, 100)}%;background:${c.n ? (BR_CAND_COLOR[c.n] || leanColor(c.lean)) : leanColor(c.lean)}"></div></div></div>`).join('')}</div>
       ${data.status === 'final' && !win && data.runoff !== false ? '<div class="next-card-sub">Habrá segunda vuelta el 25 de octubre.</div>' : ''}
+      ${round === 1 ? projectionHTML('compact') : ''}
       ${live.brRes && live.brRes.states && Object.keys(live.brRes.states).length ? `<div class="nc-map">${brNightMapSVG('pres', true)}</div>` : ''}
       <a class="next-card-cta" href="#brasil" onclick="window.__atlasGoTo('brasil'); setTimeout(() => { const s = document.getElementById('br-sec-resultados'); if (s) s.scrollIntoView({ behavior: 'smooth' }); }, 400); return false;">Ver resultados completos <span aria-hidden="true">→</span></a>`;
   }
@@ -31416,6 +31461,7 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
         <b>${fmtPct(c.pct, 2)}${c.votes ? ` · ${fmtInt(c.votes)}` : ''}</b></div>
         <div class="pbar-track"><div class="pbar-fill" style="width:${Math.min(c.pct || 0, 100)}%;background:${BR_CAND_COLOR[c.n] || leanColor(c.lean || (candByKey(c.id || '').lean))}"></div></div></div>`).join('')}
       <div class="results-progress-lbl" style="margin-top:14px">% de votos válidos · Fuente: ${esc(data.source || 'TSE')}</div>
+      ${round === 1 ? projectionHTML('dark') : ''}
     </div>`;
   }
 
@@ -31509,6 +31555,7 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
             <div class="seg" id="br-metric" role="tablist">
               ${Object.entries(BR_METRICS).filter(([k, m]) => !m.result || brResHasData()).map(([k, m]) => `<button type="button" data-metric="${k}" class="${live.brMetric === k ? 'is-active' : ''}${m.result ? ' is-result' : ''}">${m.label}</button>`).join('')}
             </div>
+            <div id="br-proj-slot">${BR_METRICS[live.brMetric].result === 'pres' ? projectionHTML('light') : ''}</div>
             <div id="br-map" style="position:relative"><div class="esp-loading">Cargando mapa…</div></div>
             <div class="br-legend" id="br-legend"></div>
           </div>
