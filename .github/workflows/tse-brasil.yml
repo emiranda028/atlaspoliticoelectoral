@@ -1,0 +1,47 @@
+# Noche electoral Brasil 2026: lee los resultados públicos del TSE y publica
+# data/especiales/brasil-2026-resultados.json (el sitio lo lee cada minuto).
+# Corre solo los días de votación; también se puede lanzar a mano desde
+# la pestaña Actions → "Resultados TSE Brasil" → Run workflow.
+name: Resultados TSE Brasil
+on:
+  workflow_dispatch:
+    inputs:
+      minutes:
+        description: Minutos que queda leyendo el TSE
+        default: '55'
+  schedule:
+    # 1.ª vuelta: 4 oct 19:30–23:59 UTC y 5 oct 00:00–05:59 UTC (17:00 BRT = 20:00 UTC)
+    - cron: '30,45 19 4 10 *'
+    - cron: '*/15 20-23 4 10 *'
+    - cron: '*/15 0-5 5 10 *'
+    # 2.ª vuelta: 25 oct
+    - cron: '*/15 19-23 25 10 *'
+    - cron: '*/15 0-3 26 10 *'
+permissions:
+  contents: write
+concurrency:
+  group: tse-brasil
+  cancel-in-progress: false
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 70
+    steps:
+      - uses: actions/checkout@v4
+      - name: Leer TSE y publicar
+        env:
+          MINUTES: ${{ github.event.inputs.minutes || '14' }}
+        run: |
+          git config user.name "atlas-bot"
+          git config user.email "atlas-bot@users.noreply.github.com"
+          end=$(( $(date +%s) + MINUTES * 60 ))
+          while :; do
+            python3 tools/tse_resultados.py || true
+            if ! git diff --quiet -- data/especiales/brasil-2026-resultados.json; then
+              git add data/especiales/brasil-2026-resultados.json
+              git commit -q -m "Resultados TSE $(date -u +%H:%M) UTC"
+              git pull -q --rebase origin main && git push -q origin HEAD:main || true
+            fi
+            [ $(( $(date +%s) + 120 )) -ge $end ] && break
+            sleep 120
+          done

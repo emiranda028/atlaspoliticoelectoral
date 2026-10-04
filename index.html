@@ -6565,6 +6565,42 @@
   .lang-switch-sheet button.is-on { background: var(--brand); color: #fff; }
   .masthead .lang-switch { display: none; }
   @media (max-width: 760px) { .lang-switch-nav { display: none; } .masthead .lang-switch { display: inline-flex; margin: 8px 0 0; } }
+
+  /* ===== Noche electoral Brasil ===== */
+  #br-night { margin-top: 22px; display: grid; gap: 22px; }
+  .nt-block { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 20px 22px; min-width: 0; }
+  .nt-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 14px; }
+  .nt-head h4 { font-family: var(--font-serif); font-size: 22px; margin: 0; color: var(--ink); }
+  .nt-map-wrap { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 20px; align-items: center; }
+  .br-night-svg path { stroke: #fff; stroke-width: 1; transition: fill .4s; }
+  .br-night-svg path:hover { stroke: var(--ink); stroke-width: 2; }
+  .nt-legend { display: flex; flex-direction: column; gap: 8px; font-size: 14px; }
+  .nt-legend span { display: flex; align-items: center; gap: 8px; }
+  .nt-legend i { width: 14px; height: 14px; border-radius: 4px; flex: 0 0 14px; }
+  .nt-legend b { margin-left: auto; font-family: var(--font-mono); }
+  .nt-govs { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 10px; margin-bottom: 10px; }
+  .nt-gov { border: 1px solid var(--line); border-left: 4px solid var(--c); border-radius: 10px; padding: 10px 12px; min-width: 0; }
+  .nt-gov-top { display: flex; justify-content: space-between; align-items: center; font-family: var(--font-mono); font-size: 13px; }
+  .nt-gov-name { font-weight: 600; font-size: 14px; margin-top: 4px; color: var(--ink); overflow-wrap: anywhere; }
+  .nt-gov-name small, .nt-gov-pct small { font-weight: 400; color: var(--muted); }
+  .nt-gov-pct { font-family: var(--font-mono); font-size: 13px; margin-top: 2px; }
+  .nt-badge { font: 600 10.5px var(--font-sans); letter-spacing: .05em; text-transform: uppercase; color: var(--muted); border: 1px solid var(--line-strong); border-radius: 999px; padding: 2px 8px; }
+  .nt-badge.is-won { color: #fff; background: var(--br-green, #0B6E3A); border-color: transparent; }
+  .nt-badge.is-runoff { color: #fff; background: var(--accent); border-color: transparent; }
+  .nc-res { display: grid; gap: 10px; margin: 14px 0 8px; }
+  .nc-row { display: grid; grid-template-columns: 1fr auto; gap: 4px 10px; font-size: 15px; }
+  .nc-row small { opacity: .7; }
+  .nc-row em { font-style: normal; font: 700 10px var(--font-sans); background: var(--br-yellow, #F2C200); color: #0B1628; border-radius: 999px; padding: 2px 7px; margin-left: 4px; }
+  .nc-row b { font-family: var(--font-mono); }
+  .nc-track { grid-column: 1 / -1; height: 10px; background: rgba(255,255,255,.15); border-radius: 5px; overflow: hidden; }
+  .nc-track div { height: 100%; border-radius: 5px; transition: width .6s; box-shadow: inset 0 0 0 1.5px rgba(255,255,255,.5); }
+  .nc-map { max-width: 240px; margin: 4px auto 6px; }
+  .nc-map .br-night-svg path { stroke: rgba(255,255,255,.6); stroke-width: .8; }
+  @media (max-width: 760px) {
+    .nt-map-wrap { grid-template-columns: 1fr; }
+    .nt-block { padding: 16px 14px; }
+    .nt-govs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
 </style>
 </head>
 <body>
@@ -30717,6 +30753,8 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
       const ph = brasilPhase(br);
       const facts = (br.offices || []).slice(0, 4).map(o => `<span>${fmtInt(o.count)} ${esc(o.short || o.label)}</span>`).join('');
       card.className = 'next-card is-brasil';
+      const resHTML = nextCardResultsHTML(br);
+      if (resHTML) { card.innerHTML = resHTML; return; }
       card.innerHTML = `
         <div class="next-card-kicker"><span class="live-dot" style="background:var(--br-yellow)"></span>${esc(ph.label)}</div>
         <div class="next-card-title">${flagOf('BRA')} Brasil elige presidente</div>
@@ -31156,6 +31194,138 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
     el.querySelectorAll('[data-round]').forEach(b => b.addEventListener('click', () => { live.pollRound = b.getAttribute('data-round'); renderPollBox(); }));
   }
 
+  /* ===================== NOCHE ELECTORAL (Brasil) =====================
+     data/especiales/brasil-2026-resultados.json is written from the TSE feed
+     by tools/tse_resultados.py (GitHub Action every 2 min on election night).
+     It drives: national result, state map (president / governor), the
+     governors' table and how Congress would look (Chamber projection and the
+     54 Senate seats at stake). */
+  const BR_RES_URL = 'data/especiales/brasil-2026-resultados.json';
+  const BR_PARTY_LEAN = {
+    PT: 'center-left', PCdoB: 'left', PSOL: 'left', Rede: 'left', PV: 'center-left', PSB: 'center-left', PDT: 'center-left', UP: 'left', PSTU: 'left', PCB: 'left', PCO: 'left',
+    MDB: 'center', Cidadania: 'center', Avante: 'center', Solidariedade: 'center', Mobiliza: 'center', PMB: 'center',
+    PSD: 'center-right', 'União': 'center-right', Podemos: 'center-right', PSDB: 'center-right',
+    PP: 'right', Republicanos: 'right', Novo: 'right', PRD: 'right', 'Missão': 'right', Agir: 'right', DC: 'right',
+    PL: 'far-right', PRTB: 'far-right',
+  };
+  // Presidential candidates get their own colour so the map reads at a glance
+  const BR_CAND_COLOR = { '13': '#C8102E', '22': '#1E3A8A', '70': '#D97706', '14': '#7C3AED', '55': '#0E7490', '30': '#EA580C' };
+  const partyColor = p => leanColor(BR_PARTY_LEAN[p] || 'other');
+  const candColor = c => BR_CAND_COLOR[c.n] || partyColor(c.party);
+  const titleCase = s => String(s || '').toLowerCase().replace(/(^|[\s-])([a-zà-ÿ])/g, (m, a, b) => a + b.toUpperCase());
+  live.brRes = null;
+  live.brNightMap = 'pres';
+
+  function brResHasData() {
+    const r = live.brRes;
+    return !!(r && r.president && r.president.cands && r.president.cands.length);
+  }
+  // National result from the summary file → br.results.round<n> (unless the
+  // direct TSE fetch already filled it with fresher numbers)
+  function mergeBrRes(br) {
+    if (!brResHasData() || !br || !br.results) return;
+    const r = live.brRes, key = 'round' + (r.round || 1), cur = br.results[key] || {};
+    if (cur.candidates && cur.candidates.length && (cur.pctCounted || 0) >= (r.president.pct || 0) && cur.source && /TSE/.test(cur.source)) return;
+    const known = (br.presidential && br.presidential.candidates) || [];
+    const winner = r.president.cands.find(c => c.e);
+    br.results[key] = Object.assign({}, cur, {
+      status: r.president.pct >= 100 || winner ? 'final' : 'live',
+      pctCounted: r.president.pct,
+      updatedAt: (r.president.tse || '') + ' (hora de Brasilia)',
+      source: 'TSE — resultados.tse.jus.br',
+      runoff: r.president.pct >= 100 ? !winner : cur.runoff,
+      candidates: r.president.cands.map(c => {
+        const k = known.find(x => String(x.number) === String(c.n));
+        return { id: k && k.id, name: k ? (k.short || k.name) : titleCase(c.name), party: (k && k.party) || c.party, lean: (k && k.lean) || BR_PARTY_LEAN[c.party], votes: c.votes, pct: c.pct, elected: c.e, n: c.n };
+      }),
+    });
+  }
+
+  function brNightMapSVG(kind, small) {
+    if (!live.geo || !live.brRes) return '';
+    const st = live.brRes.states || {};
+    const paths = live.geo.locations.map(loc => {
+      const r = st[loc.id] && st[loc.id][kind];
+      const lead = r && r.cands && r.cands[0];
+      const fill = lead && r.pct > 0 ? (kind === 'pres' ? candColor(lead) : partyColor(lead.party)) : 'var(--c-unknown)';
+      const op = r && r.pct ? Math.max(0.45, Math.min(1, 0.45 + r.pct / 180)) : 1;
+      const tip = lead ? `${loc.name}: ${titleCase(lead.name)} (${lead.party}) ${fmtPct(lead.pct)} · ${fmtPct(r.pct, 0)} escrutado` : loc.name;
+      return `<path d="${loc.path}" data-uf="${loc.id}" style="fill:${fill};fill-opacity:${op.toFixed(2)}"><title>${esc(tip)}</title></path>`;
+    }).join('');
+    return `<svg class="br-map-svg br-night-svg${small ? ' is-small' : ''}" viewBox="${live.geo.viewBox}" role="img" aria-label="Quién lidera en cada estado">${paths}</svg>`;
+  }
+  function brNightLegend(kind) {
+    const st = (live.brRes && live.brRes.states) || {};
+    const tally = {};
+    Object.values(st).forEach(s => { const r = s[kind]; const c = r && r.pct > 0 && r.cands && r.cands[0]; if (c) { const k = kind === 'pres' ? titleCase(c.name) : c.party; tally[k] = tally[k] || { n: 0, color: kind === 'pres' ? candColor(c) : partyColor(c.party) }; tally[k].n++; } });
+    return Object.entries(tally).sort((a, b) => b[1].n - a[1].n)
+      .map(([k, v]) => `<span><i style="background:${v.color}"></i>${esc(k)} <b>${v.n}</b></span>`).join('');
+  }
+
+  function renderNight() {
+    const el = document.getElementById('br-night');
+    if (!el) return;
+    if (!brResHasData()) { el.innerHTML = ''; return; }
+    const R = live.brRes, st = R.states || {}, br = live.brasil;
+    const govs = Object.keys(st).sort().map(uf => ({ uf, name: (brStates().find(s => s.uf === uf) || {}).name || uf, g: st[uf].gov })).filter(x => x.g && x.g.cands && x.g.cands.length);
+    const statusTxt = g => g.status === 'elected' ? '<span class="nt-badge is-won">Electo</span>' : g.status === 'runoff' ? '<span class="nt-badge is-runoff">2.ª vuelta</span>' : `<span class="nt-badge">${fmtPct(g.pct, 0)} escrutado</span>`;
+    const chamberParties = Object.entries((R.chamber && R.chamber.seats) || {}).map(([p, n]) => ({ party: p, seats: n, lean: BR_PARTY_LEAN[p] || 'other' }));
+    const senParties = Object.entries((R.senate && R.senate.seats) || {}).map(([p, n]) => ({ party: p, seats: n, lean: BR_PARTY_LEAN[p] || 'other' }));
+    const rep = (R.chamber && R.chamber.statesReporting) || 0;
+    const anyProj = Object.values(st).some(s => s.dep && s.dep.mode === 'projection');
+    el.innerHTML = `
+      <div class="nt-block">
+        <div class="nt-head"><h4>Quién gana en cada estado</h4>
+          <div class="seg" id="br-night-kind">
+            <button type="button" data-kind="pres" class="${live.brNightMap === 'pres' ? 'is-active' : ''}">Presidente</button>
+            <button type="button" data-kind="gov" class="${live.brNightMap === 'gov' ? 'is-active' : ''}">Gobernador</button>
+          </div></div>
+        <div class="nt-map-wrap"><div class="nt-map">${brNightMapSVG(live.brNightMap)}</div>
+          <div class="nt-legend">${brNightLegend(live.brNightMap)}<p class="muted">Color del candidato (o del partido) que va primero en cada estado; más claro = menos votos contados. Pasá el mouse para ver el detalle.</p></div></div>
+      </div>
+      <div class="nt-block">
+        <div class="nt-head"><h4>El Ejecutivo: los 27 gobernadores</h4></div>
+        <div class="nt-govs">${govs.map(x => {
+          const c = x.g.cands[0], c2 = x.g.cands[1];
+          return `<div class="nt-gov" style="--c:${partyColor(c.party)}"><div class="nt-gov-top"><b>${x.uf}</b>${statusTxt(x.g)}</div>
+            <div class="nt-gov-name">${esc(titleCase(c.name))} <small>${esc(c.party)}</small></div>
+            <div class="nt-gov-pct">${fmtPct(c.pct)}${c2 ? ` <small>· ${esc(titleCase(c2.name))} ${fmtPct(c2.pct)}</small>` : ''}</div></div>`;
+        }).join('')}</div>
+        <p class="muted">Se gana en 1.ª vuelta con más del 50% de los votos válidos; si no, los dos más votados van al balotaje del 25 de octubre.</p>
+      </div>
+      <div class="nt-block">
+        <div class="nt-head"><h4>El Legislativo: cómo quedaría el Congreso</h4></div>
+        <div class="chambers-grid">
+          ${chamberParties.length ? chamberCard({ name: 'Cámara de Diputados', total: 513, term: 'Legislatura 2027–2031', parties: chamberParties,
+              asOf: R.updatedAt ? new Date(R.updatedAt).toLocaleTimeString('es-AR', { hour: '2-digit', minute: '2-digit' }) + ' h' : '—',
+              note: anyProj ? `Proyección del Atlas con el conteo parcial (${rep} de 27 estados): cociente electoral y D'Hondt por estado, federaciones como una sola lista. Cambia hasta el final del escrutinio.` : 'Electos según el TSE.' }, 12) : ''}
+          ${senParties.length ? chamberCard({ name: 'Senado · las 54 bancas en juego', total: 54, term: '2 por estado · mandato 2027–2035', parties: senParties,
+              asOf: R.updatedAt ? new Date(R.updatedAt).toLocaleTimeString('es-AR', { hour: '2-digit', minute: '2-digit' }) + ' h' : '—',
+              note: 'Los dos más votados de cada estado. Las otras 27 bancas siguen hasta 2031.' }, 4) : ''}
+        </div>
+      </div>
+      <p class="esp-sources">Fuente: TSE (resultados.tse.jus.br) · actualizado ${R.updatedAt ? esc(relTime(new Date(R.updatedAt))) : ''}. Los datos parciales cambian a medida que avanza el escrutinio.</p>`;
+    el.querySelectorAll('[data-kind]').forEach(b => b.addEventListener('click', () => { live.brNightMap = b.getAttribute('data-kind'); renderNight(); }));
+    wireHemicycleHover(el);
+  }
+
+  // Portada: while the count is on, the Brasil card shows the live result
+  function nextCardResultsHTML(br) {
+    const { round, data } = currentResults();
+    const cands = (data.candidates || []).slice().sort((a, b) => (b.pct || 0) - (a.pct || 0)).slice(0, 3);
+    if (!cands.length) return '';
+    const win = cands.find(c => c.elected);
+    return `
+      <div class="next-card-kicker"><span class="live-dot" style="background:var(--br-yellow)"></span>${data.status === 'final' ? 'Resultado final' : 'Resultados en vivo'} · ${round}.ª vuelta</div>
+      <div class="next-card-title">${flagOf('BRA')} Brasil elige presidente</div>
+      <div class="next-card-sub">${data.pctCounted != null ? fmtPct(data.pctCounted, 2) + ' de las secciones escrutadas' : ''}${data.updatedAt ? ' · ' + esc(data.updatedAt) : ''}</div>
+      <div class="nc-res">${cands.map(c => `<div class="nc-row"><span>${esc(c.name)} <small>${esc(c.party || '')}</small>${c.elected ? ' <em>ELECTO</em>' : ''}</span><b>${fmtPct(c.pct, 2)}</b>
+        <div class="nc-track"><div style="width:${Math.min(c.pct || 0, 100)}%;background:${c.n ? (BR_CAND_COLOR[c.n] || leanColor(c.lean)) : leanColor(c.lean)}"></div></div></div>`).join('')}</div>
+      ${data.status === 'final' && !win && data.runoff !== false ? '<div class="next-card-sub">Habrá segunda vuelta el 25 de octubre.</div>' : ''}
+      ${live.brRes && live.brRes.states && Object.keys(live.brRes.states).length ? `<div class="nc-map">${brNightMapSVG('pres', true)}</div>` : ''}
+      <a class="next-card-cta" href="#brasil" onclick="window.__atlasGoTo('brasil'); setTimeout(() => { const s = document.getElementById('br-sec-resultados'); if (s) s.scrollIntoView({ behavior: 'smooth' }); }, 400); return false;">Ver resultados completos <span aria-hidden="true">→</span></a>`;
+  }
+
   function currentResults() {
     const r = (live.brasil && live.brasil.results) || {};
     if (r.round2 && r.round2.status && r.round2.status !== 'pending') return { round: 2, data: r.round2 };
@@ -31187,7 +31357,7 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
         <div class="results-progress-lbl">${fmtPct(pctCounted, 2)} de secciones escrutadas${data.updatedAt ? ' · ' + esc(data.updatedAt) : ''}</div></div>` : ''}
       ${cands.map(c => `<div class="pbar"><div class="pbar-top"><span>${esc(c.name)}${c.party ? ` <span style="opacity:.6">(${esc(c.party)})</span>` : ''}${c.elected ? '<span class="elected-badge">ELECTO</span>' : ''}</span>
         <b>${fmtPct(c.pct, 2)}${c.votes ? ` · ${fmtInt(c.votes)}` : ''}</b></div>
-        <div class="pbar-track"><div class="pbar-fill" style="width:${Math.min(c.pct || 0, 100)}%;background:${leanColor(c.lean || (candByKey(c.id || '').lean))}"></div></div></div>`).join('')}
+        <div class="pbar-track"><div class="pbar-fill" style="width:${Math.min(c.pct || 0, 100)}%;background:${BR_CAND_COLOR[c.n] || leanColor(c.lean || (candByKey(c.id || '').lean))}"></div></div></div>`).join('')}
       <div class="results-progress-lbl" style="margin-top:14px">% de votos válidos · Fuente: ${esc(data.source || 'TSE')}</div>
     </div>`;
   }
@@ -31315,6 +31485,7 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
       <section class="esp-sec" id="br-sec-resultados">
         <div class="esp-sec-head"><span class="kicker">05 · Noche electoral</span><h3>Resultados en vivo</h3></div>
         <div id="br-results"></div>
+        <div id="br-night"></div>
       </section>
 
       <section class="esp-sec" id="br-sec-calendario">
@@ -31346,6 +31517,7 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
     renderUFCard();
     renderPollBox();
     renderResults();
+    renderNight();
     renderBrCalendar();
     renderBrUpdated();
     tickCountdowns();
@@ -32061,6 +32233,7 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
      directly: set results.tse.round1Url / round2Url in brasil-2026.json.
      If the browser can't reach it (CORS / network), the values typed into
      results.round1 / round2 of the JSON are used instead. */
+  const pstOf = j => parseFloat(String((j.s && j.s.pst) || j.pst || '0').replace(',', '.'));
   async function pullTSE(br) {
     const tse = br.results && br.results.tse;
     if (!tse) return;
@@ -32074,15 +32247,17 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
       if (!res.ok) return;
       const j = await res.json();
       const num = s => s == null ? null : parseFloat(String(s).replace(/\./g, '').replace(',', '.'));
-      const candidates = (j.cand || []).map(c => {
+      // 2026 "-u" files nest candidates: carg[].agr[].par[].cand[]
+      const flat = j.cand || [].concat(...(j.carg || []).map(cg => [].concat(...(cg.agr || []).map(ag => [].concat(...(ag.par || []).map(pa => (pa.cand || []).map(c => Object.assign({ sg: pa.sg }, c))))))));
+      const candidates = flat.map(c => {
         const known = ((br.presidential && br.presidential.candidates) || []).find(k => k.number && String(k.number) === String(c.n));
-        return { id: known && known.id, name: known ? known.name : c.nm, party: known && known.party, lean: known && known.lean,
+        return { id: known && known.id, name: known ? (known.short || known.name) : titleCase(c.nmu || c.nm), party: (known && known.party) || c.sg, lean: known && known.lean, n: String(c.n),
                  votes: num(c.vap), pct: parseFloat(String(c.pvap || '0').replace(',', '.')), elected: String(c.e || '').toLowerCase() === 's' };
       });
       if (!candidates.length) return;
       br.results['round' + round] = Object.assign({}, br.results['round' + round], {
-        status: parseFloat(String(j.pst || '0').replace(',', '.')) >= 100 ? 'final' : 'live',
-        pctCounted: parseFloat(String(j.pst || '0').replace(',', '.')),
+        status: pstOf(j) >= 100 || candidates.some(c => c.elected) ? 'final' : 'live',
+        pctCounted: pstOf(j),
         updatedAt: [j.dg, j.hg].filter(Boolean).join(' ') + ' (hora de Brasilia)',
         source: 'TSE — resultados.tse.jus.br',
         candidates,
@@ -32102,16 +32277,22 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
     if (ilRes.status === 'fulfilled') live.israel = ilRes.value;
     const prevUs = live.eeuu ? JSON.stringify(live.eeuu) : null;
     if (usRes.status === 'fulfilled') live.eeuu = usRes.value;
-    const prevBr = live.brasil ? JSON.stringify(live.brasil) : null;
+    const prevBr = live.brasil ? JSON.stringify(live.brasil) + JSON.stringify(live.brRes || {}) : null;
     if (liveRes.status === 'fulfilled') live.data = liveRes.value;
     if (brRes.status === 'fulfilled') {
+      const ph0 = brasilPhase(brRes.value);
+      if (ph0.id !== 'campaign') {
+        try { live.brRes = await fetchJSON(BR_RES_URL); } catch (e) { /* keep the last one */ }
+        if (brResHasData() && !live.geo) { try { live.geo = await fetchJSON(BR_GEO_URL); } catch (e) {} }
+      }
       await pullTSE(brRes.value);
+      mergeBrRes(brRes.value);
       live.brasil = brRes.value;
     }
     renderPortada();
-    const brChanged = live.brasil && JSON.stringify(live.brasil) !== prevBr;
+    const brChanged = live.brasil && JSON.stringify(live.brasil) + JSON.stringify(live.brRes || {}) !== prevBr;
     if (isViewActive('brasil')) {
-      if (brChanged && prevBr) { renderResults(); renderPollBox(); renderBrCalendar(); }
+      if (brChanged && prevBr) { renderResults(); renderNight(); renderPollBox(); renderBrCalendar(); }
       else if (brChanged || !document.querySelector('#esp-brasil .esp-hero')) renderBrasil();
       renderBrUpdated();
     }
