@@ -6636,6 +6636,44 @@
   .proj-row b { font-family: var(--font-mono); }
   .proj-note { font-size: 12px; opacity: .75; line-height: 1.45; }
   .proj-compact .proj-note { display: none; }
+
+  /* ===== Portada · noche electoral ===== */
+  html, body { overflow-x: clip; }
+  .night-home { margin: 0 0 28px; display: grid; gap: 16px; }
+  .night-home[hidden] { display: none; }
+  .nh-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; flex-wrap: wrap; background: linear-gradient(120deg, #0B5A3A, #0E6B44 60%, #12804F); color: #fff; border-radius: 16px; padding: 20px 24px; }
+  .nh-kicker { display: inline-flex; align-items: center; gap: 8px; font: 700 12px var(--font-sans); letter-spacing: .1em; text-transform: uppercase; color: #FDE68A; }
+  .nh-head h2 { font-family: var(--font-serif); font-size: clamp(28px, 4vw, 44px); margin: 6px 0 4px; color: #fff; display: flex; align-items: center; gap: 12px; }
+  .nh-sub { font-size: 15px; opacity: .9; }
+  .nh-cta { background: #F2C200; color: #0B1628; font: 700 14px var(--font-sans); padding: 12px 18px; border-radius: 10px; text-decoration: none; white-space: nowrap; }
+  .nh-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: 16px; }
+  .nh-card { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 18px 20px; min-width: 0; }
+  .nh-card h3 { font-family: var(--font-serif); font-size: 22px; margin: 0 0 12px; color: var(--ink); }
+  .nh-pres .pbar { margin-top: 12px; }
+  .nh-pres .pbar-top { font-size: 16px; }
+  .nh-pres .pbar-top small { color: var(--muted); }
+  .nh-pres .pbar-track { height: 14px; border-radius: 7px; }
+  .nh-won { font-style: normal; font: 700 10px var(--font-sans); background: #F2C200; color: #0B1628; border-radius: 999px; padding: 2px 7px; }
+  .nh-mini { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+  .nh-mini span { background: var(--bg); border: 1px solid var(--line); border-radius: 999px; padding: 6px 12px; font-size: 13px; }
+  .nh-map-head { display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; }
+  .nh-map svg { width: 100%; max-height: 560px; }
+  .nh-congress { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); gap: 16px; align-items: start; }
+  .nh-congress .chambers-grid { grid-template-columns: 1fr 1fr; }
+  .nh-diff { display: grid; gap: 8px; }
+  .nh-diff-head { display: grid; grid-template-columns: 100px 1fr auto; gap: 8px; font: 600 11px var(--font-sans); letter-spacing: .07em; text-transform: uppercase; color: var(--muted); }
+  .nh-diff-row { display: grid; grid-template-columns: 100px 1fr auto; gap: 8px; align-items: center; font-size: 14px; }
+  .nh-diff-bars { position: relative; height: 16px; }
+  .nh-diff-bars i { position: absolute; left: 0; top: 0; bottom: 0; border-radius: 4px; }
+  .nh-diff-bars i.was { background: var(--line-strong); top: 5px; bottom: 5px; opacity: .8; }
+  .nh-diff-bars i.now { opacity: .85; top: 0; bottom: 0; height: 6px; }
+  .nh-diff-num { font-family: var(--font-mono); font-size: 13px; white-space: nowrap; }
+  .nh-diff-num em { font-style: normal; font-weight: 700; margin-left: 4px; }
+  .nh-diff-num em.up { color: #15803D; } .nh-diff-num em.down { color: #B91C1C; }
+  .nh-senate { margin-top: 16px; max-width: 560px; }
+  @media (max-width: 1100px) { .nh-congress { grid-template-columns: 1fr; } }
+  @media (max-width: 860px) { .nh-grid { grid-template-columns: 1fr; } .nh-congress .chambers-grid { grid-template-columns: 1fr; } }
+  @media (max-width: 760px) { .nh-head { padding: 16px; } .nh-card { padding: 14px; } .nh-diff-head, .nh-diff-row { grid-template-columns: 80px 1fr auto; } }
 </style>
 </head>
 <body>
@@ -6856,6 +6894,7 @@
      from the dataset + data/live.json (re-fetched periodically). -->
 <section class="portada" id="portada" aria-label="Portada del Atlas">
   <div class="portada-inner">
+    <section class="night-home" id="night-home" hidden aria-label="Resultados en vivo"></section>
     <div class="portada-hero">
       <div class="portada-main">
         <div class="live-pill" id="live-pill">
@@ -30892,6 +30931,7 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
   }
 
   function renderPortada() {
+    renderNightHome();
     renderNow();
     renderFreshness();
     renderNextCard();
@@ -31426,6 +31466,110 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
       ${round === 1 ? projectionHTML('compact') : ''}
       ${live.brRes && live.brRes.states && Object.keys(live.brRes.states).length ? `<div class="nc-map">${brNightMapSVG('pres', true)}</div>` : ''}
       <a class="next-card-cta" href="#brasil" onclick="window.__atlasGoTo('brasil'); setTimeout(() => { const s = document.getElementById('br-sec-resultados'); if (s) s.scrollIntoView({ behavior: 'smooth' }); }, 400); return false;">Ver resultados completos <span aria-hidden="true">→</span></a>`;
+  }
+
+  /* ===================== PORTADA · NOCHE ELECTORAL =====================
+     While Brazil's count is on (and after), the results take over the top of
+     the home page: national result + projection, the state map and how the
+     new Congress compares with the outgoing one. */
+  function labelResultSVG(svg, kind) {
+    if (!svg) return;
+    const g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+    g.setAttribute('class', 'br-labels');
+    svg.appendChild(g);
+    svg.querySelectorAll('path[data-uf]').forEach(p => {
+      let bb; try { bb = p.getBBox(); } catch (e) { return; }
+      if (!bb || bb.width < 26 || bb.height < 18) return;
+      const uf = p.getAttribute('data-uf'), l = brLead(uf, kind), s = brStates().find(x => x.uf === uf);
+      const cx = bb.x + bb.width / 2 + (uf === 'PE' ? 20 : uf === 'RJ' ? 6 : 0);
+      const cy = bb.y + bb.height / 2 + (uf === 'GO' ? 18 : uf === 'PA' ? 10 : 0);
+      const big = bb.width >= 40 && bb.height >= 34;
+      let t = `<text x="${cx}" y="${l && big ? cy - 7 : cy}" text-anchor="middle" dominant-baseline="middle" style="fill:#fff;stroke:rgba(0,0,0,.25)">${uf}</text>`;
+      if (l && big) t += `<text class="br-label-pct" x="${cx}" y="${cy + 9}" text-anchor="middle" dominant-baseline="middle" style="fill:#fff;stroke:rgba(0,0,0,.3)">${Math.round(l.c.pct)}%</text>`;
+      if (l && big && bb.height >= 50 && s && s.voters) t += `<text class="br-label-el" x="${cx}" y="${cy + 22}" text-anchor="middle" dominant-baseline="middle" style="fill:rgba(255,255,255,.85)">${s.voters >= 1e6 ? fmtM(s.voters) : Math.round(s.voters / 1000) + ' mil'}</text>`;
+      g.insertAdjacentHTML('beforeend', t);
+    });
+  }
+
+  function congressCompareHTML() {
+    const br = live.brasil, R = live.brRes;
+    const now = br && br.chamber, proj = (R && R.chamber && R.chamber.seats) || {};
+    if (!now || !Object.keys(proj).length) return '';
+    const named = (now.parties || []).filter(p => p.party !== 'Otros');
+    const namedSet = new Set(named.map(p => p.party));
+    const othersBefore = ((now.parties || []).find(p => p.party === 'Otros') || {}).seats || 0;
+    const othersAfter = Object.entries(proj).filter(([p]) => !namedSet.has(p)).reduce((a, [, n]) => a + n, 0);
+    const rows = named.map(p => ({ party: p.party, lean: p.lean, before: p.seats, after: proj[p.party] || 0 }))
+      .concat([{ party: 'Otros', lean: 'other', before: othersBefore, after: othersAfter }])
+      .sort((a, b) => b.after - a.after);
+    const max = Math.max(...rows.map(r => Math.max(r.before, r.after)), 1);
+    const projParties = Object.entries(proj).map(([p, n]) => ({ party: p, seats: n, lean: BR_PARTY_LEAN[p] || 'other' }));
+    const anyProj = Object.values(R.states || {}).some(s => s.dep && s.dep.mode === 'projection');
+    return `
+      <div class="nh-congress">
+        <div class="chambers-grid">
+          ${chamberCard(Object.assign({}, now, { name: 'Cámara actual', term: 'Legislatura 2023–2027' }), 10)}
+          ${chamberCard({ name: anyProj ? 'Cámara proyectada' : 'Cámara electa', total: 513, term: 'Legislatura 2027–2031', parties: projParties,
+            asOf: R.updatedAt ? new Date(R.updatedAt).toLocaleTimeString('es-AR', { hour: '2-digit', minute: '2-digit', hour12: false }) + ' h' : '—',
+            note: anyProj ? 'Proyección del Atlas con el conteo parcial (cociente electoral y D’Hondt por estado). Cambia hasta el final del escrutinio.' : 'Electos según el TSE.' }, 10)}
+        </div>
+        <div class="nh-diff">
+          <div class="nh-diff-head"><span>Partido</span><span>Hoy → ${anyProj ? 'proyección' : 'electos'}</span><span>Cambio</span></div>
+          ${rows.map(r => {
+            const d = r.after - r.before, col = leanColor(r.lean);
+            return `<div class="nh-diff-row"><b>${esc(r.party)}</b>
+              <span class="nh-diff-bars"><i class="was" style="width:${(r.before / max * 100).toFixed(1)}%"></i><i class="now" style="width:${(r.after / max * 100).toFixed(1)}%;background:${col}"></i></span>
+              <span class="nh-diff-num">${r.before} → <b>${r.after}</b> <em class="${d > 0 ? 'up' : d < 0 ? 'down' : ''}">${d > 0 ? '+' : ''}${d}</em></span></div>`;
+          }).join('')}
+          <p class="muted">«Otros» agrupa los partidos que hoy tienen menos de 15 bancas.</p>
+        </div>
+      </div>`;
+  }
+
+  function renderNightHome() {
+    const el = document.getElementById('night-home');
+    if (!el) return;
+    if (!brResHasData() || !live.brasil) { el.hidden = true; el.innerHTML = ''; return; }
+    const { round, data } = currentResults();
+    const cands = (data.candidates || []).slice().sort((a, b) => (b.pct || 0) - (a.pct || 0)).slice(0, 5);
+    const R = live.brRes, kind = live.brNightMap || 'pres';
+    const govs = Object.values(R.states || {}).map(s => s.gov).filter(Boolean);
+    const gEl = govs.filter(g => g.status === 'elected').length, gRo = govs.filter(g => g.status === 'runoff').length;
+    const senParties = Object.entries((R.senate && R.senate.seats) || {}).map(([p, n]) => ({ party: p, seats: n, lean: BR_PARTY_LEAN[p] || 'other' }));
+    const goSpecial = "window.__atlasGoTo('brasil'); setTimeout(() => { const s = document.getElementById('br-sec-resultados'); if (s) s.scrollIntoView({ behavior: 'smooth' }); }, 400); return false;";
+    el.hidden = false;
+    el.innerHTML = `
+      <div class="nh-head">
+        <div><span class="nh-kicker"><span class="live-dot"></span>${data.status === 'final' ? 'Resultado final' : 'Escrutinio en vivo'} · ${round}.ª vuelta</span>
+          <h2>${flagOf('BRA', 'fi-md')} Brasil 2026: así vota Brasil</h2>
+          <div class="nh-sub">${data.pctCounted != null ? `<b>${fmtPct(data.pctCounted, 2)}</b> de las secciones escrutadas` : ''}${data.updatedAt ? ' · ' + esc(data.updatedAt) : ''} · se actualiza solo</div></div>
+        <a class="nh-cta" href="#brasil" onclick="${goSpecial}">Todo el especial →</a>
+      </div>
+      <div class="nh-grid">
+        <div class="nh-card nh-pres">
+          <h3>Presidente</h3>
+          ${cands.map(c => `<div class="pbar"><div class="pbar-top"><span>${esc(c.name)} <small>${esc(c.party || '')}</small>${c.elected ? ' <em class="nh-won">ELECTO</em>' : ''}</span><b>${fmtPct(c.pct, 2)}</b></div>
+            <div class="pbar-track"><div class="pbar-fill" style="width:${Math.min(c.pct || 0, 100)}%;background:${BR_CAND_COLOR[c.n] || leanColor(c.lean)}"></div></div></div>`).join('')}
+          ${round === 1 ? projectionHTML('light') : ''}
+          <div class="nh-mini">
+            <span><b>${gEl}</b> gobernadores electos</span><span><b>${gRo}</b> estados van a 2.ª vuelta</span><span><b>${27 - gEl - gRo}</b> en escrutinio</span>
+          </div>
+        </div>
+        <div class="nh-card nh-map">
+          <div class="nh-map-head"><h3>Quién gana en cada estado</h3>
+            <div class="seg" id="nh-kind"><button type="button" data-kind="pres" class="${kind === 'pres' ? 'is-active' : ''}">Presidente</button><button type="button" data-kind="gov" class="${kind === 'gov' ? 'is-active' : ''}">Gobernador</button></div></div>
+          ${brNightMapSVG(kind)}
+          <div class="nt-legend nt-legend-row">${brNightLegend(kind)}</div>
+        </div>
+      </div>
+      <div class="nh-card">
+        <h3>El Congreso que viene, comparado con el actual</h3>
+        ${congressCompareHTML()}
+        ${senParties.length ? `<div class="nh-senate">${chamberCard({ name: 'Senado · las 54 bancas en juego', total: 54, term: '2 por estado · 2027–2035', parties: senParties, asOf: R.updatedAt ? new Date(R.updatedAt).toLocaleTimeString('es-AR', { hour: '2-digit', minute: '2-digit', hour12: false }) + ' h' : '—', note: 'Los dos más votados de cada estado. Las otras 27 bancas siguen hasta 2031.' }, 4)}</div>` : ''}
+      </div>`;
+    labelResultSVG(el.querySelector('.nh-map svg'), kind);
+    el.querySelectorAll('#nh-kind [data-kind]').forEach(b => b.addEventListener('click', () => { live.brNightMap = b.getAttribute('data-kind'); renderNightHome(); }));
+    wireHemicycleHover(el);
   }
 
   function currentResults() {
