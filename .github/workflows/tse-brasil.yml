@@ -36,12 +36,14 @@ jobs:
           git config user.email "atlas-bot@users.noreply.github.com"
           end=$(( $(date +%s) + MINUTES * 60 ))
           while :; do
-            python3 tools/tse_resultados.py || true
+            # Always start from the latest main (picks up script fixes, no rebase conflicts)
+            git fetch -q origin main && git reset -q --hard origin/main || true
+            timeout 170 python3 tools/tse_resultados.py || echo "pasada fallida o lenta"
             if ! git diff --quiet -- data/especiales/brasil-2026-resultados.json; then
               git add data/especiales/brasil-2026-resultados.json
-              git commit -q -m "Resultados TSE $(date -u +%H:%M) UTC"
-              git pull -q --rebase origin main && git push -q origin HEAD:main || true
+              git commit -q -m "Resultados TSE $(date -u +%H:%M) UTC" || true
+              git push -q origin HEAD:main || echo "push rechazado, reintento en la próxima pasada"
             fi
             [ $(( $(date +%s) + 120 )) -ge $end ] && break
-            sleep 120
+            sleep 100
           done

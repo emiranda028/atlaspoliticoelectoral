@@ -30,7 +30,7 @@ FED = {'PT':'FE Brasil', 'PCdoB':'FE Brasil', 'PV':'FE Brasil', 'PSOL':'PSOL-Red
        'PSDB':'PSDB-Cidadania', 'Cidadania':'PSDB-Cidadania', 'União':'União Progressista', 'PP':'União Progressista'}
 UA = {'User-Agent': 'Mozilla/5.0 (atlaspoliticoelectoral.com results reader)'}
 
-def get(url, timeout=20):
+def get(url, timeout=12):
     req = urllib.request.Request(url, headers=UA)
     with urllib.request.urlopen(req, timeout=timeout) as r:
         return json.loads(r.read().decode('utf-8'))
@@ -189,7 +189,7 @@ def one_pass():
             jobs[(uf, 'sen')] = url(codes, s, 5, 'estadual')
             jobs[(uf, 'dep')] = url(codes, s, 6, 'estadual')
     got, errors = {}, []
-    with cf.ThreadPoolExecutor(max_workers=8) as ex:
+    with cf.ThreadPoolExecutor(max_workers=12) as ex:
         futs = {ex.submit(get, u): k for k, u in jobs.items()}
         for f in cf.as_completed(futs):
             k = futs[f]
