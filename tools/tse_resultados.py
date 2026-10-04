@@ -115,7 +115,11 @@ def simple(j, top=None):
 def majoritarian_status(r, seats):
     if any(c['e'] for c in r['cands']): return 'elected'
     if any('2' in c['st'] and 'turno' in c['st'].lower() for c in r['cands']): return 'runoff'
-    return 'final' if r['pct'] >= 100 else 'counting'
+    if r['pct'] >= 100 and r['cands']:
+        # Count finished: majority rule (governors; senators are first-past-the-post)
+        if seats > 1 or (r['cands'][0]['pct'] or 0) > 50: return 'elected'
+        return 'runoff'
+    return 'counting'
 
 def dhondt_projection(cands, seats):
     # list votes (federations merged); candidates' nominal votes only

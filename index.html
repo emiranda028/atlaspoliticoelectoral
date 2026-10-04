@@ -31400,7 +31400,7 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
     if (!brResHasData()) { el.innerHTML = ''; return; }
     const R = live.brRes, st = R.states || {}, br = live.brasil;
     const govs = Object.keys(st).sort().map(uf => ({ uf, name: (brStates().find(s => s.uf === uf) || {}).name || uf, g: st[uf].gov })).filter(x => x.g && x.g.cands && x.g.cands.length);
-    const statusTxt = g => g.status === 'elected' ? '<span class="nt-badge is-won">Electo</span>' : g.status === 'runoff' ? '<span class="nt-badge is-runoff">2.ª vuelta</span>' : `<span class="nt-badge">${fmtPct(g.pct, 0)} escrutado</span>`;
+    const statusTxt = g => (g.status === 'final' && g.cands && g.cands[0] && g.cands[0].pct > 50) || g.status === 'elected' ? '<span class="nt-badge is-won">Electo</span>' : g.status === 'final' ? '<span class="nt-badge is-runoff">2.ª vuelta</span>' : g.status === 'elected' ? '<span class="nt-badge is-won">Electo</span>' : g.status === 'runoff' ? '<span class="nt-badge is-runoff">2.ª vuelta</span>' : `<span class="nt-badge">${fmtPct(g.pct, 0)} escrutado</span>`;
     const chamberParties = Object.entries((R.chamber && R.chamber.seats) || {}).map(([p, n]) => ({ party: p, seats: n, lean: BR_PARTY_LEAN[p] || 'other' }));
     const senParties = Object.entries((R.senate && R.senate.seats) || {}).map(([p, n]) => ({ party: p, seats: n, lean: BR_PARTY_LEAN[p] || 'other' }));
     const rep = (R.chamber && R.chamber.statesReporting) || 0;
@@ -31534,7 +31534,7 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
     const cands = (data.candidates || []).slice().sort((a, b) => (b.pct || 0) - (a.pct || 0)).slice(0, 5);
     const R = live.brRes, kind = live.brNightMap || 'pres';
     const govs = Object.values(R.states || {}).map(s => s.gov).filter(Boolean);
-    const gEl = govs.filter(g => g.status === 'elected').length, gRo = govs.filter(g => g.status === 'runoff').length;
+    const gEl = govs.filter(g => g.status === 'elected' || (g.status === 'final' && g.cands && g.cands[0] && g.cands[0].pct > 50)).length, gRo = govs.filter(g => g.status === 'runoff' || (g.status === 'final' && !(g.cands && g.cands[0] && g.cands[0].pct > 50))).length;
     const senParties = Object.entries((R.senate && R.senate.seats) || {}).map(([p, n]) => ({ party: p, seats: n, lean: BR_PARTY_LEAN[p] || 'other' }));
     const goSpecial = "window.__atlasGoTo('brasil'); setTimeout(() => { const s = document.getElementById('br-sec-resultados'); if (s) s.scrollIntoView({ behavior: 'smooth' }); }, 400); return false;";
     el.hidden = false;
