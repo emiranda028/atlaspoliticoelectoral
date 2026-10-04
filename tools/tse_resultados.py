@@ -51,7 +51,7 @@ def discover():
     except Exception:
         cfg = {}
     cfg = {'federal': '6257', 'estadual': '6259', 'round': 1, 'cycle': 'ele2026', **cfg}
-    if datetime.datetime.utcnow() > datetime.datetime(2026, 10, 25, 11) and not cfg.get('forced'):
+    if datetime.datetime.now(datetime.timezone.utc).replace(tzinfo=None) > datetime.datetime(2026, 10, 25, 11) and not cfg.get('forced'):
         cfg.update({'federal': cfg.get('federal2', '6258'), 'estadual': cfg.get('estadual2', '6260'), 'round': 2})
     if cfg.get('federal') and cfg.get('estadual'):
         return {'federal': str(cfg['federal']), 'estadual': str(cfg['estadual']), 'round': int(cfg.get('round', 1)), 'cycle': cfg.get('cycle', 'ele2026')}
@@ -72,7 +72,7 @@ def discover():
             if '2026' in txt and kind in txt and str(e.get('t', '1')) == str(turno):
                 return e
         return None
-    turno = 2 if datetime.datetime.utcnow() > datetime.datetime(2026, 10, 25, 11) else 1
+    turno = 2 if datetime.datetime.now(datetime.timezone.utc).replace(tzinfo=None) > datetime.datetime(2026, 10, 25, 11) else 1
     fed, est = pick('federal', turno), pick('estadual', turno)
     if not fed or not est:
         raise RuntimeError('No pude identificar los códigos de elección en ele-c.json: ' + json.dumps(found[:8], ensure_ascii=False)[:800])
@@ -168,7 +168,7 @@ def one_pass():
             g = simple(got[(uf, 'gov')], 4); g['status'] = majoritarian_status(g, 1); st['gov'] = g
         if (uf, 'sen') in got:
             s = simple(got[(uf, 'sen')], 5); s['status'] = majoritarian_status(s, 2); st['sen'] = s
-            for c in (s['cands'][:2] if not any(c['e'] for c in s['cands']) else [c for c in s['cands'] if c['e']]):
+            for c in [] if not s['pct'] else (s['cands'][:2] if not any(c['e'] for c in s['cands']) else [c for c in s['cands'] if c['e']]):
                 senate[c['party']] = senate.get(c['party'], 0) + 1
         if (uf, 'dep') in got:
             d = simple(got[(uf, 'dep')])
