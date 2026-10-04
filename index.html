@@ -6604,6 +6604,9 @@
 
   .br-map-svg .br-label-pct { font-size: 11px; font-weight: 700; }
   .uf-rank-val { white-space: nowrap; }
+  .uf-rank-row { grid-template-columns: 30px minmax(0, 1fr) auto; }
+  .br-map-svg .br-label-el { font-size: 8.5px; font-weight: 500; stroke: none; }
+  .br-tip-el { display: block; font-size: 12px; opacity: .75; margin-bottom: 4px; }
   #br-metric button.is-result { font-weight: 700; }
   #br-metric button.is-result.is-active { background: var(--br-green, #0B6E3A); }
   .nt-legend-row { flex-direction: row; flex-wrap: wrap; gap: 6px 16px; }
@@ -31001,7 +31004,8 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
       const big = bb.width >= 40 && bb.height >= 34;
       g.insertAdjacentHTML('beforeend',
         `<text x="${cx}" y="${isRes && big ? cy - 7 : cy}" text-anchor="middle" dominant-baseline="middle" style="fill:${dark ? '#fff' : '#0B1628'};stroke:${dark ? 'rgba(0,0,0,.25)' : 'rgba(255,255,255,.6)'}">${uf}</text>`
-        + (isRes && big && v != null ? `<text class="br-label-pct" x="${cx}" y="${cy + 9}" text-anchor="middle" dominant-baseline="middle" style="fill:#fff;stroke:rgba(0,0,0,.3)">${Math.round(v)}%</text>` : ''));
+        + (isRes && big && v != null ? `<text class="br-label-pct" x="${cx}" y="${cy + 9}" text-anchor="middle" dominant-baseline="middle" style="fill:#fff;stroke:rgba(0,0,0,.3)">${Math.round(v)}%</text>` : '')
+        + (isRes && big && bb.height >= 50 && s && s.voters ? `<text class="br-label-el" x="${cx}" y="${cy + 22}" text-anchor="middle" dominant-baseline="middle" style="fill:rgba(255,255,255,.85)">${s.voters >= 1e6 ? fmtM(s.voters) : Math.round(s.voters / 1000) + ' mil'}</text>` : ''));
     });
 
     const tip = host.querySelector('#br-tooltip');
@@ -31011,7 +31015,7 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
       const rect = host.getBoundingClientRect();
       const kind = BR_METRICS[metric].result, l = kind ? brLead(uf, kind) : null;
       tip.innerHTML = kind
-        ? `<strong>${esc(s.name)}</strong>${l ? `${esc(titleCase(l.c.name))} (${esc(l.c.party)}) ${fmtPct(l.c.pct)}${l.c2 ? `<br>${esc(titleCase(l.c2.name))} (${esc(l.c2.party)}) ${fmtPct(l.c2.pct)}` : ''}<br>${fmtPct(l.r.pct, 1)} escrutado` : 'Sin datos todavía'}`
+        ? `<strong>${esc(s.name)}</strong><span class="br-tip-el">${fmtInt(s.voters)} electores</span>${l ? `${esc(titleCase(l.c.name))} (${esc(l.c.party)}) ${fmtPct(l.c.pct)}${l.c2 ? `<br>${esc(titleCase(l.c2.name))} (${esc(l.c2.party)}) ${fmtPct(l.c2.pct)}` : ''}<br>${fmtPct(l.r.pct, 1)} escrutado` : 'Sin datos todavía'}`
         : `<strong>${esc(s.name)}</strong>${esc(BR_METRICS[metric].label)}: ${BR_METRICS[metric].fmt(brMetricValue(s, metric))}`;
       tip.style.left = (ev.clientX - rect.left) + 'px';
       tip.style.top = (ev.clientY - rect.top) + 'px';
