@@ -5064,6 +5064,13 @@
   }
   .especial-card.is-featured .especial-title { font-size: clamp(26px, 3vw, 36px); }
   .especial-blurb { font-size: 14.5px; line-height: 1.5; opacity: .88; max-width: 52ch; }
+  .especial-contact { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+  .especial-contact a {
+    display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px; border-radius: 999px;
+    border: 1px solid var(--line, rgba(0,0,0,.12)); background: var(--surface, #fff); color: inherit;
+    font-weight: 600; font-size: .92rem; text-decoration: none; overflow-wrap: anywhere;
+  }
+  .especial-contact a:hover { border-color: currentColor; }
   .especial-meta {
     margin-top: auto;
     display: flex; flex-wrap: wrap; gap: 6px 14px;
@@ -30903,6 +30910,7 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
         <span class="especial-tag">${esc(s.tag || (isActive ? 'Especial' : 'Próximamente'))}</span>
         <div class="especial-title">${s.iso ? flagOf(s.iso, 'fi-md') : ''}${esc(s.title)}</div>
         <div class="especial-blurb">${esc(s.blurb || '')}</div>
+        ${s.contact ? `<div class="especial-contact">${s.contact.linkedin ? `<a translate="no" href="${esc(s.contact.linkedin)}" target="_blank" rel="noopener">↗ LinkedIn</a>` : ''}${s.contact.email ? `<a translate="no" href="mailto:${esc(s.contact.email)}?subject=${encodeURIComponent('Atlas Político Electoral')}">✉ ${esc(s.contact.email)}</a>` : ''}</div>` : ''}
         <div class="especial-meta">${when ? `<span>${esc(when)}</span>` : ''}${isActive || s.url ? '<span class="arrow" aria-hidden="true">→</span>' : ''}</div>`;
       if (isActive) return `<a class="${cls}" href="#${esc(s.view)}" onclick="return window.__atlasGoTo('${esc(s.view)}')">${inner}</a>`;
       if (s.url) return `<a class="${cls}" href="${esc(s.url)}" target="_blank" rel="noopener">${inner}</a>`;
