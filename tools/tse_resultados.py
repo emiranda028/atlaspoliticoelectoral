@@ -107,7 +107,9 @@ def simple(j, top=None):
         votes = num(c.get('vap'))
         cands.append({'n': str(c.get('n', '')), 'name': (c.get('nmu') or c.get('nm') or '').strip(), 'party': PARTY.get(str(c.get('n', ''))[:2]) or sg or party_of(c.get('n'), c.get('cc')),
                       'votes': int(votes) if votes is not None else None, 'pct': num(c.get('pvap')),
-                      'e': str(c.get('e', '')).lower() == 's', 'st': c.get('st') or ''})
+                      # TSE flags runoff candidates with e='s' too (st '2º turno'): only 'Eleito…' counts as elected
+                      'e': (str(c.get('st') or '').lower().startswith('eleit') or (str(c.get('e', '')).lower() == 's' and 'turno' not in str(c.get('st') or '').lower())),
+                      'runoff': 'turno' in str(c.get('st') or '').lower(), 'st': c.get('st') or ''})
     cands.sort(key=lambda c: -(c['votes'] or 0))
     e, v = j.get('e') if isinstance(j.get('e'), dict) else {}, j.get('v') if isinstance(j.get('v'), dict) else {}
     turnout = None
@@ -119,8 +121,8 @@ def simple(j, top=None):
             'cands': cands[:top] if top else cands}
 
 def majoritarian_status(r, seats):
+    if any(c.get('runoff') for c in r['cands']): return 'runoff'
     if any(c['e'] for c in r['cands']): return 'elected'
-    if any('2' in c['st'] and 'turno' in c['st'].lower() for c in r['cands']): return 'runoff'
     if r['pct'] >= 100 and r['cands']:
         # Count finished: majority rule (governors; senators are first-past-the-post)
         if seats > 1 or (r['cands'][0]['pct'] or 0) > 50: return 'elected'
