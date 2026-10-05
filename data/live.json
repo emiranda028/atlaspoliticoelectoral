@@ -37,8 +37,11 @@
    "status": "cta",
    "tag": "Tu idea",
    "title": "¿Qué elección querés ver?",
-   "url": "https://github.com/emiranda028/atlaspoliticoelectoral/issues",
-   "blurb": "Proponé el próximo especial o avisanos si encontrás un dato para corregir."
+   "blurb": "Proponé el próximo especial o avisanos si encontrás un dato para corregir. Escribinos por LinkedIn o por mail.",
+   "contact": {
+    "linkedin": "https://www.linkedin.com/in/emiranda028/",
+    "email": "emiranda028@gmail.com"
+   }
   }
  ],
  "notes": [
