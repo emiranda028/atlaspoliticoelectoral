@@ -27153,7 +27153,9 @@ try {
     maxZoom: 7,
     zoomSnap: 0.25,
     zoomDelta: 0.5,
-    wheelPxPerZoomLevel: 90,
+    wheelPxPerZoomLevel: 120,
+    preferCanvas: true,   // one shared canvas: much faster than SVG with ~250 countries
+    renderer: L.canvas({ padding: 0.5, tolerance: 2 }),
     worldCopyJump: false,
     maxBounds: [[-75, -230], [86, 230]],
     maxBoundsViscosity: 0.9,
@@ -27531,13 +27533,9 @@ function onEachFeature(feature, layer) {
       if (isTouchUI()) {
         // Keep the reader on the map: a card slides up with the essentials
         // and a button that jumps down to the full profile.
-        const b = layer.getBounds();
-        if (b.isValid()) map.flyToBounds(b, { maxZoom: 4, padding: [30, 30], duration: 0.6 });
         showMapQuick(country);
         return;
       }
-      const bounds = layer.getBounds();
-      if (bounds.isValid()) map.flyToBounds(bounds, { maxZoom: 4, padding: [40,40], duration: 0.6 });
       openFicha(country);
       const url = new URL(window.location.href);
       url.searchParams.set('country', iso);
@@ -28182,6 +28180,7 @@ function closeFicha(opts) {
     }
   }
   if (fichaLastFocus && fichaLastFocus.focus) { try { fichaLastFocus.focus({ preventScroll: true }); } catch (e) {} }
+  if (document.body.getAttribute('data-view') === 'inicio' && window.__fitWorld) window.__fitWorld(true);
 }
 window.closeFicha = closeFicha;
 
@@ -29404,7 +29403,7 @@ function initProfile(metrics) {
           const lIso = getFeatureISO(layer.feature);
           if (lIso === iso) {
             const b = layer.getBounds();
-            if (b.isValid()) map.flyToBounds(b, { maxZoom: 4, padding: [40,40], duration: 0.6 });
+            if (b.isValid()) map.flyToBounds(b, { maxZoom: 3, padding: [60, 60], duration: 0.6 });
           }
         });
       }
@@ -29449,6 +29448,8 @@ function initProfile(metrics) {
    LOAD GEOJSON
    =========================================================== */
 const GEO_SOURCES = [
+  // Light copy (Natural Earth simplified with tools/simplify_geo.py): ~1,4 MB instead of 14 MB
+  'data/geo/world.json',
   'https://cdn.jsdelivr.net/gh/datasets/geo-countries@master/data/countries.geojson',
   'https://raw.githubusercontent.com/datasets/geo-countries/master/data/countries.geojson'
 ];
@@ -30326,7 +30327,7 @@ function renderElectionsTimeline() {  const today = new Date();
         const layerIso = getFeatureISO(layer.feature);
         if (layerIso === iso) {
           const b = layer.getBounds();
-          if (b.isValid()) map.flyToBounds(b, { maxZoom: 4, padding: [40,40], duration: 0.6 });
+          if (b.isValid()) map.flyToBounds(b, { maxZoom: 3, padding: [60, 60], duration: 0.6 });
         }
       });
     }
@@ -30661,7 +30662,7 @@ async function fetchWikiPhoto(wikiName) {
     state.geoLayer = L.geoJSON(geo, {
       style: styleFeature,
       onEachFeature: onEachFeature,
-      smoothFactor: 0.6
+      smoothFactor: 1
     }).addTo(map);
     addCountryLabels();
     map.invalidateSize();
@@ -30706,11 +30707,11 @@ function addCountryLabels() {
     walk(layer.getLatLngs());
     const main = bestBB || b;
     const at = LABEL_AT[iso] || [main.getCenter().lat, main.getCenter().lng];
-    const w = Math.max(main.getEast() - main.getWest(), LABEL_AT[iso] ? Math.min(b.getEast() - b.getWest(), 60) : 0), h = main.getNorth() - main.getSouth();
+    const w = main.getEast() - main.getWest(), h = main.getNorth() - main.getSouth();
     if (w > 170) return;
     const name = c.name.length > 16 && c.shortName ? c.shortName : c.name;
     const m = L.marker(at, { interactive: false, keyboard: false, icon: L.divIcon({ className: 'map-label' + (w * h > 900 ? ' is-big' : ''), html: `<span>${name}</span>`, iconSize: [0, 0] }) });
-    labels.push({ m, iso, w: Math.min(w, 120), h, len: name.length, big: w * h > 900 });
+    labels.push({ m, iso, w: Math.min(w, 120), h, len: name.length, big: w * h > 900, always: iso === 'ARG' });
   });
   const group = L.layerGroup(labels.map(l => l.m)).addTo(map);
   state.labelLayer = group;
@@ -30719,7 +30720,7 @@ function addCountryLabels() {
     const pxPerDeg = 256 * Math.pow(2, z) / 360;
     labels.forEach(l => {
       const need = l.len * (l.big ? 8.4 : 6.8) + 6;
-      const show = l.w * pxPerDeg * 0.85 >= need && l.h * pxPerDeg >= 12;
+      const show = l.always || (l.w * pxPerDeg * 0.85 >= need && l.h * pxPerDeg >= 12);
       const el = l.m.getElement && l.m.getElement();
       if (el) el.classList.toggle('is-hidden', !show);
     });
