@@ -6804,7 +6804,7 @@
   #filters-sticky .filters-secondary-wrap.is-open { max-height: 400px; }
   #filters-sticky #filter-bar { padding-top: 7px; padding-bottom: 7px; gap: 6px; }
   #map {
-    height: clamp(460px, 74vh, 780px);
+    height: clamp(460px, calc(100vh - 130px), 860px);
     background: radial-gradient(ellipse at 50% 40%, #E4ECF4 0%, #D3DFEB 70%, #C8D6E4 100%);
     font-family: var(--font-sans);
   }
@@ -6824,6 +6824,49 @@
     .map-label span { font-size: 9px; }
     .map-label.is-big span { font-size: 10px; }
     #filters-sticky .filters-toggle-btn { padding: 4px 9px; font-size: 10.5px; }
+  }
+
+  /* ===== Mapa: filtros dentro del mapa + pantalla completa ===== */
+  .filters-dock-head { display: none; }
+  .panel-map > #filters-sticky.is-docked {
+    position: absolute !important; top: 12px !important; left: 56px; z-index: 900; width: 236px; max-height: calc(100% - 24px);
+    overflow-y: auto; overscroll-behavior: contain; background: rgba(255,255,255,.95); backdrop-filter: blur(6px);
+    border: 1px solid var(--line); border-radius: 14px; box-shadow: 0 10px 30px rgba(11,22,40,.18);
+  }
+  #filters-sticky.is-docked .filters-dock-head {
+    display: flex; align-items: center; justify-content: space-between; padding: 9px 10px 6px 14px;
+    font: 700 11px var(--font-sans); letter-spacing: .1em; text-transform: uppercase; color: var(--ink);
+    position: sticky; top: 0; background: inherit; z-index: 1;
+  }
+  .filters-dock-fold { border: 1px solid var(--line-strong); background: var(--surface); border-radius: 8px; width: 28px; height: 26px; cursor: pointer; font: 700 16px/1 var(--font-sans); color: var(--ink); }
+  #filters-sticky.is-docked .filter-bar { display: flex; flex-direction: column; align-items: stretch; flex-wrap: nowrap; gap: 4px; padding: 4px 10px 10px !important; background: none; border: 0; }
+  #filters-sticky.is-docked .filter-bar-label { width: auto; margin: 6px 2px 2px; font-size: 10px; }
+  #filters-sticky.is-docked .search-box { order: -1; max-width: none; width: 100%; margin: 0 0 4px !important; }
+  #filters-sticky.is-docked .chip { display: flex; justify-content: flex-start; align-items: center; gap: 8px; width: 100%; margin: 0; text-align: left; }
+  #filters-sticky.is-docked .chip .mono { margin-left: auto; }
+  #filters-sticky.is-docked .filter-bar, #filters-sticky.is-docked .filter-bar-secondary { overflow: visible !important; flex-wrap: nowrap !important; }
+  #filters-sticky.is-docked .filters-toggle-btn { justify-content: center; margin: 6px 0 0; }
+  #filters-sticky.is-docked .filter-active-badge { margin: 0 10px 10px; border-radius: 10px; }
+  #filters-sticky.is-docked.is-folded { width: auto !important; }
+  #filters-sticky.is-docked.is-folded > :not(.filters-dock-head) { display: none !important; }
+  #filters-sticky.is-docked.is-folded .filters-dock-head { gap: 10px; padding: 7px 8px 7px 12px; }
+  .map-fs-btn a { font-size: 17px !important; }
+  html.map-fs, html.map-fs body { overflow: hidden !important; }
+  html.map-fs .layout {
+    position: fixed; inset: 0; z-index: 1400; margin: 0; max-width: none; height: 100vh; height: 100dvh;
+    background: var(--surface); grid-template-rows: 100%;
+  }
+  html.map-fs .panel-map { height: 100%; min-height: 0; }
+  html.map-fs #map { height: 100% !important; max-height: none !important; min-height: 0 !important; }
+  html.map-fs .panel-detail { max-height: 100%; overflow-y: auto; }
+  html.map-fs .ficha-modal { z-index: 1600; }
+  html.map-fs .map-quick { z-index: 1500; }
+  @media (max-width: 980px) {
+    html.map-fs .layout { grid-template-columns: 1fr; }
+    html.map-fs .panel-detail { display: none; }
+  }
+  @media (max-width: 760px) {
+    .panel-map > #filters-sticky.is-docked { left: 50px; width: min(220px, calc(100% - 62px)); max-height: 60%; }
   }
 </style>
 </head>
@@ -26912,6 +26955,39 @@ window.addEventListener('scroll', () => {
   }
 }, { passive: true });
 
+// Filters dock: on the map view (desktop) the filter bar moves inside the map
+// as a left-hand panel, so it never scrolls away from the map. Elsewhere it
+// goes back to the sticky bar under the navigation.
+(function () {
+  const el = document.getElementById('filters-sticky');
+  if (!el) return;
+  const home = document.createComment('filters-home');
+  el.parentNode.insertBefore(home, el);
+  const head = document.createElement('div');
+  head.className = 'filters-dock-head';
+  head.innerHTML = '<span>Filtros</span><button type="button" class="filters-dock-fold" aria-expanded="true" title="Plegar filtros">‹</button>';
+  el.insertBefore(head, el.firstChild);
+  head.querySelector('button').addEventListener('click', () => {
+    const folded = el.classList.toggle('is-folded');
+    const b = head.querySelector('button');
+    b.textContent = folded ? '›' : '‹';
+    b.title = folded ? 'Mostrar filtros' : 'Plegar filtros';
+    b.setAttribute('aria-expanded', folded ? 'false' : 'true');
+  });
+  window.__placeFilters = function () {
+    const pm = document.querySelector('.panel-map');
+    const dock = pm && document.body.getAttribute('data-view') === 'inicio' && (window.innerWidth > 760 || document.documentElement.classList.contains('map-fs'));
+    if (dock && el.parentNode !== pm) {
+      pm.appendChild(el); el.classList.add('is-docked');
+      // On a phone the panel starts folded so the map stays in view
+      if (window.innerWidth <= 760 && !el.classList.contains('is-folded')) head.querySelector('button').click();
+    }
+    else if (!dock && el.parentNode !== home.parentNode) { home.parentNode.insertBefore(el, home.nextSibling); el.classList.remove('is-docked'); }
+  };
+  window.addEventListener('resize', () => window.__placeFilters());
+  window.__placeFilters();
+})();
+
 // Mobile filters toggle: collapse/expand the secondary filter bars
 (function() {
   const btn = document.getElementById('filters-toggle-btn');
@@ -27189,6 +27265,44 @@ try {
     },
   });
   new WorldCtl().addTo(map);
+
+  // Full screen: the map (with its filters and the side panel) fills the screen.
+  // A CSS overlay does the work everywhere (iOS has no element fullscreen);
+  // where the Fullscreen API exists we also hide the browser chrome.
+  const FsCtl = L.Control.extend({
+    options: { position: 'topleft' },
+    onAdd() {
+      const div = L.DomUtil.create('div', 'leaflet-bar map-world-btn map-fs-btn');
+      div.innerHTML = '<a href="#" role="button" title="Pantalla completa" aria-label="Pantalla completa">⛶</a>';
+      L.DomEvent.on(div.firstChild, 'click', ev => { L.DomEvent.preventDefault(ev); L.DomEvent.stopPropagation(ev); window.__toggleMapFS(); });
+      return div;
+    },
+  });
+  new FsCtl().addTo(map);
+  const syncFS = () => {
+    const on = document.documentElement.classList.contains('map-fs');
+    const a = document.querySelector('.map-fs-btn a');
+    if (a) { a.textContent = on ? '✕' : '⛶'; a.title = on ? 'Salir de pantalla completa' : 'Pantalla completa'; a.setAttribute('aria-label', a.title); }
+    window.__placeFilters();
+    setTimeout(() => { map.invalidateSize(); if (!state.selectedISO || on) { mapUserMoved = false; window.__fitWorld(false); } }, 80);
+  };
+  window.__toggleMapFS = function () {
+    const html = document.documentElement;
+    const on = !html.classList.contains('map-fs');
+    html.classList.toggle('map-fs', on);
+    try {
+      if (on && html.requestFullscreen && !document.fullscreenElement) html.requestFullscreen().catch(() => {});
+      if (!on && document.fullscreenElement && document.exitFullscreen) document.exitFullscreen().catch(() => {});
+    } catch (e) {}
+    syncFS();
+  };
+  window.__exitMapFS = function () { if (document.documentElement.classList.contains('map-fs')) window.__toggleMapFS(); };
+  document.addEventListener('fullscreenchange', () => {
+    if (!document.fullscreenElement && document.documentElement.classList.contains('map-fs')) { document.documentElement.classList.remove('map-fs'); syncFS(); }
+  });
+  document.addEventListener('keydown', ev => {
+    if (ev.key === 'Escape' && document.documentElement.classList.contains('map-fs') && !document.documentElement.classList.contains('ficha-open')) window.__exitMapFS();
+  });
 
   // No raster basemap: the country polygons are the map, drawn over a plain
   // "ocean" background (#map in CSS). This avoids third-party tile services
@@ -28014,6 +28128,9 @@ function openFicha(c, opts) {
     document.addEventListener('keydown', ev => { if (ev.key === 'Escape' && !modal.hidden) closeFicha(); });
   }
   if (window.hideMapQuick) window.hideMapQuick();
+  // In browser full screen only the fullscreen element is painted
+  const fsHost = document.fullscreenElement && document.fullscreenElement !== document.documentElement ? document.fullscreenElement : document.body;
+  if (modal.parentNode !== fsHost) fsHost.appendChild(modal);
   const body = modal.querySelector('#ficha-body');
   const view = document.body.getAttribute('data-view');
   const backBtn = modal.querySelector('.ficha-back');
@@ -30453,6 +30570,10 @@ function renderElectionsTimeline() {  const today = new Date();
       const href = (l.getAttribute('href') || '').replace('#', '');
       l.classList.toggle('is-active', NAV_TO_VIEW[href] === view || href === view);
     });
+
+    // On the map view the filters live inside the map (left panel)
+    if (window.__placeFilters) window.__placeFilters();
+    if (view !== 'inicio' && window.__exitMapFS) window.__exitMapFS();
 
     // Leaflet needs a size recalculation when its container becomes visible.
     // The map now lives on the home (inicio) view.
