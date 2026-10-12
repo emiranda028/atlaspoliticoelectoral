@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 """Brasil 2026 — reads the TSE public results feed and writes a compact
-summary for the site: data/especiales/brasil-2026-resultados.json
+summary for the site: data/especiales/brasil-2026-resultados.json (1.ª vuelta,
+kept as the final first-round record) and brasil-2026-resultados-2t.json
+(2.ª vuelta: president + the governor runoffs only).
 
   python3 tools/tse_resultados.py            # one pass
   python3 tools/tse_resultados.py --loop 840 # repeat every 2 min for 840 s
@@ -15,7 +17,8 @@ as one list) and marks the state as "projection".
 import json, os, re, sys, time, urllib.request, datetime, concurrent.futures as cf
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-OUT = os.path.join(ROOT, 'data', 'especiales', 'brasil-2026-resultados.json')
+OUT1 = os.path.join(ROOT, 'data', 'especiales', 'brasil-2026-resultados.json')
+OUT2 = os.path.join(ROOT, 'data', 'especiales', 'brasil-2026-resultados-2t.json')
 CFG = os.path.join(ROOT, 'data', 'especiales', 'brasil-2026.json')
 BASE = os.environ.get('TSE_BASE', 'https://resultados.tse.jus.br/oficial')
 UFS = ['AC','AL','AM','AP','BA','CE','DF','ES','GO','MA','MG','MS','MT','PA','PB','PE','PI','PR','RJ','RN','RO','RR','RS','SC','SE','SP','TO']
@@ -51,7 +54,7 @@ def discover():
     except Exception:
         cfg = {}
     cfg = {'federal': '6257', 'estadual': '6259', 'round': 1, 'cycle': 'ele2026', **cfg}
-    if datetime.datetime.now(datetime.timezone.utc).replace(tzinfo=None) > datetime.datetime(2026, 10, 25, 11) and not cfg.get('forced'):
+    if (os.environ.get('TSE_ROUND') == '2' or datetime.datetime.now(datetime.timezone.utc).replace(tzinfo=None) > datetime.datetime(2026, 10, 25, 11)) and not cfg.get('forced'):
         cfg.update({'federal': cfg.get('federal2', '6258'), 'estadual': cfg.get('estadual2', '6260'), 'round': 2})
     if cfg.get('federal') and cfg.get('estadual'):
         return {'federal': str(cfg['federal']), 'estadual': str(cfg['estadual']), 'round': int(cfg.get('round', 1)), 'cycle': cfg.get('cycle', 'ele2026')}
@@ -193,10 +196,19 @@ def project_president(got, national):
 def one_pass():
     codes = discover()
     jobs = {('BR', 'pres'): url(codes, 'br', 1, 'federal')}
+    runoff_govs = set(UFS)
+    if codes['round'] == 2:
+        # Only the states whose governor race went to a runoff vote for governor again
+        try:
+            r1 = json.load(open(OUT1))
+            runoff_govs = {uf for uf, st in r1.get('states', {}).items() if (st.get('gov') or {}).get('status') == 'runoff'}
+        except Exception:
+            runoff_govs = set()
     for uf in UFS:
         s = uf.lower()
         jobs[(uf, 'pres')] = url(codes, s, 1, 'federal')
-        jobs[(uf, 'gov')] = url(codes, s, 3, 'estadual')
+        if uf in runoff_govs:
+            jobs[(uf, 'gov')] = url(codes, s, 3, 'estadual')
         if codes['round'] == 1:
             jobs[(uf, 'sen')] = url(codes, s, 5, 'estadual')
             jobs[(uf, 'dep')] = url(codes, s, 6, 'estadual')
@@ -236,9 +248,13 @@ def one_pass():
     out['president']['projection'] = project_president(got, out['president'])
     out['chamber'] = {'seats': chamber, 'statesReporting': rep}
     out['senate'] = {'seats': senate}
-    tmp = OUT + '.tmp'
+    if codes['round'] == 2:
+        out['runoffStates'] = sorted(runoff_govs)
+        for k in ('chamber', 'senate'): out.pop(k, None)
+    dest = OUT2 if codes['round'] == 2 else OUT1
+    tmp = dest + '.tmp'
     json.dump(out, open(tmp, 'w'), ensure_ascii=False, separators=(',', ':'))
-    os.replace(tmp, OUT)
+    os.replace(tmp, dest)
     print(f"ok {out['updatedAt']} · pres {out['president']['pct']}% · errores {len(errors)}", flush=True)
 
 if __name__ == '__main__':

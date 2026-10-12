@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-09-24T15:30:00-03:00",
+ "updatedAt": "2026-10-12T12:00:00-03:00",
  "refreshSeconds": 300,
  "specials": [
   {
@@ -7,10 +7,10 @@
    "view": "brasil",
    "status": "active",
    "iso": "BRA",
-   "tag": "Especial · en vivo",
+   "tag": "Especial · balotaje",
    "title": "Brasil 2026",
-   "date": "2026-10-04",
-   "blurb": "Presidente, 27 gobernadores, 54 senadores y 513 diputados federales. Mapa de electores por estado, el Congreso que se renueva, candidatos, encuestas y resultados en vivo."
+   "date": "2026-10-25",
+   "blurb": "Flávio Bolsonaro vs. Lula el 25 de octubre, más seis gobernaciones. El mano a mano, las encuestas, los apoyos y, en el archivo, todos los resultados de la 1.ª vuelta."
   },
   {
    "id": "eeuu-2026",
@@ -33,6 +33,16 @@
    "blurb": "120 bancas en un solo distrito y 61 para gobernar. Calculadora de coaliciones con las encuestas de septiembre, Knéset actual y listas."
   },
   {
+   "id": "espana-2026",
+   "view": "espana",
+   "status": "active",
+   "iso": "ESP",
+   "tag": "Especial · nuevo",
+   "title": "España 2026",
+   "date": "2026-11-29",
+   "blurb": "Generales anticipadas del 29 de noviembre: 350 diputados en 52 provincias y 176 para la mayoría absoluta. Calculadora de mayorías con las encuestas, Congreso actual, candidatos y relación con Argentina."
+  },
+  {
    "id": "propuesta",
    "status": "cta",
    "tag": "Tu idea",
@@ -45,6 +55,30 @@
   }
  ],
  "notes": [
+  {
+   "date": "2026-10-12",
+   "tag": "Nuevo",
+   "text": "Especial España 2026: Sánchez adelantó las generales al 29 de noviembre. Calculadora de mayorías con las encuestas, el Congreso que se disuelve y la relación con Argentina.",
+   "view": "espana"
+  },
+  {
+   "date": "2026-10-12",
+   "tag": "Brasil",
+   "text": "Balotaje del 25 de octubre: Flávio Bolsonaro llega adelante en las encuestas posteriores a la 1.ª vuelta (52–53% de los válidos) y suma el apoyo de Caiado, Zema, Cury, Republicanos, União-PP y Podemos.",
+   "view": "brasil"
+  },
+  {
+   "date": "2026-10-08",
+   "tag": "Brasil",
+   "text": "El TSE anuló los votos de Garotinho y Douglas Ruas (PL) quedó electo gobernador de Río de Janeiro en 1.ª vuelta: el balotaje será en seis estados (AC, AM, DF, ES, RN y TO).",
+   "view": "brasil"
+  },
+  {
+   "date": "2026-10-05",
+   "tag": "Resultado",
+   "text": "Brasil 1.ª vuelta: Flávio Bolsonaro 47,03%, Lula 45,16%. El PL tendrá la mayor bancada de Diputados (121 de 513) y 19 de las 54 bancas del Senado en juego.",
+   "view": "brasil"
+  },
   {
    "date": "2026-09-24",
    "tag": "Nuevo",
