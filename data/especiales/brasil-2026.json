@@ -1,8 +1,8 @@
 {
   "id": "brasil-2026",
   "title": "Elecciones generales de Brasil 2026",
-  "updatedAt": "2026-09-24T17:00:00-03:00",
-  "lede": "La elección más grande de América Latina: 158,7 millones de electores eligen el mismo día, y en urna electrónica, presidente, 27 gobernadores, 54 senadores y 1.572 diputados federales, estaduales y distritales.",
+  "updatedAt": "2026-10-12T12:00:00-03:00",
+  "lede": "Flávio Bolsonaro (47,03%) y Lula (45,16%) se enfrentan en el balotaje del 25 de octubre. La primera vuelta ya definió el Congreso que asume en 2027, 21 gobernadores y dos tercios del Senado; el mismo día del balotaje se votan seis gobernaciones más.",
   "dates": {
     "firstRoundOpen": "2026-10-04T08:00:00-03:00",
     "firstRoundClose": "2026-10-04T17:00:00-03:00",
@@ -561,7 +561,7 @@
   },
   "presidential": {
     "intro": "El TSE aprobó 12 fórmulas presidenciales; la de Pablo Marçal (PRTB) fue rechazada por unanimidad el 11 de septiembre. Las encuestas muestran una carrera polarizada entre Lula, que busca un cuarto mandato, y Flávio Bolsonaro.",
-    "runoffScenario": "Escenario Lula vs. Flávio Bolsonaro",
+    "runoffScenario": "Lula vs. Flávio Bolsonaro",
     "candidates": [
       {
         "id": "lula",
@@ -675,6 +675,36 @@
     ],
     "polls": [
       {
+        "firm": "Datafolha (Folha/TV Globo)",
+        "dates": "6–8 oct",
+        "url": "https://www.brasildefato.com.br/2026/10/08/datafolha-segundo-turno-flavio-bolsonaro-49-lula-45/",
+        "r2": {
+          "flavio": 52,
+          "lula": 48
+        },
+        "after1t": true
+      },
+      {
+        "firm": "PoderData/Aya (CNN Brasil)",
+        "dates": "5–7 oct",
+        "url": "https://acritica.net/politica/pesquisa-eleitoral-segundo-turno-lula-flavio-brasil/",
+        "r2": {
+          "flavio": 53,
+          "lula": 47
+        },
+        "after1t": true
+      },
+      {
+        "firm": "AtlasIntel (Bloomberg)",
+        "dates": "3–8 oct",
+        "url": "https://investnews.com.br/economia/flavio-tem-53-contra-47-de-lula-no-segundo-turno-diz-atlas/amp/",
+        "r2": {
+          "flavio": 52.8,
+          "lula": 47.2
+        },
+        "after1t": true
+      },
+      {
         "firm": "AtlasIntel/Bloomberg",
         "dates": "17–22 sep",
         "n": 5015,
@@ -747,8 +777,8 @@
   },
   "results": {
     "round1": {
-      "status": "pending",
-      "runoff": null,
+      "status": "final",
+      "runoff": true,
       "candidates": []
     },
     "round2": {
@@ -807,6 +837,22 @@
       "date": "2026-10-04",
       "label": "1.ª vuelta: todos los cargos",
       "key": true
+    },
+    {
+      "date": "2026-10-08",
+      "label": "El TSE anula los votos de Garotinho: Douglas Ruas (PL) gana Río de Janeiro en 1.ª vuelta"
+    },
+    {
+      "date": "2026-10-15",
+      "label": "Primer debate del balotaje (pool de medios)"
+    },
+    {
+      "date": "2026-10-18",
+      "label": "Debate en Band"
+    },
+    {
+      "date": "2026-10-23",
+      "label": "Debate en TV Globo (a confirmar)"
     },
     {
       "date": "2026-10-25",
@@ -1059,5 +1105,183 @@
       "Desde el 1-4-2025 Argentina exporta gas de Vaca Muerta a Brasil a través de la red boliviana; la meta bilateral es de hasta 30 MMm3/día hacia 2030."
     ],
     "note": "Nota de datos: 2025 es cifra oficial del INDEC; 2023 y 2024 son aproximaciones calculadas con las participaciones que publica el INDEC (las series basadas en datos brasileños dan déficits menores). Enero–agosto 2026: Cámara Argentina de Comercio, con datos de fuente brasileña."
+  },
+  "runoff": {
+    "summary": "Flávio Bolsonaro llega al balotaje del 25 de octubre como favorito ajustado. Las tres encuestas verificadas desde la primera vuelta (Datafolha, PoderData/Aya y AtlasIntel) le dan entre 52% y 53% de los votos válidos contra 47-48% de Lula, una ventaja apenas mayor que el 47,03% a 45,16% del 4 de octubre. Flávio juntó el apoyo formal de Republicanos, União Brasil/PP, Podemos y Novo, además de Caiado, Zema y Cury. PSD, MDB y PSDB se declararon neutrales y Lula no sumó partidos nuevos. Lula apuesta a movilizar a los abstencionistas, a la defensa de los programas sociales y a los debates (pool el 15, Band el 18 y Globo el 23 de octubre).",
+    "endorsements": [
+      {
+        "who": "Romeu Zema (Novo), 0,27% en primera vuelta",
+        "position": "apoya a Flávio",
+        "note": "Lo anunció el 5 de octubre: dijo que la gran batalla es derrotar a Lula y al PT."
+      },
+      {
+        "who": "Ronaldo Caiado (PSD), 2,18% en primera vuelta",
+        "position": "apoya a Flávio",
+        "note": "Lo formalizó el martes 6 de octubre en Goiânia. Flávio prometió más recursos para Goiás y adoptar el modelo de seguridad de Caiado."
+      },
+      {
+        "who": "Augusto Cury (Avante), 2,89% en primera vuelta",
+        "position": "apoya a Flávio",
+        "note": "Lo anunció el jueves 8 de octubre y aclaró que no es una adhesión incondicional."
+      },
+      {
+        "who": "Renan Santos (Missão), 2,24% en primera vuelta",
+        "position": "neutral",
+        "note": "No respalda a ninguno y deja a sus votantes en libertad."
+      },
+      {
+        "who": "Republicanos",
+        "position": "apoya a Flávio",
+        "note": "Fue neutral en primera vuelta. Marcos Pereira oficializó el apoyo el 7 de octubre, con participación de Tarcísio de Freitas."
+      },
+      {
+        "who": "Federación União Progressista (União Brasil + PP)",
+        "position": "apoya a Flávio",
+        "note": "Anunció el apoyo conjunto el 6 de octubre. Según el PT, el senador André Fufuca (PP) podría inclinarse por Lula."
+      },
+      {
+        "who": "Novo",
+        "position": "apoya a Flávio",
+        "note": "La fuente no da fecha."
+      },
+      {
+        "who": "Podemos",
+        "position": "apoya a Flávio",
+        "note": "Lo confirmó el 8 de octubre, sin obligar a sus afiliados: quien quiera puede apoyar a Lula sin sanción. Con Podemos, Flávio suma cinco partidos."
+      },
+      {
+        "who": "PSD (Gilberto Kassab)",
+        "position": "neutral",
+        "note": "Neutral a nivel nacional: libera a afiliados y directorios. Caiado apoya a Flávio a título personal."
+      },
+      {
+        "who": "MDB",
+        "position": "neutral",
+        "note": "Sin posición nacional al 8 de octubre: Baleia Rossi resiste la presión del ala bolsonarista. Rede98 informó que unos 15 directorios estaduales iban a declarar apoio a Flávio en un acto el 13 de octubre (sin confirmar)."
+      },
+      {
+        "who": "PSDB",
+        "position": "neutral",
+        "note": "Libera a sus afiliados el 8 de octubre. La mayoría de los directorios se reparte entre la neutralidad y el apoyo a Flávio."
+      },
+      {
+        "who": "PT, PCdoB, PV, PSB, PDT, PSOL y Rede",
+        "position": "apoya a Lula",
+        "note": "Mantienen la alianza de la primera vuelta. Al 7-8 de octubre Lula no había sumado ningún apoyo nacional nuevo."
+      }
+    ],
+    "debates": [
+      {
+        "network": "Pool de medios 'O Momento da Decisão' (VEJA, SBT, CNN Brasil, RedeTV!, Metrópoles, Terra y otros)",
+        "date": "2026-10-15"
+      },
+      {
+        "network": "Band (pool con TV Gazeta, TV Cultura, Jovem Pan y Estadão), 20h",
+        "date": "2026-10-18"
+      },
+      {
+        "network": "TV Globo (fecha sin confirmar oficialmente)",
+        "date": "2026-10-23"
+      }
+    ],
+    "debatesNote": "Record canceló el 9 de octubre el debate previsto para el 11, porque ninguno de los dos candidatos confirmó asistencia (dato de una sola fuente, Investidor10). Algunas notas dicen que Flávio podría ir solo al debate de Globo.",
+    "themes": [
+      "Flávio pasó adelante en todas las encuestas verificadas después de la primera vuelta (52-53% de los válidos).",
+      "Flávio suma apoyos: Republicanos, União Progressista (União Brasil + PP), Podemos y Novo, más Caiado, Zema y Cury; Lula no sumó partidos nuevos.",
+      "El PSD, el MDB y el PSDB quedan neutrales a nivel nacional, con presión del ala bolsonarista dentro del MDB.",
+      "Lula apuesta a los ~33 millones que no votaron (abstención récord) y a los votantes de los candidatos eliminados.",
+      "La campaña del PT acusa a Flávio de planear un 'tijeretazo' a los programas sociales y endurece la confrontación.",
+      "Flávio responde que las ofertas de Lula son 'desesperación' y 'promesas vacías', y se enfoca en costo de vida, ingresos, salud y mano dura en seguridad.",
+      "Pesa la investigación de la PF por el caso Banco Master/Vorcaro (financiamiento de la película sobre Jair Bolsonaro); Flávio niega irregularidades.",
+      "Lula plantea propuestas de tecnología, tierras raras y minerales críticos y reindustrialización.",
+      "Se reordenó el calendario de debates: Record canceló el del 11 de octubre y el primero pasa a ser el del pool, el 15 de octubre.",
+      "Los mercados subieron después de la primera vuelta ante la expectativa de un ajuste fiscal con Flávio.",
+      "En RJ, la anulación de los votos de Garotinho por el TSE dio por ganador a Ruas (PL) en primera vuelta, y Paes recurre al STF."
+    ],
+    "governors": {
+      "DF": {
+        "poll": "Datafolha, campo 6-8 oct (publicada el 8 oct, 910 entrevistas): Celina 55%, Grass 37% (votos totales)",
+        "note": null
+      },
+      "TO": {
+        "poll": null,
+        "note": "Agência Brasil y Metro1 dan PSDB para Vicentinho Júnior; según un resumen de búsqueda, la Agência Senado lo pone en el PP (no lo verifiqué directamente)."
+      }
+    },
+    "rjNote": "En la noche de la elección Douglas Ruas (PL) tenía 49,27% contra 42,76% de Eduardo Paes (PSD), lo que forzaba un balotaje. El 8 de octubre el TSE anuló, por 5 a 2, los 274.411 votos de Anthony Garotinho (Republicanos), inelegible por la Ley de Ficha Limpia. Recalculados los votos válidos, Ruas quedó con ~50,9% y ganó en primera vuelta. Falta el acto formal del TRE-RJ, y la coalición de Paes pidió al STF suspender la decisión y mantener el balotaje.",
+    "sources": [
+      {
+        "label": "Brasil de Fato – Datafolha 2º turno (08/10)",
+        "url": "https://www.brasildefato.com.br/2026/10/08/datafolha-segundo-turno-flavio-bolsonaro-49-lula-45/"
+      },
+      {
+        "label": "A Crítica – PoderData/Aya 2º turno (08/10)",
+        "url": "https://acritica.net/politica/pesquisa-eleitoral-segundo-turno-lula-flavio-brasil/"
+      },
+      {
+        "label": "InvestNews – AtlasIntel/Bloomberg (09/10)",
+        "url": "https://investnews.com.br/economia/flavio-tem-53-contra-47-de-lula-no-segundo-turno-diz-atlas/amp/"
+      },
+      {
+        "label": "A Crítica – Caiado, Zema e Cury apoiam Flávio (08/10)",
+        "url": "https://acritica.net/eleicoes-2026/caiado-zema-e-cury-apoiam-flavio-no-2o-turno-renan-santos-libera-eleitores/"
+      },
+      {
+        "label": "O Tempo – partidos e apoios no 2º turno (08/10)",
+        "url": "https://www.otempo.com.br/eleicoes/2026/presidentes/2026/10/8/lula-x-flavio-bolsonaro-veja-quais-partidos-ja-declararam-apoio-no-segundo-turno"
+      },
+      {
+        "label": "Congresso em Foco – Podemos apoia Flávio",
+        "url": "https://www.congressoemfoco.com.br/noticia/123093/podemos-declara-apoio-a-flavio-que-soma-cinco-partidos-no-2-turno"
+      },
+      {
+        "label": "Investidor10 – agenda de debates (07/10)",
+        "url": "https://investidor10.com.br/noticias/eleicoes-2026-veja-a-agenda-de-debates-do-segundo-turno-123091/"
+      },
+      {
+        "label": "Investidor10 – Record cancela debate",
+        "url": "https://investidor10.com.br/noticias/eleicoes-2026-tv-record-cancela-debate-entre-lula-e-flavio-bolsonaro-123173/"
+      },
+      {
+        "label": "Agência Brasil – segundo turno para governador",
+        "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/Seis-estados-e-o-DF-terao-segundo-turno-para-governador"
+      },
+      {
+        "label": "Gazeta do Povo – Datafolha DF 2º turno",
+        "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/datafolha-governador-distrito-federal-outubro-2026-segundo-turno/"
+      },
+      {
+        "label": "Movimento Econômico – TSE anula votos de Garotinho (08/10)",
+        "url": "https://movimentoeconomico.com.br/geral/redacao/2026/10/08/tse-anula-votos-de-garotinho-e-douglas-ruas-vence-governo-do-rio-no-1o-turno/"
+      },
+      {
+        "label": "DGABC – Ruas se diz eleito; Paes recorre ao STF",
+        "url": "https://www.dgabc.com.br/Noticia/4351699/douglas-ruas-se-diz-eleito-no-1-turno-e-engata-campanha-por-flavio"
+      },
+      {
+        "label": "CNN Brasil – bancadas Câmara e Senado 2027",
+        "url": "https://www.cnnbrasil.com.br/eleicoes/eleicoes-como-fica-o-tamanho-das-bancadas-partidarias-do-congresso/"
+      },
+      {
+        "label": "Exame – nova composição da Câmara",
+        "url": "https://exame.com/brasil/pl-amplia-bancada-e-tera-121-deputados-veja-a-nova-composicao-da-camara/"
+      },
+      {
+        "label": "Portal de Prefeitura – resultado 1º turno presidente (100%)",
+        "url": "https://portaldeprefeitura.com.br/bastidores-da-politica/eleicoes-2026-com-100-das-secoes-totalizadas-flavio-tem-4703-e/633498/"
+      },
+      {
+        "label": "Agora RN – PT acusa 'tesouraço' de Flávio",
+        "url": "https://agorarn.com.br/politica/campanha-de-lula-afirma-que-flavio-fara-tesouraco-em-programas-sociais/"
+      },
+      {
+        "label": "CNN Brasil – discurso de Flávio sobre 'desespero' de Lula",
+        "url": "https://www.cnnbrasil.com.br/eleicoes/flavio-aposta-em-discurso-de-desespero-e-promessas-vazias-de-lula/"
+      },
+      {
+        "label": "Movimento Econômico – TSE anula votos de Garotinho (08/10)",
+        "url": "https://movimentoeconomico.com.br/geral/redacao/2026/10/08/tse-anula-votos-de-garotinho-e-douglas-ruas-vence-governo-do-rio-no-1o-turno/"
+      }
+    ]
   }
 }

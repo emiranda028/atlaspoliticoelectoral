@@ -69,6 +69,8 @@ las páginas abiertas se actualizan sin recargar.
 | `data/especiales/brasil-2026.json` | Todo el especial Brasil 2026: fechas, padrón por estado, cargos, bancadas, candidatos, encuestas, calendario y resultados |
 | `data/especiales/eeuu-2026.json` | Especial EE.UU. 2026 (midterms): bancas por estado, carreras al Senado y gobernaciones con pronóstico, composición del Congreso, encuestas, carreras clave y calendario |
 | `data/especiales/israel-2026.json` | Especial Israel 2026: sistema electoral, Knéset actual, listas, encuestas de bancas (alimentan la calculadora de coaliciones) y calendario |
+| `data/especiales/espana-2026.json` | Especial España 2026 (generales del 29 de noviembre): sistema, Congreso al disolverse, listas, encuestas (alimentan la calculadora de mayorías), escaños por provincia, calendario y relación con Argentina |
+| `data/especiales/brasil-2026-resultados-2t.json` | Resultados de la 2.ª vuelta de Brasil (presidente y las gobernaciones en balotaje), escrito por `tools/tse_resultados.py`; `brasil-2026-resultados.json` queda como registro final de la 1.ª vuelta |
 | `data/calendario.json` | Resúmenes del calendario electoral por país (ISO3): fecha, qué se elige, electores, quién gobierna y si busca la reelección, contendientes, encuestas, la pregunta clave y fuentes. `status`: `upcoming`, `held` (ya votó: sale del calendario y la ficha muestra el resultado), `postponed` o `none`. `dateConfirmed: false` = fecha estimada |
 | `data/geo/usa-states.json` | Estados de EE.UU. (U.S. Census Bureau vía [us-atlas](https://github.com/topojson/us-atlas), dominio público) |
 | `data/geo/brasil-uf.json` | Contorno de los 27 estados ([svg-maps/brazil](https://github.com/VictorCazanave/svg-maps), CC BY 4.0) |

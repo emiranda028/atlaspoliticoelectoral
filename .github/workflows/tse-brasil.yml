@@ -1,5 +1,6 @@
 # Noche electoral Brasil 2026: lee los resultados públicos del TSE y publica
-# data/especiales/brasil-2026-resultados.json (el sitio lo lee cada minuto).
+# data/especiales/brasil-2026-resultados.json (1.ª vuelta) y
+# brasil-2026-resultados-2t.json (2.ª vuelta). El sitio los lee cada minuto.
 # Corre solo los días de votación; también se puede lanzar a mano desde
 # la pestaña Actions → "Resultados TSE Brasil" → Run workflow.
 name: Resultados TSE Brasil
@@ -39,8 +40,9 @@ jobs:
             # Always start from the latest main (picks up script fixes, no rebase conflicts)
             git fetch -q origin main && git reset -q --hard origin/main || true
             timeout 170 python3 tools/tse_resultados.py || echo "pasada fallida o lenta"
-            if ! git diff --quiet -- data/especiales/brasil-2026-resultados.json; then
-              git add data/especiales/brasil-2026-resultados.json
+            git add -N data/especiales/brasil-2026-resultados-2t.json 2>/dev/null || true
+            if ! git diff --quiet -- data/especiales/brasil-2026-resultados.json data/especiales/brasil-2026-resultados-2t.json; then
+              git add data/especiales/brasil-2026-resultados.json data/especiales/brasil-2026-resultados-2t.json 2>/dev/null || git add data/especiales/brasil-2026-resultados.json
               git commit -q -m "Resultados TSE $(date -u +%H:%M) UTC" || true
               git push -q origin HEAD:main || echo "push rechazado, reintento en la próxima pasada"
             fi

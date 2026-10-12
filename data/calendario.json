@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-09-25",
+ "updatedAt": "2026-10-12",
  "note": "Resúmenes elaborados por el equipo del Atlas a partir de organismos electorales y prensa. Las fechas marcadas como estimadas no están oficialmente convocadas.",
  "briefs": {
   "AGO": {
@@ -100,7 +100,32 @@
      "url": "https://www.diariandorra.ad/nacional/260601/concordia-s-imposa-da-i-guanyaria-les-eleccions-amb-35-dels-vots_197418.html"
     }
    ],
-   "verified": true
+   "verified": true,
+   "why": "Las generales andorranas (previstas para abril de 2027) giran en torno al acuerdo de asociación con la UE, trabado en Bruselas y con referéndum prometido pero sin fecha. Xavier Espot no puede volver a presentarse, y la oposición de Concòrdia lidera las encuestas mientras crece el rechazo al acuerdo.",
+   "argentina": {
+    "level": "distante",
+    "summary": "No hay agenda bilateral significativa con Andorra durante el gobierno de Milei. El vínculo pasa sobre todo por la comunidad hispanohablante y por España.",
+    "trade": {
+     "year": 2025,
+     "exports": 0,
+     "imports": 0,
+     "topExports": "Montos ínfimos (confidenciales)",
+     "topImports": "Montos ínfimos (repuestos y plásticos por miles de dólares)"
+    },
+    "facts": [
+     "El intercambio de 2025 fue de apenas miles de dólares."
+    ],
+    "sources": [
+     {
+      "label": "INDEC – Sistema de Consultas de Comercio Exterior, base 2025 (cálculo propio)",
+      "url": "https://comex.indec.gob.ar/"
+     },
+     {
+      "label": "VilaWeb – encuesta AR+I: Concòrdia ganaría y se impondría el no al acuerdo con la UE",
+      "url": "https://www.vilaweb.cat/noticies/concordia-eleccions-ue-enquesta-ari/"
+     }
+    ]
+   }
   },
   "ARE": {
    "date": "2027-10-15",
@@ -239,7 +264,32 @@
      "url": "https://www.hrw.org/fr/news/2025/06/12/burundi-des-elections-sans-opposition"
     }
    ],
-   "verified": true
+   "verified": true,
+   "why": "Évariste Ndayishimiye va por un nuevo mandato de siete años como candidato del CNDD-FDD, el partido que gobierna desde 2005 y que tiene todas las bancas de la Asamblea Nacional 2025-2030. Con una oposición que denuncia que no será una elección con estándares internacionales, la votación mide el grado de cierre del régimen en un país clave para la crisis del este del Congo y los Grandes Lagos.",
+   "argentina": {
+    "level": "distante",
+    "summary": "No hay agenda política bilateral activa entre el gobierno de Milei y Burundi: no se registran visitas ni acuerdos en 2024-2026. El vínculo se limita a relaciones diplomáticas formales sin embajada residente argentina.",
+    "trade": {
+     "year": 2025,
+     "exports": 0,
+     "imports": 0,
+     "topExports": "Sin flujos relevantes (montos ínfimos o confidenciales)",
+     "topImports": "Sin flujos relevantes (un embarque menor de café)"
+    },
+    "facts": [
+     "Comercio bilateral prácticamente nulo en 2025 según la base de INDEC."
+    ],
+    "sources": [
+     {
+      "label": "INDEC – Sistema de Consultas de Comercio Exterior, base 2025 (cálculo propio)",
+      "url": "https://comex.indec.gob.ar/"
+     },
+     {
+      "label": "Africanews – Ndayishimiye candidato del CNDD-FDD para 2027",
+      "url": "https://www.africanews.com/amp/2026/04/27/burundi-president-ndayishmiye-named-ruling-party-candidate-for-2027-election/"
+     }
+    ]
+   }
   },
   "BHR": {
    "date": null,
@@ -315,9 +365,9 @@
   "BIH": {
    "date": "2026-10-04",
    "dateConfirmed": true,
-   "status": "upcoming",
+   "status": "held",
    "offices": "Los tres miembros de la Presidencia colegiada, los 42 escaños de la Cámara de Representantes estatal, los parlamentos de la Federación y de la República Srpska, el presidente de la RS y diez asambleas cantonales",
-   "electorate": 3414364,
+   "electorate": 3338785,
    "electorateNote": "Comisión Electoral Central (CIK BiH), registro 2026, incluye 48.074 votantes en el exterior",
    "incumbent": {
     "name": "Denis Bećirović, Željko Komšić y Željka Cvijanović",
@@ -349,34 +399,34 @@
    ],
    "polls": null,
    "stake": "¿Retiene el SNSD de Dodik —inhabilitado judicialmente— el control de la República Srpska y quién gana el disputado puesto croata de la Presidencia?",
-   "summary": "Bosnia y Herzegovina celebra elecciones generales en todos los niveles del Estado el 4 de octubre. La campaña está marcada por la polarización étnica y por la inhabilitación de Milorad Dodik, líder del SNSD, para ejercer cargos públicos. Los miembros de la Presidencia se eligen por mayoría simple, sin segunda vuelta.",
-   "result": null,
+   "summary": "Fue la participación más baja de la historia en una elección general (42,45% en la presidencial) y la primera con escrutinio electrónico. El SNSD de Milorad Dodik, inhabilitado para ejercer cargos, se proclamó ganador en la República Srpska, mientras que en la Federación la SDA fue la más votada. Filipović reemplaza a Željko Komšić, que no podía buscar otro mandato; la Comisión Electoral Central todavía debe certificar los resultados.",
+   "result": "Resultados preliminares (≈99% escrutado): Denis Bećirović (SDP) retuvo la banca bosnia con 38,1% frente a Bakir Izetbegović (SDA, 34,0%); Darijana Filipović (HDZ BiH) ganó la croata con 46,5%; y Željka Cvijanović (SNSD) retuvo la serbia con 55,6%. En la República Srpska, Savo Minić (SNSD) ganó la presidencia; Branko Blanuša (SDS) reconoció la derrota.",
    "sources": [
-    {
-     "label": "European Western Balkans",
-     "url": "https://europeanwesternbalkans.com/2026/05/07/the-general-election-in-bih-to-be-held-on-4-october/"
-    },
-    {
-     "label": "Sarajevo Times – CIK",
-     "url": "https://sarajevotimes.com/the-central-election-commission-of-bih-publishes-the-list-of-participants-in-the-2026-general-elections/"
-    },
-    {
-     "label": "Konrad-Adenauer-Stiftung",
-     "url": "https://www.kas.de/en/country-reports/detail/-/content/bosnia-and-herzegovina-in-the-election-year-2026"
-    },
     {
      "label": "Wikipedia – 2026 Bosnian general election",
      "url": "https://en.wikipedia.org/wiki/2026_Bosnian_general_election"
+    },
+    {
+     "label": "BIRN/Balkan Insight – Record low turnout, Dodik triumphant",
+     "url": "https://balkaninsight.com/2026/10/05/bosnian-election-sees-record-low-turnout-dodik-triumphant-presidency-reshaped/bi/"
+    },
+    {
+     "label": "European Western Balkans – Preliminary results",
+     "url": "https://europeanwesternbalkans.com/2026/10/05/what-are-the-preliminary-results-of-bihs-general-elections/"
+    },
+    {
+     "label": "Al Jazeera – Dodik declares party victory",
+     "url": "https://www.aljazeera.com/news/2026/10/4/economic-woes-ethnic-rivalries-shape-bosnias-closely-watched-elections"
     }
    ],
    "verified": false
   },
   "BRA": {
-   "date": "2026-10-04",
+   "date": "2026-10-25",
    "dateConfirmed": true,
    "status": "upcoming",
-   "offices": "Presidente y vice, 27 gobernadores, 54 senadores (dos tercios del Senado), los 513 diputados federales y las asambleas estaduales. Eventual segunda vuelta el 25 de octubre.",
-   "electorate": 158745463,
+   "offices": "Segunda vuelta presidencial entre Flávio Bolsonaro (PL) y Lula (PT), y balotaje de gobernador en seis estados: Acre, Amazonas, Distrito Federal, Espírito Santo, Río Grande do Norte y Tocantins.",
+   "electorate": 158745502,
    "electorateNote": "TSE, julio 2026",
    "incumbent": {
     "name": "Luiz Inácio Lula da Silva",
@@ -386,33 +436,54 @@
    },
    "contenders": [
     {
-     "name": "Lula",
-     "party": "PT"
-    },
-    {
      "name": "Flávio Bolsonaro",
-     "party": "PL"
+     "party": "PL",
+     "note": "47,03% en la 1.ª vuelta"
     },
     {
-     "name": "Augusto Cury",
-     "party": "Avante"
-    },
-    {
-     "name": "Renan Santos",
-     "party": "Missão"
+     "name": "Lula",
+     "party": "PT",
+     "note": "45,16% en la 1.ª vuelta"
     }
    ],
-   "polls": "Lula encabeza las encuestas de primera vuelta; ver el promedio actualizado en el especial.",
-   "stake": "¿Logra Lula un cuarto mandato o el bolsonarismo recupera el Planalto con Flávio Bolsonaro?",
-   "summary": "Brasil elige en un solo día casi todos sus cargos federales y estaduales, con voto electrónico y obligatorio. El TSE aprobó 12 fórmulas presidenciales; si nadie supera el 50% de los votos válidos, hay balotaje el 25 de octubre.",
+   "polls": "Encuestas posteriores a la 1.ª vuelta (votos válidos): Datafolha 52–48, PoderData/Aya 53–47 y AtlasIntel 52,8–47,2, todas a favor de Flávio Bolsonaro.",
+   "stake": "¿Vuelve el bolsonarismo al poder con Flávio, o Lula logra dar vuelta la primera vuelta y conseguir un cuarto mandato?",
+   "summary": "Flávio Bolsonaro ganó la primera vuelta del 4 de octubre por 1,87 puntos y llega como favorito ajustado: sumó el apoyo de Caiado, Zema, Cury, Republicanos, União-PP y Podemos, mientras PSD, MDB y PSDB quedaron neutrales. El Congreso ya quedó definido: el PL tendrá la mayor bancada de Diputados (121 de 513).",
    "result": null,
    "sources": [
     {
-     "label": "TSE",
-     "url": "https://www.tse.jus.br/"
+     "label": "TSE – resultados 1.ª vuelta",
+     "url": "https://resultados.tse.jus.br/"
+    },
+    {
+     "label": "Brasil de Fato – Datafolha 2.º turno",
+     "url": "https://www.brasildefato.com.br/2026/10/08/datafolha-segundo-turno-flavio-bolsonaro-49-lula-45/"
     }
    ],
-   "verified": true
+   "verified": true,
+   "why": "El balotaje del 25 de octubre enfrenta a Flávio Bolsonaro, que ganó la primera vuelta con 47,03%, contra Lula, que sacó 45,16% y busca un cuarto mandato. Está en juego si la mayor economía de América Latina gira a la derecha y se alinea con Milei y Trump, con efectos directos sobre el Mercosur, el acuerdo con la UE y el principal socio comercial de Argentina. Milei apoya abiertamente a Flávio.",
+   "argentina": {
+    "level": "relación tensa",
+    "summary": "La relación política entre los gobiernos de Javier Milei y Luiz Inácio Lula da Silva es la más deteriorada en décadas: ambos presidentes nunca celebraron una reunión bilateral y sus contactos se limitaron a saludos protocolares en cumbres (G20 de Río 2024, Mercosur de Foz de Iguazú 2025). Tras el discurso de Milei en la convención del Partido Liberal en São Paulo (julio de 2026), en el que llamó a Lula 'ladrón' y 'presidiario', Brasil llamó a consultas a su embajador y el 4 de agosto rebajó la relación al nivel de encargados de negocios y pidió el retiro del embajador argentino en Brasilia. La Cancillería argentina descartó represalias y la ruptura de relaciones; en septiembre de 2026 persisten los cruces públicos entre ambos presidentes, aunque hubo gestos puntuales (diálogo parlamentario con el canciller Mauro Vieira, apoyo brasileño al reclamo argentino por Malvinas).",
+    "trade": {
+     "year": 2025,
+     "exports": 12771,
+     "imports": 18424,
+     "topExports": "Vehículos para transporte de mercancías (pick-ups), Trigo y morcajo, Vehículos para transporte de personas, Aceites crudos de petróleo",
+     "topImports": "Vehículos automotores de pasajeros, Bienes de capital, Bienes de consumo, Bienes intermedios"
+    },
+    "facts": [
+     "Brasil fue en 2025 el principal destino de las exportaciones argentinas (14,7%) y el principal origen de sus importaciones (24,3%), según el INDEC.",
+     "El intercambio bilateral de bienes alcanzó en 2025 USD 31.195 millones, el mayor desde 2013, con un déficit argentino de USD 5.653 millones.",
+     "Milei respalda abiertamente a Flávio Bolsonaro en el balotaje."
+    ],
+    "sources": [
+     {
+      "label": "INDEC, Intercambio Comercial Argentino",
+      "url": "https://www.indec.gob.ar/uploads/informesdeprensa/ica_01_26ABE4F7373E.pdf"
+     }
+    ]
+   }
   },
   "BRB": {
    "date": "2026-02-11",
@@ -509,7 +580,41 @@
      "url": "https://www.blick.ch/politik/neues-wahlbarometer-zeigt-ueberblick-svp-koennte-laut-wahlumfrage-historische-30-prozent-marke-knacken-id21288069.html"
     }
    ],
-   "verified": true
+   "verified": true,
+   "why": "Las federales suizas de octubre de 2027 llegan con la UDC/SVP rozando un récord histórico del 30% y con el paquete de nuevos acuerdos bilaterales con la UE como gran tema, al que la UDC se opone de plano. El resultado define el equilibrio del Consejo Federal y la relación de Suiza con Europa.",
+   "argentina": {
+    "level": "cooperación pragmática",
+    "summary": "Milei fue a Davos tres veces (2024, 2025 y 2026) y en enero de 2026 se reunió con el presidente suizo Guy Parmelin. El 16 de septiembre de 2025 el Mercosur firmó en Río de Janeiro el tratado de libre comercio con la EFTA, que integra Suiza y todavía tiene que ser ratificado.",
+    "trade": {
+     "year": 2025,
+     "exports": 2063,
+     "imports": 699,
+     "topExports": "Oro (casi la totalidad), carne bovina, vino",
+     "topImports": "Vacunas y productos inmunológicos, medicamentos, relojes"
+    },
+    "facts": [
+     "Tratado Mercosur-EFTA firmado el 16 de septiembre de 2025.",
+     "El oro explica alrededor del 98% de las exportaciones argentinas a Suiza."
+    ],
+    "sources": [
+     {
+      "label": "INDEC – ICA diciembre 2025 (acumulado anual por país)",
+      "url": "https://www.indec.gob.ar/ftp/ica_digital/ica_d_01_26ABE4F7373E/"
+     },
+     {
+      "label": "INDEC – Sistema de Consultas de Comercio Exterior, base 2025 (cálculo propio)",
+      "url": "https://comex.indec.gob.ar/"
+     },
+     {
+      "label": "Cancillería argentina – TLC Mercosur-EFTA",
+      "url": "https://www.cancilleria.gob.ar/es/politica-exterior/acuerdos-preferenciales-y-de-libre-comercio/tratado-de-libre-comercio-mercosur-efta"
+     },
+     {
+      "label": "Bloomberg Línea – Milei en Davos 2026",
+      "url": "https://www.bloomberglinea.com/latinoamerica/argentina/en-vivo-milei-da-su-discurso-en-davos-2026-y-se-reune-con-bancos-internacionales/"
+     }
+    ]
+   }
   },
   "DMA": {
    "date": "2028-05-15",
@@ -617,64 +722,118 @@
    "verified": true
   },
   "ESP": {
-   "date": "2027-07-15",
-   "dateConfirmed": false,
-   "status": "upcoming",
-   "offices": "350 diputados y 208 senadores electivos de las Cortes Generales",
-   "electorate": 37469458,
-   "electorateNote": "Censo electoral, generales de julio 2023 (incluye CERA)",
+   "date": "2026-11-29",
+   "offices": "Cortes Generales: 350 diputados del Congreso y el Senado",
+   "electorate": 38728356,
    "incumbent": {
     "name": "Pedro Sánchez",
     "title": "Presidente del Gobierno",
-    "running": null,
-    "note": "Ha expresado su intención de volver a presentarse; sin proclamación formal"
+    "running": true,
+    "note": "Convocó el 5 de octubre después de que el Congreso tumbara dos decretos de vivienda de su gobierno en minoría; busca un tercer mandato."
    },
    "contenders": [
     {
      "name": "Pedro Sánchez",
      "party": "PSOE",
-     "note": "Oficialismo"
+     "note": "Presidente del Gobierno; segundo en todas las encuestas."
     },
     {
      "name": "Alberto Núñez Feijóo",
      "party": "PP",
-     "note": "Líder de la oposición"
+     "note": "Lidera los sondeos, pero necesitaría a Vox para gobernar."
     },
     {
      "name": "Santiago Abascal",
      "party": "Vox",
-     "note": "Tercera fuerza"
+     "note": "Derecha radical, en alza: cerca del 18-19%."
     },
     {
-     "name": "Sumar",
-     "party": "Sumar",
-     "note": "Socio de gobierno"
-    },
-    {
-     "name": "Podemos",
+     "name": "Ione Belarra",
      "party": "Podemos",
-     "note": "Posible"
+     "note": "Secretaria general; compite fuera de la alianza de Sumar."
+    },
+    {
+     "name": "Frente Amplio",
+     "party": "Sumar, IU, Más Madrid y Comuns",
+     "note": "Candidatura a definir (17 de octubre); Yolanda Díaz no se presenta."
     }
    ],
-   "polls": "El CIS (sep 2026) da ventaja de 5,5 puntos al PSOE; los promedios privados (Demócrata, Target Point) sitúan al PP primero y a PP+Vox por encima de la mayoría absoluta.",
-   "stake": "¿Suman PP y Vox mayoría absoluta o resiste la coalición de Sánchez?",
-   "summary": "Las generales deben celebrarse a más tardar en el verano de 2027 (Demócrata cita el 22 de agosto como límite); Sánchez descartó hacerlas coincidir con las autonómicas y municipales de mayo. No hay convocatoria.",
-   "result": null,
+   "polls": "El bloque PP-Vox supera con comodidad la mayoría de 176: GAD3/Vocento (6-8/10) da PP 31,4% (133 bancas), PSOE 26,4% (107), Vox 18,2% (65) y Sumar 7,4% (10); Sigma Dos/El Mundo (11/10) da PP 31,9% (135), PSOE 25,3% (103) y Vox 19,1% (68).",
+   "stake": "¿Logra Sánchez volver a desafiar las encuestas o PP y Vox suman la mayoría absoluta para formar el primer gobierno con la derecha radical adentro?",
+   "summary": "Pedro Sánchez adelantó las generales al 29 de noviembre después de que el Congreso rechazara sus decretos de emergencia habitacional, en medio de una fuerte bronca social por el precio de la vivienda. Todos los sondeos dan ventaja al PP de Feijóo y una mayoría holgada para el bloque PP-Vox. La izquierda a la izquierda del PSOE llega fragmentada entre el nuevo Frente Amplio y Podemos.",
+   "why": "España es la cuarta economía de la eurozona y uno de los últimos grandes gobiernos socialdemócratas de Europa; un relevo con Vox en el gobierno movería el mapa político de la UE. La votación funciona además como plebiscito sobre la crisis de la vivienda, el gran tema social del país.",
    "sources": [
     {
-     "label": "Demócrata: fechas posibles 2027",
-     "url": "https://www.democrata.es/en/general-elections-spain/general-elections-in-spain-all-possible-dates-in-2027/"
+     "label": "France 24 – Sánchez convoca elecciones anticipadas",
+     "url": "https://www.france24.com/en/europe/20261005-spanish-pm-sanchez-calls-snap-election-for-november-29"
     },
     {
-     "label": "Electomanía: CIS septiembre 2026",
-     "url": "https://electomania.es/cis-septiembre-2026-el-psoe-aventajaria-en-55-puntos-al-pp/"
+     "label": "Al Jazeera – convocatoria del 29N",
+     "url": "https://www.aljazeera.com/news/2026/10/5/spanish-prime-minister-pedro-sanchez-announces-snap-election"
     },
     {
-     "label": "Wikipedia: 2023 Spanish general election",
-     "url": "https://en.wikipedia.org/wiki/2023_Spanish_general_election"
+     "label": "Electográfica – encuesta GAD3 (12/10/2026)",
+     "url": "https://www.electografica.com/2026/10/encuesta-gad3-261012.html"
+    },
+    {
+     "label": "Demócrata – encuesta Sigma Dos",
+     "url": "https://www.democrata.es/encuestas/elecciones-generales/encuesta-elecciones-generales-sigma-dos-vox-68-escanos-pp-psoe/"
+    },
+    {
+     "label": "INE – censo electoral EG 2026",
+     "url": "https://ine.es/dyngs/Prensa/es/EG2026.htm"
+    },
+    {
+     "label": "Diario de Pontevedra – Sumar lanza Frente Amplio",
+     "url": "https://www.diariodepontevedra.es/articulo/espana/partidos-sumar-anuncian-candidatura-elecciones-proyecto-frente-amplio/202610041649041470648.html"
+    },
+    {
+     "label": "The Olive Press – partidos y promedio de encuestas",
+     "url": "https://www.theolivepress.es/spain-news/2026/10/05/who-will-win-spains-snap-election-on-november-29-and-what-do-the-five-main-parties-stand-for/"
     }
    ],
-   "verified": true
+   "status": "upcoming",
+   "dateConfirmed": true,
+   "result": null,
+   "verified": true,
+   "argentina": {
+    "level": "relación tensa",
+    "summary": "La crisis de mayo de 2024, cuando Milei insultó a la esposa de Sánchez, llevó a España a retirar a su embajadora. La normalización formal llegó con un nuevo embajador, pero sin disculpas. Milei viajó a España seis veces sin reunirse con Sánchez ni con el Rey, y mantiene afinidad con Vox e Isabel Díaz Ayuso. El vínculo económico y empresario sigue siendo fuerte.",
+    "trade": {
+     "year": 2025,
+     "exports": 1222,
+     "imports": 1167,
+     "topExports": "Langostinos y crustáceos, harina de soja, residuos alimenticios, pescado",
+     "topImports": "Autopartes, combustibles, libros, vacunas y medicamentos"
+    },
+    "facts": [
+     "España retiró a su embajadora en mayo de 2024.",
+     "Sexto viaje de Milei a España en junio de 2026, sin reunión con Sánchez.",
+     "Elecciones adelantadas al 29 de noviembre de 2026."
+    ],
+    "sources": [
+     {
+      "label": "INDEC – ICA diciembre 2025 (acumulado anual por país)",
+      "url": "https://www.indec.gob.ar/ftp/ica_digital/ica_d_01_26ABE4F7373E/"
+     },
+     {
+      "label": "INDEC – Sistema de Consultas de Comercio Exterior, base 2025 (cálculo propio)",
+      "url": "https://comex.indec.gob.ar/"
+     },
+     {
+      "label": "Primicias – Sánchez adelanta las elecciones al 29 de noviembre de 2026",
+      "url": "https://primicias.ec/internacional/pedro-sanchez-convoca-elecciones-generales-espana-134126/"
+     },
+     {
+      "label": "Diario Jornada – sexto viaje de Milei a España",
+      "url": "https://www.diariojornada.com.ar/419109/politica/milei_viajo_a_espana_por_sexta_vez_en_su_gestion"
+     },
+     {
+      "label": "Demócrata – encuesta DYM de octubre de 2026",
+      "url": "https://www.democrata.es/encuestas/elecciones-generales/encuesta-dym-octubre-2026-psoe-sube-pp-vox-mayoria/"
+     }
+    ]
+   }
   },
   "EST": {
    "date": "2027-03-07",
@@ -734,7 +893,33 @@
      "url": "https://en.wikipedia.org/wiki/2023_Estonian_parliamentary_election"
     }
    ],
-   "verified": true
+   "verified": true,
+   "why": "El gobierno del Partido Reformista de Kristen Michal llega desgastado por la suba de impuestos y la economía estancada, con la derecha de Isamaa y EKRE en ascenso. Estonia está en la primera línea de la OTAN frente a Rusia y es una de las voces más duras de la UE sobre Ucrania, así que el resultado se mira de cerca en Bruselas y en Moscú.",
+   "argentina": {
+    "level": "cooperación pragmática",
+    "summary": "Es una relación de baja intensidad pero activa en temas digitales: en 2024 se hizo la II Reunión de Consultas Políticas en Buenos Aires y el canciller estonio Margus Tsahkna visitó el país, donde inauguró un consulado honorario. En la agenda están gobierno electrónico, ciberseguridad e inversiones. Los dos países coordinaron en la Fórmula de Paz de Ucrania.",
+    "trade": {
+     "year": 2025,
+     "exports": 3.2,
+     "imports": 8.1,
+     "topExports": "maní, vino y pescado",
+     "topImports": "turba y combustibles sólidos, maquinaria e instrumentos"
+    },
+    "facts": [
+     "Estonia tiene un consulado honorario en Buenos Aires",
+     "La cooperación en gobierno digital y ciberseguridad es el eje de la agenda"
+    ],
+    "sources": [
+     {
+      "label": "INDEC – COMEX, base anual de exportaciones e importaciones 2025",
+      "url": "https://comex.indec.gob.ar/"
+     },
+     {
+      "label": "Cancillería – II Reunión de Consultas Políticas Argentina-Estonia",
+      "url": "https://cancilleria.gob.ar/es/actualidad/noticias/argentina-estonia-ii-reunion-de-consultas-politicas"
+     }
+    ]
+   }
   },
   "FIN": {
    "date": "2027-04-18",
@@ -784,7 +969,37 @@
      "url": "https://stat.fi/en/publication/cl8mvt1xt143o0cvzel1m7esx"
     }
    ],
-   "verified": true
+   "verified": true,
+   "why": "La coalición de Petteri Orpo con el populista Partido de los Finlandeses enfrenta a una socialdemocracia que lidera las encuestas, en un contexto de desempleo alto y recortes al Estado de bienestar. Es la primera elección parlamentaria desde que Finlandia entró a la OTAN, con 1.300 km de frontera con Rusia.",
+   "argentina": {
+    "level": "cooperación pragmática",
+    "summary": "Es un vínculo histórico y estable: Argentina fue el primer país fuera de Europa en reconocer la independencia finlandesa, en 1918. Bajo Milei se hizo en Buenos Aires la VI Ronda de Consultas Políticas, donde se trataron energía, minería, tecnología, cooperación polar y educación, y la delegación finlandesa se reunió con la Secretaría de Energía.",
+    "trade": {
+     "year": 2025,
+     "exports": 32.2,
+     "imports": 128.0,
+     "topExports": "mayormente bajo secreto estadístico; vino y maní",
+     "topImports": "automóviles, medicamentos, químicos y equipos de telecomunicaciones"
+    },
+    "facts": [
+     "Argentina tiene embajada en Helsinki",
+     "La cooperación antártica y polar es un eje histórico"
+    ],
+    "sources": [
+     {
+      "label": "INDEC – COMEX, base anual de exportaciones e importaciones 2025",
+      "url": "https://comex.indec.gob.ar/"
+     },
+     {
+      "label": "Embajada en Finlandia – VI Consultas Políticas",
+      "url": "https://efinl.cancilleria.gob.ar/en/node/82690"
+     },
+     {
+      "label": "Cancillería – Argentina-Finlandia, 100 años",
+      "url": "https://cancilleria.gob.ar/es/institucional/patrimonio/archivo-historico-de-cancilleria/exposicion-argentina-finlandia-100-anos"
+     }
+    ]
+   }
   },
   "FJI": {
    "date": "2027-01-15",
@@ -839,7 +1054,41 @@
      "url": "https://maitvfiji.com/fiji-2026-election-record-ten-parties-registered-as-writ-window-narrows/"
     }
    ],
-   "verified": false
+   "verified": false,
+   "why": "Es la segunda elección desde que Sitiveni Rabuka desplazó en 2022 al FijiFirst de Frank Bainimarama, y mide la estabilidad de la alternancia democrática en un país con historia de golpes. Fiyi es un actor clave en el Pacífico Sur, en medio de la competencia entre China, Australia y Estados Unidos.",
+   "argentina": {
+    "level": "distante",
+    "summary": "Argentina no tiene embajada residente en Fiyi y atiende la relación desde su embajada en Canberra. En 2025, cuando se cumplieron 50 años de relaciones diplomáticas, el embajador no residente Máximo Gowland visitó Suva y se habló de cooperación en deporte (rugby) y turismo.",
+    "trade": {
+     "year": 2025,
+     "exports": null,
+     "imports": 0.001,
+     "topExports": "vino y productos farmacéuticos (montos marginales, bajo secreto estadístico)",
+     "topImports": "importaciones marginales"
+    },
+    "facts": [
+     "Desde 2018 rige la exención recíproca de visas para pasaportes ordinarios",
+     "El rugby es el principal punto de contacto entre los dos países"
+    ],
+    "sources": [
+     {
+      "label": "INDEC – COMEX, base anual de exportaciones e importaciones 2025",
+      "url": "https://comex.indec.gob.ar/"
+     },
+     {
+      "label": "Cancillería de Fiyi – cooperación en deporte y turismo",
+      "url": "https://www.foreignaffairs.gov.fj/argentina-and-fiji-to-enhance-cooperation-in-sports-and-tourism/"
+     },
+     {
+      "label": "Cancillería – Argentina y Fiyi firman acuerdos de visas",
+      "url": "https://cancilleria.gob.ar/en/news/releases/argentina-fiji-faurie-and-prime-minister-sign-visa-agreements"
+     },
+     {
+      "label": "Boletín Oficial – Decreto 748/2018 (concurrencia Fiyi)",
+      "url": "https://www.boletinoficial.gob.ar/detalleAviso/primera/189708/20180813"
+     }
+    ]
+   }
   },
   "FRA": {
    "date": "2027-04-18",
@@ -903,7 +1152,45 @@
      "url": "https://www.france24.com/fr/france/20260524-france-presidentielle-2027-qui-sont-les-candidats-officiellement-declares"
     }
    ],
-   "verified": true
+   "verified": true,
+   "why": "Termina la era Macron, que no puede volver a presentarse, y la elección define si la extrema derecha del Reagrupamiento Nacional llega por primera vez al Elíseo. Como potencia nuclear con asiento permanente en el Consejo de Seguridad y motor de la UE, el resultado impacta en Ucrania, en la integración europea y en el acuerdo UE-Mercosur, que Francia resiste.",
+   "argentina": {
+    "level": "cooperación pragmática",
+    "summary": "A pesar de las diferencias ideológicas, Milei y Macron tienen un trato fluido: se reunieron en París en julio de 2024, en Buenos Aires y Olivos en noviembre de 2024, y en Niza en junio de 2025. La gran diferencia es el acuerdo UE-Mercosur: Francia votó en contra en el Consejo de la UE en enero de 2026, mientras que Argentina lo firmó y lo aprobó en el Senado.",
+    "trade": {
+     "year": 2025,
+     "exports": 385.3,
+     "imports": 1124.0,
+     "topExports": "harina de soja, vacunas y productos farmacéuticos, maní, pellets de girasol",
+     "topImports": "medicamentos, autopartes, automóviles, motores diésel, perfumes"
+    },
+    "facts": [
+     "Macron pidió respaldo francés para Argentina en el FMI en 2024",
+     "Durante su visita de 2024, Macron homenajeó a las monjas francesas desaparecidas Alice Domon y Léonie Duquet"
+    ],
+    "sources": [
+     {
+      "label": "INDEC – COMEX, base anual de exportaciones e importaciones 2025",
+      "url": "https://comex.indec.gob.ar/"
+     },
+     {
+      "label": "Voz de América – Milei y Macron en París (2024)",
+      "url": "https://www.vozdeamerica.com/a/milei-macron-paris-/7714443.html"
+     },
+     {
+      "label": "La Capital – Milei recibe a Macron (nov. 2024)",
+      "url": "https://www.lacapital.com.ar/politica/tras-el-viaje-estados-unidos-milei-recibe-macron-buenos-aires-n10164581.html"
+     },
+     {
+      "label": "Diario de Cuyo – Milei y Macron en Niza (jun. 2025)",
+      "url": "https://www.diariodecuyo.com.ar/argentina/javier-milei-se-reunio-con-emmanuel-macron-en-francia-en-un-encuentro-de-la-onu-1738544.html"
+     },
+     {
+      "label": "Noticias NQN – la UE aprobó el acuerdo con el Mercosur (ene. 2026)",
+      "url": "https://www.noticiasnqn.com.ar/noticias/2026/01/09/326306-la-union-europea-aprobo-el-acuerdo-con-el-mercosur-pese-al-fuerte-rechazo-de-francia-y-el-sector-agricola"
+     }
+    ]
+   }
   },
   "FSM": {
    "date": "2027-03-02",
@@ -933,7 +1220,32 @@
      "url": "https://www.fsmned.fm/PDFgallery.htm"
     }
    ],
-   "verified": true
+   "verified": true,
+   "why": "Se renueva el Congreso de Micronesia, que después elige al presidente entre sus senadores at-large. Pesa por su ubicación en el Pacífico occidental, donde el Pacto de Libre Asociación con EE.UU. y la competencia con China definen la agenda.",
+   "argentina": {
+    "level": "distante",
+    "summary": "Relación diplomática formal sin contenido político relevante bajo Milei. No hay visitas ni acuerdos registrados.",
+    "trade": {
+     "year": 2025,
+     "exports": 0,
+     "imports": 0,
+     "topExports": "Sin registros en 2025",
+     "topImports": "Sin registros en 2025"
+    },
+    "facts": [
+     "INDEC no registra intercambio con Micronesia en 2025."
+    ],
+    "sources": [
+     {
+      "label": "INDEC – Sistema de Consultas de Comercio Exterior, base 2025 (cálculo propio)",
+      "url": "https://comex.indec.gob.ar/"
+     },
+     {
+      "label": "Gobierno de los Estados Federados de Micronesia",
+      "url": "https://gov.fm/"
+     }
+    ]
+   }
   },
   "GMB": {
    "date": "2026-12-05",
@@ -951,33 +1263,51 @@
    "contenders": [
     {
      "name": "Adama Barrow",
-     "party": "NPP",
-     "note": "Presidente"
+     "party": "Partido Nacional del Pueblo (NPP)",
+     "note": "Presidente desde 2017; busca un tercer mandato."
     },
     {
      "name": "Ousainou Darboe",
-     "party": "UDP / Gambia First Alliance",
-     "note": "Promete un único mandato"
+     "party": "Partido Democrático Unido (UDP)",
+     "note": "Principal partido opositor; ex vicepresidente."
     },
     {
      "name": "Talib Ahmed Bensouda",
-     "party": "UNITE / Coalition 2026",
-     "note": "Alcalde de Kanifing, ex-UDP"
+     "party": "Unite Movement for Change / Coalición 2026",
+     "note": "Intendente de Kanifing."
     },
     {
-     "name": "Mama Kandeh",
-     "party": "GDC",
-     "note": "12% en 2021"
+     "name": "Essa Mbye Faal",
+     "party": null,
+     "note": "Mencionado como aspirante; su candidatura no está verificada."
+    },
+    {
+     "name": "Bakary K. Badjie",
+     "party": "Independiente",
+     "note": "Diputado."
+    },
+    {
+     "name": "Mohamed Al Amin Bah",
+     "party": "WAREF",
+     "note": null
     }
    ],
-   "polls": null,
-   "stake": "¿Obtiene Barrow un tercer mandato frente a una oposición dividida en tres coaliciones?",
-   "summary": "Gambia elige presidente el 5 de diciembre en una sola vuelta; las candidaturas se presentan del 3 al 14 de noviembre y la campaña corre del 16 de noviembre al 3 de diciembre. La oposición llega fragmentada entre Darboe, Bensouda y una tercera alianza que elegirá candidato en octubre.",
+   "polls": "La encuesta de CepRass para Gambia Participates (agosto de 2026) da Barrow 32%, Darboe 25%, Bensouda 19% y 17% de indecisos.",
+   "stake": "¿Consigue Barrow un tercer mandato frente a una oposición dividida?",
+   "summary": "La Comisión Electoral Independiente confirmó el 5 de diciembre como fecha de la elección y fijó la presentación de candidaturas entre el 3 y el 14 de noviembre, así que todavía no hay lista oficial de candidatos. Se vota a una sola vuelta, por mayoría simple.",
    "result": null,
    "sources": [
     {
-     "label": "Kerr Fatou – calendario IEC",
+     "label": "Wikipedia – 2026 Gambian presidential election",
+     "url": "https://en.wikipedia.org/wiki/2026_Gambian_presidential_election"
+    },
+    {
+     "label": "Kerr Fatou – IEC sets Nov. 3-14 for presidential nominations",
      "url": "https://www.kerrfatou.com/iec-sets-nov-3-14-for-presidential-nominations-forms-available-sept-21/"
+    },
+    {
+     "label": "Rio Times – Barrow seeks third term",
+     "url": "https://www.riotimesonline.com/gambia-election-december-2026/"
     },
     {
      "label": "The Rio Times",
@@ -988,7 +1318,32 @@
      "url": "https://thepoint.gm/africa/gambia/headlines/over-212000-registered-during-voter-registration-exercises-iec-chairman"
     }
    ],
-   "verified": true
+   "verified": true,
+   "why": "Adama Barrow, que en 2016 terminó con 22 años de régimen de Yahya Jammeh, va por un tercer mandato. La transición democrática gambiana todavía no tiene una nueva Constitución con límite de mandatos. La elección es una prueba para la consolidación democrática en África Occidental, en una región golpeada por golpes militares.",
+   "argentina": {
+    "level": "distante",
+    "summary": "No hay registro de iniciativas bilaterales relevantes durante el gobierno de Milei, y según directorios diplomáticos ninguno de los dos países tiene embajada residente en el otro. El vínculo es casi exclusivamente comercial y se apoya en ventas argentinas de alimentos.",
+    "trade": {
+     "year": 2025,
+     "exports": 14.4,
+     "imports": 0.004,
+     "topExports": "cereales (bajo secreto estadístico), carne de pollo y legumbres",
+     "topImports": "importaciones marginales (unos USD 4.000)"
+    },
+    "facts": [
+     "Las exportaciones a Gambia son casi en su totalidad alimentos"
+    ],
+    "sources": [
+     {
+      "label": "INDEC – COMEX, base anual de exportaciones e importaciones 2025",
+      "url": "https://comex.indec.gob.ar/"
+     },
+     {
+      "label": "Embassies.net – Argentina en Gambia",
+      "url": "https://embassies.net/argentina-in-gambia"
+     }
+    ]
+   }
   },
   "GRC": {
    "date": "2027-05-15",
@@ -1038,7 +1393,37 @@
      "url": "https://brusselssignal.eu/2026/05/tsipras-returns-to-greek-politics-with-new-party-leaps-to-second-in-polls/"
     }
    ],
-   "verified": true
+   "verified": true,
+   "why": "Kyriakos Mitsotakis busca un tercer mandato con Nueva Democracia primera pero lejos de la mayoría propia (25,7% en Opinion Poll de septiembre de 2026), y golpeada por el escándalo de subsidios agrícolas OPEKEPE. La nueva fuerza de Alexis Tsipras (ELAS) aparece segunda y reordena a una izquierda fragmentada. Está en juego la estabilidad de uno de los gobiernos de centroderecha más sólidos de la UE.",
+   "argentina": {
+    "level": "cooperación pragmática",
+    "summary": "Relación cordial pero de bajo perfil: no hubo visitas presidenciales ni acuerdos destacados bajo Milei. En 2024 se celebraron los 150 años de relaciones diplomáticas, y el vínculo se apoya sobre todo en el comercio agroindustrial y en la colectividad griega en Argentina.",
+    "trade": {
+     "year": 2025,
+     "exports": 247.6,
+     "imports": 18.7,
+     "topExports": "Harina y pellets de soja, maní, cítricos",
+     "topImports": "Coque/betún de petróleo, kiwis y otras frutas, medicamentos"
+    },
+    "facts": [
+     "En 2024 se cumplieron 150 años de relaciones diplomáticas.",
+     "Superávit argentino de unos USD 229 millones en 2025."
+    ],
+    "sources": [
+     {
+      "label": "INDEC – Sistema de Consultas de Comercio Exterior, base 2025 (cálculo propio)",
+      "url": "https://comex.indec.gob.ar/"
+     },
+     {
+      "label": "Greek City Times – encuesta de septiembre de 2026",
+      "url": "https://greekcitytimes.com/2026/09/17/poll-new-democracy-elas-tsipras-september-2026/"
+     },
+     {
+      "label": "Cancillería griega – Argentina",
+      "url": "https://www.mfa.gr/missionsabroad/es/argentina-es"
+     }
+    ]
+   }
   },
   "GRD": {
    "date": "2027-10-15",
@@ -1152,12 +1537,42 @@
      "url": "https://www.infobae.com/guatemala/2026/07/28/las-candidaturas-que-se-perfilan-para-guatemala-2027-combinan-exaspirantes-diplomaticos-y-debutantes-sin-cargos-electivos/"
     }
    ],
-   "verified": true
+   "verified": true,
+   "why": "La primera vuelta es el 27 de junio de 2027 (balotaje el 22 de agosto). Bernardo Arévalo no puede ser reelecto, y su partido Semilla sigue suspendido tras años de ofensiva judicial. La elección prueba si sobrevive el ciclo reformista anticorrupción o vuelven las élites tradicionales, con hasta 34 partidos en carrera.",
+   "argentina": {
+    "level": "cooperación pragmática",
+    "summary": "Relación correcta pero de bajo perfil: no hubo visitas presidenciales ni acuerdos destacados entre Milei y Arévalo. Guatemala es un mercado relevante en Centroamérica para la industria argentina, sobre todo automotriz.",
+    "trade": {
+     "year": 2025,
+     "exports": 320.3,
+     "imports": 6.0,
+     "topExports": "Vehículos y autopartes (cap. 87), aceites, medicamentos, maíz",
+     "topImports": "Caucho natural, semillas, café"
+    },
+    "facts": [
+     "Superávit argentino de unos USD 314 millones en 2025.",
+     "Guatemala ya tiene su embajada en Jerusalén, un traslado que Milei prometió para Argentina."
+    ],
+    "sources": [
+     {
+      "label": "INDEC – Sistema de Consultas de Comercio Exterior, base 2025 (cálculo propio)",
+      "url": "https://comex.indec.gob.ar/"
+     },
+     {
+      "label": "Prensa Latina – primera vuelta el 27 de junio de 2027",
+      "url": "https://www.prensa-latina.cu/2026/06/25/guatemala-elecciones-primera-vuelta-sera-el-27-de-junio-de-2027/"
+     },
+     {
+      "label": "Emisoras Unidas – TSE inscribe al partido Raíces",
+      "url": "https://emisorasunidas.com/nacional/2026/10/02/tse-inscribe-partido-politico-raices/"
+     }
+    ]
+   }
   },
   "HTI": {
    "date": "2026-12-13",
    "dateConfirmed": false,
-   "status": "upcoming",
+   "status": "postponed",
    "offices": "Presidente, Senado y Cámara de Diputados (primera vuelta; eventual balotaje el 21/2/2027)",
    "electorate": null,
    "electorateNote": "Registro en curso: menos de 700.000 inscriptos al 23/9/2026 (Haitian Times)",
@@ -1167,12 +1582,40 @@
     "running": null,
     "note": "Encabeza el gobierno de transición; no hay presidente electo desde 2021"
    },
-   "contenders": [],
+   "contenders": [
+    {
+     "name": "Michel Martelly",
+     "party": null,
+     "note": "Ex presidente; figura entre los aspirantes declarados."
+    },
+    {
+     "name": "Claude Joseph",
+     "party": null,
+     "note": "Ex primer ministro interino."
+    },
+    {
+     "name": "Jocelerme Privert",
+     "party": null,
+     "note": "Ex presidente provisional."
+    }
+   ],
    "polls": null,
-   "stake": "¿Logra Haití celebrar su primera elección en una década pese al control de las pandillas?",
-   "summary": "El Consejo Electoral Provisional fijó la primera vuelta para el 13 de diciembre de 2026 tras postergar la fecha original del 30 de agosto, condicionada a la seguridad y el financiamiento. La lista preliminar incluye entre siete y nueve aspirantes presidenciales; la lista definitiva se publicaría el 14 de octubre.",
+   "stake": "¿Puede Haití votar por primera vez desde 2016 en medio de la violencia de las pandillas?",
+   "summary": "El calendario de julio fijaba la primera vuelta para el 13 de diciembre de 2026 y el balotaje para el 21 de febrero de 2027. El 5 de octubre el Consejo Electoral Provisorio postergó la campaña, extendió la inscripción de candidatos hasta el 31 de octubre y prometió un nuevo calendario, que todavía no se publicó; algunas fuentes ya hablan de una postergación sin fecha. El país lo gobierna el primer ministro Alix Didier Fils-Aimé, único titular del Ejecutivo desde que el 7 de febrero venció el mandato del Consejo Presidencial de Transición.",
    "result": null,
    "sources": [
+    {
+     "label": "Wikipedia – 2026 Haitian general election",
+     "url": "https://en.wikipedia.org/wiki/2026_Haitian_general_election"
+    },
+    {
+     "label": "Canada-Haiti – CEP propone el 13 de diciembre y el 21 de febrero",
+     "url": "https://canada-haiti.ca/content/haiti-elections-cep-proposes-december-13-2026-first-round-and-february-21-2027-runoff"
+    },
+    {
+     "label": "HaitiDocs – Calendario electoral oficial 2026-2027",
+     "url": "https://www.haitidocs.org/doc/cep-calendrier-2026-07-publication-officielle"
+    },
     {
      "label": "France 24",
      "url": "https://www.france24.com/en/americas/20260727-haiti-sets-december-presidential-election-despite-security-concerns"
@@ -1186,7 +1629,36 @@
      "url": "https://www.haitilibre.com/en/news-48510-provisional-list-of-the-9-candidates-registered-for-the-presidency-in-haiti.html"
     }
    ],
-   "verified": false
+   "verified": false,
+   "why": "Si se concretan, serían las primeras elecciones generales desde 2016. Haití no tiene autoridades electas desde 2023 y gran parte de Puerto Príncipe está bajo control de pandillas. Votar es clave para salir de la transición y para la estrategia de seguridad internacional que respalda la ONU.",
+   "argentina": {
+    "level": "distante",
+    "summary": "El vínculo político es de bajo perfil y pasa sobre todo por lo multilateral: Argentina participó en la misión de paz de la ONU MINUSTAH entre 2004 y 2017. En 2026 se informó que las Fuerzas Armadas preseleccionaban oficiales para el Estado Mayor de la Fuerza de Supresión de Pandillas (GSF) autorizada por la ONU, pero no hay confirmación oficial de un despliegue.",
+    "trade": {
+     "year": 2025,
+     "exports": 3.3,
+     "imports": 0.2,
+     "topExports": "vehículos y autopartes, hortalizas (ajo); una parte, bajo secreto estadístico",
+     "topImports": "aceites esenciales y productos menores"
+    },
+    "facts": [
+     "Argentina tuvo tropas en Haití dentro de la MINUSTAH (2004-2017)"
+    ],
+    "sources": [
+     {
+      "label": "INDEC – COMEX, base anual de exportaciones e importaciones 2025",
+      "url": "https://comex.indec.gob.ar/"
+     },
+     {
+      "label": "Resumen Latinoamericano – FF.AA. argentinas y la GSF (may. 2026)",
+      "url": "https://www.resumenlatinoamericano.org/2026/05/03/haiti-las-fuerzas-armadas-argentinas-preparan-su-estado-mayor-para-enviar-tropas/"
+     },
+     {
+      "label": "ONU Peacekeeping – Haití",
+      "url": "https://peacekeeping.un.org/en/node/53632"
+     }
+    ]
+   }
   },
   "ISR": {
    "date": "2026-10-27",
@@ -1203,33 +1675,97 @@
    },
    "contenders": [
     {
-     "name": "Benjamin Netanyahu",
-     "party": "Likud"
+     "name": "Gadi Eisenkot",
+     "party": "Yashar",
+     "note": "Ex jefe del Estado Mayor; encabeza la mayoría de las encuestas."
     },
     {
-     "name": "Gadi Eisenkot",
-     "party": "Yashar!"
+     "name": "Benjamín Netanyahu",
+     "party": "Likud",
+     "note": "Primer ministro; acordó fusionarse con Nueva Esperanza."
     },
     {
      "name": "Naftali Bennett",
-     "party": "B'Yachad / Juntos"
+     "party": "Juntos (Bennett 2026 + Yesh Atid de Yair Lapid)",
+     "note": "Lista conjunta anunciada en abril."
+    },
+    {
+     "name": "Avigdor Lieberman",
+     "party": "Yisrael Beiteinu",
+     "note": "Integra el bloque opositor."
     },
     {
      "name": "Yair Golan",
-     "party": "Los Demócratas"
+     "party": "Los Demócratas",
+     "note": "Centroizquierda."
+    },
+    {
+     "name": "Itamar Ben-Gvir",
+     "party": "Otzma Yehudit",
+     "note": "Ultraderecha, socio de la coalición."
     }
    ],
-   "polls": "Likud y la lista de Eisenkot se disputan el primer puesto, con unas 20 bancas cada una; ver el especial.",
-   "stake": "¿Consigue el bloque de Netanyahu otra vez 61 bancas o la oposición arma una mayoría alternativa?",
-   "summary": "Es la primera Knéset desde 1988 que completa su mandato sin elecciones anticipadas. Se presentaron 38 listas; para gobernar hace falta la confianza de 61 de los 120 diputados.",
+   "polls": "Kan 11/Kantar (11 de octubre): Yashar 22, Likud 20, Juntos 12, Otzma Yehudit 9, Yisrael Beiteinu 8, Demócratas 8, Judaísmo Unido de la Torá 8, Lista Conjunta 8, Shas 7, Ra'am 5, Sionismo Religioso 5, Amcha Yisrael 4, Reservistas 4; la coalición sumaría 53, el bloque de Eisenkot 50 y los partidos árabes 13.",
+   "stake": "¿Retiene Netanyahu el poder, o consigue el bloque de Eisenkot y Bennett armar una mayoría de 61?",
+   "summary": "La Knesset aprobó su disolución el 17 de julio y la elección es el 27 de octubre; los resultados oficiales se confirman el 4 de noviembre. Ningún bloque llega a 61 bancas en las encuestas, y en las últimas semanas la coalición recuperó terreno. Hay sondeos atípicos, como el de Canal 14, que le da 63 bancas al oficialismo.",
    "result": null,
    "sources": [
+    {
+     "label": "Wikipedia – 2026 Israeli legislative election",
+     "url": "https://en.wikipedia.org/wiki/2026_Israeli_legislative_election"
+    },
+    {
+     "label": "Haaretz – Eisenkot bloc continues slump (encuesta Kan 11, 11 de octubre)",
+     "url": "https://www.haaretz.com/israel-news/elections/2026-10-11/ty-article/israel-election-poll-eisenkot-bloc-continues-slump-as-coalition-gains-ground/000001a1-2c63-d7a5-a7b1-be7397560000"
+    },
+    {
+     "label": "Wikipedia – Opinion polling for the 2026 Israeli legislative election",
+     "url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Israeli_legislative_election"
+    },
+    {
+     "label": "Jerusalem Post – Coalition, opposition tie at 52 seats (Maariv)",
+     "url": "https://www.jpost.com/israel-election-2026/article-911139"
+    },
     {
      "label": "Comité Central de Elecciones",
      "url": "https://bechirot.gov.il/"
     }
    ],
-   "verified": true
+   "verified": true,
+   "why": "Son las primeras elecciones a la Knéset desde la guerra que siguió al 7 de octubre de 2023, y funcionan como un plebiscito sobre Netanyahu, su coalición con la derecha religiosa y la conducción de la guerra y la reforma judicial. El resultado va a pesar sobre Gaza, la tensión con Irán y la normalización con el mundo árabe.",
+   "argentina": {
+    "level": "aliado estrecho",
+    "summary": "Israel es uno de los socios centrales de la política exterior de Milei, que hizo tres visitas oficiales como presidente (febrero de 2024, junio de 2025 con el Premio Génesis y discurso ante la Knéset, y abril de 2026). Milei se comprometió a mudar la embajada de Tel Aviv a Jerusalén en 2026, pero hasta ahora no se confirmó el traslado. En abril de 2026 los dos gobiernos firmaron acuerdos de aviación, seguridad y tecnología (incluido uno sobre inteligencia artificial) en el marco de los llamados Acuerdos de Isaac, y Argentina declaró organización terrorista a la Guardia Revolucionaria iraní.",
+    "trade": {
+     "year": 2025,
+     "exports": 586.9,
+     "imports": 169.8,
+     "topExports": "carne bovina congelada y fresca, harina de soja, preparaciones y jugos de frutas",
+     "topImports": "agroquímicos, vacunas y hemoderivados, fertilizantes potásicos, polietileno"
+    },
+    "facts": [
+     "El Al anunció el primer vuelo directo Buenos Aires–Tel Aviv a partir de noviembre de 2026, con dos frecuencias semanales",
+     "Israel es un destino relevante para la carne vacuna argentina: unos USD 430 millones en 2025"
+    ],
+    "sources": [
+     {
+      "label": "INDEC – COMEX, base anual de exportaciones e importaciones 2025",
+      "url": "https://comex.indec.gob.ar/"
+     },
+     {
+      "label": "Infobae – Milei y el traslado de la embajada (abr. 2026)",
+      "url": "https://www.infobae.com/politica/2026/04/13/javier-milei-planea-anunciar-el-traslado-de-la-embajada-a-jerusalen-durante-su-nuevo-viaje-a-israel/"
+     },
+     {
+      "label": "Los Andes – reunión Milei-Netanyahu (abr. 2026)",
+      "url": "https://www.losandes.com.ar/politica/milei-se-reunio-benjamin-netanyahu-israel-y-argentina-juntos-mas-fuertes-que-nunca-n5988210"
+     },
+     {
+      "label": "El Observador – agenda de Milei en Jerusalén",
+      "url": "https://www.elobservador.com.uy/argentina/politica/milei-jerusalen-hito-diplomatico-el-aniversario-la-independencia-israeli-y-agenda-bilateral-netanyahu-n6041265"
+     }
+    ]
+   }
   },
   "ITA": {
    "date": "2027-10-15",
@@ -1284,7 +1820,46 @@
      "url": "https://quifinanza.it/politica/sondaggi-politici-23-settembre-2026/1016550/"
     }
    ],
-   "verified": true
+   "verified": true,
+   "why": "Giorgia Meloni busca un segundo mandato con una nueva ley electoral proporcional con premio de mayoría para el bloque que supere el 42%, aprobada el 8 de octubre de 2026 en medio de denuncias opositoras. La aparición en febrero de 2026 de un nuevo partido de extrema derecha le resta votos a la coalición. El resultado define si sigue uno de los gobiernos más estables y de mayor peso en la derecha europea.",
+   "argentina": {
+    "level": "aliado estrecho",
+    "summary": "Meloni es la principal aliada de Milei en Europa. Visitó Buenos Aires en noviembre de 2024, donde firmaron un Plan de Acción 2025-2030, e Italia le otorgó la ciudadanía a Milei. En junio de 2025, en Roma, ambos encabezaron el acuerdo YPF-ENI por Argentina LNG, e Italia terminó respaldando el acuerdo UE-Mercosur en enero de 2026. El punto de fricción es el decreto Tajani de 2025, que restringió la ciudadanía por descendencia y afectó a miles de solicitantes argentinos.",
+    "trade": {
+     "year": 2025,
+     "exports": 1090,
+     "imports": 1564,
+     "topExports": "Harina y pellets de soja, langostinos, aceites, carne bovina",
+     "topImports": "Medicamentos, vacunas y hemoderivados, maquinaria de envasado, autopartes"
+    },
+    "facts": [
+     "Plan de Acción Italia-Argentina 2025-2030 (noviembre de 2024).",
+     "Acuerdo YPF-ENI por Argentina LNG firmado en Roma (junio de 2025).",
+     "El decreto Tajani limitó la ciudadanía por ius sanguinis a dos generaciones."
+    ],
+    "sources": [
+     {
+      "label": "INDEC – ICA diciembre 2025 (acumulado anual por país)",
+      "url": "https://www.indec.gob.ar/ftp/ica_digital/ica_d_01_26ABE4F7373E/"
+     },
+     {
+      "label": "INDEC – Sistema de Consultas de Comercio Exterior, base 2025 (cálculo propio)",
+      "url": "https://comex.indec.gob.ar/"
+     },
+     {
+      "label": "Misiones Online – visita de Meloni (noviembre de 2024)",
+      "url": "https://misionesonline.net/2024/11/20/javier-milei-recibio-en-casa-rosada-a-giorgia-meloni-primera-ministra-de-italia/"
+     },
+     {
+      "label": "Misiones Online – Milei en Roma (junio de 2025)",
+      "url": "https://misionesonline.net/2025/06/06/milei-inicio-en-roma-su-gira-mas-extensa/"
+     },
+     {
+      "label": "Euronews – nueva ley electoral italiana",
+      "url": "https://www.euronews.com/2026/10/08/italy-approves-melonis-electoral-reform-in-confidence-vote-ahead-of-2027-election"
+     }
+    ]
+   }
   },
   "KEN": {
    "date": "2027-08-10",
@@ -1344,7 +1919,37 @@
      "url": "https://capitalfm.africa/iebc-targets-28-5-million-voters-doubles-diaspora-voting-countries/"
     }
    ],
-   "verified": true
+   "verified": true,
+   "why": "William Ruto busca la reelección después de las masivas protestas juveniles de 2024-2025, frente a una oposición que promete un candidato único. Kalonzo Musyoka aparece como el mejor ubicado, y una encuesta de agosto de 2026 da 31% a Ruto contra 22% de Kalonzo. Kenia es el principal centro económico y diplomático de África Oriental.",
+   "argentina": {
+    "level": "cooperación pragmática",
+    "summary": "Argentina tiene embajada en Nairobi. El embajador Luis Levit presentó cartas credenciales ante Ruto en 2024 y avanzó en 2025 en contactos comerciales y sanitarios (KNCCI, KEPHIS-SENASA). No hubo visitas presidenciales; el vínculo es sobre todo comercial y gira en torno al trigo.",
+    "trade": {
+     "year": 2025,
+     "exports": 237.0,
+     "imports": 1.5,
+     "topExports": "Trigo y otros cereales",
+     "topImports": "Semillas, té"
+    },
+    "facts": [
+     "El trigo explicó la mayor parte de las exportaciones argentinas a Kenia en 2025.",
+     "Relaciones diplomáticas desde 1965."
+    ],
+    "sources": [
+     {
+      "label": "INDEC – Sistema de Consultas de Comercio Exterior, base 2025 (cálculo propio)",
+      "url": "https://comex.indec.gob.ar/"
+     },
+     {
+      "label": "Embajada argentina en Kenia",
+      "url": "https://ekeny.cancilleria.gob.ar/en/node/80605"
+     },
+     {
+      "label": "AllAfrica – encuesta Swiss Poll (agosto de 2026)",
+      "url": "https://allafrica.com/stories/202608210041.html"
+     }
+    ]
+   }
   },
   "KNA": {
    "date": null,
@@ -1449,9 +2054,9 @@
   "LVA": {
    "date": "2026-10-03",
    "dateConfirmed": true,
-   "status": "upcoming",
+   "status": "held",
    "offices": "Los 100 escaños de la Saeima (15.ª legislatura)",
-   "electorate": null,
+   "electorate": 1557615,
    "electorateNote": "Sin cifra oficial 2026 verificada; en 2022 hubo 1.542.407 electores (CVK)",
    "incumbent": {
     "name": "Andris Kulbergs",
@@ -1488,24 +2093,24 @@
    ],
    "polls": "El promedio de PolitPro (25/9/2026) da a la Lista Unida 23,4%, seguida por LPV 12,7%, Progresistas 12,3%, Soberanía (SV) 10,2%, ZZS 9,5%, Alianza Nacional 9,1% y Nueva Unidad 7%.",
    "stake": "¿Consolida la Lista Unida de Kulbergs el liderazgo del gobierno o crecen las fuerzas populistas como LPV y Soberanía?",
-   "summary": "Letonia renueva los 100 escaños de la Saeima con representación proporcional y umbral del 5%; compiten 14 listas. El primer ministro Andris Kulbergs gobierna desde mayo de 2026 con una coalición de cuatro partidos (AS, JV, Alianza Nacional y ZZS) tras la renuncia de Evika Siliņa.",
-   "result": null,
+   "summary": "Kulbergs, que asumió en mayo como jefe de un gobierno interino tras la renuncia de Evika Siliņa, salió fortalecido de las urnas y seis partidos entraron a la Saeima. El 6 de octubre el presidente Edgars Rinkēvičs le encargó formar el próximo gobierno; las negociaciones arrancan con sus actuales socios, la Alianza Nacional y Nueva Unidad, y el presidente espera avances concretos para comienzos de noviembre. La nominación formal llegará cuando se constituya la nueva Saeima.",
+   "result": "Lista Unida (AS), del primer ministro Andris Kulbergs, ganó con 35,8% y 41 de 100 bancas, el mejor resultado de un partido desde 1991; Letonia Primero (LPV, Ainārs Šlesers) quedó segunda con 13,3% y 17 bancas. La Unión de Verdes y Agricultores (ZZS), socia de la coalición, quedó afuera con 4,46%.",
    "sources": [
     {
-     "label": "LSM – Parties and their promises",
-     "url": "https://eng.lsm.lv/article/politics/election/31.08.2026-latvian-saeima-elections-2026-the-parties-and-their-promises.a658526/"
-    },
-    {
-     "label": "PolitPro – Latvia 2026",
-     "url": "https://politpro.eu/en/latvia/election/parliament/2026"
-    },
-    {
-     "label": "Ministru kabinets – Gobierno Kulbergs",
-     "url": "https://www.mk.gov.lv/en/article/government-led-andris-kulbergs-assumes-office"
-    },
-    {
-     "label": "Wikipedia – 2026 Latvian parliamentary election",
+     "label": "Wikipedia – 2026 Latvian parliamentary election (datos de la CVK)",
      "url": "https://en.wikipedia.org/wiki/2026_Latvian_parliamentary_election"
+    },
+    {
+     "label": "LSM – The votes are in: United List handed massive mandate",
+     "url": "https://eng.lsm.lv/article/politics/election/04.10.2026-the-votes-are-in-united-list-handed-massive-mandate-by-latvian-voters.a666044/"
+    },
+    {
+     "label": "LSM – President asks Kulbergs to form next Latvian government",
+     "url": "https://eng.lsm.lv/article/politics/politics/06.10.2026-president-asks-kulbergs-to-form-next-latvian-government.a666382/"
+    },
+    {
+     "label": "OSW – Latvia: Andris Kulbergs' caretaker government",
+     "url": "https://osw.waw.pl/en/publikacje/analyses/2026-06-02/latvia-andris-kulbergs-caretaker-government"
     }
    ],
    "verified": true
@@ -1652,7 +2257,41 @@
      "url": "https://www.mexicantimes.com.mx/encuesta-diputados-2027-26-de-votantes-todavia-no-elige-partido/"
     }
    ],
-   "verified": true
+   "verified": true,
+   "why": "Son las primeras intermedias de Claudia Sheinbaum: se renuevan los 500 diputados y una tanda grande de gubernaturas, y está en juego si Morena y sus aliados conservan la mayoría calificada que les permitió reformar la Constitución. El oficialismo impulsó pasar la segunda elección judicial de 2027 a 2028. El resultado también condiciona la relación con EE.UU. en plena revisión del T-MEC.",
+   "argentina": {
+    "level": "relación tensa",
+    "summary": "El vínculo político es frío desde el inicio de la gestión: Milei no fue invitado a la asunción de Sheinbaum en 2024, donde sí estuvo Axel Kicillof. En julio de 2026 Milei acusó a México de financiar una campaña en redes contra Argentina durante el Mundial, y Sheinbaum lo desmintió públicamente. El comercio sigue, con déficit para Argentina.",
+    "trade": {
+     "year": 2025,
+     "exports": 655,
+     "imports": 1723,
+     "topExports": "Maquinaria, aceites, productos químicos, vehículos",
+     "topImports": "Automóviles, camiones livianos, autopartes, computadoras y teléfonos"
+    },
+    "facts": [
+     "Milei no fue invitado a la asunción de Sheinbaum (octubre de 2024).",
+     "Déficit argentino de unos USD 1.068 millones en 2025."
+    ],
+    "sources": [
+     {
+      "label": "INDEC – ICA diciembre 2025 (acumulado anual por país)",
+      "url": "https://www.indec.gob.ar/ftp/ica_digital/ica_d_01_26ABE4F7373E/"
+     },
+     {
+      "label": "INDEC – Sistema de Consultas de Comercio Exterior, base 2025 (cálculo propio)",
+      "url": "https://comex.indec.gob.ar/"
+     },
+     {
+      "label": "Perfil – Sheinbaum desmintió a Milei (julio de 2026)",
+      "url": "https://www.perfil.com/noticias/internacional/claudia-sheinbaum-desmintio-a-milei-y-rechazo-haber-impulsado-una-campana-de-odio-contra-argentina-es-falso.phtml"
+     },
+     {
+      "label": "C5N – Invitaron a Kicillof pero no a Milei",
+      "url": "https://www.c5n.com/politica/asuncion-presidencial-sheinbaum-mexico-invitaron-kicillof-pero-no-milei-n175605"
+     }
+    ]
+   }
   },
   "MHL": {
    "date": "2027-11-15",
@@ -1774,7 +2413,32 @@
      "url": "https://politpro.eu/en/montenegro"
     }
    ],
-   "verified": false
+   "verified": false,
+   "why": "Montenegro es el candidato más avanzado de los Balcanes para entrar a la UE: abrió los 33 capítulos y cerró 18 de forma provisoria hasta julio de 2026, con la meta de ser el miembro número 28 en 2028. La elección define si el gobierno de Milojko Spajić puede completar ese camino o si la fragmentación y la puja entre fuerzas proeuropeas y prorrusas lo frena.",
+   "argentina": {
+    "level": "distante",
+    "summary": "No hay agenda política bilateral relevante con Montenegro bajo Milei: no se registran visitas ni acuerdos. El vínculo es diplomático formal.",
+    "trade": {
+     "year": 2025,
+     "exports": 1.5,
+     "imports": 0.1,
+     "topExports": "Montos menores: legumbres, cítricos",
+     "topImports": "Montos menores: motores y repuestos"
+    },
+    "facts": [
+     "Intercambio de 2025 inferior a USD 2 millones."
+    ],
+    "sources": [
+     {
+      "label": "INDEC – Sistema de Consultas de Comercio Exterior, base 2025 (cálculo propio)",
+      "url": "https://comex.indec.gob.ar/"
+     },
+     {
+      "label": "EEAS/UE – cierre de capítulos de Montenegro",
+      "url": "https://www.eeas.europa.eu/delegations/montenegro/eu-and-montenegro-close-accession-negotiations-competition-policy-and-customs-union_en"
+     }
+    ]
+   }
   },
   "MNG": {
    "date": "2027-06-15",
@@ -1829,7 +2493,32 @@
      "url": "https://thediplomat.com/2026/04/can-uchral-hold-on-beyond-mongolias-leadership-shake-up/"
     }
    ],
-   "verified": false
+   "verified": false,
+   "why": "Ukhnaagiin Khürelsükh no puede ser reelecto, y la sucesión expone las fracturas del Partido del Pueblo de Mongolia, que vio caer a dos primeros ministros en menos de un año. La elección de junio de 2027 define el rumbo de una democracia encajonada entre Rusia y China y muy dependiente de la minería.",
+   "argentina": {
+    "level": "distante",
+    "summary": "La relación es formal y de baja intensidad, sin visitas ni acuerdos destacados en 2024-2026.",
+    "trade": {
+     "year": 2025,
+     "exports": 4.5,
+     "imports": 0.0,
+     "topExports": "Montos menores (mayormente confidenciales)",
+     "topImports": "Prácticamente nulas"
+    },
+    "facts": [
+     "Intercambio de 2025 de unos USD 4,5 millones, casi todo exportación argentina."
+    ],
+    "sources": [
+     {
+      "label": "INDEC – Sistema de Consultas de Comercio Exterior, base 2025 (cálculo propio)",
+      "url": "https://comex.indec.gob.ar/"
+     },
+     {
+      "label": "Intellinews – carrera por suceder a Khurelsukh",
+      "url": "https://www.intellinews.com/mongolia-s-next-president-race-to-succeed-khurelsukh-reshapes-political-landscape-459883/"
+     }
+    ]
+   }
   },
   "MYS": {
    "date": "2027-12-15",
@@ -1943,7 +2632,37 @@
      "url": "https://tribuneonlineng.com/2027-tinubu-edges-peter-obi-by-1-55-in-oxford-metro-poll/"
     }
    ],
-   "verified": true
+   "verified": true,
+   "why": "Nigeria, el país más poblado y una de las mayores economías de África, elige presidente, Congreso y gobernadores. Bola Tinubu busca la reelección después de reformas duras, como la quita del subsidio a los combustibles y la unificación cambiaria. Sus resultados importan para la estabilidad de África Occidental, frente al yihadismo y la crisis del Sahel.",
+   "argentina": {
+    "level": "cooperación pragmática",
+    "summary": "Es el principal socio de Argentina en África Occidental, con embajada residente en Abuja, y la relación es estable y centrada en el comercio. En octubre de 2025 el embajador argentino se reunió con el ministro de Información nigeriano para ampliar la cooperación en medios y cultura. No hubo visitas presidenciales durante el gobierno de Milei.",
+    "trade": {
+     "year": 2025,
+     "exports": 306.6,
+     "imports": 166.1,
+     "topExports": "aceite de soja, trigo, maíz y pescado",
+     "topImports": "urea y fertilizantes nitrogenados, combustibles"
+    },
+    "facts": [
+     "Nigeria es un comprador relevante de aceite de soja y trigo argentinos",
+     "Argentina importa de Nigeria sobre todo urea para el agro"
+    ],
+    "sources": [
+     {
+      "label": "INDEC – COMEX, base anual de exportaciones e importaciones 2025",
+      "url": "https://comex.indec.gob.ar/"
+     },
+     {
+      "label": "Gobierno de Nigeria (FMINO) – cooperación con Argentina (oct. 2025)",
+      "url": "https://fmino.gov.ng/fg-argentina-to-deepen-bilateral-cooperation-through-information-and-cultural-exchange/"
+     },
+     {
+      "label": "NAN – Nigeria y Argentina (oct. 2025)",
+      "url": "https://nannews.ng/2025/10/08/nigeria-argentina-to-strengthen-bilateral-cooperation-on-information-exchange"
+     }
+    ]
+   }
   },
   "NIC": {
    "date": null,
@@ -1996,19 +2715,23 @@
     {
      "name": "Christopher Luxon",
      "party": "Partido Nacional",
-     "note": "Primer ministro"
+     "note": "Primer ministro; gobierna con ACT y NZ First."
     },
     {
      "name": "Chris Hipkins",
      "party": "Partido Laborista",
-     "note": "Líder de la oposición"
+     "note": "Líder de la oposición."
     }
    ],
-   "polls": "Ambos grandes partidos por debajo del 30%: la encuesta Post/Freshwater Strategy (sep. 2026) proyecta un empate de 60 escaños entre bloques; Taxpayers' Union-Curia (principios de sep.) daba National 29% y Labour 25,9%.",
-   "stake": "¿Renueva mandato la coalición de centroderecha de Luxon o vuelve el laborismo, con un Parlamento que asoma sin mayoría clara?",
-   "summary": "El primer ministro Luxon fijó la elección para el sábado 7 de noviembre de 2026; el voto anticipado comienza el 26 de octubre. Las encuestas muestran un desgaste simultáneo de nacionales y laboristas y un posible empate entre bloques.",
+   "polls": "1News–Verian (1-5 de octubre): Nacional 29%, Laborista 28%, Verdes 16%, NZ First 10%, ACT 9% y TOP 7%; Taxpayers' Union–Curia (misma fecha): Nacional 28,5% y Laborista 28,2%.",
+   "stake": "¿Renueva la coalición de centroderecha de Luxon o vuelve un gobierno de centroizquierda encabezado por los laboristas?",
+   "summary": "Luxon fijó la elección para el 7 de noviembre en enero. Nacionales y laboristas están empatados y las proyecciones de bancas oscilan entre una mayoría Nacional–ACT–NZ First y otra Laborista–Verdes–TOP–Te Pāti Māori, según la encuesta.",
    "result": null,
    "sources": [
+    {
+     "label": "Wikipedia – Opinion polling for the 2026 New Zealand general election",
+     "url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_New_Zealand_general_election"
+    },
     {
      "label": "Beehive.govt.nz",
      "url": "https://www.beehive.govt.nz/release/general-election-be-held-7-november"
@@ -2022,7 +2745,41 @@
      "url": "https://www.rnz.co.nz/news/politics_election-2026/1382772/possible-hung-parliament-as-labour-and-national-slump-in-latest-poll"
     }
    ],
-   "verified": true
+   "verified": true,
+   "why": "La coalición de centroderecha de Christopher Luxon (Nacional, ACT y NZ First) busca un segundo mandato frente al laborismo de Chris Hipkins, con el costo de vida y el ajuste fiscal en el centro del debate. Es una referencia en el Pacífico Sur y uno de los grandes exportadores agroalimentarios del mundo, competidor directo de Argentina en lácteos y carnes.",
+   "argentina": {
+    "level": "cooperación pragmática",
+    "summary": "La relación es cordial y se reactivó en 2026: el 2 de marzo el canciller neozelandés Winston Peters fue recibido por Pablo Quirno en el Palacio San Martín y se reunió con Milei. Fue la primera visita de un canciller de ese país en 19 años. Hablaron de comercio, inversiones, la situación en Irán, reforma de la ONU y cooperación antártica. Peters destacó las reformas económicas argentinas como una oportunidad para las empresas neozelandesas.",
+    "trade": {
+     "year": 2025,
+     "exports": 120.8,
+     "imports": 27.4,
+     "topExports": "mayormente bajo secreto estadístico; además, preparaciones de maní y maní",
+     "topImports": "medicamentos, envases de papel y cartón, semillas"
+    },
+    "facts": [
+     "Nueva Zelanda ofrece 1.000 visas Working Holiday anuales para jóvenes argentinos y es uno de los destinos más buscados",
+     "Los dos países son grandes exportadores agrícolas y coinciden en la defensa del libre comercio agrícola"
+    ],
+    "sources": [
+     {
+      "label": "INDEC – COMEX, base anual de exportaciones e importaciones 2025",
+      "url": "https://comex.indec.gob.ar/"
+     },
+     {
+      "label": "Cancillería – reunión de cancilleres Argentina-Nueva Zelanda (mar. 2026)",
+      "url": "https://cancilleria.gob.ar/es/actualidad/noticias/argentina-nueva-zelanda-reunion-de-cancilleres-en-el-palacio-san-martin"
+     },
+     {
+      "label": "Mirage News – Closer cooperation with Argentina",
+      "url": "https://www.miragenews.com/closer-cooperation-with-argentina-1629459/"
+     },
+     {
+      "label": "Noticias NQN – 1.000 visas para argentinos (sep. 2026)",
+      "url": "https://www.noticiasnqn.com.ar/noticias/2026/09/23/353830-nueva-zelanda-abre-1000-visas-para-argentinos-que-quieran-trabajar-y-viajar"
+     }
+    ]
+   }
   },
   "OMN": {
    "date": "2027-10-15",
@@ -2158,7 +2915,37 @@
      "url": "https://notesfrompoland.com/2026/03/07/polands-right-wing-opposition-pis-party-names-hardline-conservative-as-prime-ministerial-candidate/"
     }
    ],
-   "verified": true
+   "verified": true,
+   "why": "Las legislativas, que deben celebrarse antes del 11 de noviembre de 2027, enfrentan a la coalición proeuropea de Donald Tusk con PiS y una Konfederacja en ascenso, con el presidente Karol Nawrocki como posible árbitro de la derecha. Polonia es el gran poder militar del flanco este de la OTAN y un actor clave frente a Rusia y Ucrania.",
+   "argentina": {
+    "level": "cooperación pragmática",
+    "summary": "Relación cordial sin hitos fuertes: en febrero de 2026 Milei recibió una invitación para visitar Polonia (y Ucrania), pero no consta que el viaje se haya concretado. En enero de 2026 Polonia votó en contra del acuerdo UE-Mercosur en el Consejo de la UE.",
+    "trade": {
+     "year": 2025,
+     "exports": 484.1,
+     "imports": 270.5,
+     "topExports": "Harina y pellets de soja, maní, residuos alimenticios",
+     "topImports": "Automóviles, autopartes, filtros, fertilizantes"
+    },
+    "facts": [
+     "Polonia votó contra el acuerdo UE-Mercosur en el Consejo (enero de 2026).",
+     "Superávit argentino de unos USD 214 millones en 2025."
+    ],
+    "sources": [
+     {
+      "label": "INDEC – Sistema de Consultas de Comercio Exterior, base 2025 (cálculo propio)",
+      "url": "https://comex.indec.gob.ar/"
+     },
+     {
+      "label": "Canal 26 – invitación a Polonia y Ucrania (febrero de 2026)",
+      "url": "https://www.canal26.com/politica/2026/02/21/se-va-a-europa-javier-milei-podria-desembarcar-en-ucrania-y-polonia-a-mediados-de-2026/"
+     },
+     {
+      "label": "Diario de Cuyo – votación UE-Mercosur",
+      "url": "https://www.diariodecuyo.com.ar/argentina/argentina-firmara-el-acta-de-acuerdo-entre-el-mercosur-y-la-union-europea-en-asuncion-1818673.html"
+     }
+    ]
+   }
   },
   "RUS": {
    "date": "2026-09-20",
@@ -2235,26 +3022,56 @@
    },
    "contenders": [
     {
-     "name": "Candidato del SNS",
-     "party": "Partido Progresista Serbio",
-     "note": "Por definir; posible"
+     "name": "Aleksandar Vučić",
+     "party": "«Aleksandar Vučić – Serbia Unida» (SNS y aliados)",
+     "note": "El presidente encabeza la lista oficialista y es su candidato a primer ministro."
     },
     {
-     "name": "Candidato de la Lista Estudiantil",
-     "party": "Movimiento estudiantil",
-     "note": "Anunció participación; nombre no definido"
+     "name": "Ilija Srdanović",
+     "party": "Lista Estudiantil – «Los estudiantes ganan»",
+     "note": "Cardiólogo y profesor en Novi Sad, primero de la lista. La apoyan el Partido Demócrata, el Frente Verde-Izquierda y la coalición Serbia Popular, que retiró su propia lista."
     },
     {
-     "name": "Candidato del SPS",
-     "party": "Partido Socialista de Serbia",
-     "note": "Anunció participación"
+     "name": "Ivica Dačić",
+     "party": "«Factor de Estabilidad» (SPS y aliados)",
+     "note": "Socio histórico del SNS."
+    },
+    {
+     "name": "Marinika Tepić / Zdravko Ponoš / Dragan Đilas",
+     "party": "Serbia Europea (SSP, SRCE, Solidaridad)",
+     "note": "Oposición proeuropea que compite por fuera de la lista estudiantil."
+    },
+    {
+     "name": "Miloš Jovanović",
+     "party": "Derecha Auténtica (Nueva DSS y aliados)",
+     "note": "Oposición nacionalista."
     }
    ],
-   "polls": "Para la presidencial no hay sondeos verificados; en las parlamentarias de 2026 la Lista Estudiantil marca 31–45% según encuestas de jul–sep.",
-   "stake": "¿Mantiene el SNS su mayoría con Vučić como candidato a primer ministro, tras un año de protestas masivas?",
-   "summary": "Aleksandar Vučić convocó el 9 de septiembre elecciones parlamentarias anticipadas para el 25 de octubre. Como no puede buscar otro mandato presidencial (el suyo vence el 31 de mayo de 2027), encabeza la lista para ser primer ministro. La elección presidencial debe celebrarse antes de esa fecha.",
+   "polls": "Las encuestas divergen: Faktor Plus (publicada el 21 de septiembre) da 48,6% a la lista de Vučić y 37,1% a la Lista Estudiantil, mientras que NSPM (publicada el 30 de septiembre, campo de comienzos de septiembre) pone adelante a los estudiantes con 44,4% contra 41,7%.",
+   "stake": "¿Puede la lista surgida de las protestas estudiantiles terminar con más de una década de dominio del SNS?",
+   "summary": "Vučić disolvió la Asamblea el 9 de septiembre y llamó a elecciones anticipadas para el 25 de octubre, después de casi un año de protestas encabezadas por estudiantes. Compiten 18 listas por 250 bancas. Para la oposición y los medios independientes, Faktor Plus e Ipsos tienen un sesgo oficialista.",
    "result": null,
    "sources": [
+    {
+     "label": "Wikipedia – 2026 Serbian parliamentary election",
+     "url": "https://en.wikipedia.org/wiki/2026_Serbian_parliamentary_election"
+    },
+    {
+     "label": "Wikipedia – Opinion polling for the 2026 Serbian parliamentary election",
+     "url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Serbian_parliamentary_election"
+    },
+    {
+     "label": "Vreme – Who is participating on October 25",
+     "url": "https://vreme.com/en/izbori-2026/izbori-2026-izborne-liste-rik/"
+    },
+    {
+     "label": "RTS – Vučić nosilac liste i kandidat za premijera",
+     "url": "https://www.rts.rs/lat/vesti/politika/6033271/faktor-plus-izbori-2026-aleksandar-vucic-kandidat-za-premijera-studentska-lista.html"
+    },
+    {
+     "label": "B92 – Faktor Plus: Ujedinjena Srbija 48,6%",
+     "url": "https://www.b92.net/info/politika/269423/novo-istrazivanje-lista-koju-predvodi-aleksandar-vucic-ujedinjena-srbija-vodi-sa-486/vest"
+    },
     {
      "label": "Wikipedia: Next Serbian presidential election",
      "url": "https://en.wikipedia.org/wiki/Next_Serbian_presidential_election"
@@ -2268,7 +3085,41 @@
      "url": "https://english.news.cn/20260906/13a18c137b2f4a8e921f77bbdcfe1f66/c.html"
     }
    ],
-   "verified": false
+   "verified": false,
+   "why": "Vučić disolvió el Parlamento y adelantó las elecciones después de casi dos años de protestas masivas, encabezadas por estudiantes, que empezaron con la tragedia de la estación de Novi Sad. Es la prueba más dura para el SNS en más de una década: una lista estudiantil desafía al oficialismo y la oposición teme que las condiciones de competencia no sean justas. El resultado define el rumbo del candidato a la UE más grande de los Balcanes y su equilibrio entre Bruselas, Moscú y Pekín.",
+   "argentina": {
+    "level": "cooperación pragmática",
+    "summary": "Es un vínculo de bajo perfil pero cordial, con un eje político concreto: Argentina no reconoce la independencia de Kosovo, porque entiende que sentaría un precedente contra su reclamo por Malvinas, y Serbia apoya la posición argentina sobre la integridad territorial. En 2025 la embajada argentina en Belgrado reafirmó el respeto a la Resolución 1244 del Consejo de Seguridad. En junio de 2026 la directora nacional de Malvinas, Silvia Cao, y el secretario de Estado serbio Damjan Jović reafirmaron el apoyo mutuo a la soberanía de cada país.",
+    "trade": {
+     "year": 2025,
+     "exports": 9.4,
+     "imports": 19.6,
+     "topExports": "maní, cítricos y pescado (una parte, bajo secreto estadístico)",
+     "topImports": "tableros eléctricos, fertilizantes, frutas congeladas e instrumental médico"
+    },
+    "facts": [
+     "Argentina mantiene desde 2008 la política de no reconocer a Kosovo",
+     "El intercambio es chico: menos de USD 30 millones en 2025"
+    ],
+    "sources": [
+     {
+      "label": "INDEC – COMEX, base anual de exportaciones e importaciones 2025",
+      "url": "https://comex.indec.gob.ar/"
+     },
+     {
+      "label": "Cancillería de Serbia – Jović y Silvia Cao (2026)",
+      "url": "https://mfa.gov.rs/en/press-service/news/jovic-and-silvia-cao-discuss-serbia-argentina-cooperation"
+     },
+     {
+      "label": "Gobierno de Serbia – relaciones políticas Serbia-Argentina",
+      "url": "https://www.srbija.gov.rs/vest/en/138782/political-relations-of-serbia-argentina-on-the-rise.php"
+     },
+     {
+      "label": "Al Jazeera – elecciones anticipadas en Serbia",
+      "url": "https://aljazeera.com/features/2026/9/28/serbias-snap-election-can-vucic-outmanoeuvre-the-student-revolt"
+     }
+    ]
+   }
   },
   "SVK": {
    "date": "2027-09-15",
@@ -2540,24 +3391,146 @@
    },
    "contenders": [
     {
-     "name": "Partido Republicano",
-     "party": "mayoría en ambas cámaras"
+     "name": "Partido Demócrata",
+     "party": "Demócrata",
+     "note": "Le alcanza con ganar unas pocas bancas en la Cámara y necesita sumar cuatro en el Senado para la mayoría."
     },
     {
-     "name": "Partido Demócrata",
-     "party": "oposición"
+     "name": "Partido Republicano",
+     "party": "Republicano",
+     "note": "Controla ambas cámaras y defiende la mayoría bajo la presidencia de Donald Trump."
     }
    ],
-   "polls": "Los demócratas aventajan en la intención de voto genérica y la aprobación de Trump ronda el 38%; ver el especial.",
-   "stake": "¿Retienen los republicanos el Congreso o los demócratas recuperan la Cámara y ponen un freno a Trump?",
-   "summary": "Las elecciones de medio término renuevan toda la Cámara baja y un tercio del Senado. Los republicanos defienden una mayoría de 218 a 214 en la Cámara y de 53 a 47 en el Senado, donde los demócratas necesitan ganar cuatro bancas netas.",
+   "polls": "El promedio de Silver Bulletin da a los demócratas +8,9 puntos en la intención de voto genérica (9 de octubre); FiftyPlusOne marca D+8 (11 de octubre) y RealClearPolling D+7,9.",
+   "stake": "¿Recuperan los demócratas la Cámara y también el Senado?",
+   "summary": "El modelo de Silver Bulletin (8 de octubre) da a los demócratas 93,1% de chances de ganar la Cámara y 74,8% el Senado; Decision Desk HQ les asigna 56% en el Senado. Cook Political Report (9 de octubre) proyecta que los demócratas ganarían entre 9 y 19 bancas en la Cámara. En el Senado, Cook ubica como tossups Alaska, Iowa, Kansas, Maine, Michigan, Ohio y Texas.",
    "result": null,
    "sources": [
+    {
+     "label": "Silver Bulletin – Generic ballot average",
+     "url": "https://www.natesilver.net/p/generic-ballot-average-2026-nate-silver-bulletin-congress-polls"
+    },
+    {
+     "label": "Newsweek – Nate Silver forecast",
+     "url": "https://www.newsweek.com/democrat-chances-of-winning-house-senate-hit-new-high-nate-silver-forecast-12545290"
+    },
+    {
+     "label": "Cook Political Report – House ratings",
+     "url": "https://www.cookpolitical.com/ratings/house-race-ratings"
+    },
+    {
+     "label": "Cook Political Report – Senate overview (Kansas a Toss Up)",
+     "url": "https://www.cookpolitical.com/analysis/senate/senate-overview/senate-majority-squarely-democrats-sights-kansas-moves-toss-two"
+    },
+    {
+     "label": "Decision Desk HQ – 2026 Senate forecast",
+     "url": "https://votes.decisiondeskhq.com/forecast/2026/senate"
+    },
     {
      "label": "Cook Political Report",
      "url": "https://www.cookpolitical.com/"
     }
    ],
+   "verified": true,
+   "why": "Se renuevan la Cámara de Representantes completa y un tercio del Senado, y está en juego el control del Congreso para la segunda mitad del mandato de Trump. Si los demócratas recuperan alguna cámara, pueden frenar su agenda en aranceles, inmigración y presupuesto, con impacto en el comercio y las finanzas globales.",
+   "argentina": {
+    "level": "aliado estrecho",
+    "summary": "Bajo Milei, Estados Unidos pasó a ser el aliado prioritario: el presidente viajó muchas veces al país y mantiene una sintonía ideológica explícita con Trump. En octubre de 2025 el Tesoro estadounidense cerró un swap de USD 20.000 millones con el BCRA y compró pesos antes de las legislativas argentinas. El 5 de febrero de 2026 los dos países firmaron el Acuerdo de Comercio e Inversión Recíproco, que todavía tiene pendiente la aprobación legislativa.",
+    "trade": {
+     "year": 2025,
+     "exports": 8179.6,
+     "imports": 6610.1,
+     "topExports": "petróleo crudo, oro y metales preciosos, aluminio, carne bovina, combustibles",
+     "topImports": "combustibles y gas, autopartes, vacunas y medicamentos, agroquímicos, aeronaves"
+    },
+    "facts": [
+     "Es el tercer destino de las exportaciones argentinas después de Brasil y China (según el ICA del INDEC, unos USD 8.338 millones en 2025)",
+     "El acuerdo de 2026 contempla bajar unos 1.600 aranceles y ampliar la cuota de carne"
+    ],
+    "sources": [
+     {
+      "label": "INDEC – COMEX, base anual de exportaciones e importaciones 2025",
+      "url": "https://comex.indec.gob.ar/"
+     },
+     {
+      "label": "INDEC – Intercambio comercial argentino, dic. 2025",
+      "url": "https://www.indec.gob.ar/ftp/ica_digital/ica_d_01_26ABE4F7373E/"
+     },
+     {
+      "label": "Canal 26 – firma del acuerdo comercial (feb. 2026)",
+      "url": "https://www.canal26.com/politica/2026/02/05/ahora-si-el-gobierno-anuncio-la-firma-del-acuerdo-comercial-con-estados-unidos-sellado-entre-milei-y-trump/"
+     },
+     {
+      "label": "Los Andes – el Tesoro confirmó el swap (oct. 2025)",
+      "url": "https://www.losandes.com.ar/economia/el-tesoro-estados-unidos-confirmo-el-swap-us20000-millones-la-argentina-n5965895"
+     },
+     {
+      "label": "El Economista – carne y aranceles",
+      "url": "https://eleconomista.com.ar/politica/acuerdo-eeuu-argentina-exportara-mas-carne-caen-1600-aranceles-n92420"
+     }
+    ]
+   }
+  },
+  "BGR": {
+   "date": "2026-10-25",
+   "offices": "Presidente y vicepresidente (fórmula conjunta, mandato de 5 años); eventual balotaje el 1 de noviembre",
+   "electorate": null,
+   "incumbent": {
+    "name": "Iliana Iotova",
+    "title": "Presidenta",
+    "running": true,
+    "note": "Asumió el 23 de enero de 2026 tras la renuncia de Rumen Radev, que dejó la jefatura de Estado para competir por el gobierno; va por un mandato propio con Kiril Valchev como compañero de fórmula."
+   },
+   "contenders": [
+    {
+     "name": "Iliana Iotova",
+     "party": "Independiente, con apoyo de Bulgaria Progresista, BSP, ABV/ISBG y VMRO",
+     "note": "Favorita; fórmula con Kiril Valchev."
+    },
+    {
+     "name": "Andrey Gyurov",
+     "party": "Independiente, con apoyo de PP–DB",
+     "note": "Ex primer ministro interino; fórmula con Georgi Kandev."
+    },
+    {
+     "name": "Kostadin Kostadinov",
+     "party": "Vazrazhdane (Renacimiento)",
+     "note": "Ultranacionalista prorruso; fórmula con Petar Volgin; tercero en las encuestas."
+    }
+   ],
+   "polls": "Iotova lidera con holgura pero sin asegurarse la victoria en primera vuelta: Gallup (26/9-6/10) le da 47,8% contra 26,4% de Gyurov y 11,6% de Kostadinov; Alpha Research (24/9-1/10), 44,5% / 26,1% / 10,5%, y Market Links (26-29/9), 51,6% / 27,5% / 8,0% (sobre votos decididos).",
+   "stake": "¿Consolida Radev su control total del poder con Iotova en la presidencia, o la oposición proeuropea fuerza un balotaje y conserva un contrapeso?",
+   "summary": "Bulgaria elige presidente con 27 fórmulas en carrera, seis meses después de que Bulgaria Progresista de Rumen Radev ganara mayoría absoluta (131 de 240 bancas). La presidenta Iliana Iotova, aliada de Radev, encabeza todos los sondeos frente a Andrey Gyurov, respaldado por PP–DB. Si nadie supera el 50%, habrá segunda vuelta el 1 de noviembre.",
+   "why": "Una victoria de Iotova dejaría gobierno, Parlamento y presidencia en manos del mismo bloque por primera vez en décadas, sin el contrapeso del veto presidencial. Es además la primera prueba electoral del gobierno Radev, cuyas posiciones sobre Rusia y la UE se siguen de cerca en Bruselas.",
+   "sources": [
+    {
+     "label": "Wikipedia – 2026 Bulgarian presidential election",
+     "url": "https://en.wikipedia.org/wiki/2026_Bulgarian_presidential_election"
+    },
+    {
+     "label": "Wikipedia – 2026 Bulgarian parliamentary election",
+     "url": "https://en.wikipedia.org/wiki/2026_Bulgarian_parliamentary_election"
+    },
+    {
+     "label": "Sofia Globe – encuesta Alpha Research (5/10/2026)",
+     "url": "https://sofiaglobe.com/2026/10/05/bulgarias-2026-presidential-elections-yotova-44-5-gyurov-26-1-alpha-research-poll/"
+    },
+    {
+     "label": "Balkan Insight – presidenciales y Radev",
+     "url": "https://balkaninsight.com/2026/09/14/bulgarias-presidential-elections-will-test-pm-radevs-grip-on-power/bi/"
+    },
+    {
+     "label": "BTA – el Parlamento elige a Radev primer ministro",
+     "url": "https://www.bta.bg/en/news/1121595-parliament-elects-rumen-radev-as-prime-minister"
+    },
+    {
+     "label": "BNR – Iotova, primera presidenta de Bulgaria",
+     "url": "https://bnrnews.bg/en/post/418123/iliana-iotova-becomes-bulgarias-first-female-president"
+    }
+   ],
+   "status": "upcoming",
+   "dateConfirmed": true,
+   "result": null,
    "verified": true
   }
  }

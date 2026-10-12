@@ -1,0 +1,1482 @@
+{
+ "id": "espana-2026",
+ "title": "Elecciones generales 2026",
+ "updatedAt": "2026-10-12T12:00:00-03:00",
+ "lede": "España vuelve a las urnas el domingo 29 de noviembre, ocho meses antes de lo previsto: Pedro Sánchez disolvió las Cortes después de que el Congreso le tumbara dos decretos de vivienda. Todas las encuestas ponen primero al PP y le dan a la suma con Vox más de los 176 diputados de la mayoría absoluta.",
+ "dates": {
+  "pollsOpen": "2026-11-29T09:00:00+01:00",
+  "pollsClose": "2026-11-29T20:00:00+01:00",
+  "cortesConstituted": "2026-12-23T10:00:00+01:00"
+ },
+ "system": {
+  "seats": 350,
+  "majority": 176,
+  "threshold": "3 % por provincia",
+  "senateElected": 209,
+  "senateNote": "Son 209 senadores electos (uno más que en 2023) porque la reforma constitucional de mayo de 2026 le dio a Formentera un senador propio, separado de Ibiza. Las comunidades autónomas designan otros 58, para un total de 267."
+ },
+ "electorate": {
+  "total": 38728356,
+  "resident": 35958711,
+  "abroad": 2769645,
+  "asOf": "Censo electoral difundido por el INE el 9 de octubre de 2026",
+  "firstTimeVoters": 1615127,
+  "note": "Son 1,3 millones de electores más que en 2023 (+3,4 %). El censo de residentes en el exterior (CERA) creció 19 %, en parte por la 'ley de nietos'; el Supremo todavía tiene que resolver si los nacionalizados por esa ley pueden votar el 29N."
+ },
+ "officesIntro": "El Congreso de los Diputados se elige en 52 circunscripciones: las 50 provincias reparten 348 bancas (un mínimo de dos cada una y el resto según población) con listas cerradas y bloqueadas, sistema D'Hondt y un piso del 3 % de los votos válidos en cada provincia; Ceuta y Melilla eligen un diputado cada una por mayoría simple. El Senado usa voto limitado con listas abiertas: cada provincia peninsular elige 4 senadores y el elector puede marcar hasta 3 nombres; las islas mayores eligen 3, las menores 1, y Ceuta y Melilla 2 cada una.",
+ "offices": [
+  {
+   "value": "350",
+   "label": "Diputados",
+   "detail": "Listas cerradas, D'Hondt por provincia y piso del 3 %. La mayoría absoluta es de 176."
+  },
+  {
+   "value": "209",
+   "label": "Senadores electos",
+   "detail": "Voto limitado: 4 por provincia peninsular, 3 o 1 por isla, 2 en Ceuta y 2 en Melilla (+ 58 designados por las autonomías, total 267)."
+  },
+  {
+   "value": "52",
+   "label": "Circunscripciones",
+   "detail": "50 provincias + Ceuta y Melilla. Respecto de 2023, Madrid gana una banca (38) y Cádiz pierde una (8)."
+  }
+ ],
+ "ballotNote": "España tiene un sistema parlamentario: no se vota al presidente. Después de las elecciones, el rey consulta a los grupos y propone un candidato, que tiene que ganar la investidura en el Congreso (artículo 99 de la Constitución). En la primera votación necesita mayoría absoluta (176 votos); si no la consigue, 48 horas después le alcanza con la mayoría simple (más síes que noes). Si en dos meses desde la primera votación ningún candidato es investido, las Cortes se disuelven y se repiten las elecciones.",
+ "congreso": {
+  "name": "XV Legislatura",
+  "total": 350,
+  "term": "2023–2026",
+  "asOf": "al disolverse (oct 2026)",
+  "parties": [
+   {
+    "party": "PP",
+    "seats": 137,
+    "lean": "center-right",
+    "bloc": "oposicion"
+   },
+   {
+    "party": "PSOE",
+    "seats": 121,
+    "lean": "center-left",
+    "bloc": "gobierno",
+    "detail": "PSOE 102 + PSC 19"
+   },
+   {
+    "party": "Vox",
+    "seats": 32,
+    "lean": "far-right",
+    "bloc": "oposicion"
+   },
+   {
+    "party": "Sumar",
+    "seats": 26,
+    "lean": "left",
+    "bloc": "gobierno",
+    "detail": "Movimiento Sumar 11, Comuns 6, IU 5, Más Madrid 2, Iniciativa del Poble Valencià 1, Més per Mallorca 1"
+   },
+   {
+    "party": "ERC",
+    "seats": 7,
+    "lean": "left",
+    "bloc": "socios"
+   },
+   {
+    "party": "Junts",
+    "seats": 7,
+    "lean": "center-right",
+    "bloc": "socios"
+   },
+   {
+    "party": "EHBildu",
+    "seats": 6,
+    "lean": "left",
+    "bloc": "socios"
+   },
+   {
+    "party": "PNV",
+    "seats": 5,
+    "lean": "center-right",
+    "bloc": "socios"
+   },
+   {
+    "party": "Podemos",
+    "seats": 4,
+    "lean": "far-left",
+    "bloc": "socios",
+    "detail": "Grupo Mixto"
+   },
+   {
+    "party": "Compromis",
+    "seats": 1,
+    "lean": "left",
+    "bloc": "socios",
+    "detail": "Més–Compromís, Grupo Mixto"
+   },
+   {
+    "party": "BNG",
+    "seats": 1,
+    "lean": "left",
+    "bloc": "socios",
+    "detail": "Grupo Mixto"
+   },
+   {
+    "party": "CC",
+    "seats": 1,
+    "lean": "center",
+    "bloc": "socios",
+    "detail": "Grupo Mixto"
+   },
+   {
+    "party": "UPN",
+    "seats": 1,
+    "lean": "center-right",
+    "bloc": "oposicion",
+    "detail": "Grupo Mixto"
+   },
+   {
+    "party": "Independiente",
+    "seats": 1,
+    "lean": "far-right",
+    "bloc": "oposicion",
+    "detail": "Javier Ortega Smith, ex Vox, Grupo Mixto"
+   }
+  ],
+  "note": "Composición por partido según los grupos parlamentarios a la disolución. 'socios' son los partidos que votaron la investidura de Sánchez en noviembre de 2023. Junts rompió con el Gobierno en octubre de 2025, y Podemos dejó el grupo de Sumar en diciembre de 2023. El PSOE suma 121 con el PSC; Vox bajó a 32 por la salida de Javier Ortega Smith."
+ },
+ "provinces": [
+  {
+   "name": "Madrid",
+   "seats": 38,
+   "change2023": 1
+  },
+  {
+   "name": "Barcelona",
+   "seats": 32
+  },
+  {
+   "name": "Valencia/València",
+   "seats": 16
+  },
+  {
+   "name": "Alicante/Alacant",
+   "seats": 12
+  },
+  {
+   "name": "Sevilla",
+   "seats": 12
+  },
+  {
+   "name": "Málaga",
+   "seats": 11
+  },
+  {
+   "name": "Murcia",
+   "seats": 10
+  },
+  {
+   "name": "A Coruña",
+   "seats": 8
+  },
+  {
+   "name": "Illes Balears",
+   "seats": 8
+  },
+  {
+   "name": "Bizkaia",
+   "seats": 8
+  },
+  {
+   "name": "Cádiz",
+   "seats": 8,
+   "change2023": -1
+  },
+  {
+   "name": "Las Palmas",
+   "seats": 8
+  },
+  {
+   "name": "Asturias",
+   "seats": 7
+  },
+  {
+   "name": "Granada",
+   "seats": 7
+  },
+  {
+   "name": "Pontevedra",
+   "seats": 7
+  },
+  {
+   "name": "Santa Cruz de Tenerife",
+   "seats": 7
+  },
+  {
+   "name": "Zaragoza",
+   "seats": 7
+  },
+  {
+   "name": "Almería",
+   "seats": 6
+  },
+  {
+   "name": "Córdoba",
+   "seats": 6
+  },
+  {
+   "name": "Gipuzkoa",
+   "seats": 6
+  },
+  {
+   "name": "Girona",
+   "seats": 6
+  },
+  {
+   "name": "Tarragona",
+   "seats": 6
+  },
+  {
+   "name": "Toledo",
+   "seats": 6
+  },
+  {
+   "name": "Badajoz",
+   "seats": 5
+  },
+  {
+   "name": "Cantabria",
+   "seats": 5
+  },
+  {
+   "name": "Castellón/Castelló",
+   "seats": 5
+  },
+  {
+   "name": "Ciudad Real",
+   "seats": 5
+  },
+  {
+   "name": "Huelva",
+   "seats": 5
+  },
+  {
+   "name": "Jaén",
+   "seats": 5
+  },
+  {
+   "name": "Navarra",
+   "seats": 5
+  },
+  {
+   "name": "Valladolid",
+   "seats": 5
+  },
+  {
+   "name": "Araba/Álava",
+   "seats": 4
+  },
+  {
+   "name": "Albacete",
+   "seats": 4
+  },
+  {
+   "name": "Burgos",
+   "seats": 4
+  },
+  {
+   "name": "Cáceres",
+   "seats": 4
+  },
+  {
+   "name": "La Rioja",
+   "seats": 4
+  },
+  {
+   "name": "León",
+   "seats": 4
+  },
+  {
+   "name": "Lleida",
+   "seats": 4
+  },
+  {
+   "name": "Lugo",
+   "seats": 4
+  },
+  {
+   "name": "Ourense",
+   "seats": 4
+  },
+  {
+   "name": "Salamanca",
+   "seats": 4
+  },
+  {
+   "name": "Ávila",
+   "seats": 3
+  },
+  {
+   "name": "Cuenca",
+   "seats": 3
+  },
+  {
+   "name": "Guadalajara",
+   "seats": 3
+  },
+  {
+   "name": "Huesca",
+   "seats": 3
+  },
+  {
+   "name": "Palencia",
+   "seats": 3
+  },
+  {
+   "name": "Segovia",
+   "seats": 3
+  },
+  {
+   "name": "Teruel",
+   "seats": 3
+  },
+  {
+   "name": "Zamora",
+   "seats": 3
+  },
+  {
+   "name": "Soria",
+   "seats": 2
+  },
+  {
+   "name": "Ceuta",
+   "seats": 1
+  },
+  {
+   "name": "Melilla",
+   "seats": 1
+  }
+ ],
+ "provincesNote": "Reparto fijado en el anexo del Real Decreto 806/2026. Respecto de 2023 cambian dos: Madrid pasa de 37 a 38 y Cádiz de 9 a 8.",
+ "lists": [
+  {
+   "id": "PP",
+   "name": "Partido Popular",
+   "short": "PP",
+   "leader": "Alberto Núñez Feijóo",
+   "lean": "center-right",
+   "bloc": "oposicion",
+   "desc": "Ganó en votos y bancas en 2023 (137) pero no logró la investidura. Llega primero en todas las encuestas y apuesta a sumar mayoría con Vox.",
+   "wiki": "Alberto_Núñez_Feijóo"
+  },
+  {
+   "id": "PSOE",
+   "name": "Partido Socialista Obrero Español",
+   "short": "PSOE",
+   "leader": "Pedro Sánchez",
+   "lean": "center-left",
+   "bloc": "gobierno",
+   "desc": "Gobierna desde 2018. Sánchez adelantó las elecciones tras la caída de dos decretos de vivienda y quiere hacer de la vivienda el eje de la campaña. Compite junto al PSC en Cataluña.",
+   "wiki": "Pedro_Sánchez"
+  },
+  {
+   "id": "Vox",
+   "name": "Vox",
+   "short": "Vox",
+   "leader": "Santiago Abascal",
+   "lean": "far-right",
+   "bloc": "oposicion",
+   "desc": "Derecha radical. Sacó 33 bancas en 2023 y las encuestas la ubican cerca del 19 %, con más de 60 diputados. Es el aliado ideológico de Milei en España.",
+   "wiki": "Santiago_Abascal"
+  },
+  {
+   "id": "Sumar",
+   "name": "Frente Amplio (espacio Sumar)",
+   "short": "FA",
+   "leader": null,
+   "lean": "left",
+   "bloc": "gobierno",
+   "desc": "Nueva marca del espacio a la izquierda del PSOE (Movimiento Sumar, IU, Más Madrid, Comuns, CHA y otros). El candidato se presenta el 17 de octubre; Compromís, Ara Més y Podemos van por afuera.",
+   "wiki": "Frente_Amplio_(España)"
+  },
+  {
+   "id": "Podemos",
+   "name": "Podemos–Alianza Verde",
+   "short": "Podemos",
+   "leader": "Irene Montero",
+   "lean": "far-left",
+   "bloc": "socios",
+   "desc": "Se fue del grupo de Sumar en diciembre de 2023 y descartó sumarse al Frente Amplio. La candidata es Irene Montero (Ione Belarra es la secretaria general); en Cataluña hace campaña junto a ERC.",
+   "wiki": "Irene_Montero"
+  },
+  {
+   "id": "ERC",
+   "name": "Esquerra Republicana de Catalunya",
+   "short": "ERC",
+   "leader": "Gabriel Rufián",
+   "lean": "left",
+   "bloc": "socios",
+   "desc": "Independentismo catalán de izquierda, socio de investidura de Sánchez. El 12 de octubre oficializó un acuerdo con Podemos para que Rufián y Montero hagan campaña juntos.",
+   "wiki": "Gabriel_Rufián"
+  },
+  {
+   "id": "Junts",
+   "name": "Junts per Catalunya",
+   "short": "Junts",
+   "leader": "Míriam Nogueras",
+   "lean": "center-right",
+   "bloc": "socios",
+   "desc": "Independentismo catalán de Carles Puigdemont. Apoyó la investidura de 2023, pero rompió con el Gobierno en octubre de 2025 y votó contra los decretos de vivienda.",
+   "wiki": "Míriam_Nogueras"
+  },
+  {
+   "id": "EHBildu",
+   "name": "EH Bildu",
+   "short": "Bildu",
+   "leader": null,
+   "lean": "left",
+   "bloc": "socios",
+   "desc": "Izquierda independentista vasca y socia de investidura. Mertxe Aizpurua no repite como candidata y todavía no hay reemplazo anunciado.",
+   "wiki": "EH_Bildu"
+  },
+  {
+   "id": "PNV",
+   "name": "Partido Nacionalista Vasco",
+   "short": "PNV",
+   "leader": "Maribel Vaquero",
+   "lean": "center-right",
+   "bloc": "socios",
+   "desc": "Nacionalismo vasco moderado y socio de investidura de Sánchez. Vaquero es su portavoz en el Congreso desde 2025.",
+   "wiki": "Maribel_Vaquero"
+  },
+  {
+   "id": "BNG",
+   "name": "Bloque Nacionalista Galego",
+   "short": "BNG",
+   "leader": "Néstor Rego",
+   "lean": "left",
+   "bloc": "socios",
+   "desc": "Nacionalismo gallego de izquierda. Tuvo un diputado en 2023 y apoyó la investidura.",
+   "wiki": "Néstor_Rego"
+  },
+  {
+   "id": "CC",
+   "name": "Coalición Canaria",
+   "short": "CC",
+   "leader": "Cristina Valido",
+   "lean": "center",
+   "bloc": "socios",
+   "desc": "Nacionalismo canario. Repite con Valido por Santa Cruz de Tenerife y negocia ir junto a Primero Canarias.",
+   "wiki": "Cristina_Valido"
+  },
+  {
+   "id": "UPN",
+   "name": "Unión del Pueblo Navarro",
+   "short": "UPN",
+   "leader": "Alberto Catalán",
+   "lean": "center-right",
+   "bloc": "oposicion",
+   "desc": "Regionalismo navarro de centroderecha, con un diputado en la legislatura saliente.",
+   "wiki": "Alberto_Catalán"
+  },
+  {
+   "id": "Compromis",
+   "name": "Compromís",
+   "short": "Compromís",
+   "leader": null,
+   "lean": "left",
+   "bloc": "socios",
+   "desc": "Valencianismo de izquierda. En 2023 fue dentro de Sumar; esta vez no se integra al Frente Amplio y negocia con otras fuerzas valencianas.",
+   "wiki": "Compromís"
+  },
+  {
+   "id": "AA",
+   "name": "Adelante Andalucía",
+   "short": "AA",
+   "leader": null,
+   "lean": "left",
+   "bloc": "oposicion",
+   "desc": "Andalucismo de izquierda. Anunció el 5 de octubre que se presenta sola a las generales; varias encuestas le dan entre 1 y 3 bancas.",
+   "wiki": "Adelante_Andalucía"
+  },
+  {
+   "id": "SALF",
+   "name": "Se Acabó La Fiesta",
+   "short": "SALF",
+   "leader": "Alvise Pérez",
+   "lean": "far-right",
+   "bloc": "oposicion",
+   "desc": "Plataforma populista del agitador Alvise Pérez, que obtuvo tres eurodiputados en 2024. Alvise encabeza la lista por Madrid; las encuestas lo ubican cerca del 2 %, sin bancas.",
+   "wiki": "Alvise_Pérez"
+  }
+ ],
+ "polls": [
+  {
+   "outlet": "El Español",
+   "pollster": "SocioMétrica",
+   "date": "11 oct",
+   "fieldwork": "10–11 oct",
+   "sample": 1000,
+   "pct": {
+    "PP": 32.6,
+    "PSOE": 26.2,
+    "Vox": 18.8,
+    "Sumar": 5.8,
+    "ERC": 2.0,
+    "Junts": 1.5,
+    "EHBildu": 1.3,
+    "PNV": 0.8,
+    "BNG": 0.9,
+    "CC": 0.5,
+    "UPN": 0.2,
+    "AA": 0.9,
+    "Podemos": 2.8,
+    "SALF": 2.1
+   },
+   "seats": {
+    "PP": 141,
+    "PSOE": 104,
+    "Vox": 64,
+    "Sumar": 8,
+    "ERC": 8,
+    "Junts": 6,
+    "EHBildu": 7,
+    "PNV": 4,
+    "BNG": 2,
+    "CC": 1,
+    "UPN": 1,
+    "AA": 1,
+    "Podemos": 2,
+    "SALF": 0
+   },
+   "url": "https://www.elespanol.com/espana/politica/20261011/sanchez-no-funciona-apropiarse-maricarmen-huelga-oposicion-cae-sondeo-noche/1003744416762_0.html",
+   "note": "Sumar incluye a Compromís (0,9 %, 3 escaños)."
+  },
+  {
+   "outlet": "El Debate",
+   "pollster": "Target Point",
+   "date": "11 oct",
+   "fieldwork": "6–9 oct",
+   "sample": 1002,
+   "pct": {
+    "PP": 32.0,
+    "PSOE": 25.9,
+    "Vox": 18.7,
+    "Sumar": 6.9,
+    "Podemos": 3.4,
+    "SALF": 1.3
+   },
+   "seats": {
+    "PP": 136,
+    "PSOE": 104,
+    "Vox": 65,
+    "Sumar": 10,
+    "ERC": 9,
+    "Junts": 5,
+    "EHBildu": 7,
+    "PNV": 5,
+    "BNG": 2,
+    "AA": 2,
+    "Podemos": 2,
+    "SALF": 0
+   },
+   "seatsRange": {
+    "PP": [
+     135,
+     137
+    ],
+    "PSOE": [
+     103,
+     105
+    ],
+    "Vox": [
+     64,
+     66
+    ],
+    "ERC": [
+     8,
+     10
+    ],
+    "Junts": [
+     5,
+     6
+    ],
+    "PNV": [
+     5,
+     6
+    ],
+    "BNG": [
+     2,
+     3
+    ]
+   },
+   "seatsAreMidpoints": true,
+   "url": "https://www.eldebate.com/espana/20261011/izquierda-apenas-reacciona-adelanto-frente-derecha-le-saca-casi-15-puntos_468080.html"
+  },
+  {
+   "outlet": "Electomanía",
+   "pollster": "EM-Analytics (ElectoPanel)",
+   "date": "11 oct",
+   "fieldwork": "5–9 oct",
+   "sample": 4125,
+   "pct": {
+    "PP": 31.5,
+    "PSOE": 26.9,
+    "Vox": 19.1,
+    "Sumar": 6.0,
+    "ERC": 2.0,
+    "Junts": 1.1,
+    "EHBildu": 1.4,
+    "PNV": 1.1,
+    "BNG": 1.0,
+    "CC": 0.3,
+    "UPN": 0.2,
+    "AA": 1.1,
+    "Podemos": 3.4,
+    "SALF": 1.7
+   },
+   "seats": {
+    "PP": 131,
+    "PSOE": 107,
+    "Vox": 67,
+    "Sumar": 11,
+    "ERC": 8,
+    "Junts": 4,
+    "EHBildu": 7,
+    "PNV": 6,
+    "BNG": 3,
+    "CC": 0,
+    "UPN": 1,
+    "AA": 3,
+    "Podemos": 2,
+    "SALF": 0
+   },
+   "url": "https://electomania.es/electopanel-11-oct-sumar-se-descalabra-a-la-espera-del-frente-amplio/"
+  },
+  {
+   "outlet": "El País / SER",
+   "pollster": "40dB",
+   "date": "9 oct",
+   "fieldwork": "7–8 oct",
+   "sample": 800,
+   "pct": {
+    "PP": 31.9,
+    "PSOE": 28.1,
+    "Vox": 18.9,
+    "Sumar": 5.3,
+    "Podemos": 2.3,
+    "SALF": 1.8
+   },
+   "seats": {
+    "PP": 131,
+    "PSOE": 111,
+    "Vox": 68,
+    "Sumar": 6,
+    "ERC": 8,
+    "Junts": 7,
+    "EHBildu": 7,
+    "PNV": 6,
+    "BNG": 2,
+    "CC": 1,
+    "UPN": 1,
+    "AA": 1,
+    "Podemos": 2,
+    "SALF": 0
+   },
+   "seatsRange": {
+    "PP": [
+     123,
+     140
+    ],
+    "PSOE": [
+     105,
+     117
+    ],
+    "Vox": [
+     63,
+     74
+    ],
+    "Sumar": [
+     5,
+     7
+    ]
+   },
+   "seatsAreMidpoints": true,
+   "url": "https://elpais.com/espana/2026-10-09/el-pp-y-vox-mantienen-la-mayoria-absoluta-tras-el-adelanto-electoral.html"
+  },
+  {
+   "outlet": "El Periódico (Prensa Ibérica)",
+   "pollster": "GESOP",
+   "date": "12 oct",
+   "fieldwork": "6–8 oct",
+   "sample": 1000,
+   "pct": {
+    "PP": 28.7,
+    "PSOE": 26.1,
+    "Vox": 18.9,
+    "Sumar": 8.0,
+    "ERC": 2.5,
+    "Junts": 1.9,
+    "Podemos": 2.6,
+    "SALF": 2.0
+   },
+   "seats": {
+    "PP": 123,
+    "PSOE": 110,
+    "Vox": 70,
+    "Sumar": 15,
+    "ERC": 10,
+    "Junts": 5,
+    "Podemos": 2,
+    "SALF": 0
+   },
+   "seatsRange": {
+    "PP": [
+     121,
+     125
+    ],
+    "PSOE": [
+     108,
+     112
+    ],
+    "Vox": [
+     68,
+     72
+    ],
+    "Sumar": [
+     14,
+     17
+    ],
+    "ERC": [
+     9,
+     11
+    ],
+    "Junts": [
+     4,
+     6
+    ],
+    "SALF": [
+     0,
+     1
+    ]
+   },
+   "seatsAreMidpoints": true,
+   "url": "https://www.elperiodico.com/es/politica/20261012/encuesta-elecciones-generales-espana-2026-29n-135212729"
+  },
+  {
+   "outlet": "ABC (Vocento)",
+   "pollster": "GAD3",
+   "date": "12 oct",
+   "fieldwork": "6–8 oct",
+   "sample": 1077,
+   "pct": {
+    "PP": 31.4,
+    "PSOE": 26.4,
+    "Vox": 18.2,
+    "Sumar": 7.4,
+    "ERC": 2.6,
+    "Junts": 1.5,
+    "EHBildu": 1.5,
+    "PNV": 1.0,
+    "BNG": 0.9,
+    "CC": 0.4,
+    "UPN": 0.1,
+    "AA": 1.0,
+    "Podemos": 2.3,
+    "SALF": 1.8
+   },
+   "seats": {
+    "PP": 133,
+    "PSOE": 107,
+    "Vox": 65,
+    "Sumar": 10,
+    "ERC": 10,
+    "Junts": 5,
+    "EHBildu": 8,
+    "PNV": 6,
+    "BNG": 2,
+    "CC": 1,
+    "UPN": 0,
+    "AA": 1,
+    "Podemos": 2,
+    "SALF": 0
+   },
+   "url": "https://www.abc.es/espana/derecha-mantiene-mayoria-absoluta-pese-agitacion-callejera-20261012015025-nt.html"
+  },
+  {
+   "outlet": "Vozpópuli",
+   "pollster": "Hamalgama Métrica",
+   "date": "11 oct",
+   "fieldwork": "5–8 oct",
+   "sample": 1000,
+   "pct": {
+    "PP": 33.4,
+    "PSOE": 25.3,
+    "Vox": 19.6,
+    "Sumar": 5.4,
+    "ERC": 1.9,
+    "Junts": 1.7,
+    "EHBildu": 1.3,
+    "PNV": 0.9,
+    "BNG": 0.8,
+    "CC": 0.5,
+    "UPN": 0.2,
+    "Podemos": 3.3,
+    "SALF": 1.8
+   },
+   "seats": {
+    "PP": 144,
+    "PSOE": 103,
+    "Vox": 68,
+    "Sumar": 5,
+    "ERC": 7,
+    "Junts": 7,
+    "EHBildu": 6,
+    "PNV": 4,
+    "BNG": 2,
+    "CC": 1,
+    "UPN": 1,
+    "Podemos": 2,
+    "SALF": 0
+   },
+   "url": "https://www.vozpopuli.com/espana/politica/debacle-de-la-izquierda-pp-y-vox-suman-ya-212-escanos-y-el-53-de-los-votos.html"
+  },
+  {
+   "outlet": "laSexta",
+   "pollster": "InvyMark",
+   "date": "9 oct",
+   "fieldwork": "5–8 oct",
+   "sample": null,
+   "pct": {
+    "PP": 32.8,
+    "PSOE": 28.0,
+    "Vox": 18.8,
+    "Sumar": 6.3,
+    "ERC": 1.9,
+    "Junts": 1.2,
+    "EHBildu": 1.5,
+    "PNV": 1.1,
+    "Podemos": 3.2,
+    "SALF": 1.8
+   },
+   "seats": null,
+   "url": "https://www.lasexta.com/elecciones/generales/barometro-lasexta-protestas-vivienda-impactan-encuestas-que-hunden-bloque-izquierda-disparan-vox_202610096ac8ae9bb79b18452fc08907.html",
+   "note": "Solo estimación de voto, sin reparto de escaños."
+  },
+  {
+   "outlet": "El Mundo",
+   "pollster": "Sigma Dos",
+   "date": "11 oct",
+   "fieldwork": "1–8 oct",
+   "sample": 2017,
+   "pct": {
+    "PP": 31.9,
+    "PSOE": 25.3,
+    "Vox": 19.1,
+    "Sumar": 7.6,
+    "ERC": 2.6,
+    "Junts": 1.2,
+    "EHBildu": 1.1,
+    "PNV": 0.9,
+    "BNG": 0.9,
+    "CC": 0.5,
+    "UPN": 0.2,
+    "AA": 0.8,
+    "Podemos": 3.1
+   },
+   "seats": {
+    "PP": 135,
+    "PSOE": 103,
+    "Vox": 68,
+    "Sumar": 9,
+    "ERC": 9,
+    "Junts": 7,
+    "EHBildu": 6,
+    "PNV": 6,
+    "BNG": 2,
+    "CC": 1,
+    "UPN": 1,
+    "AA": 2,
+    "Podemos": 2
+   },
+   "url": "https://www.elmundo.es/espana/encuestas/2026/10/11/6acba028e85ece77088b4580.html"
+  },
+  {
+   "outlet": "El Confidencial",
+   "pollster": "IMOP Insights",
+   "date": "9 oct",
+   "fieldwork": "5–7 oct",
+   "sample": 900,
+   "pct": {
+    "PP": 30.4,
+    "PSOE": 26.5,
+    "Vox": 19.0,
+    "Sumar": 7.6,
+    "ERC": 2.2,
+    "Junts": 1.1,
+    "EHBildu": 1.3,
+    "PNV": 0.9,
+    "BNG": 1.1,
+    "CC": 0.6,
+    "UPN": 0.2,
+    "AA": 1.0,
+    "Podemos": 2.3,
+    "SALF": 1.9
+   },
+   "seats": {
+    "PP": 130,
+    "PSOE": 110,
+    "Vox": 70,
+    "Sumar": 11,
+    "ERC": 8,
+    "Junts": 4,
+    "EHBildu": 6,
+    "PNV": 4,
+    "BNG": 3,
+    "CC": 1,
+    "UPN": 1,
+    "AA": 1,
+    "Podemos": 1,
+    "SALF": 0
+   },
+   "url": "https://www.elconfidencial.com/espana/2026-10-09/derecha-pp-gana-vox-dispara-sanchez-baja-sumar_4441291/"
+  },
+  {
+   "outlet": "20minutos (Henneo)",
+   "pollster": "DYM",
+   "date": null,
+   "fieldwork": "5–7 oct",
+   "sample": 1011,
+   "pct": {
+    "PP": 34.0,
+    "PSOE": 28.2,
+    "Vox": 18.2,
+    "Sumar": 3.6,
+    "Podemos": 3.6,
+    "SALF": 0.5
+   },
+   "seats": {
+    "PP": 141,
+    "PSOE": 109,
+    "Vox": 63,
+    "Sumar": 4,
+    "Podemos": 1,
+    "SALF": 0
+   },
+   "seatsRange": {
+    "PP": [
+     139,
+     143
+    ],
+    "PSOE": [
+     107,
+     111
+    ],
+    "Vox": [
+     61,
+     65
+    ],
+    "Sumar": [
+     3,
+     5
+    ],
+    "Podemos": [
+     1,
+     2
+    ]
+   },
+   "seatsAreMidpoints": true,
+   "url": "https://www.20minutos.es/nacional/psoe-absorbe-intencion-votos-sumar-podemos-mientras-pp-vox-consolidan-su-mayoria_7046598_0.html",
+   "note": "Fecha de publicación no verificada."
+  },
+  {
+   "outlet": "La Razón",
+   "pollster": "NC Report",
+   "date": "8 oct",
+   "fieldwork": "1–6 oct",
+   "sample": 1000,
+   "pct": {
+    "PP": 34.1,
+    "PSOE": 25.0,
+    "Vox": 18.2,
+    "Sumar": 5.3,
+    "ERC": 1.8,
+    "Junts": 2.9,
+    "EHBildu": 1.4,
+    "PNV": 0.9,
+    "BNG": 0.7,
+    "CC": 0.4,
+    "UPN": 0.2,
+    "Podemos": 3.9
+   },
+   "seats": {
+    "PP": 147,
+    "PSOE": 100,
+    "Vox": 62,
+    "Sumar": 7,
+    "ERC": 6,
+    "Junts": 10,
+    "EHBildu": 6,
+    "PNV": 4,
+    "BNG": 1,
+    "CC": 1,
+    "UPN": 1,
+    "Podemos": 3
+   },
+   "seatsRange": {
+    "PP": [
+     146,
+     148
+    ],
+    "PSOE": [
+     98,
+     102
+    ],
+    "Vox": [
+     61,
+     64
+    ],
+    "Sumar": [
+     6,
+     8
+    ],
+    "ERC": [
+     6,
+     7
+    ],
+    "Junts": [
+     10,
+     11
+    ],
+    "PNV": [
+     4,
+     5
+    ],
+    "BNG": [
+     1,
+     2
+    ],
+    "Podemos": [
+     2,
+     4
+    ]
+   },
+   "seatsAreMidpoints": true,
+   "url": "https://www.larazon.es/espana/adelanto-electoral-refuerza-bloque-vox-junts_202610086ac69166b0108820e09b13b5.html"
+  }
+ ],
+ "pollsNote": "Encuestas con trabajo de campo terminado desde el 5 de octubre de 2026. «FA» es el espacio de Sumar, que se presentará como Frente Amplio. Cuando una encuestadora da un rango de escaños se toma el punto medio. No se incluyen los dos sondeos internos de PP y PSOE filtrados el 5 de octubre.",
+ "results2023": {
+  "turnout": 66.59,
+  "parties": [
+   {
+    "party": "PP",
+    "pct": 33.06,
+    "seats": 137
+   },
+   {
+    "party": "PSOE",
+    "pct": 31.68,
+    "seats": 121
+   },
+   {
+    "party": "Vox",
+    "pct": 12.38,
+    "seats": 33
+   },
+   {
+    "party": "Sumar",
+    "pct": 12.33,
+    "seats": 31
+   },
+   {
+    "party": "ERC",
+    "pct": 1.89,
+    "seats": 7
+   },
+   {
+    "party": "Junts",
+    "pct": 1.6,
+    "seats": 7
+   },
+   {
+    "party": "EHBildu",
+    "pct": 1.36,
+    "seats": 6
+   },
+   {
+    "party": "PNV",
+    "pct": 1.12,
+    "seats": 5
+   },
+   {
+    "party": "BNG",
+    "pct": 0.62,
+    "seats": 1
+   },
+   {
+    "party": "CC",
+    "pct": 0.47,
+    "seats": 1
+   },
+   {
+    "party": "UPN",
+    "pct": 0.21,
+    "seats": 1
+   }
+  ],
+  "note": "Elecciones del 23 de julio de 2023. En 2023 Sumar incluía a Podemos, Compromís y Més."
+ },
+ "calendar": [
+  {
+   "date": "2026-10-02",
+   "label": "PP, Vox y Junts tumban en el Congreso los dos decretos de vivienda"
+  },
+  {
+   "date": "2026-10-05",
+   "label": "Sánchez anuncia el adelanto y firma la disolución de las Cortes (Real Decreto 806/2026)"
+  },
+  {
+   "date": "2026-10-06",
+   "label": "El decreto se publica en el BOE: las Cortes quedan disueltas"
+  },
+  {
+   "date": "2026-10-16",
+   "label": "Vence el plazo para inscribir coaliciones"
+  },
+  {
+   "date": "2026-10-17",
+   "label": "Presentación del Frente Amplio y de su candidato"
+  },
+  {
+   "date": "2026-10-26",
+   "label": "Vence el plazo para presentar las listas"
+  },
+  {
+   "date": "2026-11-02",
+   "label": "Proclamación de las candidaturas"
+  },
+  {
+   "date": "2026-11-13",
+   "label": "Empieza la campaña"
+  },
+  {
+   "date": "2026-11-17",
+   "label": "Debate en RTVE (previsto)"
+  },
+  {
+   "date": "2026-11-18",
+   "label": "Debate a tres en Atresmedia: Feijóo, Sánchez y Abascal (invitados)"
+  },
+  {
+   "date": "2026-11-19",
+   "label": "Último día para pedir el voto por correo"
+  },
+  {
+   "date": "2026-11-23",
+   "label": "Cara a cara Feijóo–Sánchez en Atresmedia (propuesto) y debate en RTVE"
+  },
+  {
+   "date": "2026-11-24",
+   "label": "Empieza la veda de encuestas"
+  },
+  {
+   "date": "2026-11-26",
+   "label": "Debate a tres en RTVE: Feijóo, Sánchez y Abascal (invitados)"
+  },
+  {
+   "date": "2026-11-27",
+   "label": "Cierre de campaña"
+  },
+  {
+   "date": "2026-11-28",
+   "label": "Jornada de reflexión"
+  },
+  {
+   "date": "2026-11-29",
+   "label": "Elecciones generales (29N)"
+  },
+  {
+   "date": "2026-12-16",
+   "label": "Fecha límite para proclamar a los electos"
+  },
+  {
+   "date": "2026-12-23",
+   "label": "Se constituyen el Congreso y el Senado (10 h)"
+  },
+  {
+   "date": null,
+   "label": "Debate de investidura: la fecha la fija la presidencia del Congreso después de la ronda de consultas del rey"
+  }
+ ],
+ "keyFacts": [
+  "Es la primera elección general desde julio de 2023 y la XV Legislatura termina un año antes de lo previsto.",
+  "Hacen falta 176 diputados para la investidura en primera votación. Las encuestas le dan a PP + Vox entre 198 y 212.",
+  "Votan 38.728.356 personas: 35,96 millones residen en España y 2,77 millones en el exterior.",
+  "Madrid elige 38 diputados (uno más que en 2023) y Cádiz 8 (uno menos). Soria es la provincia que menos elige: 2.",
+  "El piso del 3 % se cuenta en cada provincia, no a nivel nacional, y por eso los partidos regionales consiguen bancas.",
+  "El Senado sube a 209 bancas electas porque Formentera tiene, por primera vez, un senador propio.",
+  "La izquierda del PSOE llega dividida: Frente Amplio por un lado, Podemos con ERC en Cataluña, y Compromís y Adelante Andalucía con listas propias.",
+  "Las listas deben alternar hombres y mujeres (sistema 'cremallera', reforma de 2024)."
+ ],
+ "sources": [
+  {
+   "label": "BOE — Real Decreto 806/2026, de disolución y convocatoria",
+   "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2026-20742"
+  },
+  {
+   "label": "INE — Censo electoral, elecciones a Cortes Generales del 29 de noviembre de 2026",
+   "url": "https://www.ine.es/dyngs/Prensa/EG2026.htm"
+  },
+  {
+   "label": "Wikipedia — 2026 Spanish general election",
+   "url": "https://en.wikipedia.org/wiki/2026_Spanish_general_election"
+  },
+  {
+   "label": "Wikipedia — Opinion polling for the 2026 Spanish general election",
+   "url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Spanish_general_election"
+  },
+  {
+   "label": "Sol de Tenerife — Sánchez relanza sus decretos de vivienda tras convocar el 29N",
+   "url": "https://www.soldelsurtenerife.com/politica/sanchez-relanza-dos-decretos-vivienda-21-medidas-convocar-elecciones-29-noviembre/20261006125750110628.html"
+  },
+  {
+   "label": "El País — Rufián será candidato de ERC el 29-N",
+   "url": "https://elpais.com/espana/catalunya/2026-10-11/rufian-sera-candidato-por-esquerra-republicana-el-29-n.html"
+  },
+  {
+   "label": "El País — Podemos y ERC oficializan su acuerdo",
+   "url": "https://elpais.com/espana/elecciones-generales/2026-10-12/podemos-y-erc-oficializan-el-acuerdo-por-el-que-rufian-y-montero-haran-campana-juntos.html"
+  },
+  {
+   "label": "La Vanguardia — Junts se encomienda a Nogueras para el 29-N",
+   "url": "https://www.lavanguardia.com/politica/20261006/11651762/junts-encomienda-nogueras-29-n-posible-retorno-puigdemont.html"
+  },
+  {
+   "label": "El País — Aizpurua no repetirá como candidata de EH Bildu",
+   "url": "https://elpais.com/espana/elecciones-generales/2026-10-11/mertxe-aizpurua-no-repetira-como-candidata-de-eh-bildu-al-congreso-el-29-n.html"
+  },
+  {
+   "label": "El País — Compromís no se integrará en Frente Amplio",
+   "url": "https://elpais.com/espana/comunidad-valenciana/2026-10-06/compromis-negociara-con-otros-partidos-valencianos-de-izquierdas-pero-no-se-integrara-en-frente-amplio-para-el-29n.html"
+  },
+  {
+   "label": "El País — Adelante Andalucía irá en solitario",
+   "url": "https://elpais.com/espana/2026-10-05/adelante-andalucia-se-presentara-en-solitario-a-las-generales-recogemos-el-legado-de-las-ultimas-elecciones-andaluzas.html"
+  },
+  {
+   "label": "Europa Press — Alvise encabeza la lista de SALF por Madrid",
+   "url": "https://www.europapress.es/nacional/noticia-alvise-presentara-elecciones-cabeza-lista-salf-madrid-20261005163400.html"
+  },
+  {
+   "label": "eldiario.es — CC repite con Cristina Valido",
+   "url": "https://www.eldiario.es/canariasahora/politica/cc-repite-cristina-valido-congreso-santa-cruz-tenerife-explora-alianzas-electorales-palmas_1_13563865.html"
+  },
+  {
+   "label": "RTVE — El Supremo da 48 horas para alegar sobre la ley de nietos",
+   "url": "https://www.rtve.es/noticias/20261006/tribunal-supremo-48-horas-partes-alegar-ley-nietos-adelanto-electoral/17255988.shtml"
+  },
+  {
+   "label": "Wikipedia (es) — Elecciones generales de España de 2023",
+   "url": "https://es.wikipedia.org/wiki/Elecciones_generales_de_Espa%C3%B1a_de_2023"
+  }
+ ],
+ "argentina": {
+  "alignment": {
+   "summary": "La relación entre Milei y Sánchez es de las más frías que tuvo Argentina con un gobierno español. En mayo de 2024, en un acto de Vox en Madrid, Milei trató de 'corrupta' a la esposa de Sánchez; España retiró a su embajadora y recién nombró reemplazo en octubre de 2024. Desde entonces los vínculos diplomáticos se normalizaron, pero no hay sintonía política: Milei ya visitó España seis veces y en todas se reunió con Abascal (en marzo de 2026 llamó 'impresentable' a Sánchez) y ahora planea una séptima visita, del 19 al 21 de octubre, en plena precampaña, para verse con Ayuso y Abascal.",
+   "level": "relación tensa",
+   "milestones": [
+    {
+     "date": "may 2024",
+     "text": "En el acto 'Europa Viva 24' de Vox (19 de mayo), Milei llamó 'corrupta' a Begoña Gómez, la esposa de Sánchez. Como no se disculpó, España retiró definitivamente a su embajadora, María Jesús Alonso."
+    },
+    {
+     "date": "oct 2024",
+     "text": "El Consejo de Ministros nombró a Joaquín María de Arístegui embajador en Buenos Aires (29 de octubre), con lo que dio por cerrada la crisis diplomática."
+    },
+    {
+     "date": "may 2025",
+     "text": "El Senado argentino aprobó el pliego de Wenceslao Bunge Saravia, ex directivo de Credit Suisse en España, como embajador en Madrid (7 de mayo)."
+    },
+    {
+     "date": "mar 2026",
+     "text": "En una nueva visita a Madrid, Milei calificó de 'impresentable' a Sánchez mientras posaba con Abascal."
+    },
+    {
+     "date": "jun 2026",
+     "text": "Sexta visita (25 a 27 de junio): reunión con Abascal, Medalla de Honor de la Universidad CEU San Pablo y encuentro con empresarios del Santander, BBVA, Telefónica y otras firmas. Otra vez, sin cita con Sánchez."
+    },
+    {
+     "date": "oct 2026",
+     "text": "Horas después de la convocatoria del 29N, la Casa Rosada anunció un viaje a Madrid (salida el 19 de octubre, actividades el 21) con reuniones con Ayuso y Abascal y sin agenda oficial con Sánchez ni con el rey."
+    }
+   ],
+   "agreements": [],
+   "sources": [
+    {
+     "label": "iProfesional — España retira a su embajadora en Buenos Aires",
+     "url": "https://www.iprofesional.com/politica/406471-espana-retira-a-su-embajadora-en-buenos-aires-tras-la-negativa-de-milei-a-disculparse"
+    },
+    {
+     "label": "NTN24 — España nombra nuevo embajador en Buenos Aires",
+     "url": "https://www.ntn24.com/noticias-politica/termino-crisis-diplomatica-entre-espana-y-argentina-gobierno-espanol-nombro-nuevo-embajador-en-buenos-aires-521385"
+    },
+    {
+     "label": "Minutouno — El Senado aprobó los pliegos de los embajadores en España y EE.UU.",
+     "url": "https://www.minutouno.com/politica/el-senado-aprobo-los-pliegos-los-embajadores-espana-y-estados-unidos-n6142612"
+    },
+    {
+     "label": "Moncloa.com — Milei y Abascal se reúnen en Madrid en su sexta visita",
+     "url": "https://www.moncloa.com/2026/06/26/milei-abascal-sexta-visita-espana-3390439/"
+    },
+    {
+     "label": "Infobae — Milei se mostrará con dos rivales de Sánchez antes de las elecciones",
+     "url": "https://www.infobae.com/politica/2026/10/06/milei-rivaliza-con-pedro-sanchez-y-se-mostrara-con-dos-de-sus-rivales-directos-antes-de-las-elecciones-en-espana/"
+    },
+    {
+     "label": "eldiario.es — Milei busca jugar en el tablero electoral español",
+     "url": "https://www.eldiario.es/internacional/javier-milei-santiago-abascal-pedro-sanchez-ultraderecha-espana_1_13570038.html"
+    }
+   ]
+  },
+  "ambassadors": {
+   "argentineInCountry": {
+    "name": "Wenceslao Bunge Saravia",
+    "role": "Embajador argentino en España",
+    "since": "may 2025",
+    "note": "Designado por decreto 319/2025 tras el acuerdo del Senado del 7 de mayo de 2025. Reemplazó a Roberto Bosch."
+   },
+   "countryInArgentina": {
+    "name": "Joaquín María de Arístegui Laborde",
+    "role": "Embajador de España en Argentina",
+    "since": "oct 2024",
+    "note": "Nombrado por el Consejo de Ministros el 29 de octubre de 2024; antes fue embajador en Colombia."
+   }
+  },
+  "trade": {
+   "source": "INDEC",
+   "sourceUrl": "https://www.indec.gob.ar/ftp/cuadros/economia/ica_cuadros_20_01_26.xls",
+   "years": [
+    {
+     "year": 2023,
+     "exports": 1441.4,
+     "imports": 1261.1
+    },
+    {
+     "year": 2024,
+     "exports": 1453.4,
+     "imports": 996.1
+    },
+    {
+     "year": 2025,
+     "exports": 1222.3,
+     "imports": 1167.3
+    }
+   ],
+   "ytd2026": {
+    "period": "ene–ago 2026",
+    "exports": 1128.9,
+    "imports": 687.5,
+    "exportsYoYPct": 61.7,
+    "importsYoYPct": -9.3,
+    "sourceUrl": "https://www.indec.gob.ar/ftp/cuadros/economia/ica_cuadros_18_09_26.xls"
+   },
+   "shareOfArgentinaTotal2025": {
+    "exportsPct": 1.4,
+    "importsPct": 1.54
+   },
+   "topExports": [
+    {
+     "product": "Manufacturas de origen agropecuario (MOA)",
+     "pctOfBilateral": 44.1,
+     "valueMUSD": 539.3,
+     "year": 2025
+    },
+    {
+     "product": "Productos primarios",
+     "pctOfBilateral": 40.4,
+     "valueMUSD": 494.2,
+     "year": 2025
+    },
+    {
+     "product": "Manufacturas de origen industrial (MOI)",
+     "pctOfBilateral": 10.8,
+     "valueMUSD": 131.8,
+     "year": 2025
+    },
+    {
+     "product": "Combustibles y energía",
+     "pctOfBilateral": 4.7,
+     "valueMUSD": 57.0,
+     "year": 2025
+    }
+   ],
+   "exportsCaption": "Exportaciones argentinas a España en 2025 por grandes rubros (INDEC no publica el detalle por producto para cada destino). Por productos, España aparece entre los principales compradores de langostinos y calamares congelados.",
+   "topImports": [
+    {
+     "product": "Bienes intermedios",
+     "pctOfBilateral": 38.3,
+     "valueMUSD": 446.9,
+     "year": 2025
+    },
+    {
+     "product": "Piezas y accesorios para bienes de capital",
+     "pctOfBilateral": 19.5,
+     "valueMUSD": 227.6,
+     "year": 2025
+    },
+    {
+     "product": "Bienes de consumo",
+     "pctOfBilateral": 18.4,
+     "valueMUSD": 215.0,
+     "year": 2025
+    },
+    {
+     "product": "Bienes de capital",
+     "pctOfBilateral": 15.9,
+     "valueMUSD": 185.2,
+     "year": 2025
+    },
+    {
+     "product": "Combustibles y lubricantes",
+     "pctOfBilateral": 7.1,
+     "valueMUSD": 83.3,
+     "year": 2025
+    },
+    {
+     "product": "Vehículos automotores de pasajeros",
+     "pctOfBilateral": 0.7,
+     "valueMUSD": 8.7,
+     "year": 2025
+    }
+   ],
+   "importsCaption": "Importaciones argentinas desde España en 2025 por uso económico. Entre los productos destacados figuran autos, naftas y fertilizantes.",
+   "services": {
+    "note": "España es el segundo inversor extranjero en Argentina después de Estados Unidos. La comunidad argentina en España superó las 400.000 personas, y Argentina es el país con más ciudadanos españoles residentes en el exterior.",
+    "figures": [
+     {
+      "value": "≈ US$ 20.000 M",
+      "label": "Stock de inversión española en Argentina (ICEX, citado por La Nación, may 2024)",
+      "url": "https://www.lanacion.com.ar/economia/negocios/cuantas-empresas-espanolas-hay-en-la-argentina-y-cuanto-invierten-nid20052024"
+     },
+     {
+      "value": "415.987",
+      "label": "Nacidos en Argentina que residen en España (INE, 1/1/2024)",
+      "url": "https://www.cadena3.com/noticia/el-dato-confiable/record-historico-ya-son-mas-de-400-mil-argentinos-los-que-residen-en-espana_403904"
+     },
+     {
+      "value": "543.971",
+      "label": "Españoles que residen en Argentina (INE, PERE 1/1/2026), sobre 3.202.002 en todo el exterior",
+      "url": "https://ine.es/dyngs/Prensa/PERE2026.htm"
+     }
+    ]
+   }
+  },
+  "keyFacts": [
+   "Argentina es el país con más españoles residentes en el exterior: 543.971 al 1 de enero de 2026, que pueden votar el 29N desde el exterior.",
+   "En 2025 el comercio bilateral fue de US$ 2.390 millones, con un superávit argentino de US$ 55 millones. Entre enero y agosto de 2026, las exportaciones a España crecieron 61,7 %.",
+   "Más del 84 % de lo que Argentina le vende a España son productos primarios y manufacturas agropecuarias. Lo que compra allá son sobre todo bienes intermedios, piezas para maquinaria, bienes de consumo y bienes de capital.",
+   "La crisis diplomática de 2024 duró cinco meses, de mayo a octubre, sin embajador español en Buenos Aires.",
+   "En sus seis visitas a España, Milei siempre se reunió con Abascal. La de octubre de 2026 tampoco incluye una cita con Sánchez.",
+   "El viaje de Milei del 19 al 21 de octubre cae en plena precampaña española."
+  ]
+ }
+}

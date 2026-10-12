@@ -31,7 +31,7 @@ const ROOT = path.join(__dirname, '..');
   // the intro (normally hidden after the first visit)
   await p.evaluate(() => { const i = document.getElementById('intro'); if (i) i.hidden = false; });
   await grab('#intro');
-  for (const v of ['inicio', 'elecciones', 'analisis', 'cambio', 'metodologia', 'brasil', 'eeuu', 'israel']) {
+  for (const v of ['inicio', 'elecciones', 'analisis', 'cambio', 'metodologia', 'brasil', 'eeuu', 'israel', 'espana']) {
     await p.evaluate(v => window.__atlasGoTo(v), v); await p.waitForTimeout(1500);
     await scrollAll();
     if (v === 'elecciones') { await p.evaluate(() => { window.__calShowAll = true; renderElectionsTimeline(); }); await p.waitForTimeout(300); }
@@ -56,7 +56,7 @@ const ROOT = path.join(__dirname, '..');
     await p.evaluate(iso => {
       const c = state.countryByISO[iso];
       renderDetail(c);
-      document.getElementById('i18n-scratch').innerHTML = countryFichaHTML(c) + mapCountrySummaryHTML(c, 'Click para ver ficha completa →');
+      document.getElementById('i18n-scratch').innerHTML = countryFichaHTML(c) + electionPanelHTML(c) + mapCountrySummaryHTML(c, 'Click para ver ficha completa →');
     }, iso);
     await grab('#panel-detail'); await grab('#i18n-scratch');
   }
@@ -69,7 +69,7 @@ const ROOT = path.join(__dirname, '..');
   const dataStrings = await p.evaluate(async () => {
     const out = [];
     const walk = v => { if (typeof v === 'string') { if (/[A-Za-zÀ-ÿ]/.test(v) && !/^https?:/.test(v) && v.length < 2000) out.push(window.__i18nKey(v)); } else if (v && typeof v === 'object') Object.values(v).forEach(walk); };
-    for (const f of ['data/especiales/brasil-2026.json', 'data/especiales/eeuu-2026.json', 'data/especiales/israel-2026.json', 'data/calendario.json', 'data/live.json']) {
+    for (const f of ['data/especiales/brasil-2026.json', 'data/especiales/eeuu-2026.json', 'data/especiales/israel-2026.json', 'data/especiales/espana-2026.json', 'data/calendario.json', 'data/live.json']) {
       try { walk(await (await fetch(f)).json()); } catch (e) {}
     }
     return out;

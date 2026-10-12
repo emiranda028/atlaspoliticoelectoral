@@ -6099,6 +6099,16 @@
     animation: brFlow 16s ease-in-out infinite alternate;
   }
   .il-hero h2 em { color: #9CC3F5; }
+  #esp-espana .esp-sec-head .kicker { color: #AA151B; }
+  #esp-espana .esp-nav a:hover { border-color: #AA151B; color: #AA151B; }
+  #esp-espana .esp-status .live-dot { background: #F1BF00; }
+  #esp-espana .es-hero { background: linear-gradient(135deg, #5C0A0E 0%, #8E1218 55%, #AA151B 100%); }
+  .topic-nav-link.is-special-es .topic-nav-text::before { background: #AA151B; }
+  .es-prov-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 6px; }
+  .es-prov { display: grid; grid-template-columns: 1fr auto; gap: 2px 8px; font-size: 13px; padding: 6px 9px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); }
+  .es-prov b { font-family: var(--font-mono); }
+  .es-prov .pbar-track { grid-column: 1 / -1; height: 4px; }
+  .es-res23 { display: grid; gap: 6px; }
   #esp-israel .esp-sec-head .kicker { color: #1D4E89; }
   #esp-israel .esp-nav a:hover { border-color: #1D4E89; color: #1D4E89; }
   #esp-israel .esp-status .live-dot { background: #9CC3F5; }
@@ -6515,6 +6525,49 @@
     .ficha-next-when { font-size: 26px; }
     .ficha-source { margin: 4px 16px 28px; }
   }
+  /* ===== Election panel (calendar) ===== */
+  .el-when { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; font-family: var(--font-serif); font-size: 24px; color: #fff; }
+  .el-in { font: 700 12px var(--font-sans); letter-spacing: .08em; text-transform: uppercase; background: var(--accent); color: #fff; border-radius: 999px; padding: 4px 11px; }
+  .el-offices { margin-top: 10px; font-size: 15px; line-height: 1.5; color: rgba(244,246,250,.85); max-width: 60ch; }
+  .el-ideo { display: inline-flex; align-items: center; gap: 6px; }
+  .el-ideo i { width: 9px; height: 9px; border-radius: 50%; background: var(--ideo); box-shadow: 0 0 0 2px rgba(255,255,255,.5); }
+  .el-why { font-size: 15.5px; line-height: 1.6; color: var(--ink); margin: 0 0 12px; padding: 10px 14px; background: var(--surface); border-left: 3px solid var(--accent); border-radius: 0 8px 8px 0; }
+  .el-cands { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 8px; }
+  .el-cand { display: flex; flex-direction: column; gap: 2px; border: 1px solid var(--line); border-radius: 10px; padding: 9px 12px; background: var(--surface-2); }
+  .el-cand b { font-size: 14.5px; color: var(--ink); }
+  .el-cand span { font-size: 13px; color: var(--ink-soft); }
+  .el-cand small { font-size: 12px; color: var(--muted); }
+  .el-actions { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; padding: 6px 36px 8px; }
+  .el-actions .ficha-special { margin-top: 0; }
+  .el-btn { border: 1px solid var(--brand); background: var(--brand); color: #fff; border-radius: 10px; padding: 10px 16px; font: 600 13px var(--font-sans); letter-spacing: .03em; cursor: pointer; }
+  .el-btn:hover { background: var(--accent); border-color: var(--accent); }
+  .el-btn-ghost { background: transparent; color: var(--ink); border-color: var(--line-strong); }
+  .el-btn-ghost:hover { color: #fff; }
+  .el-src { margin: 6px 36px 28px; font-size: 12.5px; color: var(--muted); }
+  .el-src a { color: inherit; }
+  .ficha-arg { background: linear-gradient(180deg, #EFF6FF, var(--surface) 60%); border-color: #BFDBFE; }
+  .farg-head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 8px; }
+  .farg-flags { display: inline-flex; align-items: center; gap: 8px; font: 600 15px var(--font-sans); color: var(--ink); }
+  .farg-kpis { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin: 6px 0 12px; }
+  .farg-kpis div { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; display: flex; flex-direction: column; gap: 3px; }
+  .farg-kpis span, .farg-prods span { font: 600 10.5px var(--font-sans); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+  .farg-kpis b { font-family: var(--font-serif); font-size: 20px; color: var(--ink); }
+  .farg-kpis b.is-pos { color: #15803D; } .farg-kpis b.is-neg { color: var(--accent); }
+  .farg-prods { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 10px; font-size: 14px; line-height: 1.5; color: var(--ink-soft); }
+  .farg-prods div { display: flex; flex-direction: column; gap: 3px; }
+  .farg-facts { margin: 12px 0 0; padding-left: 18px; font-size: 14px; line-height: 1.55; color: var(--ink-soft); display: grid; gap: 4px; }
+  .farg-src { margin-top: 10px; font-size: 12px; color: var(--muted); }
+  .farg-src a { color: inherit; }
+  .eb-why { font-size: 13.5px; line-height: 1.5; color: var(--ink-soft); margin: 4px 0 6px; }
+  .eb-top h4 a { color: inherit; text-decoration: none; }
+  .eb-top h4 a:hover { text-decoration: underline; }
+  .et-event[role=button], .etm-country[role=button] { cursor: pointer; }
+  @media (max-width: 760px) {
+    .el-when { font-size: 20px; }
+    .el-actions { padding: 6px 14px 8px; }
+    .el-src { margin: 6px 16px 28px; }
+    .farg-kpis { grid-template-columns: 1fr; }
+  }
   .ficha-modal .fx-reveal { opacity: 1 !important; transform: none !important; }
   @media (prefers-reduced-motion: reduce) { .ficha-dialog, .ficha-backdrop { transition: none; } }
 
@@ -6594,6 +6647,46 @@
   .nt-badge { font: 600 10.5px var(--font-sans); letter-spacing: .05em; text-transform: uppercase; color: var(--muted); border: 1px solid var(--line-strong); border-radius: 999px; padding: 2px 8px; }
   .nt-badge.is-won { color: #fff; background: var(--br-green, #0B6E3A); border-color: transparent; }
   .nt-badge.is-runoff { color: #fff; background: var(--accent); border-color: transparent; }
+  /* ===== Brasil · 2.ª vuelta ===== */
+  .esp-nav a.is-hot { background: var(--br-green, #0B6E3A); border-color: transparent; color: #fff; }
+  .esp-sec-hot { border-top: 4px solid var(--br-yellow, #F2C200); }
+  .duel { display: grid; grid-template-columns: 1fr auto 1fr; gap: 18px; align-items: stretch; margin: 6px 0 14px; }
+  .duel-side { border: 1px solid var(--line); border-top: 6px solid var(--c); border-radius: 14px; padding: 18px; text-align: center; background: var(--surface); display: flex; flex-direction: column; align-items: center; gap: 4px; min-width: 0; }
+  .duel-side .face { margin-bottom: 4px; }
+  .duel-side .face-name, .duel-side .face-role { display: none; }
+  .duel-name { font: 700 22px/1.15 var(--font-serif); color: var(--ink); }
+  .duel-party { font-size: 13px; color: var(--muted); }
+  .duel-pct { font: 700 40px/1 var(--font-serif); color: var(--c); margin-top: 6px; font-variant-numeric: tabular-nums; }
+  .duel-facts { display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 14px; font-size: 13px; color: var(--ink-soft); margin-top: 4px; }
+  .duel-vs { align-self: center; font: italic 700 26px var(--font-serif); color: var(--muted); }
+  .duel-gap { background: var(--surface-2); border-radius: 10px; padding: 12px 14px; font-size: 15px; margin-bottom: 16px; }
+  .ro-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px; margin-bottom: 18px; }
+  .ro-card { border: 1px solid var(--line); border-radius: 14px; padding: 16px; background: var(--surface); min-width: 0; }
+  .ro-card h4 { font: 700 18px var(--font-serif); margin: 0 0 2px; color: var(--ink); }
+  .ro-card .muted { margin-bottom: 10px; font-size: 13px; }
+  .ro-endorse { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+  .ro-endorse li { display: grid; grid-template-columns: 1fr auto; gap: 2px 8px; font-size: 14px; border-bottom: 1px solid var(--line); padding-bottom: 7px; }
+  .ro-endorse small { grid-column: 1 / -1; color: var(--muted); font-size: 12.5px; }
+  .ro-pos { font: 600 11px var(--font-sans); text-transform: uppercase; letter-spacing: .04em; border-radius: 999px; padding: 2px 8px; background: var(--surface-2); color: var(--ink-soft); white-space: nowrap; align-self: start; }
+  .ro-pos.is-r { background: #1E3A8A; color: #fff; }
+  .ro-pos.is-l { background: #C8102E; color: #fff; }
+  .ro-debates { display: flex; flex-direction: column; gap: 4px; font-size: 13.5px; margin-bottom: 8px; }
+  .rg-grid { grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); }
+  .rg-card { display: grid; gap: 4px; align-content: start; }
+  .ro-themes { margin: 6px 0 0; padding-left: 18px; display: grid; gap: 6px; font-size: 14px; color: var(--ink-soft); }
+  .rg-row { display: flex; justify-content: space-between; gap: 8px; font-size: 14px; margin-top: 4px; }
+  .rg-row small { color: var(--muted); }
+  .rg-row b { font-family: var(--font-mono); font-size: 13px; }
+  .rg-card .pbar-track { height: 6px; }
+  .rg-note { font-size: 12.5px; color: var(--muted); margin: 4px 0 0; }
+  .nc-polls { margin-top: 6px; }
+  @media (max-width: 640px) {
+    .duel { grid-template-columns: 1fr 1fr; gap: 10px; }
+    .duel-vs { display: none; }
+    .duel-side { padding: 12px 8px; }
+    .duel-name { font-size: 17px; }
+    .duel-pct { font-size: 30px; }
+  }
   .nc-res { display: grid; gap: 10px; margin: 14px 0 8px; }
   .nc-row { display: grid; grid-template-columns: 1fr auto; gap: 4px 10px; font-size: 15px; }
   .nc-row small { opacity: .7; }
@@ -6696,6 +6789,42 @@
   .turnout-facts { display: flex; flex-wrap: wrap; gap: 4px 14px; font-size: 13px; }
   .turnout-facts b { font-family: var(--font-mono); }
   .turnout-note { font-size: 11.5px; opacity: .6; margin-top: 4px; }
+
+  /* ===== Mapa 2026-10: mundo completo, filtros compactos, rótulos ===== */
+  #filters-sticky .filters-toggle-btn {
+    display: inline-flex; align-items: center; gap: 6px; margin-left: 4px; padding: 5px 12px;
+    background: var(--surface); border: 1px solid var(--line-strong); border-radius: 999px; color: var(--ink);
+    font: 600 11.5px var(--font-sans); letter-spacing: .05em; text-transform: uppercase; cursor: pointer; white-space: nowrap;
+  }
+  #filters-sticky .filters-toggle-btn:hover { border-color: var(--ink); }
+  #filters-sticky .filters-toggle-btn svg { transition: transform .2s; }
+  #filters-sticky .filters-toggle-btn[aria-expanded="true"] svg { transform: rotate(180deg); }
+  #filters-sticky .filters-toggle-btn i { font-style: normal; background: var(--accent); color: #fff; border-radius: 999px; padding: 0 6px; font-size: 10.5px; }
+  #filters-sticky .filters-secondary-wrap { max-height: 0; overflow: hidden; transition: max-height .3s ease; }
+  #filters-sticky .filters-secondary-wrap.is-open { max-height: 400px; }
+  #filters-sticky #filter-bar { padding-top: 7px; padding-bottom: 7px; gap: 6px; }
+  #map {
+    height: clamp(460px, 74vh, 780px);
+    background: radial-gradient(ellipse at 50% 40%, #E4ECF4 0%, #D3DFEB 70%, #C8D6E4 100%);
+    font-family: var(--font-sans);
+  }
+  .panel-map { min-height: 0; }
+  .map-label { pointer-events: none !important; background: none; border: 0; }
+  .map-label span {
+    display: block; transform: translate(-50%, -50%); white-space: nowrap;
+    font: 650 10.5px/1 var(--font-sans); letter-spacing: .04em; text-transform: uppercase; color: #0B1628;
+    text-shadow: 0 0 2px #fff, 0 0 3px #fff, 0 0 6px rgba(255,255,255,.9);
+    -webkit-font-smoothing: antialiased; opacity: .82;
+  }
+  .map-label.is-big span { font-size: 12.5px; letter-spacing: .08em; opacity: .9; }
+  .map-label.is-hidden { display: none; }
+  .map-world-btn a { font: 700 15px/30px var(--font-sans) !important; }
+  @media (max-width: 760px) {
+    #map { height: clamp(320px, 58vh, 520px); }
+    .map-label span { font-size: 9px; }
+    .map-label.is-big span { font-size: 10px; }
+    #filters-sticky .filters-toggle-btn { padding: 4px 9px; font-size: 10.5px; }
+  }
 </style>
 </head>
 <body>
@@ -6867,6 +6996,10 @@
         <span class="topic-nav-num">★</span>
         <span class="topic-nav-text">Israel 2026</span>
       </a>
+      <a href="#espana" class="topic-nav-link is-special is-special-es" onclick="window.__scrollToSection(event, 'espana')">
+        <span class="topic-nav-num">★</span>
+        <span class="topic-nav-text">España 2026</span>
+      </a>
       <a href="#nav-map" class="topic-nav-link" onclick="window.__scrollToSection(event, 'nav-map')">
         <span class="topic-nav-num">01</span>
         <span class="topic-nav-text">Mapa</span>
@@ -6900,9 +7033,10 @@
   <div class="nav-sheet-panel">
     <div class="nav-sheet-head"><span>Secciones</span><div class="lang-switch lang-switch-sheet notranslate" role="group" aria-label="Idioma / Language"><button type="button" data-lang="es" lang="es">ES</button><button type="button" data-lang="en" lang="en">EN</button><button type="button" data-lang="pt" lang="pt">PT</button></div><button type="button" class="nav-sheet-close" id="nav-sheet-close" aria-label="Cerrar">✕</button></div>
     <div class="nav-sheet-group">Especiales</div>
-    <a href="#brasil" data-go="brasil"><b>Brasil 2026</b><span>Elecciones generales del 4 de octubre</span></a>
+    <a href="#brasil" data-go="brasil"><b>Brasil 2026</b><span>Balotaje del 25 de octubre · resultados de la 1.ª vuelta</span></a>
     <a href="#eeuu" data-go="eeuu"><b>EE.UU. 2026</b><span>Midterms del 3 de noviembre</span></a>
     <a href="#israel" data-go="israel"><b>Israel 2026</b><span>Knéset, 27 de octubre · calculadora de coaliciones</span></a>
+    <a href="#espana" data-go="espana"><b>España 2026</b><span>Generales anticipadas del 29 de noviembre · calculadora de mayorías</span></a>
     <div class="nav-sheet-group">El atlas</div>
     <a href="#inicio" data-go="inicio"><b>Inicio y mapa</b><span>Portada, buscador y mapa mundial</span></a>
     <a href="#elecciones" data-go="elecciones"><b>Calendario electoral</b><span>Quién vota y cuándo</span></a>
@@ -7310,6 +7444,9 @@
 
   <div class="atlas-view" data-view="israel">
     <div class="esp" id="esp-israel"><div class="esp-loading">Cargando especial…</div></div>
+  </div>
+  <div class="atlas-view" data-view="espana">
+    <div class="esp" id="esp-espana"><div class="esp-loading">Cargando especial…</div></div>
   </div>
 
   <div class="atlas-view" data-view="metodologia">
@@ -7961,7 +8098,7 @@ const LEADER_GENDER = {
   ZAF: "M",
   NGA: "M",
   EGY: "M",
-  MAR: "M",
+  MAR: "F",
   KEN: "M",
   THA: "M",
   MYS: "M",
@@ -8007,7 +8144,7 @@ const LEADER_GENDER = {
   NPL: "F",
   SVN: "M",
   LTU: "M",
-  LVA: "F",
+  LVA: "M",
   TTO: "F",
   HTI: "M",
   PNG: "M",
@@ -8263,25 +8400,22 @@ const COUNTRIES = [
       }
     },
     lastElection: {
-      year: 2022,
-      type: "Presidencial — 2da vuelta",
-      turnout: 79.4,
+      year: 2026,
+      type: "Presidencial — 1ra vuelta (4 oct 2026)",
+      turnout: 78.9,
       results: [
-        {
-          party: "Lula (PT)",
-          pct: 50.9
-        },
-        {
-          party: "Bolsonaro (PL)",
-          pct: 49.1
-        }
+        { party: "Flávio Bolsonaro (PL)", pct: 47.03 },
+        { party: "Lula (PT)", pct: 45.16 },
+        { party: "Augusto Cury (Avante)", pct: 2.89 },
+        { party: "Renan Santos (Missão)", pct: 2.24 },
+        { party: "Ronaldo Caiado (PSD)", pct: 2.18 }
       ]
     },
     nextElection: {
       year: 2026,
-      type: "Presidencial y legislativa (oct 2026)"
+      type: "Presidencial — 2da vuelta (25 oct 2026)"
     },
-    electors: 156454011,
+    electors: 158745502,
     economy: {
       gdpGrowth: [
         {
@@ -10610,8 +10744,8 @@ const COUNTRIES = [
       ]
     },
     nextElection: {
-      year: 2027,
-      type: "Generales (a más tardar)"
+      year: 2026,
+      type: "Generales anticipadas (29 nov 2026)"
     },
     electors: 37500000,
     economy: {
@@ -13946,14 +14080,14 @@ const COUNTRIES = [
     region: "África",
     system: "Monarquía constitucional",
     leader: {
-      title: "Primer Ministro",
-      name: "Aziz Akhannouch",
-      party: "Reagrupación Nacional de los Independientes (RNI)",
-      since: "2021-10-07",
-      gender: "M",
-      wikiName: "Aziz_Akhannouch"
+      title: "Jefa de Gobierno",
+      name: "Fatima Zahra El Mansouri",
+      party: "Autenticidad y Modernidad (PAM)",
+      since: "2026-09-29",
+      gender: "F",
+      wikiName: "Fatima_Zahra_Mansouri"
     },
-    ideology: "right",
+    ideology: "center-right",
     legislature: {
       type: "Bicameral (Parlamento)",
       upper: {
@@ -15279,13 +15413,13 @@ const COUNTRIES = [
     system: "República parlamentaria",
     leader: {
       title: "Primer Ministro",
-      name: "Rosen Zhelyazkov",
-      party: "GERB",
-      since: "2025-01-16",
+      name: "Rumen Radev",
+      party: "Bulgaria Progresista (PB)",
+      since: "2026-05-08",
       gender: "M",
-      wikiName: "Rosen_Zhelyazkov"
+      wikiName: "Rumen_Radev"
     },
-    ideology: "center-right",
+    ideology: "center-left",
     legislature: {
       type: "Unicameral",
       upper: null,
@@ -15297,30 +15431,20 @@ const COUNTRIES = [
       }
     },
     lastElection: {
-      year: 2024,
-      type: "Parlamentarias (27 oct)",
-      turnout: 38.7,
+      year: 2026,
+      type: "Parlamentarias anticipadas (19 abr)",
+      turnout: 50.7,
       results: [
-        {
-          party: "GERB-SDS",
-          pct: 26.4,
-          seats: 69
-        },
-        {
-          party: "PP-DB",
-          pct: 14.1,
-          seats: 37
-        },
-        {
-          party: "Vazrazhdane",
-          pct: 13.4,
-          seats: 35
-        }
+        { party: "Bulgaria Progresista (Radev)", pct: 43.91, seats: 131 },
+        { party: "GERB–SDS", pct: 13.18, seats: 39 },
+        { party: "PP–DB", pct: 12.42, seats: 37 },
+        { party: "DPS", pct: 7.01, seats: 21 },
+        { party: "Vazrazhdane", pct: 4.19, seats: 12 }
       ]
     },
     nextElection: {
-      year: 2028,
-      type: "Parlamentarias"
+      year: 2026,
+      type: "Presidencial (25 oct 2026; balotaje 1 nov)"
     },
     electors: 6500000,
     economy: {
@@ -18306,7 +18430,7 @@ const COUNTRIES = [
       name: "Andris Kulbergs",
       party: "Lista Unida (independiente)",
       since: "2026-05-28",
-      gender: "F",
+      gender: "M",
       wikiName: "Andris_Kulbergs"
     },
     ideology: "center-right",
@@ -18321,30 +18445,21 @@ const COUNTRIES = [
       }
     },
     lastElection: {
-      year: 2022,
-      type: "Parlamentarias (1 oct)",
-      turnout: 59.4,
+      year: 2026,
+      type: "Parlamentarias (3 oct)",
+      turnout: 51.8,
       results: [
-        {
-          party: "Nueva Unidad (JV)",
-          pct: 19.0,
-          seats: 26
-        },
-        {
-          party: "Lista Unida",
-          pct: 11.0,
-          seats: 15
-        },
-        {
-          party: "ZZS (verdes/agrarios)",
-          pct: 12.6,
-          seats: 16
-        }
+        { party: "Lista Unida (AS, Kulbergs)", pct: 35.76, seats: 41 },
+        { party: "Letonia Primero (LPV)", pct: 13.25, seats: 17 },
+        { party: "Poder Soberano–AJ", pct: 11.87, seats: 15 },
+        { party: "Alianza Nacional", pct: 9.02, seats: 10 },
+        { party: "Los Progresistas", pct: 7.98, seats: 10 },
+        { party: "Nueva Unidad", pct: 6.45, seats: 7 }
       ]
     },
     nextElection: {
-      year: 2026,
-      type: "Parlamentarias (oct)"
+      year: 2030,
+      type: "Parlamentarias (oct 2030)"
     },
     electors: 1450000,
     economy: {
@@ -19186,30 +19301,19 @@ const COUNTRIES = [
       }
     },
     lastElection: {
-      year: 2022,
-      type: "Generales (2 oct)",
-      turnout: 51.5,
+      year: 2026,
+      type: "Generales (4 oct) · Cámara de Representantes",
+      turnout: 42.45,
       results: [
-        {
-          party: "SDA (bosníaco)",
-          pct: 17.6,
-          seats: 9
-        },
-        {
-          party: "SNSD (serbio)",
-          pct: 14.0,
-          seats: 6
-        },
-        {
-          party: "HDZ BiH (croata)",
-          pct: 9.5,
-          seats: 4
-        }
+        { party: "SDA (bosníaco)", pct: 19.66, seats: 9 },
+        { party: "SNSD (serbio)", pct: 16.93, seats: 6 },
+        { party: "SDP BiH", pct: 9.27, seats: 5 },
+        { party: "HDZ BiH (croata)", pct: 7.84, seats: 4 }
       ]
     },
     nextElection: {
-      year: 2026,
-      type: "Generales (oct 2026)"
+      year: 2030,
+      type: "Generales (oct 2030)"
     },
     electors: 3400000,
     economy: {
@@ -25326,25 +25430,17 @@ const COUNTRIES = [
       }
     },
     lastElection: {
-      year: 2022,
-      type: "Parlamentarias (25 sep)",
-      turnout: 67.8,
+      year: 2026,
+      type: "Legislativas (27 sep)",
+      turnout: 37.3,
       results: [
-        {
-          party: "ADI (Trovoada)",
-          pct: 40.7,
-          seats: 30
-        },
-        {
-          party: "MLSTP-PSD",
-          pct: 33.6,
-          seats: 18
-        }
+        { party: "MLSTP-PSD", pct: null, seats: 24 },
+        { party: "ADI (Trovoada)", pct: null, seats: 23 }
       ]
     },
     nextElection: {
       year: 2026,
-      type: "Parlamentarias y presidencial"
+      type: "Presidencial (2026, fecha a confirmar)"
     },
     electors: 120000,
     economy: {
@@ -26821,11 +26917,20 @@ window.addEventListener('scroll', () => {
   const btn = document.getElementById('filters-toggle-btn');
   const wrap = document.getElementById('filters-secondary');
   if (!btn || !wrap) return;
+  btn.querySelector('span').textContent = 'Continente y sistema';
   btn.addEventListener('click', () => {
     const isOpen = wrap.classList.toggle('is-open');
     btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-    btn.querySelector('span').textContent = isOpen ? 'Menos filtros' : 'Más filtros';
   });
+  // Show how many secondary filters are on, so a closed panel doesn't hide them
+  const syncCount = () => {
+    const n = (state.activeContinent !== 'all' ? 1 : 0) + (state.activeSystem !== 'all' ? 1 : 0);
+    let i = btn.querySelector('i');
+    if (n && !i) { i = document.createElement('i'); btn.insertBefore(i, btn.querySelector('svg')); }
+    if (i) { if (n) i.textContent = n; else i.remove(); }
+  };
+  wrap.addEventListener('click', () => setTimeout(syncCount, 0));
+  document.addEventListener('atlas:filters', syncCount);
 })();
 
 /* ===========================================================
@@ -27044,11 +27149,44 @@ try {
   map = L.map('map', {
     center: [20, 10],
     zoom: 2,
-    minZoom: 2,
-    maxZoom: 6,
-    worldCopyJump: true,
+    minZoom: 1,
+    maxZoom: 7,
+    zoomSnap: 0.25,
+    zoomDelta: 0.5,
+    wheelPxPerZoomLevel: 90,
+    worldCopyJump: false,
+    maxBounds: [[-75, -230], [86, 230]],
+    maxBoundsViscosity: 0.9,
     attributionControl: true
   });
+  // The whole inhabited world fits the frame (Antarctic sectors peek at the bottom)
+  const WORLD_BOUNDS = [[-58, -168], [80, 190]];
+  window.__fitWorld = function (animate) {
+    if (!map) return;
+    map.fitBounds(WORLD_BOUNDS, { padding: [6, 6], animate: !!animate });
+    map.setMinZoom(Math.max(0.5, map.getZoom() - 0.5));
+  };
+  window.__fitWorld(false);
+  let mapUserMoved = false;
+  map.on('dragstart', () => { mapUserMoved = true; });
+  map.getContainer().addEventListener('wheel', () => { mapUserMoved = true; }, { passive: true });
+  map.on('zoomstart', () => { if (map._fitting !== true && map._loaded && map.__userZoom) mapUserMoved = true; });
+  // Re-frame the world whenever the map's box changes size (layout, rotation,
+  // view switch) as long as the reader hasn't moved it themselves
+  const refit = () => { if (!mapUserMoved && !state.selectedISO) { map._fitting = true; window.__fitWorld(false); map._fitting = false; } };
+  map.on('resize', refit);
+  window.addEventListener('load', () => { map.invalidateSize(); refit(); });
+  // "See the whole world" button under the zoom control
+  const WorldCtl = L.Control.extend({
+    options: { position: 'topleft' },
+    onAdd() {
+      const div = L.DomUtil.create('div', 'leaflet-bar map-world-btn');
+      div.innerHTML = '<a href="#" role="button" title="Ver el mundo completo" aria-label="Ver el mundo completo">🌐</a>';
+      L.DomEvent.on(div.firstChild, 'click', ev => { L.DomEvent.preventDefault(ev); L.DomEvent.stopPropagation(ev); mapUserMoved = false; window.__fitWorld(true); });
+      return div;
+    },
+  });
+  new WorldCtl().addTo(map);
 
   // No raster basemap: the country polygons are the map, drawn over a plain
   // "ocean" background (#map in CSS). This avoids third-party tile services
@@ -27263,12 +27401,14 @@ function styleFeature(feature) {
     };
   }
   const color = getCSSVar(IDEOLOGIES[country.ideology].color.replace('var(','').replace(')',''));
+  const sel = state.selectedISO === iso;
   return {
     fillColor: color,
-    weight: state.selectedISO === iso ? 2 : 0.6,
-    color: state.selectedISO === iso ? '#0B1628' : '#64748B',
-    fillOpacity: dim ? 0.18 : 0.78,
-    opacity: dim ? 0.5 : 1
+    weight: sel ? 2.2 : 0.7,
+    color: sel ? '#0B1628' : '#FFFFFF',
+    fillOpacity: dim ? 0.16 : sel ? 0.95 : 0.86,
+    opacity: dim ? 0.6 : 1,
+    lineJoin: 'round'
   };
 }
 
@@ -27690,11 +27830,17 @@ function renderDetail(c) {
    =========================================================== */
 const MONTHS_ES = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
 
-const FICHA_SPECIALS = { BRA: ['brasil', 'Brasil 2026'], USA: ['eeuu', 'EE.UU. 2026'], ISR: ['israel', 'Israel 2026'] };
+const FICHA_SPECIALS = { BRA: ['brasil', 'Brasil 2026'], USA: ['eeuu', 'EE.UU. 2026'], ISR: ['israel', 'Israel 2026'], ESP: ['espana', 'España 2026'] };
 function fichaNextElectionHTML(c) {
   const sp = FICHA_SPECIALS[c.iso];
   const spLink = sp ? `<a class="ficha-special" href="#${sp[0]}" onclick="window.closeFicha(); window.__atlasGoTo('${sp[0]}'); return false;">★ Ver el especial ${sp[1]} →</a>` : '';
   return fichaNextElectionInner(c) + spLink;
+}
+// A brief still marked "upcoming" whose date already passed (results not loaded yet)
+function briefIsPast(b) {
+  if (!b || b.status !== 'upcoming' || !b.date) return false;
+  const d = new Date(b.date + 'T23:59:59');
+  return d < new Date();
 }
 function fichaNextElectionInner(c) {
   const ne = c.nextElection || {};
@@ -27709,6 +27855,11 @@ function fichaNextElectionInner(c) {
   }
   if (!b) {
     return `<div class="ficha-next-when">${when}</div><div class="ficha-next-type">${ne.type || ''}</div>`;
+  }
+  if (briefIsPast(b)) {
+    const d = new Date(b.date + 'T12:00:00');
+    return `<div class="ficha-next-type"><b>Votó el</b> ${d.getDate()} de ${MONTHS_ES[d.getMonth()]} ${d.getFullYear()}${b.offices ? ' · ' + b.offices : ''}</div>
+      <p class="ficha-next-sum">Estamos cargando los resultados oficiales de esta elección.</p>`;
   }
   if (b.status === 'held') {
     const d = b.date ? new Date(b.date + 'T12:00:00') : null;
@@ -27823,6 +27974,7 @@ function countryFichaHTML(c) {
         ${econ('Libertad de prensa (RSF)', e.pressFreedom != null ? e.pressFreedom.toFixed(1) + '<span class="econ-of">/100</span>' : null, `mayor = más libre · RSF ${e.pressFreedomYear}`, e.pressFreedom != null ? renderPressBar(e.pressFreedom) : '')}
       </div>
     </section>
+    ${argCardHTML(((window.CAL_BRIEFS || {})[c.iso] || {}).argentina, c.name)}
   </div>
   ${c.site ? `<a class="source-link ficha-source" href="${c.site}" target="_blank" rel="noopener">↗ Sitio electoral oficial</a>` : ''}`;
 }
@@ -27842,7 +27994,8 @@ function countryFichaHTML(c) {
 })();
 
 let fichaLastFocus = null;
-function openFicha(c) {
+function openFicha(c, opts) {
+  opts = opts || {};
   let modal = document.getElementById('ficha-modal');
   if (!modal) {
     modal = document.createElement('div');
@@ -27855,12 +28008,24 @@ function openFicha(c) {
         <div class="ficha-body" id="ficha-body"></div>
       </div>`;
     document.body.appendChild(modal);
-    modal.addEventListener('click', ev => { if (ev.target.closest('[data-close]')) closeFicha(); });
+    modal.addEventListener('click', ev => {
+      const back = ev.target.closest('.ficha-back[data-back-election]');
+      if (back) { const c2 = state.countryByISO[back.getAttribute('data-back-election')]; if (c2) { openFicha(c2, { mode: 'election' }); return; } }
+      if (ev.target.closest('[data-close]')) closeFicha();
+    });
     document.addEventListener('keydown', ev => { if (ev.key === 'Escape' && !modal.hidden) closeFicha(); });
   }
   if (window.hideMapQuick) window.hideMapQuick();
   const body = modal.querySelector('#ficha-body');
-  body.innerHTML = countryFichaHTML(c);
+  const view = document.body.getAttribute('data-view');
+  const backBtn = modal.querySelector('.ficha-back');
+  if (opts.backTo === 'election') { backBtn.textContent = '← Volver a la elección'; backBtn.setAttribute('data-back-election', c.iso); }
+  else {
+    backBtn.removeAttribute('data-back-election');
+    backBtn.textContent = view === 'elecciones' ? '← Volver al calendario' : view === 'inicio' && opts.mode !== 'election' ? '← Volver al mapa' : '← Volver';
+  }
+  modal.classList.toggle('is-election', opts.mode === 'election');
+  body.innerHTML = opts.mode === 'election' ? electionPanelHTML(c) : countryFichaHTML(c);
   body.scrollTop = 0;
   modal.querySelector('.ficha-dialog').scrollTop = 0;
   if (modal.hidden) fichaLastFocus = document.activeElement;
@@ -27880,6 +28045,128 @@ function openFicha(c) {
     });
   }
 }
+
+/* ===========================================================
+   ELECTION PANEL — opened from the calendar: what is voted, what is at
+   stake, who runs, who governs and the link with Argentina, without
+   leaving the page. "Ver la ficha completa" swaps in the full profile.
+   =========================================================== */
+const ARG_LEVEL_LBL = {
+  'aliado estrecho': ['is-ally', 'Aliado estrecho'], 'cooperación pragmática': ['is-prag', 'Cooperación pragmática'],
+  'relación tensa': ['is-tense', 'Relación tensa'], 'distante': ['is-far', 'Relación distante'],
+};
+function fmtUSDm(v) {
+  if (v == null) return '—';
+  if (Math.abs(v) >= 1000) return 'USD ' + (v / 1000).toLocaleString('es-AR', { maximumFractionDigits: 2, minimumFractionDigits: 1 }) + ' mil M';
+  if (Math.abs(v) < 1) return v === 0 ? 'USD 0' : 'menos de USD 1 M';
+  return 'USD ' + Math.round(v).toLocaleString('es-AR') + ' M';
+}
+function argCardHTML(a, countryName) {
+  if (!a) return '';
+  const lv = ARG_LEVEL_LBL[a.level];
+  const t = a.trade || {};
+  const hasTrade = t.exports != null || t.imports != null;
+  const bal = hasTrade ? (t.exports || 0) - (t.imports || 0) : null;
+  return `<section class="ficha-card is-wide ficha-arg">
+    <div class="ficha-card-title">Relación con Argentina</div>
+    <div class="farg-head"><span class="farg-flags">${flagOf('ARG', 'fi-md')}${'<span>·</span>'}${countryName}</span>${lv ? `<span class="arg-level ${lv[0]}">${lv[1]}</span>` : ''}</div>
+    ${a.summary ? `<p class="ficha-next-sum">${a.summary}</p>` : ''}
+    ${hasTrade ? `<div class="farg-kpis">
+      <div><span>Exportaciones ${t.year || ''}</span><b>${fmtUSDm(t.exports)}</b></div>
+      <div><span>Importaciones ${t.year || ''}</span><b>${fmtUSDm(t.imports)}</b></div>
+      <div><span>Saldo para Argentina</span><b class="${bal >= 0 ? 'is-pos' : 'is-neg'}">${bal >= 0 ? '+' : '−'}${fmtUSDm(Math.abs(bal)).replace('USD ', 'USD ')}</b></div>
+    </div>` : ''}
+    ${t.topExports || t.topImports ? `<div class="farg-prods">${t.topExports ? `<div><span>Qué le vende Argentina</span>${t.topExports}</div>` : ''}${t.topImports ? `<div><span>Qué le compra Argentina</span>${t.topImports}</div>` : ''}</div>` : ''}
+    ${(a.facts || []).length ? `<ul class="farg-facts">${a.facts.map(f => `<li>${f}</li>`).join('')}</ul>` : ''}
+    ${(a.sources || []).length ? `<div class="farg-src">Fuentes: ${a.sources.slice(0, 4).map(x => `<a href="${x.url}" target="_blank" rel="noopener">${x.label}</a>`).join(' · ')}</div>` : ''}
+  </section>`;
+}
+function electionWhen(c) {
+  const b = (window.CAL_BRIEFS || {})[c.iso];
+  const k = KNOWN_ELECTION_DATES[c.iso];
+  let d = null, exact = false;
+  if (b && b.date) { d = new Date(b.date + 'T12:00:00'); exact = b.dateConfirmed !== false; }
+  else if (k && (!c.nextElection || k.year === c.nextElection.year)) { d = new Date(k.year, k.month, k.day || 15, 12); exact = !!k.day && k.day !== 1; }
+  return { d, exact };
+}
+function electionPanelHTML(c) {
+  const b = (window.CAL_BRIEFS || {})[c.iso] || {};
+  const ideo = IDEOLOGIES[c.ideology];
+  const { d, exact } = electionWhen(c);
+  const today = new Date(); today.setHours(0, 0, 0, 0);
+  const days = d ? Math.round((new Date(d.getFullYear(), d.getMonth(), d.getDate()) - today) / 86400000) : null;
+  const whenTxt = d ? (exact ? `${d.getDate()} de ${MONTHS_ES[d.getMonth()]} de ${d.getFullYear()}` : `${MONTHS_ES[d.getMonth()]} de ${d.getFullYear()}`) : String((c.nextElection || {}).year || '');
+  const inTxt = days == null ? '' : days === 0 ? 'Hoy' : days === 1 ? 'Mañana' : days > 1 && exact ? `En ${days} días` : days < 0 ? 'Ya votó' : '';
+  const sp = FICHA_SPECIALS[c.iso];
+  const inc = b.incumbent || {};
+  const initials = c.leader.name.split(' ').slice(0, 2).map(w => w[0]).join('');
+  const lastEl = c.lastElection || {};
+  return `
+  <header class="ficha-head el-head" style="--ideo:${ideo.color}">
+    <div class="ficha-head-main">
+      <div class="ficha-kicker">${flagOf(c.iso, 'fi-md')}<span>${c.region}</span><span>·</span><span>Elección</span></div>
+      <h2 class="ficha-name" id="ficha-title">${c.name}</h2>
+      <div class="el-when"><b>${whenTxt}</b>${!exact && d ? ' <span class="ficha-est">fecha estimada</span>' : ''}${inTxt ? `<span class="el-in">${inTxt}</span>` : ''}</div>
+      <div class="el-offices">${b.offices || (c.nextElection || {}).type || ''}</div>
+    </div>
+    <div class="ficha-leader">
+      <div class="leader-photo ficha-photo" data-photo-iso="${c.iso}">${initials}</div>
+      <div>
+        <div class="ficha-leader-title">Gobierna hoy · ${c.leader.title}</div>
+        <div class="ficha-leader-name">${c.leader.name}</div>
+        <div class="ficha-leader-party">${c.leader.party}</div>
+        <div class="ficha-leader-since"><span class="el-ideo"><i></i>${ideo.label}</span>${inc.note ? ' · ' + inc.note : ''}</div>
+      </div>
+    </div>
+  </header>
+  <div class="ficha-grid el-grid">
+    <section class="ficha-card is-wide ficha-next">
+      <div class="ficha-card-title">Qué se juega</div>
+      ${b.stake ? `<p class="ficha-next-stake">${b.stake}</p>` : ''}
+      ${b.why ? `<p class="el-why"><b>Por qué importa.</b> ${b.why}</p>` : ''}
+      ${b.summary ? `<p class="ficha-next-sum">${b.summary}</p>` : ''}
+      ${briefIsPast(b) ? '<p class="ficha-next-sum"><b>Ya se votó:</b> estamos cargando los resultados oficiales.</p>' : ''}
+      ${b.result ? `<p class="ficha-next-sum"><b>Resultado:</b> ${b.result}</p>` : ''}
+    </section>
+    <section class="ficha-card">
+      <div class="ficha-card-title">La elección en datos</div>
+      <div class="data-row"><span class="k">Electores</span><span class="v mono">${b.electorate ? fmtNum(b.electorate) : (c.electors ? fmtNum(c.electors) : '—')}</span></div>
+      <div class="data-row"><span class="k">Sistema</span><span class="v">${c.system}</span></div>
+      <div class="data-row"><span class="k">Legislativo</span><span class="v">${c.legislature.type}</span></div>
+      ${c.legislature.lower ? `<div class="data-row"><span class="k">${c.legislature.lower.name}</span><span class="v">${c.legislature.lower.seats} bancas · ${c.legislature.lower.term}</span></div>` : ''}
+      ${c.legislature.upper ? `<div class="data-row"><span class="k">${c.legislature.upper.name}</span><span class="v">${c.legislature.upper.seats} bancas · ${c.legislature.upper.term}</span></div>` : ''}
+    </section>
+    ${(b.contenders || []).length || b.polls ? `<section class="ficha-card is-wide">
+      <div class="ficha-card-title">Quiénes compiten</div>
+      ${(b.contenders || []).length ? `<div class="el-cands">${b.contenders.map(x => `<div class="el-cand"><b>${x.name}</b>${x.party && x.party !== x.name ? `<span>${x.party}</span>` : ''}${x.note ? `<small>${x.note}</small>` : ''}</div>`).join('')}</div>` : ''}
+      ${b.polls ? `<p class="ficha-next-polls"><b>Encuestas:</b> ${b.polls}</p>` : ''}
+    </section>` : ''}
+    <section class="ficha-card">
+      <div class="ficha-card-title">Última elección${lastEl.year ? ' · ' + lastEl.year : ''}</div>
+      <div class="data-row"><span class="k">Tipo</span><span class="v">${lastEl.type || '—'}</span></div>
+      ${lastEl.turnout ? `<div class="data-row"><span class="k">Participación</span><span class="v mono">${lastEl.turnout}%</span></div>` : ''}
+      <div class="results-list">${resultsListHTML(lastEl, ideo.color)}</div>
+    </section>
+    ${argCardHTML(b.argentina, c.name)}
+  </div>
+  <div class="el-actions">
+    ${sp ? `<a class="ficha-special" href="#${sp[0]}" onclick="window.closeFicha(); window.__atlasGoTo('${sp[0]}'); return false;">★ Especial ${sp[1]} →</a>` : ''}
+    <button type="button" class="el-btn" onclick="window.__fichaFull('${c.iso}')">Ver la ficha completa del país →</button>
+    <button type="button" class="el-btn el-btn-ghost" onclick="window.__atlasJumpTo && window.__atlasJumpTo('${c.iso}')">Ubicarlo en el mapa</button>
+  </div>
+  ${(b.sources || []).length ? `<p class="el-src">Fuentes: ${b.sources.slice(0, 4).map(x => `<a href="${x.url}" target="_blank" rel="noopener">${x.label}</a>`).join(' · ')}${b.verified === false ? ' · <em>datos preliminares</em>' : ''}</p>` : ''}`;
+}
+// Open the election panel for a country (calendar, agenda, next-card)
+window.__openElection = function (iso) {
+  const c = state.countryByISO[iso];
+  if (!c) return;
+  openFicha(c, { mode: 'election' });
+};
+// From the election panel to the full profile, in the same window
+window.__fichaFull = function (iso) {
+  const c = state.countryByISO[iso];
+  if (c) openFicha(c, { mode: 'country', backTo: 'election' });
+};
 
 function closeFicha(opts) {
   const modal = document.getElementById('ficha-modal');
@@ -29727,7 +30014,7 @@ function renderPolls() {
 /* Known national election dates 2026-2028 — shared by the calendar and the portada. */
 const KNOWN_ELECTION_DATES = {
   // ============ 2026 ============
-  'BRA': { day: 4,  month: 9,  year: 2026 },   // Brasil — generales 1ra vuelta (TSE)
+  'BRA': { day: 25, month: 9,  year: 2026 },   // Brasil — 2.ª vuelta presidencial y de 6 gobernaciones (TSE)
   'USA': { day: 3,  month: 10, year: 2026 },   // EE.UU. midterms — 3 nov 2026
   'COL': { day: 31, month: 4,  year: 2026 },   // Colombia — presidencial 1ra vuelta
   'PER': { day: 7,  month: 5,  year: 2026 },   // Perú — presidencial 2da vuelta
@@ -29742,7 +30029,7 @@ const KNOWN_ELECTION_DATES = {
   'MAR': { day: 1,  month: 8,  year: 2026 },   // Marruecos — sep 2026
   'BHS': { day: 1,  month: 8,  year: 2026 },   // Bahamas — sep 2026
   'CYP': { day: 24, month: 4,  year: 2026 },   // Chipre — parlamentarias 24 may 2026
-  'BIH': { day: 4,  month: 9,  year: 2026 },   // Bosnia — generales oct 2026
+  'BIH': { day: 1,  month: 9,  year: 2030 },   // Bosnia — próximas generales oct 2030 (votó el 4 oct 2026)
   'COG': { day: 21, month: 2,  year: 2026 },   // Congo Brazzaville — mar 2026
   'KGZ': { day: 25, month: 0,  year: 2026 },   // Kirguistán — ene 2026
   'LCA': { day: 1,  month: 6,  year: 2026 },   // Santa Lucía — jul 2026
@@ -29751,7 +30038,7 @@ const KNOWN_ELECTION_DATES = {
   'LBN': { day: 18, month: 4,  year: 2026 },   // Líbano — parlamentarias may 2026
   'ISR': { day: 27, month: 9,  year: 2026 },   // Israel — legal deadline 27 oct 2026
   'RUS': { day: 20, month: 8,  year: 2026 },   // Rusia — legislativas sep 2026
-  'LVA': { day: 3,  month: 9,  year: 2026 },   // Letonia — generales oct 2026
+  'LVA': { day: 1,  month: 9,  year: 2030 },   // Letonia — próximas parlamentarias oct 2030 (votó el 3 oct 2026)
   'SVN': { day: 1,  month: 5,  year: 2026 },   // Eslovenia — parlamentarias jun 2026
   'PHL': { day: 11, month: 4,  year: 2025 },   // Filipinas — ya pasó
   'MMR': { day: 28, month: 11, year: 2025 },   // Myanmar (junta) — dic 2025
@@ -29761,12 +30048,13 @@ const KNOWN_ELECTION_DATES = {
   'HTI': { day: 13, month: 11, year: 2026 },   // actualizado sep 2026
   'GMB': { day: 5, month: 11, year: 2026 },   // actualizado sep 2026
   'SRB': { day: 25, month: 9, year: 2026 },   // actualizado sep 2026
+  'BGR': { day: 25, month: 9, year: 2026 },   // Bulgaria — presidencial 25 oct 2026 (balotaje 1 nov)
   // ============ 2027 ============
   'NGA': { day: 16, month: 0,  year: 2027 },   // Nigeria — presidencial 16 ene 2027
   'ARG': { day: 24, month: 9,  year: 2027 },   // Argentina — presidencial 24 oct 2027
   'SYR': { day: 1,  month: 4,  year: 2027 },   // Siria — may 2027 (transición)
   'POL': { day: 15, month: 9,  year: 2027 },   // Polonia — parlamentarias oct 2027
-  'ESP': { day: 25, month: 6,  year: 2027 },   // España — generales jul 2027 (legal)
+  'ESP': { day: 29, month: 10, year: 2026 },   // España — generales anticipadas 29 nov 2026 (convocadas el 5 oct)
   'ITA': { day: 30, month: 5,  year: 2027 },   // Italia — generales 2027
 
   'FJI': { day: 1, month: 0, year: 2027 },   // estimado: entre dic 2026 y feb 2027
@@ -29873,7 +30161,7 @@ function renderElectionsTimeline() {  const today = new Date();
       thisMonthEl.className = 'elections-this-month';
       const list = thisMonthEvents.map(e => {
         const dayLabel = e.day != null ? `<span class="etm-day">${e.day}</span>` : '';
-        return `<span class="etm-country" onclick="window.__atlasJumpTo && window.__atlasJumpTo('${e.country.iso}')">
+        return `<span class="etm-country" role="button" tabindex="0" onclick="window.__openElection('${e.country.iso}')">
           ${dayLabel}${flagOf(e.country.iso, 'fi-md')}<strong>${e.country.name}</strong>
         </span>`;
       }).join('');
@@ -29938,7 +30226,7 @@ function renderElectionsTimeline() {  const today = new Date();
         ? `${e.day} de ${monthNames[e.month].toLowerCase()} ${e.year}`
         : `${monthNames[e.month].toLowerCase()} ${e.year} (día sin confirmar)`;
 
-      return `<div class="et-event ${e.day == null ? 'et-event-noday' : ''}" onclick="window.__atlasJumpTo && window.__atlasJumpTo('${c.iso}')" title="${c.name} — ${dayTitle} — ${c.nextElection.type}">
+      return `<div class="et-event ${e.day == null ? 'et-event-noday' : ''}" role="button" tabindex="0" onclick="window.__openElection('${c.iso}')" title="${c.name} — ${dayTitle} — ${c.nextElection.type}">
         <div class="et-event-day">${dayLabel}</div>
         <div class="et-event-flag">${flagOf(c.iso, 'fi-md')}</div>
         <div class="et-event-iso">${c.iso}</div>
@@ -29957,7 +30245,7 @@ function renderElectionsTimeline() {  const today = new Date();
   const statsEl = document.getElementById('elections-stats');
   if (highlightsEl) {
     const BRIEFS = window.CAL_BRIEFS || {};
-    const SPECIALS = { BRA: ['brasil', 'Brasil 2026'], USA: ['eeuu', 'EE.UU. 2026'], ISR: ['israel', 'Israel 2026'] };
+    const SPECIALS = FICHA_SPECIALS;
     const startOfToday = new Date(today.getFullYear(), today.getMonth(), today.getDate());
     // Rich cards cover the next ~15 months; the timeline above keeps the long view
     const horizonEnd = new Date(today.getFullYear() + 1, 11, 31);
@@ -29977,7 +30265,8 @@ function renderElectionsTimeline() {  const today = new Date();
       return `<article class="eb-card" style="--ideo:${ideo.color}">
         <div class="eb-date"><b>${e.day != null ? e.day : '?'}</b><span>${monthNames[e.month].toLowerCase()} ${e.year}</span>${when ? `<i>${when}</i>` : ''}${e.day == null ? `<i>${b && b.dateConfirmed === false ? 'fecha estimada' : 'día sin confirmar'}</i>` : ''}</div>
         <div class="eb-main">
-          <div class="eb-top">${flagOf(c.iso, 'fi-md')}<h4>${c.name}</h4></div>
+          <div class="eb-top">${flagOf(c.iso, 'fi-md')}<h4><a href="#" onclick="window.__openElection('${c.iso}');return false;">${c.name}</a></h4></div>
+          ${b && b.why ? `<p class="eb-why"><b>Por qué importa:</b> ${b.why}</p>` : ''}
           <div class="eb-offices"><strong>Se elige:</strong> ${b && b.offices ? b.offices : c.nextElection.type.replace(/\(.+?\)/g, '').trim()}</div>
           ${b && b.stake ? `<p class="eb-stake">${b.stake}</p>` : ''}
           ${b && b.summary ? `<p class="eb-sum">${b.summary}</p>` : ''}
@@ -29989,7 +30278,7 @@ function renderElectionsTimeline() {  const today = new Date();
           ${b && b.polls ? `<p class="eb-polls"><strong>Encuestas:</strong> ${b.polls}</p>` : ''}
           <div class="eb-actions">
             ${sp ? `<button type="button" class="eb-btn eb-btn-special" onclick="window.__atlasGoTo('${sp[0]}')">★ Especial ${sp[1]} →</button>` : ''}
-            <button type="button" class="eb-btn" onclick="window.__atlasJumpTo && window.__atlasJumpTo('${c.iso}')">Ficha del país →</button>
+            <button type="button" class="eb-btn" onclick="window.__openElection('${c.iso}')">Qué se juega y relación con Argentina →</button>
             ${b && b.verified === false ? '<span class="eb-flag">datos preliminares</span>' : ''}
             ${b && (b.sources || []).length ? `<span class="eb-src">Fuentes: ${b.sources.slice(0, 3).map(s => `<a href="${s.url}" target="_blank" rel="noopener">${s.label}</a>`).join(' · ')}</span>` : ''}
           </div>
@@ -30015,6 +30304,12 @@ function renderElectionsTimeline() {  const today = new Date();
   }
 
   // Click handler
+  if (!window.__elKeys) {
+    window.__elKeys = true;
+    document.addEventListener('keydown', ev => {
+      if ((ev.key === 'Enter' || ev.key === ' ') && ev.target.matches && ev.target.matches('.et-event[role=button], .etm-country[role=button]')) { ev.preventDefault(); ev.target.click(); }
+    });
+  }
   window.__atlasJumpTo = function(iso, opts) {
     opts = opts || {};
     const c = state.countryByISO[iso];
@@ -30132,7 +30427,7 @@ function renderElectionsTimeline() {  const today = new Date();
   // Also marks the corresponding nav link as active.
   // ============ SPA ROUTER ============
   // Maps nav hrefs (#nav-map, #nav-calendar, …) and view ids to canonical views.
-  const VIEW_IDS = ['inicio', 'elecciones', 'analisis', 'cambio', 'metodologia', 'brasil', 'eeuu', 'israel'];
+  const VIEW_IDS = ['inicio', 'elecciones', 'analisis', 'cambio', 'metodologia', 'brasil', 'eeuu', 'israel', 'espana'];
   const NAV_TO_VIEW = {
     'nav-map': 'inicio',          // the map now lives on the home view
     'nav-calendar': 'elecciones',
@@ -30365,8 +30660,12 @@ async function fetchWikiPhoto(wikiName) {
     const geo = await loadGeo();
     state.geoLayer = L.geoJSON(geo, {
       style: styleFeature,
-      onEachFeature: onEachFeature
+      onEachFeature: onEachFeature,
+      smoothFactor: 0.6
     }).addTo(map);
+    addCountryLabels();
+    map.invalidateSize();
+    if (!state.selectedISO && window.__fitWorld) window.__fitWorld(false);
     // Add Antarctic sectors per Antarctic Treaty (editorial position)
     addAntarcticSectors();
     document.getElementById('map-loading').style.display = 'none';
@@ -30374,6 +30673,60 @@ async function fetchWikiPhoto(wikiName) {
     showCountryListFallback('No se pudo cargar la capa cartográfica.');
   }
 })();
+
+/* ===========================================================
+   COUNTRY LABELS — names on the map, shown only where they fit at the
+   current zoom (bigger countries first; small ones appear as you zoom in)
+   =========================================================== */
+const LABEL_AT = {
+  USA: [39, -98], CAN: [58, -103], RUS: [62, 96], FRA: [46.6, 2.4], NOR: [61.5, 9], CHL: [-31, -71], ARG: [-36, -65],
+  GBR: [53.5, -2], NZL: [-42, 172.5], IDN: [-2, 117], MYS: [3.8, 102], DNK: [56, 9.3], GRL: [73, -41], AUS: [-25, 134],
+  BRA: [-10, -52], MEX: [24, -102], CHN: [35, 103], IND: [22, 79], ITA: [42.8, 12.6], JPN: [36.5, 138.5], PHL: [12, 122.5],
+  ECU: [-1.5, -78.3], GRC: [39.5, 22], HRV: [45.4, 16], TUR: [39, 35], ESP: [40, -3.7], PRT: [39.7, -8.1], ZAF: [-30, 24],
+};
+function addCountryLabels() {
+  if (!map || !state.geoLayer) return;
+  const labels = [];
+  state.geoLayer.eachLayer(layer => {
+    const iso = getFeatureISO(layer.feature);
+    const c = state.countryByISO[iso];
+    if (!c || iso === 'ATA') return;
+    const b = layer.getBounds();
+    if (!b.isValid()) return;
+    // The largest ring decides where the label goes and whether it fits
+    // (archipelagos and overseas bits don't count)
+    let bestBB = null, bestA = 0;
+    const walk = r => {
+      if (!r.length) return;
+      if (r[0] && r[0].lat != null) {
+        const bb = L.latLngBounds(r), a = (bb.getNorth() - bb.getSouth()) * (bb.getEast() - bb.getWest());
+        if (a > bestA) { bestA = a; bestBB = bb; }
+      } else r.forEach(walk);
+    };
+    walk(layer.getLatLngs());
+    const main = bestBB || b;
+    const at = LABEL_AT[iso] || [main.getCenter().lat, main.getCenter().lng];
+    const w = Math.max(main.getEast() - main.getWest(), LABEL_AT[iso] ? Math.min(b.getEast() - b.getWest(), 60) : 0), h = main.getNorth() - main.getSouth();
+    if (w > 170) return;
+    const name = c.name.length > 16 && c.shortName ? c.shortName : c.name;
+    const m = L.marker(at, { interactive: false, keyboard: false, icon: L.divIcon({ className: 'map-label' + (w * h > 900 ? ' is-big' : ''), html: `<span>${name}</span>`, iconSize: [0, 0] }) });
+    labels.push({ m, iso, w: Math.min(w, 120), h, len: name.length, big: w * h > 900 });
+  });
+  const group = L.layerGroup(labels.map(l => l.m)).addTo(map);
+  state.labelLayer = group;
+  function updateLabels() {
+    const z = map.getZoom();
+    const pxPerDeg = 256 * Math.pow(2, z) / 360;
+    labels.forEach(l => {
+      const need = l.len * (l.big ? 8.4 : 6.8) + 6;
+      const show = l.w * pxPerDeg * 0.85 >= need && l.h * pxPerDeg >= 12;
+      const el = l.m.getElement && l.m.getElement();
+      if (el) el.classList.toggle('is-hidden', !show);
+    });
+  }
+  map.on('zoomend', updateLabels);
+  updateLabels();
+}
 
 /* ===========================================================
    ANTARCTIC SECTORS
@@ -30699,6 +31052,7 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
   const EEUU_URL = 'data/especiales/eeuu-2026.json';
   const US_GEO_URL = 'data/geo/usa-states.json';
   const ISRAEL_URL = 'data/especiales/israel-2026.json';
+  const ESPANA_URL = 'data/especiales/espana-2026.json';
   const MONTHS = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
   const MONTHS_SHORT = ['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
   const DAYS = ['domingo','lunes','martes','miércoles','jueves','viernes','sábado'];
@@ -30726,6 +31080,8 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
     usSelected: null,
     israel: null,        // data/especiales/israel-2026.json
     ilPicked: null,      // coalition calculator selection
+    espana: null,        // data/especiales/espana-2026.json
+    esPicked: null,
   };
   window.__atlasLive = live; // handy for debugging from the console
 
@@ -30871,7 +31227,7 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
         <div class="next-card-title">${flagOf(next.country.iso)} ${esc(next.country.name)}</div>
         <div class="next-card-sub">${esc(next.type)} · ${fmtDateLong(next.date)}</div>
         ${countdownHTML(target, 'Se vota hoy')}
-        <a class="next-card-cta" href="#" onclick="window.__atlasJumpTo && window.__atlasJumpTo('${next.country.iso}');return false;">Ver ficha del país <span aria-hidden="true">→</span></a>`;
+        <a class="next-card-cta" href="#" onclick="window.__openElection('${next.country.iso}');return false;">Qué se juega <span aria-hidden="true">→</span></a>`;
     }
     tickCountdowns();
   }
@@ -30925,7 +31281,7 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
     if (!items.length) { el.innerHTML = '<p class="uf-empty">No hay elecciones nacionales con fecha en los próximos meses.</p>'; return; }
     el.innerHTML = items.map(e => {
       const n = daysUntil(e.date);
-      const go = e.country.iso === 'BRA' && live.brasil ? "window.__atlasGoTo('brasil')" : `window.__atlasJumpTo && window.__atlasJumpTo('${e.country.iso}')`;
+      const go = e.country.iso === 'BRA' && live.brasil ? "window.__atlasGoTo('brasil')" : `window.__openElection('${e.country.iso}')`;
       return `<button class="agenda-item" type="button" onclick="${go}">
         <div class="agenda-date"><div class="agenda-day">${e.estimated ? '~' : e.date.getDate()}</div><div class="agenda-mon">${MONTHS_SHORT[e.date.getMonth()]}</div></div>
         <div>
@@ -31291,7 +31647,8 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
 
   function pollAverages(round) {
     const br = live.brasil;
-    const polls = ((br.presidential && br.presidential.polls) || []).filter(p => p[round]);
+    let polls = ((br.presidential && br.presidential.polls) || []).filter(p => p[round]);
+    if (round === 'r2' && polls.some(p => p.after1t)) polls = polls.filter(p => p.after1t);
     const keys = {};
     polls.forEach(p => Object.entries(p[round]).forEach(([k, v]) => { (keys[k] = keys[k] || []).push(v); }));
     return {
@@ -31309,21 +31666,21 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
     const { polls, avgs } = pollAverages(live.pollRound);
     if (!polls.length) { el.innerHTML = '<p class="muted">Sin encuestas cargadas para este escenario.</p>'; return; }
     const max = Math.max(...avgs.map(a => a.v), 1);
-    const scen = live.pollRound === 'r2' ? (live.brasil.presidential.runoffScenario || 'Escenario de 2.ª vuelta') : 'Intención de voto estimulada, 1.ª vuelta';
+    const scen = live.pollRound === 'r2' ? (live.brasil.presidential.runoffScenario || 'Escenario de 2.ª vuelta') + (polls.some(p => p.after1t) ? ' · encuestas posteriores a la 1.ª vuelta' : '') : 'Intención de voto estimulada, 1.ª vuelta';
     el.innerHTML = `
       <div class="seg poll-tabs" role="tablist">
         <button type="button" data-round="r1" class="${live.pollRound === 'r1' ? 'is-active' : ''}">1.ª vuelta</button>
         <button type="button" data-round="r2" class="${live.pollRound === 'r2' ? 'is-active' : ''}">2.ª vuelta</button>
       </div>
       <h4>Promedio de ${polls.length} encuesta${polls.length > 1 ? 's' : ''}</h4>
-      <div class="muted">${esc(scen)} · % de votos totales</div>
+      <div class="muted">${esc(scen)} · % de votos ${live.pollRound === 'r2' && polls.some(p => p.after1t) ? 'válidos' : 'totales'}</div>
       ${avgs.map(a => {
         const c = candByKey(a.key);
         return `<div class="pbar"><div class="pbar-top"><span>${esc(c.short || c.name)}</span><b>${fmtPct(a.v)}</b></div>
           <div class="pbar-track"><div class="pbar-fill" style="width:${(a.v / max * 100).toFixed(1)}%;background:${leanColor(c.lean)}"></div></div></div>`;
       }).join('')}
       <span class="poll-src">${polls.map(p => `<a href="${esc(p.url)}" target="_blank" rel="noopener">${esc(p.firm)}</a> (${esc(p.dates)}${p.n ? ', n=' + fmtInt(p.n) : ''}${p.moe ? ', ±' + p.moe + ' pp' : ''})`).join(' · ')}</span>`;
-    el.querySelectorAll('[data-round]').forEach(b => b.addEventListener('click', () => { live.pollRound = b.getAttribute('data-round'); renderPollBox(); }));
+    el.querySelectorAll('[data-round]').forEach(b => b.addEventListener('click', () => { live.pollRound = b.getAttribute('data-round'); live.pollRoundTouched = true; renderPollBox(); }));
   }
 
   /* ===================== NOCHE ELECTORAL (Brasil) =====================
@@ -31332,7 +31689,8 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
      It drives: national result, state map (president / governor), the
      governors' table and how Congress would look (Chamber projection and the
      54 Senate seats at stake). */
-  const BR_RES_URL = 'data/especiales/brasil-2026-resultados.json';
+  const BR_RES_URL = 'data/especiales/brasil-2026-resultados.json';      // 1.ª vuelta (final)
+  const BR_RES2_URL = 'data/especiales/brasil-2026-resultados-2t.json';  // 2.ª vuelta
   const BR_PARTY_LEAN = {
     PT: 'center-left', PCdoB: 'left', PSOL: 'left', Rede: 'left', PV: 'center-left', PSB: 'center-left', PDT: 'center-left', UP: 'left', PSTU: 'left', PCB: 'left', PCO: 'left',
     MDB: 'center', Cidadania: 'center', Avante: 'center', Solidariedade: 'center', Mobiliza: 'center', PMB: 'center',
@@ -31346,17 +31704,46 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
   const candColor = c => BR_CAND_COLOR[c.n] || partyColor(c.party);
   const titleCase = s => String(s || '').toLowerCase().replace(/(^|[\s-])([a-zà-ÿ])/g, (m, a, b) => a + b.toUpperCase());
   live.brRes = null;
+  live.brRes2 = null;
   live.brNightMap = 'pres';
 
-  function brResHasData() {
-    const r = live.brRes;
-    return !!(r && r.president && r.president.pct > 0 && r.president.cands && r.president.cands.length);
+  const resHas = r => !!(r && r.president && r.president.pct > 0 && r.president.cands && r.president.cands.length);
+  function brResHasData() { return resHas(live.brRes); }
+  // The map/label helpers read live.brRes: render against another results file
+  function withRes(R, fn) { const keep = live.brRes; live.brRes = R; try { return fn(); } finally { live.brRes = keep; } }
+  // Which round leads the home page right now: only while that count is on
+  // (and a couple of days after). Otherwise the home goes back to normal.
+  function homeRound() {
+    const br = live.brasil;
+    if (!br) return null;
+    const t = Date.now(), d = br.dates, DAY = 86400000;
+    const r1c = new Date(d.firstRoundClose).getTime(), r2c = new Date(d.runoffClose).getTime();
+    if (t >= r2c && t < r2c + 3 * DAY && resHas(live.brRes2)) return 2;
+    if (t >= r1c && t < r1c + 2 * DAY && t < new Date(d.runoffOpen).getTime() - DAY && resHas(live.brRes)) return 1;
+    return null;
+  }
+  // The two candidates in the presidential runoff (from the 1st-round result)
+  function runoffFinalists(br) {
+    const r1 = (br && br.results && br.results.round1) || {};
+    if (!r1.runoff) return [];
+    const cs = (r1.candidates || []).slice().sort((a, b) => (b.pct || 0) - (a.pct || 0));
+    const fin = cs.filter(c => c.runoff);
+    return (fin.length === 2 ? fin : cs.slice(0, 2)).map(c => {
+      const k = ((br.presidential && br.presidential.candidates) || []).find(x => (c.id && x.id === c.id) || String(x.number) === String(c.n)) || {};
+      return Object.assign({}, c, { id: c.id || k.id, wiki: k.wiki, full: k.name, vice: k.vice, coalition: k.coalition, lean: c.lean || k.lean });
+    });
+  }
+  // States whose governor race goes to the runoff (1st-round file)
+  function runoffGovStates() {
+    const st = (live.brRes && live.brRes.states) || {};
+    return Object.keys(st).sort().filter(uf => st[uf].gov && st[uf].gov.status === 'runoff');
   }
   // National result from the summary file → br.results.round<n> (unless the
   // direct TSE fetch already filled it with fresher numbers)
-  function mergeBrRes(br) {
-    if (!brResHasData() || !br || !br.results) return;
-    const r = live.brRes, key = 'round' + (r.round || 1), cur = br.results[key] || {};
+  function mergeBrRes(br, R) {
+    R = R || live.brRes;
+    if (!resHas(R) || !br || !br.results) return;
+    const r = R, key = 'round' + (r.round || 1), cur = br.results[key] || {};
     if (cur.candidates && cur.candidates.length && (cur.pctCounted || 0) >= (r.president.pct || 0) && cur.source && /TSE/.test(cur.source)) return;
     const known = (br.presidential && br.presidential.candidates) || [];
     const winner = r.president.cands.find(c => c.e && !c.runoff && !/turno/i.test(c.st || ''));
@@ -31497,6 +31884,7 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
   // Portada: while the count is on, the Brasil card shows the live result
   function nextCardResultsHTML(br) {
     const { round, data } = currentResults();
+    if (round === 1 && data.runoff && runoffFinalists(br).length === 2) return runoffPreviewHTML(br);
     const cands = (data.candidates || []).slice().sort((a, b) => (b.pct || 0) - (a.pct || 0)).slice(0, 3);
     if (!cands.length) return '';
     const win = cands.find(c => c.elected);
@@ -31506,18 +31894,153 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
       <div class="next-card-sub">${data.pctCounted != null ? fmtPct(data.pctCounted, 2) + ' de las secciones escrutadas' : ''}${data.updatedAt ? ' · ' + esc(data.updatedAt) : ''}</div>
       <div class="nc-res">${cands.map(c => `<div class="nc-row"><span>${esc(c.name)} <small>${esc(c.party || '')}</small>${c.elected ? ' <em>ELECTO</em>' : ''}</span><b>${fmtPct(c.pct, 2)}</b>
         <div class="nc-track"><div style="width:${Math.min(c.pct || 0, 100)}%;background:${c.n ? (BR_CAND_COLOR[c.n] || leanColor(c.lean)) : leanColor(c.lean)}"></div></div></div>`).join('')}</div>
-      ${data.status === 'final' && !win && data.runoff !== false ? '<div class="next-card-sub">Habrá segunda vuelta el 25 de octubre.</div>' : ''}
+      ${round === 1 && data.status === 'final' && !win && data.runoff !== false ? '<div class="next-card-sub">Habrá segunda vuelta el 25 de octubre.</div>' : ''}
       ${round === 1 ? projectionHTML('compact') : ''}
-      ${live.brRes && live.brRes.states && Object.keys(live.brRes.states).length ? `<div class="nc-map">${brNightMapSVG('pres', true)}</div>` : ''}
-      <a class="next-card-cta" href="#brasil" onclick="window.__atlasGoTo('brasil'); setTimeout(() => { const s = document.getElementById('br-sec-resultados'); if (s) s.scrollIntoView({ behavior: 'smooth' }); }, 400); return false;">Ver resultados completos <span aria-hidden="true">→</span></a>`;
+      ${(() => { const R = round === 2 ? live.brRes2 : live.brRes; return R && R.states && Object.keys(R.states).length ? `<div class="nc-map">${withRes(R, () => brNightMapSVG('pres', true))}</div>` : ''; })()}
+      <a class="next-card-cta" href="#brasil" onclick="window.__atlasGoTo('brasil'); setTimeout(() => { const s = document.getElementById('${round === 2 ? 'br-sec-balotaje' : 'br-sec-resultados'}'); if (s) s.scrollIntoView({ behavior: 'smooth' }); }, 400); return false;">Ver resultados completos <span aria-hidden="true">→</span></a>`;
+  }
+
+  /* ===================== 2.ª VUELTA (Brasil) ===================== */
+  const goRunoff = "window.__atlasGoTo('brasil'); setTimeout(() => { const s = document.getElementById('br-sec-balotaje'); if (s) s.scrollIntoView({ behavior: 'smooth' }); }, 400); return false;";
+  function runoffPollAvg(br) {
+    const { polls, avgs } = pollAverages('r2');
+    return polls.some(p => p.after1t) ? { polls, avgs } : null;
+  }
+  // Portada card between the two rounds: the duel, the countdown, the polls
+  function runoffPreviewHTML(br) {
+    const [a, b] = runoffFinalists(br);
+    const pa = runoffPollAvg(br);
+    const govs = runoffGovStates();
+    const max = Math.max(a.pct || 0, b.pct || 0, 1);
+    return `
+      <div class="next-card-kicker"><span class="live-dot" style="background:var(--br-yellow)"></span>Balotaje · ${esc(fmtDateLong(new Date(br.dates.runoffOpen)))}</div>
+      <div class="next-card-title">${flagOf('BRA')} Brasil: ${esc(a.name)} vs. ${esc(b.name)}</div>
+      <div class="next-card-sub">Así quedaron en la 1.ª vuelta del 4 de octubre</div>
+      <div class="nc-res">${[a, b].map(c => `<div class="nc-row"><span>${esc(c.name)} <small>${esc(c.party || '')}</small></span><b>${fmtPct(c.pct, 2)}</b>
+        <div class="nc-track"><div style="width:${((c.pct || 0) / max * 100).toFixed(1)}%;background:${BR_CAND_COLOR[c.n] || leanColor(c.lean)}"></div></div></div>`).join('')}</div>
+      ${pa ? `<div class="next-card-sub nc-polls"><b>Encuestas para el balotaje</b> (promedio de ${pa.polls.length}): ${pa.avgs.slice(0, 2).map(x => `${esc((candByKey(x.key).short || candByKey(x.key).name))} ${fmtPct(x.v)}`).join(' · ')}</div>` : ''}
+      ${countdownHTML(br.dates.runoffOpen, 'Hoy se vota')}
+      ${govs.length ? `<div class="next-card-sub">El mismo día se definen ${govs.length} gobernaciones: ${govs.join(', ')}.</div>` : ''}
+      <a class="next-card-cta" href="#brasil" onclick="${goRunoff}">Todo sobre el balotaje <span aria-hidden="true">→</span></a>`;
+  }
+
+  // Governor runoff cards: 1st-round numbers, replaced by the live count on the night
+  function runoffGovCardsHTML() {
+    const R1 = live.brRes, R2 = live.brRes2, info = (live.brasil.runoff && live.brasil.runoff.governors) || {};
+    return runoffGovStates().map(uf => {
+      const g1 = R1.states[uf].gov, g2 = R2 && R2.states && R2.states[uf] && R2.states[uf].gov;
+      const liveOn = g2 && g2.pct > 0 && g2.cands && g2.cands.length;
+      const g = liveOn ? g2 : g1;
+      const cs = (liveOn ? g.cands : g1.cands.filter(c => c.runoff)).slice(0, 2);
+      const name = (brStates().find(s => s.uf === uf) || {}).name || uf;
+      const won = liveOn && g.cands.find(c => c.e);
+      const badge = won ? '<span class="nt-badge is-won">Electo</span>' : liveOn ? `<span class="nt-badge">${fmtPct(g.pct, 0)} escrutado</span>` : '<span class="nt-badge">1.ª vuelta</span>';
+      const note = info[uf] && (info[uf].poll || info[uf].note);
+      return `<div class="nt-gov rg-card" style="--c:${partyColor(cs[0] ? cs[0].party : '')}"><div class="nt-gov-top"><b>${uf} · ${esc(name)}</b>${badge}</div>
+        ${cs.map(c => `<div class="rg-row"><span>${esc(titleCase(c.name))} <small>${esc(c.party)}</small>${won && won === c ? ' <em class="nh-won">ELECTO</em>' : ''}</span><b>${fmtPct(c.pct)}</b></div>
+          <div class="pbar-track"><div class="pbar-fill" style="width:${Math.min(c.pct || 0, 100)}%;background:${partyColor(c.party)}"></div></div>`).join('')}
+        ${!liveOn && note ? `<p class="rg-note">${esc(note)}</p>` : ''}</div>`;
+    }).join('');
+  }
+
+  // Special: the runoff section (duel before the vote, live count after)
+  function renderRunoff() {
+    const el = document.getElementById('br-runoff');
+    if (!el || !live.brasil) return;
+    const br = live.brasil, [a, b] = runoffFinalists(br);
+    if (!a || !b) { el.innerHTML = ''; return; }
+    const ro = br.runoff || {}, R1 = live.brRes, R2 = live.brRes2;
+    const hasLive = resHas(R2);
+    const statesWon = c => Object.values((R1 && R1.states) || {}).filter(s => s.pres && s.pres.cands && s.pres.cands[0] && s.pres.cands[0].n === c.n).length;
+    const others = ((br.results.round1 && br.results.round1.candidates) || []).filter(c => !c.runoff && c.n !== a.n && c.n !== b.n).sort((x, y) => (y.pct || 0) - (x.pct || 0));
+    const othersPct = others.reduce((s, c) => s + (c.pct || 0), 0);
+    const pa = runoffPollAvg(br);
+    let liveHTML = '';
+    if (hasLive) {
+      const { data } = currentResults();
+      const cands = (data.candidates || []).slice().sort((x, y) => (y.pct || 0) - (x.pct || 0)).slice(0, 2);
+      liveHTML = `<div class="results-card">
+        <div class="results-head"><span class="results-title">Presidencial · 2.ª vuelta</span><span class="esp-status"><span class="live-dot"></span>${data.status === 'final' ? 'Resultado final' : 'Escrutinio en curso'}</span></div>
+        <div class="results-progress"><div class="results-progress-track"><div class="results-progress-fill" style="width:${data.pctCounted || 0}%"></div></div>
+          <div class="results-progress-lbl">${fmtPct(data.pctCounted || 0, 2)} de secciones escrutadas${data.updatedAt ? ' · ' + esc(data.updatedAt) : ''}</div></div>
+        ${cands.map(c => `<div class="pbar"><div class="pbar-top"><span>${esc(c.name)} <span style="opacity:.6">(${esc(c.party || '')})</span>${c.elected ? '<span class="elected-badge">ELECTO</span>' : ''}</span><b>${fmtPct(c.pct, 2)}${c.votes ? ' · ' + fmtInt(c.votes) : ''}</b></div>
+          <div class="pbar-track"><div class="pbar-fill" style="width:${Math.min(c.pct || 0, 100)}%;background:${BR_CAND_COLOR[c.n] || leanColor(c.lean)}"></div></div></div>`).join('')}
+        <div class="results-progress-lbl" style="margin-top:14px">% de votos válidos · Fuente: TSE</div>
+        ${turnoutHTML(R2.president && R2.president.turnout, 'dark')}
+      </div>
+      <div class="nt-block"><div class="nt-head"><h4>Quién gana en cada estado · 2.ª vuelta</h4></div>
+        <div class="nt-map-wrap"><div class="nt-map" id="br-runoff-map">${withRes(R2, () => brNightMapSVG('pres'))}</div>
+        <div class="nt-legend">${withRes(R2, () => brNightLegend('pres'))}<p class="muted">Color del candidato que va primero en cada estado; más claro = menos votos contados.</p></div></div></div>`;
+    }
+    el.innerHTML = `
+      ${liveHTML}
+      ${hasLive ? '' : `<div class="duel">
+        ${[a, b].map(c => `<div class="duel-side" style="--c:${BR_CAND_COLOR[c.n] || leanColor(c.lean)}">
+          ${faceHTML({ name: c.full || c.name, wiki: c.wiki, color: BR_CAND_COLOR[c.n] || leanColor(c.lean) })}
+          <div class="duel-name">${esc(c.name)}</div><div class="duel-party">${esc(c.party || '')}${c.vice ? ` · vice: ${esc(c.vice)}` : ''}</div>
+          <div class="duel-pct">${fmtPct(c.pct, 2)}</div>
+          <div class="duel-facts"><span><b>${fmtM(c.votes)}</b> votos</span><span>Ganó en <b>${statesWon(c)}</b> estados</span></div>
+        </div>`).join('<div class="duel-vs">vs.</div>')}
+      </div>
+      <div class="duel-gap">Diferencia en la 1.ª vuelta: <b>${fmtPct(Math.abs((a.pct || 0) - (b.pct || 0)), 2).replace('%', '')} puntos</b> (${fmtM(Math.abs((a.votes || 0) - (b.votes || 0)))} de votos). Los demás candidatos sumaron <b>${fmtPct(othersPct, 1)}</b>: ahí se define el balotaje.</div>`}
+      <div class="ro-grid">
+        ${!hasLive && pa ? `<div class="ro-card"><h4>Encuestas para el balotaje</h4><div class="muted">Promedio de ${pa.polls.length} encuesta${pa.polls.length > 1 ? 's' : ''} posteriores al 4 de octubre · % de votos válidos</div>
+          ${pa.avgs.slice(0, 2).map(x => { const c = candByKey(x.key); return `<div class="pbar"><div class="pbar-top"><span>${esc(c.short || c.name)}</span><b>${fmtPct(x.v)}</b></div><div class="pbar-track"><div class="pbar-fill" style="width:${Math.min(x.v, 100)}%;background:${leanColor(c.lean)}"></div></div></div>`; }).join('')}
+          <span class="poll-src">${pa.polls.map(p => `<a href="${esc(p.url)}" target="_blank" rel="noopener">${esc(p.firm)}</a> (${esc(p.dates)})`).join(' · ')}</span></div>` : ''}
+        ${!hasLive && (ro.endorsements || []).length ? `<div class="ro-card"><h4>Los votos en juego</h4><div class="muted">Qué hicieron los que quedaron afuera</div>
+          <ul class="ro-endorse">${ro.endorsements.map(e => `<li><b>${esc(e.who)}</b><span class="ro-pos ${/flávio|flavio/i.test(e.position) ? 'is-r' : /lula/i.test(e.position) ? 'is-l' : ''}">${esc(e.position)}</span>${e.note ? `<small>${esc(e.note)}</small>` : ''}</li>`).join('')}</ul></div>` : ''}
+        ${!hasLive && ((ro.debates || []).length || (ro.themes || []).length) ? `<div class="ro-card"><h4>La campaña</h4>
+          ${(ro.debates || []).length ? `<div class="ro-debates">${ro.debates.map(d => `<span>📺 ${esc(d.network)} · ${esc(fmtDateShort(new Date(d.date + 'T12:00:00')))}</span>`).join('')}</div>` : ''}
+          ${(ro.themes || []).length ? `<ul class="ro-themes">${ro.themes.map(t => `<li>${esc(t)}</li>`).join('')}</ul>` : ''}</div>` : ''}
+      </div>
+      <div class="nt-block"><div class="nt-head"><h4>Las ${runoffGovStates().length} gobernaciones que se definen en el balotaje</h4></div>
+        <div class="nt-govs rg-grid">${runoffGovCardsHTML()}</div>
+        ${ro.rjNote ? `<p class="muted">${esc(ro.rjNote)}</p>` : ''}</div>
+      ${(ro.sources || []).length ? `<p class="esp-sources"><strong>Fuentes:</strong> ${ro.sources.map(x => `<a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.label)}</a>`).join(' · ')}</p>` : ''}`;
+    if (hasLive) labelResultSVG(el.querySelector('#br-runoff-map svg'), 'pres', R2);
+    activateFaces(el);
+  }
+
+  // Home takeover during the runoff count
+  function renderRunoffHome(el) {
+    const br = live.brasil, R2 = live.brRes2;
+    const { data } = currentResults();
+    const cands = (data.candidates || []).slice().sort((a, b) => (b.pct || 0) - (a.pct || 0)).slice(0, 2);
+    const ch = live.brRes && live.brRes.chamber && live.brRes.chamber.seats;
+    const top = ch ? Object.entries(ch).sort((a, b) => b[1] - a[1]).slice(0, 4).map(([p, n]) => `${esc(p)} ${n}`).join(' · ') : '';
+    el.hidden = false;
+    el.innerHTML = `
+      <div class="nh-head">
+        <div><span class="nh-kicker"><span class="live-dot"></span>${data.status === 'final' ? 'Resultado final' : 'Escrutinio en vivo'} · 2.ª vuelta</span>
+          <h2>${flagOf('BRA', 'fi-md')} Brasil elige presidente</h2>
+          <div class="nh-sub">${data.pctCounted != null ? `<b>${fmtPct(data.pctCounted, 2)}</b> de las secciones escrutadas` : ''}${data.updatedAt ? ' · ' + esc(data.updatedAt) : ''} · se actualiza solo</div></div>
+        <a class="nh-cta" href="#brasil" onclick="${goRunoff}">Todo el especial →</a>
+      </div>
+      <div class="nh-grid">
+        <div class="nh-card nh-pres">
+          <h3>Presidente · balotaje</h3>
+          ${cands.map(c => `<div class="pbar"><div class="pbar-top"><span>${esc(c.name)} <small>${esc(c.party || '')}</small>${c.elected ? ' <em class="nh-won">ELECTO</em>' : ''}</span><b>${fmtPct(c.pct, 2)}</b></div>
+            <div class="pbar-track"><div class="pbar-fill" style="width:${Math.min(c.pct || 0, 100)}%;background:${BR_CAND_COLOR[c.n] || leanColor(c.lean)}"></div></div></div>`).join('')}
+          ${turnoutHTML(R2.president && R2.president.turnout, 'light')}
+          ${top ? `<div class="nh-mini"><span>El Congreso ya quedó definido el 4 de octubre: <b>${top}</b>…</span></div>` : ''}
+        </div>
+        <div class="nh-card nh-map">
+          <div class="nh-map-head"><h3>Quién gana en cada estado</h3></div>
+          ${withRes(R2, () => brNightMapSVG('pres'))}
+          <div class="nt-legend nt-legend-row">${withRes(R2, () => brNightLegend('pres'))}</div>
+        </div>
+      </div>
+      <div class="nh-card"><h3>Gobernaciones en balotaje</h3><div class="nt-govs rg-grid">${runoffGovCardsHTML()}</div></div>`;
+    labelResultSVG(el.querySelector('.nh-map svg'), 'pres', R2);
   }
 
   /* ===================== PORTADA · NOCHE ELECTORAL =====================
      While Brazil's count is on (and after), the results take over the top of
      the home page: national result + projection, the state map and how the
      new Congress compares with the outgoing one. */
-  function labelResultSVG(svg, kind) {
+  function labelResultSVG(svg, kind, R) {
     if (!svg) return;
+    if (R && R !== live.brRes) return withRes(R, () => labelResultSVG(svg, kind));
     const g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
     g.setAttribute('class', 'br-labels');
     svg.appendChild(g);
@@ -31573,8 +32096,10 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
   function renderNightHome() {
     const el = document.getElementById('night-home');
     if (!el) return;
-    if (!brResHasData() || !live.brasil) { el.hidden = true; el.innerHTML = ''; return; }
-    const { round, data } = currentResults();
+    const hr = homeRound();
+    if (!hr || !live.brasil) { el.hidden = true; el.innerHTML = ''; return; }
+    if (hr === 2) { renderRunoffHome(el); return; }
+    const round = 1, data = live.brasil.results.round1 || {};
     const cands = (data.candidates || []).slice().sort((a, b) => (b.pct || 0) - (a.pct || 0)).slice(0, 5);
     const R = live.brRes, kind = live.brNightMap || 'pres';
     const govs = Object.values(R.states || {}).map(s => s.gov).filter(Boolean);
@@ -31627,7 +32152,7 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
     if (!el) return;
     const br = live.brasil;
     const ph = brasilPhase(br);
-    const { round, data } = currentResults();
+    const round = 1, data = (br.results && br.results.round1) || { status: 'pending' };
     const cands = (data.candidates || []).slice().sort((a, b) => (b.pct || 0) - (a.pct || 0));
     const head = `<div class="results-head">
         <span class="results-title">Presidencial · ${round}.ª vuelta</span>
@@ -31680,6 +32205,7 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
       return;
     }
     const ph = brasilPhase(br);
+    if (runoffFinalists(br).length === 2 && !live.pollRoundTouched) live.pollRound = 'r2';
     if (brResHasData() && !live.brMetricTouched) live.brMetric = 'presRes';
     if (!brResHasData() && (BR_METRICS[live.brMetric].result || BR_METRICS[live.brMetric].live)) live.brMetric = 'voters';
     const d1 = new Date(br.dates.firstRoundOpen), d2 = new Date(br.dates.runoffOpen), di = new Date(br.dates.inauguration);
@@ -31696,6 +32222,8 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
             <h2>Brasil <em>2026</em></h2>
             <p class="esp-hero-lede">${esc(br.lede || '')}</p>
             ${(() => {
+              const fin = runoffFinalists(br);
+              if (fin.length === 2) return facesRow('Van al balotaje', fin.map(c => ({ name: c.full || c.name, role: `${c.party} · ${fmtPct(c.pct, 2)} en la 1.ª vuelta`, wiki: c.wiki, color: BR_CAND_COLOR[c.n] || leanColor(c.lean) })));
               const order = pollAverages('r1').avgs.map(a => a.key);
               const cands = ((br.presidential && br.presidential.candidates) || []).filter(c => c.wiki)
                 .sort((a, b) => (order.indexOf(a.id) + 99) % 99 - (order.indexOf(b.id) + 99) % 99).slice(0, 4);
@@ -31717,15 +32245,34 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
       </section>
 
       <nav class="esp-nav" aria-label="Secciones del especial">
+        ${runoffFinalists(br).length === 2 ? '<a href="#br-sec-balotaje" class="is-hot">2.ª vuelta</a>' : ''}
+        <a href="#br-sec-resultados">${runoffFinalists(br).length === 2 ? '1.ª vuelta' : 'Resultados'}</a>
         <a href="#br-sec-cargos">Qué se elige</a>
         <a href="#br-sec-mapa">Mapa de electores</a>
         <a href="#br-sec-congreso">Congreso hoy</a>
         <a href="#br-sec-presidencial">Presidencial</a>
-        <a href="#br-sec-resultados">Resultados</a>
         <a href="#br-sec-calendario">Calendario</a>
         <a href="#br-sec-arg">Argentina</a>
         <a href="#br-sec-claves">Claves</a>
       </nav>
+
+      ${(() => {
+        const fin = runoffFinalists(br);
+        if (fin.length !== 2) return '';
+        const ro = br.runoff || {};
+        return `<section class="esp-sec esp-sec-hot" id="br-sec-balotaje">
+          <div class="esp-sec-head"><span class="kicker">Ahora · 2.ª vuelta, ${esc(fmtDateLong(d2))}</span><h3>${esc(fin[0].name)} vs. ${esc(fin[1].name)}: el balotaje</h3>
+            <p>${esc(ro.summary || 'Ningún candidato superó el 50% de los votos válidos el 4 de octubre: los dos más votados se enfrentan en la segunda vuelta, junto con seis gobernaciones.')}</p></div>
+          <div id="br-runoff"></div>
+        </section>`;
+      })()}
+
+      ${brResHasData() ? `<section class="esp-sec" id="br-sec-resultados">
+        <div class="esp-sec-head"><span class="kicker">4 de octubre · 1.ª vuelta</span><h3>Así votó Brasil en la primera vuelta</h3>
+          <p>Resultado oficial del TSE con el 100% escrutado: presidente, gobernadores, el mapa por estado y el Congreso que asume en febrero de 2027.</p></div>
+        <div id="br-results"></div>
+        <div id="br-night"></div>
+      </section>` : ''}
 
       <section class="esp-sec" id="br-sec-cargos">
         <div class="esp-sec-head"><span class="kicker">01 · La boleta</span><h3>Qué se elige</h3>
@@ -31778,11 +32325,11 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
         </div>
       </section>
 
-      <section class="esp-sec" id="br-sec-resultados">
+      ${brResHasData() ? '' : `<section class="esp-sec" id="br-sec-resultados">
         <div class="esp-sec-head"><span class="kicker">05 · Noche electoral</span><h3>Resultados en vivo</h3></div>
         <div id="br-results"></div>
         <div id="br-night"></div>
-      </section>
+      </section>`}
 
       <section class="esp-sec" id="br-sec-calendario">
         <div class="esp-sec-head"><span class="kicker">06 · Fechas</span><h3>Calendario electoral</h3></div>
@@ -31815,6 +32362,7 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
     renderPollBox();
     renderResults();
     renderNight();
+    renderRunoff();
     renderBrCalendar();
     renderBrUpdated();
     tickCountdowns();
@@ -32414,6 +32962,237 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
     tickCountdowns();
   }
 
+  /* ===================== ESPECIAL ESPAÑA 2026 =====================
+     Snap general election of 29 Nov 2026: 350 deputies in 52 provinces
+     (D'Hondt, closed lists, 3% per province), 176 for an absolute
+     majority at the investiture. Calculator fed by the poll average. */
+  function esPhase(es, now = new Date()) {
+    const t = now.getTime(), d = es.dates;
+    const open = new Date(d.pollsOpen).getTime(), close = new Date(d.pollsClose).getTime();
+    const sworn = d.cortesConstituted || d.pollsClose;
+    if (t < open) return { id: 'campaign', label: 'Campaña en curso', target: d.pollsOpen, targetLabel: 'para la elección', live: false };
+    if (t < close) return { id: 'voting', label: 'Hoy se vota', target: d.pollsClose, targetLabel: 'para el cierre de urnas', live: true };
+    if (t < close + 3 * 86400000) return { id: 'counting', label: 'Escrutinio en curso', target: sworn, targetLabel: 'para que se constituyan las Cortes', live: true };
+    return { id: 'final', label: 'Resultados', target: sworn, targetLabel: 'para que se constituyan las Cortes', live: false };
+  }
+  function esAverages(es) {
+    const polls = (es.polls || []).filter(p => p.seats && Object.keys(p.seats).length);
+    return (es.lists || []).map(l => {
+      const vals = polls.map(p => (p.seats && p.seats[l.id]) || 0);
+      const pv = (es.polls || []).map(p => p.pct && p.pct[l.id]).filter(v => v != null);
+      const avg = vals.length ? vals.reduce((a, b) => a + b, 0) / vals.length : 0;
+      return Object.assign({}, l, { avg, pctAvg: pv.length ? pv.reduce((a, b) => a + b, 0) / pv.length : null });
+    }).sort((a, b) => b.avg - a.avg || (b.pctAvg || 0) - (a.pctAvg || 0));
+  }
+  const esBlocLabel = b => b === 'gobierno' ? 'gobierno' : b === 'socios' ? 'socio de investidura' : b === 'oposicion' ? 'oposición' : 'otros';
+
+  function renderEsCalculator() {
+    const el = document.getElementById('es-calc');
+    const es = live.espana;
+    if (!el || !es) return;
+    const total = (es.system && es.system.seats) || 350, need = (es.system && es.system.majority) || 176;
+    const lists = esAverages(es).filter(l => l.avg > 0);
+    const right = l => ['PP', 'Vox', 'UPN', 'SALF'].includes(l.id) || (l.bloc === 'oposicion' && ['center-right', 'right', 'far-right'].includes(l.lean));
+    if (!live.esPicked) live.esPicked = new Set(lists.filter(right).map(l => l.id));
+    const picked = live.esPicked;
+    const sum = lists.filter(l => picked.has(l.id)).reduce((a, l) => a + l.avg, 0);
+    const ok = Math.round(sum) >= need;
+    const PRESETS = [
+      { id: 'der', label: 'PP + Vox', pick: l => l.id === 'PP' || l.id === 'Vox' },
+      { id: 'inv', label: 'Bloque de la investidura de 2023', pick: l => l.bloc === 'gobierno' || l.bloc === 'socios' },
+      { id: 'gran', label: 'PP + PSOE', pick: l => l.id === 'PP' || l.id === 'PSOE' },
+      { id: 'none', label: 'Vaciar', pick: () => false },
+    ];
+    el.innerHTML = `
+      <div class="il-calc-head">
+        <div>
+          <div class="il-calc-total ${ok ? 'is-ok' : ''}"><span>${Math.round(sum)}</span> / ${total}</div>
+          <div class="il-calc-verdict">${ok ? `✔ Alcanza la mayoría absoluta de ${need}` : `Faltan ${need - Math.round(sum)} escaños para ${need}`}</div>
+        </div>
+        <div class="seg il-presets">${PRESETS.map(p => `<button type="button" data-preset="${p.id}">${p.label}</button>`).join('')}</div>
+      </div>
+      <div class="il-meter" aria-hidden="true">
+        ${lists.filter(l => picked.has(l.id)).map(l => `<span style="width:${(l.avg / total * 100).toFixed(2)}%;background:${leanColor(l.lean)}" title="${esc(l.name)}: ${l.avg.toFixed(1)}"></span>`).join('')}
+        <i class="il-meter-61" style="left:${(need / total * 100).toFixed(2)}%"><b>${need}</b></i>
+      </div>
+      <div class="il-chips">${lists.map(l => `
+        <button type="button" class="il-chip ${picked.has(l.id) ? 'is-on' : ''}" data-list="${esc(l.id)}" aria-pressed="${picked.has(l.id)}">
+          <i style="background:${leanColor(l.lean)}"></i><span class="il-chip-name">${esc(l.short || l.name)}</span><b>${l.avg.toFixed(1)}</b>
+        </button>`).join('')}</div>
+      <p class="il-calc-note">Escaños promedio de ${(es.polls || []).filter(p => p.seats).length} encuestas. Tocá los partidos para sumar. En la investidura alcanza la mayoría simple en la segunda votación (más síes que noes), así que las abstenciones también cuentan.</p>`;
+    el.querySelectorAll('[data-list]').forEach(b => b.addEventListener('click', () => {
+      const id = b.getAttribute('data-list');
+      picked.has(id) ? picked.delete(id) : picked.add(id);
+      renderEsCalculator();
+    }));
+    el.querySelectorAll('[data-preset]').forEach(b => b.addEventListener('click', () => {
+      const pr = PRESETS.find(p => p.id === b.getAttribute('data-preset'));
+      live.esPicked = new Set(lists.filter(pr.pick).map(l => l.id));
+      renderEsCalculator();
+    }));
+  }
+
+  function renderEsPolls() {
+    const el = document.getElementById('es-polls');
+    const es = live.espana;
+    if (!el || !es) return;
+    const avgs = esAverages(es).filter(l => l.avg > 0 || l.pctAvg);
+    const polls = es.polls || [];
+    const max = Math.max(...avgs.map(l => l.avg), 1);
+    el.innerHTML = `
+      <div class="poll-box">
+        <h4>Proyección de escaños · promedio</h4>
+        <div class="muted">${polls.length} encuesta${polls.length === 1 ? '' : 's'} desde la convocatoria · escaños (y % de voto)</div>
+        ${avgs.map(l => `<div class="pbar"><div class="pbar-top"><span>${esc(l.name)}${l.pctAvg != null ? ` <small class="muted">${fmtPct(l.pctAvg)}</small>` : ''}</span><b>${l.avg.toFixed(1)}</b></div>
+          <div class="pbar-track"><div class="pbar-fill" style="width:${(l.avg / max * 100).toFixed(1)}%;background:${leanColor(l.lean)}"></div></div></div>`).join('')}
+      </div>
+      <div class="poll-box">
+        <h4>Encuesta por encuesta</h4>
+        <div class="il-poll-table-wrap"><table class="il-poll-table">
+          <thead><tr><th>Partido</th>${polls.map(p => `<th title="${esc(p.pollster || '')}">${esc(p.pollster || p.outlet)}<br><span>${esc(p.outlet && p.pollster ? p.outlet + ' · ' : '')}${esc(p.date)}</span></th>`).join('')}</tr></thead>
+          <tbody>${avgs.map(l => `<tr><td><i style="background:${leanColor(l.lean)}"></i>${esc(l.short || l.name)}</td>${polls.map(p => `<td>${p.seats && p.seats[l.id] != null ? p.seats[l.id] : '—'}${p.pct && p.pct[l.id] != null ? `<br><span class="muted">${fmtPct(p.pct[l.id])}</span>` : ''}</td>`).join('')}</tr>`).join('')}</tbody>
+          <tfoot><tr><td>PP + Vox</td>${polls.map(p => `<td>${((p.seats && p.seats.PP) || 0) + ((p.seats && p.seats.Vox) || 0) || '—'}</td>`).join('')}</tr></tfoot>
+        </table></div>
+        <span class="poll-src">Fuentes: ${polls.map(p => p.url ? `<a href="${esc(p.url)}" target="_blank" rel="noopener">${esc(p.pollster || p.outlet)}${p.date ? ` (${esc(p.date)})` : ''}</a>` : esc(p.pollster || p.outlet)).join(' · ')}${es.pollsNote ? '<br>' + esc(es.pollsNote) : ''}</span>
+      </div>`;
+  }
+
+  function renderEspana() {
+    const root = document.getElementById('esp-espana');
+    if (!root) return;
+    const es = live.espana;
+    if (!es) { root.innerHTML = `<div class="esp-loading">${live.fetchOk === false && live.lastFetch ? 'No se pudieron cargar los datos del especial.' : 'Cargando especial…'}</div>`; return; }
+    const ph = esPhase(es);
+    const ed = new Date(es.dates.pollsOpen);
+    const sys = es.system || {}, total = sys.seats || 350, need = sys.majority || 176;
+    const cg = es.congreso || { parties: [] };
+    const invSeats = (cg.parties || []).filter(p => p.bloc === 'gobierno' || p.bloc === 'socios').reduce((a, p) => a + p.seats, 0);
+    const govSeats = (cg.parties || []).filter(p => p.bloc === 'gobierno').reduce((a, p) => a + p.seats, 0);
+    const blocBar = `<div class="senate-renewal">El Gobierno (PSOE y Sumar) tenía <b>${govSeats}</b> diputados; con sus socios de investidura llegaba a <b>${invSeats} de ${total}</b>.
+        <div class="renewal-bar"><span style="width:${govSeats / total * 100}%;background:var(--c-cleft)"></span><span style="width:${(invSeats - govSeats) / total * 100}%;background:var(--c-left);opacity:.55"></span><span style="flex:1;background:var(--line)"></span></div></div>`;
+    const provs = (es.provinces || []).slice().sort((a, b) => b.seats - a.seats);
+    const pmax = Math.max(...provs.map(p => p.seats), 1);
+    const r23 = es.results2023 || {};
+    root.innerHTML = `
+      <section class="esp-hero es-hero">
+        <div class="esp-hero-grid">
+          <div>
+            <span class="esp-status"><span class="live-dot"></span>${esc(ph.label)}</span>
+            <h2>España <em>2026</em></h2>
+            <p class="esp-hero-lede">${esc(es.lede || '')}</p>
+            ${facesRow('Los candidatos', esAverages(es).filter(l => l.wiki && l.leader).slice(0, 4).map(l => ({ name: l.faceName || l.leader, role: l.short || l.name, wiki: l.wiki, color: leanColor(l.lean) })))}
+            <div class="esp-hero-dates">
+              <div class="esp-date-chip">Elección<strong>${fmtDateShort(ed)}</strong></div>
+              <div class="esp-date-chip">Diputados<strong>${total}</strong></div>
+              <div class="esp-date-chip">Mayoría absoluta<strong>${need}</strong></div>
+              ${es.electorate && es.electorate.total ? `<div class="esp-date-chip">Electores<strong>${fmtM(es.electorate.total)}</strong></div>` : ''}
+            </div>
+          </div>
+          <div class="esp-hero-side">
+            <div class="next-card-kicker">Cuenta regresiva ${esc(ph.targetLabel || '')}</div>
+            ${countdownHTML(ph.target, 'Ya empezó')}
+            <div class="esp-updated" id="es-updated"></div>
+          </div>
+        </div>
+      </section>
+
+      <nav class="esp-nav" aria-label="Secciones del especial">
+        <a href="#es-sec-sistema">Cómo se vota</a>
+        <a href="#es-sec-congreso">Congreso actual</a>
+        <a href="#es-sec-calc">Calculadora de mayorías</a>
+        <a href="#es-sec-encuestas">Encuestas</a>
+        <a href="#es-sec-listas">Candidatos</a>
+        <a href="#es-sec-provincias">Provincias</a>
+        <a href="#es-sec-calendario">Calendario</a>
+        <a href="#es-sec-arg">Argentina</a>
+        <a href="#es-sec-claves">Claves</a>
+      </nav>
+
+      <section class="esp-sec" id="es-sec-sistema">
+        <div class="esp-sec-head"><span class="kicker">01 · Las reglas</span><h3>Cómo se vota</h3><p>${esc(es.officesIntro || '')}</p></div>
+        <div class="offices-grid il-offices">${(es.offices || []).map(o => `
+          <div class="office-card"><div class="office-num">${esc(o.value)}</div><div class="office-label">${esc(o.label)}</div>
+            <div class="office-detail">${esc(o.detail || '')}</div></div>`).join('')}</div>
+        ${es.ballotNote ? `<div class="ballot-note il-note">${esc(es.ballotNote)}</div>` : ''}
+      </section>
+
+      <section class="esp-sec" id="es-sec-congreso">
+        <div class="esp-sec-head"><span class="kicker">02 · El Congreso que se disuelve</span><h3>Composición actual</h3>
+          <p>Cada punto es un escaño, coloreado según la orientación del partido (mismo código de colores que el mapa mundial). Pasá el mouse por un partido para resaltarlo.</p></div>
+        <div class="il-knesset">${(cg.parties || []).length ? chamberCard(Object.assign({ total }, cg), 12, blocBar) : ''}</div>
+      </section>
+
+      <section class="esp-sec" id="es-sec-calc">
+        <div class="esp-sec-head"><span class="kicker">03 · La aritmética</span><h3>Calculadora de mayorías</h3>
+          <p>Para ser investido en la primera votación hacen falta ${need} síes; en la segunda, más síes que noes. Sumá partidos con el promedio de las encuestas.</p></div>
+        <div class="il-calc" id="es-calc"></div>
+      </section>
+
+      <section class="esp-sec" id="es-sec-encuestas">
+        <div class="esp-sec-head"><span class="kicker">04 · El clima</span><h3>Qué dicen las encuestas</h3></div>
+        <div class="race-grid" id="es-polls"></div>
+      </section>
+
+      <section class="esp-sec" id="es-sec-listas">
+        <div class="esp-sec-head"><span class="kicker">05 · Quién compite</span><h3>Los candidatos y las listas</h3></div>
+        <div class="us-key-grid">${(es.lists || []).map(l => `
+          <div class="office-card il-list" style="border-top-color:${leanColor(l.lean)}">
+            <div class="il-list-head">${faceHTML({ name: l.faceName || l.leader || l.name, wiki: l.wiki, color: leanColor(l.lean) }, 'sm')}
+              <div><div class="office-label">${esc(l.name)}</div><div class="il-list-leader">${esc(l.leader || 'Candidatura a definir')}</div></div></div>
+            <div class="office-detail">${esc(l.desc || '')}</div>
+            <span class="us-rating-chip"><i style="background:${leanColor(l.lean)}"></i>${esc((IDEOLOGIES[l.lean] || IDEOLOGIES.other).label)} · ${esBlocLabel(l.bloc)}</span>
+          </div>`).join('')}</div>
+      </section>
+
+      <section class="esp-sec" id="es-sec-provincias">
+        <div class="esp-sec-head"><span class="kicker">06 · El mapa del poder</span><h3>Dónde se reparten los ${total} escaños</h3>
+          <p>Cada provincia elige al menos dos diputados (Ceuta y Melilla, uno) y el resto se reparte por población: las provincias chicas eligen pocos diputados y ahí el sistema favorece a los partidos grandes.</p></div>
+        <div class="race-grid">
+          <div class="es-prov-grid">${provs.map(p => `<div class="es-prov"><span>${esc(p.name)}</span><b>${p.seats}</b><div class="pbar-track"><div class="pbar-fill" style="width:${(p.seats / pmax * 100).toFixed(1)}%;background:#AA151B"></div></div></div>`).join('')}</div>
+          ${(r23.parties || []).length ? `<div class="poll-box"><h4>Así votó España en 2023</h4><div class="muted">Elecciones del 23 de julio de 2023${r23.turnout ? ` · participación ${fmtPct(r23.turnout)}` : ''}</div>
+            <div class="es-res23">${r23.parties.map(p => `<div class="pbar"><div class="pbar-top"><span>${esc(p.party)}</span><b>${p.pct != null ? fmtPct(p.pct) : ''}${p.seats != null ? ` · ${p.seats} esc.` : ''}</b></div>
+              <div class="pbar-track"><div class="pbar-fill" style="width:${Math.min((p.pct || 0) * 2.5, 100)}%;background:${leanColor(((es.lists || []).find(l => l.id === p.party) || {}).lean || 'other')}"></div></div></div>`).join('')}</div></div>` : ''}
+        </div>
+      </section>
+
+      <section class="esp-sec" id="es-sec-calendario">
+        <div class="esp-sec-head"><span class="kicker">07 · Fechas</span><h3>Calendario</h3></div>
+        <ul class="br-cal" id="es-cal"></ul>
+      </section>
+
+      ${argSection('es', '08', es.argentina, 'ESP', 'España')}
+
+      <section class="esp-sec" id="es-sec-claves">
+        <div class="esp-sec-head"><span class="kicker">09 · Para entender</span><h3>Claves del sistema</h3></div>
+        <ul class="facts-list">${(es.keyFacts || []).map(f => `<li>${esc(f)}</li>`).join('')}</ul>
+        <p class="esp-sources" style="margin-top:18px"><strong>Fuentes:</strong> ${(es.sources || []).map(x => `<a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.label)}</a>`).join(' · ')}.</p>
+      </section>`;
+
+    root.querySelectorAll('.esp-nav a').forEach(a => a.addEventListener('click', ev => {
+      ev.preventDefault();
+      const t = document.querySelector(a.getAttribute('href'));
+      if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }));
+    wireHemicycleHover(root);
+    activateFaces(root);
+    renderEsCalculator();
+    renderEsPolls();
+    const cal = document.getElementById('es-cal');
+    if (cal) {
+      const items = (es.calendar || []).map(c => ({ ...c, d: new Date(c.date + 'T12:00:00') })).sort((a, b) => a.d - b.d);
+      const today = startOfDay(new Date());
+      const nextIdx = items.findIndex(i => i.d >= today);
+      cal.innerHTML = items.map((i, idx) => {
+        const n = daysUntil(i.d);
+        return `<li class="${[i.d < today ? 'is-past' : '', idx === nextIdx ? 'is-next' : '', i.key ? 'is-key' : ''].join(' ')}"><span class="br-cal-date">${fmtDateShort(i.d)}${i.d.getFullYear() !== 2026 ? ' ' + i.d.getFullYear() : ''}</span><span class="br-cal-dot"></span>
+          <span><span class="br-cal-label">${esc(i.label)}</span>${n >= 0 && n <= 60 ? `<br><span class="br-cal-in">${inDaysText(n)}</span>` : ''}</span></li>`;
+      }).join('');
+    }
+    const upd = document.getElementById('es-updated');
+    if (upd) upd.textContent = `Datos actualizados ${relTime(new Date(es.updatedAt))}`;
+    tickCountdowns();
+  }
+
   /* ===================== RELACIÓN CON ARGENTINA =====================
      Shared section for every special: political alignment, ambassadors,
      goods trade (INDEC) with Argentina's share, and what each side sells.
@@ -32567,40 +33346,47 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
   /* ===================== REFRESH LOOP ===================== */
   function isViewActive(v) { return document.body.getAttribute('data-view') === v; }
   async function refresh() {
-    const [liveRes, brRes, usRes, ilRes] = await Promise.allSettled([fetchJSON(LIVE_URL), fetchJSON(BRASIL_URL), fetchJSON(EEUU_URL), fetchJSON(ISRAEL_URL)]);
+    const [liveRes, brRes, usRes, ilRes, esRes] = await Promise.allSettled([fetchJSON(LIVE_URL), fetchJSON(BRASIL_URL), fetchJSON(EEUU_URL), fetchJSON(ISRAEL_URL), fetchJSON(ESPANA_URL)]);
+    const prevEs = live.espana ? JSON.stringify(live.espana) : null;
+    if (esRes.status === 'fulfilled') live.espana = esRes.value;
     live.lastFetch = new Date();
     live.fetchOk = [liveRes, brRes, usRes, ilRes].some(r => r.status === 'fulfilled');
     const prevIl = live.israel ? JSON.stringify(live.israel) : null;
     if (ilRes.status === 'fulfilled') live.israel = ilRes.value;
     const prevUs = live.eeuu ? JSON.stringify(live.eeuu) : null;
     if (usRes.status === 'fulfilled') live.eeuu = usRes.value;
-    const prevBr = live.brasil ? JSON.stringify(live.brasil) + JSON.stringify(live.brRes || {}) : null;
+    const prevBr = live.brasil ? JSON.stringify(live.brasil) + JSON.stringify(live.brRes || {}) + JSON.stringify(live.brRes2 || {}) : null;
     if (liveRes.status === 'fulfilled') live.data = liveRes.value;
     if (brRes.status === 'fulfilled') {
       const ph0 = brasilPhase(brRes.value);
       if (ph0.id !== 'campaign') {
         try { live.brRes = await fetchJSON(BR_RES_URL); } catch (e) { /* keep the last one */ }
+        if (Date.now() >= new Date(brRes.value.dates.runoffOpen).getTime() - 86400000) {
+          try { live.brRes2 = await fetchJSON(BR_RES2_URL); } catch (e) { /* not published yet */ }
+        }
         if (brResHasData() && !live.geo) { try { live.geo = await fetchJSON(BR_GEO_URL); } catch (e) {} }
       }
       await pullTSE(brRes.value);
       mergeBrRes(brRes.value);
+      mergeBrRes(brRes.value, live.brRes2);
       live.brasil = brRes.value;
     }
     renderPortada();
-    const brChanged = live.brasil && JSON.stringify(live.brasil) + JSON.stringify(live.brRes || {}) !== prevBr;
+    const brChanged = live.brasil && JSON.stringify(live.brasil) + JSON.stringify(live.brRes || {}) + JSON.stringify(live.brRes2 || {}) !== prevBr;
     if (isViewActive('brasil')) {
-      if (brChanged && prevBr && (!brResHasData() || document.querySelector('#br-metric .is-result'))) { renderResults(); renderNight(); renderPollBox(); renderBrCalendar(); if (BR_METRICS[live.brMetric].result || BR_METRICS[live.brMetric].live) { renderBrMap(); renderUFCard(); } }
+      if (brChanged && prevBr && (!brResHasData() || document.querySelector('#br-metric .is-result'))) { renderResults(); renderNight(); renderRunoff(); renderPollBox(); renderBrCalendar(); if (BR_METRICS[live.brMetric].result || BR_METRICS[live.brMetric].live) { renderBrMap(); renderUFCard(); } }
       else if (brChanged || !document.querySelector('#esp-brasil .esp-hero')) renderBrasil();
       renderBrUpdated();
     }
     if (isViewActive('israel') && live.israel && (JSON.stringify(live.israel) !== prevIl || !document.querySelector('#esp-israel .esp-hero'))) renderIsrael();
+    if (isViewActive('espana') && live.espana && (JSON.stringify(live.espana) !== prevEs || !document.querySelector('#esp-espana .esp-hero'))) renderEspana();
     if (isViewActive('eeuu') && live.eeuu && (JSON.stringify(live.eeuu) !== prevUs || !document.querySelector('#esp-eeuu .esp-hero'))) renderEeuu();
     scheduleRefresh();
   }
   function scheduleRefresh() {
     clearTimeout(live.timer);
     const base = (live.data && live.data.refreshSeconds) || 300;
-    const fast = (live.brasil && brasilPhase(live.brasil).live) || (live.eeuu && usPhase(live.eeuu).live) || (live.israel && isrPhase(live.israel).live) ? 60 : base;
+    const fast = (live.brasil && brasilPhase(live.brasil).live) || (live.eeuu && usPhase(live.eeuu).live) || (live.israel && isrPhase(live.israel).live) || (live.espana && esPhase(live.espana).live) ? 60 : base;
     live.timer = setTimeout(() => { if (!document.hidden) refresh(); else scheduleRefresh(); }, fast * 1000);
   }
   document.addEventListener('visibilitychange', () => {
@@ -32614,6 +33400,7 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
     }
     if (view === 'eeuu' && !document.querySelector('#esp-eeuu .esp-hero')) renderEeuu();
     if (view === 'israel' && !document.querySelector('#esp-israel .esp-hero')) renderIsrael();
+    if (view === 'espana' && !document.querySelector('#esp-espana .esp-hero')) renderEspana();
     if (view === 'inicio') renderPortada();
   };
 
@@ -32623,6 +33410,7 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
   if (isViewActive('brasil')) renderBrasil();
   if (isViewActive('eeuu')) renderEeuu();
   if (isViewActive('israel')) renderIsrael();
+  if (isViewActive('espana')) renderEspana();
   refresh();
   setInterval(tickCountdowns, 1000);
   setInterval(() => { renderNow(); renderFreshness(); renderBrUpdated(); }, 30000);
