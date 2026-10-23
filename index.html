@@ -6099,6 +6099,48 @@
     animation: brFlow 16s ease-in-out infinite alternate;
   }
   .il-hero h2 em { color: #9CC3F5; }
+  #esp-argentina .esp-sec-head .kicker { color: #2B6CB0; }
+  #esp-argentina .esp-nav a:hover { border-color: #2B6CB0; color: #2B6CB0; }
+  #esp-argentina .esp-status .live-dot { background: #F6B40E; }
+  #esp-argentina .ar-hero { background: linear-gradient(135deg, #0B2545 0%, #1D4E89 55%, #4A90C8 100%); }
+  .topic-nav-link.is-special-ar .topic-nav-text::before { background: #74ACDF; }
+  .ar-map-wrap { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 20px; align-items: start; }
+  .ar-map-card { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 14px; }
+  .ar-map svg { width: 100%; height: auto; display: block; }
+  .ar-map path.ar-prov { stroke: #fff; stroke-width: .7; cursor: pointer; transition: opacity .15s; }
+  .ar-map path.ar-prov:hover, .ar-map path.ar-prov.is-sel { stroke: #0B1628; stroke-width: 1.6; }
+  .ar-map .ar-frame { fill: none; stroke: var(--line-strong); stroke-width: 1; }
+  .ar-map .ar-frame-lbl { font: 600 9px var(--font-sans); fill: var(--muted); letter-spacing: .04em; text-transform: uppercase; }
+  .ar-map .ar-sector { fill: none; stroke: #7A8799; stroke-width: .8; stroke-dasharray: 3 3; }
+  .ar-map .ar-grat { fill: none; stroke: #B8C3D1; stroke-width: .5; }
+  .ar-map .ar-lbl { font: 600 8.5px var(--font-sans); fill: #33415C; }
+  .ar-map .ar-caba-dot { fill: none; stroke: #0B1628; stroke-width: 1; }
+  .ar-legend { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 12.5px; margin-top: 10px; color: var(--ink-soft); }
+  .ar-legend i { display: inline-block; width: 12px; height: 12px; border-radius: 3px; margin-right: 5px; vertical-align: -1px; }
+  .ar-card { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 18px; position: sticky; top: 110px; }
+  .ar-card h4 { font: 700 26px/1.1 var(--font-serif); margin: 4px 0 6px; color: var(--ink); }
+  .ar-card .ar-kick { font: 700 11px var(--font-sans); letter-spacing: .1em; text-transform: uppercase; color: #2B6CB0; }
+  .ar-gov { display: flex; gap: 12px; align-items: center; margin: 10px 0; }
+  .ar-facts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin: 12px 0; }
+  .ar-facts div { background: var(--surface-2); border-radius: 10px; padding: 8px 10px; display: flex; flex-direction: column; gap: 2px; }
+  .ar-facts span { font: 600 10px var(--font-sans); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+  .ar-facts b { font-size: 15px; color: var(--ink); }
+  .ar-date-pill { display: inline-block; font: 700 12px var(--font-sans); padding: 4px 10px; border-radius: 999px; background: #E3ECF8; color: #1D4E89; }
+  .ar-date-pill.is-tent { background: #FFF4DB; color: #8A5A00; }
+  .ar-date-pill.is-none { background: var(--surface-2); color: var(--muted); }
+  .ar-table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); }
+  .ar-table { width: 100%; border-collapse: collapse; font-size: 13.5px; min-width: 860px; }
+  .ar-table th { text-align: left; font: 700 10.5px var(--font-sans); letter-spacing: .07em; text-transform: uppercase; color: var(--muted); padding: 10px; border-bottom: 1px solid var(--line); cursor: pointer; white-space: nowrap; background: var(--surface-2); position: sticky; top: 0; }
+  .ar-table td { padding: 9px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  .ar-table tr:hover td { background: var(--surface-2); }
+  .ar-table td.num { font-family: var(--font-mono); text-align: right; white-space: nowrap; }
+  .ar-table i { display: inline-block; width: 9px; height: 9px; border-radius: 50%; margin-right: 6px; }
+  .ar-macro { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; }
+  .ar-macro div { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; }
+  .ar-macro span { display: block; font: 600 10.5px var(--font-sans); letter-spacing: .07em; text-transform: uppercase; color: var(--muted); }
+  .ar-macro b { display: block; font: 700 24px var(--font-serif); color: var(--ink); margin: 4px 0 2px; }
+  .ar-macro small { color: var(--muted); font-size: 11.5px; }
+  @media (max-width: 900px) { .ar-map-wrap { grid-template-columns: 1fr; } .ar-card { position: static; } }
   #esp-espana .esp-sec-head .kicker { color: #AA151B; }
   #esp-espana .esp-nav a:hover { border-color: #AA151B; color: #AA151B; }
   #esp-espana .esp-status .live-dot { background: #F1BF00; }
@@ -7043,6 +7085,10 @@
         <span class="topic-nav-num">★</span>
         <span class="topic-nav-text">España 2026</span>
       </a>
+      <a href="#argentina" class="topic-nav-link is-special is-special-ar" onclick="window.__scrollToSection(event, 'argentina')">
+        <span class="topic-nav-num">★</span>
+        <span class="topic-nav-text">Argentina 2027</span>
+      </a>
       <a href="#nav-map" class="topic-nav-link" onclick="window.__scrollToSection(event, 'nav-map')">
         <span class="topic-nav-num">01</span>
         <span class="topic-nav-text">Mapa</span>
@@ -7079,6 +7125,7 @@
     <a href="#brasil" data-go="brasil"><b>Brasil 2026</b><span>Balotaje del 25 de octubre · resultados de la 1.ª vuelta</span></a>
     <a href="#eeuu" data-go="eeuu"><b>EE.UU. 2026</b><span>Midterms del 3 de noviembre</span></a>
     <a href="#israel" data-go="israel"><b>Israel 2026</b><span>Knéset, 27 de octubre · calculadora de coaliciones</span></a>
+    <a href="#argentina" data-go="argentina"><b>Argentina 2027</b><span>Presidenciales, Congreso y las 24 provincias · mapa bicontinental</span></a>
     <a href="#espana" data-go="espana"><b>España 2026</b><span>Generales anticipadas del 29 de noviembre · calculadora de mayorías</span></a>
     <div class="nav-sheet-group">El atlas</div>
     <a href="#inicio" data-go="inicio"><b>Inicio y mapa</b><span>Portada, buscador y mapa mundial</span></a>
@@ -7487,6 +7534,9 @@
 
   <div class="atlas-view" data-view="israel">
     <div class="esp" id="esp-israel"><div class="esp-loading">Cargando especial…</div></div>
+  </div>
+  <div class="atlas-view" data-view="argentina">
+    <div class="esp" id="esp-argentina"><div class="esp-loading">Cargando especial…</div></div>
   </div>
   <div class="atlas-view" data-view="espana">
     <div class="esp" id="esp-espana"><div class="esp-loading">Cargando especial…</div></div>
@@ -27942,7 +27992,7 @@ function renderDetail(c) {
    =========================================================== */
 const MONTHS_ES = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
 
-const FICHA_SPECIALS = { BRA: ['brasil', 'Brasil 2026'], USA: ['eeuu', 'EE.UU. 2026'], ISR: ['israel', 'Israel 2026'], ESP: ['espana', 'España 2026'] };
+const FICHA_SPECIALS = { BRA: ['brasil', 'Brasil 2026'], USA: ['eeuu', 'EE.UU. 2026'], ISR: ['israel', 'Israel 2026'], ESP: ['espana', 'España 2026'], ARG: ['argentina', 'Argentina 2027'] };
 function fichaNextElectionHTML(c) {
   const sp = FICHA_SPECIALS[c.iso];
   const spLink = sp ? `<a class="ficha-special" href="#${sp[0]}" onclick="window.closeFicha(); window.__atlasGoTo('${sp[0]}'); return false;">★ Ver el especial ${sp[1]} →</a>` : '';
@@ -30545,7 +30595,7 @@ function renderElectionsTimeline() {  const today = new Date();
   // Also marks the corresponding nav link as active.
   // ============ SPA ROUTER ============
   // Maps nav hrefs (#nav-map, #nav-calendar, …) and view ids to canonical views.
-  const VIEW_IDS = ['inicio', 'elecciones', 'analisis', 'cambio', 'metodologia', 'brasil', 'eeuu', 'israel', 'espana'];
+  const VIEW_IDS = ['inicio', 'elecciones', 'analisis', 'cambio', 'metodologia', 'brasil', 'eeuu', 'israel', 'espana', 'argentina'];
   const NAV_TO_VIEW = {
     'nav-map': 'inicio',          // the map now lives on the home view
     'nav-calendar': 'elecciones',
@@ -31175,6 +31225,8 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
   const US_GEO_URL = 'data/geo/usa-states.json';
   const ISRAEL_URL = 'data/especiales/israel-2026.json';
   const ESPANA_URL = 'data/especiales/espana-2026.json';
+  const ARGENTINA_URL = 'data/especiales/argentina-2027.json';
+  const AR_GEO_URL = 'data/geo/argentina.json';
   const MONTHS = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
   const MONTHS_SHORT = ['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
   const DAYS = ['domingo','lunes','martes','miércoles','jueves','viernes','sábado'];
@@ -31203,6 +31255,11 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
     israel: null,        // data/especiales/israel-2026.json
     ilPicked: null,      // coalition calculator selection
     espana: null,        // data/especiales/espana-2026.json
+    argentina: null,     // data/especiales/argentina-2027.json
+    arGeo: null,
+    arMetric: 'date',
+    arSel: 'B',
+    arSort: 'name',
     esPicked: null,
   };
   window.__atlasLive = live; // handy for debugging from the console
@@ -33084,6 +33141,281 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
     tickCountdowns();
   }
 
+  /* ===================== ESPECIAL ARGENTINA 2027 =====================
+     President, half of the Chamber, a third of the Senate and most of the
+     24 districts (many on their own dates). Bicontinental map from the IGN
+     layer (tools/build_argentina_map.py): the Islas Malvinas, Georgias del Sur,
+     Sandwich del Sur and the Antártida Argentina belong to Tierra del Fuego. */
+  function arPhase(ar, now = new Date()) {
+    const d = ar.dates || {}, t = now.getTime();
+    const gen = d.general ? new Date(d.general + 'T08:00:00-03:00').getTime() : null;
+    if (gen && t < gen) return { id: 'campaign', label: 'Rumbo a 2027', target: d.general + 'T08:00:00-03:00', targetLabel: 'para la elección presidencial', live: false };
+    return { id: 'final', label: 'Elecciones 2027', target: (d.inauguration || '2027-12-10') + 'T12:00:00-03:00', targetLabel: 'para la asunción', live: false };
+  }
+  const arProv = iso => ((live.argentina && live.argentina.provinces) || {})[iso] || {};
+  const AR_MONTHS = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'];
+  const arDateTxt = p => {
+    if (p.governorElection2027 === false) return 'No elige gobernador en 2027';
+    if (!p.date2027) return /desdobl/i.test(p.dateStatus || '') ? 'Separada de la nacional, sin fecha' : 'Fecha a definir';
+    const d = new Date(p.date2027 + 'T12:00:00');
+    return `${d.getDate()} ${AR_MONTHS[d.getMonth()]} 2027${p.dateStatus && p.dateStatus !== 'confirmada' ? ' (' + esc(p.dateStatus) + ')' : ''}`;
+  };
+  // Map metrics: colour by date window, governor's party lean, or a number
+  const AR_DATE_COLORS = [['Antes de junio', '#1D4E89'], ['Junio–septiembre', '#4A90C8'], ['Con la nacional (oct)', '#74ACDF'], ['Fecha a definir', '#C9D6E3'], ['No elige gobernador', '#E5E7EB'], ['Separada de la nacional, sin fecha', '#F6B40E']];
+  function arDateBucket(p) {
+    if (p.governorElection2027 === false) return 4;
+    if (!p.date2027) return /desdobl/i.test(p.dateStatus || '') ? 5 : 3;
+    const m = new Date(p.date2027 + 'T12:00:00').getMonth();
+    return m < 5 ? 0 : m < 9 ? 1 : 2;
+  }
+  const AR_METRICS = {
+    date: { label: 'Cuándo vota', kind: 'cat' },
+    gov: { label: 'Partido del gobernador', kind: 'lean' },
+    dip: { label: 'Diputados en juego', kind: 'num', get: p => p.deputies2027, fmt: v => `${v} bancas` },
+    electorate: { label: 'Electores', kind: 'num', get: p => p.electorate, fmt: v => fmtM(v, 2) },
+    poverty: { label: 'Pobreza', kind: 'num', get: p => p.poverty && p.poverty.pct, fmt: v => fmtPct(v) },
+    unemployment: { label: 'Desempleo', kind: 'num', get: p => p.unemployment && p.unemployment.pct, fmt: v => fmtPct(v) },
+  };
+  function arFill(iso) {
+    const p = arProv(iso), m = AR_METRICS[live.arMetric] || AR_METRICS.date;
+    if (m.kind === 'cat') return AR_DATE_COLORS[arDateBucket(p)][1];
+    if (m.kind === 'lean') return leanColor((p.governor && p.governor.lean) || 'other');
+    const vals = Object.values((live.argentina && live.argentina.provinces) || {}).map(m.get).filter(v => v != null);
+    const v = m.get(p);
+    if (v == null || !vals.length) return 'var(--c-unknown)';
+    const lo = Math.min(...vals), hi = Math.max(...vals);
+    const i = Math.min(GREENS.length - 1, Math.floor((v - lo) / ((hi - lo) || 1) * GREENS.length));
+    return live.arMetric === 'poverty' || live.arMetric === 'unemployment' ? ['#FDECEC', '#F8C9C4', '#F1A097', '#E2725F', '#C44A3A', '#97261B'][i] : GREENS[i];
+  }
+  function arMapSVG() {
+    const g = live.arGeo;
+    if (!g) return '<div class="esp-loading">Cargando mapa…</div>';
+    const dec = g.decor || {};
+    const frames = (dec.frames || []).map(f => `<rect class="ar-frame" x="${f.x}" y="${f.y}" width="${f.w}" height="${f.h}" rx="8"/><text class="ar-frame-lbl" x="${f.x + 8}" y="${f.y + 14}">${esc(f.label)}</text>`).join('');
+    const paths = g.locations.map(l => {
+      const p = arProv(l.id);
+      const tip = `${l.name}${l.sub ? ' (Tierra del Fuego)' : ''} — ${p.governor && p.governor.name ? 'Gobierna ' + p.governor.name : ''}`;
+      return `<path class="ar-prov${live.arSel === l.id ? ' is-sel' : ''}" data-ar="${l.id}" d="${l.path}" style="fill:${arFill(l.id)}"><title>${esc(tip)}</title></path>`;
+    }).join('');
+    const labels = (dec.labels || []).map(t => `<text class="ar-lbl" x="${t.x}" y="${t.y}" text-anchor="${t.a || 'start'}">${esc(t.t)}</text>`).join('');
+    const dot = dec.caba_dot ? `<circle class="ar-caba-dot" cx="${dec.caba_dot[0]}" cy="${dec.caba_dot[1]}" r="5"/>` : '';
+    return `<svg viewBox="${g.viewBox}" role="img" aria-label="Mapa bicontinental de la República Argentina">${frames}<path class="ar-grat" d="${dec.graticule || ''}"/><path class="ar-sector" d="${dec.sector || ''}"/>${paths}${dot}${labels}</svg>`;
+  }
+  function arLegendHTML() {
+    const m = AR_METRICS[live.arMetric] || AR_METRICS.date;
+    if (m.kind === 'cat') return AR_DATE_COLORS.map(([l, c]) => `<span><i style="background:${c}"></i>${l}</span>`).join('');
+    if (m.kind === 'lean') {
+      const leans = [...new Set(Object.values(live.argentina.provinces || {}).map(p => (p.governor && p.governor.lean) || 'other'))];
+      return leans.map(l => `<span><i style="background:${leanColor(l)}"></i>${esc((IDEOLOGIES[l] || IDEOLOGIES.other).label)}</span>`).join('');
+    }
+    const vals = Object.values(live.argentina.provinces || {}).map(m.get).filter(v => v != null);
+    return vals.length ? `<span>Menor: <b>${m.fmt(Math.min(...vals))}</b></span><span>Mayor: <b>${m.fmt(Math.max(...vals))}</b></span><span class="muted">Color más intenso = valor más alto</span>` : '';
+  }
+  function arCardHTML(iso) {
+    const p = arProv(iso);
+    if (!p.name) return '<p class="muted">Tocá una provincia en el mapa.</p>';
+    const g = p.governor || {}, pov = p.poverty || {}, un = p.unemployment || {};
+    const st = arDateBucket(p);
+    return `
+      <div class="ar-kick">${iso === 'C' ? 'Ciudad Autónoma' : 'Provincia'}${p.capital ? ' · capital: ' + esc(p.capital) : ''}</div>
+      <h4>${esc(p.name)}</h4>
+      <span class="ar-date-pill ${st === 3 ? 'is-tent' : st === 4 ? 'is-none' : ''}">${p.governorElection2027 === false ? 'No elige gobernador en 2027' : (iso === 'C' ? 'Jefatura de Gobierno' : 'Gobernador') + ': ' + arDateTxt(p)}</span>
+      <div class="ar-gov">${faceHTML({ name: g.name || '—', wiki: g.wiki, color: leanColor(g.lean || 'other') }, 'sm')}
+        <div><div class="muted" style="font-size:12px">Gobierna</div><b>${esc(g.name || '—')}</b><div class="muted" style="font-size:13px">${esc(g.party || '')}${g.since ? ' · desde ' + esc(String(g.since).slice(0, 4)) : ''}</div></div></div>
+      ${p.reelection || p.incumbentRunning ? `<p style="font-size:13.5px;margin:4px 0"><b>Reelección:</b> ${esc(p.reelection || '')}${p.incumbentRunning ? ` · ¿se presenta? ${esc(p.incumbentRunning)}` : ''}</p>` : ''}
+      ${p.summary ? `<p style="font-size:14px;line-height:1.55;color:var(--ink-soft)">${esc(p.summary)}</p>` : ''}
+      ${(p.candidates || []).length ? `<div class="el-cands" style="margin:8px 0">${p.candidates.slice(0, 4).map(c => `<div class="el-cand"><b>${esc(c.name)}</b>${c.party ? `<span>${esc(c.party)}</span>` : ''}${c.note ? `<small>${esc(c.note)}</small>` : ''}</div>`).join('')}</div>` : ''}
+      <div class="ar-facts">
+        <div><span>Población</span><b>${p.population ? fmtM(p.population, 2) : '—'}</b></div>
+        <div><span>Electores</span><b>${p.electorate ? fmtInt(p.electorate) : '—'}</b></div>
+        <div><span>Diputados</span><b>${p.deputies != null ? p.deputies : '—'}${p.deputies2027 != null ? ` · ${p.deputies2027} en juego` : ''}</b></div>
+        <div><span>Senado 2027</span><b>${p.senate2027 ? 'Elige 3 senadores' : 'No renueva'}</b></div>
+        <div><span>Pobreza${pov.aglomerado ? ' · ' + esc(pov.aglomerado) : ''}</span><b>${pov.pct != null ? fmtPct(pov.pct) : '—'}</b></div>
+        <div><span>Desempleo</span><b>${un.pct != null ? fmtPct(un.pct) : '—'}</b></div>
+        ${p.gov2023 && p.gov2023.winner ? `<div><span>Gobernación 2023</span><b>${esc(p.gov2023.winner)}${p.gov2023.pct != null ? ' · ' + fmtPct(p.gov2023.pct) : ''}</b></div>` : ''}
+        ${p.dip2025 && p.dip2025.winner ? `<div><span>Diputados 2025</span><b>${esc(p.dip2025.winner)}${p.dip2025.pct != null ? ' · ' + fmtPct(p.dip2025.pct) : ''}</b></div>` : ''}
+      </div>
+      ${p.economy ? `<p class="muted" style="font-size:13px"><b>Economía:</b> ${esc(p.economy)}</p>` : ''}
+      ${iso === 'V' ? '<p class="muted" style="font-size:12.5px">Incluye las Islas Malvinas, Georgias del Sur y Sandwich del Sur —ocupadas por el Reino Unido— y el Sector Antártico Argentino.</p>' : ''}
+      ${p.dateNote ? `<p class="muted" style="font-size:12.5px">${esc(p.dateNote)}</p>` : ''}
+      ${(p.sources || []).length ? `<p class="esp-sources">Fuentes: ${p.sources.slice(0, 3).map(x => `<a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.label)}</a>`).join(' · ')}</p>` : ''}`;
+  }
+  function renderArMap() {
+    const el = document.getElementById('ar-map'), card = document.getElementById('ar-card'), lg = document.getElementById('ar-legend');
+    if (!el || !live.argentina) return;
+    el.innerHTML = arMapSVG();
+    if (lg) lg.innerHTML = arLegendHTML();
+    if (card) { card.innerHTML = arCardHTML(live.arSel); activateFaces(card); }
+    el.querySelectorAll('[data-ar]').forEach(pth => pth.addEventListener('click', () => { live.arSel = pth.getAttribute('data-ar'); renderArMap(); if (window.innerWidth < 900 && card) card.scrollIntoView({ behavior: 'smooth', block: 'start' }); }));
+  }
+  function renderArTable() {
+    const el = document.getElementById('ar-table');
+    const ar = live.argentina;
+    if (!el || !ar) return;
+    const rows = Object.entries(ar.provinces || {}).map(([iso, p]) => ({ iso, p }));
+    const key = live.arSort;
+    const val = r => key === 'name' ? r.p.name : key === 'date' ? (r.p.governorElection2027 === false ? '9999' : r.p.date2027 || '9998') : key === 'electorate' ? -(r.p.electorate || 0) : key === 'poverty' ? -((r.p.poverty && r.p.poverty.pct) || 0) : key === 'dip' ? -(r.p.deputies2027 || 0) : 0;
+    rows.sort((a, b) => (val(a) > val(b) ? 1 : val(a) < val(b) ? -1 : 0));
+    el.innerHTML = `<div class="ar-table-wrap"><table class="ar-table">
+      <thead><tr><th data-sort="name">Distrito</th><th>Gobierna</th><th data-sort="date">Elección de gobernador</th><th>Reelección</th><th data-sort="dip">Diputados en juego</th><th>Senado</th><th data-sort="electorate">Electores</th><th data-sort="poverty">Pobreza</th></tr></thead>
+      <tbody>${rows.map(({ iso, p }) => `<tr data-ar-row="${iso}">
+        <td><b>${esc(p.name)}</b></td>
+        <td><i style="background:${leanColor((p.governor && p.governor.lean) || 'other')}"></i>${esc((p.governor && p.governor.name) || '—')}<br><span class="muted" style="font-size:12px">${esc((p.governor && p.governor.party) || '')}</span></td>
+        <td>${arDateTxt(p)}</td>
+        <td style="font-size:12.5px">${esc(p.reelection || '—')}</td>
+        <td class="num">${p.deputies2027 != null ? p.deputies2027 : '—'}</td>
+        <td>${p.senate2027 ? '3 bancas' : '—'}</td>
+        <td class="num">${p.electorate ? fmtInt(p.electorate) : '—'}</td>
+        <td class="num">${p.poverty && p.poverty.pct != null ? fmtPct(p.poverty.pct) : '—'}</td></tr>`).join('')}</tbody></table></div>
+      <p class="esp-sources">Pobreza y desempleo: INDEC, EPH (por aglomerado urbano principal de cada provincia). Electores: registrados en las legislativas de 2025. Tocá una fila para verla en el mapa.</p>`;
+    el.querySelectorAll('[data-sort]').forEach(th => th.addEventListener('click', () => { live.arSort = th.getAttribute('data-sort'); renderArTable(); }));
+    el.querySelectorAll('[data-ar-row]').forEach(tr => tr.addEventListener('click', () => { live.arSel = tr.getAttribute('data-ar-row'); renderArMap(); const m = document.getElementById('ar-sec-mapa'); if (m) m.scrollIntoView({ behavior: 'smooth' }); }));
+  }
+
+  async function renderArgentina() {
+    const root = document.getElementById('esp-argentina');
+    if (!root) return;
+    const ar = live.argentina;
+    if (!ar) { root.innerHTML = `<div class="esp-loading">${live.fetchOk === false && live.lastFetch ? 'No se pudieron cargar los datos del especial.' : 'Cargando especial…'}</div>`; return; }
+    const ph = arPhase(ar);
+    const n = ar.nacional || {}, dts = ar.dates || {};
+    const gd = dts.general ? new Date(dts.general + 'T12:00:00') : null;
+    const provs = Object.entries(ar.provinces || {});
+    const cal = provs.filter(([, p]) => p.governorElection2027 !== false).map(([iso, p]) => ({ iso, p, d: p.date2027 ? new Date(p.date2027 + 'T12:00:00') : null }))
+      .sort((a, b) => (a.d ? a.d.getTime() : 9e15) - (b.d ? b.d.getTime() : 9e15));
+    const govCount = cal.length;
+    root.innerHTML = `
+      <section class="esp-hero ar-hero">
+        <div class="esp-hero-grid">
+          <div>
+            <span class="esp-status"><span class="live-dot"></span>${esc(ph.label)}</span>
+            <h2>Argentina <em>2027</em></h2>
+            <p class="esp-hero-lede">${esc(ar.lede || '')}</p>
+            ${facesRow('Los nombres que suenan', (n.candidates || []).filter(c => c.wiki).slice(0, 4).map(c => ({ name: c.name, role: c.party, wiki: c.wiki, color: leanColor(c.lean || 'other') })))}
+            <div class="esp-hero-dates">
+              ${gd ? `<div class="esp-date-chip">Presidenciales<strong>${fmtDateShort(gd)} 2027</strong></div>` : ''}
+              <div class="esp-date-chip">Gobernaciones<strong>${govCount} de 24</strong></div>
+              ${n.offices ? n.offices.slice(1, 3).map(o => `<div class="esp-date-chip">${esc(o.label)}<strong>${esc(o.value)}</strong></div>`).join('') : ''}
+              ${n.electorate && n.electorate.total ? `<div class="esp-date-chip">Electores<strong>${fmtM(n.electorate.total)}</strong></div>` : ''}
+            </div>
+          </div>
+          <div class="esp-hero-side">
+            <div class="next-card-kicker">Cuenta regresiva ${esc(ph.targetLabel || '')}</div>
+            ${countdownHTML(ph.target, 'Ya empezó')}
+            <div class="esp-updated" id="ar-updated"></div>
+          </div>
+        </div>
+      </section>
+
+      <nav class="esp-nav" aria-label="Secciones del especial">
+        <a href="#ar-sec-mapa">El mapa</a>
+        <a href="#ar-sec-cargos">Qué se elige</a>
+        <a href="#ar-sec-calendario">Calendario</a>
+        <a href="#ar-sec-candidatos">Candidatos</a>
+        ${(n.polls || []).length ? '<a href="#ar-sec-encuestas">Encuestas</a>' : ''}
+        <a href="#ar-sec-congreso">Congreso</a>
+        <a href="#ar-sec-provincias">Las 24 provincias</a>
+        <a href="#ar-sec-economia">Economía</a>
+        <a href="#ar-sec-claves">Claves</a>
+      </nav>
+
+      <section class="esp-sec" id="ar-sec-mapa">
+        <div class="esp-sec-head"><span class="kicker">01 · El territorio</span><h3>Las 24 provincias, una por una</h3>
+          <p>Mapa bicontinental de la República Argentina: las Islas Malvinas, Georgias del Sur y Sandwich del Sur y el Sector Antártico forman parte de la provincia de Tierra del Fuego, Antártida e Islas del Atlántico Sur. Cambiá la variable y tocá una provincia para ver su ficha.</p></div>
+        <div class="seg" id="ar-metric" role="tablist" style="margin-bottom:12px">${Object.entries(AR_METRICS).map(([k, m]) => `<button type="button" data-armetric="${k}" class="${live.arMetric === k ? 'is-active' : ''}">${m.label}</button>`).join('')}</div>
+        <div class="ar-map-wrap">
+          <div class="ar-map-card"><div class="ar-map" id="ar-map"></div><div class="ar-legend" id="ar-legend"></div></div>
+          <div class="ar-card" id="ar-card"></div>
+        </div>
+      </section>
+
+      <section class="esp-sec" id="ar-sec-cargos">
+        <div class="esp-sec-head"><span class="kicker">02 · La boleta</span><h3>Qué se elige en 2027</h3>${n.pasoStatus ? `<p>${esc(n.pasoStatus)}</p>` : ''}</div>
+        <div class="offices-grid">${(n.offices || []).map(o => `<div class="office-card"><div class="office-num">${esc(o.value)}</div><div class="office-label">${esc(o.label)}</div><div class="office-detail">${esc(o.detail || '')}</div></div>`).join('')}</div>
+        ${(n.senateProvinces2027 || []).length ? `<div class="ballot-note">Renuevan senadores (3 por distrito): <b>${n.senateProvinces2027.map(esc).join(', ')}</b>.</div>` : ''}
+        ${n.reform ? `<div class="ballot-note">${esc(n.reform)}</div>` : ''}
+      </section>
+
+      <section class="esp-sec" id="ar-sec-calendario">
+        <div class="esp-sec-head"><span class="kicker">03 · Fechas</span><h3>El calendario electoral de 2027</h3>
+          <p>Las provincias pueden separar su elección de la nacional. Las fechas marcadas como tentativas todavía no fueron fijadas por decreto o ley.</p></div>
+        <ul class="br-cal" id="ar-cal"></ul>
+      </section>
+
+      <section class="esp-sec" id="ar-sec-candidatos">
+        <div class="esp-sec-head"><span class="kicker">04 · La carrera</span><h3>Quiénes podrían competir por la presidencia</h3>
+          <p>Faltan las definiciones de cada espacio: esta lista reúne a los dirigentes que hoy aparecen como posibles candidatos.</p></div>
+        <div class="us-key-grid">${(n.candidates || []).map(c => `
+          <div class="office-card il-list" style="border-top-color:${leanColor(c.lean || 'other')}">
+            <div class="il-list-head">${faceHTML({ name: c.name, wiki: c.wiki, color: leanColor(c.lean || 'other') }, 'sm')}
+              <div><div class="office-label">${esc(c.name)}</div><div class="il-list-leader">${esc(c.party || '')}</div></div></div>
+            <div class="office-detail">${esc(c.status || '')}</div></div>`).join('')}</div>
+      </section>
+
+      ${(n.polls || []).length ? `<section class="esp-sec" id="ar-sec-encuestas">
+        <div class="esp-sec-head"><span class="kicker">05 · El clima</span><h3>Qué dicen las encuestas</h3></div>
+        <div class="ro-grid">${n.polls.map(pl => { const vals = Object.entries(pl.values || {}).sort((a, b) => b[1] - a[1]); const mx = Math.max(...vals.map(v => v[1]), 1); return `<div class="ro-card"><h4>${esc(pl.pollster)}</h4><div class="muted">${esc(pl.question || '')}${pl.date ? ' · ' + esc(pl.date) : ''}</div>
+          ${vals.map(([k, v]) => `<div class="pbar"><div class="pbar-top"><span>${esc(k)}</span><b>${fmtPct(v)}</b></div><div class="pbar-track"><div class="pbar-fill" style="width:${(v / mx * 100).toFixed(1)}%;background:#4A90C8"></div></div></div>`).join('')}
+          ${pl.url ? `<span class="poll-src"><a href="${esc(pl.url)}" target="_blank" rel="noopener">Fuente</a></span>` : ''}</div>`; }).join('')}</div>
+      </section>` : ''}
+
+      <section class="esp-sec" id="ar-sec-congreso">
+        <div class="esp-sec-head"><span class="kicker">06 · El Congreso</span><h3>Cómo está hoy el Congreso</h3>
+          <p>Bloques desde el recambio del 10 de diciembre de 2025. En 2027 se renuevan la mitad de Diputados y un tercio del Senado.</p></div>
+        <div class="chambers-grid">
+          ${n.diputados && (n.diputados.parties || []).length ? chamberCard(Object.assign({ name: 'Cámara de Diputados' }, n.diputados), 12) : ''}
+          ${n.senado && (n.senado.parties || []).length ? chamberCard(Object.assign({ name: 'Senado' }, n.senado), 6) : ''}
+        </div>
+        ${n.results2025 && (n.results2025.national || []).length ? `<div class="poll-box" style="margin-top:16px"><h4>Legislativas 2025 · total nacional de diputados</h4>
+          ${n.results2025.national.map(r => `<div class="pbar"><div class="pbar-top"><span>${esc(r.party)}</span><b>${fmtPct(r.pct)}</b></div><div class="pbar-track"><div class="pbar-fill" style="width:${Math.min(r.pct * 2, 100)}%;background:${leanColor(r.lean || 'other')}"></div></div></div>`).join('')}
+          ${n.results2025.note ? `<p class="muted">${esc(n.results2025.note)}</p>` : ''}</div>` : ''}
+      </section>
+
+      <section class="esp-sec" id="ar-sec-provincias">
+        <div class="esp-sec-head"><span class="kicker">07 · Distrito por distrito</span><h3>Las 24 provincias en una tabla</h3><p>Ordená por fecha, electores, bancas en juego o pobreza.</p></div>
+        <div id="ar-table"></div>
+      </section>
+
+      <section class="esp-sec" id="ar-sec-economia">
+        <div class="esp-sec-head"><span class="kicker">08 · El contexto</span><h3>La economía que llega a las urnas</h3></div>
+        <div class="ar-macro">${(n.macro || []).map(m => `<div><span>${esc(m.label)}</span><b>${esc(m.value)}</b>${m.source ? `<small>${esc(m.source)}</small>` : ''}</div>`).join('')}</div>
+      </section>
+
+      <section class="esp-sec" id="ar-sec-claves">
+        <div class="esp-sec-head"><span class="kicker">09 · Para entender</span><h3>Claves</h3></div>
+        <ul class="facts-list">${(n.keyFacts || []).map(f => `<li>${esc(f)}</li>`).join('')}</ul>
+        <p class="esp-sources" style="margin-top:18px"><strong>Fuentes:</strong> ${(ar.sources || []).map(x => `<a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.label)}</a>`).join(' · ')}. Mapa: <a href="https://www.ign.gob.ar/" target="_blank" rel="noopener">Instituto Geográfico Nacional</a> vía georef-ar (datos.gob.ar).</p>
+      </section>`;
+
+    root.querySelectorAll('.esp-nav a').forEach(a => a.addEventListener('click', ev => {
+      ev.preventDefault();
+      const t = document.querySelector(a.getAttribute('href'));
+      if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }));
+    root.querySelectorAll('[data-armetric]').forEach(b => b.addEventListener('click', () => {
+      live.arMetric = b.getAttribute('data-armetric');
+      root.querySelectorAll('[data-armetric]').forEach(x => x.classList.toggle('is-active', x === b));
+      renderArMap();
+    }));
+    const calEl = document.getElementById('ar-cal');
+    if (calEl) {
+      const items = cal.map(x => ({ d: x.d, label: `${x.p.name}: ${x.iso === 'C' ? 'jefe/a de Gobierno' : 'gobernador'}${x.p.dateStatus && x.p.dateStatus !== 'confirmada' ? ' (' + x.p.dateStatus + ')' : ''}`, key: false }))
+        .concat((n.calendar || []).map(c => ({ d: new Date(c.date + 'T12:00:00'), label: c.label, key: true })));
+      const dated = items.filter(i => i.d).sort((a, b) => a.d - b.d), undated = items.filter(i => !i.d);
+      const today = startOfDay(new Date());
+      calEl.innerHTML = dated.map(i => `<li class="${[i.d < today ? 'is-past' : '', i.key ? 'is-key' : ''].join(' ')}"><span class="br-cal-date">${fmtDateShort(i.d)} ${i.d.getFullYear()}</span><span class="br-cal-dot"></span><span><span class="br-cal-label">${esc(i.label)}</span></span></li>`).join('')
+        + (undated.length ? `<li><span class="br-cal-date">Sin fecha</span><span class="br-cal-dot"></span><span><span class="br-cal-label">${undated.map(i => esc(i.label.split(':')[0])).join(', ')}</span></span></li>` : '');
+    }
+    wireHemicycleHover(root);
+    activateFaces(root);
+    renderArTable();
+    const upd = document.getElementById('ar-updated');
+    if (upd) upd.textContent = `Datos actualizados ${relTime(new Date(ar.updatedAt))}`;
+    tickCountdowns();
+    if (!live.arGeo) { try { live.arGeo = await fetchJSON(AR_GEO_URL); } catch (e) {} }
+    renderArMap();
+  }
+
   /* ===================== ESPECIAL ESPAÑA 2026 =====================
      Snap general election of 29 Nov 2026: 350 deputies in 52 provinces
      (D'Hondt, closed lists, 3% per province), 176 for an absolute
@@ -33468,7 +33800,9 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
   /* ===================== REFRESH LOOP ===================== */
   function isViewActive(v) { return document.body.getAttribute('data-view') === v; }
   async function refresh() {
-    const [liveRes, brRes, usRes, ilRes, esRes] = await Promise.allSettled([fetchJSON(LIVE_URL), fetchJSON(BRASIL_URL), fetchJSON(EEUU_URL), fetchJSON(ISRAEL_URL), fetchJSON(ESPANA_URL)]);
+    const [liveRes, brRes, usRes, ilRes, esRes, arRes] = await Promise.allSettled([fetchJSON(LIVE_URL), fetchJSON(BRASIL_URL), fetchJSON(EEUU_URL), fetchJSON(ISRAEL_URL), fetchJSON(ESPANA_URL), fetchJSON(ARGENTINA_URL)]);
+    const prevAr = live.argentina ? JSON.stringify(live.argentina) : null;
+    if (arRes.status === 'fulfilled') live.argentina = arRes.value;
     const prevEs = live.espana ? JSON.stringify(live.espana) : null;
     if (esRes.status === 'fulfilled') live.espana = esRes.value;
     live.lastFetch = new Date();
@@ -33502,6 +33836,7 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
     }
     if (isViewActive('israel') && live.israel && (JSON.stringify(live.israel) !== prevIl || !document.querySelector('#esp-israel .esp-hero'))) renderIsrael();
     if (isViewActive('espana') && live.espana && (JSON.stringify(live.espana) !== prevEs || !document.querySelector('#esp-espana .esp-hero'))) renderEspana();
+    if (isViewActive('argentina') && live.argentina && (JSON.stringify(live.argentina) !== prevAr || !document.querySelector('#esp-argentina .esp-hero'))) renderArgentina();
     if (isViewActive('eeuu') && live.eeuu && (JSON.stringify(live.eeuu) !== prevUs || !document.querySelector('#esp-eeuu .esp-hero'))) renderEeuu();
     scheduleRefresh();
   }
@@ -33523,6 +33858,7 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
     if (view === 'eeuu' && !document.querySelector('#esp-eeuu .esp-hero')) renderEeuu();
     if (view === 'israel' && !document.querySelector('#esp-israel .esp-hero')) renderIsrael();
     if (view === 'espana' && !document.querySelector('#esp-espana .esp-hero')) renderEspana();
+    if (view === 'argentina' && !document.querySelector('#esp-argentina .esp-hero')) renderArgentina();
     if (view === 'inicio') renderPortada();
   };
 
@@ -33533,6 +33869,7 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
   if (isViewActive('eeuu')) renderEeuu();
   if (isViewActive('israel')) renderIsrael();
   if (isViewActive('espana')) renderEspana();
+  if (isViewActive('argentina')) renderArgentina();
   refresh();
   setInterval(tickCountdowns, 1000);
   setInterval(() => { renderNow(); renderFreshness(); renderBrUpdated(); }, 30000);

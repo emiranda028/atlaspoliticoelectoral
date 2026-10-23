@@ -1,0 +1,3227 @@
+{
+ "id": "argentina-2027",
+ "title": "Elecciones 2027",
+ "updatedAt": "2026-10-23T12:00:00-03:00",
+ "lede": "El 24 de octubre de 2027 la Argentina elige presidente y vice, renueva 130 de las 257 bancas de Diputados y 24 de las 72 del Senado (ocho provincias). Javier Milei va por la reelección después de ganar las legislativas de 2025 con el 40,7% y quedar como primera minoría en Diputados; enfrente, Axel Kicillof se perfila como la principal figura del peronismo. A un año de la votación, las encuestas muestran un escenario parejo, la desaprobación del Gobierno ronda el 60% y todavía no está claro si habrá PASO: el oficialismo busca suspenderlas o eliminarlas, pero hasta mediados de octubre de 2026 no había reunido los votos en el Senado.",
+ "dates": {
+  "paso": "2027-08-08",
+  "general": "2027-10-24",
+  "runoff": "2027-11-21",
+  "inauguration": "2027-12-10"
+ },
+ "nacional": {
+  "pasoStatus": "Siguen vigentes por ley (Ley 26.571), aunque en 2025 se suspendieron solo para las legislativas. Si el Congreso no cambia nada, se harían el segundo domingo de agosto: el 8 de agosto de 2027. El Gobierno mandó una reforma para eliminarlas y después evaluó suspenderlas solo para 2027. A mediados de octubre de 2026 el proyecto no tenía dictamen y el oficialismo todavía no sumaba los 37 votos que necesita en el Senado (La Nación, 22/10/2026; noticiasd, 16/10/2026). Por eso la fecha del 8 de agosto queda sujeta a cambios.",
+  "reform": "Desde 2025 se vota con Boleta Única de Papel (BUP) en las categorías nacionales: se usó por primera vez en las legislativas del 26 de octubre de 2025 (Ley 27.781). La reforma política del Ejecutivo sigue pendiente en el Congreso a octubre de 2026. Según Perfil (7/7/2026) incluye: eliminar las PASO y que los partidos definan candidatos con mecanismos propios; Ficha Limpia, que impide ser candidato con condena confirmada en segunda instancia por delitos dolosos graves, sobre todo de corrupción; exigir reconocimiento en al menos 10 distritos para ser partido nacional; terminar con el financiamiento estatal de campañas y con la publicidad electoral gratuita; eliminar los debates presidenciales obligatorios; y permitir votar la lista completa con una sola marca en la BUP. En la Acordada Extraordinaria 155/2026 (septiembre de 2026), la Cámara Nacional Electoral advirtió que se acortan los plazos para cambiar las reglas a tiempo para 2027.",
+  "offices": [
+   {
+    "value": "1",
+    "label": "Presidente y vice",
+    "detail": "Fórmula presidencial por cuatro años, en distrito único nacional. Se gana en primera vuelta con más del 45% de los votos afirmativos, o con el 40% y más de 10 puntos de ventaja sobre el segundo. Si nadie lo logra, hay balotaje entre los dos más votados. Milei puede buscar un segundo mandato consecutivo."
+   },
+   {
+    "value": "130",
+    "label": "Diputados",
+    "detail": "Se renueva la mitad de la Cámara que se eligió en 2023: 130 de 257 bancas, por cuatro años, con sistema D'Hondt y umbral del 3% del padrón en cada uno de los 24 distritos. Buenos Aires pone en juego 35 bancas, CABA 12, Santa Fe 10 y Córdoba 9."
+   },
+   {
+    "value": "24",
+    "label": "Senadores",
+    "detail": "Ocho provincias eligen tres senadores cada una (dos para la lista más votada y uno para la segunda), por seis años: Catamarca, Chubut, Córdoba, Corrientes, La Pampa, Mendoza, Santa Fe y Tucumán."
+   },
+   {
+    "value": "19",
+    "label": "Parlasur (distrito nacional)",
+    "detail": "La ley prevé elegir parlamentarios del Mercosur junto con la presidencial (19 por distrito nacional y 24 por distritos regionales). En 2023 se eligieron, pero la reforma oficialista y varios proyectos proponen suprimir esa elección: dato a confirmar."
+   }
+  ],
+  "senateProvinces2027": [
+   "Catamarca",
+   "Chubut",
+   "Córdoba",
+   "Corrientes",
+   "La Pampa",
+   "Mendoza",
+   "Santa Fe",
+   "Tucumán"
+  ],
+  "deputiesByProvince2027": {
+   "Buenos Aires": 35,
+   "Ciudad de Buenos Aires": 12,
+   "Catamarca": 2,
+   "Chaco": 3,
+   "Chubut": 3,
+   "Córdoba": 9,
+   "Corrientes": 4,
+   "Entre Ríos": 4,
+   "Formosa": 3,
+   "Jujuy": 3,
+   "La Pampa": 2,
+   "La Rioja": 3,
+   "Mendoza": 5,
+   "Misiones": 4,
+   "Neuquén": 2,
+   "Río Negro": 3,
+   "Salta": 4,
+   "San Juan": 3,
+   "San Luis": 2,
+   "Santa Cruz": 2,
+   "Santa Fe": 10,
+   "Santiago del Estero": 4,
+   "Tierra del Fuego": 3,
+   "Tucumán": 5
+  },
+  "electorate": {
+   "total": 36471355,
+   "asOf": "Padrón de las legislativas del 26/10/2025, según Wikipedia y la CNE: 36.471.355 electores habilitados, con participación del 67,3%. No hay una cifra oficial del padrón 2027 (expected: null).",
+   "expected2027": null
+  },
+  "diputados": {
+   "total": 257,
+   "asOf": "2025-12-03 (jura de los diputados electos en 2025; desde entonces puede haber cambios de bloque)",
+   "parties": [
+    {
+     "party": "La Libertad Avanza",
+     "seats": 95,
+     "lean": "far-right",
+     "bloc": "oficialismo"
+    },
+    {
+     "party": "Unión por la Patria / Fuerza Patria",
+     "seats": 93,
+     "lean": "center-left",
+     "bloc": "oposicion"
+    },
+    {
+     "party": "Provincias Unidas",
+     "seats": 18,
+     "lean": "center",
+     "bloc": "oposicion"
+    },
+    {
+     "party": "PRO",
+     "seats": 12,
+     "lean": "center-right",
+     "bloc": "aliados"
+    },
+    {
+     "party": "Innovación Federal",
+     "seats": 7,
+     "lean": "other",
+     "bloc": "aliados"
+    },
+    {
+     "party": "UCR",
+     "seats": 6,
+     "lean": "center",
+     "bloc": "aliados"
+    },
+    {
+     "party": "Frente de Izquierda y de Trabajadores - Unidad",
+     "seats": 4,
+     "lean": "far-left",
+     "bloc": "oposicion"
+    },
+    {
+     "party": "Coherencia",
+     "seats": 3,
+     "lean": "other",
+     "bloc": "oposicion"
+    },
+    {
+     "party": "Independencia (Tucumán)",
+     "seats": 3,
+     "lean": "other",
+     "bloc": "aliados"
+    },
+    {
+     "party": "Elijo Catamarca",
+     "seats": 3,
+     "lean": "other",
+     "bloc": "aliados"
+    },
+    {
+     "party": "Encuentro Federal",
+     "seats": 2,
+     "lean": "center",
+     "bloc": "oposicion"
+    },
+    {
+     "party": "Coalición Cívica",
+     "seats": 2,
+     "lean": "center",
+     "bloc": "oposicion"
+    },
+    {
+     "party": "MID",
+     "seats": 2,
+     "lean": "right",
+     "bloc": "aliados"
+    },
+    {
+     "party": "Producción y Trabajo",
+     "seats": 2,
+     "lean": "other",
+     "bloc": "aliados"
+    },
+    {
+     "party": "La Neuquinidad",
+     "seats": 1,
+     "lean": "other",
+     "bloc": "aliados"
+    },
+    {
+     "party": "Defendamos Córdoba",
+     "seats": 1,
+     "lean": "other",
+     "bloc": "oposicion"
+    },
+    {
+     "party": "Adelante Buenos Aires",
+     "seats": 1,
+     "lean": "other",
+     "bloc": "oposicion"
+    },
+    {
+     "party": "PJ San Luis",
+     "seats": 1,
+     "lean": "center-left",
+     "bloc": "oposicion"
+    },
+    {
+     "party": "Por Santa Cruz",
+     "seats": 1,
+     "lean": "other",
+     "bloc": "oposicion"
+    }
+   ],
+   "note": "Las bancas por bloque salen de Ámbito (3/12/2025) y suman 257. Los campos lean y bloc son una clasificación editorial aproximada, no oficial: varios bloques provinciales votan según cada tema. Wikipedia agrupa distinto: Fuerza del Cambio 22, Unidos 22.",
+   "source": "https://www.ambito.com/politica/radiografia-los-bloques-diputados-como-quedaron-y-quienes-son-sus-referentes-n6220476"
+  },
+  "senado": {
+   "total": 72,
+   "asOf": "Diciembre de 2025 (después del 10/12/2025)",
+   "parties": [
+    {
+     "party": "Bloque Popular (peronismo; ex Unión por la Patria)",
+     "seats": 28,
+     "lean": "center-left",
+     "bloc": "oposicion"
+    },
+    {
+     "party": "La Libertad Avanza",
+     "seats": 21,
+     "lean": "far-right",
+     "bloc": "oficialismo"
+    },
+    {
+     "party": "UCR",
+     "seats": 10,
+     "lean": "center",
+     "bloc": "aliados"
+    },
+    {
+     "party": "PRO",
+     "seats": 3,
+     "lean": "center-right",
+     "bloc": "aliados"
+    },
+    {
+     "party": "Provincias Unidas",
+     "seats": 2,
+     "lean": "center",
+     "bloc": "aliados"
+    },
+    {
+     "party": "Frente Renovador de la Concordia (Misiones)",
+     "seats": 2,
+     "lean": "other",
+     "bloc": "aliados"
+    },
+    {
+     "party": "Movere por Santa Cruz",
+     "seats": 2,
+     "lean": "other",
+     "bloc": "aliados"
+    },
+    {
+     "party": "Independencia (Tucumán)",
+     "seats": 1,
+     "lean": "other",
+     "bloc": "aliados"
+    },
+    {
+     "party": "Despierta Chubut",
+     "seats": 1,
+     "lean": "other",
+     "bloc": "aliados"
+    },
+    {
+     "party": "Primero los Salteños",
+     "seats": 1,
+     "lean": "other",
+     "bloc": "aliados"
+    },
+    {
+     "party": "La Neuquinidad",
+     "seats": 1,
+     "lean": "other",
+     "bloc": "aliados"
+    }
+   ],
+   "note": "Según Infobae (17/12/2025), el peronismo armó el bloque 'Popular', con 28 miembros (22 PJ, 4 Convicción Federal y 2 Frente Cívico por Santiago): es el más chico desde 1983. LLA llegó a 21 con la vuelta de Francisco Paoltroni y el pase de Carmen Álvarez Rivero, que venía del PRO. LLA, UCR, PRO, Provincias Unidas y los provinciales firmaron un acuerdo de 44 votos para repartir las comisiones. Los números por bloque salen de Wikipedia.",
+   "source": "https://es.wikipedia.org/wiki/Elecciones_legislativas_de_Argentina_de_2025"
+  },
+  "results2025": {
+   "national": [
+    {
+     "party": "La Libertad Avanza (y aliados)",
+     "pct": 40.66,
+     "lean": "far-right"
+    },
+    {
+     "party": "Fuerza Patria (y listas afines)",
+     "pct": 33.7,
+     "lean": "center-left"
+    },
+    {
+     "party": "Provincias Unidas (y listas afines)",
+     "pct": 7.73,
+     "lean": "center"
+    },
+    {
+     "party": "Frente de Izquierda y de Trabajadores - Unidad",
+     "pct": 3.9,
+     "lean": "far-left"
+    },
+    {
+     "party": "Innovación Federal",
+     "pct": 2.14,
+     "lean": "center"
+    }
+   ],
+   "note": "Legislativas nacionales del 26/10/2025, votos para Diputados agregados a nivel país (Wikipedia). La participación fue del 67,3%, la más baja desde 1983 en una nacional. LLA ganó 64 de las 127 bancas de Diputados y 13 de las 24 del Senado. Si se cuentan solo las listas con el sello Fuerza Patria, el porcentaje del peronismo es menor. Antes, en la elección provincial bonaerense del 7/9/2025 (desdoblada), Fuerza Patria sacó cerca del 47,3% contra 33,7% de LLA: ganó en 6 de las 8 secciones y se quedó con 21 bancas de diputados y 13 de senadores bonaerenses, frente a 18 y 8 de LLA (Chequeado, A24). En la nacional de octubre, LLA ganó en la provincia de Buenos Aires por alrededor de un punto.",
+   "pba2025": [
+    {
+     "party": "Fuerza Patria",
+     "pct": 47.28
+    },
+    {
+     "party": "La Libertad Avanza",
+     "pct": 33.71
+    }
+   ]
+  },
+  "candidates": [
+   {
+    "name": "Javier Milei",
+    "party": "La Libertad Avanza",
+    "status": "Presidente. Confirmó en agosto de 2026 que busca la reelección y dijo tener definido a su compañero de fórmula, sin dar el nombre.",
+    "wiki": "Javier_Milei",
+    "lean": "far-right"
+   },
+   {
+    "name": "Axel Kicillof",
+    "party": "Fuerza Patria / PJ (Movimiento Derecho al Futuro)",
+    "status": "Gobernador bonaerense y presidente del PJ bonaerense desde 2026. El 19/9/2026, en Avellaneda, dio su señal más concreta de candidatura: \"Cuenten conmigo para el año que viene\".",
+    "wiki": "Axel_Kicillof",
+    "lean": "center-left"
+   },
+   {
+    "name": "Juan Grabois",
+    "party": "Patria Grande (peronismo)",
+    "status": "Se proclamó precandidato y pide una interna abierta en el peronismo.",
+    "wiki": "Juan_Grabois",
+    "lean": "left"
+   },
+   {
+    "name": "Sergio Massa",
+    "party": "Frente Renovador (peronismo)",
+    "status": "Sin confirmar. Según la prensa, les dijo a intendentes bonaerenses que quiere volver a ser candidato.",
+    "wiki": "Sergio_Massa",
+    "lean": "center-left"
+   },
+   {
+    "name": "Sergio Uñac",
+    "party": "PJ (San Juan)",
+    "status": "Exgobernador de San Juan. Se presentó como precandidato y pide internas abiertas.",
+    "wiki": "Sergio_Uñac",
+    "lean": "center-left"
+   },
+   {
+    "name": "Juan Schiaretti",
+    "party": "Provincias Unidas",
+    "status": "Posible. Midió 6% en QMonitor (septiembre de 2026). Provincias Unidas no tiene candidato definido y también se nombra a Martín Llaryora.",
+    "wiki": "Juan_Schiaretti",
+    "lean": "center"
+   },
+   {
+    "name": "Maximiliano Pullaro",
+    "party": "Provincias Unidas (Santa Fe)",
+    "status": "Gobernador de Santa Fe y uno de los armadores del frente. No se lanzó como candidato.",
+    "wiki": "Maximiliano_Pullaro",
+    "lean": "center"
+   },
+   {
+    "name": "Myriam Bregman",
+    "party": "Frente de Izquierda y de Trabajadores - Unidad",
+    "status": "Posible candidata del FIT-U. Midió 7% en QMonitor (septiembre de 2026).",
+    "wiki": "Myriam_Bregman",
+    "lean": "far-left"
+   },
+   {
+    "name": "Victoria Villarruel",
+    "party": "Independiente (vicepresidenta, enfrentada con LLA)",
+    "status": "Sin confirmar. Miguel Ángel Pichetto dijo que competirá por fuera de LLA y en algunas encuestas supera el 5%.",
+    "wiki": "Victoria_Villarruel",
+    "lean": "right"
+   },
+   {
+    "name": "Mauricio Macri",
+    "party": "PRO",
+    "status": "Dijo que el PRO 'tendrá candidato' en 2027. Su entorno asegura que no se evalúa que sea él.",
+    "wiki": "Mauricio_Macri",
+    "lean": "center-right"
+   },
+   {
+    "name": "Cristina Fernández de Kirchner",
+    "party": "PJ",
+    "status": "Inhabilitada de por vida para ejercer cargos públicos por la condena en la causa Vialidad, confirmada por la Corte Suprema en junio de 2025.",
+    "wiki": "Cristina_Fernández_de_Kirchner",
+    "lean": "center-left"
+   }
+  ],
+  "polls": [
+   {
+    "pollster": "QMonitor (QSocial)",
+    "date": "2026-09-28",
+    "question": "Intención de voto presidencial, primera vuelta (campo del 5 al 28/9/2026, n=1.650, online, ±2,4%)",
+    "values": {
+     "Javier Milei": 31,
+     "Axel Kicillof": 31,
+     "Myriam Bregman": 7,
+     "Juan Schiaretti": 6,
+     "En blanco": 9,
+     "No sabe": 16
+    },
+    "url": "https://www.eldestapeweb.com/politica/encuesta-elecciones-2027-milei-kicillof-empatan-balotaje-define-punto-20261013125029"
+   },
+   {
+    "pollster": "QMonitor (QSocial)",
+    "date": "2026-09-28",
+    "question": "Balotaje Milei vs. Kicillof",
+    "values": {
+     "Javier Milei": 42,
+     "Axel Kicillof": 41,
+     "No sabe": 16
+    },
+    "url": "https://www.eldestapeweb.com/politica/encuesta-elecciones-2027-milei-kicillof-empatan-balotaje-define-punto-20261013125029"
+   },
+   {
+    "pollster": "UdeSA (ESPOP)",
+    "date": "2026-10-13",
+    "question": "Aprobación del Gobierno (campo del 5 al 13/10/2026, n=1.000)",
+    "values": {
+     "Aprueba": 36,
+     "Desaprueba": 60
+    },
+    "url": "https://www.infobae.com/politica/2026/10/19/aciertos-y-deudas-del-gobierno-de-milei-la-desaprobacion-llega-al-60-mientras-crece-la-incertidumbre-electoral-segun-una-encuesta/"
+   },
+   {
+    "pollster": "UdeSA (ESPOP)",
+    "date": "2026-10-13",
+    "question": "Intención de voto por espacio para 2027",
+    "values": {
+     "La Libertad Avanza": 26,
+     "Peronismo": 24,
+     "Frente de Izquierda": 4,
+     "PRO": 3,
+     "Provincias Unidas": 3,
+     "Indecisos/NS-NC": 26
+    },
+    "url": "https://www.infobae.com/politica/2026/10/19/aciertos-y-deudas-del-gobierno-de-milei-la-desaprobacion-llega-al-60-mientras-crece-la-incertidumbre-electoral-segun-una-encuesta/"
+   },
+   {
+    "pollster": "Poliarquía",
+    "date": "2026-09-18",
+    "question": "Aprobación de la gestión de Milei (publicada el 18/9/2026)",
+    "values": {
+     "Aprueba": 42
+    },
+    "url": "https://www.infobae.com/politica/2026/09/18/una-nueva-encuesta-mostro-un-deterioro-de-la-imagen-de-milei-y-una-aprobacion-estancada-en-42/"
+   },
+   {
+    "pollster": "Explanans Consultora",
+    "date": "2026-09-09",
+    "question": "Intención de voto presidencial (campo del 2 al 9/9/2026, n=7.025)",
+    "values": {
+     "Javier Milei": 38.5,
+     "Axel Kicillof": 24.0
+    },
+    "url": "https://en.wikipedia.org/wiki/2027_Argentine_general_election"
+   },
+   {
+    "pollster": "Consultora Tendencias",
+    "date": "2026-08-29",
+    "question": "Intención de voto presidencial (campo del 24 al 29/8/2026, n=4.958)",
+    "values": {
+     "Javier Milei": 32.4,
+     "Axel Kicillof": 33.7
+    },
+    "url": "https://en.wikipedia.org/wiki/2027_Argentine_general_election"
+   }
+  ],
+  "calendar": [
+   {
+    "date": "2026-12",
+    "label": "Plazo informal que maneja el oficialismo para votar la suspensión o eliminación de las PASO en el Congreso (sin fecha confirmada)"
+   },
+   {
+    "date": "2027-04/05",
+    "label": "Decreto de convocatoria a elecciones (fecha estimada)"
+   },
+   {
+    "date": "2027-06",
+    "label": "Cierre de alianzas y de listas de precandidatos, si hay PASO (fecha estimada)"
+   },
+   {
+    "date": "2027-08-08",
+    "label": "PASO, si siguen vigentes (segundo domingo de agosto)"
+   },
+   {
+    "date": "2027-10-24",
+    "label": "Elecciones generales: presidente, 130 diputados, 24 senadores y gobernadores de la mayoría de las provincias"
+   },
+   {
+    "date": "2027-11-21",
+    "label": "Posible segunda vuelta presidencial (fecha estimada)"
+   },
+   {
+    "date": "2027-12-10",
+    "label": "Asunción del presidente y de los legisladores electos"
+   }
+  ],
+  "macro": [
+   {
+    "label": "Inflación mensual (sep 2026)",
+    "value": "1,9% (agosto: 1,7%); núcleo 1,7%",
+    "source": "INDEC, vía Diario Panorama (13/10/2026)"
+   },
+   {
+    "label": "Inflación interanual (sep 2026)",
+    "value": "33,4% (acumulada enero-septiembre: 23,6%)",
+    "source": "INDEC, vía Diario Panorama (13/10/2026)"
+   },
+   {
+    "label": "Pobreza (1er semestre 2026)",
+    "value": "32,3% de las personas; indigencia 7,5% (2do semestre 2025: 28,2%)",
+    "source": "INDEC-EPH, vía Infobae (24/9/2026)"
+   },
+   {
+    "label": "Desocupación (2do trimestre 2026)",
+    "value": "7,9% (2do trimestre 2025: 7,6%)",
+    "source": "INDEC-EPH, vía Infobae (17/9/2026)"
+   },
+   {
+    "label": "PBI 2025",
+    "value": "+4,4% en el promedio anual",
+    "source": "INDEC, Informe de avance del nivel de actividad del 4to trimestre de 2025"
+   },
+   {
+    "label": "PBI 2026 (estimación)",
+    "value": "+2,1% (mediana del REM-BCRA, edición publicada a comienzos de septiembre de 2026; la anterior proyectaba 2,7%)",
+    "source": "BCRA REM, vía Infobae (8/9/2026)"
+   }
+  ],
+  "keyFacts": [
+   "Es la primera presidencial con Boleta Única de Papel, que se estrenó en las legislativas de 2025.",
+   "LLA es primera minoría en Diputados, con 95 bancas contra 93 del peronismo, pero no tiene mayoría propia en ninguna cámara: en el Senado tiene 21 de 72.",
+   "En 2027 se renuevan las bancas ganadas en 2023 en Diputados y las de 2021 en el Senado. Santa Fe, Córdoba y Mendoza eligen senadores.",
+   "El peronismo armó en el Senado el bloque 'Popular', con 28 miembros: el más chico desde 1983.",
+   "Cristina Fernández de Kirchner no puede ser candidata: está inhabilitada de por vida.",
+   "Las encuestas no coinciden: algunas muestran un empate técnico entre Milei y Kicillof (QMonitor 31-31) y otras le dan ventaja a Milei (Explanans 38,5-24).",
+   "La pobreza volvió a subir en el primer semestre de 2026 (32,3%) y cortó dos años de baja."
+  ]
+ },
+ "national": {
+  "population": 45892285,
+  "populationNote": "Censo 2022 resultados definitivos (nov 2023). 46.044.703 era la cifra provisoria (ene 2023).",
+  "area_km2": 3669710.7,
+  "areaNote": "incluye Antártida e Islas del Atlántico Sur",
+  "density": 12.5,
+  "densityExclAntartida": 14.4,
+  "electorate": 36471355,
+  "electorateNote": "Electores registrados, elecciones generales 26-oct-2025 (Diputados), suma de los 24 distritos; incluye residentes en el exterior asignados a su distrito. CNE informó padrón definitivo 35.987.634 en el país + exterior = 36.478.360.",
+  "deputies": 257,
+  "deputies2027": 130,
+  "poverty": {
+   "pct": 32.3,
+   "period": "1er semestre 2026 (provisorio)",
+   "scope": "31 aglomerados urbanos EPH"
+  },
+  "povertyHouseholds": {
+   "pct": 24.4,
+   "period": "1er semestre 2026"
+  },
+  "indigence": {
+   "pct": 7.5,
+   "period": "1er semestre 2026 (provisorio)"
+  },
+  "unemployment": {
+   "pct": 7.9,
+   "period": "2do trimestre 2026",
+   "scope": "31 aglomerados urbanos EPH"
+  },
+  "povertyPrevious": {
+   "2S2025": 28.2,
+   "1S2025": 31.6,
+   "2S2024": 38.1,
+   "1S2024": 52.9
+  },
+  "regionsPoverty1S2026": {
+   "GBA": 32.1,
+   "Cuyo": 36.7,
+   "Noreste": 41.5,
+   "Noroeste": 31.5,
+   "Pampeana": 30.3,
+   "Patagonia": 28.4
+  },
+  "regionsUnemployment2T2026": {
+   "GBA": 8.2,
+   "Cuyo": 5.9,
+   "Noreste": 7.0,
+   "Noroeste": 4.3,
+   "Pampeana": 9.7,
+   "Patagonia": 6.3
+  }
+ },
+ "provinces": {
+  "C": {
+   "capital": "Ciudad Autónoma de Buenos Aires",
+   "population": 3121707,
+   "area_km2": 205.9,
+   "density": 15161.3,
+   "electorate": 2695520,
+   "electoratePct": 7.39,
+   "deputies": 25,
+   "deputies2027": 12,
+   "poverty": {
+    "pct": 11.1,
+    "period": "1er semestre 2026 (provisorio)",
+    "aglomerado": "Ciudad Autónoma de Buenos Aires"
+   },
+   "indigence": {
+    "pct": 1.5,
+    "period": "1er semestre 2026 (provisorio)",
+    "aglomerado": "Ciudad Autónoma de Buenos Aires"
+   },
+   "unemployment": {
+    "pct": 5.6,
+    "period": "2do trimestre 2026",
+    "aglomerado": "Ciudad Autónoma de Buenos Aires"
+   },
+   "pbgShare": {
+    "pct": 20.06,
+    "year": 2023,
+    "source": "CEPAL-Ministerio de Economía, Desagregación provincial del VAB, base 2004 (precios constantes 2004), vía Argendata/Fundar"
+   },
+   "gdpPerCapita": {
+    "value": 303.5,
+    "unit": "índice VAB per cápita relativo (Argentina = 100)",
+    "year": 2023,
+    "source": "CEPAL-Ministerio de Economía, Desagregación provincial del VAB, base 2004 (precios constantes 2004), vía Argendata/Fundar"
+   },
+   "economy": "Servicios: finanzas, comercio, servicios empresariales e inmobiliarios, administración pública, turismo.",
+   "name": "Ciudad Autónoma de Buenos Aires",
+   "governorElection2027": true,
+   "reelection": "puede (primer mandato; una reelección consecutiva)",
+   "incumbentRunning": "sí",
+   "date2027": null,
+   "dateStatus": "tentativa",
+   "dateNote": "Sin fecha oficial. Jorge Macri evalúa unificar con la nacional (prevista para el 24/10/2027); en 2025 la Ciudad desdobló sus legislativas.",
+   "system": "PASO por ley porteña (suspendidas en 2025 para las legislativas; régimen 2027 sin definir)",
+   "candidates": [
+    {
+     "name": "Jorge Macri",
+     "party": "PRO",
+     "note": "Confirmó que buscará la reelección"
+    },
+    {
+     "name": "Horacio Rodríguez Larreta",
+     "party": "ex-PRO / espacio propio",
+     "note": "Anunció que será candidato a jefe de Gobierno"
+    },
+    {
+     "name": "Leandro Santoro",
+     "party": "peronismo (Es Ahora Buenos Aires)",
+     "note": "Referente electoral del PJ porteño; candidatura no definida"
+    }
+   ],
+   "gov2023": {
+    "winner": "Jorge Macri (Juntos por el Cambio)",
+    "pct": 49.67
+   },
+   "dip2025": {
+    "winner": "La Libertad Avanza",
+    "pct": 47.45
+   },
+   "summary": "El PRO defiende su bastión histórico frente a una LLA que ganó la Ciudad en 2025 con casi el 47,5%. La gran incógnita es si PRO y LLA van juntos (Macri habla de discutir alianzas en marzo de 2027) y si Larreta divide el voto de centroderecha.",
+   "sources": [
+    {
+     "label": "iProfesional: Jorge Macri confirmó que irá por la reelección",
+     "url": "https://www.iprofesional.com/politica/458098-jorge-macri-confirmo-que-ira-por-la-reeleccion-deseo-tener-cuatro-anos-mas-de-gestion"
+    },
+    {
+     "label": "iProfesional: Jorge Macri evalúa unificar las elecciones porteñas con las nacionales",
+     "url": "https://www.iprofesional.com/politica/466420-jorge-macri-evalua-unificar-elecciones-portenas-2027-con-nacionales"
+    },
+    {
+     "label": "El Litoral: Larreta candidato en 2027",
+     "url": "https://www.ellitoral.com/politica/horacio-rodriguez-larreta-elecciones-2027-buenos-aires_0_Lmn4k7l6XU.html"
+    },
+    {
+     "label": "Letra P: el peronismo porteño sin candidato definido",
+     "url": "https://www.letrap.com.ar/ciudad/candidato-se-busca-el-peronismo-no-tiene-nombre-definido-competir-la-ciudad-n5424465"
+    },
+    {
+     "label": "Wikipedia: Elecciones de la Ciudad Autónoma de Buenos Aires de 2023",
+     "url": "https://es.wikipedia.org/wiki/Elecciones_de_la_Ciudad_Autónoma_de_Buenos_Aires_de_2023"
+    },
+    {
+     "label": "Wikipedia: Elecciones legislativas de Argentina de 2025 (resultados por distrito, Diputados)",
+     "url": "https://es.wikipedia.org/wiki/Elecciones_legislativas_de_Argentina_de_2025"
+    },
+    {
+     "label": "La Noticia Web (8/10/2026): hasta 20 distritos podrían votar antes de octubre",
+     "url": "https://www.lanoticiaweb.com.ar/elecciones-2027-casi-todo-el-mapa-provincial-se-despega-de-milei-y-hasta-20-distritos-podrian-votar-antes-de-octubre/"
+    }
+   ],
+   "governor": {
+    "name": "Jorge Macri",
+    "party": "PRO",
+    "since": "2023-12",
+    "wiki": "Jorge_Macri",
+    "lean": "center-right"
+   },
+   "senate2027": false
+  },
+  "B": {
+   "capital": "La Plata",
+   "population": 17523996,
+   "area_km2": 305907.4,
+   "density": 57.3,
+   "electorate": 13506058,
+   "electoratePct": 37.03,
+   "deputies": 70,
+   "deputies2027": 35,
+   "poverty": {
+    "pct": 36.9,
+    "period": "1er semestre 2026 (provisorio)",
+    "aglomerado": "Partidos del GBA (24 partidos)"
+   },
+   "indigence": {
+    "pct": 9.9,
+    "period": "1er semestre 2026 (provisorio)",
+    "aglomerado": "Partidos del GBA (24 partidos)"
+   },
+   "unemployment": {
+    "pct": 8.8,
+    "period": "2do trimestre 2026",
+    "aglomerado": "Partidos del GBA (24 partidos)"
+   },
+   "pbgShare": {
+    "pct": 32.41,
+    "year": 2023,
+    "source": "CEPAL-Ministerio de Economía, Desagregación provincial del VAB, base 2004 (precios constantes 2004), vía Argendata/Fundar"
+   },
+   "gdpPerCapita": {
+    "value": 83.8,
+    "unit": "índice VAB per cápita relativo (Argentina = 100)",
+    "year": 2023,
+    "source": "CEPAL-Ministerio de Economía, Desagregación provincial del VAB, base 2004 (precios constantes 2004), vía Argendata/Fundar"
+   },
+   "economy": "Industria manufacturera (conurbano), agro pampeano (cereales, oleaginosas, ganadería), puertos, servicios.",
+   "name": "Buenos Aires",
+   "governorElection2027": true,
+   "reelection": "no puede (cumple dos mandatos consecutivos)",
+   "incumbentRunning": "no",
+   "date2027": null,
+   "dateStatus": "sin definir",
+   "dateNote": "Kicillof no definió. Las PASO bonaerenses están atadas por ley al régimen nacional, por eso la decisión depende de lo que resuelva el Congreso sobre las PASO nacionales (la suspensión no tenía los votos en el Senado a octubre de 2026). En 2025 la provincia desdobló sus legislativas.",
+   "system": "PASO (ley provincial vinculada al régimen nacional)",
+   "candidates": [
+    {
+     "name": "Diego Santilli",
+     "party": "PRO / alianza LLA",
+     "note": "Ministro del Interior; no oculta su aspiración, Milei tendría la última palabra"
+    },
+    {
+     "name": "Jorge Ferraresi",
+     "party": "PJ",
+     "note": "Propuesto por Andrés Larroque"
+    },
+    {
+     "name": "Gabriel Katopodis",
+     "party": "PJ",
+     "note": "Mencionado como posible sucesor"
+    },
+    {
+     "name": "Carlos Bianco",
+     "party": "PJ",
+     "note": "Ministro de Gobierno, mencionado como posible sucesor"
+    }
+   ],
+   "gov2023": {
+    "winner": "Axel Kicillof (Unión por la Patria)",
+    "pct": 44.94
+   },
+   "dip2025": {
+    "winner": "La Libertad Avanza",
+    "pct": 41.43
+   },
+   "summary": "Sin Kicillof en la boleta, el peronismo debe ordenar la sucesión en su principal bastión mientras el gobernador se proyecta a la presidencia. LLA le ganó por apenas 0,3 punto en octubre de 2025 y apunta a quedarse con la provincia, la elección más grande del país.",
+   "sources": [
+    {
+     "label": "Letra P: las figuras que van por el sillón de Kicillof",
+     "url": "https://www.letrap.com.ar/conurbano/buenos-aires-2027-las-11-figuras-que-van-el-sillon-axel-kicillof-n5418521"
+    },
+    {
+     "label": "Letra P: Larroque propuso a Ferraresi",
+     "url": "https://www.letrap.com.ar/politica/andres-larroque-propuso-jorge-ferraresi-como-candidato-gobernador-buenos-aires-n5423066"
+    },
+    {
+     "label": "Canal26 (18/10/2026): la reforma política se demora",
+     "url": "https://www.canal26.com/politica/2026/10/18/la-reforma-politica-se-demora-el-gobierno-no-consigue-los-votos-y-cambia-su-estrategia-para-2027/"
+    },
+    {
+     "label": "El Eco / Noticias Argentinas (1/8/2026): qué provincias desdoblan",
+     "url": "https://www.eleco.com.ar/nacionales/elecciones-2027-que-provincias-desdoblan-sus-comicios-y-cual-es-el-estado-del-calendario"
+    },
+    {
+     "label": "Wikipedia: Elecciones provinciales de Buenos Aires de 2023",
+     "url": "https://es.wikipedia.org/wiki/Elecciones_provinciales_de_Buenos_Aires_de_2023"
+    },
+    {
+     "label": "Wikipedia: Elecciones legislativas de Argentina de 2025 (resultados por distrito, Diputados)",
+     "url": "https://es.wikipedia.org/wiki/Elecciones_legislativas_de_Argentina_de_2025"
+    }
+   ],
+   "governor": {
+    "name": "Axel Kicillof",
+    "party": "PJ / Fuerza Patria (ex Unión por la Patria)",
+    "since": "2019-12-10",
+    "wiki": "Axel_Kicillof",
+    "lean": "center-left"
+   },
+   "senate2027": false,
+   "ephOther": [
+    {
+     "aglomerado": "Gran La Plata",
+     "poverty": 37.8,
+     "indigence": 9.2,
+     "unemployment": 8.7
+    },
+    {
+     "aglomerado": "Mar del Plata",
+     "poverty": 20.4,
+     "indigence": 5.0,
+     "unemployment": 9.9
+    },
+    {
+     "aglomerado": "Bahía Blanca-Cerri",
+     "poverty": 26.6,
+     "indigence": 6.2,
+     "unemployment": 9.7
+    }
+   ]
+  },
+  "K": {
+   "capital": "San Fernando del Valle de Catamarca",
+   "population": 429562,
+   "area_km2": 101486.1,
+   "density": 4.2,
+   "electorate": 348002,
+   "electoratePct": 0.95,
+   "deputies": 5,
+   "deputies2027": 2,
+   "poverty": {
+    "pct": 37.3,
+    "period": "1er semestre 2026 (provisorio)",
+    "aglomerado": "Gran Catamarca"
+   },
+   "indigence": {
+    "pct": 8.3,
+    "period": "1er semestre 2026 (provisorio)",
+    "aglomerado": "Gran Catamarca"
+   },
+   "unemployment": {
+    "pct": 6.4,
+    "period": "2do trimestre 2026",
+    "aglomerado": "Gran Catamarca"
+   },
+   "pbgShare": {
+    "pct": 0.69,
+    "year": 2023,
+    "source": "CEPAL-Ministerio de Economía, Desagregación provincial del VAB, base 2004 (precios constantes 2004), vía Argendata/Fundar"
+   },
+   "gdpPerCapita": {
+    "value": 75.2,
+    "unit": "índice VAB per cápita relativo (Argentina = 100)",
+    "year": 2023,
+    "source": "CEPAL-Ministerio de Economía, Desagregación provincial del VAB, base 2004 (precios constantes 2004), vía Argendata/Fundar"
+   },
+   "economy": "Minería metalífera y de litio, agricultura (nogal, olivo, vid), administración pública.",
+   "name": "Catamarca",
+   "governorElection2027": true,
+   "reelection": "puede según LPO (habilitado constitucionalmente), pero el PJ local acordó limitar a dos mandatos",
+   "incumbentRunning": "no",
+   "date2027": "2027-10-24",
+   "dateStatus": "junto con la nacional",
+   "dateNote": "Jalil anunció que la provincia votará el mismo día que las nacionales (24/10/2027), por costos. Es la principal excepción al desdoblamiento.",
+   "system": "PASO (simultáneas con las nacionales en 2023)",
+   "candidates": [
+    {
+     "name": "Gustavo Saadi",
+     "party": "PJ",
+     "note": "Intendente de la Capital; señalado como sucesor de Jalil"
+    },
+    {
+     "name": "Fernando Jalil",
+     "party": "Encuentro Catamarca",
+     "note": "Hermano del gobernador; lanzado por su espacio (fuentes discrepan sobre si va a la gobernación o a la intendencia)"
+    }
+   ],
+   "gov2023": {
+    "winner": "Raúl Jalil (Unión por la Patria)",
+    "pct": 54.06
+   },
+   "dip2025": {
+    "winner": "Fuerza Patria",
+    "pct": 45.74
+   },
+   "summary": "Jalil, aliado legislativo clave de Milei, no buscaría un tercer mandato y apostaría al Senado; la sucesión apunta a Saadi. Al votar junto con la presidencial, la provincia queda expuesta al arrastre nacional.",
+   "sources": [
+    {
+     "label": "Conclusión: Jalil anunció que las elecciones serán el mismo día que las nacionales",
+     "url": "https://www.conclusion.com.ar/politica/no-desdoblara-jalil-anuncio-que-las-elecciones-en-catamarca-seran-el-mismo-dia-que-las-nacionales/09/2026/"
+    },
+    {
+     "label": "Letra P: Jalil le despeja a Saadi el camino a la gobernación",
+     "url": "https://www.letrap.com.ar/politica/catamarca-jalil-le-despeja-saadi-el-camino-la-gobernacion-y-sera-candidato-senador-2027-n5424863"
+    },
+    {
+     "label": "El Ancasti: Fernando Jalil se lanza con partido propio",
+     "url": "https://elancasti.com.ar/politica-y-economia/fernando-jalil-se-lanza-un-partido-propio-n621247"
+    },
+    {
+     "label": "Ámbito (5/8/2026): Jujuy, Salta y Chaco desdoblan; Catamarca vota con la nacional",
+     "url": "https://www.ambito.com/ambito-nacional/desdoblamiento-electoral-jujuy-salta-y-chaco-se-distancian-octubre-mientras-que-catamarca-se-pega-las-presidenciales-n6307512"
+    },
+    {
+     "label": "Wikipedia: Elecciones provinciales de Catamarca de 2023",
+     "url": "https://es.wikipedia.org/wiki/Elecciones_provinciales_de_Catamarca_de_2023"
+    },
+    {
+     "label": "Wikipedia: Elecciones legislativas de Argentina de 2025 (resultados por distrito, Diputados)",
+     "url": "https://es.wikipedia.org/wiki/Elecciones_legislativas_de_Argentina_de_2025"
+    }
+   ],
+   "governor": {
+    "name": "Raúl Jalil",
+    "party": "PJ",
+    "since": "2019-12",
+    "wiki": "Raúl_Jalil",
+    "lean": "center-left"
+   },
+   "senate2027": true
+  },
+  "H": {
+   "capital": "Resistencia",
+   "population": 1129606,
+   "area_km2": 99763.3,
+   "density": 11.3,
+   "electorate": 1015299,
+   "electoratePct": 2.78,
+   "deputies": 7,
+   "deputies2027": 3,
+   "poverty": {
+    "pct": 48.6,
+    "period": "1er semestre 2026 (provisorio)",
+    "aglomerado": "Gran Resistencia"
+   },
+   "indigence": {
+    "pct": 17.3,
+    "period": "1er semestre 2026 (provisorio)",
+    "aglomerado": "Gran Resistencia"
+   },
+   "unemployment": {
+    "pct": 7.5,
+    "period": "2do trimestre 2026",
+    "aglomerado": "Gran Resistencia"
+   },
+   "pbgShare": {
+    "pct": 1.61,
+    "year": 2023,
+    "source": "CEPAL-Ministerio de Economía, Desagregación provincial del VAB, base 2004 (precios constantes 2004), vía Argendata/Fundar"
+   },
+   "gdpPerCapita": {
+    "value": 60.7,
+    "unit": "índice VAB per cápita relativo (Argentina = 100)",
+    "year": 2023,
+    "source": "CEPAL-Ministerio de Economía, Desagregación provincial del VAB, base 2004 (precios constantes 2004), vía Argendata/Fundar"
+   },
+   "economy": "Agricultura (algodón, soja, girasol), ganadería, forestal (quebracho), sector público.",
+   "name": "Chaco",
+   "governorElection2027": true,
+   "reelection": "puede (primer mandato)",
+   "incumbentRunning": "sí",
+   "date2027": null,
+   "dateStatus": "desdoblada sin fecha",
+   "dateNote": "La Constitución chaqueña (art. 90 inc. 7) obliga a votar separado de la presidencial. Zdero: 'No tenemos fecha'; El Cronista indica que se prevé septiembre. El PJ propone una enmienda para unificar.",
+   "system": "sin primarias en 2027 (la Legislatura suspendió las PASO provinciales por un año el 2/9/2026)",
+   "candidates": [
+    {
+     "name": "Leandro Zdero",
+     "party": "UCR / alianza con LLA",
+     "note": "Se lo da como candidato a la reelección; no hay anuncio formal"
+    },
+    {
+     "name": "Magda Ayala",
+     "party": "PJ",
+     "note": "Intendenta de Barranqueras en uso de licencia, diputada nacional"
+    },
+    {
+     "name": "Diego Bernachea",
+     "party": "PJ",
+     "note": "Ex ministro, cercano a Capitanich"
+    },
+    {
+     "name": "Antonio 'Penci' Morante",
+     "party": "PJ",
+     "note": "Ex ministro de Salud"
+    }
+   ],
+   "gov2023": {
+    "winner": "Leandro Zdero (Juntos por el Cambio)",
+    "pct": 46.2
+   },
+   "dip2025": {
+    "winner": "La Libertad Avanza",
+    "pct": 45.57
+   },
+   "summary": "Zdero buscaría revalidar el primer gobierno no peronista en décadas, con el PJ sin Capitanich (anunció que no irá por un cuarto mandato) y en plena interna sucesoria. La suspensión de las PASO, votada sin el peronismo, obliga a la oposición a definir candidaturas por otra vía.",
+   "sources": [
+    {
+     "label": "Misiones Online: Chaco suspendió las PASO para 2027",
+     "url": "https://misionesonline.net/2026/09/02/chaco-suspendio-las-paso/"
+    },
+    {
+     "label": "Perfil: Zdero confirmó que Chaco votará separado",
+     "url": "https://www.perfil.com/noticias/nea/zdero-confirmo-que-chaco-votara-separado-de-la-nacion-en-2027-pero-aun-no-definio-la-fecha.phtml"
+    },
+    {
+     "label": "Letra P: Capitanich se corre de la pelea 2027",
+     "url": "https://www.letrap.com.ar/politica/jorge-capitanich-se-corre-la-pelea-2027-chaco-la-grilla-que-quiere-tomar-la-posta-el-peronismo-n5424735"
+    },
+    {
+     "label": "Ámbito (5/8/2026): Jujuy, Salta y Chaco desdoblan; Catamarca vota con la nacional",
+     "url": "https://www.ambito.com/ambito-nacional/desdoblamiento-electoral-jujuy-salta-y-chaco-se-distancian-octubre-mientras-que-catamarca-se-pega-las-presidenciales-n6307512"
+    },
+    {
+     "label": "El Cronista (7/10/2026): Elecciones 2027, qué provincias esperan para definir",
+     "url": "https://www.cronista.com/economia-politica/elecciones-2027-tras-el-desdoblamiento-en-santa-fe-que-provincias-esperan-para-definir/"
+    },
+    {
+     "label": "Wikipedia: Elecciones provinciales del Chaco de 2023",
+     "url": "https://es.wikipedia.org/wiki/Elecciones_provinciales_del_Chaco_de_2023"
+    },
+    {
+     "label": "Wikipedia: Elecciones legislativas de Argentina de 2025 (resultados por distrito, Diputados)",
+     "url": "https://es.wikipedia.org/wiki/Elecciones_legislativas_de_Argentina_de_2025"
+    }
+   ],
+   "governor": {
+    "name": "Leandro Zdero",
+    "party": "UCR (alianza con LLA en 2025)",
+    "since": "2023-12",
+    "wiki": "Leandro_Zdero",
+    "lean": "center-right"
+   },
+   "senate2027": false
+  },
+  "U": {
+   "capital": "Rawson",
+   "population": 592621,
+   "area_km2": 224302.3,
+   "density": 2.6,
+   "electorate": 487984,
+   "electoratePct": 1.34,
+   "deputies": 5,
+   "deputies2027": 3,
+   "poverty": {
+    "pct": 35.1,
+    "period": "1er semestre 2026 (provisorio)",
+    "aglomerado": "Rawson-Trelew"
+   },
+   "indigence": {
+    "pct": 10.0,
+    "period": "1er semestre 2026 (provisorio)",
+    "aglomerado": "Rawson-Trelew"
+   },
+   "unemployment": {
+    "pct": 7.7,
+    "period": "2do trimestre 2026",
+    "aglomerado": "Rawson-Trelew"
+   },
+   "pbgShare": {
+    "pct": 1.9,
+    "year": 2023,
+    "source": "CEPAL-Ministerio de Economía, Desagregación provincial del VAB, base 2004 (precios constantes 2004), vía Argendata/Fundar"
+   },
+   "gdpPerCapita": {
+    "value": 136.2,
+    "unit": "índice VAB per cápita relativo (Argentina = 100)",
+    "year": 2023,
+    "source": "CEPAL-Ministerio de Economía, Desagregación provincial del VAB, base 2004 (precios constantes 2004), vía Argendata/Fundar"
+   },
+   "economy": "Hidrocarburos (Golfo San Jorge), pesca, aluminio (Puerto Madryn), lana, turismo.",
+   "name": "Chubut",
+   "governorElection2027": true,
+   "reelection": "puede (primer mandato)",
+   "incumbentRunning": "sí",
+   "date2027": null,
+   "dateStatus": "desdoblada sin fecha",
+   "dateNote": "Torres confirmó el desdoblamiento; analiza julio-agosto y deslizó agosto si se eliminan las PASO nacionales. Sin decreto.",
+   "system": "sin primarias (PASO eliminadas en la provincia); boleta única; sin balotaje",
+   "candidates": [
+    {
+     "name": "Ignacio Torres",
+     "party": "Despierta Chubut",
+     "note": "Se da por hecho que irá por la reelección"
+    },
+    {
+     "name": "Juan Pablo Luque",
+     "party": "PJ",
+     "note": "Diputado nacional; segundo en encuesta Aresco"
+    },
+    {
+     "name": "Damián Biss",
+     "party": "UCR ('Radicalismo Auténtico')",
+     "note": "Intendente de Rawson, impulsado por un sector radical"
+    }
+   ],
+   "gov2023": {
+    "winner": "Ignacio Torres (Juntos por el Cambio)",
+    "pct": 35.77
+   },
+   "dip2025": {
+    "winner": "La Libertad Avanza",
+    "pct": 28.24
+   },
+   "summary": "Torres, uno de los gobernadores de Provincias Unidas, busca la reelección con un partido provincial y sin acuerdo con LLA, que ganó en 2025 por un margen mínimo. Al no haber segunda vuelta, la fragmentación opositora es clave.",
+   "sources": [
+    {
+     "label": "Letra P (7/10/2026): Torres analiza votar en agosto",
+     "url": "https://www.letrap.com.ar/politica/ignacio-torres-provincilaiza-su-estrategia-y-analiza-votar-agosto-si-la-casa-rosada-voltea-las-paso-n5427180"
+    },
+    {
+     "label": "Río Negro: parte del radicalismo se aleja de Torres",
+     "url": "https://www.rionegro.com.ar/politica/chubut-parte-del-radicalismo-se-aleja-de-torres-y-tiene-un-candidato-propio-para-el-27-4661268/"
+    },
+    {
+     "label": "LPO: encuesta Torres vs. peronismo",
+     "url": "https://www.lapoliticaonline.com/politica/encuesta-sin-acuerdo-con-lla-nacho-torres-le-saca-siete-puntos-al-peronismo/"
+    },
+    {
+     "label": "El Eco / Noticias Argentinas (1/8/2026): qué provincias desdoblan",
+     "url": "https://www.eleco.com.ar/nacionales/elecciones-2027-que-provincias-desdoblan-sus-comicios-y-cual-es-el-estado-del-calendario"
+    },
+    {
+     "label": "Wikipedia: Elecciones provinciales del Chubut de 2023",
+     "url": "https://es.wikipedia.org/wiki/Elecciones_provinciales_del_Chubut_de_2023"
+    },
+    {
+     "label": "Wikipedia: Elecciones legislativas de Argentina de 2025 (resultados por distrito, Diputados)",
+     "url": "https://es.wikipedia.org/wiki/Elecciones_legislativas_de_Argentina_de_2025"
+    }
+   ],
+   "governor": {
+    "name": "Ignacio Torres",
+    "party": "PRO / Despierta Chubut",
+    "since": "2023-12",
+    "wiki": "Ignacio_Agustín_Torres",
+    "lean": "center-right"
+   },
+   "senate2027": true,
+   "ephOther": [
+    {
+     "aglomerado": "Comodoro Rivadavia-Rada Tilly",
+     "poverty": 37.2,
+     "indigence": 3.7,
+     "unemployment": 9.2
+    }
+   ]
+  },
+  "X": {
+   "capital": "Córdoba",
+   "population": 3840905,
+   "area_km2": 164707.8,
+   "density": 23.3,
+   "electorate": 3153740,
+   "electoratePct": 8.65,
+   "deputies": 18,
+   "deputies2027": 9,
+   "poverty": {
+    "pct": 31.1,
+    "period": "1er semestre 2026 (provisorio)",
+    "aglomerado": "Gran Córdoba"
+   },
+   "indigence": {
+    "pct": 7.0,
+    "period": "1er semestre 2026 (provisorio)",
+    "aglomerado": "Gran Córdoba"
+   },
+   "unemployment": {
+    "pct": 10.5,
+    "period": "2do trimestre 2026",
+    "aglomerado": "Gran Córdoba"
+   },
+   "pbgShare": {
+    "pct": 8.04,
+    "year": 2023,
+    "source": "CEPAL-Ministerio de Economía, Desagregación provincial del VAB, base 2004 (precios constantes 2004), vía Argendata/Fundar"
+   },
+   "gdpPerCapita": {
+    "value": 96.8,
+    "unit": "índice VAB per cápita relativo (Argentina = 100)",
+    "year": 2023,
+    "source": "CEPAL-Ministerio de Economía, Desagregación provincial del VAB, base 2004 (precios constantes 2004), vía Argendata/Fundar"
+   },
+   "economy": "Agroindustria (soja, maíz, maní, lácteos), industria automotriz y metalmecánica, servicios.",
+   "name": "Córdoba",
+   "governorElection2027": true,
+   "reelection": "puede (primer mandato)",
+   "incumbentRunning": "sí",
+   "date2027": null,
+   "dateStatus": "sin definir",
+   "dateNote": "Sin fecha oficial; se especula con un adelantamiento (el gobernador puede convocar desde fines de marzo; Letra P menciona abril; el peronismo espera mayo-junio). Definición esperada entre diciembre y enero.",
+   "system": "sin primarias",
+   "candidates": [
+    {
+     "name": "Martín Llaryora",
+     "party": "Hacemos Unidos por Córdoba",
+     "note": "Busca la reelección; lidera encuestas"
+    },
+    {
+     "name": "Gabriel Bornoroni",
+     "party": "La Libertad Avanza",
+     "note": "Rival mejor posicionado en sondeos; candidatura no confirmada"
+    },
+    {
+     "name": "Luis Juez",
+     "party": "Frente Cívico",
+     "note": "Posible candidato"
+    },
+    {
+     "name": "Rodrigo de Loredo",
+     "party": "UCR",
+     "note": "Posible candidato"
+    }
+   ],
+   "gov2023": {
+    "winner": "Martín Llaryora (Hacemos Unidos por Córdoba)",
+    "pct": 45.2
+   },
+   "dip2025": {
+    "winner": "La Libertad Avanza",
+    "pct": 42.44
+   },
+   "summary": "El cordobesismo, que gobierna desde 1999, enfrenta a una LLA que lo superó por 14 puntos en 2025. Todo depende de si la oposición (LLA, Juez, De Loredo) se unifica y de cuánto adelante Llaryora la elección.",
+   "sources": [
+    {
+     "label": "Letra P: encuesta Córdoba, Llaryora gana y Bornoroni emerge",
+     "url": "https://www.letrap.com.ar/politica/encuesta-cordoba-llaryora-gana-todos-los-escenarios-y-bornoroni-emerge-como-el-rival-mas-competitivo-n5424796"
+    },
+    {
+     "label": "Letra P: Llaryora quiere que sus intendentes peguen las elecciones",
+     "url": "https://www.letrap.com.ar/politica/llaryora-quiere-que-sus-intendentes-peguen-las-elecciones-la-provincia-y-brandan-salio-alinear-la-tropa-n5425369"
+    },
+    {
+     "label": "Perfil: Bornoroni anunció candidatos de LLA en los 427 municipios",
+     "url": "https://www.perfil.com/noticias/cordoba/bornoroni-anuncio-candidatos-de-lla-en-los-427-municipios-de-cordoba-y-redoblo-las-criticas-a-llaryora.phtml"
+    },
+    {
+     "label": "Perfil (2/8/2026): el mapa electoral del 2027",
+     "url": "https://www.perfil.com/noticias/politica/el-mapa-electoral-del-2027-que-obliga-al-gobierno-a-recalcular-su-estrategia.phtml"
+    },
+    {
+     "label": "Wikipedia: Elecciones provinciales de Córdoba de 2023",
+     "url": "https://es.wikipedia.org/wiki/Elecciones_provinciales_de_Córdoba_de_2023"
+    },
+    {
+     "label": "Wikipedia: Elecciones legislativas de Argentina de 2025 (resultados por distrito, Diputados)",
+     "url": "https://es.wikipedia.org/wiki/Elecciones_legislativas_de_Argentina_de_2025"
+    }
+   ],
+   "governor": {
+    "name": "Martín Llaryora",
+    "party": "PJ / Hacemos Unidos por Córdoba",
+    "since": "2023-12",
+    "wiki": "Martín_Llaryora",
+    "lean": "center"
+   },
+   "senate2027": true,
+   "ephOther": [
+    {
+     "aglomerado": "Río Cuarto",
+     "poverty": 23.6,
+     "indigence": 3.2,
+     "unemployment": 6.4
+    }
+   ]
+  },
+  "W": {
+   "capital": "Corrientes",
+   "population": 1212696,
+   "area_km2": 89123.3,
+   "density": 13.6,
+   "electorate": 951679,
+   "electoratePct": 2.61,
+   "deputies": 7,
+   "deputies2027": 4,
+   "poverty": {
+    "pct": 41.0,
+    "period": "1er semestre 2026 (provisorio)",
+    "aglomerado": "Corrientes"
+   },
+   "indigence": {
+    "pct": 8.6,
+    "period": "1er semestre 2026 (provisorio)",
+    "aglomerado": "Corrientes"
+   },
+   "unemployment": {
+    "pct": 9.1,
+    "period": "2do trimestre 2026",
+    "aglomerado": "Corrientes"
+   },
+   "pbgShare": {
+    "pct": 1.32,
+    "year": 2023,
+    "source": "CEPAL-Ministerio de Economía, Desagregación provincial del VAB, base 2004 (precios constantes 2004), vía Argendata/Fundar"
+   },
+   "gdpPerCapita": {
+    "value": 53.6,
+    "unit": "índice VAB per cápita relativo (Argentina = 100)",
+    "year": 2023,
+    "source": "CEPAL-Ministerio de Economía, Desagregación provincial del VAB, base 2004 (precios constantes 2004), vía Argendata/Fundar"
+   },
+   "economy": "Ganadería, arroz, cítricos, yerba mate, té, forestoindustria.",
+   "name": "Corrientes",
+   "governorElection2027": false,
+   "reelection": "puede (primer mandato; próxima elección de gobernador en 2029)",
+   "incumbentRunning": "no",
+   "date2027": null,
+   "dateStatus": "desdoblada sin fecha",
+   "dateNote": "No hay elección de gobernador (se votó el 31/8/2025). En 2027 hay legislativas provinciales; el gobernador anunció que se desdoblarán, sin fecha.",
+   "system": "sin primarias (candidaturas por acuerdos internos)",
+   "candidates": [],
+   "gov2023": {
+    "winner": null,
+    "pct": null
+   },
+   "dip2025": {
+    "winner": "Vamos Corrientes",
+    "pct": 33.89
+   },
+   "summary": "Corrientes eligió gobernador en 2025: Juan Pablo Valdés ganó en primera vuelta con 51,91%. En 2027 sólo se renueva parte de la Legislatura, una prueba para el oficialismo radical, que en las nacionales de 2025 le ganó a LLA por apenas 1,2 punto.",
+   "sources": [
+    {
+     "label": "Wikipedia: Elecciones provinciales de Corrientes de 2025",
+     "url": "https://es.wikipedia.org/wiki/Elecciones_provinciales_de_Corrientes_de_2025"
+    },
+    {
+     "label": "Perfil: el gobernador de Corrientes confirmó que la provincia desdoblará",
+     "url": "https://www.perfil.com/noticias/nea/el-gobernador-de-corrientes-confirmo-que-la-provincia-desdoblara-las-elecciones-y-apoyo-la-eliminacion-de-las-paso.phtml"
+    },
+    {
+     "label": "El Cronista (7/10/2026): Elecciones 2027, qué provincias esperan para definir",
+     "url": "https://www.cronista.com/economia-politica/elecciones-2027-tras-el-desdoblamiento-en-santa-fe-que-provincias-esperan-para-definir/"
+    },
+    {
+     "label": "Wikipedia: Elecciones legislativas de Argentina de 2025 (resultados por distrito, Diputados)",
+     "url": "https://es.wikipedia.org/wiki/Elecciones_legislativas_de_Argentina_de_2025"
+    }
+   ],
+   "governor": {
+    "name": "Juan Pablo Valdés",
+    "party": "UCR / Vamos Corrientes",
+    "since": "2025-12",
+    "wiki": "Juan_Pablo_Valdés",
+    "lean": "center"
+   },
+   "senate2027": true
+  },
+  "E": {
+   "capital": "Paraná",
+   "population": 1425578,
+   "area_km2": 78383.7,
+   "density": 18.2,
+   "electorate": 1162608,
+   "electoratePct": 3.19,
+   "deputies": 9,
+   "deputies2027": 4,
+   "poverty": {
+    "pct": 34.3,
+    "period": "1er semestre 2026 (provisorio)",
+    "aglomerado": "Gran Paraná"
+   },
+   "indigence": {
+    "pct": 6.0,
+    "period": "1er semestre 2026 (provisorio)",
+    "aglomerado": "Gran Paraná"
+   },
+   "unemployment": {
+    "pct": 6.7,
+    "period": "2do trimestre 2026",
+    "aglomerado": "Gran Paraná"
+   },
+   "pbgShare": {
+    "pct": 2.71,
+    "year": 2023,
+    "source": "CEPAL-Ministerio de Economía, Desagregación provincial del VAB, base 2004 (precios constantes 2004), vía Argendata/Fundar"
+   },
+   "gdpPerCapita": {
+    "value": 88.8,
+    "unit": "índice VAB per cápita relativo (Argentina = 100)",
+    "year": 2023,
+    "source": "CEPAL-Ministerio de Economía, Desagregación provincial del VAB, base 2004 (precios constantes 2004), vía Argendata/Fundar"
+   },
+   "economy": "Agricultura, avicultura, arroz, citricultura, forestal, lechería.",
+   "name": "Entre Ríos",
+   "governorElection2027": true,
+   "reelection": "puede (primer mandato)",
+   "incumbentRunning": "incierto",
+   "date2027": null,
+   "dateStatus": "sin definir",
+   "dateNote": "Frigerio tiene plazo hasta el 17 de febrero de 2027 para decidir; si desdobla, el nuevo Código Electoral prevé PASO en mayo y generales el último domingo de junio. La Casa Gris dice que se definiría antes de fin de año.",
+   "system": "PASO (nuevo Código Electoral; LLA presentó un proyecto para suspenderlas)",
+   "candidates": [
+    {
+     "name": "Rogelio Frigerio",
+     "party": "PRO / Juntos por Entre Ríos",
+     "note": "Su entorno da por hecha la candidatura, sin anuncio"
+    },
+    {
+     "name": "Guillermo Michel",
+     "party": "PJ",
+     "note": "Dirigente peronista con buena imagen en sondeos; no lanzado"
+    }
+   ],
+   "gov2023": {
+    "winner": "Rogelio Frigerio (Juntos por el Cambio)",
+    "pct": 41.68
+   },
+   "dip2025": {
+    "winner": "La Libertad Avanza (alianza con Frigerio)",
+    "pct": 52.9
+   },
+   "summary": "Tras el triunfo de la alianza con LLA en 2025, Frigerio llega como favorito a la reelección. Las incógnitas son si repite el acuerdo con los libertarios, si desdobla y quién encabeza un peronismo sin candidato definido.",
+   "sources": [
+    {
+     "label": "Letra P: el debate por la eliminación de las PASO en Entre Ríos",
+     "url": "https://www.letrap.com.ar/politica/el-debate-la-eliminacion-las-paso-rios-marca-los-tiempos-del-segundo-semestre-cara-2027-n5425330"
+    },
+    {
+     "label": "Letra P: el menú 2027 de Rogelio Frigerio",
+     "url": "https://www.letrap.com.ar/politica/el-menu-2027-rogelio-frigerio-la-confianza-el-voto-anti-k-y-las-dudas-la-libertad-avanza-n5423543"
+    },
+    {
+     "label": "El Cronista (7/10/2026): Elecciones 2027, qué provincias esperan para definir",
+     "url": "https://www.cronista.com/economia-politica/elecciones-2027-tras-el-desdoblamiento-en-santa-fe-que-provincias-esperan-para-definir/"
+    },
+    {
+     "label": "Wikipedia: Elecciones provinciales de Entre Ríos de 2023",
+     "url": "https://es.wikipedia.org/wiki/Elecciones_provinciales_de_Entre_Ríos_de_2023"
+    },
+    {
+     "label": "Wikipedia: Elecciones legislativas de Argentina de 2025 (resultados por distrito, Diputados)",
+     "url": "https://es.wikipedia.org/wiki/Elecciones_legislativas_de_Argentina_de_2025"
+    }
+   ],
+   "governor": {
+    "name": "Rogelio Frigerio",
+    "party": "PRO (aliado de LLA en 2025)",
+    "since": "2023-12",
+    "wiki": "Rogelio_Frigerio_(nieto)",
+    "lean": "center-right"
+   },
+   "senate2027": false,
+   "ephOther": [
+    {
+     "aglomerado": "Concordia",
+     "poverty": 56.2,
+     "indigence": 12.7,
+     "unemployment": 6.1
+    }
+   ]
+  },
+  "P": {
+   "capital": "Formosa",
+   "population": 607419,
+   "area_km2": 75488.3,
+   "density": 8.0,
+   "electorate": 495483,
+   "electoratePct": 1.36,
+   "deputies": 5,
+   "deputies2027": 3,
+   "poverty": {
+    "pct": 29.9,
+    "period": "1er semestre 2026 (provisorio)",
+    "aglomerado": "Formosa"
+   },
+   "indigence": {
+    "pct": 5.9,
+    "period": "1er semestre 2026 (provisorio)",
+    "aglomerado": "Formosa"
+   },
+   "unemployment": {
+    "pct": 4.8,
+    "period": "2do trimestre 2026",
+    "aglomerado": "Formosa"
+   },
+   "pbgShare": {
+    "pct": 0.64,
+    "year": 2023,
+    "source": "CEPAL-Ministerio de Economía, Desagregación provincial del VAB, base 2004 (precios constantes 2004), vía Argendata/Fundar"
+   },
+   "gdpPerCapita": {
+    "value": 48.0,
+    "unit": "índice VAB per cápita relativo (Argentina = 100)",
+    "year": 2023,
+    "source": "CEPAL-Ministerio de Economía, Desagregación provincial del VAB, base 2004 (precios constantes 2004), vía Argendata/Fundar"
+   },
+   "economy": "Ganadería bovina, agricultura (algodón, banana), sector público.",
+   "name": "Formosa",
+   "governorElection2027": true,
+   "reelection": "puede según la reforma de 2025 (una reelección consecutiva; cláusula transitoria cuenta el mandato actual como el primero), impugnada por la oposición ante la Corte Suprema",
+   "incumbentRunning": "incierto",
+   "date2027": null,
+   "dateStatus": "sin definir",
+   "dateNote": "Sin anuncio oficial; los medios la ubican entre las provincias que podrían desdoblar. En 2023 y 2025 Formosa votó separada de la nación (25/6/2023 y 29/6/2025).",
+   "system": "ley de lemas",
+   "candidates": [
+    {
+     "name": "Gildo Insfrán",
+     "party": "PJ",
+     "note": "La cláusula transitoria lo habilita para un nuevo mandato; candidatura no formalizada"
+    }
+   ],
+   "gov2023": {
+    "winner": "Gildo Insfrán (Frente de la Victoria)",
+    "pct": 69.97
+   },
+   "dip2025": {
+    "winner": "Frente de la Victoria (PJ)",
+    "pct": 58.34
+   },
+   "summary": "Tras el fallo de la Corte contra la reelección indefinida, la nueva Constitución limita a una reelección, pero una cláusula transitoria permitiría a Insfrán (en el poder desde 1995) ir por otro mandato. La impugnación judicial de esa cláusula es el eje de la elección.",
+   "sources": [
+    {
+     "label": "Letra P: Formosa derogó la reelección indefinida, pero Insfrán podrá competir en 2027",
+     "url": "https://www.letrap.com.ar/politica/formosa-derogo-la-reeleccion-indefinida-pero-gildo-insfran-podra-competir-2027-n5418535"
+    },
+    {
+     "label": "Buenos Aires Times: reform means Insfrán can run for re-election",
+     "url": "https://www.batimes.com.ar/news/argentina/reform-means-formosa-governor-insfran-can-run-for-re-election.phtml"
+    },
+    {
+     "label": "Letra P (10/10/2026): la Corte admitió el planteo pero no se expidió sobre el fondo",
+     "url": "https://www.letrap.com.ar/politica/gustavo-saenz-planifica-las-elecciones-salta-mayo-y-cranea-la-avanzada-final-su-re-reeleccion-n5427260"
+    },
+    {
+     "label": "La Noticia Web (8/10/2026): hasta 20 distritos podrían votar antes de octubre",
+     "url": "https://www.lanoticiaweb.com.ar/elecciones-2027-casi-todo-el-mapa-provincial-se-despega-de-milei-y-hasta-20-distritos-podrian-votar-antes-de-octubre/"
+    },
+    {
+     "label": "Wikipedia: Elecciones provinciales de Formosa de 2023",
+     "url": "https://es.wikipedia.org/wiki/Elecciones_provinciales_de_Formosa_de_2023"
+    },
+    {
+     "label": "Wikipedia: Elecciones legislativas de Argentina de 2025 (resultados por distrito, Diputados)",
+     "url": "https://es.wikipedia.org/wiki/Elecciones_legislativas_de_Argentina_de_2025"
+    }
+   ],
+   "governor": {
+    "name": "Gildo Insfrán",
+    "party": "PJ / Frente de la Victoria",
+    "since": "1995-12-10",
+    "wiki": "Gildo_Insfrán",
+    "lean": "center-left"
+   },
+   "senate2027": false
+  },
+  "Y": {
+   "capital": "San Salvador de Jujuy",
+   "population": 811611,
+   "area_km2": 53244.2,
+   "density": 15.2,
+   "electorate": 605535,
+   "electoratePct": 1.66,
+   "deputies": 6,
+   "deputies2027": 3,
+   "poverty": {
+    "pct": 27.6,
+    "period": "1er semestre 2026 (provisorio)",
+    "aglomerado": "Jujuy-Palpalá"
+   },
+   "indigence": {
+    "pct": 1.4,
+    "period": "1er semestre 2026 (provisorio)",
+    "aglomerado": "Jujuy-Palpalá"
+   },
+   "unemployment": {
+    "pct": 3.4,
+    "period": "2do trimestre 2026",
+    "aglomerado": "Jujuy-Palpalá"
+   },
+   "pbgShare": {
+    "pct": 1.15,
+    "year": 2023,
+    "source": "CEPAL-Ministerio de Economía, Desagregación provincial del VAB, base 2004 (precios constantes 2004), vía Argendata/Fundar"
+   },
+   "gdpPerCapita": {
+    "value": 67.3,
+    "unit": "índice VAB per cápita relativo (Argentina = 100)",
+    "year": 2023,
+    "source": "CEPAL-Ministerio de Economía, Desagregación provincial del VAB, base 2004 (precios constantes 2004), vía Argendata/Fundar"
+   },
+   "economy": "Caña de azúcar, tabaco, minería de litio, frutihorticultura, turismo.",
+   "name": "Jujuy",
+   "governorElection2027": true,
+   "reelection": "puede (una reelección inmediata)",
+   "incumbentRunning": "sí",
+   "date2027": null,
+   "dateStatus": "desdoblada sin fecha",
+   "dateNote": "El gobierno confirmó la intención de votar separado; se analiza mayo o junio. Sin decreto.",
+   "system": "sin primarias",
+   "candidates": [
+    {
+     "name": "Carlos Sadir",
+     "party": "UCR / Frente Jujuy Crece",
+     "note": "Diseña su campaña de reelección; descartó alianza con LLA"
+    }
+   ],
+   "gov2023": {
+    "winner": "Carlos Sadir (Frente Jujuy Crece)",
+    "pct": 49.59
+   },
+   "dip2025": {
+    "winner": "La Libertad Avanza",
+    "pct": 37.29
+   },
+   "summary": "El radicalismo de Morales y Sadir defiende la provincia tras quedar segundo, muy lejos de LLA, en 2025. Sadir irá por la reelección sin los libertarios, con tensiones internas en la UCR por las candidaturas.",
+   "sources": [
+    {
+     "label": "Letra P: Sadir descarta una alianza con LLA y diseña su reelección",
+     "url": "https://www.letrap.com.ar/politica/carlos-sadir-descarta-una-alianza-lla-jujuy-y-empieza-disenar-la-campana-su-reeleccion-n5427339"
+    },
+    {
+     "label": "Todo Jujuy: el gobierno adelantó que la idea es votar separado",
+     "url": "https://www.todojujuy.com/jujuy/el-gobierno-jujuy-adelanto-que-la-idea-es-que-se-vote-separado-n294032"
+    },
+    {
+     "label": "Letra P: Morales apura a Sadir a definir candidaturas",
+     "url": "https://www.letrap.com.ar/politica/arde-la-ucr-jujuy-gerardo-morales-apura-carlos-sadir-definir-las-candidaturas-n5427532"
+    },
+    {
+     "label": "Ámbito (5/8/2026): Jujuy, Salta y Chaco desdoblan; Catamarca vota con la nacional",
+     "url": "https://www.ambito.com/ambito-nacional/desdoblamiento-electoral-jujuy-salta-y-chaco-se-distancian-octubre-mientras-que-catamarca-se-pega-las-presidenciales-n6307512"
+    },
+    {
+     "label": "Wikipedia: Elecciones provinciales de Jujuy de 2023",
+     "url": "https://es.wikipedia.org/wiki/Elecciones_provinciales_de_Jujuy_de_2023"
+    },
+    {
+     "label": "Wikipedia: Elecciones legislativas de Argentina de 2025 (resultados por distrito, Diputados)",
+     "url": "https://es.wikipedia.org/wiki/Elecciones_legislativas_de_Argentina_de_2025"
+    }
+   ],
+   "governor": {
+    "name": "Carlos Sadir",
+    "party": "UCR / Frente Jujuy Crece",
+    "since": "2023-12",
+    "wiki": "Carlos_Sadir",
+    "lean": "center"
+   },
+   "senate2027": false
+  },
+  "L": {
+   "capital": "Santa Rosa",
+   "population": 361859,
+   "area_km2": 143492.5,
+   "density": 2.5,
+   "electorate": 306139,
+   "electoratePct": 0.84,
+   "deputies": 5,
+   "deputies2027": 2,
+   "poverty": {
+    "pct": 25.4,
+    "period": "1er semestre 2026 (provisorio)",
+    "aglomerado": "Santa Rosa-Toay"
+   },
+   "indigence": {
+    "pct": 4.9,
+    "period": "1er semestre 2026 (provisorio)",
+    "aglomerado": "Santa Rosa-Toay"
+   },
+   "unemployment": {
+    "pct": 6.7,
+    "period": "2do trimestre 2026",
+    "aglomerado": "Santa Rosa-Toay"
+   },
+   "pbgShare": {
+    "pct": 1.03,
+    "year": 2023,
+    "source": "CEPAL-Ministerio de Economía, Desagregación provincial del VAB, base 2004 (precios constantes 2004), vía Argendata/Fundar"
+   },
+   "gdpPerCapita": {
+    "value": 130.6,
+    "unit": "índice VAB per cápita relativo (Argentina = 100)",
+    "year": 2023,
+    "source": "CEPAL-Ministerio de Economía, Desagregación provincial del VAB, base 2004 (precios constantes 2004), vía Argendata/Fundar"
+   },
+   "economy": "Agricultura y ganadería bovina, petróleo (oeste provincial).",
+   "name": "La Pampa",
+   "governorElection2027": true,
+   "reelection": "no puede (cumple dos mandatos consecutivos)",
+   "incumbentRunning": "no",
+   "date2027": null,
+   "dateStatus": "sin definir",
+   "dateNote": "Sin confirmación; en 2019 y 2023 votó separada (mayo), pero Letra P señala que no está garantizado que repita mayo. Ziliotto espera la definición del PJ nacional.",
+   "system": "PASO / internas provinciales",
+   "candidates": [
+    {
+     "name": "Daniel Pablo Bensusán",
+     "party": "PJ",
+     "note": "Senador; blanqueó su aspiración a suceder a Ziliotto"
+    },
+    {
+     "name": "Fernanda Alonso",
+     "party": "PJ",
+     "note": "Intendenta de General Pico"
+    },
+    {
+     "name": "Luciano di Nápoli",
+     "party": "PJ",
+     "note": "Intendente de Santa Rosa"
+    }
+   ],
+   "gov2023": {
+    "winner": "Sergio Ziliotto (Frente Justicialista Pampeano)",
+    "pct": 47.66
+   },
+   "dip2025": {
+    "winner": "Frente Defendemos La Pampa (PJ)",
+    "pct": 44.63
+   },
+   "summary": "Sin reelección para Ziliotto, el peronismo pampeano debe resolver una sucesión con tensiones con el sector de Verna. En 2025 retuvo la provincia por apenas un punto sobre LLA.",
+   "sources": [
+    {
+     "label": "Letra P: Bensusán asoma como delfín de Ziliotto",
+     "url": "https://www.letrap.com.ar/politica/la-pampa-bensusan-asoma-como-delfin-ziliotto-medio-la-interna-peronista-verna-n5420987"
+    },
+    {
+     "label": "Letra P: 'Mayo en veremos', Ziliotto repiensa el calendario",
+     "url": "https://www.letrap.com.ar/politica/mayo-veremos-sergio-ziliotto-hace-calculos-y-repiensa-apuro-el-calendario-electoral-la-pampa-n5425427"
+    },
+    {
+     "label": "El Cronista (7/10/2026): Elecciones 2027, qué provincias esperan para definir",
+     "url": "https://www.cronista.com/economia-politica/elecciones-2027-tras-el-desdoblamiento-en-santa-fe-que-provincias-esperan-para-definir/"
+    },
+    {
+     "label": "Wikipedia: Elecciones provinciales de La Pampa de 2023",
+     "url": "https://es.wikipedia.org/wiki/Elecciones_provinciales_de_La_Pampa_de_2023"
+    },
+    {
+     "label": "Wikipedia: Elecciones legislativas de Argentina de 2025 (resultados por distrito, Diputados)",
+     "url": "https://es.wikipedia.org/wiki/Elecciones_legislativas_de_Argentina_de_2025"
+    }
+   ],
+   "governor": {
+    "name": "Sergio Ziliotto",
+    "party": "PJ",
+    "since": "2019-12",
+    "wiki": "Sergio_Ziliotto",
+    "lean": "center-left"
+   },
+   "senate2027": true
+  },
+  "F": {
+   "capital": "La Rioja",
+   "population": 383865,
+   "area_km2": 91493.7,
+   "density": 4.2,
+   "electorate": 310504,
+   "electoratePct": 0.85,
+   "deputies": 5,
+   "deputies2027": 3,
+   "poverty": {
+    "pct": 38.4,
+    "period": "1er semestre 2026 (provisorio)",
+    "aglomerado": "La Rioja"
+   },
+   "indigence": {
+    "pct": 4.7,
+    "period": "1er semestre 2026 (provisorio)",
+    "aglomerado": "La Rioja"
+   },
+   "unemployment": {
+    "pct": 4.5,
+    "period": "2do trimestre 2026",
+    "aglomerado": "La Rioja"
+   },
+   "pbgShare": {
+    "pct": 0.58,
+    "year": 2023,
+    "source": "CEPAL-Ministerio de Economía, Desagregación provincial del VAB, base 2004 (precios constantes 2004), vía Argendata/Fundar"
+   },
+   "gdpPerCapita": {
+    "value": 66.2,
+    "unit": "índice VAB per cápita relativo (Argentina = 100)",
+    "year": 2023,
+    "source": "CEPAL-Ministerio de Economía, Desagregación provincial del VAB, base 2004 (precios constantes 2004), vía Argendata/Fundar"
+   },
+   "economy": "Industria promocionada, olivo, vid, nogal, sector público.",
+   "name": "La Rioja",
+   "governorElection2027": true,
+   "reelection": "no puede",
+   "incumbentRunning": "no",
+   "date2027": "2027-10-24",
+   "dateStatus": "junto con la nacional",
+   "dateNote": "El entorno de Quintela da por hecho que no desdoblará y que el gobernador se elegirá con las presidenciales; aún no oficializado.",
+   "system": "sin primarias (internas del PJ el 25/10/2026)",
+   "candidates": [
+    {
+     "name": "Martín Menem",
+     "party": "La Libertad Avanza",
+     "note": "Presidente de Diputados; aspira a repetir su candidatura de 2023"
+    },
+    {
+     "name": "Armando Molina",
+     "party": "PJ",
+     "note": "Intendente de la Capital"
+    },
+    {
+     "name": "Teresita Madera",
+     "party": "PJ",
+     "note": "Vicegobernadora"
+    },
+    {
+     "name": "Florencia López",
+     "party": "PJ",
+     "note": "Senadora nacional"
+    }
+   ],
+   "gov2023": {
+    "winner": "Ricardo Quintela (Frente de Todos)",
+    "pct": 52.63
+   },
+   "dip2025": {
+    "winner": "Federales Defendamos La Rioja (PJ)",
+    "pct": 43.62
+   },
+   "summary": "El peronismo de Quintela, que se anotó como presidenciable, retuvo la provincia en 2025 por sólo 782 votos sobre LLA. Sin el gobernador en la boleta, Martín Menem aparece como la gran amenaza a la hegemonía del PJ riojano.",
+   "sources": [
+    {
+     "label": "Letra P: las tres razones de Quintela para no desdoblar",
+     "url": "https://www.letrap.com.ar/politica/las-tres-razones-ricardo-quintela-no-desdoblar-y-que-la-rioja-vote-gobernador-octubre-n5424613"
+    },
+    {
+     "label": "Letra P: el PJ de La Rioja va a internas",
+     "url": "https://www.letrap.com.ar/politica/el-pj-la-rioja-va-internas-y-quintela-maniobra-que-no-se-vuelvan-unas-paso-que-definan-su-sucesion-n5426882"
+    },
+    {
+     "label": "La Nación: por 782 votos el peronismo ganó en La Rioja",
+     "url": "https://www.lanacion.com.ar/politica/por-solo-782-votos-el-peronismo-gano-en-la-rioja-tras-el-escrutinio-definitivo-nid30102025/"
+    },
+    {
+     "label": "Ámbito (5/8/2026): Jujuy, Salta y Chaco desdoblan; Catamarca vota con la nacional",
+     "url": "https://www.ambito.com/ambito-nacional/desdoblamiento-electoral-jujuy-salta-y-chaco-se-distancian-octubre-mientras-que-catamarca-se-pega-las-presidenciales-n6307512"
+    },
+    {
+     "label": "Wikipedia: Elecciones provinciales de La Rioja (Argentina) de 2023",
+     "url": "https://es.wikipedia.org/wiki/Elecciones_provinciales_de_La_Rioja_(Argentina)_de_2023"
+    },
+    {
+     "label": "Wikipedia: Elecciones legislativas de Argentina de 2025 (resultados por distrito, Diputados)",
+     "url": "https://es.wikipedia.org/wiki/Elecciones_legislativas_de_Argentina_de_2025"
+    }
+   ],
+   "governor": {
+    "name": "Ricardo Quintela",
+    "party": "PJ",
+    "since": "2019-12",
+    "wiki": "Ricardo_Quintela",
+    "lean": "center-left"
+   },
+   "senate2027": false
+  },
+  "M": {
+   "capital": "Mendoza",
+   "population": 2043540,
+   "area_km2": 149069.2,
+   "density": 13.7,
+   "electorate": 1555582,
+   "electoratePct": 4.27,
+   "deputies": 10,
+   "deputies2027": 5,
+   "poverty": {
+    "pct": 36.9,
+    "period": "1er semestre 2026 (provisorio)",
+    "aglomerado": "Gran Mendoza"
+   },
+   "indigence": {
+    "pct": 7.3,
+    "period": "1er semestre 2026 (provisorio)",
+    "aglomerado": "Gran Mendoza"
+   },
+   "unemployment": {
+    "pct": 8.1,
+    "period": "2do trimestre 2026",
+    "aglomerado": "Gran Mendoza"
+   },
+   "pbgShare": {
+    "pct": 3.29,
+    "year": 2023,
+    "source": "CEPAL-Ministerio de Economía, Desagregación provincial del VAB, base 2004 (precios constantes 2004), vía Argendata/Fundar"
+   },
+   "gdpPerCapita": {
+    "value": 75.0,
+    "unit": "índice VAB per cápita relativo (Argentina = 100)",
+    "year": 2023,
+    "source": "CEPAL-Ministerio de Economía, Desagregación provincial del VAB, base 2004 (precios constantes 2004), vía Argendata/Fundar"
+   },
+   "economy": "Vitivinicultura, petróleo, frutihorticultura, turismo, industria y servicios.",
+   "name": "Mendoza",
+   "governorElection2027": true,
+   "reelection": "no puede (la Constitución mendocina prohíbe la reelección inmediata)",
+   "incumbentRunning": "no",
+   "date2027": null,
+   "dateStatus": "desdoblada sin fecha",
+   "dateNote": "La legislación provincial prevé elección separada (el gobernador podría modificarlo por decreto). Se menciona PASO en junio o julio y generales en septiembre; sin día fijado.",
+   "system": "PASO (el gobierno confirmó que se mantienen)",
+   "candidates": [
+    {
+     "name": "Luis Petri",
+     "party": "La Libertad Avanza",
+     "note": "Diputado nacional, ex ministro de Defensa; posible rival del delfín de Cornejo en PASO"
+    },
+    {
+     "name": "Natalio Mema",
+     "party": "Cambia Mendoza (PD/UCR)",
+     "note": "Ministro de Gobierno, el preferido de Cornejo según Diario Uno"
+    },
+    {
+     "name": "Tadeo García Zalazar",
+     "party": "UCR",
+     "note": "Ministro de Educación"
+    },
+    {
+     "name": "Ulpiano Suárez",
+     "party": "UCR",
+     "note": "Intendente de la Capital"
+    }
+   ],
+   "gov2023": {
+    "winner": "Alfredo Cornejo (Cambia Mendoza)",
+    "pct": 39.51
+   },
+   "dip2025": {
+    "winner": "La Libertad Avanza (alianza con Cambia Mendoza)",
+    "pct": 53.72
+   },
+   "summary": "Cornejo no puede reelegir y quiere un sucesor propio dentro de la alianza con LLA, que sacó 53,7% en 2025. La puja con Luis Petri por la candidatura libertaria podría dirimirse en las PASO provinciales.",
+   "sources": [
+    {
+     "label": "La Nación: sin reelección, Cornejo quiere continuidad pero habrá PASO con Petri",
+     "url": "https://www.lanacion.com.ar/politica/sin-reeleccion-cornejo-quiere-continuidad-pero-habra-paso-entre-un-candidato-propio-y-petri-nid01052026/"
+    },
+    {
+     "label": "Sitio Andino: quiénes se anotan para suceder a Cornejo",
+     "url": "https://www.sitioandino.com.ar/politica/elecciones-2027-quienes-se-anotan-suceder-alfredo-cornejo-n5727551"
+    },
+    {
+     "label": "LPO: Cornejo y Karina no quieren a Petri de candidato",
+     "url": "https://www.lapoliticaonline.com/politica/cornejo-y-karina-no-quieren-a-petri-de-candidato-en-mendoza-y-patricia-todavia-lo-sostiene-7778/"
+    },
+    {
+     "label": "El Cronista (7/10/2026): Elecciones 2027, qué provincias esperan para definir",
+     "url": "https://www.cronista.com/economia-politica/elecciones-2027-tras-el-desdoblamiento-en-santa-fe-que-provincias-esperan-para-definir/"
+    },
+    {
+     "label": "La Noticia Web (8/10/2026): hasta 20 distritos podrían votar antes de octubre",
+     "url": "https://www.lanoticiaweb.com.ar/elecciones-2027-casi-todo-el-mapa-provincial-se-despega-de-milei-y-hasta-20-distritos-podrian-votar-antes-de-octubre/"
+    },
+    {
+     "label": "Wikipedia: Elecciones provinciales de Mendoza de 2023",
+     "url": "https://es.wikipedia.org/wiki/Elecciones_provinciales_de_Mendoza_de_2023"
+    },
+    {
+     "label": "Wikipedia: Elecciones legislativas de Argentina de 2025 (resultados por distrito, Diputados)",
+     "url": "https://es.wikipedia.org/wiki/Elecciones_legislativas_de_Argentina_de_2025"
+    }
+   ],
+   "governor": {
+    "name": "Alfredo Cornejo",
+    "party": "UCR / Cambia Mendoza (aliado de LLA)",
+    "since": "2023-12",
+    "wiki": "Alfredo_Cornejo",
+    "lean": "center-right"
+   },
+   "senate2027": true
+  },
+  "N": {
+   "capital": "Posadas",
+   "population": 1278873,
+   "area_km2": 29911.4,
+   "density": 42.8,
+   "electorate": 1013980,
+   "electoratePct": 2.78,
+   "deputies": 7,
+   "deputies2027": 4,
+   "poverty": {
+    "pct": 42.2,
+    "period": "1er semestre 2026 (provisorio)",
+    "aglomerado": "Posadas"
+   },
+   "indigence": {
+    "pct": 8.2,
+    "period": "1er semestre 2026 (provisorio)",
+    "aglomerado": "Posadas"
+   },
+   "unemployment": {
+    "pct": 5.9,
+    "period": "2do trimestre 2026",
+    "aglomerado": "Posadas"
+   },
+   "pbgShare": {
+    "pct": 1.33,
+    "year": 2023,
+    "source": "CEPAL-Ministerio de Economía, Desagregación provincial del VAB, base 2004 (precios constantes 2004), vía Argendata/Fundar"
+   },
+   "gdpPerCapita": {
+    "value": 47.6,
+    "unit": "índice VAB per cápita relativo (Argentina = 100)",
+    "year": 2023,
+    "source": "CEPAL-Ministerio de Economía, Desagregación provincial del VAB, base 2004 (precios constantes 2004), vía Argendata/Fundar"
+   },
+   "economy": "Yerba mate, té, tabaco, forestoindustria (pasta celulósica), turismo (Iguazú).",
+   "name": "Misiones",
+   "governorElection2027": true,
+   "reelection": "puede (primer mandato consecutivo; ya gobernó en 2015-2019)",
+   "incumbentRunning": "sí",
+   "date2027": null,
+   "dateStatus": "desdoblada sin fecha",
+   "dateNote": "El desdoblamiento está decidido; se analiza entre abril y mayo de 2027.",
+   "system": "sin PASO; sistema de lemas y sublemas (usado en 2023)",
+   "candidates": [
+    {
+     "name": "Hugo Passalacqua",
+     "party": "Movimiento por lo que Viene",
+     "note": "Busca la reelección tras romper con Rovira; suma 67 de 78 intendentes"
+    },
+    {
+     "name": "Leonardo 'Lalo' Stelatto",
+     "party": "Frente Renovador (sector Rovira)",
+     "note": "Intendente de Posadas; LPO lo señala como candidato de Rovira"
+    },
+    {
+     "name": "Ramón Amarilla",
+     "party": "espacio propio",
+     "note": "Ex policía, mencionado como competitivo por LPO"
+    }
+   ],
+   "gov2023": {
+    "winner": "Hugo Passalacqua (Frente Renovador de la Concordia)",
+    "pct": 64.18
+   },
+   "dip2025": {
+    "winner": "La Libertad Avanza",
+    "pct": 37.09
+   },
+   "summary": "La ruptura entre Passalacqua y Carlos Rovira parte por primera vez a la Renovación, hegemónica desde 2003. LLA, que ganó en 2025, ve una oportunidad inédita frente a un oficialismo dividido.",
+   "sources": [
+    {
+     "label": "Letra P: Passalacqua renunció a Encuentro Misionero",
+     "url": "https://www.letrap.com.ar/politica/hugo-passalacqua-renuncio-encuentro-misionero-y-formalizo-su-ruptura-carlos-rovira-n5425516"
+    },
+    {
+     "label": "Letra P: el quiebre político de Misiones",
+     "url": "https://www.letrap.com.ar/politica/el-quiebre-politico-misiones-pone-jaque-la-eliminacion-las-paso-n5425780"
+    },
+    {
+     "label": "LPO: Rovira lanza al intendente de Posadas",
+     "url": "https://www.lapoliticaonline.com/politica/rovira-lanza-al-intendente-de-posadas-para-complicarle-la-reeleccion-a-passalacqua/"
+    },
+    {
+     "label": "Letra P: Rovira no será candidato en 2027",
+     "url": "https://www.letrap.com.ar/politica/carlos-rovira-no-sera-candidato-2027-y-redefine-el-tablero-oficialista-misiones-n5424006"
+    },
+    {
+     "label": "El Cronista (7/10/2026): Elecciones 2027, qué provincias esperan para definir",
+     "url": "https://www.cronista.com/economia-politica/elecciones-2027-tras-el-desdoblamiento-en-santa-fe-que-provincias-esperan-para-definir/"
+    },
+    {
+     "label": "Wikipedia: Elecciones provinciales de Misiones de 2023",
+     "url": "https://es.wikipedia.org/wiki/Elecciones_provinciales_de_Misiones_de_2023"
+    },
+    {
+     "label": "Wikipedia: Elecciones legislativas de Argentina de 2025 (resultados por distrito, Diputados)",
+     "url": "https://es.wikipedia.org/wiki/Elecciones_legislativas_de_Argentina_de_2025"
+    }
+   ],
+   "governor": {
+    "name": "Hugo Passalacqua",
+    "party": "Movimiento por lo que Viene (ex Frente Renovador de la Concordia)",
+    "since": "2023-12",
+    "wiki": "Hugo_Passalacqua",
+    "lean": "center"
+   },
+   "senate2027": false
+  },
+  "Q": {
+   "capital": "Neuquén",
+   "population": 710814,
+   "area_km2": 94422.0,
+   "density": 7.5,
+   "electorate": 584622,
+   "electoratePct": 1.6,
+   "deputies": 5,
+   "deputies2027": 2,
+   "poverty": {
+    "pct": 19.6,
+    "period": "1er semestre 2026 (provisorio)",
+    "aglomerado": "Neuquén-Plottier"
+   },
+   "indigence": {
+    "pct": 2.8,
+    "period": "1er semestre 2026 (provisorio)",
+    "aglomerado": "Neuquén-Plottier"
+   },
+   "unemployment": {
+    "pct": 3.2,
+    "period": "2do trimestre 2026",
+    "aglomerado": "Neuquén-Plottier"
+   },
+   "pbgShare": {
+    "pct": 3.87,
+    "year": 2023,
+    "source": "CEPAL-Ministerio de Economía, Desagregación provincial del VAB, base 2004 (precios constantes 2004), vía Argendata/Fundar"
+   },
+   "gdpPerCapita": {
+    "value": 262.0,
+    "unit": "índice VAB per cápita relativo (Argentina = 100)",
+    "year": 2023,
+    "source": "CEPAL-Ministerio de Economía, Desagregación provincial del VAB, base 2004 (precios constantes 2004), vía Argendata/Fundar"
+   },
+   "economy": "Hidrocarburos convencionales y no convencionales (Vaca Muerta), hidroeléctrica, fruticultura, turismo.",
+   "name": "Neuquén",
+   "governorElection2027": true,
+   "reelection": "puede (primer mandato)",
+   "incumbentRunning": "sí",
+   "date2027": null,
+   "dateStatus": "desdoblada sin fecha",
+   "dateNote": "Figueroa y Gaido acordaron desdoblar. Agosto es la opción más fuerte si se suspenden las PASO nacionales; también se menciona septiembre, y hay versiones de febrero o marzo. La ley no fija fecha.",
+   "system": "sin primarias",
+   "candidates": [
+    {
+     "name": "Rolando Figueroa",
+     "party": "La Neuquinidad",
+     "note": "Irá por la reelección, con apoyo del intendente Mariano Gaido"
+    }
+   ],
+   "gov2023": {
+    "winner": "Rolando Figueroa (Neuquinizate)",
+    "pct": 36.94
+   },
+   "dip2025": {
+    "winner": "La Libertad Avanza",
+    "pct": 33.38
+   },
+   "summary": "Figueroa, que en 2023 cortó 60 años de gobiernos del MPN, buscará la reelección con un MPN debilitado. LLA le ganó por menos de dos puntos en 2025, y el PJ reclama listas propias.",
+   "sources": [
+    {
+     "label": "Noticias NQN (20/8/2026): agosto y septiembre, las fechas que toman fuerza",
+     "url": "https://www.noticiasnqn.com.ar/noticias/2026/08/20/348847-agosto-y-septiembre-las-fechas-que-toman-fuerza-para-las-elecciones-en-neuquen"
+    },
+    {
+     "label": "Letra P: Figueroa y Gaido acuerdan elecciones adelantadas",
+     "url": "https://www.letrap.com.ar/politica/neuquen-figueroa-y-gaido-acuerdan-elecciones-adelantadas-y-discuten-cual-es-la-mejor-fecha-n5423479"
+    },
+    {
+     "label": "Río Negro: Gaido apoyará la reelección de Figueroa",
+     "url": "https://www.rionegro.com.ar/politica/mariano-gaido-no-quiere-ser-candidato-apoyara-la-reeleccion-de-rolando-figueroa-en-2027-3188272/"
+    },
+    {
+     "label": "El Cronista (7/10/2026): Elecciones 2027, qué provincias esperan para definir",
+     "url": "https://www.cronista.com/economia-politica/elecciones-2027-tras-el-desdoblamiento-en-santa-fe-que-provincias-esperan-para-definir/"
+    },
+    {
+     "label": "Wikipedia: Elecciones provinciales del Neuquén de 2023",
+     "url": "https://es.wikipedia.org/wiki/Elecciones_provinciales_del_Neuquén_de_2023"
+    },
+    {
+     "label": "Wikipedia: Elecciones legislativas de Argentina de 2025 (resultados por distrito, Diputados)",
+     "url": "https://es.wikipedia.org/wiki/Elecciones_legislativas_de_Argentina_de_2025"
+    }
+   ],
+   "governor": {
+    "name": "Rolando Figueroa",
+    "party": "Comunidad / La Neuquinidad",
+    "since": "2023-12",
+    "wiki": "Rolando_Figueroa",
+    "lean": "center"
+   },
+   "senate2027": false
+  },
+  "R": {
+   "capital": "Viedma",
+   "population": 750768,
+   "area_km2": 202168.6,
+   "density": 3.7,
+   "electorate": 616451,
+   "electoratePct": 1.69,
+   "deputies": 5,
+   "deputies2027": 3,
+   "poverty": {
+    "pct": 33.2,
+    "period": "1er semestre 2026 (provisorio)",
+    "aglomerado": "Viedma-Carmen de Patagones"
+   },
+   "indigence": {
+    "pct": 5.2,
+    "period": "1er semestre 2026 (provisorio)",
+    "aglomerado": "Viedma-Carmen de Patagones"
+   },
+   "unemployment": {
+    "pct": 0.7,
+    "period": "2do trimestre 2026",
+    "aglomerado": "Viedma-Carmen de Patagones"
+   },
+   "pbgShare": {
+    "pct": 1.43,
+    "year": 2023,
+    "source": "CEPAL-Ministerio de Economía, Desagregación provincial del VAB, base 2004 (precios constantes 2004), vía Argendata/Fundar"
+   },
+   "gdpPerCapita": {
+    "value": 85.8,
+    "unit": "índice VAB per cápita relativo (Argentina = 100)",
+    "year": 2023,
+    "source": "CEPAL-Ministerio de Economía, Desagregación provincial del VAB, base 2004 (precios constantes 2004), vía Argendata/Fundar"
+   },
+   "economy": "Fruticultura (manzana y pera, Alto Valle), hidrocarburos, turismo (Bariloche), tecnología (INVAP).",
+   "name": "Río Negro",
+   "governorElection2027": true,
+   "reelection": "puede (primer mandato tras el intervalo; ya gobernó 2012-2019)",
+   "incumbentRunning": "sí",
+   "date2027": null,
+   "dateStatus": "desdoblada sin fecha",
+   "dateNote": "Confirmó que desdoblará, sin día definido.",
+   "system": "sin primarias",
+   "candidates": [
+    {
+     "name": "Alberto Weretilneck",
+     "party": "JSRN",
+     "note": "A priori buscará la reelección con un nuevo frente provincial"
+    },
+    {
+     "name": "María Emilia Soria",
+     "party": "PJ",
+     "note": "Intendenta de General Roca, candidata declarada"
+    },
+    {
+     "name": "Aníbal Tortoriello",
+     "party": "La Libertad Avanza",
+     "note": "Diputado nacional, candidato declarado; LLA descarta acuerdo con el gobernador"
+    }
+   ],
+   "gov2023": {
+    "winner": "Alberto Weretilneck (JSRN)",
+    "pct": 42.43
+   },
+   "dip2025": {
+    "winner": "La Libertad Avanza",
+    "pct": 34.23
+   },
+   "summary": "Weretilneck busca otro mandato con un frente provincial, tras quedar tercero en 2025 detrás de LLA y del peronismo. La elección se perfila de tres tercios: JSRN, Soria por el PJ y Tortoriello por LLA.",
+   "sources": [
+    {
+     "label": "Letra P: Weretilneck crea un nuevo frente provincial",
+     "url": "https://www.letrap.com.ar/politica/rio-negro-el-peronismo-afuera-weretilneck-cranea-un-nuevo-frente-provincial-2027-n5424113"
+    },
+    {
+     "label": "LPO: los libertarios van por la gobernación de Río Negro",
+     "url": "https://www.lapoliticaonline.com/politica/los-libertarios-van-por-la-gobernacion-de-rio-negro-y-rechazan-un-acuerdo-con-weretilneck-4044/"
+    },
+    {
+     "label": "El Cronista (7/10/2026): Elecciones 2027, qué provincias esperan para definir",
+     "url": "https://www.cronista.com/economia-politica/elecciones-2027-tras-el-desdoblamiento-en-santa-fe-que-provincias-esperan-para-definir/"
+    },
+    {
+     "label": "Wikipedia: Elecciones provinciales de Río Negro de 2023",
+     "url": "https://es.wikipedia.org/wiki/Elecciones_provinciales_de_Río_Negro_de_2023"
+    },
+    {
+     "label": "Wikipedia: Elecciones legislativas de Argentina de 2025 (resultados por distrito, Diputados)",
+     "url": "https://es.wikipedia.org/wiki/Elecciones_legislativas_de_Argentina_de_2025"
+    }
+   ],
+   "governor": {
+    "name": "Alberto Weretilneck",
+    "party": "Juntos Somos Río Negro",
+    "since": "2023-12",
+    "wiki": "Alberto_Weretilneck",
+    "lean": "center"
+   },
+   "senate2027": false
+  },
+  "A": {
+   "capital": "Salta",
+   "population": 1441351,
+   "area_km2": 155340.5,
+   "density": 9.3,
+   "electorate": 1122179,
+   "electoratePct": 3.08,
+   "deputies": 7,
+   "deputies2027": 4,
+   "poverty": {
+    "pct": 29.7,
+    "period": "1er semestre 2026 (provisorio)",
+    "aglomerado": "Salta"
+   },
+   "indigence": {
+    "pct": 4.4,
+    "period": "1er semestre 2026 (provisorio)",
+    "aglomerado": "Salta"
+   },
+   "unemployment": {
+    "pct": 4.3,
+    "period": "2do trimestre 2026",
+    "aglomerado": "Salta"
+   },
+   "pbgShare": {
+    "pct": 1.95,
+    "year": 2023,
+    "source": "CEPAL-Ministerio de Economía, Desagregación provincial del VAB, base 2004 (precios constantes 2004), vía Argendata/Fundar"
+   },
+   "gdpPerCapita": {
+    "value": 61.6,
+    "unit": "índice VAB per cápita relativo (Argentina = 100)",
+    "year": 2023,
+    "source": "CEPAL-Ministerio de Economía, Desagregación provincial del VAB, base 2004 (precios constantes 2004), vía Argendata/Fundar"
+   },
+   "economy": "Agricultura (tabaco, caña de azúcar, poroto, soja), minería de litio, hidrocarburos, turismo.",
+   "name": "Salta",
+   "governorElection2027": true,
+   "reelection": "en disputa: el oficialismo sostiene que la reforma de 2021 reinició el cómputo (habilitaría un tercer mandato); la oposición lo niega",
+   "incumbentRunning": "incierto",
+   "date2027": "2027-05-16",
+   "dateStatus": "tentativa",
+   "dateNote": "El ministro Jarsún confirmó mayo; se barajan el 16 (probable) o el 23. El decreto debía firmarse en octubre de 2026 (la nueva ley exige convocar con seis meses de anticipación); no hay confirmación de la firma.",
+   "system": "sin primarias",
+   "candidates": [
+    {
+     "name": "Gustavo Sáenz",
+     "party": "Identidad Salteña",
+     "note": "Decidiría en noviembre si va por la re-reelección"
+    },
+    {
+     "name": "Flavia Royón",
+     "party": "oficialismo salteño",
+     "note": "Mencionada como 'plan B' si Sáenz no puede competir"
+    },
+    {
+     "name": "Emilia Orozco",
+     "party": "La Libertad Avanza",
+     "note": "Senadora; posible candidata libertaria"
+    },
+    {
+     "name": "Juan Manuel Urtubey",
+     "party": "PJ",
+     "note": "Ex gobernador, busca un regreso"
+    }
+   ],
+   "gov2023": {
+    "winner": "Gustavo Sáenz (Identidad Salteña)",
+    "pct": 47.51
+   },
+   "dip2025": {
+    "winner": "La Libertad Avanza",
+    "pct": 38.25
+   },
+   "summary": "La pelea gira en torno a si Sáenz puede ir por un tercer mandato, un planteo que probablemente termine en la Justicia. LLA, que ganó en 2025, se posiciona para disputar la gobernación en una elección temprana en mayo.",
+   "sources": [
+    {
+     "label": "Letra P (10/10/2026): Sáenz planifica las elecciones en mayo y la re-reelección",
+     "url": "https://www.letrap.com.ar/politica/gustavo-saenz-planifica-las-elecciones-salta-mayo-y-cranea-la-avanzada-final-su-re-reeleccion-n5427260"
+    },
+    {
+     "label": "Letra P: Sáenz, Urtubey y Orozco van al choque",
+     "url": "https://www.letrap.com.ar/politica/salta-saenz-urtubey-y-orozco-van-al-choque-seis-bancas-un-ojo-la-pelea-grande-2027-n5419749"
+    },
+    {
+     "label": "Ámbito (5/8/2026): Jujuy, Salta y Chaco desdoblan; Catamarca vota con la nacional",
+     "url": "https://www.ambito.com/ambito-nacional/desdoblamiento-electoral-jujuy-salta-y-chaco-se-distancian-octubre-mientras-que-catamarca-se-pega-las-presidenciales-n6307512"
+    },
+    {
+     "label": "Perfil (2/8/2026): el mapa electoral del 2027",
+     "url": "https://www.perfil.com/noticias/politica/el-mapa-electoral-del-2027-que-obliga-al-gobierno-a-recalcular-su-estrategia.phtml"
+    },
+    {
+     "label": "Wikipedia: Elecciones provinciales de Salta de 2023",
+     "url": "https://es.wikipedia.org/wiki/Elecciones_provinciales_de_Salta_de_2023"
+    },
+    {
+     "label": "Wikipedia: Elecciones legislativas de Argentina de 2025 (resultados por distrito, Diputados)",
+     "url": "https://es.wikipedia.org/wiki/Elecciones_legislativas_de_Argentina_de_2025"
+    }
+   ],
+   "governor": {
+    "name": "Gustavo Sáenz",
+    "party": "Partido Identidad Salteña",
+    "since": "2019-12",
+    "wiki": "Gustavo_Sáenz",
+    "lean": "center"
+   },
+   "senate2027": false
+  },
+  "J": {
+   "capital": "San Juan",
+   "population": 822853,
+   "area_km2": 88296.2,
+   "density": 9.3,
+   "electorate": 625116,
+   "electoratePct": 1.71,
+   "deputies": 6,
+   "deputies2027": 3,
+   "poverty": {
+    "pct": 36.8,
+    "period": "1er semestre 2026 (provisorio)",
+    "aglomerado": "Gran San Juan"
+   },
+   "indigence": {
+    "pct": 1.6,
+    "period": "1er semestre 2026 (provisorio)",
+    "aglomerado": "Gran San Juan"
+   },
+   "unemployment": {
+    "pct": 3.2,
+    "period": "2do trimestre 2026",
+    "aglomerado": "Gran San Juan"
+   },
+   "pbgShare": {
+    "pct": 1.3,
+    "year": 2023,
+    "source": "CEPAL-Ministerio de Economía, Desagregación provincial del VAB, base 2004 (precios constantes 2004), vía Argendata/Fundar"
+   },
+   "gdpPerCapita": {
+    "value": 75.2,
+    "unit": "índice VAB per cápita relativo (Argentina = 100)",
+    "year": 2023,
+    "source": "CEPAL-Ministerio de Economía, Desagregación provincial del VAB, base 2004 (precios constantes 2004), vía Argendata/Fundar"
+   },
+   "economy": "Minería metalífera (oro, cobre), vitivinicultura, agroindustria, energía solar.",
+   "name": "San Juan",
+   "governorElection2027": true,
+   "reelection": "puede (primer mandato)",
+   "incumbentRunning": "incierto",
+   "date2027": null,
+   "dateStatus": "sin definir",
+   "dateNote": "Orrego evalúa desdoblar; acordó con Santilli no apurar definiciones y estirar hasta el límite legal de inscripción de frentes.",
+   "system": "en 2023 rigió el SIPAD (asimilable a ley de lemas, sin PASO); reforma electoral pendiente",
+   "candidates": [
+    {
+     "name": "Marcelo Orrego",
+     "party": "Por San Juan",
+     "note": "Dijo que en 2027 'vamos a ir a ganar en todos los departamentos'; sin anuncio formal"
+    }
+   ],
+   "gov2023": {
+    "winner": "Marcelo Orrego (Unidos por San Juan)",
+    "pct": 49.81
+   },
+   "dip2025": {
+    "winner": "Fuerza San Juan (PJ)",
+    "pct": 34.47
+   },
+   "summary": "El peronismo le ganó al oficialismo de Orrego en las nacionales de 2025, una señal de alerta para 2027. La gran definición es si Orrego compite solo o en alianza con LLA, y con qué sistema electoral.",
+   "sources": [
+    {
+     "label": "Tiempo de San Juan: la charla de Orrego con Santilli",
+     "url": "https://www.tiempodesanjuan.com/politica/la-charla-de-orrego-con-santilli-y-un-pacto-para-freezar-definiciones-sobre-adelantar-o-no-elecciones-en-san-juan_1781806219"
+    },
+    {
+     "label": "Diario de Cuyo: Orrego, 'a mí no me define una elección'",
+     "url": "https://www.diariodecuyo.com.ar/politica/marcelo-orrego-a-mi-no-me-define-una-eleccion-ni-un-tropezon-1791790.html"
+    },
+    {
+     "label": "El Cronista (7/10/2026): Elecciones 2027, qué provincias esperan para definir",
+     "url": "https://www.cronista.com/economia-politica/elecciones-2027-tras-el-desdoblamiento-en-santa-fe-que-provincias-esperan-para-definir/"
+    },
+    {
+     "label": "Wikipedia: Elecciones provinciales de San Juan de 2023",
+     "url": "https://es.wikipedia.org/wiki/Elecciones_provinciales_de_San_Juan_de_2023"
+    },
+    {
+     "label": "Wikipedia: Elecciones legislativas de Argentina de 2025 (resultados por distrito, Diputados)",
+     "url": "https://es.wikipedia.org/wiki/Elecciones_legislativas_de_Argentina_de_2025"
+    }
+   ],
+   "governor": {
+    "name": "Marcelo Orrego",
+    "party": "Producción y Trabajo / Por San Juan",
+    "since": "2023-12",
+    "wiki": "Marcelo_Orrego",
+    "lean": "center-right"
+   },
+   "senate2027": false
+  },
+  "D": {
+   "capital": "San Luis",
+   "population": 542069,
+   "area_km2": 75347.1,
+   "density": 7.2,
+   "electorate": 431356,
+   "electoratePct": 1.18,
+   "deputies": 5,
+   "deputies2027": 2,
+   "poverty": {
+    "pct": 35.7,
+    "period": "1er semestre 2026 (provisorio)",
+    "aglomerado": "Gran San Luis"
+   },
+   "indigence": {
+    "pct": 3.1,
+    "period": "1er semestre 2026 (provisorio)",
+    "aglomerado": "Gran San Luis"
+   },
+   "unemployment": {
+    "pct": 2.6,
+    "period": "2do trimestre 2026",
+    "aglomerado": "Gran San Luis"
+   },
+   "pbgShare": {
+    "pct": 1.02,
+    "year": 2023,
+    "source": "CEPAL-Ministerio de Economía, Desagregación provincial del VAB, base 2004 (precios constantes 2004), vía Argendata/Fundar"
+   },
+   "gdpPerCapita": {
+    "value": 90.3,
+    "unit": "índice VAB per cápita relativo (Argentina = 100)",
+    "year": 2023,
+    "source": "CEPAL-Ministerio de Economía, Desagregación provincial del VAB, base 2004 (precios constantes 2004), vía Argendata/Fundar"
+   },
+   "economy": "Industria promocionada, agricultura y ganadería.",
+   "name": "San Luis",
+   "governorElection2027": true,
+   "reelection": "puede (primer mandato consecutivo; ya gobernó 2011-2015)",
+   "incumbentRunning": "incierto",
+   "date2027": null,
+   "dateStatus": "desdoblada sin fecha",
+   "dateNote": "Sin fecha; se da por probable el desdoblamiento por la historia provincial.",
+   "system": "sin PASO; boleta única (reforma de Poggi); en 2023 rigió ley de lemas",
+   "candidates": [
+    {
+     "name": "Claudio Poggi",
+     "party": "Avanzar San Luis",
+     "note": "Su proyecto de reforma constitucional limitaría la reelección desde 2031 si es reelecto"
+    },
+    {
+     "name": "Alberto Rodríguez Saá",
+     "party": "PJ",
+     "note": "Anunció que el peronismo 'participará' en 2027; candidatura no confirmada"
+    }
+   ],
+   "gov2023": {
+    "winner": "Claudio Poggi (Cambia San Luis)",
+    "pct": 53.1
+   },
+   "dip2025": {
+    "winner": "La Libertad Avanza",
+    "pct": 51.46
+   },
+   "summary": "Poggi, que terminó con la hegemonía de los Rodríguez Saá, ganó con claridad las provinciales de 2025. Ahora impulsa una reforma constitucional y debe decidir si confluye con LLA, que superó el 50% en octubre.",
+   "sources": [
+    {
+     "label": "Infobae: Poggi consiguió una victoria arrolladora en 2025",
+     "url": "https://www.infobae.com/politica/2025/05/12/poggi-consiguio-una-victoria-arrolladora-en-las-elecciones-provinciales-acelera-con-su-reforma-constitucional-y-evalua-una-alianza-politica-con-milei-para-octubre/"
+    },
+    {
+     "label": "Letra P: la hoja de ruta de Poggi para renovar la Constitución",
+     "url": "https://www.letrap.com.ar/politica/la-hoja-ruta-claudio-poggi-renovar-la-constitucion-san-luis-n5410073"
+    },
+    {
+     "label": "El Eco / Noticias Argentinas (1/8/2026): qué provincias desdoblan",
+     "url": "https://www.eleco.com.ar/nacionales/elecciones-2027-que-provincias-desdoblan-sus-comicios-y-cual-es-el-estado-del-calendario"
+    },
+    {
+     "label": "Wikipedia: Elecciones provinciales de San Luis de 2023",
+     "url": "https://es.wikipedia.org/wiki/Elecciones_provinciales_de_San_Luis_de_2023"
+    },
+    {
+     "label": "Wikipedia: Elecciones legislativas de Argentina de 2025 (resultados por distrito, Diputados)",
+     "url": "https://es.wikipedia.org/wiki/Elecciones_legislativas_de_Argentina_de_2025"
+    }
+   ],
+   "governor": {
+    "name": "Claudio Poggi",
+    "party": "Avanzar San Luis / Cambia San Luis",
+    "since": "2023-12",
+    "wiki": "Claudio_Poggi",
+    "lean": "center-right"
+   },
+   "senate2027": false
+  },
+  "Z": {
+   "capital": "Río Gallegos",
+   "population": 337226,
+   "area_km2": 244457.5,
+   "density": 1.4,
+   "electorate": 273145,
+   "electoratePct": 0.75,
+   "deputies": 5,
+   "deputies2027": 2,
+   "poverty": {
+    "pct": 25.6,
+    "period": "1er semestre 2026 (provisorio)",
+    "aglomerado": "Río Gallegos"
+   },
+   "indigence": {
+    "pct": 2.6,
+    "period": "1er semestre 2026 (provisorio)",
+    "aglomerado": "Río Gallegos"
+   },
+   "unemployment": {
+    "pct": 8.8,
+    "period": "2do trimestre 2026",
+    "aglomerado": "Río Gallegos"
+   },
+   "pbgShare": {
+    "pct": 1.41,
+    "year": 2023,
+    "source": "CEPAL-Ministerio de Economía, Desagregación provincial del VAB, base 2004 (precios constantes 2004), vía Argendata/Fundar"
+   },
+   "gdpPerCapita": {
+    "value": 167.6,
+    "unit": "índice VAB per cápita relativo (Argentina = 100)",
+    "year": 2023,
+    "source": "CEPAL-Ministerio de Economía, Desagregación provincial del VAB, base 2004 (precios constantes 2004), vía Argendata/Fundar"
+   },
+   "economy": "Hidrocarburos, minería aurífera y argentífera, pesca, ganadería ovina, turismo (glaciares).",
+   "name": "Santa Cruz",
+   "governorElection2027": true,
+   "reelection": "puede",
+   "incumbentRunning": "sí",
+   "date2027": null,
+   "dateStatus": "sin definir",
+   "dateNote": "Sin fecha ni ley electoral: la ley de lemas fue derogada en 2024 y el régimen transitorio venció el 31/12/2025; la nueva ley debería aprobarse a más tardar en abril de 2027.",
+   "system": "sin definir (ley de lemas derogada; 11 proyectos en debate, PASO en discusión)",
+   "candidates": [
+    {
+     "name": "Claudio Vidal",
+     "party": "SER / Por Santa Cruz",
+     "note": "Anunció que buscará la reelección"
+    },
+    {
+     "name": "Pablo Grasso",
+     "party": "PJ",
+     "note": "Intendente de Río Gallegos; posible fórmula con Javier Belloni (El Calafate)"
+    },
+    {
+     "name": "Jairo Guzmán",
+     "party": "La Libertad Avanza",
+     "note": "Diputado nacional; LLA lo alista como candidato"
+    },
+    {
+     "name": "José María Carambia",
+     "party": "tercera vía antikirchnerista",
+     "note": "Senador nacional; anunció candidatura"
+    }
+   ],
+   "gov2023": {
+    "winner": "Claudio Vidal (lema Por Santa Cruz)",
+    "pct": 33.31
+   },
+   "dip2025": {
+    "winner": "Fuerza Santacruceña (PJ)",
+    "pct": 32.13
+   },
+   "summary": "Será la primera elección de gobernador sin ley de lemas en unos 30 años, y las reglas todavía no existen. Vidal va por la reelección frente a un peronismo que ganó por la mínima en 2025 y a una LLA con candidato propio.",
+   "sources": [
+    {
+     "label": "Ámbito (6/8/2026): Vidal anticipó que buscará la reelección",
+     "url": "https://www.ambito.com/santa-cruz-claudio-vidal-piso-el-acelerador-y-anticipo-que-buscara-la-reeleccion-2027-n6307981"
+    },
+    {
+     "label": "Letra P (15/10/2026): Santa Cruz sigue sin saber cómo votará en 2027",
+     "url": "https://www.letrap.com.ar/politica/claudio-vidal-pisa-su-proyecto-ley-electoral-y-santa-cruz-sigue-saber-como-votara-2027-n5427388"
+    },
+    {
+     "label": "El Cronista (7/10/2026): Elecciones 2027, qué provincias esperan para definir",
+     "url": "https://www.cronista.com/economia-politica/elecciones-2027-tras-el-desdoblamiento-en-santa-fe-que-provincias-esperan-para-definir/"
+    },
+    {
+     "label": "Wikipedia: Elecciones provinciales de Santa Cruz de 2023",
+     "url": "https://es.wikipedia.org/wiki/Elecciones_provinciales_de_Santa_Cruz_de_2023"
+    },
+    {
+     "label": "Wikipedia: Elecciones legislativas de Argentina de 2025 (resultados por distrito, Diputados)",
+     "url": "https://es.wikipedia.org/wiki/Elecciones_legislativas_de_Argentina_de_2025"
+    }
+   ],
+   "governor": {
+    "name": "Claudio Vidal",
+    "party": "SER Santa Cruz / Por Santa Cruz",
+    "since": "2023-12",
+    "wiki": "Claudio_Vidal",
+    "lean": "center"
+   },
+   "senate2027": false
+  },
+  "S": {
+   "capital": "Santa Fe",
+   "population": 3544908,
+   "area_km2": 133249.1,
+   "density": 26.6,
+   "electorate": 2879963,
+   "electoratePct": 7.9,
+   "deputies": 19,
+   "deputies2027": 10,
+   "poverty": {
+    "pct": 23.1,
+    "period": "1er semestre 2026 (provisorio)",
+    "aglomerado": "Gran Rosario"
+   },
+   "indigence": {
+    "pct": 6.2,
+    "period": "1er semestre 2026 (provisorio)",
+    "aglomerado": "Gran Rosario"
+   },
+   "unemployment": {
+    "pct": 11.5,
+    "period": "2do trimestre 2026",
+    "aglomerado": "Gran Rosario"
+   },
+   "pbgShare": {
+    "pct": 7.8,
+    "year": 2023,
+    "source": "CEPAL-Ministerio de Economía, Desagregación provincial del VAB, base 2004 (precios constantes 2004), vía Argendata/Fundar"
+   },
+   "gdpPerCapita": {
+    "value": 100.6,
+    "unit": "índice VAB per cápita relativo (Argentina = 100)",
+    "year": 2023,
+    "source": "CEPAL-Ministerio de Economía, Desagregación provincial del VAB, base 2004 (precios constantes 2004), vía Argendata/Fundar"
+   },
+   "economy": "Agroindustria (complejo oleaginoso y puertos del Gran Rosario), agricultura, lechería, industria metalmecánica.",
+   "name": "Santa Fe",
+   "governorElection2027": true,
+   "reelection": "puede (la reforma constitucional de 2025 habilitó una reelección)",
+   "incumbentRunning": "incierto",
+   "date2027": "2027-06-13",
+   "dateStatus": "tentativa",
+   "dateNote": "Pullaro anunció el 6/10/2026 PASO el 18/4 y generales el 13/6 (cierre de alianzas 7/2, listas 12/2), pero el decreto de convocatoria aún no estaba firmado. La Constitución exige votar entre 3 y 6 meses antes del fin del mandato.",
+   "system": "PASO provinciales",
+   "candidates": [
+    {
+     "name": "Maximiliano Pullaro",
+     "party": "Unidos",
+     "note": "Podría ser el primer gobernador santafesino en buscar la reelección; dice que Unidos no definió candidato"
+    }
+   ],
+   "gov2023": {
+    "winner": "Maximiliano Pullaro (Unidos para Cambiar Santa Fe)",
+    "pct": 58.47
+   },
+   "dip2025": {
+    "winner": "La Libertad Avanza",
+    "pct": 40.73
+   },
+   "summary": "Es la primera vez que un gobernador santafesino puede ir por la reelección. Pullaro, figura de Provincias Unidas, enfrenta a una LLA que lo superó con holgura en 2025 y a un peronismo que necesitará PASO para ordenarse.",
+   "sources": [
+    {
+     "label": "Letra P: así será el cronograma electoral de Santa Fe 2027",
+     "url": "https://www.letrap.com.ar/politica/asi-sera-el-cronograma-electoral-santa-fe-2027-paso-el-18-abril-y-generales-el-13-junio-n5427251"
+    },
+    {
+     "label": "Perfil: Pullaro desdobla y ratifica las PASO",
+     "url": "https://www.perfil.com/noticias/politica/pullaro-desafia-a-los-milei-y-a-santilli-desdobla-la-eleccion-en-santa-fe-y-ratifica-que-habra-paso.phtml"
+    },
+    {
+     "label": "Aire de Santa Fe: 'En Unidos no tenemos definido quién será el candidato'",
+     "url": "https://www.airedesantafe.com.ar/santa-fe/maximiliano-pullaro-su-reeleccion-en-unidos-no-tenemos-definido-quien-sera-el-candidato-n659335"
+    },
+    {
+     "label": "El Cronista (7/10/2026): Elecciones 2027, qué provincias esperan para definir",
+     "url": "https://www.cronista.com/economia-politica/elecciones-2027-tras-el-desdoblamiento-en-santa-fe-que-provincias-esperan-para-definir/"
+    },
+    {
+     "label": "Wikipedia: Elecciones provinciales de Santa Fe de 2023",
+     "url": "https://es.wikipedia.org/wiki/Elecciones_provinciales_de_Santa_Fe_de_2023"
+    },
+    {
+     "label": "Wikipedia: Elecciones legislativas de Argentina de 2025 (resultados por distrito, Diputados)",
+     "url": "https://es.wikipedia.org/wiki/Elecciones_legislativas_de_Argentina_de_2025"
+    }
+   ],
+   "governor": {
+    "name": "Maximiliano Pullaro",
+    "party": "UCR / Unidos para Cambiar Santa Fe",
+    "since": "2023-12",
+    "wiki": "Maximiliano_Pullaro",
+    "lean": "center"
+   },
+   "senate2027": true,
+   "ephOther": [
+    {
+     "aglomerado": "Gran Santa Fe",
+     "poverty": 38.6,
+     "indigence": 9.8,
+     "unemployment": 8.6
+    },
+    {
+     "aglomerado": "San Nicolás-Villa Constitución (compartido con Bs. As.)",
+     "poverty": 35.5,
+     "indigence": 10.3,
+     "unemployment": 8.4
+    }
+   ]
+  },
+  "G": {
+   "capital": "Santiago del Estero",
+   "population": 1060906,
+   "area_km2": 136934.3,
+   "density": 7.7,
+   "electorate": 828479,
+   "electoratePct": 2.27,
+   "deputies": 7,
+   "deputies2027": 4,
+   "poverty": {
+    "pct": 38.5,
+    "period": "1er semestre 2026 (provisorio)",
+    "aglomerado": "Santiago del Estero-La Banda"
+   },
+   "indigence": {
+    "pct": 3.9,
+    "period": "1er semestre 2026 (provisorio)",
+    "aglomerado": "Santiago del Estero-La Banda"
+   },
+   "unemployment": {
+    "pct": 0.9,
+    "period": "2do trimestre 2026",
+    "aglomerado": "Santiago del Estero-La Banda"
+   },
+   "pbgShare": {
+    "pct": 1.59,
+    "year": 2023,
+    "source": "CEPAL-Ministerio de Economía, Desagregación provincial del VAB, base 2004 (precios constantes 2004), vía Argendata/Fundar"
+   },
+   "gdpPerCapita": {
+    "value": 73.8,
+    "unit": "índice VAB per cápita relativo (Argentina = 100)",
+    "year": 2023,
+    "source": "CEPAL-Ministerio de Economía, Desagregación provincial del VAB, base 2004 (precios constantes 2004), vía Argendata/Fundar"
+   },
+   "economy": "Agricultura (soja, maíz, algodón), ganadería, sector público.",
+   "name": "Santiago del Estero",
+   "governorElection2027": false,
+   "reelection": "puede (primer mandato; próxima elección de gobernador en 2029)",
+   "incumbentRunning": "no",
+   "date2027": null,
+   "dateStatus": "no aplica",
+   "dateNote": "No hay elección de gobernador en 2027: Suárez fue electo el 26/10/2025 con 73,85%.",
+   "system": null,
+   "candidates": [],
+   "gov2023": {
+    "winner": null,
+    "pct": null
+   },
+   "dip2025": {
+    "winner": "Frente Cívico por Santiago",
+    "pct": 51.52
+   },
+   "summary": "Santiago del Estero eligió gobernador en 2025, cuando el Frente Cívico de Gerardo Zamora llevó a Elías Suárez con casi el 74%. En 2027 sólo vota en el plano nacional, y el zamorismo es uno de los pocos oficialismos que contienen claramente a LLA (14,4% en 2025).",
+   "sources": [
+    {
+     "label": "Wikipedia: Elecciones provinciales de Santiago del Estero de 2025",
+     "url": "https://es.wikipedia.org/wiki/Elecciones_provinciales_de_Santiago_del_Estero_de_2025"
+    },
+    {
+     "label": "El Eco / Noticias Argentinas (1/8/2026): qué provincias desdoblan",
+     "url": "https://www.eleco.com.ar/nacionales/elecciones-2027-que-provincias-desdoblan-sus-comicios-y-cual-es-el-estado-del-calendario"
+    },
+    {
+     "label": "Perfil (2/8/2026): el mapa electoral del 2027",
+     "url": "https://www.perfil.com/noticias/politica/el-mapa-electoral-del-2027-que-obliga-al-gobierno-a-recalcular-su-estrategia.phtml"
+    },
+    {
+     "label": "Wikipedia: Elecciones legislativas de Argentina de 2025 (resultados por distrito, Diputados)",
+     "url": "https://es.wikipedia.org/wiki/Elecciones_legislativas_de_Argentina_de_2025"
+    }
+   ],
+   "governor": {
+    "name": "Elías Suárez",
+    "party": "Frente Cívico por Santiago",
+    "since": "2025-12",
+    "wiki": "Elías_Suárez",
+    "lean": "center-left"
+   },
+   "senate2027": false
+  },
+  "V": {
+   "capital": "Ushuaia",
+   "population": 185732,
+   "area_km2": 910324.4,
+   "density": 0.2,
+   "electorate": 154189,
+   "electoratePct": 0.42,
+   "deputies": 5,
+   "deputies2027": 3,
+   "poverty": {
+    "pct": 25.9,
+    "period": "1er semestre 2026 (provisorio)",
+    "aglomerado": "Ushuaia-Río Grande"
+   },
+   "indigence": {
+    "pct": 3.1,
+    "period": "1er semestre 2026 (provisorio)",
+    "aglomerado": "Ushuaia-Río Grande"
+   },
+   "unemployment": {
+    "pct": 8.1,
+    "period": "2do trimestre 2026",
+    "aglomerado": "Ushuaia-Río Grande"
+   },
+   "pbgShare": {
+    "pct": 0.94,
+    "year": 2023,
+    "source": "CEPAL-Ministerio de Economía, Desagregación provincial del VAB, base 2004 (precios constantes 2004), vía Argendata/Fundar"
+   },
+   "gdpPerCapita": {
+    "value": 234.5,
+    "unit": "índice VAB per cápita relativo (Argentina = 100)",
+    "year": 2023,
+    "source": "CEPAL-Ministerio de Economía, Desagregación provincial del VAB, base 2004 (precios constantes 2004), vía Argendata/Fundar"
+   },
+   "economy": "Industria electrónica bajo régimen especial (Río Grande), hidrocarburos, pesca, turismo (Ushuaia).",
+   "name": "Tierra del Fuego",
+   "governorElection2027": true,
+   "reelection": "no puede (sin reforma constitucional; el intento de reforma fue frenado)",
+   "incumbentRunning": "no",
+   "date2027": null,
+   "dateStatus": "desdoblada sin fecha",
+   "dateNote": "La Constitución fueguina obliga a votar en fecha propia (según El Cronista, 90 días antes del fin del mandato). Sin fecha fijada.",
+   "system": "sin primarias; balotaje si nadie supera el 50%",
+   "candidates": [
+    {
+     "name": "Martín Pérez",
+     "party": "Provincia Grande (peronismo)",
+     "note": "Intendente de Río Grande"
+    },
+    {
+     "name": "Santiago Pauli",
+     "party": "La Libertad Avanza",
+     "note": "Diputado nacional; no oculta su intención"
+    },
+    {
+     "name": "Agustín Coto",
+     "party": "La Libertad Avanza",
+     "note": "Senador; titular del partido provincial"
+    },
+    {
+     "name": "Walter Vuoto",
+     "party": "PJ",
+     "note": "Intendente de Ushuaia; no definió"
+    }
+   ],
+   "gov2023": {
+    "winner": "Gustavo Melella (Unidos Hacemos Futuro)",
+    "pct": 65.37
+   },
+   "dip2025": {
+    "winner": "La Libertad Avanza",
+    "pct": 38.54
+   },
+   "summary": "Sin Melella habilitado, el panperonismo fueguino entra en una interna abierta entre los intendentes de Río Grande y Ushuaia. LLA, ganadora en 2025, tiene dos aspirantes, y el balotaje puede definir la gobernación.",
+   "sources": [
+    {
+     "label": "Letra P (2/8/2026): la cuenta regresiva de Gustavo Melella",
+     "url": "https://www.letrap.com.ar/politica/la-cuenta-regresiva-gustavo-melella-n5425493"
+    },
+    {
+     "label": "El Cronista (7/10/2026): Elecciones 2027, qué provincias esperan para definir",
+     "url": "https://www.cronista.com/economia-politica/elecciones-2027-tras-el-desdoblamiento-en-santa-fe-que-provincias-esperan-para-definir/"
+    },
+    {
+     "label": "Perfil (2/8/2026): el mapa electoral del 2027",
+     "url": "https://www.perfil.com/noticias/politica/el-mapa-electoral-del-2027-que-obliga-al-gobierno-a-recalcular-su-estrategia.phtml"
+    },
+    {
+     "label": "Wikipedia: Elecciones provinciales de Tierra del Fuego de 2023",
+     "url": "https://es.wikipedia.org/wiki/Elecciones_provinciales_de_Tierra_del_Fuego_de_2023"
+    },
+    {
+     "label": "Wikipedia: Elecciones legislativas de Argentina de 2025 (resultados por distrito, Diputados)",
+     "url": "https://es.wikipedia.org/wiki/Elecciones_legislativas_de_Argentina_de_2025"
+    }
+   ],
+   "governor": {
+    "name": "Gustavo Melella",
+    "party": "FORJA / PJ",
+    "since": "2019-12",
+    "wiki": "Gustavo_Melella",
+    "lean": "center-left"
+   },
+   "senate2027": false
+  },
+  "T": {
+   "capital": "San Miguel de Tucumán",
+   "population": 1731820,
+   "area_km2": 22592.1,
+   "density": 76.7,
+   "electorate": 1347742,
+   "electoratePct": 3.7,
+   "deputies": 9,
+   "deputies2027": 5,
+   "poverty": {
+    "pct": 27.9,
+    "period": "1er semestre 2026 (provisorio)",
+    "aglomerado": "Gran Tucumán-Tafí Viejo"
+   },
+   "indigence": {
+    "pct": 4.4,
+    "period": "1er semestre 2026 (provisorio)",
+    "aglomerado": "Gran Tucumán-Tafí Viejo"
+   },
+   "unemployment": {
+    "pct": 5.5,
+    "period": "2do trimestre 2026",
+    "aglomerado": "Gran Tucumán-Tafí Viejo"
+   },
+   "pbgShare": {
+    "pct": 1.95,
+    "year": 2023,
+    "source": "CEPAL-Ministerio de Economía, Desagregación provincial del VAB, base 2004 (precios constantes 2004), vía Argendata/Fundar"
+   },
+   "gdpPerCapita": {
+    "value": 51.9,
+    "unit": "índice VAB per cápita relativo (Argentina = 100)",
+    "year": 2023,
+    "source": "CEPAL-Ministerio de Economía, Desagregación provincial del VAB, base 2004 (precios constantes 2004), vía Argendata/Fundar"
+   },
+   "economy": "Agroindustria azucarera, limón y citrus, arándanos, frutillas, industria y servicios.",
+   "name": "Tucumán",
+   "governorElection2027": true,
+   "reelection": "puede según el oficialismo (primer mandato electo); LLA (Catalán) sostiene que no está habilitado por haber ejercido como gobernador interino en 2021-2023",
+   "incumbentRunning": "sí",
+   "date2027": "2027-05-09",
+   "dateStatus": "confirmada",
+   "dateNote": "Fijada por decreto de Jaldo (primera provincia con fecha oficial), con Ficha Limpia. Se renuevan 347 cargos: gobernador y vice, 49 legisladores, 19 intendentes, concejales y comisionados rurales. Mandatos vencen a fines de octubre de 2027.",
+   "system": "sin primarias; sistema de acoples",
+   "candidates": [
+    {
+     "name": "Osvaldo Jaldo",
+     "party": "PJ",
+     "note": "Va por la reelección con Miguel Acevedo"
+    },
+    {
+     "name": "Lisandro Catalán",
+     "party": "La Libertad Avanza",
+     "note": "Principal rival; empate técnico en encuesta de agosto"
+    },
+    {
+     "name": "Mariano Campero",
+     "party": "Cambia Tucumán",
+     "note": "Diputado nacional"
+    },
+    {
+     "name": "Juan Manzur",
+     "party": "peronismo disidente",
+     "note": "Amaga con competir por fuera del PJ"
+    }
+   ],
+   "gov2023": {
+    "winner": "Osvaldo Jaldo (Frente de Todos por Tucumán)",
+    "pct": 54.96
+   },
+   "dip2025": {
+    "winner": "Tucumán Primero (PJ)",
+    "pct": 50.61
+   },
+   "summary": "Tucumán abre el calendario de gobernadores el 9 de mayo. Jaldo, aliado parlamentario de Milei, busca la reelección frente al libertario Catalán, con un posible frente peronista disidente de Manzur y un debate judicial sobre su habilitación.",
+   "sources": [
+    {
+     "label": "La Gaceta: Jaldo puso fecha a las elecciones",
+     "url": "https://www.lagaceta.com.ar/nota/1147277/politica/con-dardos-libertad-avanza-jaldo-puso-fecha-elecciones-tucuman.html"
+    },
+    {
+     "label": "Contexto Tucumán: Tucumán elegirá gobernador el 9 de mayo",
+     "url": "https://www.contextotucuman.com/nota/398163/tucuman-elegira-gobernador-el-9-de-mayo-jaldo-acevedo-por-el-pj-catalan-por-lla-y-campero-por-cambia-tucuman.html"
+    },
+    {
+     "label": "LPO: Jaldo anunció que será candidato a la reelección con Acevedo",
+     "url": "https://www.lapoliticaonline.com/politica/jaldo-junto-a-sus-legisladores-y-anuncio-que-sera-candidato-a-la-reeleccion-con-acevedo-en-la-formula-3496/"
+    },
+    {
+     "label": "Perfil: encuesta Tucumán 2027",
+     "url": "https://www.perfil.com/noticias/politica/tucuman-mira-a-2027-una-nueva-encuesta-midio-el-voto-por-espacios-politicos-y-puso-a-prueba-dos-escenarios-de-candidatos.phtml"
+    },
+    {
+     "label": "El Cronista (7/10/2026): Elecciones 2027, qué provincias esperan para definir",
+     "url": "https://www.cronista.com/economia-politica/elecciones-2027-tras-el-desdoblamiento-en-santa-fe-que-provincias-esperan-para-definir/"
+    },
+    {
+     "label": "Wikipedia: Elecciones provinciales de Tucumán de 2023",
+     "url": "https://es.wikipedia.org/wiki/Elecciones_provinciales_de_Tucumán_de_2023"
+    },
+    {
+     "label": "Wikipedia: Elecciones legislativas de Argentina de 2025 (resultados por distrito, Diputados)",
+     "url": "https://es.wikipedia.org/wiki/Elecciones_legislativas_de_Argentina_de_2025"
+    }
+   ],
+   "governor": {
+    "name": "Osvaldo Jaldo",
+    "party": "PJ",
+    "since": "2023-10",
+    "wiki": "Osvaldo_Jaldo",
+    "lean": "center-left"
+   },
+   "senate2027": true
+  }
+ },
+ "sources": [
+  {
+   "label": "Wikipedia — 2027 Argentine general election",
+   "url": "https://en.wikipedia.org/wiki/2027_Argentine_general_election"
+  },
+  {
+   "label": "Wikipedia — Elecciones legislativas de Argentina de 2025",
+   "url": "https://es.wikipedia.org/wiki/Elecciones_legislativas_de_Argentina_de_2025"
+  },
+  {
+   "label": "Ámbito — Radiografía de los bloques en Diputados (3/12/2025)",
+   "url": "https://www.ambito.com/politica/radiografia-los-bloques-diputados-como-quedaron-y-quienes-son-sus-referentes-n6220476"
+  },
+  {
+   "label": "Infobae — El peronismo en el Senado volvió a cambiar de nombre (17/12/2025)",
+   "url": "https://www.infobae.com/politica/2025/12/17/el-peronismo-en-el-senado-volvio-a-cambiar-de-nombre-y-se-unifico-con-la-bancada-mas-chica-desde-1983/"
+  },
+  {
+   "label": "Chequeado — Elección bonaerense 7/9/2025",
+   "url": "https://chequeado.com/el-explicador/el-peronismo-le-gana-por-mas-de-13-puntos-al-gobierno-nacional-las-elecciones-de-la-provincia-de-buenos-aires/"
+  },
+  {
+   "label": "La Nación — PASO suspendidas en Chaco y estado nacional (22/10/2026)",
+   "url": "https://www.lanacion.com.ar/politica/con-las-paso-suspendidas-el-pj-chaqueno-acordo-internas-abiertas-y-anticipa-un-probable-escenario-nid22102026/"
+  },
+  {
+   "label": "noticiasd — Suspensión de las PASO 2027 (16/10/2026)",
+   "url": "https://noticiasd.com/argentina/suspension-de-las-paso-2027-el-gobierno-negocia-votos-en-el-senado-tras-su-avance-en-diputados-201338939"
+  },
+  {
+   "label": "Perfil — Suspensión de las PASO 2027 y contenido de la reforma (7/7/2026)",
+   "url": "https://www.perfil.com/noticias/politica/suspension-de-las-paso-2027-los-gobernadores-aliados-de-milei-abren-la-puerta-al-cambio-y-la-definicion-queda-en-manos-del-senado.phtml"
+  },
+  {
+   "label": "El Liberal — Acordada 155/2026 de la CNE (8/9/2026)",
+   "url": "https://www.elliberal.com.ar/nota/91052/2026/09/elecciones-2027--la-camara-electoral-advirtio-al-congreso-por-los-plazos-para-aprobar-reformas"
+  },
+  {
+   "label": "Última Hora — Elecciones 2027: qué se vota y cuándo",
+   "url": "https://ultimahora.com.ar/elecciones-2027"
+  },
+  {
+   "label": "Ámbito — Milei confirmó que va por la reelección (2/8/2026)",
+   "url": "https://www.ambito.com/politica/javier-milei-confirmo-que-va-la-reeleccion-2027-y-ya-definio-su-companero-formula-n6306201"
+  },
+  {
+   "label": "Letra P — Se lanzó Kicillof (19/9/2026)",
+   "url": "https://www.letrap.com.ar/politica/se-lanzo-kicillof-cuenten-conmigo-que-el-ano-que-viene-la-argentina-tenga-una-alternativa-n5426746"
+  },
+  {
+   "label": "El Destape — Encuesta QMonitor (13/10/2026)",
+   "url": "https://www.eldestapeweb.com/politica/encuesta-elecciones-2027-milei-kicillof-empatan-balotaje-define-punto-20261013125029"
+  },
+  {
+   "label": "Infobae — Encuesta UdeSA ESPOP (19/10/2026)",
+   "url": "https://www.infobae.com/politica/2026/10/19/aciertos-y-deudas-del-gobierno-de-milei-la-desaprobacion-llega-al-60-mientras-crece-la-incertidumbre-electoral-segun-una-encuesta/"
+  },
+  {
+   "label": "Infobae — Poliarquía septiembre 2026 (18/9/2026)",
+   "url": "https://www.infobae.com/politica/2026/09/18/una-nueva-encuesta-mostro-un-deterioro-de-la-imagen-de-milei-y-una-aprobacion-estancada-en-42/"
+  },
+  {
+   "label": "Diario Panorama — Inflación septiembre 2026 (13/10/2026)",
+   "url": "https://diariopanorama.com/noticia/569591/indec-confirmo-inflacion-septiembre-fue-19porciento-acumula-334porciento-doce-meses"
+  },
+  {
+   "label": "Infobae — Pobreza 1er semestre 2026 (24/9/2026)",
+   "url": "https://www.infobae.com/economia/2026/09/24/la-pobreza-subio-al-323-en-el-primer-semestre-de-ano-y-afecto-a-155-millones-de-personas/"
+  },
+  {
+   "label": "Infobae — Desocupación 2do trimestre 2026 (17/9/2026)",
+   "url": "https://www.infobae.com/economia/2026/09/17/aumento-la-desocupacion-al-79-en-el-segundo-trimestre-de-2026-y-afecta-a-mas-de-17-millones-de-personas/"
+  },
+  {
+   "label": "INDEC — Informe de avance del nivel de actividad, 4to trimestre 2025",
+   "url": "https://www.indec.gob.ar/uploads/informesdeprensa/pib_03_26D14C2E1ADC.pdf"
+  },
+  {
+   "label": "Infobae — REM BCRA (8/9/2026)",
+   "url": "https://www.infobae.com/economia/2026/09/08/a-cuanto-llegaran-el-dolar-y-la-inflacion-a-fin-de-2026-segun-los-principales-analistas-de-mercado/"
+  },
+  {
+   "label": "INDEC, Censo 2022 resultados definitivos, Cuadro 2 (población, superficie, densidad)",
+   "url": "https://www.indec.gob.ar/ftp/cuadros/poblacion/c2022_tp_est_c2.xlsx"
+  },
+  {
+   "label": "INDEC, Incidencia de la pobreza y la indigencia en 31 aglomerados urbanos, 1er semestre 2026 (24-sep-2026)",
+   "url": "https://www.indec.gob.ar/uploads/informesdeprensa/eph_pobreza_09_2670733F4C4D.pdf"
+  },
+  {
+   "label": "INDEC, Mercado de trabajo. Tasas e indicadores socioeconómicos (EPH), 2do trimestre 2026",
+   "url": "https://www.indec.gob.ar/uploads/informesdeprensa/mercado_trabajo_eph_2trim26433FCBC5A8.pdf"
+  },
+  {
+   "label": "Electores registrados por distrito, generales 2025 (tablas de resultados, Wikipedia ES)",
+   "url": "https://es.wikipedia.org/wiki/Elecciones_legislativas_de_Argentina_de_2025"
+  },
+  {
+   "label": "Padrón por distrito informado por CNE (prensa, Canal 26)",
+   "url": "https://www.canal26.com/politica/2025/09/29/elecciones-legislativas-2025-provincia-por-provincia-cuantos-argentinos-estan-habilitados-para-votar/"
+  },
+  {
+   "label": "Total padrón 2025 CNE (35.987.634 país / 36.478.360 con exterior), TodoJujuy",
+   "url": "https://www.todojujuy.com/politica/elecciones-2025-casi-36-millones-argentinos-habilitados-votar-el-26-octubre-n280440"
+  },
+  {
+   "label": "DINE, Sistema de publicación de resultados (API, cantidadElectores en mesas escrutadas)",
+   "url": "https://resultados.mininterior.gob.ar/"
+  },
+  {
+   "label": "CEPAL-MECON, Desagregación provincial del VAB de la Argentina, base 2004",
+   "url": "https://www.cepal.org/es/publicaciones/47900-desagregacion-provincial-valor-agregado-bruto-la-argentina-base-2004"
+  },
+  {
+   "label": "Argendata (Fundar), VAB por provincia (participación) CSV",
+   "url": "https://argendata.fund.ar/data/CRECIM/vab_por_provincia.csv"
+  },
+  {
+   "label": "Argendata (Fundar), VAB per cápita relativo por provincia CSV",
+   "url": "https://argendata.fund.ar/data/CRECIM/provincia_pib_pc_relativo.csv"
+  },
+  {
+   "label": "Ley 22.847 (bancas por distrito en la Cámara de Diputados; 257 total)",
+   "url": "https://www.hcdn.gob.ar/diputados/index.html"
+  }
+ ]
+}
