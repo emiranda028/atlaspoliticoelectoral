@@ -6167,6 +6167,9 @@
   .pol-meta { font-size: 11px; color: var(--muted); margin: 0 4px; }
   .pol-meta a { color: inherit; }
   .pol-sub { font: 700 20px var(--font-serif); margin: 22px 0 10px; }
+  .pol-notes { margin-top: 16px; font-size: 12.5px; color: var(--muted); }
+  .pol-notes summary { cursor: pointer; font-weight: 600; color: var(--ink-soft); }
+  .pol-notes ul { margin: 8px 0 0; padding-left: 18px; display: grid; gap: 4px; }
   #esp-espana .esp-sec-head .kicker { color: #AA151B; }
   #esp-espana .esp-nav a:hover { border-color: #AA151B; color: #AA151B; }
   #esp-espana .esp-status .live-dot { background: #F1BF00; }
@@ -33301,7 +33304,7 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
 
   /* Polaroid de encuestas: one snapshot card per poll + the averages */
   function arAvg(polls, get) {
-    const v = polls.map(get).filter(x => x != null && !isNaN(x));
+    const v = polls.map(get).filter(x => typeof x === 'number' && !isNaN(x));
     return v.length ? { v: v.reduce((a, b) => a + b, 0) / v.length, n: v.length } : null;
   }
   function arSplit(a, b, la, lb, ca, cb) {
@@ -33313,7 +33316,8 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
     const polls = (ps.polls || []).slice().sort((a, b) => String(b.published || '').localeCompare(String(a.published || '')));
     const ap = arAvg(polls, p => p.approval && p.approval.approve), dis = arAvg(polls, p => p.approval && p.approval.disapprove);
     const im = arAvg(polls, p => p.mileiImage && p.mileiImage.positive), imn = arAvg(polls, p => p.mileiImage && p.mileiImage.negative);
-    const mv = arAvg(polls, p => p.vote && p.vote.values && p.vote.values['Javier Milei']), kv = arAvg(polls, p => p.vote && p.vote.values && p.vote.values['Axel Kicillof']);
+    const fv = p => p.vote && !p.vote.noAvg && p.vote.values;
+    const mv = arAvg(polls, p => fv(p) && fv(p)['Javier Milei']), kv = arAvg(polls, p => fv(p) && fv(p)['Axel Kicillof']);
     const mr = arAvg(polls, p => p.runoff && p.runoff.values && p.runoff.values['Javier Milei']), kr = arAvg(polls, p => p.runoff && p.runoff.values && p.runoff.values['Axel Kicillof']);
     const tile = (lbl, val, sub) => `<div class="pol-tile"><span>${lbl}</span><b>${val}</b><small>${sub}</small></div>`;
     const card = (p, i) => {
@@ -33347,7 +33351,7 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
       ${(ps.provincial || []).length ? `<h4 class="pol-sub">Las encuestas en las provincias</h4><div class="ro-grid">${ps.provincial.map(pp => { const vals = Object.entries(pp.values || {}).sort((a, b) => b[1] - a[1]); const mx = Math.max(...vals.map(v => v[1]), 1); return `<div class="ro-card"><h4>${esc(arProv(pp.district).name || pp.district)}</h4><div class="muted">${esc(pp.pollster || '')}${pp.published ? ' · ' + esc(pp.published) : ''} · ${esc(pp.question || '')}</div>
         ${vals.map(([k, v]) => `<div class="pbar"><div class="pbar-top"><span>${esc(k)}</span><b>${fmtPct(v)}</b></div><div class="pbar-track"><div class="pbar-fill" style="width:${(v / mx * 100).toFixed(1)}%;background:#4A90C8"></div></div></div>`).join('')}
         ${pp.url ? `<span class="poll-src"><a href="${esc(pp.url)}" target="_blank" rel="noopener">Fuente</a></span>` : ''}</div>`; }).join('')}</div>` : ''}
-      ${(ps.notes || []).length ? `<p class="esp-sources">${ps.notes.map(esc).join(' ')}</p>` : ''}
+      ${(ps.notes || []).length ? `<details class="pol-notes"><summary>Notas metodológicas</summary><ul>${ps.notes.map(x => `<li>${esc(x)}</li>`).join('')}</ul></details>` : ''}
     </section>`;
   }
 
