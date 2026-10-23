@@ -44,6 +44,22 @@ def dp(pts, tol):
 
 def area(r): return abs(sum(r[i][0] * r[i + 1][1] - r[i + 1][0] * r[i][1] for i in range(len(r) - 1))) / 2
 
+def centroid(rings, proj):
+    best, ba = None, 0
+    for ring in rings:
+        pts = [proj(x, y) for x, y in ring]
+        a = area(pts + [pts[0]])
+        if a > ba: ba, best = a, pts
+    if not best: return None
+    A = cx = cy = 0
+    for (x0, y0), (x1, y1) in zip(best, best[1:] + best[:1]):
+        f = x0 * y1 - x1 * y0; A += f; cx += (x0 + x1) * f; cy += (y0 + y1) * f
+    if not A: return None
+    return [round(cx / (3 * A), 1), round(cy / (3 * A), 1)]
+
+# manual nudges so labels sit inside oddly shaped provinces
+NUDGE = {'B': (8, 10), 'E': (0, 4), 'N': (2, 2), 'Y': (0, 4), 'T': (0, 0), 'U': (-4, 0), 'Z': (-6, 0), 'R': (0, -4), 'K': (-2, 6), 'A': (6, 8)}
+
 def path(rings, proj, tol, min_area):
     out = []
     for ring in rings:
@@ -63,14 +79,19 @@ def main():
         if pid == '02': caba = polys
         if pid != '94':
             d = path([p[0] for p in polys], main_xy, 0.35, 0.6)
-            locs.append({'id': ISO[pid], 'name': SHORT.get(pid, name), 'path': d, 'group': 'main'})
+            loc = {'id': ISO[pid], 'name': SHORT.get(pid, name), 'path': d, 'group': 'main'}
+            c = centroid([p[0] for p in polys], main_xy)
+            if c and pid != '02':
+                dx, dy = NUDGE.get(ISO[pid], (0, 0)); loc['lx'], loc['ly'] = round(c[0] + dx, 1), round(c[1] + dy, 1)
+            locs.append(loc)
             continue
         parts = {'V': [], 'MAL': [], 'GEO': [], 'ANT': []}
         for p in polys:
             ring = p[0]; lon = sum(x for x, _ in ring) / len(ring); lat = sum(y for _, y in ring) / len(ring)
             key = 'ANT' if lat < -60 else 'GEO' if lon > -42 else 'MAL' if -62 < lon < -57 and -53 < lat < -50.5 else 'V'
             parts[key].append(ring)
-        locs.append({'id': 'V', 'name': 'Tierra del Fuego', 'path': path(parts['V'], main_xy, 0.35, 0.6), 'group': 'main'})
+        c = centroid(parts['V'], main_xy)
+        locs.append({'id': 'V', 'name': 'Tierra del Fuego', 'path': path(parts['V'], main_xy, 0.35, 0.6), 'group': 'main', 'lx': c[0] + 26, 'ly': c[1] + 2, 'lanchor': 'start'})
         locs.append({'id': 'V', 'sub': 'MAL', 'name': 'Islas Malvinas', 'path': path(parts['MAL'], main_xy, 0.25, 0.15), 'group': 'main'})
         locs.append({'id': 'V', 'sub': 'GEO', 'name': 'Georgias del Sur y Sandwich del Sur', 'path': path(parts['GEO'], polar_xy, 0.2, 0.05), 'group': 'polar'})
         locs.append({'id': 'V', 'sub': 'ANT', 'name': 'Antártida Argentina', 'path': path(parts['ANT'], polar_xy, 0.45, 0.8), 'group': 'polar'})
@@ -78,7 +99,8 @@ def main():
     xs = [x for p in caba for x, _ in p[0]]; ys = [y for p in caba for _, y in p[0]]
     s = min((CB[2] - 20) / ((max(xs) - min(xs)) * CX), (CB[3] - 30) / (max(ys) - min(ys)))
     def caba_xy(lon, lat): return (CB[0] + 10 + (lon - min(xs)) * CX * s, CB[1] + 22 + (max(ys) - lat) * s)
-    locs.append({'id': 'C', 'name': 'CABA', 'path': path([p[0] for p in caba], caba_xy, 0.4, 1), 'group': 'caba'})
+    cc = centroid([p[0] for p in caba], caba_xy)
+    locs.append({'id': 'C', 'name': 'CABA', 'path': path([p[0] for p in caba], caba_xy, 0.4, 1), 'group': 'caba', 'lx': cc[0], 'ly': cc[1]})
     # decoration: Antarctic sector edges (74°W, 25°W) and the 60°S arc, frames
     def line(pts): return 'M' + 'L'.join(f'{x:.1f},{y:.1f}' for x, y in pts)
     arc = [polar_xy(lon, -60) for lon in [-74 + i * 0.5 for i in range(99)]]

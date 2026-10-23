@@ -6114,6 +6114,7 @@
   .ar-map .ar-sector { fill: none; stroke: #7A8799; stroke-width: .8; stroke-dasharray: 3 3; }
   .ar-map .ar-grat { fill: none; stroke: #B8C3D1; stroke-width: .5; }
   .ar-map .ar-lbl { font: 600 8.5px var(--font-sans); fill: #33415C; }
+  .ar-map .ar-val { font: 700 9px var(--font-sans); fill: #0B1628; stroke: #fff; stroke-width: 2.6px; stroke-linejoin: round; paint-order: stroke; pointer-events: none; }
   .ar-map .ar-caba-dot { fill: none; stroke: #0B1628; stroke-width: 1; }
   .ar-legend { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 12.5px; margin-top: 10px; color: var(--ink-soft); }
   .ar-legend i { display: inline-block; width: 12px; height: 12px; border-radius: 3px; margin-right: 5px; vertical-align: -1px; }
@@ -33227,12 +33228,32 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
       return `<path class="ar-prov${live.arSel === l.id ? ' is-sel' : ''}" data-ar="${l.id}" d="${l.path}" style="fill:${arFill(l.id)}"><title>${esc(tip)}</title></path>`;
     }).join('');
     const labels = (dec.labels || []).map(t => `<text class="ar-lbl" x="${t.x}" y="${t.y}" text-anchor="${t.a || 'start'}">${esc(t.t)}</text>`).join('');
+    // The value of the chosen variable, written inside each province
+    const vals = g.locations.filter(l => l.lx != null).map(l => {
+      const t = arValueLabel(l.id);
+      return t ? `<text class="ar-val" x="${l.lx}" y="${l.ly}" text-anchor="${l.lanchor || 'middle'}" dominant-baseline="middle">${esc(t)}</text>` : '';
+    }).join('');
     const dot = dec.caba_dot ? `<circle class="ar-caba-dot" cx="${dec.caba_dot[0]}" cy="${dec.caba_dot[1]}" r="5"/>` : '';
-    return `<svg viewBox="${g.viewBox}" role="img" aria-label="Mapa bicontinental de la República Argentina">${frames}<path class="ar-grat" d="${dec.graticule || ''}"/><path class="ar-sector" d="${dec.sector || ''}"/>${paths}${dot}${labels}</svg>`;
+    return `<svg viewBox="${g.viewBox}" role="img" aria-label="Mapa bicontinental de la República Argentina">${frames}<path class="ar-grat" d="${dec.graticule || ''}"/><path class="ar-sector" d="${dec.sector || ''}"/>${paths}${dot}${labels}<g class="ar-vals">${vals}</g></svg>`;
+  }
+  function arValueLabel(iso) {
+    const p = arProv(iso), k = live.arMetric;
+    if (!p.name) return '';
+    if (k === 'date') {
+      if (!p.date2027 || p.governorElection2027 === false) return '';
+      const d = new Date(p.date2027 + 'T12:00:00');
+      return `${d.getDate()} ${AR_MONTHS[d.getMonth()]}${p.dateStatus && !/confirmada|nacional/i.test(p.dateStatus) ? '?' : ''}`;
+    }
+    if (k === 'gov') return p.governor && p.governor.name ? p.governor.name.split(' ').slice(-1)[0] : '';
+    const m = AR_METRICS[k], v = m && m.get ? m.get(p) : null;
+    if (v == null) return '';
+    if (k === 'electorate') return v >= 1e6 ? fmtM(v, 1).replace(' M', ' M') : Math.round(v / 1000) + ' mil';
+    if (k === 'dip') return String(v);
+    return fmtPct(v, 1);
   }
   function arLegendHTML() {
     const m = AR_METRICS[live.arMetric] || AR_METRICS.date;
-    if (m.kind === 'cat') return AR_DATE_COLORS.map(([l, c]) => `<span><i style="background:${c}"></i>${l}</span>`).join('');
+    if (m.kind === 'cat') return AR_DATE_COLORS.map(([l, c]) => `<span><i style="background:${c}"></i>${l}</span>`).join('') + '<span class="muted">En el mapa: la fecha de la elección de gobernador; con «?», fecha anunciada pero sin decreto.</span>';
     if (m.kind === 'lean') {
       const leans = [...new Set(Object.values(live.argentina.provinces || {}).map(p => (p.governor && p.governor.lean) || 'other'))];
       return leans.map(l => `<span><i style="background:${leanColor(l)}"></i>${esc((IDEOLOGIES[l] || IDEOLOGIES.other).label)}</span>`).join('');
