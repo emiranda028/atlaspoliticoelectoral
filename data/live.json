@@ -13,6 +13,16 @@
    "blurb": "Flávio Bolsonaro vs. Lula el 25 de octubre, más seis gobernaciones. El mano a mano, las encuestas, los apoyos y, en el archivo, todos los resultados de la 1.ª vuelta."
   },
   {
+   "id": "argentina-2027",
+   "view": "argentina",
+   "status": "active",
+   "iso": "ARG",
+   "tag": "Especial · nuevo",
+   "title": "Argentina 2027",
+   "date": "2027-10-24",
+   "blurb": "Presidente, 130 diputados, 24 senadores y las gobernaciones provincia por provincia: fechas, candidatos, datos sociales y económicos, en un mapa bicontinental con Malvinas y la Antártida."
+  },
+  {
    "id": "eeuu-2026",
    "status": "active",
    "iso": "USA",
@@ -55,6 +65,12 @@
   }
  ],
  "notes": [
+  {
+   "date": "2026-10-23",
+   "tag": "Nuevo",
+   "text": "Especial Argentina 2027: el calendario de las 24 provincias, quién gobierna y quién puede ser reelecto, pobreza y desempleo por provincia y los posibles candidatos a presidente.",
+   "view": "argentina"
+  },
   {
    "date": "2026-10-12",
    "tag": "Nuevo",

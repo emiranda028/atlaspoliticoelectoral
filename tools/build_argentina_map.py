@@ -86,14 +86,14 @@ def main():
     lat_lines = ''.join(line([polar_xy(lon, la) for lon in [-74 + i * 0.5 for i in range(99)]]) for la in (-70, -80))
     out = {'label': 'Argentina bicontinental', 'viewBox': f'0 0 {W} {H}', 'locations': locs,
            'decor': {'sector': sector, 'graticule': lat_lines,
-                     'frames': [{'x': CB[0], 'y': CB[1], 'w': CB[2], 'h': CB[3], 'label': 'Ciudad Autónoma de Buenos Aires'},
-                                {'x': 388, 'y': 470, 'w': 246, 'h': 324, 'label': 'Antártida Argentina e islas del Atlántico Sur'}],
+                     'frames': [{'x': CB[0], 'y': CB[1], 'w': CB[2], 'h': CB[3], 'label': 'CABA'},
+                                {'x': 388, 'y': 470, 'w': 246, 'h': 324, 'label': 'Antártida e islas del Atlántico Sur'}],
                      'caba_dot': [round(v, 1) for v in main_xy(-58.44, -34.61)],
                      'labels': [{'t': 'Islas Malvinas', 'x': round(main_xy(-59.4, -50.6)[0], 1), 'y': round(main_xy(-59.4, -50.6)[1], 1)},
                                 {'t': 'Polo Sur', 'a': 'middle', 'x': PX, 'y': PY + 14},
                                 {'t': 'Georgias del Sur', 'a': 'end', 'x': round(polar_xy(-36.7, -54.6)[0] - 6, 1), 'y': round(polar_xy(-36.7, -54.6)[1] + 3, 1)},
-                                {'t': 'Sandwich del Sur', 'a': 'end', 'x': round(polar_xy(-26.5, -57.5)[0] - 6, 1), 'y': round(polar_xy(-26.5, -57.5)[1] + 3, 1)},
-                                {'t': 'Orcadas del Sur', 'x': round(polar_xy(-45.5, -59.6)[0], 1), 'y': round(polar_xy(-45.5, -59.6)[1], 1)}]},
+                                {'t': 'Sandwich del Sur', 'a': 'end', 'x': round(polar_xy(-26.5, -57.5)[0] + 4, 1), 'y': round(polar_xy(-26.5, -57.5)[1] + 16, 1)},
+                                {'t': 'Orcadas del Sur', 'a': 'end', 'x': round(polar_xy(-45.5, -60.6)[0] - 4, 1), 'y': round(polar_xy(-45.5, -60.6)[1] + 3, 1)}]},
            'source': 'IGN / georef-ar (datos.gob.ar), simplificado'}
     json.dump(out, open(sys.argv[2], 'w'), ensure_ascii=False, separators=(',', ':'))
     print(len(locs), 'paths', sum(len(l['path']) for l in locs), 'chars')

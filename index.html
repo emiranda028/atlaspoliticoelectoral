@@ -33156,15 +33156,15 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
   const AR_MONTHS = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'];
   const arDateTxt = p => {
     if (p.governorElection2027 === false) return 'No elige gobernador en 2027';
-    if (!p.date2027) return p.dateStatus ? esc(p.dateStatus) : 'Fecha a definir';
+    if (!p.date2027) return /desdobl/i.test(p.dateStatus || '') ? 'Separada de la nacional, sin fecha' : 'Fecha a definir';
     const d = new Date(p.date2027 + 'T12:00:00');
     return `${d.getDate()} ${AR_MONTHS[d.getMonth()]} 2027${p.dateStatus && p.dateStatus !== 'confirmada' ? ' (' + esc(p.dateStatus) + ')' : ''}`;
   };
   // Map metrics: colour by date window, governor's party lean, or a number
-  const AR_DATE_COLORS = [['Antes de junio', '#1D4E89'], ['Junio–septiembre', '#4A90C8'], ['Con la nacional (oct)', '#74ACDF'], ['Fecha a definir', '#C9D6E3'], ['No elige gobernador', '#E5E7EB']];
+  const AR_DATE_COLORS = [['Antes de junio', '#1D4E89'], ['Junio–septiembre', '#4A90C8'], ['Con la nacional (oct)', '#74ACDF'], ['Fecha a definir', '#C9D6E3'], ['No elige gobernador', '#E5E7EB'], ['Separada de la nacional, sin fecha', '#F6B40E']];
   function arDateBucket(p) {
     if (p.governorElection2027 === false) return 4;
-    if (!p.date2027) return 3;
+    if (!p.date2027) return /desdobl/i.test(p.dateStatus || '') ? 5 : 3;
     const m = new Date(p.date2027 + 'T12:00:00').getMonth();
     return m < 5 ? 0 : m < 9 ? 1 : 2;
   }
@@ -33267,7 +33267,7 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
         <td>${p.senate2027 ? '3 bancas' : '—'}</td>
         <td class="num">${p.electorate ? fmtInt(p.electorate) : '—'}</td>
         <td class="num">${p.poverty && p.poverty.pct != null ? fmtPct(p.poverty.pct) : '—'}</td></tr>`).join('')}</tbody></table></div>
-      <p class="esp-sources">Pobreza y desempleo: INDEC, EPH (por aglomerado urbano principal de cada provincia). Electores: padrón de la CNE. Tocá una fila para verla en el mapa.</p>`;
+      <p class="esp-sources">Pobreza y desempleo: INDEC, EPH (por aglomerado urbano principal de cada provincia). Electores: registrados en las legislativas de 2025. Tocá una fila para verla en el mapa.</p>`;
     el.querySelectorAll('[data-sort]').forEach(th => th.addEventListener('click', () => { live.arSort = th.getAttribute('data-sort'); renderArTable(); }));
     el.querySelectorAll('[data-ar-row]').forEach(tr => tr.addEventListener('click', () => { live.arSel = tr.getAttribute('data-ar-row'); renderArMap(); const m = document.getElementById('ar-sec-mapa'); if (m) m.scrollIntoView({ behavior: 'smooth' }); }));
   }
