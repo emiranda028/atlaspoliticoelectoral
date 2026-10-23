@@ -6141,6 +6141,32 @@
   .ar-macro b { display: block; font: 700 24px var(--font-serif); color: var(--ink); margin: 4px 0 2px; }
   .ar-macro small { color: var(--muted); font-size: 11.5px; }
   @media (max-width: 900px) { .ar-map-wrap { grid-template-columns: 1fr; } .ar-card { position: static; } }
+  .pol-tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; margin-bottom: 22px; }
+  .pol-tile { background: #0B2545; color: #fff; border-radius: 14px; padding: 14px 16px; }
+  .pol-tile span { display: block; font: 600 10.5px var(--font-sans); letter-spacing: .08em; text-transform: uppercase; opacity: .75; }
+  .pol-tile b { display: block; font: 700 30px var(--font-serif); margin: 4px 0 2px; }
+  .pol-tile small { font-size: 12px; opacity: .7; }
+  .pol-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 26px 20px; padding: 6px 4px 10px; }
+  .polaroid { background: #fff; padding: 12px 12px 14px; box-shadow: 0 2px 3px rgba(0,0,0,.08), 0 12px 28px rgba(11,22,40,.14); transform: rotate(var(--tilt)); transition: transform .2s; border-radius: 3px; }
+  .polaroid:hover { transform: rotate(0) scale(1.02); z-index: 2; }
+  .pol-photo { background: linear-gradient(160deg, #F4F7FB, #E6EDF6); border-radius: 2px; padding: 12px; min-height: 150px; }
+  .pol-head { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; margin-bottom: 8px; }
+  .pol-head b { font: 700 16px var(--font-serif); color: #0B2545; }
+  .pol-head span { font-size: 11px; color: var(--muted); white-space: nowrap; }
+  .pol-k { font: 700 10px var(--font-sans); letter-spacing: .08em; text-transform: uppercase; color: #2B6CB0; margin: 8px 0 4px; }
+  .pol-split { display: flex; height: 10px; border-radius: 99px; overflow: hidden; background: #fff; }
+  .pol-split-lbl { display: flex; justify-content: space-between; font-size: 12px; margin-top: 3px; color: var(--ink-soft); }
+  .pol-row { display: grid; grid-template-columns: 1fr 70px auto; align-items: center; gap: 6px; font-size: 12.5px; margin: 2px 0; }
+  .pol-row i { height: 6px; background: #4A90C8; border-radius: 99px; }
+  .pol-row b { font-family: var(--font-mono); font-size: 12px; }
+  .pol-ro { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; font-size: 12.5px; }
+  .pol-ro em { font-style: italic; color: var(--muted); }
+  .pol-conc { display: flex; flex-wrap: wrap; gap: 4px; }
+  .pol-conc span { font-size: 11.5px; background: #fff; border: 1px solid var(--line); border-radius: 99px; padding: 2px 8px; }
+  .pol-caption { font: italic 500 15px/1.35 var(--font-serif); color: var(--ink); margin: 10px 4px 4px; }
+  .pol-meta { font-size: 11px; color: var(--muted); margin: 0 4px; }
+  .pol-meta a { color: inherit; }
+  .pol-sub { font: 700 20px var(--font-serif); margin: 22px 0 10px; }
   #esp-espana .esp-sec-head .kicker { color: #AA151B; }
   #esp-espana .esp-nav a:hover { border-color: #AA151B; color: #AA151B; }
   #esp-espana .esp-status .live-dot { background: #F1BF00; }
@@ -33272,6 +33298,58 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
     el.querySelectorAll('[data-ar-row]').forEach(tr => tr.addEventListener('click', () => { live.arSel = tr.getAttribute('data-ar-row'); renderArMap(); const m = document.getElementById('ar-sec-mapa'); if (m) m.scrollIntoView({ behavior: 'smooth' }); }));
   }
 
+  /* Polaroid de encuestas: one snapshot card per poll + the averages */
+  function arAvg(polls, get) {
+    const v = polls.map(get).filter(x => x != null && !isNaN(x));
+    return v.length ? { v: v.reduce((a, b) => a + b, 0) / v.length, n: v.length } : null;
+  }
+  function arSplit(a, b, la, lb, ca, cb) {
+    const t = (a || 0) + (b || 0) || 1;
+    return `<div class="pol-split"><span style="width:${(a / t * 100).toFixed(1)}%;background:${ca}"></span><span style="width:${(b / t * 100).toFixed(1)}%;background:${cb}"></span></div>
+      <div class="pol-split-lbl"><span>${la} <b>${fmtPct(a, 0)}</b></span><span>${lb} <b>${fmtPct(b, 0)}</b></span></div>`;
+  }
+  function arPolaroidHTML(ps) {
+    const polls = (ps.polls || []).slice().sort((a, b) => String(b.published || '').localeCompare(String(a.published || '')));
+    const ap = arAvg(polls, p => p.approval && p.approval.approve), dis = arAvg(polls, p => p.approval && p.approval.disapprove);
+    const im = arAvg(polls, p => p.mileiImage && p.mileiImage.positive), imn = arAvg(polls, p => p.mileiImage && p.mileiImage.negative);
+    const mv = arAvg(polls, p => p.vote && p.vote.values && p.vote.values['Javier Milei']), kv = arAvg(polls, p => p.vote && p.vote.values && p.vote.values['Axel Kicillof']);
+    const mr = arAvg(polls, p => p.runoff && p.runoff.values && p.runoff.values['Javier Milei']), kr = arAvg(polls, p => p.runoff && p.runoff.values && p.runoff.values['Axel Kicillof']);
+    const tile = (lbl, val, sub) => `<div class="pol-tile"><span>${lbl}</span><b>${val}</b><small>${sub}</small></div>`;
+    const card = (p, i) => {
+      const vote = p.vote && p.vote.values ? Object.entries(p.vote.values).sort((a, b) => b[1] - a[1]).slice(0, 4) : [];
+      const mx = Math.max(...vote.map(v => v[1]), 1);
+      const conc = (p.concerns || []).slice(0, 3);
+      return `<article class="polaroid" style="--tilt:${[-1.6, 1.2, -0.6, 1.8, -1.1, 0.7][i % 6]}deg">
+        <div class="pol-photo">
+          <div class="pol-head"><b>${esc(p.pollster)}</b><span>${esc(p.field || '')}</span></div>
+          ${p.approval ? `<div class="pol-k">Gestión de Milei</div>${arSplit(p.approval.approve, p.approval.disapprove, 'Aprueba', 'Desaprueba', '#2B6CB0', '#C44A3A')}` : ''}
+          ${!p.approval && p.mileiImage ? `<div class="pol-k">Imagen de Milei</div>${arSplit(p.mileiImage.positive, p.mileiImage.negative, 'Positiva', 'Negativa', '#2B6CB0', '#C44A3A')}` : ''}
+          ${vote.length ? `<div class="pol-k">${esc((p.vote && p.vote.scenario) || 'Intención de voto 2027')}</div>${vote.map(([k, v]) => `<div class="pol-row"><span>${esc(k)}</span><i style="width:${(v / mx * 100).toFixed(0)}%"></i><b>${fmtPct(v, 1)}</b></div>`).join('')}` : ''}
+          ${p.runoff && p.runoff.values ? `<div class="pol-k">Balotaje</div><div class="pol-ro">${Object.entries(p.runoff.values).map(([k, v]) => `<span>${esc(k)} <b>${fmtPct(v, 1)}</b></span>`).join('<em>vs.</em>')}</div>` : ''}
+          ${!vote.length && p.parties ? `<div class="pol-k">Por espacio</div>${Object.entries(p.parties).sort((a, b) => b[1] - a[1]).slice(0, 4).map(([k, v]) => `<div class="pol-row"><span>${esc(k)}</span><i style="width:${Math.min(v * 2, 100)}%"></i><b>${fmtPct(v, 1)}</b></div>`).join('')}` : ''}
+          ${conc.length ? `<div class="pol-k">Preocupa</div><div class="pol-conc">${conc.map(c => `<span>${esc(c.issue)}${c.pct != null ? ` ${fmtPct(c.pct, 0)}` : ''}</span>`).join('')}</div>` : ''}
+        </div>
+        <p class="pol-caption">${esc(p.headline || '')}</p>
+        <div class="pol-meta">${[p.n ? `n=${fmtInt(p.n)}` : '', p.method || '', p.moe ? `±${p.moe} pp` : ''].filter(Boolean).map(esc).join(' · ')}${p.url ? ` · <a href="${esc(p.url)}" target="_blank" rel="noopener">fuente</a>` : ''}</div>
+      </article>`;
+    };
+    return `<section class="esp-sec" id="ar-sec-encuestas">
+      <div class="esp-sec-head"><span class="kicker">05 · El clima</span><h3>Polaroid de encuestas</h3>
+        <p>${esc(ps.summary || 'Las últimas encuestas nacionales, una por una.')}</p></div>
+      <div class="pol-tiles">
+        ${ap ? tile('Aprobación del Gobierno', fmtPct(ap.v, 0), `promedio de ${ap.n} encuesta${ap.n > 1 ? 's' : ''}${dis ? ` · desaprobación ${fmtPct(dis.v, 0)}` : ''}`) : ''}
+        ${im ? tile('Imagen positiva de Milei', fmtPct(im.v, 0), `promedio de ${im.n}${imn ? ` · negativa ${fmtPct(imn.v, 0)}` : ''}`) : ''}
+        ${mv && kv ? tile('Milei vs. Kicillof · 1.ª vuelta', `${fmtPct(mv.v, 0)} – ${fmtPct(kv.v, 0)}`, `promedio de ${Math.min(mv.n, kv.n)} escenarios`) : ''}
+        ${mr && kr ? tile('Milei vs. Kicillof · balotaje', `${fmtPct(mr.v, 0)} – ${fmtPct(kr.v, 0)}`, `promedio de ${Math.min(mr.n, kr.n)}`) : ''}
+      </div>
+      <div class="pol-grid">${polls.map(card).join('')}</div>
+      ${(ps.provincial || []).length ? `<h4 class="pol-sub">Las encuestas en las provincias</h4><div class="ro-grid">${ps.provincial.map(pp => { const vals = Object.entries(pp.values || {}).sort((a, b) => b[1] - a[1]); const mx = Math.max(...vals.map(v => v[1]), 1); return `<div class="ro-card"><h4>${esc(arProv(pp.district).name || pp.district)}</h4><div class="muted">${esc(pp.pollster || '')}${pp.published ? ' · ' + esc(pp.published) : ''} · ${esc(pp.question || '')}</div>
+        ${vals.map(([k, v]) => `<div class="pbar"><div class="pbar-top"><span>${esc(k)}</span><b>${fmtPct(v)}</b></div><div class="pbar-track"><div class="pbar-fill" style="width:${(v / mx * 100).toFixed(1)}%;background:#4A90C8"></div></div></div>`).join('')}
+        ${pp.url ? `<span class="poll-src"><a href="${esc(pp.url)}" target="_blank" rel="noopener">Fuente</a></span>` : ''}</div>`; }).join('')}</div>` : ''}
+      ${(ps.notes || []).length ? `<p class="esp-sources">${ps.notes.map(esc).join(' ')}</p>` : ''}
+    </section>`;
+  }
+
   async function renderArgentina() {
     const root = document.getElementById('esp-argentina');
     if (!root) return;
@@ -33291,7 +33369,7 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
             <span class="esp-status"><span class="live-dot"></span>${esc(ph.label)}</span>
             <h2>Argentina <em>2027</em></h2>
             <p class="esp-hero-lede">${esc(ar.lede || '')}</p>
-            ${facesRow('Los nombres que suenan', (n.candidates || []).filter(c => c.wiki).slice(0, 4).map(c => ({ name: c.name, role: c.party, wiki: c.wiki, color: leanColor(c.lean || 'other') })))}
+            ${facesRow('Los presidenciables', (n.candidates || []).filter(c => c.wiki && c.status !== 'inhabilitada').slice().sort((a, b) => (b.featured ? 1 : 0) - (a.featured ? 1 : 0)).slice(0, 6).map(c => ({ name: c.name, role: c.party, wiki: c.wiki, color: leanColor(c.lean || 'other') })))}
             <div class="esp-hero-dates">
               ${gd ? `<div class="esp-date-chip">Presidenciales<strong>${fmtDateShort(gd)} 2027</strong></div>` : ''}
               <div class="esp-date-chip">Gobernaciones<strong>${govCount} de 24</strong></div>
@@ -33312,7 +33390,7 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
         <a href="#ar-sec-cargos">Qué se elige</a>
         <a href="#ar-sec-calendario">Calendario</a>
         <a href="#ar-sec-candidatos">Candidatos</a>
-        ${(n.polls || []).length ? '<a href="#ar-sec-encuestas">Encuestas</a>' : ''}
+        ${(n.polls || []).length || n.pollSnapshot ? '<a href="#ar-sec-encuestas">Polaroid de encuestas</a>' : ''}
         <a href="#ar-sec-congreso">Congreso</a>
         <a href="#ar-sec-provincias">Las 24 provincias</a>
         <a href="#ar-sec-economia">Economía</a>
@@ -33352,7 +33430,7 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
             <div class="office-detail">${esc(c.status || '')}</div></div>`).join('')}</div>
       </section>
 
-      ${(n.polls || []).length ? `<section class="esp-sec" id="ar-sec-encuestas">
+      ${n.pollSnapshot ? arPolaroidHTML(n.pollSnapshot) : (n.polls || []).length ? `<section class="esp-sec" id="ar-sec-encuestas">
         <div class="esp-sec-head"><span class="kicker">05 · El clima</span><h3>Qué dicen las encuestas</h3></div>
         <div class="ro-grid">${n.polls.map(pl => { const vals = Object.entries(pl.values || {}).sort((a, b) => b[1] - a[1]); const mx = Math.max(...vals.map(v => v[1]), 1); return `<div class="ro-card"><h4>${esc(pl.pollster)}</h4><div class="muted">${esc(pl.question || '')}${pl.date ? ' · ' + esc(pl.date) : ''}</div>
           ${vals.map(([k, v]) => `<div class="pbar"><div class="pbar-top"><span>${esc(k)}</span><b>${fmtPct(v)}</b></div><div class="pbar-track"><div class="pbar-fill" style="width:${(v / mx * 100).toFixed(1)}%;background:#4A90C8"></div></div></div>`).join('')}
