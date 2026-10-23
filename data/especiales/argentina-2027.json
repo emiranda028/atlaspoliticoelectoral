@@ -1,7 +1,7 @@
 {
  "id": "argentina-2027",
  "title": "Elecciones 2027",
- "updatedAt": "2026-10-23T12:00:00-03:00",
+ "updatedAt": "2026-10-23T15:00:00-03:00",
  "lede": "El 24 de octubre de 2027 la Argentina elige presidente y vice, renueva 130 de las 257 bancas de Diputados y 24 de las 72 del Senado (ocho provincias). Javier Milei va por la reelección después de ganar las legislativas de 2025 con el 40,7% y quedar como primera minoría en Diputados; enfrente, Axel Kicillof se perfila como la principal figura del peronismo. A un año de la votación, las encuestas muestran un escenario parejo, la desaprobación del Gobierno ronda el 60% y todavía no está claro si habrá PASO: el oficialismo busca suspenderlas o eliminarlas, pero hasta mediados de octubre de 2026 no había reunido los votos en el Senado.",
  "dates": {
   "paso": "2027-08-08",
@@ -317,77 +317,96 @@
     "party": "La Libertad Avanza",
     "status": "Presidente. Confirmó en agosto de 2026 que busca la reelección y dijo tener definido a su compañero de fórmula, sin dar el nombre.",
     "wiki": "Javier_Milei",
-    "lean": "far-right"
+    "lean": "far-right",
+    "featured": true
    },
    {
     "name": "Axel Kicillof",
     "party": "Fuerza Patria / PJ (Movimiento Derecho al Futuro)",
     "status": "Gobernador bonaerense y presidente del PJ bonaerense desde 2026. El 19/9/2026, en Avellaneda, dio su señal más concreta de candidatura: \"Cuenten conmigo para el año que viene\".",
     "wiki": "Axel_Kicillof",
-    "lean": "center-left"
+    "lean": "center-left",
+    "featured": true
    },
    {
-    "name": "Juan Grabois",
-    "party": "Patria Grande (peronismo)",
-    "status": "Se proclamó precandidato y pide una interna abierta en el peronismo.",
-    "wiki": "Juan_Grabois",
-    "lean": "left"
+    "name": "Myriam Bregman",
+    "party": "Frente de Izquierda y de Trabajadores - Unidad",
+    "status": "Diputada nacional del FIT-U y candidata presidencial en 2023 (2,7%). No confirmó la candidatura para 2027 ('no es momento'), pero su espacio la da por hecha. Las encuestas la ubican tercera, con entre 7% y 14%, y lidera varios rankings de imagen positiva.",
+    "wiki": "Myriam_Bregman",
+    "lean": "far-left",
+    "featured": true
    },
    {
-    "name": "Sergio Massa",
-    "party": "Frente Renovador (peronismo)",
-    "status": "Sin confirmar. Según la prensa, les dijo a intendentes bonaerenses que quiere volver a ser candidato.",
-    "wiki": "Sergio_Massa",
-    "lean": "center-left"
-   },
-   {
-    "name": "Sergio Uñac",
-    "party": "PJ (San Juan)",
-    "status": "Exgobernador de San Juan. Se presentó como precandidato y pide internas abiertas.",
-    "wiki": "Sergio_Uñac",
-    "lean": "center-left"
-   },
-   {
-    "name": "Juan Schiaretti",
-    "party": "Provincias Unidas",
-    "status": "Posible. Midió 6% en QMonitor (septiembre de 2026). Provincias Unidas no tiene candidato definido y también se nombra a Martín Llaryora.",
-    "wiki": "Juan_Schiaretti",
-    "lean": "center"
+    "name": "Hernán Lacunza",
+    "party": "PRO",
+    "status": "Exministro de Hacienda de Macri y director de Bancor (Banco de Córdoba) desde junio de 2026, designado por Llaryora. Confirmó en agosto de 2026 que quiere ser precandidato presidencial del PRO y lanzó la candidatura en Neuquén en octubre; descarta una alianza con LLA.",
+    "wiki": "Hernán_Lacunza",
+    "lean": "center-right",
+    "featured": true
    },
    {
     "name": "Maximiliano Pullaro",
     "party": "Provincias Unidas (Santa Fe)",
     "status": "Gobernador de Santa Fe y uno de los armadores del frente. No se lanzó como candidato.",
     "wiki": "Maximiliano_Pullaro",
-    "lean": "center"
+    "lean": "center",
+    "featured": true
    },
    {
-    "name": "Myriam Bregman",
-    "party": "Frente de Izquierda y de Trabajadores - Unidad",
-    "status": "Posible candidata del FIT-U. Midió 7% en QMonitor (septiembre de 2026).",
-    "wiki": "Myriam_Bregman",
-    "lean": "far-left"
+    "name": "Juan Grabois",
+    "party": "Patria Grande (peronismo)",
+    "status": "Se proclamó precandidato y pide una interna abierta en el peronismo.",
+    "wiki": "Juan_Grabois",
+    "lean": "left",
+    "featured": true
+   },
+   {
+    "name": "Sergio Massa",
+    "party": "Frente Renovador (peronismo)",
+    "status": "Sin confirmar. Según la prensa, les dijo a intendentes bonaerenses que quiere volver a ser candidato.",
+    "wiki": "Sergio_Massa",
+    "lean": "center-left",
+    "featured": false
+   },
+   {
+    "name": "Sergio Uñac",
+    "party": "PJ (San Juan)",
+    "status": "Exgobernador de San Juan. Se presentó como precandidato y pide internas abiertas.",
+    "wiki": "Sergio_Uñac",
+    "lean": "center-left",
+    "featured": false
+   },
+   {
+    "name": "Juan Schiaretti",
+    "party": "Provincias Unidas",
+    "status": "Posible. Midió 6% en QMonitor (septiembre de 2026). Provincias Unidas no tiene candidato definido y también se nombra a Martín Llaryora.",
+    "wiki": "Juan_Schiaretti",
+    "lean": "center",
+    "featured": false
    },
    {
     "name": "Victoria Villarruel",
     "party": "Independiente (vicepresidenta, enfrentada con LLA)",
     "status": "Sin confirmar. Miguel Ángel Pichetto dijo que competirá por fuera de LLA y en algunas encuestas supera el 5%.",
     "wiki": "Victoria_Villarruel",
-    "lean": "right"
+    "lean": "right",
+    "featured": false
    },
    {
     "name": "Mauricio Macri",
     "party": "PRO",
     "status": "Dijo que el PRO 'tendrá candidato' en 2027. Su entorno asegura que no se evalúa que sea él.",
     "wiki": "Mauricio_Macri",
-    "lean": "center-right"
+    "lean": "center-right",
+    "featured": false
    },
    {
     "name": "Cristina Fernández de Kirchner",
     "party": "PJ",
     "status": "Inhabilitada de por vida para ejercer cargos públicos por la condena en la causa Vialidad, confirmada por la Corte Suprema en junio de 2025.",
     "wiki": "Cristina_Fernández_de_Kirchner",
-    "lean": "center-left"
+    "lean": "center-left",
+    "featured": false
    }
   ],
   "polls": [
@@ -533,6 +552,7 @@
    }
   ],
   "keyFacts": [
+   "Diego Santilli es jefe de Gabinete desde el 30 de junio de 2026, tras la renuncia de Manuel Adorni; el Ministerio del Interior pasó a la Jefatura de Gabinete (Decreto 571/2026). Luis Caputo sigue en Economía y Alejandra Monteoliva en Seguridad.",
    "Es la primera presidencial con Boleta Única de Papel, que se estrenó en las legislativas de 2025.",
    "LLA es primera minoría en Diputados, con 95 bancas contra 93 del peronismo, pero no tiene mayoría propia en ninguna cámara: en el Senado tiene 21 de 72.",
    "En 2027 se renuevan las bancas ganadas en 2023 en Diputados y las de 2021 en el Senado. Santa Fe, Córdoba y Mendoza eligen senadores.",
@@ -540,6 +560,32 @@
    "Cristina Fernández de Kirchner no puede ser candidata: está inhabilitada de por vida.",
    "Las encuestas no coinciden: algunas muestran un empate técnico entre Milei y Kicillof (QMonitor 31-31) y otras le dan ventaja a Milei (Explanans 38,5-24).",
    "La pobreza volvió a subir en el primer semestre de 2026 (32,3%) y cortó dos años de baja."
+  ],
+  "cabinet": [
+   {
+    "post": "Jefe de Gabinete",
+    "name": "Diego Santilli",
+    "since": "2026-06-30",
+    "source": "https://chequeado.com/el-explicador/tras-la-renuncia-de-manuel-adorni-diego-santilli-fue-designado-como-el-nuevo-jefe-de-gabinete/"
+   },
+   {
+    "post": "Interior",
+    "name": "Ministerio suprimido (Decreto 571/2026); competencias absorbidas por la Jefatura de Gabinete (Santilli), con Gustavo Coria como vicejefe de Gabinete del Interior",
+    "since": "2026-07-03",
+    "source": "https://www.a24.com/politica/el-gobierno-elimino-al-ministerio-del-interior-y-diego-santilli-absorbe-sus-funciones-n1571979"
+   },
+   {
+    "post": "Economía",
+    "name": "Luis Caputo",
+    "since": "2023-12-10",
+    "source": "https://www.lanacion.com.ar/economia/luis-caputo-nego-las-versiones-sobre-una-posible-salida-del-gabinete-quedate-tranquilo-que-no-voy-a-nid12102026/"
+   },
+   {
+    "post": "Seguridad",
+    "name": "Alejandra Monteoliva",
+    "since": "2025-12-02",
+    "source": "https://www.canal26.com/politica/2025/12/02/alejandra-monteoliva-juro-como-nueva-ministra-de-seguridad-de-la-nacion/"
+   }
   ]
  },
  "national": {
@@ -752,7 +798,7 @@
     {
      "name": "Diego Santilli",
      "party": "PRO / alianza LLA",
-     "note": "Ministro del Interior; no oculta su aspiración, Milei tendría la última palabra"
+     "note": "Jefe de Gabinete de la Nación desde el 30/6/2026 (reemplazó a Manuel Adorni; antes fue ministro del Interior desde noviembre de 2025). No descarta ser candidato a gobernador y buena parte del PRO y LLA lo ve como el favorito, pero dice que no es momento de definiciones."
     },
     {
      "name": "Jorge Ferraresi",
@@ -780,6 +826,10 @@
    },
    "summary": "Sin Kicillof en la boleta, el peronismo debe ordenar la sucesión en su principal bastión mientras el gobernador se proyecta a la presidencia. LLA le ganó por apenas 0,3 punto en octubre de 2025 y apunta a quedarse con la provincia, la elección más grande del país.",
    "sources": [
+    {
+     "label": "Actualización oct 2026",
+     "url": "https://www.noticiasnqn.com.ar/noticias/2026/06/30/341899-santilli-no-descarto-ser-candidato-a-gobernador-bonaerense-en-2027"
+    },
     {
      "label": "Letra P: las figuras que van por el sillón de Kicillof",
      "url": "https://www.letrap.com.ar/conurbano/buenos-aires-2027-las-11-figuras-que-van-el-sillon-axel-kicillof-n5418521"
@@ -1512,7 +1562,7 @@
     {
      "name": "Gildo Insfrán",
      "party": "PJ",
-     "note": "La cláusula transitoria lo habilita para un nuevo mandato; candidatura no formalizada"
+     "note": "La cláusula transitoria de la reforma de 2025 lo habilitaría para 2027-2031, pero en agosto de 2026 la Corte Suprema asumió competencia originaria en una demanda del Frente Amplio Formoseño contra esa cláusula y le dio 60 días a la provincia para responder. Todavía no hay fallo de fondo."
     }
    ],
    "gov2023": {
@@ -1525,6 +1575,10 @@
    },
    "summary": "Tras el fallo de la Corte contra la reelección indefinida, la nueva Constitución limita a una reelección, pero una cláusula transitoria permitiría a Insfrán (en el poder desde 1995) ir por otro mandato. La impugnación judicial de esa cláusula es el eje de la elección.",
    "sources": [
+    {
+     "label": "Actualización oct 2026",
+     "url": "https://www.palabrasdelderecho.com.ar/articulo/6925/La-Corte-Suprema-asumio-su-competencia-originaria-en-una-nueva-demanda-contra-la-reeleccion-de-Insfran"
+    },
     {
      "label": "Letra P: Formosa derogó la reelección indefinida, pero Insfrán podrá competir en 2027",
      "url": "https://www.letrap.com.ar/politica/formosa-derogo-la-reeleccion-indefinida-pero-gildo-insfran-podra-competir-2027-n5418535"
@@ -2332,7 +2386,7 @@
     {
      "name": "Gustavo Sáenz",
      "party": "Identidad Salteña",
-     "note": "Decidiría en noviembre si va por la re-reelección"
+     "note": "Dice que 'la Constitución me habilita' (el art. 140 reformado en 2021 cuenta su mandato actual como el primero), aunque la oposición lo discute y podría judicializarse. Decidiría en noviembre; su ministro de Gobierno, Ignacio Jarsún, asegura que 'no hay plan B'. Elecciones previstas para mayo de 2027."
     },
     {
      "name": "Flavia Royón",
@@ -2360,6 +2414,10 @@
    },
    "summary": "La pelea gira en torno a si Sáenz puede ir por un tercer mandato, un planteo que probablemente termine en la Justicia. LLA, que ganó en 2025, se posiciona para disputar la gobernación en una elección temprana en mayo.",
    "sources": [
+    {
+     "label": "Actualización oct 2026",
+     "url": "https://www.vocescriticas.com/noticias/2026/10/23/223095-ignacio-jarsun-fue-contundente-sobre-la-reeleccion-de-gustavo-saenz-no-tenemos-plan-b"
+    },
     {
      "label": "Letra P (10/10/2026): Sáenz planifica las elecciones en mayo y la re-reelección",
      "url": "https://www.letrap.com.ar/politica/gustavo-saenz-planifica-las-elecciones-salta-mayo-y-cranea-la-avanzada-final-su-re-reeleccion-n5427260"
@@ -2735,7 +2793,7 @@
     {
      "name": "Maximiliano Pullaro",
      "party": "Unidos",
-     "note": "Podría ser el primer gobernador santafesino en buscar la reelección; dice que Unidos no definió candidato"
+     "note": "La Convención Constituyente habilitó su reelección por una cláusula transitoria (45 a 22) que cuenta el mandato actual como el primero. Podría ser el primer gobernador santafesino reelecto; no anunció la candidatura."
     }
    ],
    "gov2023": {
@@ -2748,6 +2806,10 @@
    },
    "summary": "Es la primera vez que un gobernador santafesino puede ir por la reelección. Pullaro, figura de Provincias Unidas, enfrenta a una LLA que lo superó con holgura en 2025 y a un peronismo que necesitará PASO para ordenarse.",
    "sources": [
+    {
+     "label": "Actualización oct 2026",
+     "url": "https://www.letrap.com.ar/politica/la-convencion-santa-fe-habilito-la-reeleccion-y-maximiliano-pullaro-podra-buscar-un-segundo-mandato-n5418361"
+    },
     {
      "label": "Letra P: así será el cronograma electoral de Santa Fe 2027",
      "url": "https://www.letrap.com.ar/politica/asi-sera-el-cronograma-electoral-santa-fe-2027-paso-el-18-abril-y-generales-el-13-junio-n5427251"
@@ -3031,12 +3093,12 @@
     {
      "name": "Osvaldo Jaldo",
      "party": "PJ",
-     "note": "Va por la reelección con Miguel Acevedo"
+     "note": "Va por la reelección con Miguel Acevedo; la provincia adelantó los comicios al 9 de mayo de 2027. LLA anticipó que irá a la Corte Suprema porque sostiene que no está habilitado (fue vicegobernador ocho años)."
     },
     {
      "name": "Lisandro Catalán",
      "party": "La Libertad Avanza",
-     "note": "Principal rival; empate técnico en encuesta de agosto"
+     "note": "Presidente de LLA Tucumán y exministro del Interior (2025). LLA lo lanzó formalmente como precandidato a gobernador: 'No voy a ser candidato a gobernador, voy a ser el gobernador de Tucumán'."
     },
     {
      "name": "Mariano Campero",
@@ -3059,6 +3121,14 @@
    },
    "summary": "Tucumán abre el calendario de gobernadores el 9 de mayo. Jaldo, aliado parlamentario de Milei, busca la reelección frente al libertario Catalán, con un posible frente peronista disidente de Manzur y un debate judicial sobre su habilitación.",
    "sources": [
+    {
+     "label": "Actualización oct 2026",
+     "url": "https://www.lapoliticaonline.com/politica/jaldo-junto-a-sus-legisladores-y-anuncio-que-sera-candidato-a-la-reeleccion-con-acevedo-en-la-formula-3496/"
+    },
+    {
+     "label": "Actualización oct 2026",
+     "url": "https://www.perfil.com/noticias/politica/lisandro-catalan-el-primer-candidato-a-gobernador-que-tiene-la-libertad-avanza-para-2027.phtml"
+    },
     {
      "label": "La Gaceta: Jaldo puso fecha a las elecciones",
      "url": "https://www.lagaceta.com.ar/nota/1147277/politica/con-dardos-libertad-avanza-jaldo-puso-fecha-elecciones-tucuman.html"

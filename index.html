@@ -33248,6 +33248,7 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
       <span class="ar-date-pill ${st === 3 ? 'is-tent' : st === 4 ? 'is-none' : ''}">${p.governorElection2027 === false ? 'No elige gobernador en 2027' : (iso === 'C' ? 'Jefatura de Gobierno' : 'Gobernador') + ': ' + arDateTxt(p)}</span>
       <div class="ar-gov">${faceHTML({ name: g.name || '—', wiki: g.wiki, color: leanColor(g.lean || 'other') }, 'sm')}
         <div><div class="muted" style="font-size:12px">Gobierna</div><b>${esc(g.name || '—')}</b><div class="muted" style="font-size:13px">${esc(g.party || '')}${g.since ? ' · desde ' + esc(String(g.since).slice(0, 4)) : ''}</div></div></div>
+      ${g.note ? `<p style="font-size:13px;margin:4px 0;color:var(--ink-soft)">${esc(g.note)}</p>` : ''}
       ${p.reelection || p.incumbentRunning ? `<p style="font-size:13.5px;margin:4px 0"><b>Reelección:</b> ${esc(p.reelection || '')}${p.incumbentRunning ? ` · ¿se presenta? ${esc(p.incumbentRunning)}` : ''}</p>` : ''}
       ${p.summary ? `<p style="font-size:14px;line-height:1.55;color:var(--ink-soft)">${esc(p.summary)}</p>` : ''}
       ${(p.candidates || []).length ? `<div class="el-cands" style="margin:8px 0">${p.candidates.slice(0, 4).map(c => `<div class="el-cand"><b>${esc(c.name)}</b>${c.party ? `<span>${esc(c.party)}</span>` : ''}${c.note ? `<small>${esc(c.note)}</small>` : ''}</div>`).join('')}</div>` : ''}
