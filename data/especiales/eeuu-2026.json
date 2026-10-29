@@ -1,14 +1,14 @@
 {
  "id": "eeuu-2026",
  "title": "Elecciones de medio término de EE.UU. 2026",
- "updatedAt": "2026-09-24T17:00:00-03:00",
- "lede": "El 3 de noviembre los estadounidenses renuevan toda la Cámara de Representantes, un tercio del Senado y 36 gobernaciones. Es el primer gran examen del segundo mandato de Donald Trump, con el control del Congreso en juego.",
+ "updatedAt": "2026-10-29T12:00:00-03:00",
+ "lede": "A cinco días del 3 de noviembre, los demócratas llegan como favoritos para recuperar la Cámara (Silver Bulletin les da 95%) y con chances reales de dar vuelta el Senado, donde necesitan 4 bancas netas y las carreras de Texas, Ohio, Maine, Alaska, Iowa, Kansas y Míchigan siguen dentro del margen de error. Con la encuesta genérica en torno a D+8 y casi 33 millones de votos anticipados emitidos, es el primer gran examen del segundo mandato de Donald Trump.",
  "dates": {
   "electionDay": "2026-11-03T06:00:00-05:00",
   "lastPollsClose": "2026-11-04T01:00:00-05:00",
   "newCongress": "2027-01-03"
  },
- "ratingsSource": "Cook Political Report al 23 sep 2026; «est.» = estimación del atlas",
+ "ratingsSource": "Cook Political Report: Senado al 20 oct 2026 y gobernaciones al 27 oct 2026 (según la tabla de pronósticos de Wikipedia); contrastado con Sabato's Crystal Ball (27 oct) e Inside Elections (15 oct)",
  "officesIntro": "Las elecciones de medio término caen a mitad del mandato presidencial. No se elige presidente: se vota el Congreso completo en la Cámara, un tercio del Senado, gobernaciones, legislaturas estaduales y cientos de consultas populares.",
  "offices": [
   {
@@ -53,16 +53,17 @@
     "party": "R",
     "status": "no se presenta",
     "rating": "Solid R",
-    "ratingEstimated": true
+    "ratingEstimated": false
    },
    "governor": {
     "incumbent": "Kay Ivey",
     "party": "R",
     "status": "límite de mandatos",
     "rating": "Solid R",
-    "ratingEstimated": true,
+    "ratingEstimated": false,
     "candidates": {
-     "R": "Tommy Tuberville"
+     "R": "Tommy Tuberville",
+     "D": "Doug Jones"
     }
    }
   },
@@ -84,7 +85,7 @@
     "incumbent": "Mike Dunleavy",
     "party": "R",
     "status": "límite de mandatos",
-    "rating": "Toss-up",
+    "rating": "Lean D",
     "candidates": {
      "D": "Jonathan Kreiss-Tomkins",
      "R": "Bernadette Wilson"
@@ -99,8 +100,8 @@
     "incumbent": "Katie Hobbs",
     "party": "D",
     "status": "busca la reelección",
-    "rating": "Toss-up",
-    "ratingEstimated": true,
+    "rating": "Lean D",
+    "ratingEstimated": false,
     "candidates": {
      "D": "Katie Hobbs",
      "R": "Andy Biggs"
@@ -116,14 +117,14 @@
     "party": "R",
     "status": "busca la reelección",
     "rating": "Solid R",
-    "ratingEstimated": true
+    "ratingEstimated": false
    },
    "governor": {
     "incumbent": "Sarah Huckabee Sanders",
     "party": "R",
     "status": "busca la reelección",
     "rating": "Solid R",
-    "ratingEstimated": true
+    "ratingEstimated": false
    }
   },
   {
@@ -135,7 +136,7 @@
     "party": "D",
     "status": "límite de mandatos",
     "rating": "Solid D",
-    "ratingEstimated": true,
+    "ratingEstimated": false,
     "candidates": {
      "D": "Xavier Becerra",
      "R": "Steve Hilton"
@@ -151,14 +152,14 @@
     "party": "D",
     "status": "busca la reelección",
     "rating": "Solid D",
-    "ratingEstimated": true
+    "ratingEstimated": false
    },
    "governor": {
     "incumbent": "Jared Polis",
     "party": "D",
     "status": "límite de mandatos",
     "rating": "Solid D",
-    "ratingEstimated": true
+    "ratingEstimated": false
    }
   },
   {
@@ -169,8 +170,8 @@
     "incumbent": "Ned Lamont",
     "party": "D",
     "status": "busca la reelección",
-    "rating": "Likely D",
-    "ratingEstimated": true
+    "rating": "Solid D",
+    "ratingEstimated": false
    }
   },
   {
@@ -182,7 +183,7 @@
     "party": "D",
     "status": "busca la reelección",
     "rating": "Solid D",
-    "ratingEstimated": true
+    "ratingEstimated": false
    }
   },
   {
@@ -193,8 +194,8 @@
     "incumbent": "Ashley Moody",
     "party": "R",
     "status": "elección especial",
-    "rating": "Likely R",
-    "ratingEstimated": true,
+    "rating": "Solid R",
+    "ratingEstimated": false,
     "candidates": {
      "R": "Ashley Moody",
      "D": "Angie Nixon"
@@ -204,8 +205,12 @@
     "incumbent": "Ron DeSantis",
     "party": "R",
     "status": "límite de mandatos",
-    "rating": "Solid R",
-    "ratingEstimated": true
+    "rating": "Lean R",
+    "ratingEstimated": false,
+    "candidates": {
+     "R": "Byron Donalds",
+     "D": "David Jolly"
+    }
    }
   },
   {
@@ -227,7 +232,7 @@
     "party": "R",
     "status": "límite de mandatos",
     "rating": "Toss-up",
-    "ratingEstimated": true,
+    "ratingEstimated": false,
     "candidates": {
      "R": "Rick Jackson",
      "D": "Keisha Lance Bottoms"
@@ -243,7 +248,7 @@
     "party": "D",
     "status": "busca la reelección",
     "rating": "Solid D",
-    "ratingEstimated": true
+    "ratingEstimated": false
    }
   },
   {
@@ -255,14 +260,14 @@
     "party": "R",
     "status": "busca la reelección",
     "rating": "Solid R",
-    "ratingEstimated": true
+    "ratingEstimated": false
    },
    "governor": {
     "incumbent": "Brad Little",
     "party": "R",
     "status": "busca la reelección",
     "rating": "Solid R",
-    "ratingEstimated": true
+    "ratingEstimated": false
    }
   },
   {
@@ -274,7 +279,7 @@
     "party": "D",
     "status": "no se presenta",
     "rating": "Solid D",
-    "ratingEstimated": true,
+    "ratingEstimated": false,
     "candidates": {
      "D": "Juliana Stratton"
     }
@@ -284,7 +289,7 @@
     "party": "D",
     "status": "busca la reelección",
     "rating": "Solid D",
-    "ratingEstimated": true
+    "ratingEstimated": false
    }
   },
   {
@@ -325,7 +330,7 @@
     "incumbent": "Roger Marshall",
     "party": "R",
     "status": "busca la reelección",
-    "rating": "Lean R",
+    "rating": "Toss-up",
     "candidates": {
      "R": "Roger Marshall",
      "D": "Adam Hamilton"
@@ -335,8 +340,8 @@
     "incumbent": "Laura Kelly",
     "party": "D",
     "status": "límite de mandatos",
-    "rating": "Lean R",
-    "ratingEstimated": true,
+    "rating": "Toss-up",
+    "ratingEstimated": false,
     "candidates": {
      "D": "Cindy Holscher",
      "R": "Ty Masterson"
@@ -352,7 +357,7 @@
     "party": "R",
     "status": "no se presenta",
     "rating": "Solid R",
-    "ratingEstimated": true,
+    "ratingEstimated": false,
     "candidates": {
      "R": "Andy Barr",
      "D": "Charles Booker"
@@ -368,7 +373,7 @@
     "party": "R",
     "status": "perdió la primaria",
     "rating": "Solid R",
-    "ratingEstimated": true,
+    "ratingEstimated": false,
     "candidates": {
      "R": "Julia Letlow"
     }
@@ -392,8 +397,8 @@
     "incumbent": "Janet Mills",
     "party": "D",
     "status": "límite de mandatos",
-    "rating": "Lean D",
-    "ratingEstimated": true
+    "rating": "Solid D",
+    "ratingEstimated": false
    }
   },
   {
@@ -405,7 +410,7 @@
     "party": "D",
     "status": "busca la reelección",
     "rating": "Solid D",
-    "ratingEstimated": true
+    "ratingEstimated": false
    }
   },
   {
@@ -417,7 +422,7 @@
     "party": "D",
     "status": "busca la reelección",
     "rating": "Solid D",
-    "ratingEstimated": true,
+    "ratingEstimated": false,
     "candidates": {
      "D": "Ed Markey",
      "R": "John Deaton"
@@ -428,7 +433,7 @@
     "party": "D",
     "status": "busca la reelección",
     "rating": "Solid D",
-    "ratingEstimated": true
+    "ratingEstimated": false
    }
   },
   {
@@ -449,8 +454,8 @@
     "incumbent": "Gretchen Whitmer",
     "party": "D",
     "status": "límite de mandatos",
-    "rating": "Toss-up",
-    "ratingEstimated": true,
+    "rating": "Lean D",
+    "ratingEstimated": false,
     "candidates": {
      "D": "Jocelyn Benson",
      "R": "John James"
@@ -465,18 +470,19 @@
     "incumbent": "Tina Smith",
     "party": "D",
     "status": "no se presenta",
-    "rating": "Likely D",
-    "ratingEstimated": true,
+    "rating": "Lean D",
+    "ratingEstimated": false,
     "candidates": {
-     "D": "Peggy Flanagan"
+     "D": "Peggy Flanagan",
+     "R": "Michele Tafoya"
     }
    },
    "governor": {
     "incumbent": "Tim Walz",
     "party": "D",
     "status": "no se presenta",
-    "rating": "Likely D",
-    "ratingEstimated": true,
+    "rating": "Solid D",
+    "ratingEstimated": false,
     "candidates": {
      "D": "Amy Klobuchar",
      "R": "Lisa Demuth"
@@ -491,8 +497,12 @@
     "incumbent": "Cindy Hyde-Smith",
     "party": "R",
     "status": "busca la reelección",
-    "rating": "Solid R",
-    "ratingEstimated": true
+    "rating": "Likely R",
+    "ratingEstimated": false,
+    "candidates": {
+     "R": "Cindy Hyde-Smith",
+     "D": "Scott Colom"
+    }
    }
   },
   {
@@ -509,7 +519,7 @@
     "party": "R",
     "status": "no se presenta",
     "rating": "Solid R",
-    "ratingEstimated": true
+    "ratingEstimated": false
    }
   },
   {
@@ -521,7 +531,7 @@
     "party": "R",
     "status": "busca la reelección",
     "rating": "Likely R",
-    "ratingEstimated": true,
+    "ratingEstimated": false,
     "candidates": {
      "R": "Pete Ricketts",
      "I": "Dan Osborn"
@@ -531,8 +541,12 @@
     "incumbent": "Jim Pillen",
     "party": "R",
     "status": "busca la reelección",
-    "rating": "Solid R",
-    "ratingEstimated": true
+    "rating": "Lean R",
+    "ratingEstimated": false,
+    "candidates": {
+     "R": "Jim Pillen",
+     "D": "Lynne Walz"
+    }
    }
   },
   {
@@ -558,7 +572,7 @@
     "incumbent": "Jeanne Shaheen",
     "party": "D",
     "status": "no se presenta",
-    "rating": "Toss-up",
+    "rating": "Lean D",
     "candidates": {
      "D": "Chris Pappas",
      "R": "John E. Sununu"
@@ -568,8 +582,12 @@
     "incumbent": "Kelly Ayotte",
     "party": "R",
     "status": "busca la reelección",
-    "rating": "Lean R",
-    "ratingEstimated": true
+    "rating": "Likely R",
+    "ratingEstimated": false,
+    "candidates": {
+     "R": "Kelly Ayotte",
+     "D": "Cinde Warmington"
+    }
    }
   },
   {
@@ -581,7 +599,7 @@
     "party": "D",
     "status": "busca la reelección",
     "rating": "Solid D",
-    "ratingEstimated": true
+    "ratingEstimated": false
    }
   },
   {
@@ -593,14 +611,14 @@
     "party": "D",
     "status": "busca la reelección",
     "rating": "Solid D",
-    "ratingEstimated": true
+    "ratingEstimated": false
    },
    "governor": {
     "incumbent": "Michelle Lujan Grisham",
     "party": "D",
     "status": "límite de mandatos",
-    "rating": "Likely D",
-    "ratingEstimated": true
+    "rating": "Solid D",
+    "ratingEstimated": false
    }
   },
   {
@@ -611,8 +629,8 @@
     "incumbent": "Kathy Hochul",
     "party": "D",
     "status": "busca la reelección",
-    "rating": "Likely D",
-    "ratingEstimated": true
+    "rating": "Solid D",
+    "ratingEstimated": false
    }
   },
   {
@@ -623,7 +641,7 @@
     "incumbent": "Thom Tillis",
     "party": "R",
     "status": "no se presenta",
-    "rating": "Lean D",
+    "rating": "Likely D",
     "candidates": {
      "D": "Roy Cooper",
      "R": "Michael Whatley"
@@ -653,7 +671,7 @@
     "incumbent": "Mike DeWine",
     "party": "R",
     "status": "límite de mandatos",
-    "rating": "Toss-up",
+    "rating": "Lean D",
     "candidates": {
      "R": "Vivek Ramaswamy",
      "D": "Amy Acton"
@@ -669,7 +687,7 @@
     "party": "R",
     "status": "no se presenta",
     "rating": "Solid R",
-    "ratingEstimated": true,
+    "ratingEstimated": false,
     "candidates": {
      "R": "Kevin Hern"
     }
@@ -678,8 +696,12 @@
     "incumbent": "Kevin Stitt",
     "party": "R",
     "status": "límite de mandatos",
-    "rating": "Solid R",
-    "ratingEstimated": true
+    "rating": "Likely R",
+    "ratingEstimated": false,
+    "candidates": {
+     "R": "Mike Mazzei",
+     "D": "Cyndi Munson"
+    }
    }
   },
   {
@@ -691,14 +713,18 @@
     "party": "D",
     "status": "busca la reelección",
     "rating": "Solid D",
-    "ratingEstimated": true
+    "ratingEstimated": false
    },
    "governor": {
     "incumbent": "Tina Kotek",
     "party": "D",
     "status": "busca la reelección",
-    "rating": "Likely D",
-    "ratingEstimated": true
+    "rating": "Lean D",
+    "ratingEstimated": false,
+    "candidates": {
+     "D": "Tina Kotek",
+     "R": "Christine Drazan"
+    }
    }
   },
   {
@@ -709,8 +735,8 @@
     "incumbent": "Josh Shapiro",
     "party": "D",
     "status": "busca la reelección",
-    "rating": "Likely D",
-    "ratingEstimated": true,
+    "rating": "Solid D",
+    "ratingEstimated": false,
     "candidates": {
      "D": "Josh Shapiro",
      "R": "Stacy Garrity"
@@ -726,14 +752,14 @@
     "party": "D",
     "status": "busca la reelección",
     "rating": "Solid D",
-    "ratingEstimated": true
+    "ratingEstimated": false
    },
    "governor": {
     "incumbent": "Dan McKee",
     "party": "D",
     "status": "busca la reelección",
     "rating": "Solid D",
-    "ratingEstimated": true
+    "ratingEstimated": false
    }
   },
   {
@@ -744,7 +770,7 @@
     "incumbent": "Darline Graham",
     "party": "R",
     "status": "busca la reelección",
-    "rating": "Likely R",
+    "rating": "Lean R",
     "candidates": {
      "R": "Darline Graham",
      "D": "Annie Andrews"
@@ -755,7 +781,7 @@
     "party": "R",
     "status": "límite de mandatos",
     "rating": "Solid R",
-    "ratingEstimated": true
+    "ratingEstimated": false
    }
   },
   {
@@ -767,14 +793,14 @@
     "party": "R",
     "status": "busca la reelección",
     "rating": "Solid R",
-    "ratingEstimated": true
+    "ratingEstimated": false
    },
    "governor": {
     "incumbent": "Larry Rhoden",
     "party": "R",
     "status": "busca la reelección",
     "rating": "Solid R",
-    "ratingEstimated": true,
+    "ratingEstimated": false,
     "candidates": {
      "R": "Larry Rhoden"
     }
@@ -789,14 +815,14 @@
     "party": "R",
     "status": "busca la reelección",
     "rating": "Solid R",
-    "ratingEstimated": true
+    "ratingEstimated": false
    },
    "governor": {
     "incumbent": "Bill Lee",
     "party": "R",
     "status": "límite de mandatos",
     "rating": "Solid R",
-    "ratingEstimated": true
+    "ratingEstimated": false
    }
   },
   {
@@ -817,7 +843,11 @@
     "incumbent": "Greg Abbott",
     "party": "R",
     "status": "busca la reelección",
-    "rating": "Likely R"
+    "rating": "Lean R",
+    "candidates": {
+     "R": "Greg Abbott",
+     "D": "Gina Hinojosa"
+    }
    }
   },
   {
@@ -834,7 +864,11 @@
     "party": "R",
     "status": "busca la reelección",
     "rating": "Likely R",
-    "ratingEstimated": true
+    "ratingEstimated": false,
+    "candidates": {
+     "R": "Phil Scott",
+     "D": "Amanda Janoo"
+    }
    }
   },
   {
@@ -846,7 +880,7 @@
     "party": "D",
     "status": "busca la reelección",
     "rating": "Solid D",
-    "ratingEstimated": true
+    "ratingEstimated": false
    }
   },
   {
@@ -863,7 +897,7 @@
     "party": "R",
     "status": "busca la reelección",
     "rating": "Solid R",
-    "ratingEstimated": true
+    "ratingEstimated": false
    }
   },
   {
@@ -875,7 +909,7 @@
     "party": "D",
     "status": "no se presenta",
     "rating": "Toss-up",
-    "ratingEstimated": true,
+    "ratingEstimated": false,
     "candidates": {
      "D": "David Crowley",
      "R": "Tom Tiffany"
@@ -891,14 +925,14 @@
     "party": "R",
     "status": "no se presenta",
     "rating": "Solid R",
-    "ratingEstimated": true
+    "ratingEstimated": false
    },
    "governor": {
     "incumbent": "Mark Gordon",
     "party": "R",
     "status": "límite de mandatos",
     "rating": "Solid R",
-    "ratingEstimated": true
+    "ratingEstimated": false
    }
   },
   {
@@ -913,7 +947,7 @@
   "total": 435,
   "majority": 218,
   "term": "119.º Congreso (2025–2027)",
-  "asOf": "21 sep 2026",
+  "asOf": "26 oct 2026",
   "source": "https://pressgallery.house.gov/member-data/party-breakdown",
   "note": "El independiente es Kevin Kiley (CA-3), que dejó el Partido Republicano pero sigue en la bancada republicana. Vacantes: FL-20 y TX-23.",
   "parties": [
@@ -946,7 +980,7 @@
   "seatsUp": 35,
   "seatsUpNote": "22 republicanas y 13 demócratas; los demócratas necesitan ganar 4 netas",
   "term": "Mandatos de 6 años",
-  "asOf": "sep 2026",
+  "asOf": "26 oct 2026",
   "source": "https://www.congresscountdown.com/info/party-breakdown",
   "note": "Los 2 independientes votan con la bancada demócrata. Con 50-50 desempata el vicepresidente, JD Vance.",
   "parties": [
@@ -970,94 +1004,124 @@
  "polls": {
   "genericBallot": [
    {
-    "firm": "Emerson College",
-    "dates": "21–22 sep",
-    "n": 1000,
-    "moe": 3.0,
-    "D": 53,
-    "R": 42,
-    "url": "https://emersoncollegepolling.com/september-2026-national-poll-democrats/"
-   },
-   {
-    "firm": "Economist/YouGov",
-    "dates": "18–21 sep",
-    "D": 52,
-    "R": 38,
-    "url": "https://yougov.com/en-us/articles/55604-democrats-hold-14-point-lead-likely-voters-2026-midterms-congressional-election-september-18-21-2026-economist-yougov-poll"
-   },
-   {
     "firm": "Marist (NPR/PBS News)",
-    "dates": "14–15 sep",
-    "D": 53,
-    "R": 41,
-    "url": "https://maristpoll.marist.edu/polls/2026-midterm-elections-september-2026/"
+    "dates": "19–20 oct",
+    "n": 1289,
+    "moe": 3.8,
+    "D": 52,
+    "R": 44,
+    "url": "https://maristpoll.marist.edu/polls/u-s-midterm-elections-october-2026/"
    },
    {
-    "firm": "Fox News",
-    "dates": "publicada el 16 sep",
-    "moe": 3.0,
-    "D": 51,
+    "firm": "Reuters/Ipsos",
+    "dates": "publicada el 26 oct",
+    "moe": 2.4,
+    "D": 53,
     "R": 44,
-    "url": "https://politicalwire.com/2026/09/16/democrats-maintain-lead-on-generic-ballot/"
+    "url": "https://politicalwire.com/2026/10/26/democrats-hold-big-lead-on-generic-ballot-2/"
+   },
+   {
+    "firm": "ABC News/Washington Post/Ipsos",
+    "dates": "9–13 oct",
+    "n": 2032,
+    "moe": 2.2,
+    "D": 52,
+    "R": 44,
+    "url": "https://static.poder360.com.br/uploads/2026/10/pesquisa-ABC-Post-Ipsos-meiodemandatoEUA.pdf"
    }
   ],
   "approval": {
    "source": "Promedio Silver Bulletin",
-   "approve": 38.5,
-   "disapprove": 58.9,
-   "asOf": "18 sep 2026",
+   "approve": 37.4,
+   "disapprove": 60,
+   "asOf": "28 oct 2026",
    "url": "https://www.natesilver.net/p/trump-approval-ratings-nate-silver-bulletin"
-  }
+  },
+  "forecasts": [
+   {
+    "label": "Silver Bulletin",
+    "text": "95% de que los demócratas ganen la Cámara; 76% el Senado",
+    "house": 95,
+    "senate": 76,
+    "avg": "D+8,7"
+   },
+   {
+    "label": "Decision Desk HQ",
+    "text": "57% de que los demócratas ganen el Senado",
+    "senate": 57
+   }
+  ]
  },
  "keyRaces": [
   {
    "title": "Senado · Texas",
-   "text": "Ken Paxton (R), que derrotó al senador John Cornyn en la primaria, enfrenta a James Talarico (D); Cook la considera Toss-up desde agosto.",
+   "text": "Ken Paxton (R), que derrotó al senador John Cornyn en la primaria, enfrenta a James Talarico (D). Talarico va 2,5 puntos arriba en el promedio de Silver Bulletin (28 oct) y 48-46 en la encuesta de la Universidad de Houston (10–14 oct, 2.000 votantes probables). Cook: Toss-up.",
    "rating": "Toss-up"
   },
   {
    "title": "Senado · Carolina del Norte",
-   "text": "Escaño abierto de Thom Tillis: el exgobernador Roy Cooper (D) contra Michael Whatley (R); Cook: Lean D, la mejor oportunidad demócrata de ganar un escaño.",
-   "rating": "Lean D"
+   "text": "Escaño abierto de Thom Tillis: el exgobernador Roy Cooper (D) contra Michael Whatley (R). Cook la pasó a Likely D el 6 de octubre; la encuesta de WRAL/WSOC (7–11 oct) dio Cooper 54%, Whatley 40%.",
+   "rating": "Likely D"
   },
   {
    "title": "Senado · Maine",
-   "text": "Susan Collins (R), la única republicana en un estado que ganó Harris, contra Troy Jackson (D), designado tras la retirada de Graham Platner; Toss-up.",
+   "text": "Susan Collins (R), la única republicana en un estado que ganó Harris, contra Troy Jackson (D). Jackson lidera por 2,4 puntos en el promedio de Silver Bulletin (28 oct); Suffolk (8–11 oct) dio 49-47. El último debate fue el 15 de octubre en Bangor. Toss-up.",
    "rating": "Toss-up"
   },
   {
    "title": "Senado · Ohio (especial)",
-   "text": "Jon Husted (R), designado para el escaño de JD Vance, contra el exsenador Sherrod Brown (D); Toss-up.",
+   "text": "Jon Husted (R), designado para el escaño de JD Vance, contra el exsenador Sherrod Brown (D). Brown va 3 puntos arriba en el promedio de Silver Bulletin (28 oct); Bowling Green State (2–14 oct) lo muestra apenas adelante, dentro del margen de error. Toss-up.",
    "rating": "Toss-up"
   },
   {
    "title": "Senado · Iowa",
-   "text": "Escaño abierto de Joni Ernst: Ashley Hinson (R) contra Josh Turek (D); Toss-up desde agosto en un estado que Trump ganó por 13 puntos.",
+   "text": "Escaño abierto de Joni Ernst: Ashley Hinson (R) contra Josh Turek (D), en un estado que Trump ganó por 13 puntos. Turek +1,2 en el promedio de Silver Bulletin (23 oct); YouGov (6–12 oct) dio 47-46 para Turek y Emerson (5–6 oct) 47-45 para Hinson. Toss-up.",
    "rating": "Toss-up"
   },
   {
    "title": "Senado · Michigan",
-   "text": "Escaño abierto de Gary Peters: el progresista Abdul El-Sayed (D) contra Mike Rogers (R); principal objetivo republicano.",
+   "text": "Escaño abierto de Gary Peters: el progresista Abdul El-Sayed (D) contra Mike Rogers (R). Marist (15–18 oct, votantes probables) dio El-Sayed 50%, Rogers 48%; promedio de Silver Bulletin: D+3 (23 oct). Cook: Toss-up; Sabato: Lean D.",
    "rating": "Toss-up"
   },
   {
    "title": "Senado · New Hampshire",
-   "text": "Escaño abierto de Jeanne Shaheen: Chris Pappas (D) contra el exsenador John E. Sununu (R); Cook lo pasó a Toss-up el 15 de septiembre.",
-   "rating": "Toss-up"
+   "text": "Escaño abierto de Jeanne Shaheen: Chris Pappas (D) contra el exsenador John E. Sununu (R). Cook la pasó a Lean D el 6 de octubre; las encuestas de octubre dan a Pappas entre 6 y 8 puntos de ventaja (NPA Polling: 50-43; YouGov: 51-43).",
+   "rating": "Lean D"
   },
   {
    "title": "Senado · Alaska",
-   "text": "Dan Sullivan (R) contra la exrepresentante Mary Peltola (D) con voto preferencial; Toss-up.",
+   "text": "Dan Sullivan (R) contra la exrepresentante Mary Peltola (D), con voto preferencial. Peltola va 3,6 puntos arriba en el promedio de Silver Bulletin (28 oct); Rasmussen (12–15 oct) dio 44-42 y PPP (14–15 oct) 48-47. Cook: Toss-up; Sabato: Lean D.",
    "rating": "Toss-up"
   },
   {
    "title": "Gobernación · Georgia",
-   "text": "Escaño abierto de Brian Kemp: Rick Jackson (R) contra Keisha Lance Bottoms (D), que sería la primera gobernadora afroamericana del país."
+   "text": "Escaño abierto de Brian Kemp: Rick Jackson (R) contra Keisha Lance Bottoms (D), que sería la primera gobernadora afroamericana del país. La encuesta AJC/UGA (7–15 oct) dio Jackson 46%, Bottoms 45%. Cook: Toss-up.",
+   "rating": "Toss-up"
   },
   {
    "title": "Gobernación · Ohio",
-   "text": "Escaño abierto de Mike DeWine: Vivek Ramaswamy (R) contra Amy Acton (D); Toss-up según Cook, con Acton levemente arriba en encuestas de septiembre.",
+   "text": "Escaño abierto de Mike DeWine: Vivek Ramaswamy (R) contra Amy Acton (D). Cook la pasó a Lean D; BGSU/YouGov (29 sep–9 oct) dio Acton 50%, Ramaswamy 44%.",
+   "rating": "Lean D"
+  },
+  {
+   "title": "Senado · Kansas",
+   "text": "Roger Marshall (R) busca la reelección contra Adam Hamilton (D). Cook la pasó de Lean R a Toss-up el 6 de octubre; Times/Siena (22–30 sep) la mostró empatada y Silver Bulletin da a Hamilton 1,1 puntos arriba (23 oct).",
    "rating": "Toss-up"
+  },
+  {
+   "title": "Senado · Minnesota",
+   "text": "Escaño abierto de Tina Smith: Peggy Flanagan (D) contra la expresentadora deportiva Michele Tafoya (R). Cook la movió de Likely D a Lean D el 20 de octubre; Star Tribune/Mason-Dixon (7 oct) dio Flanagan 47%, Tafoya 43%.",
+   "rating": "Lean D"
+  },
+  {
+   "title": "Senado · Carolina del Sur",
+   "text": "Darline Graham (R), designada en 2026, contra Annie Andrews (D). Cook la pasó a Lean R el 20 de octubre; Silver Bulletin da a Graham 1,7 puntos de ventaja (23 oct) y Rasmussen (5–8 oct) 49-45.",
+   "rating": "Lean R"
+  },
+  {
+   "title": "Gobernación · Michigan",
+   "text": "Escaño abierto de Gretchen Whitmer: Jocelyn Benson (D) contra John James (R). Cook: Lean D; Marist (15–18 oct) dio a Benson 51% y 6 puntos de ventaja entre votantes probables.",
+   "rating": "Lean D"
   }
  ],
  "calendar": [
@@ -1070,12 +1134,28 @@
    "label": "A mediados de octubre abre el voto anticipado en la mayoría de los estados"
   },
   {
+   "date": "2026-10-15",
+   "label": "Último debate al Senado en Maine (Collins-Jackson, en Bangor) y debate al Senado en Alaska"
+  },
+  {
+   "date": "2026-10-27",
+   "label": "Casi 33 millones de votos anticipados emitidos en todo el país, mitad presenciales y mitad por correo (UF Election Lab)"
+  },
+  {
    "date": "2026-10-29",
    "label": "Último estado en abrir el voto anticipado (Kentucky)"
   },
   {
+   "date": "2026-10-30",
+   "label": "Termina el voto anticipado presencial en Texas y Georgia"
+  },
+  {
+   "date": "2026-11-01",
+   "label": "Termina el horario de verano en EE.UU.: el día de la elección el Este va 2 horas detrás de la Argentina"
+  },
+  {
    "date": "2026-11-03",
-   "label": "Día de la elección · las primeras urnas cierran a las 18 h del Este (partes de Indiana y Kentucky)",
+   "label": "Día de la elección · las primeras urnas cierran a las 18 h del Este (20 h de la Argentina) en partes de Indiana y Kentucky; las últimas, a la 1 h del Este del 4 de noviembre (3 h de la Argentina) en las Aleutianas de Alaska",
    "key": true
   },
   {
@@ -1091,7 +1171,12 @@
   "En caso de empate 50-50 en el Senado, decide el vicepresidente (hoy JD Vance); los demócratas necesitan una ganancia neta de 4 escaños para obtener la mayoría.",
   "Se eligen 36 gobernadores; 15 no pueden buscar la reelección por límite de mandatos.",
   "Las elecciones las organizan los estados y condados, no un organismo nacional: cada estado fija sus reglas de registro, voto anticipado y por correo, y sus horarios.",
-  "El voto anticipado presencial comenzó el 18 de septiembre en Idaho, Minnesota, Dakota del Sur y Virginia; la mayoría de los estados lo abre a mediados de octubre.",
+  "El voto anticipado presencial comenzó el 18 de septiembre en Idaho, Minnesota, Dakota del Sur y Virginia; al 27 de octubre ya habían votado casi 33 millones de personas, más de un cuarto de los ~122 millones que votaron en 2022 (UF Election Lab, vía Time).",
+  "En los 27 estados que informan afiliación partidaria, los demócratas registrados suman alrededor del 45% del voto anticipado, los republicanos el 31% y los independientes el 24%; la afiliación no indica el voto, y el día de la elección suele favorecer a los republicanos.",
+  "Por estado: Texas superó los 4 millones de votos anticipados (VoteHub), Florida llegó a 3,53 millones al 28 de octubre (1,94 M presenciales y 1,59 M por correo, UF Election Lab) y Georgia pasó el millón el 19 de octubre.",
+  "Pronósticos a fines de octubre: Silver Bulletin da a los demócratas 95% de probabilidad de ganar la Cámara y 76% el Senado; Decision Desk HQ, 57% para el Senado, y VoteHub, 60% (relevamiento de Newsweek, 23 oct).",
+  "El promedio de la encuesta genérica de Silver Bulletin marca D+8,7 al 28 de octubre (D+9,2 con ajuste por votante probable), cerca de su máximo del ciclo.",
+  "Cook ve como resultado más probable una ganancia demócrata de 9 a 19 escaños en la Cámara y de 1 a 3 en el Senado, por debajo de los 4 que necesitan para la mayoría.",
   "Desde la Segunda Guerra Mundial, el partido del presidente perdió escaños en la Cámara en 18 de 20 elecciones de medio mandato; las excepciones fueron 1998 y 2002.",
   "Varios estados redibujaron sus distritos a mitad de década (Texas, California con la Prop. 50, Misuri, Carolina del Norte, Ohio, Utah, Florida y Tennessee), algo inusual antes del próximo censo.",
   "La participación en las elecciones de medio mandato ronda el 46-50% del electorado habilitado: 2018 fue la más alta desde 1914 (~49-50%) y 2022 rondó el 46%."
@@ -1124,6 +1209,66 @@
   {
    "label": "Ballotpedia · redistribución 2025-26",
    "url": "https://ballotpedia.org/Redistricting_ahead_of_the_2026_elections"
+  },
+  {
+   "label": "Wikipedia · pronósticos Senado 2026 (Cook, Sabato, Inside Elections y otros)",
+   "url": "https://en.wikipedia.org/wiki/2026_United_States_Senate_elections"
+  },
+  {
+   "label": "Wikipedia · pronósticos gobernaciones 2026",
+   "url": "https://en.wikipedia.org/wiki/2026_United_States_gubernatorial_elections"
+  },
+  {
+   "label": "Political.org · Cook mueve Minnesota, Carolina del Sur y Misisipi (20/10/2026)",
+   "url": "https://political.org/2026/10/20/cook-political-report-shifts-minnesota-senate-race-toward-gop-south-carolina-toward-democrats/"
+  },
+  {
+   "label": "Political.org · Cook mueve 18 distritos de la Cámara hacia los demócratas (9/10/2026)",
+   "url": "https://political.org/2026/10/09/cook-political-report-shifts-18-house-races-toward-democrats-as-gop-midterm-outlook-darkens/"
+  },
+  {
+   "label": "Silver Bulletin · pronóstico de medio término",
+   "url": "https://www.natesilver.net/p/nate-silver-2026-midterm-election-polls-model"
+  },
+  {
+   "label": "Silver Bulletin · promedio de la encuesta genérica",
+   "url": "https://www.natesilver.net/p/generic-ballot-average-2026-nate-silver-bulletin-congress-polls"
+  },
+  {
+   "label": "Newsweek · qué muestran las encuestas a 10 días (23/10/2026)",
+   "url": "https://newsweek.com/who-will-win-the-midterms-what-polls-show-10-days-out-12610772"
+  },
+  {
+   "label": "UF Election Lab · voto anticipado 2026",
+   "url": "https://election.lab.ufl.edu/early-vote/2026-early-voting/"
+  },
+  {
+   "label": "Time · qué muestran los datos del voto anticipado (27/10/2026)",
+   "url": "https://time.com/article/2026/10/27/midterm-elections-early-voting-data-democrats-republicans-hispanic-voters/"
+  },
+  {
+   "label": "Marist · Michigan, octubre 2026",
+   "url": "https://maristpoll.marist.edu/polls/midterm-elections-in-michigan-october-2026/"
+  },
+  {
+   "label": "FOX 7 Austin · encuesta UH Hobby School Texas (21/10/2026)",
+   "url": "https://www.fox7austin.com/news/texas-senate-race-talarico-holds-razor-thin-lead-over-paxton-latest-poll"
+  },
+  {
+   "label": "Newsweek · Peltola se adelanta en Alaska",
+   "url": "https://www.newsweek.com/mary-peltola-is-pulling-ahead-in-the-final-stretch-against-dan-sullivan-12592675"
+  },
+  {
+   "label": "FOX 13 · voto anticipado en Florida (3,5 millones)",
+   "url": "https://www.fox13news.com/news/florida-early-voting-analysis-republicans-take-narrow-lead-3-5-million-cast-ballots"
+  },
+  {
+   "label": "Fox News · Cook: los republicanos siguen al frente en la pelea por el Senado",
+   "url": "https://www.foxnews.com/politics/democrats-build-midterm-momentum-republicans-still-drivers-seat-senate-majority-battle"
+  },
+  {
+   "label": "Congress Countdown · composición del Congreso",
+   "url": "https://www.congresscountdown.com/info/party-breakdown"
   }
  ],
  "argentina": {
