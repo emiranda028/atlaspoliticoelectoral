@@ -37,10 +37,10 @@
    "view": "israel",
    "status": "active",
    "iso": "ISR",
-   "tag": "Especial · nuevo",
+   "tag": "Especial · resultado",
    "title": "Israel 2026",
    "date": "2026-10-27",
-   "blurb": "120 bancas en un solo distrito y 61 para gobernar. Calculadora de coaliciones con las encuestas de septiembre, Knéset actual y listas."
+   "blurb": "Con el 90% escrutado, el bloque de Netanyahu suma 53 bancas, el de Eisenkot 48 y los partidos árabes 19: nadie llega a 61. La nueva Knéset y la calculadora de coaliciones con los resultados."
   },
   {
    "id": "espana-2026",
@@ -65,6 +65,12 @@
   }
  ],
  "notes": [
+  {
+   "date": "2026-10-28",
+   "tag": "Resultado",
+   "text": "Israel: el bloque de Netanyahu suma 53 bancas y el opositor de Eisenkot 48 (preliminar); ninguno llega a 61. Serbia: la Lista Estudiantil ganó con mayoría absoluta (141 de 250). Bulgaria va al balotaje el 1 de noviembre (Iotova vs. Gyurov).",
+   "view": "israel"
+  },
   {
    "date": "2026-10-26",
    "tag": "Resultado",

@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-10-12",
+ "updatedAt": "2026-10-29",
  "note": "Resúmenes elaborados por el equipo del Atlas a partir de organismos electorales y prensa. Las fechas marcadas como estimadas no están oficialmente convocadas.",
  "briefs": {
   "AGO": {
@@ -424,7 +424,7 @@
   "BRA": {
    "date": "2026-10-25",
    "dateConfirmed": true,
-   "status": "upcoming",
+   "status": "held",
    "offices": "Segunda vuelta presidencial entre Flávio Bolsonaro (PL) y Lula (PT), y balotaje de gobernador en seis estados: Acre, Amazonas, Distrito Federal, Espírito Santo, Río Grande do Norte y Tocantins.",
    "electorate": 158745502,
    "electorateNote": "TSE, julio 2026",
@@ -448,16 +448,24 @@
    ],
    "polls": "Encuestas posteriores a la 1.ª vuelta (votos válidos): Datafolha 52–48, PoderData/Aya 53–47 y AtlasIntel 52,8–47,2, todas a favor de Flávio Bolsonaro.",
    "stake": "¿Vuelve el bolsonarismo al poder con Flávio, o Lula logra dar vuelta la primera vuelta y conseguir un cuarto mandato?",
-   "summary": "Flávio Bolsonaro ganó la primera vuelta del 4 de octubre por 1,87 puntos y llega como favorito ajustado: sumó el apoyo de Caiado, Zema, Cury, Republicanos, União-PP y Podemos, mientras PSD, MDB y PSDB quedaron neutrales. El Congreso ya quedó definido: el PL tendrá la mayor bancada de Diputados (121 de 513).",
-   "result": null,
+   "summary": "Flávio Bolsonaro no reconoció la derrota: dijo que es 'imposible reconocer el resultado', cuestionó la extensión del horario de votación en algunos municipios y anunció que pedirá revisar o anular la elección, sin precisar ante qué instancia. En los seis balotajes de gobernador hubo reelecciones en Acre (Mailza Assis) y en el Distrito Federal (Celina Leão), y el gobernador Ricardo Ferraço perdió en Espírito Santo.",
+   "result": "Lula (PT) fue reelecto en el balotaje con el 51,79% de los votos válidos (64.256.232) frente al 48,21% (59.826.041) de Flávio Bolsonaro (PL), una diferencia de unos 4,43 millones de votos. La abstención bajó del 21,08% en la primera vuelta al 19,22%, lo que da una participación de alrededor del 80,8%.",
    "sources": [
     {
-     "label": "TSE – resultados 1.ª vuelta",
-     "url": "https://resultados.tse.jus.br/"
+     "label": "www.tse.jus.br",
+     "url": "https://www.tse.jus.br/comunicacao/noticias/2026/Outubro/presidente-do-tse-anuncia-reeleicao-de-lula-e-faz-balanco-do-2o-turno-das-eleicoes-2026"
     },
     {
-     "label": "Brasil de Fato – Datafolha 2.º turno",
-     "url": "https://www.brasildefato.com.br/2026/10/08/datafolha-segundo-turno-flavio-bolsonaro-49-lula-45/"
+     "label": "www.vaticannews.va",
+     "url": "https://www.vaticannews.va/pt/mundo/news/2026-10/lula-reeleito-presidente-brasil-segundo-turno.html"
+    },
+    {
+     "label": "www.tribunadosertao.com.br",
+     "url": "https://www.tribunadosertao.com.br/politica/2026/10/26/1006786-quase-3-milhoes-a-menos-de-ausentes-queda-da-abstencao-marcou-virada-eleitoral-de-lula-no-segundo-turno"
+    },
+    {
+     "label": "jovempan.com.br",
+     "url": "https://jovempan.com.br/politica/e-impossivel-reconhecer-o-resultado-das-eleicoes-diz-flavio-bolsonaro-apos-derrota/"
     }
    ],
    "verified": true,
@@ -1663,7 +1671,7 @@
   "ISR": {
    "date": "2026-10-27",
    "dateConfirmed": true,
-   "status": "upcoming",
+   "status": "held",
    "offices": "Las 120 bancas de la Knéset, en un único distrito nacional con listas cerradas y umbral del 3,25%.",
    "electorate": null,
    "electorateNote": "",
@@ -1707,31 +1715,27 @@
    ],
    "polls": "Kan 11/Kantar (11 de octubre): Yashar 22, Likud 20, Juntos 12, Otzma Yehudit 9, Yisrael Beiteinu 8, Demócratas 8, Judaísmo Unido de la Torá 8, Lista Conjunta 8, Shas 7, Ra'am 5, Sionismo Religioso 5, Amcha Yisrael 4, Reservistas 4; la coalición sumaría 53, el bloque de Eisenkot 50 y los partidos árabes 13.",
    "stake": "¿Retiene Netanyahu el poder, o consigue el bloque de Eisenkot y Bennett armar una mayoría de 61?",
-   "summary": "La Knesset aprobó su disolución el 17 de julio y la elección es el 27 de octubre; los resultados oficiales se confirman el 4 de noviembre. Ningún bloque llega a 61 bancas en las encuestas, y en las últimas semanas la coalición recuperó terreno. Hay sondeos atípicos, como el de Canal 14, que le da 63 bancas al oficialismo.",
-   "result": null,
+   "summary": "Restaban contar entre 430.000 y 480.000 votos de doble sobre (soldados, diplomáticos), y los resultados oficiales se publican el 4 de noviembre. Tras recibirlos, el presidente Isaac Herzog abrirá consultas con cada bancada y decidirá si encarga formar gobierno a Netanyahu o a Eisenkot; todavía no encargó a nadie y pidió a los partidos evitar otra elección. Eisenkot descartó un gobierno de unidad bajo Netanyahu, y la oposición solo llegaría a 67 bancas apoyándose en los partidos árabes, una opción que parte de ese bloque resiste.",
+   "result": "Con alrededor del 90,5% de los votos escrutados, el bloque de Netanyahu suma 53 bancas, el bloque opositor encabezado por Gadi Eisenkot 48 y los partidos árabes 19, de modo que ningún bloque alcanza la mayoría de 61 en la Knéset de 120. El Likud es la lista más votada (26 bancas, 20,69%) y la participación fue del 77,7%, la más alta desde 1999.",
    "sources": [
     {
-     "label": "Wikipedia – 2026 Israeli legislative election",
+     "label": "en.wikipedia.org",
      "url": "https://en.wikipedia.org/wiki/2026_Israeli_legislative_election"
     },
     {
-     "label": "Haaretz – Eisenkot bloc continues slump (encuesta Kan 11, 11 de octubre)",
-     "url": "https://www.haaretz.com/israel-news/elections/2026-10-11/ty-article/israel-election-poll-eisenkot-bloc-continues-slump-as-coalition-gains-ground/000001a1-2c63-d7a5-a7b1-be7397560000"
+     "label": "www.timesofisrael.com",
+     "url": "https://www.timesofisrael.com/with-85-of-votes-counted-netanyahu-bloc-has-53-seats-eisenkots-48-arab-parties-surge-to-19/"
     },
     {
-     "label": "Wikipedia – Opinion polling for the 2026 Israeli legislative election",
-     "url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Israeli_legislative_election"
+     "label": "www.jpost.com",
+     "url": "https://www.jpost.com/israel-election-2026/article-913122"
     },
     {
-     "label": "Jerusalem Post – Coalition, opposition tie at 52 seats (Maariv)",
-     "url": "https://www.jpost.com/israel-election-2026/article-911139"
-    },
-    {
-     "label": "Comité Central de Elecciones",
-     "url": "https://bechirot.gov.il/"
+     "label": "www.timesofisrael.com",
+     "url": "https://www.timesofisrael.com/liveblog-october-28-2026/"
     }
    ],
-   "verified": true,
+   "verified": false,
    "why": "Son las primeras elecciones a la Knéset desde la guerra que siguió al 7 de octubre de 2023, y funcionan como un plebiscito sobre Netanyahu, su coalición con la derecha religiosa y la conducción de la guerra y la reforma judicial. El resultado va a pesar sobre Gaza, la tensión con Irán y la normalización con el mundo árabe.",
    "argentina": {
     "level": "aliado estrecho",
@@ -3010,7 +3014,7 @@
   "SRB": {
    "date": "2026-10-25",
    "dateConfirmed": true,
-   "status": "upcoming",
+   "status": "held",
    "offices": "Los 250 escaños de la Asamblea Nacional (elecciones parlamentarias anticipadas). La presidencial se votará en 2027.",
    "electorate": null,
    "electorateNote": "Sin dato verificado",
@@ -3049,40 +3053,24 @@
    ],
    "polls": "Las encuestas divergen: Faktor Plus (publicada el 21 de septiembre) da 48,6% a la lista de Vučić y 37,1% a la Lista Estudiantil, mientras que NSPM (publicada el 30 de septiembre, campo de comienzos de septiembre) pone adelante a los estudiantes con 44,4% contra 41,7%.",
    "stake": "¿Puede la lista surgida de las protestas estudiantiles terminar con más de una década de dominio del SNS?",
-   "summary": "Vučić disolvió la Asamblea el 9 de septiembre y llamó a elecciones anticipadas para el 25 de octubre, después de casi un año de protestas encabezadas por estudiantes. Compiten 18 listas por 250 bancas. Para la oposición y los medios independientes, Faktor Plus e Ipsos tienen un sesgo oficialista.",
-   "result": null,
+   "summary": "La Lista Estudiantil puede gobernar sin socios, pero todavía no presentó candidato a primer ministro. Entre los nombres que circulan figuran el cardiólogo Ilija Srdanović y el exgobernador del Banco Nacional Dejan Šoškić. La Asamblea debe constituirse dentro de los 30 días posteriores a la proclamación de los resultados oficiales, y la propuesta de primer ministro le corresponde a la presidenta interina Ana Brnabić; el primer ministro saliente es Đuro Macut (independiente).",
+   "result": "La Lista Estudiantil ganó con el 53,71% y 141 de las 250 bancas, mayoría absoluta (el umbral es 126), frente al 39,48% y 103 bancas de la lista de Aleksandar Vučić (SNS), que reconoció la derrota. La participación fue del 68,98%, con el 99,27% escrutado.",
    "sources": [
     {
-     "label": "Wikipedia – 2026 Serbian parliamentary election",
+     "label": "en.wikipedia.org",
      "url": "https://en.wikipedia.org/wiki/2026_Serbian_parliamentary_election"
     },
     {
-     "label": "Wikipedia – Opinion polling for the 2026 Serbian parliamentary election",
-     "url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Serbian_parliamentary_election"
+     "label": "www.euronews.com",
+     "url": "https://www.euronews.com/2026/10/25/vucic-concedes-defeat-in-pivotal-serbian-elections-says-student-movement-has-won"
     },
     {
-     "label": "Vreme – Who is participating on October 25",
-     "url": "https://vreme.com/en/izbori-2026/izbori-2026-izborne-liste-rik/"
+     "label": "www.aa.com.tr",
+     "url": "https://www.aa.com.tr/en/features/explainer-serbias-students-won-the-election-but-who-will-govern/4101491"
     },
     {
-     "label": "RTS – Vučić nosilac liste i kandidat za premijera",
-     "url": "https://www.rts.rs/lat/vesti/politika/6033271/faktor-plus-izbori-2026-aleksandar-vucic-kandidat-za-premijera-studentska-lista.html"
-    },
-    {
-     "label": "B92 – Faktor Plus: Ujedinjena Srbija 48,6%",
-     "url": "https://www.b92.net/info/politika/269423/novo-istrazivanje-lista-koju-predvodi-aleksandar-vucic-ujedinjena-srbija-vodi-sa-486/vest"
-    },
-    {
-     "label": "Wikipedia: Next Serbian presidential election",
-     "url": "https://en.wikipedia.org/wiki/Next_Serbian_presidential_election"
-    },
-    {
-     "label": "Balkan Insight: Vučić convoca elecciones para el 25 de octubre",
-     "url": "https://balkaninsight.com/2026/09/09/serbias-vucic-calls-early-parliamentary-elections-for-october-25/bi/"
-    },
-    {
-     "label": "Xinhua: SNS nomina a Vučić a primer ministro",
-     "url": "https://english.news.cn/20260906/13a18c137b2f4a8e921f77bbdcfe1f66/c.html"
+     "label": "www.intellinews.com",
+     "url": "https://www.intellinews.com/who-will-be-serbia-s-next-prime-minister-478945/"
     }
    ],
    "verified": false,
@@ -3472,8 +3460,8 @@
    }
   },
   "BGR": {
-   "date": "2026-10-25",
-   "offices": "Presidente y vicepresidente (fórmula conjunta, mandato de 5 años); eventual balotaje el 1 de noviembre",
+   "date": "2026-11-01",
+   "offices": "Segunda vuelta presidencial entre Iliana Iotova y Andrey Gyurov.",
    "electorate": null,
    "incumbent": {
     "name": "Iliana Iotova",
@@ -3484,53 +3472,40 @@
    "contenders": [
     {
      "name": "Iliana Iotova",
-     "party": "Independiente, con apoyo de Bulgaria Progresista, BSP, ABV/ISBG y VMRO",
-     "note": "Favorita; fórmula con Kiril Valchev."
+     "party": "Independiente (Bulgaria Progresista y aliados)",
+     "note": "34,76% en la 1.ª vuelta"
     },
     {
      "name": "Andrey Gyurov",
-     "party": "Independiente, con apoyo de PP–DB",
-     "note": "Ex primer ministro interino; fórmula con Georgi Kandev."
-    },
-    {
-     "name": "Kostadin Kostadinov",
-     "party": "Vazrazhdane (Renacimiento)",
-     "note": "Ultranacionalista prorruso; fórmula con Petar Volgin; tercero en las encuestas."
+     "party": "Independiente (PP–DB)",
+     "note": "31,95% en la 1.ª vuelta"
     }
    ],
-   "polls": "Iotova lidera con holgura pero sin asegurarse la victoria en primera vuelta: Gallup (26/9-6/10) le da 47,8% contra 26,4% de Gyurov y 11,6% de Kostadinov; Alpha Research (24/9-1/10), 44,5% / 26,1% / 10,5%, y Market Links (26-29/9), 51,6% / 27,5% / 8,0% (sobre votos decididos).",
+   "polls": "1.ª vuelta (25 de octubre): Iliana Iotova 34,76%, Andrey Gyurov 31,95%, Kostadin Kostadinov 12,55%. Participación: 22,98%.",
    "stake": "¿Consolida Radev su control total del poder con Iotova en la presidencia, o la oposición proeuropea fuerza un balotaje y conserva un contrapeso?",
-   "summary": "Bulgaria elige presidente con 27 fórmulas en carrera, seis meses después de que Bulgaria Progresista de Rumen Radev ganara mayoría absoluta (131 de 240 bancas). La presidenta Iliana Iotova, aliada de Radev, encabeza todos los sondeos frente a Andrey Gyurov, respaldado por PP–DB. Si nadie supera el 50%, habrá segunda vuelta el 1 de noviembre.",
+   "summary": "Como nadie superó el 50%, Iotova y Gyurov se enfrentan en el balotaje del 1 de noviembre de 2026. La campaña está polarizada por la guerra en Ucrania: Gyurov apoya la ayuda a Kiev e Iotova se opone a la asistencia militar.",
    "why": "Una victoria de Iotova dejaría gobierno, Parlamento y presidencia en manos del mismo bloque por primera vez en décadas, sin el contrapeso del veto presidencial. Es además la primera prueba electoral del gobierno Radev, cuyas posiciones sobre Rusia y la UE se siguen de cerca en Bruselas.",
    "sources": [
     {
-     "label": "Wikipedia – 2026 Bulgarian presidential election",
+     "label": "en.wikipedia.org",
      "url": "https://en.wikipedia.org/wiki/2026_Bulgarian_presidential_election"
     },
     {
-     "label": "Wikipedia – 2026 Bulgarian parliamentary election",
-     "url": "https://en.wikipedia.org/wiki/2026_Bulgarian_parliamentary_election"
+     "label": "aa.com.tr",
+     "url": "https://aa.com.tr/en/europe/bulgaria-s-president-yotova-leads-1st-round-vote-heads-to-runoff/4101466"
     },
     {
-     "label": "Sofia Globe – encuesta Alpha Research (5/10/2026)",
-     "url": "https://sofiaglobe.com/2026/10/05/bulgarias-2026-presidential-elections-yotova-44-5-gyurov-26-1-alpha-research-poll/"
+     "label": "balkaninsight.com",
+     "url": "https://balkaninsight.com/2026/10/26/bulgarias-presidential-election-heads-to-runoff-after-record-low-turnout/bi/"
     },
     {
-     "label": "Balkan Insight – presidenciales y Radev",
-     "url": "https://balkaninsight.com/2026/09/14/bulgarias-presidential-elections-will-test-pm-radevs-grip-on-power/bi/"
-    },
-    {
-     "label": "BTA – el Parlamento elige a Radev primer ministro",
-     "url": "https://www.bta.bg/en/news/1121595-parliament-elects-rumen-radev-as-prime-minister"
-    },
-    {
-     "label": "BNR – Iotova, primera presidenta de Bulgaria",
-     "url": "https://bnrnews.bg/en/post/418123/iliana-iotova-becomes-bulgarias-first-female-president"
+     "label": "www.bloomberg.com",
+     "url": "https://www.bloomberg.com/news/articles/2026-10-25/bulgarian-president-set-to-win-first-round-of-election-poll"
     }
    ],
    "status": "upcoming",
    "dateConfirmed": true,
-   "result": null,
+   "result": "La presidenta en ejercicio Iliana Iotova ganó la primera vuelta con el 34,76%, seguida por el ex primer ministro interino Andrey Gyurov con el 31,95% y por Kostadin Kostadinov (Vazrazhdane) con el 12,55%. La participación fue del 22,98%, la más baja de la historia búlgara.",
    "verified": true
   }
  }
