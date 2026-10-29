@@ -1,16 +1,26 @@
 {
- "updatedAt": "2026-10-12T12:00:00-03:00",
+ "updatedAt": "2026-10-29T12:00:00-03:00",
  "refreshSeconds": 300,
  "specials": [
+  {
+   "id": "eeuu-2026",
+   "status": "active",
+   "iso": "USA",
+   "tag": "Especial · martes 3 de noviembre",
+   "title": "EE.UU. · Midterms",
+   "date": "2026-11-03",
+   "blurb": "Toda la Cámara, 35 bancas del Senado y 36 gobernaciones. El mapa estado por estado con los pronósticos, las carreras que definen el Congreso, las encuestas y la relación con Argentina.",
+   "view": "eeuu"
+  },
   {
    "id": "brasil-2026",
    "view": "brasil",
    "status": "active",
    "iso": "BRA",
-   "tag": "Especial · balotaje",
+   "tag": "Especial · resultado final",
    "title": "Brasil 2026",
    "date": "2026-10-25",
-   "blurb": "Flávio Bolsonaro vs. Lula el 25 de octubre, más seis gobernaciones. El mano a mano, las encuestas, los apoyos y, en el archivo, todos los resultados de la 1.ª vuelta."
+   "blurb": "Lula fue reelecto en el balotaje del 25 de octubre (51,79% contra 48,21% de Flávio Bolsonaro). Resultados por estado, las gobernaciones y el Congreso que asume en 2027."
   },
   {
    "id": "argentina-2027",
@@ -23,24 +33,14 @@
    "blurb": "Presidente, 130 diputados, 24 senadores y las gobernaciones provincia por provincia: fechas, candidatos, datos sociales y económicos, en un mapa bicontinental con Malvinas y la Antártida."
   },
   {
-   "id": "eeuu-2026",
-   "status": "active",
-   "iso": "USA",
-   "tag": "Especial · nuevo",
-   "title": "EE.UU. · Midterms",
-   "date": "2026-11-03",
-   "blurb": "Toda la Cámara, 35 bancas del Senado y 36 gobernaciones. Mapa por estado con pronósticos, Congreso actual, encuestas y carreras clave.",
-   "view": "eeuu"
-  },
-  {
    "id": "israel-2026",
    "view": "israel",
    "status": "active",
    "iso": "ISR",
-   "tag": "Especial · nuevo",
+   "tag": "Especial · resultado",
    "title": "Israel 2026",
    "date": "2026-10-27",
-   "blurb": "120 bancas en un solo distrito y 61 para gobernar. Calculadora de coaliciones con las encuestas de septiembre, Knéset actual y listas."
+   "blurb": "Con el 90% escrutado, el bloque de Netanyahu suma 53 bancas, el de Eisenkot 48 y los partidos árabes 19: nadie llega a 61. La nueva Knéset y la calculadora de coaliciones con los resultados."
   },
   {
    "id": "espana-2026",
@@ -65,6 +65,18 @@
   }
  ],
  "notes": [
+  {
+   "date": "2026-10-28",
+   "tag": "Resultado",
+   "text": "Israel: el bloque de Netanyahu suma 53 bancas y el opositor de Eisenkot 48 (preliminar); ninguno llega a 61. Serbia: la Lista Estudiantil ganó con mayoría absoluta (141 de 250). Bulgaria va al balotaje el 1 de noviembre (Iotova vs. Gyurov).",
+   "view": "israel"
+  },
+  {
+   "date": "2026-10-26",
+   "tag": "Resultado",
+   "text": "Brasil: Lula ganó el balotaje con el 51,79% contra el 48,21% de Flávio Bolsonaro (TSE, 100% escrutado) y logra un cuarto mandato.",
+   "view": "brasil"
+  },
   {
    "date": "2026-10-23",
    "tag": "Nuevo",
@@ -125,5 +137,6 @@
    "text": "El TSE rechazó por unanimidad la candidatura de Pablo Marçal (PRTB): quedan 12 fórmulas presidenciales.",
    "view": "brasil"
   }
- ]
+ ],
+ "featured": "eeuu"
 }

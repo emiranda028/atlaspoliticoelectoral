@@ -1,8 +1,8 @@
 {
   "id": "brasil-2026",
   "title": "Elecciones generales de Brasil 2026",
-  "updatedAt": "2026-10-12T12:00:00-03:00",
-  "lede": "Flávio Bolsonaro (47,03%) y Lula (45,16%) se enfrentan en el balotaje del 25 de octubre. La primera vuelta ya definió el Congreso que asume en 2027, 21 gobernadores y dos tercios del Senado; el mismo día del balotaje se votan seis gobernaciones más.",
+  "updatedAt": "2026-10-29T12:00:00-03:00",
+  "lede": "Lula fue reelecto el 25 de octubre con el 51,79% de los votos válidos contra el 48,21% de Flávio Bolsonaro y logra un cuarto mandato. El PL tendrá la mayor bancada de Diputados (121 de 513) en el Congreso que asume en 2027.",
   "dates": {
     "firstRoundOpen": "2026-10-04T08:00:00-03:00",
     "firstRoundClose": "2026-10-04T17:00:00-03:00",
@@ -782,7 +782,7 @@
       "candidates": []
     },
     "round2": {
-      "status": "pending",
+      "status": "final",
       "candidates": []
     },
     "tse": {
@@ -1107,7 +1107,7 @@
     "note": "Nota de datos: 2025 es cifra oficial del INDEC; 2023 y 2024 son aproximaciones calculadas con las participaciones que publica el INDEC (las series basadas en datos brasileños dan déficits menores). Enero–agosto 2026: Cámara Argentina de Comercio, con datos de fuente brasileña."
   },
   "runoff": {
-    "summary": "Flávio Bolsonaro llega al balotaje del 25 de octubre como favorito ajustado. Las tres encuestas verificadas desde la primera vuelta (Datafolha, PoderData/Aya y AtlasIntel) le dan entre 52% y 53% de los votos válidos contra 47-48% de Lula, una ventaja apenas mayor que el 47,03% a 45,16% del 4 de octubre. Flávio juntó el apoyo formal de Republicanos, União Brasil/PP, Podemos y Novo, además de Caiado, Zema y Cury. PSD, MDB y PSDB se declararon neutrales y Lula no sumó partidos nuevos. Lula apuesta a movilizar a los abstencionistas, a la defensa de los programas sociales y a los debates (pool el 15, Band el 18 y Globo el 23 de octubre).",
+    "summary": "Lula (PT) fue reelecto en el balotaje con el 51,79% de los votos válidos (64.256.232) frente al 48,21% (59.826.041) de Flávio Bolsonaro (PL), una diferencia de unos 4,43 millones de votos. La abstención bajó del 21,08% en la primera vuelta al 19,22%, lo que da una participación de alrededor del 80,8%. Flávio Bolsonaro no reconoció la derrota: dijo que es 'imposible reconocer el resultado', cuestionó la extensión del horario de votación en algunos municipios y anunció que pedirá revisar o anular la elección, sin precisar ante qué instancia. En los seis balotajes de gobernador hubo reelecciones en Acre (Mailza Assis) y en el Distrito Federal (Celina Leão), y el gobernador Ricardo Ferraço perdió en Espírito Santo.",
     "endorsements": [
       {
         "who": "Romeu Zema (Novo), 0,27% en primera vuelta",

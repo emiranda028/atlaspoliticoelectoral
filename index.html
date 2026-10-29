@@ -4883,6 +4883,7 @@
     z-index: -1;
   }
   .next-card.is-brasil { background: linear-gradient(145deg, #0B4F34 0%, #0E6B45 55%, #13784E 100%); }
+  .next-card.is-us { background: linear-gradient(145deg, #0B1B3F 0%, #1F3A70 55%, #8E2A2A 140%); }
   .next-card-kicker {
     font-family: var(--font-sans);
     font-size: 11px;
@@ -5679,7 +5680,7 @@
   }
   .chart-card { border-radius: var(--radius); }
   .pulse-tile:hover, .agenda-item:hover { border-color: var(--line-strong); box-shadow: var(--shadow-md); }
-  .next-card:not(.is-brasil) { background: linear-gradient(145deg, var(--brand), var(--brand-2)); }
+  .next-card:not(.is-brasil):not(.is-us) { background: linear-gradient(145deg, var(--brand), var(--brand-2)); }
   .quick-link { box-shadow: var(--shadow-sm); border-color: var(--line); }
   .quick-link:hover { border-color: var(--ink); }
   .portada-search input { border-color: var(--line-strong); background-color: var(--surface); }
@@ -7099,13 +7100,13 @@
         </svg>
         <span class="topic-nav-brand-text">Atlas</span>
       </a>
-      <a href="#brasil" class="topic-nav-link is-special" onclick="window.__scrollToSection(event, 'brasil')">
-        <span class="topic-nav-num">★</span>
-        <span class="topic-nav-text">Brasil 2026</span>
-      </a>
       <a href="#eeuu" class="topic-nav-link is-special is-special-us" onclick="window.__scrollToSection(event, 'eeuu')">
         <span class="topic-nav-num">★</span>
         <span class="topic-nav-text">EE.UU. 2026</span>
+      </a>
+      <a href="#brasil" class="topic-nav-link is-special" onclick="window.__scrollToSection(event, 'brasil')">
+        <span class="topic-nav-num">★</span>
+        <span class="topic-nav-text">Brasil 2026</span>
       </a>
       <a href="#israel" class="topic-nav-link is-special is-special-il" onclick="window.__scrollToSection(event, 'israel')">
         <span class="topic-nav-num">★</span>
@@ -7152,8 +7153,8 @@
   <div class="nav-sheet-panel">
     <div class="nav-sheet-head"><span>Secciones</span><div class="lang-switch lang-switch-sheet notranslate" role="group" aria-label="Idioma / Language"><button type="button" data-lang="es" lang="es">ES</button><button type="button" data-lang="en" lang="en">EN</button><button type="button" data-lang="pt" lang="pt">PT</button></div><button type="button" class="nav-sheet-close" id="nav-sheet-close" aria-label="Cerrar">✕</button></div>
     <div class="nav-sheet-group">Especiales</div>
-    <a href="#brasil" data-go="brasil"><b>Brasil 2026</b><span>Balotaje del 25 de octubre · resultados de la 1.ª vuelta</span></a>
     <a href="#eeuu" data-go="eeuu"><b>EE.UU. 2026</b><span>Midterms del 3 de noviembre</span></a>
+    <a href="#brasil" data-go="brasil"><b>Brasil 2026</b><span>Balotaje del 25 de octubre · resultados de la 1.ª vuelta</span></a>
     <a href="#israel" data-go="israel"><b>Israel 2026</b><span>Knéset, 27 de octubre · calculadora de coaliciones</span></a>
     <a href="#argentina" data-go="argentina"><b>Argentina 2027</b><span>Presidenciales, Congreso y las 24 provincias · mapa bicontinental</span></a>
     <a href="#espana" data-go="espana"><b>España 2026</b><span>Generales anticipadas del 29 de noviembre · calculadora de mayorías</span></a>
@@ -8236,7 +8237,7 @@ const LEADER_GENDER = {
   SVK: "M",
   HRV: "M",
   BGR: "M",
-  SRB: "M",
+  SRB: "F",
   EST: "M",
   ETH: "M",
   DZA: "M",
@@ -8524,19 +8525,16 @@ const COUNTRIES = [
     },
     lastElection: {
       year: 2026,
-      type: "Presidencial — 1ra vuelta (4 oct 2026)",
-      turnout: 78.9,
+      type: "Presidencial — 2da vuelta (25 oct 2026)",
+      turnout: 80.8,
       results: [
-        { party: "Flávio Bolsonaro (PL)", pct: 47.03 },
-        { party: "Lula (PT)", pct: 45.16 },
-        { party: "Augusto Cury (Avante)", pct: 2.89 },
-        { party: "Renan Santos (Missão)", pct: 2.24 },
-        { party: "Ronaldo Caiado (PSD)", pct: 2.18 }
+        { party: "Lula (PT)", pct: 51.79 },
+        { party: "Flávio Bolsonaro (PL)", pct: 48.21 }
       ]
     },
     nextElection: {
-      year: 2026,
-      type: "Presidencial — 2da vuelta (25 oct 2026)"
+      year: 2030,
+      type: "Generales (oct 2030)"
     },
     electors: 158745502,
     economy: {
@@ -13645,35 +13643,20 @@ const COUNTRIES = [
       }
     },
     lastElection: {
-      year: 2022,
-      type: "Parlamentarias (1 nov)",
-      turnout: 70.6,
+      year: 2026,
+      type: "Knéset (27 oct, preliminar)",
+      turnout: 77.7,
       results: [
-        {
-          party: "Likud",
-          pct: 23.4,
-          seats: 32
-        },
-        {
-          party: "Yesh Atid",
-          pct: 17.8,
-          seats: 24
-        },
-        {
-          party: "Sionismo Religioso",
-          pct: 10.8,
-          seats: 14
-        },
-        {
-          party: "Unidad Nacional",
-          pct: 9.1,
-          seats: 12
-        }
+        { party: "Likud (Benjamin Netanyahu)", pct: 20.69, seats: 26 },
+        { party: "Yashar (Gadi Eisenkot)", pct: 16.19, seats: 21 },
+        { party: "Lista Conjunta (Yousef Jabareen)", pct: 9.19, seats: 12 },
+        { party: "Juntos / B'Yachad (Naftali Bennett - Yair Lapid)", pct: 9.02, seats: 12 },
+        { party: "Los Demócratas (Yair Golan)", pct: 6.51, seats: 8 }
       ]
     },
     nextElection: {
-      year: 2026,
-      type: "Parlamentarias (27 oct 2026)"
+      year: 2030,
+      type: "Knéset (a más tardar 2030; antes si no se forma gobierno)"
     },
     electors: 6800000,
     economy: {
@@ -15567,7 +15550,7 @@ const COUNTRIES = [
     },
     nextElection: {
       year: 2026,
-      type: "Presidencial (25 oct 2026; balotaje 1 nov)"
+      type: "Presidencial — balotaje (1 nov 2026)"
     },
     electors: 6500000,
     economy: {
@@ -15621,12 +15604,12 @@ const COUNTRIES = [
     region: "Europa",
     system: "República parlamentaria",
     leader: {
-      title: "Presidente",
-      name: "Aleksandar Vučić",
+      title: "Presidenta interina",
+      name: "Ana Brnabić",
       party: "Partido Progresista Serbio (SNS)",
-      since: "2017-05-31",
-      gender: "M",
-      wikiName: "Aleksandar_Vučić"
+      since: "2026-09-28",
+      gender: "F",
+      wikiName: "Ana_Brnabić"
     },
     ideology: "right",
     legislature: {
@@ -15640,30 +15623,17 @@ const COUNTRIES = [
       }
     },
     lastElection: {
-      year: 2023,
-      type: "Parlamentarias anticipadas (17 dic)",
-      turnout: 58.4,
+      year: 2026,
+      type: "Parlamentarias anticipadas (25 oct, preliminar)",
+      turnout: 69.0,
       results: [
-        {
-          party: "SNS (Vučić)",
-          pct: 46.7,
-          seats: 129
-        },
-        {
-          party: "Serbia contra la Violencia",
-          pct: 23.6,
-          seats: 65
-        },
-        {
-          party: "Partido Socialista (SPS)",
-          pct: 6.6,
-          seats: 18
-        }
+        { party: "Lista Estudiantil (Ilija Srdanović)", pct: 53.71, seats: 141 },
+        { party: "Aleksandar Vučić – Serbia Unida (SNS)", pct: 39.48, seats: 103 }
       ]
     },
     nextElection: {
       year: 2026,
-      type: "Parlamentarias anticipadas (25 oct 2026)"
+      type: "Presidencial (antes del 27 dic 2026)"
     },
     electors: 6500000,
     economy: {
@@ -30212,7 +30182,7 @@ function renderPolls() {
 /* Known national election dates 2026-2028 — shared by the calendar and the portada. */
 const KNOWN_ELECTION_DATES = {
   // ============ 2026 ============
-  'BRA': { day: 25, month: 9,  year: 2026 },   // Brasil — 2.ª vuelta presidencial y de 6 gobernaciones (TSE)
+  'BRA': { day: 1,  month: 9,  year: 2030 },   // Brasil — próximas generales oct 2030 (Lula reelecto el 25 oct 2026)
   'USA': { day: 3,  month: 10, year: 2026 },   // EE.UU. midterms — 3 nov 2026
   'COL': { day: 31, month: 4,  year: 2026 },   // Colombia — presidencial 1ra vuelta
   'PER': { day: 7,  month: 5,  year: 2026 },   // Perú — presidencial 2da vuelta
@@ -30234,7 +30204,7 @@ const KNOWN_ELECTION_DATES = {
   'ZMB': { day: 13, month: 7,  year: 2026 },   // Zambia — ago 2026
   'PSE': { day: 1,  month: 9,  year: 2026 },   // Palestina (programada)
   'LBN': { day: 18, month: 4,  year: 2026 },   // Líbano — parlamentarias may 2026
-  'ISR': { day: 27, month: 9,  year: 2026 },   // Israel — legal deadline 27 oct 2026
+  'ISR': { day: 1,  month: 9,  year: 2030 },   // Israel — votó el 27 oct 2026; próxima a más tardar 2030
   'RUS': { day: 20, month: 8,  year: 2026 },   // Rusia — legislativas sep 2026
   'LVA': { day: 1,  month: 9,  year: 2030 },   // Letonia — próximas parlamentarias oct 2030 (votó el 3 oct 2026)
   'SVN': { day: 1,  month: 5,  year: 2026 },   // Eslovenia — parlamentarias jun 2026
@@ -30245,8 +30215,8 @@ const KNOWN_ELECTION_DATES = {
   'NZL': { day: 7, month: 10, year: 2026 },   // actualizado sep 2026
   'HTI': { day: 13, month: 11, year: 2026 },   // actualizado sep 2026
   'GMB': { day: 5, month: 11, year: 2026 },   // actualizado sep 2026
-  'SRB': { day: 25, month: 9, year: 2026 },   // actualizado sep 2026
-  'BGR': { day: 25, month: 9, year: 2026 },   // Bulgaria — presidencial 25 oct 2026 (balotaje 1 nov)
+  'SRB': { day: 1,  month: 11, year: 2026 },   // Serbia — presidencial antes del 27 dic 2026 (fecha a convocar)
+  'BGR': { day: 1,  month: 10, year: 2026 },   // Bulgaria — balotaje presidencial 1 nov 2026 (Iotova vs Gyurov)
   // ============ 2027 ============
   'NGA': { day: 16, month: 0,  year: 2027 },   // Nigeria — presidencial 16 ene 2027
   'ARG': { day: 24, month: 9,  year: 2027 },   // Argentina — presidencial 24 oct 2027
@@ -31406,9 +31376,36 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
     if (dot) dot.classList.toggle('is-stale', !live.fetchOk);
   }
 
+  // Portada card for the US midterms (when live.json says it is the featured special)
+  function usNextCardHTML(us) {
+    const ph = usPhase(us);
+    const gb = (us.polls && us.polls.genericBallot) || [];
+    const avg = k => gb.length ? gb.reduce((a, p) => a + (p[k] || 0), 0) / gb.length : null;
+    const d = avg('D'), r = avg('R');
+    const ap = us.polls && us.polls.approval;
+    const fc = ((us.polls && us.polls.forecasts) || []).slice(0, 2);
+    const sen = us.senate || {}, house = us.house || {};
+    return `
+      <div class="next-card-kicker"><span class="live-dot" style="background:#E8ECF4"></span>${esc(ph.id === 'campaign' ? 'Midterms · ' + fmtDateLong(new Date(us.dates.electionDay)) : ph.label)}</div>
+      <div class="next-card-title">${flagOf('USA')} Estados Unidos elige su Congreso</div>
+      <div class="next-card-sub">Toda la Cámara (${house.total || 435} bancas), ${sen.seatsUp || 35} del Senado y 36 gobernaciones: el gran examen de mitad de mandato para Donald Trump.</div>
+      ${d != null ? `<div class="nc-res">
+        <div class="nc-row"><span>Demócratas <small>voto genérico</small></span><b>${fmtPct(d, 1)}</b><div class="nc-track"><div style="width:${Math.min(d, 100)}%;background:#6F8FC0"></div></div></div>
+        <div class="nc-row"><span>Republicanos <small>voto genérico</small></span><b>${fmtPct(r, 1)}</b><div class="nc-track"><div style="width:${Math.min(r, 100)}%;background:#D46A6A"></div></div></div>
+      </div><div class="next-card-sub">Promedio de ${gb.length} encuestas nacionales${ap && ap.approve != null ? ` · aprobación de Trump ${fmtPct(ap.approve, 1)}` : ''}</div>` : ''}
+      ${fc.length ? `<div class="next-card-sub nc-polls">${fc.map(f => `<b>${esc(f.label || f.firm || '')}</b> ${esc(f.text || '')}`).join(' · ')}</div>` : ''}
+      ${countdownHTML(ph.target, 'Hoy se vota')}
+      <a class="next-card-cta" href="#eeuu" onclick="return window.__atlasGoTo('eeuu')">Abrir el especial EE.UU. 2026 <span aria-hidden="true">→</span></a>`;
+  }
   function renderNextCard() {
     const card = document.getElementById('next-card');
     if (!card) return;
+    if (live.data && live.data.featured === 'eeuu' && live.eeuu) {
+      card.className = 'next-card is-us';
+      card.innerHTML = usNextCardHTML(live.eeuu);
+      tickCountdowns();
+      return;
+    }
     const br = live.brasil;
     if (br) {
       const ph = brasilPhase(br);
@@ -32971,6 +32968,10 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
   }
   // Average projected seats per list across polls (lists missing in a poll count as 0 there)
   function isrAverages(il) {
+    // After the vote the calculator works with the seats from the count
+    if (il.results && il.results.seats) {
+      return (il.lists || []).map(l => Object.assign({}, l, { avg: il.results.seats[l.id] || 0, rounded: il.results.seats[l.id] || 0 })).sort((a, b) => b.avg - a.avg);
+    }
     const polls = il.polls || [];
     return (il.lists || []).map(l => {
       const vals = polls.map(p => (p.seats && p.seats[l.id]) || 0);
@@ -33014,7 +33015,7 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
           <b>${l.avg.toFixed(1)}</b>
         </button>`).join('')}</div>
       ${il.calcNote ? `<div class="il-calc-alert">${esc(il.calcNote)}</div>` : ''}
-      <p class="il-calc-note">Bancas promedio de ${(il.polls || []).length} encuestas. Tocá los partidos para armar una coalición. Es un ejercicio aritmético: no todos los partidos están dispuestos a gobernar juntos.</p>`;
+      <p class="il-calc-note">${il.results ? `Bancas del escrutinio (${esc(il.results.status || 'preliminar')}, ${esc(il.results.counted || '')}).` : `Bancas promedio de ${(il.polls || []).length} encuestas.`} Tocá los partidos para armar una coalición. Es un ejercicio aritmético: no todos los partidos están dispuestos a gobernar juntos.</p>`;
     el.querySelectorAll('[data-list]').forEach(b => b.addEventListener('click', () => {
       const id = b.getAttribute('data-list');
       picked.has(id) ? picked.delete(id) : picked.add(id);
@@ -33088,6 +33089,7 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
       </section>
 
       <nav class="esp-nav" aria-label="Secciones del especial">
+        ${il.results ? '<a href="#il-sec-resultados" class="is-hot">Resultado</a>' : ''}
         <a href="#il-sec-sistema">Cómo se vota</a>
         <a href="#il-sec-knesset">Knéset actual</a>
         <a href="#il-sec-calc">Calculadora de coaliciones</a>
@@ -33110,6 +33112,14 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
           <p>Cada punto es una banca, coloreada según la orientación del partido (mismo código de colores que el mapa mundial). Pasá el mouse por un partido para resaltarlo.</p></div>
         <div class="il-knesset">${chamberCard(kn, 8, blocBar)}</div>
       </section>
+
+      ${il.results ? `<section class="esp-sec esp-sec-hot" id="il-sec-resultados">
+        <div class="esp-sec-head"><span class="kicker">Resultado · ${esc(il.results.status || 'preliminar')}</span><h3>La Knéset que viene</h3>
+          <p>${esc(il.results.text || '')}</p></div>
+        <div class="il-knesset">${chamberCard({ name: '26.ª Knéset (resultado ' + (il.results.status || 'preliminar') + ')', total: 120, term: 'Elección del 27 de octubre de 2026', asOf: il.results.counted || '', parties: (il.lists || []).filter(l => il.results.seats[l.id]).map(l => ({ party: l.short || l.name, seats: il.results.seats[l.id], lean: l.lean })) }, 8)}</div>
+        ${il.results.next ? `<div class="ballot-note il-note">${esc(il.results.next)}</div>` : ''}
+        ${(il.results.sources || []).length ? `<p class="esp-sources">Fuentes: ${il.results.sources.map(x => `<a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.label)}</a>`).join(' · ')}</p>` : ''}
+      </section>` : ''}
 
       <section class="esp-sec" id="il-sec-calc">
         <div class="esp-sec-head"><span class="kicker">03 · La aritmética</span><h3>Calculadora de coaliciones</h3>
