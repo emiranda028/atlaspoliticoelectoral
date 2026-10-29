@@ -4883,6 +4883,7 @@
     z-index: -1;
   }
   .next-card.is-brasil { background: linear-gradient(145deg, #0B4F34 0%, #0E6B45 55%, #13784E 100%); }
+  .next-card.is-us { background: linear-gradient(145deg, #0B1B3F 0%, #1F3A70 55%, #8E2A2A 140%); }
   .next-card-kicker {
     font-family: var(--font-sans);
     font-size: 11px;
@@ -5679,7 +5680,7 @@
   }
   .chart-card { border-radius: var(--radius); }
   .pulse-tile:hover, .agenda-item:hover { border-color: var(--line-strong); box-shadow: var(--shadow-md); }
-  .next-card:not(.is-brasil) { background: linear-gradient(145deg, var(--brand), var(--brand-2)); }
+  .next-card:not(.is-brasil):not(.is-us) { background: linear-gradient(145deg, var(--brand), var(--brand-2)); }
   .quick-link { box-shadow: var(--shadow-sm); border-color: var(--line); }
   .quick-link:hover { border-color: var(--ink); }
   .portada-search input { border-color: var(--line-strong); background-color: var(--surface); }
@@ -7099,13 +7100,13 @@
         </svg>
         <span class="topic-nav-brand-text">Atlas</span>
       </a>
-      <a href="#brasil" class="topic-nav-link is-special" onclick="window.__scrollToSection(event, 'brasil')">
-        <span class="topic-nav-num">★</span>
-        <span class="topic-nav-text">Brasil 2026</span>
-      </a>
       <a href="#eeuu" class="topic-nav-link is-special is-special-us" onclick="window.__scrollToSection(event, 'eeuu')">
         <span class="topic-nav-num">★</span>
         <span class="topic-nav-text">EE.UU. 2026</span>
+      </a>
+      <a href="#brasil" class="topic-nav-link is-special" onclick="window.__scrollToSection(event, 'brasil')">
+        <span class="topic-nav-num">★</span>
+        <span class="topic-nav-text">Brasil 2026</span>
       </a>
       <a href="#israel" class="topic-nav-link is-special is-special-il" onclick="window.__scrollToSection(event, 'israel')">
         <span class="topic-nav-num">★</span>
@@ -7152,8 +7153,8 @@
   <div class="nav-sheet-panel">
     <div class="nav-sheet-head"><span>Secciones</span><div class="lang-switch lang-switch-sheet notranslate" role="group" aria-label="Idioma / Language"><button type="button" data-lang="es" lang="es">ES</button><button type="button" data-lang="en" lang="en">EN</button><button type="button" data-lang="pt" lang="pt">PT</button></div><button type="button" class="nav-sheet-close" id="nav-sheet-close" aria-label="Cerrar">✕</button></div>
     <div class="nav-sheet-group">Especiales</div>
-    <a href="#brasil" data-go="brasil"><b>Brasil 2026</b><span>Balotaje del 25 de octubre · resultados de la 1.ª vuelta</span></a>
     <a href="#eeuu" data-go="eeuu"><b>EE.UU. 2026</b><span>Midterms del 3 de noviembre</span></a>
+    <a href="#brasil" data-go="brasil"><b>Brasil 2026</b><span>Balotaje del 25 de octubre · resultados de la 1.ª vuelta</span></a>
     <a href="#israel" data-go="israel"><b>Israel 2026</b><span>Knéset, 27 de octubre · calculadora de coaliciones</span></a>
     <a href="#argentina" data-go="argentina"><b>Argentina 2027</b><span>Presidenciales, Congreso y las 24 provincias · mapa bicontinental</span></a>
     <a href="#espana" data-go="espana"><b>España 2026</b><span>Generales anticipadas del 29 de noviembre · calculadora de mayorías</span></a>
@@ -31406,9 +31407,36 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
     if (dot) dot.classList.toggle('is-stale', !live.fetchOk);
   }
 
+  // Portada card for the US midterms (when live.json says it is the featured special)
+  function usNextCardHTML(us) {
+    const ph = usPhase(us);
+    const gb = (us.polls && us.polls.genericBallot) || [];
+    const avg = k => gb.length ? gb.reduce((a, p) => a + (p[k] || 0), 0) / gb.length : null;
+    const d = avg('D'), r = avg('R');
+    const ap = us.polls && us.polls.approval;
+    const fc = ((us.polls && us.polls.forecasts) || []).slice(0, 2);
+    const sen = us.senate || {}, house = us.house || {};
+    return `
+      <div class="next-card-kicker"><span class="live-dot" style="background:#E8ECF4"></span>${esc(ph.id === 'campaign' ? 'Midterms · ' + fmtDateLong(new Date(us.dates.electionDay)) : ph.label)}</div>
+      <div class="next-card-title">${flagOf('USA')} Estados Unidos elige su Congreso</div>
+      <div class="next-card-sub">Toda la Cámara (${house.total || 435} bancas), ${sen.seatsUp || 35} del Senado y 36 gobernaciones: el gran examen de mitad de mandato para Donald Trump.</div>
+      ${d != null ? `<div class="nc-res">
+        <div class="nc-row"><span>Demócratas <small>voto genérico</small></span><b>${fmtPct(d, 1)}</b><div class="nc-track"><div style="width:${Math.min(d, 100)}%;background:#6F8FC0"></div></div></div>
+        <div class="nc-row"><span>Republicanos <small>voto genérico</small></span><b>${fmtPct(r, 1)}</b><div class="nc-track"><div style="width:${Math.min(r, 100)}%;background:#D46A6A"></div></div></div>
+      </div><div class="next-card-sub">Promedio de ${gb.length} encuestas nacionales${ap && ap.approve != null ? ` · aprobación de Trump ${fmtPct(ap.approve, 1)}` : ''}</div>` : ''}
+      ${fc.length ? `<div class="next-card-sub nc-polls">${fc.map(f => `<b>${esc(f.label || f.firm || '')}</b> ${esc(f.text || '')}`).join(' · ')}</div>` : ''}
+      ${countdownHTML(ph.target, 'Hoy se vota')}
+      <a class="next-card-cta" href="#eeuu" onclick="return window.__atlasGoTo('eeuu')">Abrir el especial EE.UU. 2026 <span aria-hidden="true">→</span></a>`;
+  }
   function renderNextCard() {
     const card = document.getElementById('next-card');
     if (!card) return;
+    if (live.data && live.data.featured === 'eeuu' && live.eeuu) {
+      card.className = 'next-card is-us';
+      card.innerHTML = usNextCardHTML(live.eeuu);
+      tickCountdowns();
+      return;
+    }
     const br = live.brasil;
     if (br) {
       const ph = brasilPhase(br);
