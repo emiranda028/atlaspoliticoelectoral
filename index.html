@@ -6941,6 +6941,29 @@
   @media (max-width: 760px) {
     .panel-map > #filters-sticky.is-docked { left: 50px; width: min(220px, calc(100% - 62px)); max-height: 60%; }
   }
+  /* ===== EE.UU. noche electoral ===== */
+  .night-home.is-us .nh-head { background: linear-gradient(135deg, #0B1B3F 0%, #1F3A70 60%, #8E2A2A 130%); }
+  .usr-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
+  .usr-grid-2 { grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); align-items: start; }
+  .usr-ch { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 16px 18px; }
+  .usr-ch-head { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-bottom: 10px; }
+  .usr-ch h4 { font: 700 22px var(--font-serif); margin: 0; color: var(--ink); }
+  .usr-bar { position: relative; display: flex; height: 26px; border-radius: 8px; overflow: hidden; }
+  .usr-bar i { position: absolute; top: -4px; bottom: -4px; width: 2px; background: #0B1628; }
+  .usr-nums { display: flex; justify-content: space-between; gap: 8px; font-size: 14px; margin-top: 8px; }
+  .usr-nums b { font: 700 24px var(--font-serif); }
+  .usr-model { font-size: 13px; color: var(--ink-soft); margin-top: 8px; background: var(--surface-2); border-radius: 8px; padding: 8px 10px; }
+  .usr-won { color: #fff; font: 700 11px var(--font-sans); letter-spacing: .05em; text-transform: uppercase; border-radius: 999px; padding: 4px 10px; white-space: nowrap; }
+  .usr-map { width: 100%; height: auto; }
+  .usr-races { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 8px; max-height: 620px; overflow-y: auto; }
+  .usr-race { border: 1px solid var(--line); border-left: 4px solid var(--c); border-radius: 10px; padding: 8px 10px; }
+  .usr-race-top { display: flex; justify-content: space-between; align-items: center; gap: 6px; font-size: 14px; margin-bottom: 4px; }
+  .usr-race-top .usr-won { font-size: 10px; padding: 2px 8px; }
+  .usr-cand { display: flex; justify-content: space-between; gap: 6px; font-size: 13px; }
+  .usr-cand i { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 5px; }
+  .usr-cand small { color: var(--muted); }
+  .usr-cand b { font-family: var(--font-mono); font-size: 12.5px; }
+  @media (max-width: 900px) { .usr-grid, .usr-grid-2 { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
@@ -31223,6 +31246,7 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
   const BR_GEO_URL = 'data/geo/brasil-uf.json';
   const EEUU_URL = 'data/especiales/eeuu-2026.json';
   const US_GEO_URL = 'data/geo/usa-states.json';
+  const US_RES_URL = 'data/especiales/eeuu-2026-resultados.json';
   const ISRAEL_URL = 'data/especiales/israel-2026.json';
   const ESPANA_URL = 'data/especiales/espana-2026.json';
   const ARGENTINA_URL = 'data/especiales/argentina-2027.json';
@@ -32302,6 +32326,7 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
   function renderNightHome() {
     const el = document.getElementById('night-home');
     if (!el) return;
+    if (usHomeActive()) { renderUsHome(el); return; }
     const hr = homeRound();
     if (!hr || !live.brasil) { el.hidden = true; el.innerHTML = ''; return; }
     if (hr === 2) { renderRunoffHome(el); return; }
@@ -32847,6 +32872,7 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
       </section>
 
       <nav class="esp-nav" aria-label="Secciones del especial">
+        ${live.usRes ? '<a href="#us-sec-resultados" class="is-hot">Resultados</a>' : ''}
         <a href="#us-sec-cargos">Qué se elige</a>
         <a href="#us-sec-mapa">Mapa por estado</a>
         <a href="#us-sec-congreso">Congreso hoy</a>
@@ -32855,6 +32881,12 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
         <a href="#us-sec-calendario">Calendario</a>
         <a href="#us-sec-arg">Argentina</a>
       </nav>
+
+      ${live.usRes ? `<section class="esp-sec esp-sec-hot" id="us-sec-resultados">
+        <div class="esp-sec-head"><span class="kicker">Noche electoral · en vivo</span><h3>Resultados: quién controla el Congreso</h3>
+          <p>El Senado se decide con 51 bancas (con 50, desempata el vicepresidente JD Vance a favor de los republicanos) y la Cámara con 218. Los datos son de AP y se actualizan solos.</p></div>
+        <div id="us-results"></div>
+      </section>` : ''}
 
       <section class="esp-sec" id="us-sec-cargos">
         <div class="esp-sec-head"><span class="kicker">01 · La boleta</span><h3>Qué se elige</h3><p>${esc(us.officesIntro || '')}</p></div>
@@ -32949,6 +32981,7 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
     const upd = document.getElementById('us-updated');
     if (upd) upd.textContent = `Datos actualizados ${relTime(new Date(us.updatedAt))}`;
     tickCountdowns();
+    renderUsResults();
     (live.usGeo ? Promise.resolve(live.usGeo) : fetchJSON(US_GEO_URL).then(g => (live.usGeo = g)))
       .then(renderUsMap)
       .catch(() => { const m = document.getElementById('us-map'); if (m) m.innerHTML = '<div class="esp-loading">No se pudo cargar el mapa de estados.</div>'; renderUsRaces(); });
@@ -33179,6 +33212,116 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
     const upd = document.getElementById('il-updated');
     if (upd) upd.textContent = `Datos actualizados ${relTime(new Date(il.updatedAt))}`;
     tickCountdowns();
+  }
+
+  /* ===================== EE.UU. · NOCHE ELECTORAL =====================
+     data/especiales/eeuu-2026-resultados.json (AP via NYT, written by
+     tools/us_resultados.py every 2 min): party control of both chambers,
+     the NYT live model and every Senate and governor race. */
+  const US_D = '#2A5596', US_R = '#B23A3A', US_I = '#C9A94B';
+  const usPartyColor = (p, light) => p === 'D' ? (light ? '#9DBBE3' : US_D) : p === 'R' ? (light ? '#EBA6A6' : US_R) : (light ? '#E8D9A8' : US_I);
+  const usResHas = () => !!(live.usRes && live.usRes.states && Object.values(live.usRes.states).some(s => ['senate', 'governor'].some(k => s[k] && (s[k].eevp > 0 || s[k].called))));
+  function usHomeActive() {
+    if (!live.usRes || !live.eeuu) return false;
+    const t = Date.now(), first = new Date('2026-11-03T23:00:00Z').getTime();
+    return t >= first && t < first + 5 * 86400000;
+  }
+  function usStateName(id) {
+    const s = ((live.eeuu && live.eeuu.states) || []).find(x => x.id === id);
+    return s ? s.name : id;
+  }
+  function usChamberBar(ch, label, total, need) {
+    if (!ch) return '';
+    const P = ch.parties || {}, d = (P.D && P.D.seats) || 0, r = (P.R && P.R.seats) || 0, i = (P.I && P.I.seats) || 0;
+    const left = Math.max(0, total - d - r - i);
+    const w = v => (v / total * 100).toFixed(2);
+    const winner = (P.D && P.D.winner) ? 'Demócratas' : (P.R && P.R.winner) ? 'Republicanos' : null;
+    const m = P.D && P.D.model;
+    return `<div class="usr-ch">
+      <div class="usr-ch-head"><h4>${label}</h4>${winner ? `<span class="usr-won" style="background:${winner === 'Demócratas' ? US_D : US_R}">Control: ${winner}</span>` : `<span class="muted">${total - left} de ${total} definidas</span>`}</div>
+      <div class="usr-bar"><span style="width:${w(d)}%;background:${US_D}"></span>${i ? `<span style="width:${w(i)}%;background:${US_I}"></span>` : ''}<span style="width:${w(left)}%;background:#E3E6EB"></span><span style="width:${w(r)}%;background:${US_R}"></span><i style="left:${(need / total * 100).toFixed(2)}%"></i></div>
+      <div class="usr-nums"><span style="color:${US_D}"><b>${d}</b> Demócratas${P.D && P.D.flips ? ` · +${P.D.flips} dados vuelta` : ''}</span><span class="muted">${need} para la mayoría</span><span style="color:${US_R}">Republicanos <b>${r}</b>${P.R && P.R.flips ? ` · +${P.R.flips}` : ''}</span></div>
+      ${m && m.prob != null && !winner ? `<div class="usr-model">Modelo en vivo del New York Times: los demócratas tendrían <b>${m.seats}</b> bancas (entre ${m.range ? m.range[0] + ' y ' + m.range[1] : '—'}) y un <b>${Math.round(m.prob * 100)}%</b> de chances de controlar la cámara.</div>` : ''}
+    </div>`;
+  }
+  function usResMapSVG(kind) {
+    const g = live.usGeo, st = (live.usRes && live.usRes.states) || {};
+    if (!g) return '';
+    return `<svg class="br-map-svg usr-map" viewBox="${g.viewBox}" role="img" aria-label="Resultados por estado">${g.locations.map(l => {
+      const r = st[l.id] && st[l.id][kind];
+      let fill = '#F1F3F6', tip = usStateName(l.id) + ': sin elección';
+      if (r) {
+        const top = r.cands && r.cands[0], win = (r.cands || []).find(c => c.winner);
+        fill = win ? usPartyColor(win.party) : r.eevp > 0 && top ? usPartyColor(top.party, true) : '#CBD2DC';
+        tip = `${usStateName(l.id)}: ${win ? win.name + ' (' + win.party + ') gana' : top && r.eevp > 0 ? top.name + ' (' + top.party + ') adelante' : 'sin datos aún'}${r.eevp ? ` · ${r.eevp}% del voto esperado` : ''}`;
+      }
+      return `<path d="${l.path}" style="fill:${fill}" stroke="#fff" stroke-width="1"><title>${esc(tip)}</title></path>`;
+    }).join('')}</svg>`;
+  }
+  function usRaceRows(kind, limit) {
+    const st = (live.usRes && live.usRes.states) || {};
+    const order = { tossup: 0, 'lean-dem': 1, 'lean-rep': 1, 'likely-dem': 2, 'likely-rep': 2 };
+    const rows = Object.entries(st).filter(([, s]) => s[kind]).map(([id, s]) => ({ id, r: s[kind] }))
+      .sort((a, b) => (order[a.r.rating] ?? 3) - (order[b.r.rating] ?? 3) || (b.r.eevp - a.r.eevp));
+    return rows.slice(0, limit || rows.length).map(({ id, r }) => {
+      const cs = (r.cands || []).filter(c => c.party !== 'I' || (c.pct || 0) > 5).slice(0, 2);
+      const win = (r.cands || []).find(c => c.winner);
+      return `<div class="usr-race" style="--c:${win ? usPartyColor(win.party) : '#CBD2DC'}">
+        <div class="usr-race-top"><b>${esc(usStateName(id))}</b>${win ? `<span class="usr-won" style="background:${usPartyColor(win.party)}">Gana ${esc(win.party === 'D' ? 'D' : win.party === 'R' ? 'R' : 'Ind.')}</span>` : `<span class="muted">${r.eevp ? r.eevp + '% contado' : 'sin datos'}</span>`}</div>
+        ${cs.map(c => `<div class="usr-cand"><span><i style="background:${usPartyColor(c.party)}"></i>${esc(c.name)} <small>${c.party}</small>${c.winner ? ' ✓' : ''}</span><b>${c.pct != null ? fmtPct(c.pct) : '—'}</b></div>`).join('')}
+      </div>`;
+    }).join('');
+  }
+  function usResultsHTML(mode) {
+    const R = live.usRes;
+    if (!R) return '';
+    const kind = live.usResKind || 'senate';
+    const govCalled = Object.values(R.states || {}).filter(s => s.governor && s.governor.called).length;
+    const govD = Object.values(R.states || {}).filter(s => s.governor && (s.governor.cands || []).some(c => c.winner && c.party === 'D')).length;
+    const govTotal = Object.values(R.states || {}).filter(s => s.governor).length;
+    const upd = R.updatedAt ? new Date(R.updatedAt).toLocaleTimeString('es-AR', { hour: '2-digit', minute: '2-digit', hour12: false }) : '';
+    return `
+      <div class="usr-grid">
+        ${usChamberBar(R.senate, 'Senado', 100, 51)}
+        ${usChamberBar(R.house, 'Cámara de Representantes', 435, 218)}
+      </div>
+      <div class="usr-grid usr-grid-2">
+        <div class="nh-card usr-mapcard">
+          <div class="nh-map-head"><h3>${kind === 'senate' ? 'Senado' : 'Gobernaciones'}: quién gana en cada estado</h3>
+            <div class="seg" data-usr-kind><button type="button" data-k="senate" class="${kind === 'senate' ? 'is-active' : ''}">Senado</button><button type="button" data-k="governor" class="${kind === 'governor' ? 'is-active' : ''}">Gobernadores</button></div></div>
+          ${usResMapSVG(kind)}
+          <div class="nt-legend nt-legend-row"><span><i style="background:${US_D}"></i>Gana D</span><span><i style="background:#9DBBE3"></i>D adelante</span><span><i style="background:#EBA6A6"></i>R adelante</span><span><i style="background:${US_R}"></i>Gana R</span><span><i style="background:#CBD2DC"></i>Sin datos</span></div>
+        </div>
+        <div class="nh-card"><h3>${kind === 'senate' ? 'Las carreras al Senado' : 'Las gobernaciones'}</h3>
+          ${kind === 'governor' ? `<p class="muted">${govCalled} de ${govTotal} definidas · ${govD} para los demócratas</p>` : ''}
+          <div class="usr-races">${usRaceRows(kind, mode === 'home' ? 10 : 0)}</div></div>
+      </div>
+      <p class="esp-sources">Fuente: ${esc(R.source || 'AP')} · actualizado ${esc(upd)} h. Los estados se pintan cuando AP proyecta un ganador; los porcentajes son sobre el voto contado.</p>`;
+  }
+  function wireUsResults(el, rerender) {
+    el.querySelectorAll('[data-usr-kind] [data-k]').forEach(b => b.addEventListener('click', () => { live.usResKind = b.getAttribute('data-k'); rerender(); }));
+  }
+  function renderUsHome(el) {
+    const R = live.usRes;
+    const S = R.senate && R.senate.parties, H = R.house && R.house.parties;
+    const live_ = !(S && (S.D.winner || S.R.winner)) || !(H && (H.D.winner || H.R.winner));
+    el.hidden = false;
+    el.className = 'night-home is-us';
+    el.innerHTML = `
+      <div class="nh-head">
+        <div><span class="nh-kicker"><span class="live-dot"></span>${live_ ? 'Escrutinio en vivo' : 'Resultados'} · Midterms 2026</span>
+          <h2>${flagOf('USA', 'fi-md')} Estados Unidos: ¿quién controla el Congreso?</h2>
+          <div class="nh-sub">${usResHas() ? 'Se actualiza solo cada dos minutos' : 'Cierran las urnas: los primeros resultados llegan desde las 20 h de Argentina'} · AP vía The New York Times</div></div>
+        <a class="nh-cta" href="#eeuu" onclick="window.__atlasGoTo('eeuu'); setTimeout(() => { const s = document.getElementById('us-sec-resultados'); if (s) s.scrollIntoView({ behavior: 'smooth' }); }, 400); return false;">Todo el especial →</a>
+      </div>
+      ${usResultsHTML('home')}`;
+    wireUsResults(el, () => renderUsHome(el));
+  }
+  function renderUsResults() {
+    const el = document.getElementById('us-results');
+    if (!el) return;
+    el.innerHTML = usResultsHTML('special');
+    wireUsResults(el, renderUsResults);
   }
 
   /* ===================== ESPECIAL ARGENTINA 2027 =====================
@@ -33925,6 +34068,11 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
     if (ilRes.status === 'fulfilled') live.israel = ilRes.value;
     const prevUs = live.eeuu ? JSON.stringify(live.eeuu) : null;
     if (usRes.status === 'fulfilled') live.eeuu = usRes.value;
+    // Election night: AP results (via NYT) written by tools/us_resultados.py
+    if (live.eeuu && Date.now() >= new Date(live.eeuu.dates.electionDay).getTime()) {
+      try { live.usRes = await fetchJSON(US_RES_URL); } catch (e) { /* not published yet */ }
+      if (live.usRes && !live.usGeo) { try { live.usGeo = await fetchJSON(US_GEO_URL); } catch (e) {} }
+    }
     const prevBr = live.brasil ? JSON.stringify(live.brasil) + JSON.stringify(live.brRes || {}) + JSON.stringify(live.brRes2 || {}) : null;
     if (liveRes.status === 'fulfilled') live.data = liveRes.value;
     if (brRes.status === 'fulfilled') {
@@ -33952,6 +34100,7 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
     if (isViewActive('espana') && live.espana && (JSON.stringify(live.espana) !== prevEs || !document.querySelector('#esp-espana .esp-hero'))) renderEspana();
     if (isViewActive('argentina') && live.argentina && (JSON.stringify(live.argentina) !== prevAr || !document.querySelector('#esp-argentina .esp-hero'))) renderArgentina();
     if (isViewActive('eeuu') && live.eeuu && (JSON.stringify(live.eeuu) !== prevUs || !document.querySelector('#esp-eeuu .esp-hero'))) renderEeuu();
+    else if (isViewActive('eeuu')) renderUsResults();
     scheduleRefresh();
   }
   function scheduleRefresh() {

@@ -1,0 +1,44 @@
+# Noche electoral EE.UU. 2026: lee los resultados públicos (AP vía The New York
+# Times) y publica data/especiales/eeuu-2026-resultados.json; el sitio lo lee
+# cada minuto. También se puede lanzar a mano desde Actions → Run workflow.
+name: Resultados EE.UU.
+on:
+  workflow_dispatch:
+    inputs:
+      minutes:
+        description: Minutos que queda leyendo los resultados
+        default: '55'
+  schedule:
+    - cron: '*/15 23 3 11 *'
+    - cron: '*/15 0-14 4 11 *'
+    - cron: '0 */2 5-7 11 *'
+permissions:
+  contents: write
+concurrency:
+  group: us-resultados
+  cancel-in-progress: false
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 70
+    steps:
+      - uses: actions/checkout@v4
+      - name: Leer resultados y publicar
+        env:
+          MINUTES: ${{ github.event.inputs.minutes || '14' }}
+        run: |
+          git config user.name "atlas-bot"
+          git config user.email "atlas-bot@users.noreply.github.com"
+          end=$(( $(date +%s) + MINUTES * 60 ))
+          while :; do
+            git fetch -q origin main && git reset -q --hard origin/main || true
+            timeout 170 python3 tools/us_resultados.py || echo "pasada fallida o lenta"
+            git add -N data/especiales/eeuu-2026-resultados.json 2>/dev/null || true
+            if ! git diff --quiet -- data/especiales/eeuu-2026-resultados.json; then
+              git add data/especiales/eeuu-2026-resultados.json
+              git commit -q -m "Resultados EE.UU. $(date -u +%H:%M) UTC" || true
+              git push -q origin HEAD:main || echo "push rechazado, reintento en la próxima pasada"
+            fi
+            [ $(( $(date +%s) + 120 )) -ge $end ] && break
+            sleep 100
+          done
