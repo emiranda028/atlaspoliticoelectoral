@@ -6942,6 +6942,7 @@
     .panel-map > #filters-sticky.is-docked { left: 50px; width: min(220px, calc(100% - 62px)); max-height: 60%; }
   }
   /* ===== EE.UU. noche electoral ===== */
+  .quick-link.is-special.is-us { background: #1F3A70; border-color: #1F3A70; color: #fff; }
   .night-home.is-us .nh-head { background: linear-gradient(135deg, #0B1B3F 0%, #1F3A70 60%, #8E2A2A 130%); }
   .usr-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
   .usr-grid-2 { grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); align-items: start; }
@@ -7217,7 +7218,7 @@
         </form>
         <div class="portada-search-hint" id="portada-search-hint" aria-live="polite"></div>
         <div class="portada-quick">
-          <a class="quick-link is-special" href="#brasil" onclick="return window.__atlasGoTo('brasil')"><img class="flag-img ql-flag" src="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.3.2/flags/4x3/br.svg" alt="" crossorigin="anonymous"> Especial Brasil 2026</a>
+          <a class="quick-link is-special is-us" href="#eeuu" onclick="return window.__atlasGoTo('eeuu')"><img class="flag-img ql-flag" src="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.3.2/flags/4x3/us.svg" alt="" crossorigin="anonymous"> Resultados EE.UU. 2026</a>
           <a class="quick-link" href="#nav-map" onclick="return window.__portadaToMap()"><span class="ql-icon">🗺️</span> Mapa</a>
           <a class="quick-link" href="#elecciones" onclick="return window.__atlasGoTo('elecciones')"><span class="ql-icon">🗳️</span> Calendario</a>
           <a class="quick-link" href="#analisis" onclick="return window.__atlasGoTo('analisis')"><span class="ql-icon">📊</span> Análisis</a>
@@ -33223,8 +33224,9 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
   const usResHas = () => !!(live.usRes && live.usRes.states && Object.values(live.usRes.states).some(s => ['senate', 'governor'].some(k => s[k] && (s[k].eevp > 0 || s[k].called))));
   function usHomeActive() {
     if (!live.usRes || !live.eeuu) return false;
-    const t = Date.now(), first = new Date('2026-11-03T23:00:00Z').getTime();
-    return t >= first && t < first + 5 * 86400000;
+    // From election day on (before the first polls close it shows the live model)
+    const t = Date.now(), first = new Date(live.eeuu.dates.electionDay).getTime();
+    return t >= first && t < new Date('2026-11-03T23:00:00Z').getTime() + 5 * 86400000;
   }
   function usStateName(id) {
     const s = ((live.eeuu && live.eeuu.states) || []).find(x => x.id === id);
