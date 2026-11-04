@@ -8,6 +8,9 @@ on:
       minutes:
         description: Minutos que queda leyendo los resultados
         default: '55'
+      fotos:
+        description: Volver a buscar las fotos de los candidatos en Wikipedia (si/no)
+        default: 'no'
   schedule:
     - cron: '*/15 23 3 11 *'
     - cron: '*/15 0-14 4 11 *'
@@ -23,6 +26,17 @@ jobs:
     timeout-minutes: 70
     steps:
       - uses: actions/checkout@v4
+      - name: Fotos de los candidatos (Wikipedia)
+        if: ${{ github.event.inputs.fotos == 'si' || hashFiles('data/especiales/eeuu-2026-fotos.json') == '' }}
+        run: |
+          git config user.name "atlas-bot"
+          git config user.email "atlas-bot@users.noreply.github.com"
+          timeout 600 python3 tools/us_fotos.py $([ "${{ github.event.inputs.fotos }}" = "si" ] && echo --fresh) || echo "fotos incompletas"
+          if [ -f data/especiales/eeuu-2026-fotos.json ]; then
+            git add data/especiales/eeuu-2026-fotos.json
+            git commit -q -m "Fotos de candidatos EE.UU." || true
+            git pull -q --rebase origin main && git push -q origin HEAD:main || echo "push de fotos rechazado"
+          fi
       - name: Leer resultados y publicar
         env:
           MINUTES: ${{ github.event.inputs.minutes || '14' }}
@@ -33,9 +47,10 @@ jobs:
           while :; do
             git fetch -q origin main && git reset -q --hard origin/main || true
             timeout 170 python3 tools/us_resultados.py || echo "pasada fallida o lenta"
-            git add -N data/especiales/eeuu-2026-resultados.json 2>/dev/null || true
+            git add -N data/especiales/eeuu-2026-resultados.json data/especiales/eeuu-2026-fotos.json 2>/dev/null || true
             if ! git diff --quiet -- data/especiales/eeuu-2026-resultados.json; then
               git add data/especiales/eeuu-2026-resultados.json
+              grep -q '"__done__"' data/especiales/eeuu-2026-fotos.json 2>/dev/null && git add data/especiales/eeuu-2026-fotos.json
               git commit -q -m "Resultados EE.UU. $(date -u +%H:%M) UTC" || true
               git push -q origin HEAD:main || echo "push rechazado, reintento en la próxima pasada"
             fi
