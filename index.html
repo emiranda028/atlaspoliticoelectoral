@@ -7110,6 +7110,9 @@
   .usx-turn { display: flex; flex-wrap: wrap; gap: 4px 18px; font-size: 13.5px; color: rgba(255,255,255,.8); border-top: 1px solid rgba(255,255,255,.14); padding-top: 8px; }
   .usx-turn b { color: #fff; }
   .usx-races.is-compact .usx-turn { font-size: 12px; padding-top: 6px; }
+
+  .usr-lbl text { font: 700 11px var(--font-sans, Inter, sans-serif); letter-spacing: .02em; }
+  .usr-lbl text.is-out { fill: #3A4558; font-size: 10.5px; }
   .usr-eevp { height: 3px; border-radius: 2px; background: var(--surface-2); margin: 4px 0 4px; overflow: hidden; }
   .usr-eevp span { display: block; height: 100%; background: var(--ink-soft, #55617A); }
   .usr-ctybox { margin-bottom: 12px; }
@@ -33435,10 +33438,11 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
     const s = ((live.eeuu && live.eeuu.states) || []).find(x => x.id === id);
     return s && s[kind] && s[kind].party || null;
   }
+  const usDarkFill = hex => { const m = /^#([0-9a-f]{6})$/i.exec(hex || ''); if (!m) return false; const n = parseInt(m[1], 16); return (0.299 * (n >> 16) + 0.587 * ((n >> 8) & 255) + 0.114 * (n & 255)) < 150; };
   function usResMapSVG(kind, mode) {
     const g = live.usGeo, st = (live.usRes && live.usRes.states) || {};
     if (!g) return '';
-    const flips = [];
+    const flips = [], fills = {};
     const paths = g.locations.map(l => {
       const r = st[l.id] && st[l.id][kind];
       let fill = '#F1F3F6', tip = usStateName(l.id) + ': sin elección';
@@ -33456,11 +33460,17 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
           tip = `${usStateName(l.id)}: ${win ? win.name + ' (' + win.party + ') gana' + (flip ? ' y la banca cambia de partido' : '') : top && r.eevp > 0 ? top.name + ' (' + top.party + ') adelante' : 'sin datos aún'}${r.eevp ? ` · ${r.eevp}% del voto esperado` : ''}${prevTxt}`;
         }
       }
+      fills[l.id] = fill;
       return `<path d="${l.path}" style="fill:${fill}" stroke="#fff" stroke-width="1" data-usx-state="${l.id}"><title>${esc(tip)}</title></path>`;
     }).join('');
     return `<svg class="br-map-svg usr-map" viewBox="${g.viewBox}" role="img" aria-label="Resultados por estado">
       <defs><pattern id="usr-flip" patternUnits="userSpaceOnUse" width="7" height="7" patternTransform="rotate(45)"><rect width="2.6" height="7" fill="rgba(255,255,255,.75)"/></pattern></defs>
-      ${paths}${flips.map(d => `<path d="${d}" fill="url(#usr-flip)" stroke="#0B1628" stroke-width="1.6" pointer-events="none"/>`).join('')}</svg>`;
+      ${paths}${flips.map(d => `<path d="${d}" fill="url(#usr-flip)" stroke="#0B1628" stroke-width="1.6" pointer-events="none"/>`).join('')}
+      <g class="usr-lbl" pointer-events="none">${g.locations.filter(l => l.lx != null).map(l => {
+        const f = fills[l.id] || '#F1F3F6';
+        if (l.ox != null) return `<line x1="${l.lx}" y1="${l.ly}" x2="${l.ox - 3}" y2="${l.oy - 4}" stroke="#7A8599" stroke-width=".8"/><circle cx="${l.lx}" cy="${l.ly}" r="1.6" fill="#7A8599"/><rect x="${l.ox}" y="${l.oy - 10}" width="9" height="9" rx="2" fill="${f}" stroke="#7A8599" stroke-width=".5"/><text x="${l.ox + 12}" y="${l.oy - 1.5}" class="is-out">${l.id}</text>`;
+        return `<text x="${l.lx}" y="${l.ly + 4}" text-anchor="middle" fill="${usDarkFill(f) ? '#fff' : '#1C2537'}"${l.id === 'HI' ? ' font-size="9"' : ''}>${l.id}</text>`;
+      }).join('')}</g></svg>`;
   }
   const usInitials = n => String(n || '').split(/\s+/).filter(Boolean).map(w => w[0]).slice(0, 2).join('').toUpperCase();
   function usAvatar(c, big) {
