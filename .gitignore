@@ -21,3 +21,4 @@ build/
 .env
 .env.local
 i18n/missing-*.json
+__pycache__/

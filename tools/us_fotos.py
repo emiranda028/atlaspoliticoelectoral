@@ -2,7 +2,7 @@
 """EE.UU. 2026 — busca en Wikipedia (en inglés) la foto de cada candidato al
 Senado y a gobernador y escribe data/especiales/eeuu-2026-fotos.json:
 
-  {"warner-m": {"name": "Mark Warner", "wiki": "Mark_Warner",
+  {"VA:warner-m": {"name": "Mark Warner", "wiki": "Mark_Warner",
                 "desc": "American politician (born 1954)", "img": "https://upload.wikimedia.org/..."}}
 
 Solo usa imágenes con licencia libre (pageimages con pilicense=free) y acepta
@@ -67,7 +67,9 @@ def save(out):
 
 def main(deadline=None, fresh=False):
     out = json.load(open(OUT)) if os.path.exists(OUT) and not fresh else {}
+    if out.get('__v') != 2: out = {}  # v1 used the bare NYT id, which repeats across states
     out.pop('__done__', None)
+    out['__v'] = 2
     n = 0
     for name in ('senate', 'governor'):
         data = get_json(f'{BASE}/results-{name}.json?t={int(time.time())}')
@@ -78,7 +80,7 @@ def main(deadline=None, fresh=False):
             # Major candidates only: D, R and the top independents by ballot order
             cands = sorted(meta.values(), key=lambda m: (((m.get('party') or {}).get('nyt_id') not in ('DEM', 'GOP')), m.get('order') or 99))[:3]
             for m in cands:
-                cid = m['nyt_id']
+                cid = f"{st}:{m['nyt_id']}"  # NYT ids repeat across states (booker-c)
                 if cid in out: continue
                 if deadline and time.time() > deadline:
                     save(out); print('fotos: sigue en la próxima pasada', flush=True); return False
