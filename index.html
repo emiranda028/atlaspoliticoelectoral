@@ -6984,6 +6984,83 @@
   .usr-segs { display: flex; gap: 8px; flex-wrap: wrap; }
   .usr-flip-key { background: repeating-linear-gradient(135deg, #2A5596 0 3px, #fff 3px 5px) !important; outline: 1.5px solid #0B1628; }
   .usr-note { font-size: 12px; color: var(--muted); margin: 6px 0 0; }
+  /* Compartir resultados EE.UU. */
+  .usr-share { display: inline-flex; align-items: center; gap: 6px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); border-radius: 999px; padding: 5px 11px; font: 600 12px var(--font-sans); cursor: pointer; }
+  .usr-share:hover { background: var(--ink); color: #fff; border-color: var(--ink); }
+  .usr-ch-head .usr-share { margin-left: auto; padding: 5px 8px; }
+  .usr-ch-head .usr-share span { display: none; }
+  .usr-map-foot { display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; font-size: 12.5px; margin: 6px 0; }
+  .usr-share-all { display: flex; justify-content: center; margin: 4px 0 10px; }
+  .usr-share-all .usr-share { padding: 9px 18px; font-size: 13.5px; }
+  .usr-map path[data-usx-state] { cursor: pointer; }
+  .usr-map path[data-usx-state]:hover { opacity: .82; }
+  .usr-race[data-usx-state] { cursor: pointer; transition: transform .12s; }
+  .usr-race[data-usx-state]:hover { transform: translateY(-2px); }
+  html.usx-open { overflow: hidden; }
+  .usx-modal { position: fixed; inset: 0; z-index: 3000; background: rgba(8,14,28,.62); display: flex; align-items: flex-start; justify-content: center; padding: 28px 16px; overflow-y: auto; }
+  .usx-modal[hidden] { display: none; }
+  .usx-dlg { background: var(--surface); color: var(--ink); width: min(860px, 100%); border-radius: 16px; padding: 16px 18px 18px; box-shadow: 0 30px 80px -20px rgba(0,0,0,.5); }
+  .usx-dlg-h { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; font: 700 18px var(--font-serif); }
+  .usx-x { border: 0; background: var(--surface-2); width: 34px; height: 34px; border-radius: 50%; font-size: 22px; line-height: 1; cursor: pointer; color: var(--ink); }
+  .usx-dlg-ficha { margin-bottom: 12px; }
+  .usx-dlg-ficha .usr-races { max-height: none; }
+  .usx-prev-wrap { --k: .7; width: 100%; height: calc(675px * var(--k)); overflow: hidden; border-radius: 10px; }
+  .usx-scale { width: 1200px; height: 675px; transform: scale(var(--k)); transform-origin: 0 0; }
+  .usx-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+  .usx-btn { border: 1px solid var(--line); background: var(--surface); color: var(--ink); border-radius: 999px; padding: 8px 14px; font: 600 13px var(--font-sans); cursor: pointer; text-decoration: none; }
+  .usx-btn.is-main { background: var(--ink); color: #fff; border-color: var(--ink); }
+  .usx-btn:disabled { opacity: .6; cursor: progress; }
+  .usx-hint { font-size: 12px; color: var(--muted); margin: 8px 0 0; }
+  /* La tarjeta (siempre 1200×675, colores fijos) */
+  .usx { position: relative; width: 1200px; height: 675px; overflow: hidden; color: #fff; font-family: Inter, system-ui, sans-serif; padding: 34px 42px 24px; box-sizing: border-box; display: flex; flex-direction: column;
+    background: radial-gradient(110% 90% at 90% 0%, #7E2424 0%, rgba(126,36,36,0) 50%), linear-gradient(160deg, #0B1B3F, #13295A 60%, #0B1B3F); }
+  .usx * { box-sizing: border-box; }
+  .usx-top { display: flex; justify-content: space-between; align-items: flex-end; gap: 20px; margin-bottom: 18px; }
+  .usx-k { font: 700 14px Inter, sans-serif; letter-spacing: .16em; text-transform: uppercase; color: #F2C14E; display: flex; gap: 10px; align-items: center; }
+  .usx-k i { width: 10px; height: 10px; border-radius: 50%; background: #E04B4B; box-shadow: 0 0 0 5px rgba(224,75,75,.25); }
+  .usx h2 { font: 800 50px/1 'Newsreader', Georgia, serif; letter-spacing: -.02em; margin: 10px 0 0; color: #fff; }
+  .usx h2 em { font-style: italic; font-weight: 500; color: #F2C14E; }
+  .usx-upd { font-size: 14px; color: rgba(255,255,255,.75); text-align: right; white-space: nowrap; }
+  .usx-upd b { display: block; color: #fff; font-size: 20px; }
+  .usx-body { flex: 1; min-height: 0; }
+  .usx-foot { display: flex; justify-content: space-between; align-items: flex-end; border-top: 1px solid rgba(255,255,255,.2); padding-top: 12px; margin-top: 14px; }
+  .usx-brand { font: 800 24px 'Newsreader', Georgia, serif; } .usx-brand em { color: #F59E3A; font-style: italic; font-weight: 600; }
+  .usx-src { font-size: 12px; color: rgba(255,255,255,.6); margin-top: 2px; }
+  .usx-url { font: 700 18px Inter, sans-serif; color: #F2C14E; }
+  .usx-ch { background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.15); border-radius: 16px; padding: 14px 20px; }
+  .usx-ch + .usx-ch { margin-top: 14px; }
+  .usx-ch-h { display: flex; justify-content: space-between; align-items: center; gap: 10px; font-size: 14px; color: rgba(255,255,255,.75); }
+  .usx-ch-h b { font: 800 26px 'Newsreader', Georgia, serif; color: #fff; }
+  .usx-won { color: #fff; font: 800 12px Inter, sans-serif; letter-spacing: .05em; text-transform: uppercase; padding: 5px 12px; border-radius: 999px; }
+  .usx-nums { display: flex; justify-content: space-between; align-items: baseline; font-weight: 700; color: rgba(255,255,255,.7); margin-top: 2px; }
+  .usx-nums b { font: 800 52px/1 'Newsreader', Georgia, serif; }
+  .usx-bar { position: relative; display: flex; height: 18px; border-radius: 5px; background: rgba(255,255,255,.14); margin-top: 8px; }
+  .usx-bar i { display: block; height: 100%; } .usx-bar i:first-child { border-radius: 5px 0 0 5px; } .usx-bar i:last-of-type { border-radius: 0 5px 5px 0; }
+  .usx-bar em { position: absolute; top: -5px; bottom: -5px; width: 3px; background: #F2C14E; transform: translateX(-50%); }
+  .usx-model { font-size: 13.5px; color: rgba(255,255,255,.82); margin-top: 8px; }
+  .usx-one { display: flex; align-items: center; height: 100%; } .usx-one .usx-ch { width: 100%; padding: 26px 34px; }
+  .usx-one .usx-nums b { font-size: 120px; } .usx-one .usx-bar { height: 34px; } .usx-one .usx-model { font-size: 18px; }
+  .usx-split { display: grid; grid-template-columns: 430px 1fr; gap: 26px; height: 100%; align-items: start; }
+  .usx-map { background: rgba(255,255,255,.96); border-radius: 16px; padding: 10px 18px 8px; color: #33415C; }
+  .usx-map-h { font: 700 12px Inter, sans-serif; letter-spacing: .08em; text-transform: uppercase; margin: 0 0 2px; }
+  .usx-map svg { width: 100%; height: auto; display: block; }
+  .usx-leg { display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 12px; font: 600 11.5px Inter, sans-serif; margin-top: 2px; }
+  .usx-leg i { display: inline-block; width: 11px; height: 11px; border-radius: 3px; margin-right: 4px; vertical-align: -1px; }
+  .usx-races { display: grid; gap: 18px; height: 100%; } .usx-races.n2 { grid-template-columns: 1fr 1fr; } .usx-races.n1 { max-width: 760px; }
+  .usx-race { background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.15); border-radius: 16px; padding: 16px 20px; display: flex; flex-direction: column; gap: 10px; }
+  .usx-race-h { display: flex; justify-content: space-between; align-items: center; font-size: 14px; color: rgba(255,255,255,.75); }
+  .usx-race-h b { font: 800 26px 'Newsreader', Georgia, serif; color: #fff; }
+  .usx-cand { display: grid; grid-template-columns: auto 1fr auto; gap: 14px; align-items: center; }
+  .usx-av { position: relative; width: 58px; height: 58px; border-radius: 50%; overflow: hidden; background: var(--pc); display: grid; place-items: center; font: 800 18px Inter, sans-serif; color: #fff; box-shadow: 0 0 0 3px #13295A, 0 0 0 5px var(--pc); }
+  .usx-cand.is-win .usx-av { width: 84px; height: 84px; font-size: 24px; }
+  .usx-av img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 20%; }
+  .usx-cn { font-size: 18px; font-weight: 600; line-height: 1.25; } .usx-cand.is-win .usx-cn { font-size: 22px; font-weight: 800; }
+  .usx-cn small { display: block; font-size: 12.5px; font-weight: 500; color: rgba(255,255,255,.65); }
+  .usx-check { color: #F2C14E; font-size: 15px; }
+  .usx-cb { height: 8px; border-radius: 4px; background: rgba(255,255,255,.14); margin-top: 6px; overflow: hidden; } .usx-cb i { display: block; height: 100%; }
+  .usx-pct { font: 800 26px 'Newsreader', Georgia, serif; } .usx-cand.is-win .usx-pct { font-size: 36px; }
+  .usx-prev { margin-top: auto; font-size: 13.5px; color: rgba(255,255,255,.75); } .usx-prev i { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 6px; } .usx-prev b { color: #fff; }
+
   @media (max-width: 900px) { .usr-grid, .usr-grid-2 { grid-template-columns: 1fr; } }
 </style>
 </head>
@@ -33260,7 +33337,7 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
     const winner = (P.D && P.D.winner) ? 'Demócratas' : (P.R && P.R.winner) ? 'Republicanos' : null;
     const m = P.D && P.D.model;
     return `<div class="usr-ch">
-      <div class="usr-ch-head"><h4>${label}</h4>${winner ? `<span class="usr-won" style="background:${winner === 'Demócratas' ? US_D : US_R}">Control: ${winner}</span>` : `<span class="muted">${total - left} de ${total} definidas</span>`}</div>
+      <div class="usr-ch-head"><h4>${label}</h4>${usShareBtn(total === 100 ? 'senate' : 'house', '', '')}${winner ? `<span class="usr-won" style="background:${winner === 'Demócratas' ? US_D : US_R}">Control: ${winner}</span>` : `<span class="muted">${total - left} de ${total} definidas</span>`}</div>
       <div class="usr-bar"><span style="width:${w(d)}%;background:${US_D}"></span>${i ? `<span style="width:${w(i)}%;background:${US_I}"></span>` : ''}<span style="width:${w(left)}%;background:#E3E6EB"></span><span style="width:${w(r)}%;background:${US_R}"></span><i style="left:${(need / total * 100).toFixed(2)}%"></i></div>
       <div class="usr-nums"><span style="color:${US_D}"><b>${d}</b> Demócratas${P.D && P.D.flips ? ` · +${P.D.flips} dados vuelta` : ''}</span><span class="muted">${need} para la mayoría</span><span style="color:${US_R}">Republicanos <b>${r}</b>${P.R && P.R.flips ? ` · +${P.R.flips}` : ''}</span></div>
       ${m && m.prob != null && !winner ? `<div class="usr-model">Modelo en vivo del New York Times: los demócratas tendrían <b>${m.seats}</b> bancas (entre ${m.range ? m.range[0] + ' y ' + m.range[1] : '—'}) y un <b>${Math.round(m.prob * 100)}%</b> de chances de controlar la cámara.</div>` : ''}
@@ -33293,7 +33370,7 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
           tip = `${usStateName(l.id)}: ${win ? win.name + ' (' + win.party + ') gana' + (flip ? ' y la banca cambia de partido' : '') : top && r.eevp > 0 ? top.name + ' (' + top.party + ') adelante' : 'sin datos aún'}${r.eevp ? ` · ${r.eevp}% del voto esperado` : ''}${prevTxt}`;
         }
       }
-      return `<path d="${l.path}" style="fill:${fill}" stroke="#fff" stroke-width="1"><title>${esc(tip)}</title></path>`;
+      return `<path d="${l.path}" style="fill:${fill}" stroke="#fff" stroke-width="1" data-usx-state="${l.id}"><title>${esc(tip)}</title></path>`;
     }).join('');
     return `<svg class="br-map-svg usr-map" viewBox="${g.viewBox}" role="img" aria-label="Resultados por estado">
       <defs><pattern id="usr-flip" patternUnits="userSpaceOnUse" width="7" height="7" patternTransform="rotate(45)"><rect width="2.6" height="7" fill="rgba(255,255,255,.75)"/></pattern></defs>
@@ -33303,10 +33380,10 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
   function usAvatar(c, big) {
     return `<span class="usr-av${big ? ' is-big' : ''}" style="--pc:${usPartyColor(c.party)}"><span>${esc(usInitials(c.name))}</span>${c.img ? `<img src="${esc(c.img)}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()">` : ''}</span>`;
   }
-  function usRaceRows(kind, limit) {
+  function usRaceRows(kind, limit, only) {
     const st = (live.usRes && live.usRes.states) || {};
     const order = { tossup: 0, 'lean-dem': 1, 'lean-rep': 1, 'likely-dem': 2, 'likely-rep': 2 };
-    const rows = Object.entries(st).filter(([, s]) => s[kind]).map(([id, s]) => ({ id, r: s[kind] }))
+    const rows = Object.entries(st).filter(([id, s]) => s[kind] && (!only || id === only)).map(([id, s]) => ({ id, r: s[kind] }))
       .sort((a, b) => (order[a.r.rating] ?? 3) - (order[b.r.rating] ?? 3) || (b.r.eevp - a.r.eevp));
     return rows.slice(0, limit || rows.length).map(({ id, r }) => {
       const cs = (r.cands || []).filter(c => c.party !== 'I' || (c.pct || 0) > 5 || c.winner).slice(0, 2);
@@ -33315,8 +33392,8 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
       const flip = win && prev && win.party !== prev;
       const status = win ? `<span class="usr-won" style="background:${usPartyColor(win.party)}">${flip ? 'Cambia a ' : 'Gana '}${esc(win.party === 'I' ? 'Ind.' : win.party)}</span>`
         : `<span class="muted">${r.eevp ? r.eevp + '% contado' : 'sin datos'}</span>`;
-      return `<div class="usr-race${win ? ' is-called' : ''}${flip ? ' is-flip' : ''}" style="--c:${win ? usPartyColor(win.party) : '#CBD2DC'}">
-        <div class="usr-race-top"><b>${esc(usStateName(id))}</b>${status}</div>
+      return `<div class="usr-race${win ? ' is-called' : ''}${flip ? ' is-flip' : ''}" style="--c:${win ? usPartyColor(win.party) : '#CBD2DC'}"${only ? '' : ` data-usx-state="${id}" role="button" tabindex="0" title="Ver la ficha y compartir"`}>
+        <div class="usr-race-top"><b>${only ? (kind === 'senate' ? 'Senado' : 'Gobernación') : esc(usStateName(id))}</b>${status}</div>
         ${prev ? `<div class="usr-prev"><i style="background:${usPartyColor(prev)}"></i>Antes: banca ${usPartyName(prev)}${flip ? ' · <b>cambia de partido</b>' : win ? ' · la retiene' : ''}</div>` : ''}
         ${cs.map(c => `<div class="usr-cand${c.winner ? ' is-win' : ''}">${usAvatar(c, c.winner)}
           <div class="usr-cand-main"><div class="usr-cand-name">${esc(c.name)} <small>${c.party}${c.incumbent ? ' · en el cargo' : ''}</small>${c.winner ? ' <span class="usr-check">✓</span>' : ''}</div>
@@ -33344,6 +33421,7 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
             <div class="usr-segs"><div class="seg" data-usr-kind><button type="button" data-k="senate" class="${kind === 'senate' ? 'is-active' : ''}">Senado</button><button type="button" data-k="governor" class="${kind === 'governor' ? 'is-active' : ''}">Gobernadores</button></div>
             <div class="seg" data-usr-map><button type="button" data-m="now" class="${mapMode === 'now' ? 'is-active' : ''}">2026</button><button type="button" data-m="prev" class="${mapMode === 'prev' ? 'is-active' : ''}">Elección anterior</button></div></div></div>
           ${usResMapSVG(kind, mapMode)}
+          <div class="usr-map-foot"><span class="muted">Tocá un estado para ver su ficha y compartirla</span>${usShareBtn('map', '', 'Compartir mapa')}</div>
           ${mapMode === 'prev'
             ? `<div class="nt-legend nt-legend-row"><span><i style="background:${US_D}"></i>Banca demócrata</span><span><i style="background:${US_R}"></i>Banca republicana</span><span><i style="background:#F1F3F6;border:1px solid #CBD2DC"></i>Sin elección en 2026</span></div><p class="usr-note">Partido que tenía cada banca antes de esta votación. En el Senado, la mayoría se eligió en 2020; en las gobernaciones, en 2022.</p>`
             : `<div class="nt-legend nt-legend-row"><span><i style="background:${US_D}"></i>Gana D</span><span><i style="background:#9DBBE3"></i>D adelante</span><span><i style="background:#EBA6A6"></i>R adelante</span><span><i style="background:${US_R}"></i>Gana R</span><span><i style="background:#CBD2DC"></i>Sin datos</span><span><i class="usr-flip-key"></i>Cambia de partido</span></div>`}
@@ -33352,11 +33430,17 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
           ${kind === 'governor' ? `<p class="muted">${govCalled} de ${govTotal} definidas · ${govD} para los demócratas</p>` : ''}
           <div class="usr-races">${usRaceRows(kind, mode === 'home' ? 10 : 0)}</div></div>
       </div>
+      <div class="usr-share-all">${usShareBtn('all', '', 'Compartir resumen de resultados')}</div>
       <p class="esp-sources">Fuente: ${esc(R.source || 'AP')} · actualizado ${esc(upd)} h. Los estados se pintan cuando AP proyecta un ganador; los porcentajes son sobre el voto contado.</p>`;
   }
   function wireUsResults(el, rerender) {
     el.querySelectorAll('[data-usr-kind] [data-k]').forEach(b => b.addEventListener('click', () => { live.usResKind = b.getAttribute('data-k'); rerender(); }));
     el.querySelectorAll('[data-usr-map] [data-m]').forEach(b => b.addEventListener('click', () => { live.usResMap = b.getAttribute('data-m'); rerender(); }));
+    el.querySelectorAll('[data-usx-open]').forEach(b => b.addEventListener('click', e => { e.stopPropagation(); usShareOpen(b.getAttribute('data-usx-open'), b.getAttribute('data-arg') || undefined); }));
+    el.querySelectorAll('[data-usx-state]').forEach(n => {
+      n.addEventListener('click', () => usShareOpen('state', n.getAttribute('data-usx-state')));
+      n.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); usShareOpen('state', n.getAttribute('data-usx-state')); } });
+    });
   }
   function renderUsHome(el) {
     const R = live.usRes;
@@ -33380,6 +33464,191 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
     el.innerHTML = usResultsHTML('special');
     wireUsResults(el, renderUsResults);
   }
+
+  /* ---------- Compartir: fichas en imagen (1200×675) para redes ----------
+     Tipos: 'state' (un estado, con Senado y gobernación), 'senate', 'house',
+     'map' (el mapa que se está viendo) y 'all' (resumen completo). La imagen
+     se arma en el navegador con html-to-image. Enlace directo: ?us=TX#eeuu,
+     ?us=senado, ?us=camara, ?us=mapa, ?us=resultados. */
+  const US_SHARE_SLUG = { senate: 'senado', house: 'camara', map: 'mapa', all: 'resultados' };
+  const usHour = () => live.usRes && live.usRes.updatedAt ? new Date(live.usRes.updatedAt).toLocaleTimeString('es-AR', { hour: '2-digit', minute: '2-digit', hour12: false, timeZone: 'America/Argentina/Buenos_Aires' }) : '';
+  function usxChamber(ch, label, total, need) {
+    const P = ch.parties, d = P.D.seats || 0, r = P.R.seats || 0, i = (P.I && P.I.seats) || 0, w = v => (v / total * 100).toFixed(2);
+    const won = P.D.winner ? 'D' : P.R.winner ? 'R' : null;
+    const fav = P.D.model && P.D.model.prob != null ? (P.D.model.prob >= (P.R.model.prob || 0) ? ['demócratas', P.D.model] : ['republicanos', P.R.model]) : null;
+    return `<div class="usx-ch">
+      <div class="usx-ch-h"><b>${label}</b>${won ? `<span class="usx-won" style="background:${usPartyColor(won)}">Control ${won === 'D' ? 'demócrata' : 'republicano'} ✓</span>` : `<span>${ch.called || 0} de ${ch.up} definidas · mayoría: ${need}</span>`}</div>
+      <div class="usx-nums"><span><b style="color:#8FB0EC">${d}</b> D</span><span>R <b style="color:#F08A8A">${r}</b></span></div>
+      <div class="usx-bar"><i style="width:${w(d)}%;background:${US_D}"></i>${i ? `<i style="width:${w(i)}%;background:${US_I}"></i>` : ''}<i style="flex:1"></i><i style="width:${w(r)}%;background:${US_R}"></i><em style="left:${w(need)}%"></em></div>
+      ${!won && fav ? `<div class="usx-model">Modelo en vivo NYT: ${fav[1].seats} bancas para los ${fav[0]} · ${Math.round(fav[1].prob * 100)}% de chances</div>` : ''}
+      ${P.D.flips || P.R.flips ? `<div class="usx-model">Bancas que cambian de partido: D +${P.D.flips || 0} · R +${P.R.flips || 0}</div>` : ''}
+    </div>`;
+  }
+  function usxRace(id, kind, r) {
+    const prev = usPrev(id, kind, r), win = (r.cands || []).find(c => c.winner), flip = win && prev && win.party !== prev;
+    const cs = (r.cands || []).filter(c => c.party !== 'I' || (c.pct || 0) > 5 || c.winner).slice(0, 3);
+    return `<div class="usx-race">
+      <div class="usx-race-h"><b>${kind === 'senate' ? 'Senado' : 'Gobernación'}</b>
+        <span>${win ? `<span class="usx-won" style="background:${usPartyColor(win.party)}">${flip ? 'Cambia de partido' : 'Proyectado'}</span>` : r.eevp ? r.eevp + '% del voto contado' : 'Sin votos contados aún'}</span></div>
+      ${cs.map(c => `<div class="usx-cand${c.winner ? ' is-win' : ''}">
+        <span class="usx-av" style="--pc:${usPartyColor(c.party)}"><span>${esc(usInitials(c.name))}</span>${c.img ? `<img src="${esc(c.img)}" crossorigin="anonymous" alt="">` : ''}</span>
+        <div class="usx-cm"><div class="usx-cn">${esc(c.name)} <small>${c.party === 'D' ? 'Demócrata' : c.party === 'R' ? 'Republicano' : 'Independiente'}${c.incumbent ? ' · en el cargo' : ''}</small>${c.winner ? ' <span class="usx-check">✓ Gana</span>' : ''}</div>
+          <div class="usx-cb"><i style="width:${Math.min(100, c.pct || 0)}%;background:${usPartyColor(c.party)}"></i></div></div>
+        <b class="usx-pct">${c.pct != null && r.eevp ? fmtPct(c.pct) : '—'}</b></div>`).join('')}
+      ${prev ? `<div class="usx-prev"><i style="background:${usPartyColor(prev)}"></i>Antes: banca ${usPartyName(prev)}${flip ? ' · <b>cambia de partido</b>' : win ? ' · la retiene' : ''}</div>` : ''}
+    </div>`;
+  }
+  function usxFrame(kicker, title, body) {
+    return `<div class="usx"><div class="usx-top"><div><div class="usx-k"><i></i>${kicker}</div><h2>${title}</h2></div><div class="usx-upd">Actualizado<b>${usHour()} h (Argentina)</b></div></div>
+      <div class="usx-body">${body}</div>
+      <div class="usx-foot"><div><div class="usx-brand">Atlas <em>Político</em> Mundial</div><div class="usx-src">Datos: Associated Press, vía The New York Times</div></div><div class="usx-url">atlaspoliticoelectoral.com</div></div></div>`;
+  }
+  function usShareCard(type, arg) {
+    const R = live.usRes; if (!R) return '';
+    const kicker = 'Midterms EE.UU. 2026 · ' + (usResHas() ? 'resultados' : 'antes del cierre');
+    if (type === 'state') {
+      const s = R.states[arg] || {};
+      const kinds = ['senate', 'governor'].filter(k => s[k]);
+      return usxFrame(kicker, esc(usStateName(arg)), `<div class="usx-races n${kinds.length}">${kinds.map(k => usxRace(arg, k, s[k])).join('')}</div>`);
+    }
+    if (type === 'senate' || type === 'house') {
+      const ch = type === 'senate' ? R.senate : R.house;
+      return usxFrame(kicker, type === 'senate' ? 'Senado' : 'Cámara de Representantes', `<div class="usx-one">${usxChamber(ch, type === 'senate' ? '100 bancas · 35 en juego' : '435 bancas · todas en juego', type === 'senate' ? 100 : 435, type === 'senate' ? 51 : 218)}</div>`);
+    }
+    const kind = live.usResKind || 'senate', mode = live.usResMap || 'now';
+    const map = `<div class="usx-map"><div class="usx-map-h">${kind === 'senate' ? 'Senado' : 'Gobernaciones'} · ${mode === 'prev' ? 'partido que tenía cada banca' : 'quién gana en cada estado'}</div>${usResMapSVG(kind, mode)}
+      <div class="usx-leg">${mode === 'prev' ? `<span><i style="background:${US_D}"></i>Banca D</span><span><i style="background:${US_R}"></i>Banca R</span>` : `<span><i style="background:${US_D}"></i>Gana D</span><span><i style="background:#9DBBE3"></i>D adelante</span><span><i style="background:#EBA6A6"></i>R adelante</span><span><i style="background:${US_R}"></i>Gana R</span><span><i class="usr-flip-key"></i>Cambia de partido</span>`}</div></div>`;
+    const side = `<div class="usx-side">${usxChamber(R.senate, 'Senado', 100, 51)}${usxChamber(R.house, 'Cámara', 435, 218)}</div>`;
+    const S = R.senate.parties, H = R.house.parties;
+    const head = S.D.winner && H.D.winner ? 'Los demócratas <em>recuperan el Congreso</em>' : S.R.winner && H.R.winner ? 'Los republicanos <em>retienen el Congreso</em>'
+      : H.D.winner ? 'Los demócratas <em>ganan la Cámara</em>' : H.R.winner ? 'Los republicanos <em>retienen la Cámara</em>'
+      : S.D.winner ? 'Los demócratas <em>ganan el Senado</em>' : S.R.winner ? 'Los republicanos <em>retienen el Senado</em>' : '¿Quién controla <em>el Congreso?</em>';
+    return usxFrame(kicker, head, `<div class="usx-split">${side}${map}</div>`);
+  }
+  function usShareText(type, arg) {
+    const R = live.usRes, S = R.senate.parties, H = R.house.parties;
+    if (type === 'state') {
+      const s = R.states[arg] || {};
+      const line = (k, lab) => {
+        const r = s[k]; if (!r) return '';
+        const win = (r.cands || []).find(c => c.winner), top = (r.cands || [])[0];
+        return win ? `${lab}: gana ${win.name} (${win.party})${win.pct != null ? ' con ' + fmtPct(win.pct) : ''}` : r.eevp && top ? `${lab}: ${top.name} (${top.party}) adelante, ${fmtPct(top.pct)} con ${r.eevp}% contado` : `${lab}: sin votos contados aún`;
+      };
+      return [`🇺🇸 ${usStateName(arg)} · Midterms 2026`, line('senate', '🏛️ Senado'), line('governor', '🏢 Gobernación')].filter(Boolean).join('\n');
+    }
+    const sen = `🏛️ Senado: D ${S.D.seats} – R ${S.R.seats} (mayoría: 51)`, cam = `🏠 Cámara: D ${H.D.seats} – R ${H.R.seats} (mayoría: 218)`;
+    return [`🇺🇸 Midterms 2026, en vivo (${usHour()} h ARG)`, type === 'house' ? cam : sen, type === 'all' || type === 'map' ? cam : ''].filter(Boolean).join('\n');
+  }
+  function usShareURL(type, arg) {
+    const u = new URL(location.origin + location.pathname);
+    u.searchParams.set('us', type === 'state' ? arg : US_SHARE_SLUG[type]);
+    u.hash = 'eeuu';
+    return u.toString();
+  }
+  let usShareState = null;
+  function usShareOpen(type, arg) {
+    if (!live.usRes) return;
+    usShareState = { type, arg };
+    let m = document.getElementById('usx-modal');
+    if (!m) {
+      m = document.createElement('div');
+      m.id = 'usx-modal'; m.className = 'usx-modal'; m.setAttribute('role', 'dialog'); m.setAttribute('aria-modal', 'true');
+      document.body.appendChild(m);
+      m.addEventListener('click', e => { if (e.target === m || e.target.closest('[data-usx-close]')) usShareClose(); });
+      document.addEventListener('keydown', e => { if (e.key === 'Escape' && usShareState) usShareClose(); });
+    }
+    usShareRender();
+    m.hidden = false;
+    document.documentElement.classList.add('usx-open');
+  }
+  function usShareClose() {
+    const m = document.getElementById('usx-modal');
+    if (m) m.hidden = true;
+    usShareState = null;
+    document.documentElement.classList.remove('usx-open');
+  }
+  function usShareRender() {
+    const m = document.getElementById('usx-modal');
+    if (!m || !usShareState) return;
+    const { type, arg } = usShareState, url = usShareURL(type, arg), text = usShareText(type, arg);
+    const enc = encodeURIComponent;
+    const title = type === 'state' ? usStateName(arg) : type === 'senate' ? 'Senado' : type === 'house' ? 'Cámara de Representantes' : type === 'map' ? 'Mapa' : 'Resultados';
+    m.innerHTML = `<div class="usx-dlg">
+      <div class="usx-dlg-h"><b>Compartir · ${esc(title)}</b><button type="button" class="usx-x" data-usx-close aria-label="Cerrar">×</button></div>
+      ${type === 'state' ? `<div class="usx-dlg-ficha">${usStateFichaHTML(arg)}</div>` : ''}
+      <div class="usx-prev-wrap"><div class="usx-scale">${usShareCard(type, arg)}</div></div>
+      <div class="usx-actions">
+        <button type="button" class="usx-btn is-main" data-usx="native">Compartir imagen</button>
+        <button type="button" class="usx-btn" data-usx="png">Descargar imagen</button>
+        <button type="button" class="usx-btn" data-usx="copy">Copiar enlace</button>
+        <a class="usx-btn" target="_blank" rel="noopener" href="https://twitter.com/intent/tweet?text=${enc(text)}&url=${enc(url)}">X</a>
+        <a class="usx-btn" target="_blank" rel="noopener" href="https://wa.me/?text=${enc(text + '\n' + url)}">WhatsApp</a>
+        <a class="usx-btn" target="_blank" rel="noopener" href="https://www.linkedin.com/sharing/share-offsite/?url=${enc(url)}">LinkedIn</a>
+        <a class="usx-btn" target="_blank" rel="noopener" href="https://www.facebook.com/sharer/sharer.php?u=${enc(url)}">Facebook</a>
+      </div>
+      <p class="usx-hint">Para publicar la imagen en X, LinkedIn o Instagram, descargala y adjuntala al posteo. Desde el celular, "Compartir imagen" la manda directo a la app.</p>
+    </div>`;
+    const scaleBox = () => { const w = m.querySelector('.usx-prev-wrap'); if (w) w.style.setProperty('--k', Math.min(1, w.clientWidth / 1200)); };
+    requestAnimationFrame(scaleBox);
+    m.querySelectorAll('[data-usx]').forEach(b => b.addEventListener('click', () => usShareAction(b.getAttribute('data-usx'), b, url, text)));
+  }
+  function usStateFichaHTML(id) {
+    const s = (live.usRes.states || {})[id] || {};
+    const kinds = ['senate', 'governor'].filter(k => s[k]);
+    if (!kinds.length) return `<p class="muted">${esc(usStateName(id))} no elige senador ni gobernador este año. Vota sus bancas de la Cámara de Representantes.</p>`;
+    return `<div class="usr-races">${kinds.map(k => usRaceRows(k, 0, id)).join('')}</div>`;
+  }
+  async function usShareBlob() {
+    const card = document.querySelector('#usx-modal .usx');
+    if (!card || !window.htmlToImage) throw new Error('sin librería de imagen');
+    const clone = card.cloneNode(true);
+    const host = document.createElement('div');
+    host.style.cssText = 'position:fixed;left:-20000px;top:0;width:1200px;height:675px;';
+    host.appendChild(clone); document.body.appendChild(host);
+    try {
+      await Promise.all(Array.from(clone.querySelectorAll('img')).map(img => img.complete && img.naturalWidth ? null : new Promise(r => { img.onload = img.onerror = r; setTimeout(r, 4000); })));
+      clone.querySelectorAll('img').forEach(img => { if (!img.naturalWidth) img.remove(); });
+      return await window.htmlToImage.toBlob(clone, { pixelRatio: 1.5, width: 1200, height: 675, cacheBust: true, backgroundColor: '#0B1B3F' });
+    } finally { host.remove(); }
+  }
+  async function usShareAction(kind, btn, url, text) {
+    const label = btn.textContent;
+    const done = (t) => { btn.textContent = t; setTimeout(() => { btn.textContent = label; }, 1800); };
+    const name = `atlas-eeuu-${usShareState.type === 'state' ? usShareState.arg.toLowerCase() : US_SHARE_SLUG[usShareState.type]}-${(usHour() || '').replace(':', '')}.png`;
+    if (kind === 'copy') {
+      try { await navigator.clipboard.writeText(url); done('¡Enlace copiado!'); } catch (e) { prompt('Copiá el enlace:', url); }
+      return;
+    }
+    btn.textContent = 'Generando…'; btn.disabled = true;
+    try {
+      const blob = await usShareBlob();
+      const file = new File([blob], name, { type: 'image/png' });
+      if (kind === 'native' && navigator.canShare && navigator.canShare({ files: [file] })) {
+        await navigator.share({ files: [file], text: text + '\n' + url });
+        btn.disabled = false; done('¡Listo!');
+        return;
+      }
+      if (kind === 'native' && navigator.share) { try { await navigator.share({ text, url }); } catch (e) {} }
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob); a.download = name; document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(() => URL.revokeObjectURL(a.href), 2000);
+      btn.disabled = false; done('Imagen descargada');
+    } catch (e) {
+      console.warn('[Atlas] share image', e);
+      btn.disabled = false; done('No se pudo generar');
+    }
+  }
+  const usShareBtn = (type, arg, label) => `<button type="button" class="usr-share" data-usx-open="${type}"${arg ? ` data-arg="${arg}"` : ''} title="Compartir" aria-label="Compartir ${esc(label || '')}"><svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path d="M4 12v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7M16 6l-4-4-4 4M12 2v13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>${label ? esc(label) : 'Compartir'}</span></button>`;
+  function usShareDeepLink() {
+    if (live.usShareLinked || !live.usRes) return;
+    live.usShareLinked = true;
+    const q = new URLSearchParams(location.search).get('us');
+    if (!q) return;
+    const t = Object.keys(US_SHARE_SLUG).find(k => US_SHARE_SLUG[k] === q.toLowerCase());
+    if (t) usShareOpen(t);
+    else if (/^[A-Za-z]{2}$/.test(q) && live.usRes.states[q.toUpperCase()]) usShareOpen('state', q.toUpperCase());
+  }
+  window.__usShare = usShareOpen;
 
   /* ===================== ESPECIAL ARGENTINA 2027 =====================
      President, half of the Chamber, a third of the Senate and most of the
@@ -34158,6 +34427,7 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
     if (isViewActive('argentina') && live.argentina && (JSON.stringify(live.argentina) !== prevAr || !document.querySelector('#esp-argentina .esp-hero'))) renderArgentina();
     if (isViewActive('eeuu') && live.eeuu && (JSON.stringify(live.eeuu) !== prevUs || !document.querySelector('#esp-eeuu .esp-hero'))) renderEeuu();
     else if (isViewActive('eeuu')) renderUsResults();
+    if (live.usRes) { usShareDeepLink(); if (usShareState && !document.querySelector('#usx-modal .usx-btn:disabled')) usShareRender(); }
     scheduleRefresh();
   }
   function scheduleRefresh() {
