@@ -54,7 +54,9 @@ def race(r):
                       'votes': v, 'pct': round(100 * v / total, 1) if total else None, 'winner': c['nyt_id'] in won,
                       'incumbent': bool(m.get('incumbent')), 'prob': est.get('win_probability')})
     cands.sort(key=lambda c: (-(c['votes'] or 0), -(c['prob'] or 0)))
-    return {'status': r.get('race_call_status'), 'eevp': t.get('eevp') or 0, 'votes': total,
+    e = t.get('eevp') or 0
+    e = round(e) if e >= 1 else round(e, 1)
+    return {'status': r.get('race_call_status'), 'eevp': e, 'votes': total,
             'called': bool(won), 'rating': r.get('rating'), 'cands': cands[:3]}
 
 def one_pass():
