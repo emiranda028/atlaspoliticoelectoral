@@ -6956,14 +6956,34 @@
   .usr-model { font-size: 13px; color: var(--ink-soft); margin-top: 8px; background: var(--surface-2); border-radius: 8px; padding: 8px 10px; }
   .usr-won { color: #fff; font: 700 11px var(--font-sans); letter-spacing: .05em; text-transform: uppercase; border-radius: 999px; padding: 4px 10px; white-space: nowrap; }
   .usr-map { width: 100%; height: auto; }
-  .usr-races { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 8px; max-height: 620px; overflow-y: auto; }
-  .usr-race { border: 1px solid var(--line); border-left: 4px solid var(--c); border-radius: 10px; padding: 8px 10px; }
-  .usr-race-top { display: flex; justify-content: space-between; align-items: center; gap: 6px; font-size: 14px; margin-bottom: 4px; }
-  .usr-race-top .usr-won { font-size: 10px; padding: 2px 8px; }
-  .usr-cand { display: flex; justify-content: space-between; gap: 6px; font-size: 13px; }
-  .usr-cand i { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 5px; }
-  .usr-cand small { color: var(--muted); }
-  .usr-cand b { font-family: var(--font-mono); font-size: 12.5px; }
+  .usr-races { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 10px; max-height: 720px; overflow-y: auto; padding: 2px; }
+  .usr-race { background: var(--surface); border: 1px solid var(--line); border-top: 4px solid var(--c); border-radius: 12px; padding: 10px 12px 8px; }
+  .usr-race.is-called { box-shadow: 0 1px 0 var(--line), 0 6px 18px -12px rgba(11,22,40,.35); }
+  .usr-race.is-flip { background: repeating-linear-gradient(135deg, var(--surface) 0 10px, var(--surface-2) 10px 12px); }
+  .usr-race-top { display: flex; justify-content: space-between; align-items: center; gap: 6px; font-size: 15px; }
+  .usr-race-top b { font-family: var(--font-serif); font-size: 17px; line-height: 1.15; }
+  .usr-race-top > span { white-space: nowrap; }
+  .usr-race-top .usr-won { font-size: 10px; padding: 3px 9px; }
+  .usr-prev { font-size: 11.5px; line-height: 1.35; color: var(--muted); margin: 2px 0 6px; }
+  .usr-prev i { display: inline-block; width: 8px; height: 8px; border-radius: 2px; margin-right: 5px; vertical-align: 0; }
+  .usr-prev b { color: var(--ink); }
+  .usr-cand { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 8px; font-size: 13px; padding: 4px 0; }
+  .usr-cand + .usr-cand { border-top: 1px dashed var(--line); }
+  .usr-cand-main { min-width: 0; }
+  .usr-cand-name { line-height: 1.25; overflow-wrap: anywhere; }
+  .usr-cand.is-win .usr-cand-name { font-weight: 700; }
+  .usr-cand small { color: var(--muted); font-size: 11px; }
+  .usr-check { color: var(--c); font-weight: 800; }
+  .usr-cand-bar { height: 5px; border-radius: 3px; background: var(--surface-2); margin-top: 4px; overflow: hidden; }
+  .usr-cand-bar span { display: block; height: 100%; border-radius: 3px; }
+  .usr-cand > b { font-family: var(--font-mono); font-size: 13px; }
+  .usr-cand.is-win > b { font-size: 15px; }
+  .usr-av { position: relative; width: 30px; height: 30px; border-radius: 50%; overflow: hidden; flex: none; background: var(--pc); color: #fff; display: grid; place-items: center; font: 700 11px var(--font-sans); box-shadow: 0 0 0 2px var(--surface), 0 0 0 3.5px var(--pc); }
+  .usr-av.is-big { width: 42px; height: 42px; font-size: 13px; }
+  .usr-av img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 20%; background: #DDE2EA; }
+  .usr-segs { display: flex; gap: 8px; flex-wrap: wrap; }
+  .usr-flip-key { background: repeating-linear-gradient(135deg, #2A5596 0 3px, #fff 3px 5px) !important; outline: 1.5px solid #0B1628; }
+  .usr-note { font-size: 12px; color: var(--muted); margin: 6px 0 0; }
   @media (max-width: 900px) { .usr-grid, .usr-grid-2 { grid-template-columns: 1fr; } }
 </style>
 </head>
@@ -33246,19 +33266,42 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
       ${m && m.prob != null && !winner ? `<div class="usr-model">Modelo en vivo del New York Times: los demócratas tendrían <b>${m.seats}</b> bancas (entre ${m.range ? m.range[0] + ' y ' + m.range[1] : '—'}) y un <b>${Math.round(m.prob * 100)}%</b> de chances de controlar la cámara.</div>` : ''}
     </div>`;
   }
-  function usResMapSVG(kind) {
+  const usPartyName = p => p === 'D' ? 'demócrata' : p === 'R' ? 'republicana' : 'independiente';
+  function usPrev(id, kind, r) {
+    if (r && r.prev) return r.prev;
+    const s = ((live.eeuu && live.eeuu.states) || []).find(x => x.id === id);
+    return s && s[kind] && s[kind].party || null;
+  }
+  function usResMapSVG(kind, mode) {
     const g = live.usGeo, st = (live.usRes && live.usRes.states) || {};
     if (!g) return '';
-    return `<svg class="br-map-svg usr-map" viewBox="${g.viewBox}" role="img" aria-label="Resultados por estado">${g.locations.map(l => {
+    const flips = [];
+    const paths = g.locations.map(l => {
       const r = st[l.id] && st[l.id][kind];
       let fill = '#F1F3F6', tip = usStateName(l.id) + ': sin elección';
       if (r) {
+        const prev = usPrev(l.id, kind, r);
         const top = r.cands && r.cands[0], win = (r.cands || []).find(c => c.winner);
-        fill = win ? usPartyColor(win.party) : r.eevp > 0 && top ? usPartyColor(top.party, true) : '#CBD2DC';
-        tip = `${usStateName(l.id)}: ${win ? win.name + ' (' + win.party + ') gana' : top && r.eevp > 0 ? top.name + ' (' + top.party + ') adelante' : 'sin datos aún'}${r.eevp ? ` · ${r.eevp}% del voto esperado` : ''}`;
+        const prevTxt = prev ? ` · antes: banca ${usPartyName(prev)}` : '';
+        if (mode === 'prev') {
+          fill = prev ? usPartyColor(prev) : '#CBD2DC';
+          tip = `${usStateName(l.id)}: banca ${prev ? usPartyName(prev) : 'sin dato'} antes de esta elección`;
+        } else {
+          fill = win ? usPartyColor(win.party) : r.eevp > 0 && top ? usPartyColor(top.party, true) : '#CBD2DC';
+          const flip = win && prev && win.party !== prev;
+          if (flip) flips.push(l.path);
+          tip = `${usStateName(l.id)}: ${win ? win.name + ' (' + win.party + ') gana' + (flip ? ' y la banca cambia de partido' : '') : top && r.eevp > 0 ? top.name + ' (' + top.party + ') adelante' : 'sin datos aún'}${r.eevp ? ` · ${r.eevp}% del voto esperado` : ''}${prevTxt}`;
+        }
       }
       return `<path d="${l.path}" style="fill:${fill}" stroke="#fff" stroke-width="1"><title>${esc(tip)}</title></path>`;
-    }).join('')}</svg>`;
+    }).join('');
+    return `<svg class="br-map-svg usr-map" viewBox="${g.viewBox}" role="img" aria-label="Resultados por estado">
+      <defs><pattern id="usr-flip" patternUnits="userSpaceOnUse" width="7" height="7" patternTransform="rotate(45)"><rect width="2.6" height="7" fill="rgba(255,255,255,.75)"/></pattern></defs>
+      ${paths}${flips.map(d => `<path d="${d}" fill="url(#usr-flip)" stroke="#0B1628" stroke-width="1.6" pointer-events="none"/>`).join('')}</svg>`;
+  }
+  const usInitials = n => String(n || '').split(/\s+/).filter(Boolean).map(w => w[0]).slice(0, 2).join('').toUpperCase();
+  function usAvatar(c, big) {
+    return `<span class="usr-av${big ? ' is-big' : ''}" style="--pc:${usPartyColor(c.party)}"><span>${esc(usInitials(c.name))}</span>${c.img ? `<img src="${esc(c.img)}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()">` : ''}</span>`;
   }
   function usRaceRows(kind, limit) {
     const st = (live.usRes && live.usRes.states) || {};
@@ -33266,18 +33309,26 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
     const rows = Object.entries(st).filter(([, s]) => s[kind]).map(([id, s]) => ({ id, r: s[kind] }))
       .sort((a, b) => (order[a.r.rating] ?? 3) - (order[b.r.rating] ?? 3) || (b.r.eevp - a.r.eevp));
     return rows.slice(0, limit || rows.length).map(({ id, r }) => {
-      const cs = (r.cands || []).filter(c => c.party !== 'I' || (c.pct || 0) > 5).slice(0, 2);
+      const cs = (r.cands || []).filter(c => c.party !== 'I' || (c.pct || 0) > 5 || c.winner).slice(0, 2);
       const win = (r.cands || []).find(c => c.winner);
-      return `<div class="usr-race" style="--c:${win ? usPartyColor(win.party) : '#CBD2DC'}">
-        <div class="usr-race-top"><b>${esc(usStateName(id))}</b>${win ? `<span class="usr-won" style="background:${usPartyColor(win.party)}">Gana ${esc(win.party === 'D' ? 'D' : win.party === 'R' ? 'R' : 'Ind.')}</span>` : `<span class="muted">${r.eevp ? r.eevp + '% contado' : 'sin datos'}</span>`}</div>
-        ${cs.map(c => `<div class="usr-cand"><span><i style="background:${usPartyColor(c.party)}"></i>${esc(c.name)} <small>${c.party}</small>${c.winner ? ' ✓' : ''}</span><b>${c.pct != null ? fmtPct(c.pct) : '—'}</b></div>`).join('')}
+      const prev = usPrev(id, kind, r);
+      const flip = win && prev && win.party !== prev;
+      const status = win ? `<span class="usr-won" style="background:${usPartyColor(win.party)}">${flip ? 'Cambia a ' : 'Gana '}${esc(win.party === 'I' ? 'Ind.' : win.party)}</span>`
+        : `<span class="muted">${r.eevp ? r.eevp + '% contado' : 'sin datos'}</span>`;
+      return `<div class="usr-race${win ? ' is-called' : ''}${flip ? ' is-flip' : ''}" style="--c:${win ? usPartyColor(win.party) : '#CBD2DC'}">
+        <div class="usr-race-top"><b>${esc(usStateName(id))}</b>${status}</div>
+        ${prev ? `<div class="usr-prev"><i style="background:${usPartyColor(prev)}"></i>Antes: banca ${usPartyName(prev)}${flip ? ' · <b>cambia de partido</b>' : win ? ' · la retiene' : ''}</div>` : ''}
+        ${cs.map(c => `<div class="usr-cand${c.winner ? ' is-win' : ''}">${usAvatar(c, c.winner)}
+          <div class="usr-cand-main"><div class="usr-cand-name">${esc(c.name)} <small>${c.party}${c.incumbent ? ' · en el cargo' : ''}</small>${c.winner ? ' <span class="usr-check">✓</span>' : ''}</div>
+            <div class="usr-cand-bar"><span style="width:${Math.min(100, c.pct || 0)}%;background:${usPartyColor(c.party)}"></span></div></div>
+          <b>${c.pct != null ? fmtPct(c.pct) : '—'}</b></div>`).join('')}
       </div>`;
     }).join('');
   }
   function usResultsHTML(mode) {
     const R = live.usRes;
     if (!R) return '';
-    const kind = live.usResKind || 'senate';
+    const kind = live.usResKind || 'senate', mapMode = live.usResMap || 'now';
     const govCalled = Object.values(R.states || {}).filter(s => s.governor && s.governor.called).length;
     const govD = Object.values(R.states || {}).filter(s => s.governor && (s.governor.cands || []).some(c => c.winner && c.party === 'D')).length;
     const govTotal = Object.values(R.states || {}).filter(s => s.governor).length;
@@ -33289,10 +33340,13 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
       </div>
       <div class="usr-grid usr-grid-2">
         <div class="nh-card usr-mapcard">
-          <div class="nh-map-head"><h3>${kind === 'senate' ? 'Senado' : 'Gobernaciones'}: quién gana en cada estado</h3>
-            <div class="seg" data-usr-kind><button type="button" data-k="senate" class="${kind === 'senate' ? 'is-active' : ''}">Senado</button><button type="button" data-k="governor" class="${kind === 'governor' ? 'is-active' : ''}">Gobernadores</button></div></div>
-          ${usResMapSVG(kind)}
-          <div class="nt-legend nt-legend-row"><span><i style="background:${US_D}"></i>Gana D</span><span><i style="background:#9DBBE3"></i>D adelante</span><span><i style="background:#EBA6A6"></i>R adelante</span><span><i style="background:${US_R}"></i>Gana R</span><span><i style="background:#CBD2DC"></i>Sin datos</span></div>
+          <div class="nh-map-head"><h3>${kind === 'senate' ? 'Senado' : 'Gobernaciones'}: ${mapMode === 'prev' ? 'qué partido tenía cada banca' : 'quién gana en cada estado'}</h3>
+            <div class="usr-segs"><div class="seg" data-usr-kind><button type="button" data-k="senate" class="${kind === 'senate' ? 'is-active' : ''}">Senado</button><button type="button" data-k="governor" class="${kind === 'governor' ? 'is-active' : ''}">Gobernadores</button></div>
+            <div class="seg" data-usr-map><button type="button" data-m="now" class="${mapMode === 'now' ? 'is-active' : ''}">2026</button><button type="button" data-m="prev" class="${mapMode === 'prev' ? 'is-active' : ''}">Elección anterior</button></div></div></div>
+          ${usResMapSVG(kind, mapMode)}
+          ${mapMode === 'prev'
+            ? `<div class="nt-legend nt-legend-row"><span><i style="background:${US_D}"></i>Banca demócrata</span><span><i style="background:${US_R}"></i>Banca republicana</span><span><i style="background:#F1F3F6;border:1px solid #CBD2DC"></i>Sin elección en 2026</span></div><p class="usr-note">Partido que tenía cada banca antes de esta votación. En el Senado, la mayoría se eligió en 2020; en las gobernaciones, en 2022.</p>`
+            : `<div class="nt-legend nt-legend-row"><span><i style="background:${US_D}"></i>Gana D</span><span><i style="background:#9DBBE3"></i>D adelante</span><span><i style="background:#EBA6A6"></i>R adelante</span><span><i style="background:${US_R}"></i>Gana R</span><span><i style="background:#CBD2DC"></i>Sin datos</span><span><i class="usr-flip-key"></i>Cambia de partido</span></div>`}
         </div>
         <div class="nh-card"><h3>${kind === 'senate' ? 'Las carreras al Senado' : 'Las gobernaciones'}</h3>
           ${kind === 'governor' ? `<p class="muted">${govCalled} de ${govTotal} definidas · ${govD} para los demócratas</p>` : ''}
@@ -33302,6 +33356,7 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
   }
   function wireUsResults(el, rerender) {
     el.querySelectorAll('[data-usr-kind] [data-k]').forEach(b => b.addEventListener('click', () => { live.usResKind = b.getAttribute('data-k'); rerender(); }));
+    el.querySelectorAll('[data-usr-map] [data-m]').forEach(b => b.addEventListener('click', () => { live.usResMap = b.getAttribute('data-m'); rerender(); }));
   }
   function renderUsHome(el) {
     const R = live.usRes;
