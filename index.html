@@ -7059,6 +7059,42 @@
   .usx-check { color: #F2C14E; font-size: 15px; }
   .usx-cb { height: 8px; border-radius: 4px; background: rgba(255,255,255,.14); margin-top: 6px; overflow: hidden; } .usx-cb i { display: block; height: 100%; }
   .usx-pct { font: 800 26px 'Newsreader', Georgia, serif; } .usx-cand.is-win .usx-pct { font-size: 36px; }
+
+  .usr-eevp { height: 3px; border-radius: 2px; background: var(--surface-2); margin: 4px 0 4px; overflow: hidden; }
+  .usr-eevp span { display: block; height: 100%; background: var(--ink-soft, #55617A); }
+  .usr-ctybox { margin-bottom: 12px; }
+  .usr-cty-wrap { background: var(--surface-2); border-radius: 12px; padding: 8px; min-height: 120px; display: grid; place-items: center; }
+  .usr-cty { width: 100%; max-height: 420px; height: auto; display: block; }
+  .usr-cty path:hover { stroke: #0B1628; stroke-width: 1.4; }
+  .usr-cty-leg { font-size: 12px; } .usr-cty-leg > span:first-child { color: var(--muted); }
+  .usr-house { margin-top: 14px; }
+  .ush-tools { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: 4px 0 10px; }
+  .ush-q { flex: 1 1 240px; min-width: 0; border: 1px solid var(--line); border-radius: 999px; padding: 8px 14px; font: 14px var(--font-sans); background: var(--surface); color: var(--ink); }
+  .ush-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(330px, 1fr)); gap: 6px 14px; max-height: 560px; overflow-y: auto; padding-right: 4px; }
+  .ush-list.is-short { max-height: 330px; }
+  .ush-row { display: grid; grid-template-columns: 54px 1fr auto; gap: 8px; align-items: center; font-size: 13px; padding: 6px 8px; border-radius: 8px; border-left: 3px solid var(--c); background: var(--surface); border-bottom: 1px solid var(--line); }
+  .ush-row[hidden] { display: none; }
+  .ush-row.is-flip { background: repeating-linear-gradient(135deg, var(--surface) 0 10px, var(--surface-2) 10px 12px); }
+  .ush-id { font-family: var(--font-mono); font-size: 12.5px; }
+  .ush-cs { display: flex; flex-direction: column; gap: 1px; min-width: 0; }
+  .ush-c { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; } .ush-c.is-win { font-weight: 700; }
+  .ush-c i { display: inline-block; width: 7px; height: 7px; border-radius: 50%; margin-right: 5px; }
+  .ush-c small { color: var(--muted); } .ush-c b { font-family: var(--font-mono); font-size: 12px; }
+  .ush-st { font-size: 12px; color: var(--muted); white-space: nowrap; }
+  .ush-st em { font-style: normal; color: #fff; font: 700 10px var(--font-sans); letter-spacing: .04em; text-transform: uppercase; padding: 3px 8px; border-radius: 999px; }
+  .usx-statesplit { display: grid; grid-template-columns: 500px 1fr; gap: 22px; height: 100%; }
+  .usx-ctymap { display: flex; flex-direction: column; } .usx-ctymap svg { flex: 1; min-height: 0; width: 100%; }
+  .usx-races.is-compact { grid-template-columns: 1fr !important; gap: 12px; }
+  .usx-races.is-compact .usx-race { padding: 10px 16px; gap: 6px; }
+  .usx-races.is-compact .usx-race-h b { font-size: 21px; }
+  .usx-races.is-compact .usx-av { width: 40px; height: 40px; font-size: 14px; }
+  .usx-races.is-compact .usx-cand.is-win .usx-av { width: 54px; height: 54px; font-size: 17px; }
+  .usx-races.is-compact .usx-cn { font-size: 15px; } .usx-races.is-compact .usx-cand.is-win .usx-cn { font-size: 17px; }
+  .usx-races.is-compact .usx-cn small { font-size: 11px; display: inline; margin-left: 4px; }
+  .usx-races.is-compact .usx-pct { font-size: 20px; } .usx-races.is-compact .usx-cand.is-win .usx-pct { font-size: 26px; }
+  .usx-races.is-compact .usx-cb { height: 6px; margin-top: 4px; }
+  .usx-races.is-compact .usx-prev { font-size: 12px; }
+  .usx-races.is-compact.n1 { align-content: center; }
   .usx-prev { margin-top: auto; font-size: 13.5px; color: rgba(255,255,255,.75); } .usx-prev i { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 6px; } .usx-prev b { color: #fff; }
 
   @media (max-width: 900px) { .usr-grid, .usr-grid-2 { grid-template-columns: 1fr; } }
@@ -33394,6 +33430,7 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
         : `<span class="muted">${r.eevp ? r.eevp + '% contado' : 'sin datos'}</span>`;
       return `<div class="usr-race${win ? ' is-called' : ''}${flip ? ' is-flip' : ''}" style="--c:${win ? usPartyColor(win.party) : '#CBD2DC'}"${only ? '' : ` data-usx-state="${id}" role="button" tabindex="0" title="Ver la ficha y compartir"`}>
         <div class="usr-race-top"><b>${only ? (kind === 'senate' ? 'Senado' : 'Gobernación') : esc(usStateName(id))}</b>${status}</div>
+        <div class="usr-eevp" title="${r.eevp || 0}% del voto esperado contado"><span style="width:${Math.min(100, r.eevp || 0)}%"></span></div>
         ${prev ? `<div class="usr-prev"><i style="background:${usPartyColor(prev)}"></i>Antes: banca ${usPartyName(prev)}${flip ? ' · <b>cambia de partido</b>' : win ? ' · la retiene' : ''}</div>` : ''}
         ${cs.map(c => `<div class="usr-cand${c.winner ? ' is-win' : ''}">${usAvatar(c, c.winner)}
           <div class="usr-cand-main"><div class="usr-cand-name">${esc(c.name)} <small>${c.party}${c.incumbent ? ' · en el cargo' : ''}</small>${c.winner ? ' <span class="usr-check">✓</span>' : ''}</div>
@@ -33430,12 +33467,23 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
           ${kind === 'governor' ? `<p class="muted">${govCalled} de ${govTotal} definidas · ${govD} para los demócratas</p>` : ''}
           <div class="usr-races">${usRaceRows(kind, mode === 'home' ? 10 : 0)}</div></div>
       </div>
+      ${usHouseHTML(mode)}
       <div class="usr-share-all">${usShareBtn('all', '', 'Compartir resumen de resultados')}</div>
       <p class="esp-sources">Fuente: ${esc(R.source || 'AP')} · actualizado ${esc(upd)} h. Los estados se pintan cuando AP proyecta un ganador; los porcentajes son sobre el voto contado.</p>`;
   }
   function wireUsResults(el, rerender) {
     el.querySelectorAll('[data-usr-kind] [data-k]').forEach(b => b.addEventListener('click', () => { live.usResKind = b.getAttribute('data-k'); rerender(); }));
     el.querySelectorAll('[data-usr-map] [data-m]').forEach(b => b.addEventListener('click', () => { live.usResMap = b.getAttribute('data-m'); rerender(); }));
+    const q = el.querySelector('.ush-q');
+    if (q) {
+      q.addEventListener('input', () => { live.usHouseQ = q.value; usHouseFilter(el); });
+      if (live.usHouseFocus) { q.focus(); q.setSelectionRange(q.value.length, q.value.length); live.usHouseFocus = false; }
+      q.addEventListener('blur', () => { live.usHouseFocus = false; });
+    }
+    el.querySelectorAll('[data-house-f] [data-f]').forEach(b => b.addEventListener('click', () => {
+      live.usHouseF = b.getAttribute('data-f'); el.querySelectorAll('[data-house-f] [data-f]').forEach(x => x.classList.toggle('is-active', x === b)); usHouseFilter(el);
+    }));
+    usHouseFilter(el);
     el.querySelectorAll('[data-usx-open]').forEach(b => b.addEventListener('click', e => { e.stopPropagation(); usShareOpen(b.getAttribute('data-usx-open'), b.getAttribute('data-arg') || undefined); }));
     el.querySelectorAll('[data-usx-state]').forEach(n => {
       n.addEventListener('click', () => usShareOpen('state', n.getAttribute('data-usx-state')));
@@ -33444,6 +33492,7 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
   }
   function renderUsHome(el) {
     const R = live.usRes;
+    if (document.activeElement && document.activeElement.classList.contains('ush-q') && el.contains(document.activeElement)) live.usHouseFocus = true;
     const S = R.senate && R.senate.parties, H = R.house && R.house.parties;
     const live_ = !(S && (S.D.winner || S.R.winner)) || !(H && (H.D.winner || H.R.winner));
     el.hidden = false;
@@ -33461,10 +33510,91 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
   function renderUsResults() {
     const el = document.getElementById('us-results');
     if (!el) return;
+    if (document.activeElement && document.activeElement.classList.contains('ush-q') && el.contains(document.activeElement)) live.usHouseFocus = true;
     el.innerHTML = usResultsHTML('special');
     wireUsResults(el, renderUsResults);
   }
 
+  /* ---------- Mapa por condado de cada estado + Cámara distrito por distrito ----------
+     data/geo/eeuu-condados/XX.json (tools/build_us_counties.py, us-atlas) y
+     data/especiales/eeuu-2026-condados.json (tools/us_condados.py, AP vía NYT). */
+  const US_CTY_URL = 'data/especiales/eeuu-2026-condados.json';
+  const usCtyShade = (p, m) => {
+    const a = Math.abs(m == null ? 0 : m);
+    const D = ['#C9D8F0', '#86A8DC', '#3D67AE', '#1F4785'], R = ['#F4CACA', '#E38D8D', '#C24848', '#932626'], I = ['#EFE3B8', '#DCC57A', '#BF9F3A', '#9C7E22'];
+    const k = a < 5 ? 0 : a < 15 ? 1 : a < 30 ? 2 : 3;
+    return (p === 'D' ? D : p === 'R' ? R : I)[k];
+  };
+  async function usLoadCounties(st) {
+    live.usCtyGeo = live.usCtyGeo || {};
+    const jobs = [];
+    if (!live.usCtyGeo[st]) jobs.push(fetchJSON('data/geo/eeuu-condados/' + st + '.json').then(g => { live.usCtyGeo[st] = g; }).catch(() => { live.usCtyGeo[st] = { counties: [] }; }));
+    if (!live.usCty || Date.now() - (live.usCtyAt || 0) > 90000) jobs.push(fetchJSON(US_CTY_URL).then(d => { live.usCty = d; live.usCtyAt = Date.now(); }).catch(() => {}));
+    await Promise.all(jobs);
+  }
+  function usCountyMapSVG(st, kind, mode, cls) {
+    const g = live.usCtyGeo && live.usCtyGeo[st];
+    if (!g || !g.counties || !g.counties.length) return '';
+    const data = (((live.usCty || {}).races || {})[st] || {})[kind] || {};
+    const has = Object.keys(data).length > 0;
+    const paths = g.counties.map(c => {
+      const r = data[c.id];
+      let fill = '#E3E6EB', tip = c.n + ': sin datos';
+      if (r) {
+        const [e, p1, v1, p2, v2, h] = r;
+        if (mode === 'prev') {
+          if (h != null) { fill = usCtyShade(h >= 0 ? 'D' : 'R', h); tip = `${c.n}: antes ${h >= 0 ? 'D' : 'R'} +${fmtNum(Math.abs(h))} puntos`; }
+        } else if (e > 0 && v1 != null) {
+          fill = usCtyShade(p1, (v1 || 0) - (v2 || 0));
+          tip = `${c.n}: ${p1} ${fmtPct(v1)}${p2 ? ` · ${p2} ${fmtPct(v2)}` : ''} · ${e}% contado${h != null ? ` · antes ${h >= 0 ? 'D' : 'R'} +${fmtNum(Math.abs(h))}` : ''}`;
+        } else tip = c.n + ': sin votos contados aún';
+      }
+      return `<path d="${c.d}" style="fill:${fill}" stroke="#fff" stroke-width="${g.counties.length > 120 ? .35 : .6}" vector-effect="non-scaling-stroke"><title>${esc(tip)}</title></path>`;
+    }).join('');
+    return `<svg class="usr-cty ${cls || ''}" viewBox="${g.viewBox}" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Resultados por condado">${paths}</svg>${has ? '' : '<p class="usr-note">Este estado no reporta sus votos por condado (o todavía no llegaron).</p>'}`;
+  }
+  const fmtNum = n => (Math.round(n * 10) / 10).toLocaleString('es-AR');
+  const usCtyLegend = mode => mode === 'prev'
+    ? `<div class="nt-legend nt-legend-row usr-cty-leg"><span>Margen en la elección anterior:</span><span><i style="background:#1F4785"></i>D +30</span><span><i style="background:#86A8DC"></i>D +5</span><span><i style="background:#E38D8D"></i>R +5</span><span><i style="background:#932626"></i>R +30</span></div>`
+    : `<div class="nt-legend nt-legend-row usr-cty-leg"><span>Quién va adelante y por cuánto:</span><span><i style="background:#1F4785"></i>D +30</span><span><i style="background:#86A8DC"></i>D +5</span><span><i style="background:#E38D8D"></i>R +5</span><span><i style="background:#932626"></i>R +30</span><span><i style="background:#E3E6EB"></i>Sin votos</span></div>`;
+  function usHouseRowHTML(id, h) {
+    const k = h.k || [], win = k.find(c => c.w), top = k[0];
+    const flip = win && h.g;
+    const cells = k.map(c => `<span class="ush-c${c.w ? ' is-win' : ''}"><i style="background:${usPartyColor(c.p)}"></i>${esc((c.n || '').split(' ').slice(-1)[0])} <small>${c.p}${c.i ? '*' : ''}</small> <b>${c.v != null && h.e ? fmtPct(c.v) : '—'}</b>${c.w ? ' ✓' : ''}</span>`).join('');
+    const st = id.slice(0, 2), name = usStateName(st), dist = id.slice(3) === '00' ? 'distrito único' : 'distrito ' + parseInt(id.slice(3), 10);
+    return `<div class="ush-row${win ? ' is-called' : ''}${flip ? ' is-flip' : ''}" style="--c:${win ? usPartyColor(win.party || win.p) : '#CBD2DC'}" data-q="${esc((id + ' ' + name + ' ' + k.map(c => c.n).join(' ')).toLowerCase())}" data-f="${[win ? 'called' : '', flip ? 'flip' : '', /tossup|lean/.test(h.r || '') ? 'comp' : ''].join(' ')}">
+      <b class="ush-id" title="${esc(name + ', ' + dist)}">${id}</b><div class="ush-cs">${cells}</div>
+      <span class="ush-st">${win ? (flip ? `<em style="background:${usPartyColor(win.p)}">Cambia a ${win.p}</em>` : `<em style="background:${usPartyColor(win.p)}">Gana ${win.p}</em>`) : h.e ? h.e + '%' : '—'}</span></div>`;
+  }
+  function usHouseHTML(mode, only) {
+    const H = (live.usRes && live.usRes.houseRaces) || {};
+    let ids = Object.keys(H).filter(id => !only || id.startsWith(only + '-')).sort();
+    if (!ids.length) return '';
+    const comp = id => /tossup|lean/.test(H[id].r || '') ? 0 : /likely/.test(H[id].r || '') ? 1 : 2;
+    if (!only) ids.sort((a, b) => comp(a) - comp(b) || a.localeCompare(b));
+    const called = ids.filter(id => H[id].c).length, flips = ids.filter(id => H[id].c && H[id].g).length;
+    const f = live.usHouseF || (only ? 'all' : 'comp');
+    return `<div class="nh-card usr-house" data-house>
+      <div class="nh-map-head"><h3>${only ? 'Cámara de Representantes en ' + esc(usStateName(only)) : 'Cámara de Representantes: distrito por distrito'}</h3>
+        <span class="muted">${called} de ${ids.length} definidos${flips ? ` · ${flips} cambian de partido` : ''}</span></div>
+      ${only ? '' : `<div class="ush-tools"><input type="search" class="ush-q" placeholder="Buscar estado, distrito o candidato (ej.: TX-28, Ocasio)" value="${esc(live.usHouseQ || '')}" aria-label="Buscar distrito">
+        <div class="seg" data-house-f>${[['comp', 'Competitivos'], ['called', 'Definidos'], ['flip', 'Cambian de partido'], ['all', 'Todos']].map(([k, l]) => `<button type="button" data-f="${k}" class="${f === k ? 'is-active' : ''}">${l}</button>`).join('')}</div></div>`}
+      <div class="ush-list${mode === 'home' && !only ? ' is-short' : ''}">${ids.map(id => usHouseRowHTML(id, H[id])).join('')}</div>
+      <p class="usr-note">* en el cargo. Los porcentajes son sobre el voto contado; ✓ cuando AP proyecta al ganador.</p>
+    </div>`;
+  }
+  function usHouseFilter(el) {
+    const box = el.querySelector('[data-house]'); if (!box || !box.querySelector('.ush-q')) return;
+    const q = (live.usHouseQ || '').trim().toLowerCase(), f = live.usHouseF || 'comp';
+    let n = 0;
+    box.querySelectorAll('.ush-row').forEach(r => {
+      const ok = (!q || r.dataset.q.includes(q)) && (q || f === 'all' || r.dataset.f.split(' ').includes(f));
+      r.hidden = !ok; if (ok) n++;
+    });
+    let empty = box.querySelector('.ush-empty');
+    if (!n) { if (!empty) { empty = document.createElement('p'); empty.className = 'ush-empty muted'; box.querySelector('.ush-list').after(empty); } empty.textContent = f === 'flip' && !q ? 'Todavía ninguna banca cambió de partido.' : f === 'called' && !q ? 'AP todavía no proyectó ningún distrito.' : 'No hay distritos con ese criterio.'; }
+    else if (empty) empty.remove();
+  }
   /* ---------- Compartir: fichas en imagen (1200×675) para redes ----------
      Tipos: 'state' (un estado, con Senado y gobernación), 'senate', 'house',
      'map' (el mapa que se está viendo) y 'all' (resumen completo). La imagen
@@ -33509,6 +33639,11 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
     if (type === 'state') {
       const s = R.states[arg] || {};
       const kinds = ['senate', 'governor'].filter(k => s[k]);
+      const ss = usShareState || {}, ck = kinds.includes(ss.ckind) ? ss.ckind : kinds[0], cm = ss.cmode || 'now';
+      const cmap = ck ? usCountyMapSVG(arg, ck, cm, 'usx-cty') : '';
+      if (cmap) return usxFrame(kicker, esc(usStateName(arg)), `<div class="usx-statesplit"><div class="usx-map usx-ctymap"><div class="usx-map-h">${ck === 'senate' ? 'Senado' : 'Gobernación'} · ${cm === 'prev' ? 'margen en la elección anterior' : 'condado por condado'}</div>${cmap}
+          <div class="usx-leg"><span><i style="background:#1F4785"></i>D +30</span><span><i style="background:#86A8DC"></i>D +5</span><span><i style="background:#E38D8D"></i>R +5</span><span><i style="background:#932626"></i>R +30</span>${cm === 'prev' ? '' : '<span><i style="background:#E3E6EB"></i>Sin votos</span>'}</div></div>
+        <div class="usx-races is-compact n${kinds.length}">${kinds.map(k => usxRace(arg, k, s[k])).join('')}</div></div>`);
       return usxFrame(kicker, esc(usStateName(arg)), `<div class="usx-races n${kinds.length}">${kinds.map(k => usxRace(arg, k, s[k])).join('')}</div>`);
     }
     if (type === 'senate' || type === 'house') {
@@ -33571,7 +33706,8 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
     const m = document.getElementById('usx-modal');
     if (!m || !usShareState) return;
     const { type, arg } = usShareState, url = usShareURL(type, arg), text = usShareText(type, arg);
-    const enc = encodeURIComponent;
+    const enc = encodeURIComponent, keepScroll = m.scrollTop;
+    requestAnimationFrame(() => { m.scrollTop = keepScroll; });
     const title = type === 'state' ? usStateName(arg) : type === 'senate' ? 'Senado' : type === 'house' ? 'Cámara de Representantes' : type === 'map' ? 'Mapa' : 'Resultados';
     m.innerHTML = `<div class="usx-dlg">
       <div class="usx-dlg-h"><b>Compartir · ${esc(title)}</b><button type="button" class="usx-x" data-usx-close aria-label="Cerrar">×</button></div>
@@ -33591,12 +33727,25 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
     const scaleBox = () => { const w = m.querySelector('.usx-prev-wrap'); if (w) w.style.setProperty('--k', Math.min(1, w.clientWidth / 1200)); };
     requestAnimationFrame(scaleBox);
     m.querySelectorAll('[data-usx]').forEach(b => b.addEventListener('click', () => usShareAction(b.getAttribute('data-usx'), b, url, text)));
+    m.querySelectorAll('[data-cty-k] [data-k]').forEach(b => b.addEventListener('click', () => { usShareState.ckind = b.getAttribute('data-k'); usShareRender(); }));
+    m.querySelectorAll('[data-cty-m] [data-m]').forEach(b => b.addEventListener('click', () => { usShareState.cmode = b.getAttribute('data-m'); usShareRender(); }));
+    if (type === 'state' && (!live.usCtyGeo || !live.usCtyGeo[arg] || !live.usCty || Date.now() - (live.usCtyAt || 0) > 90000) && !usShareState.loading) {
+      usShareState.loading = true;
+      usLoadCounties(arg).then(() => { if (usShareState && usShareState.arg === arg) { usShareState.loading = false; usShareRender(); } });
+    }
   }
   function usStateFichaHTML(id) {
     const s = (live.usRes.states || {})[id] || {};
     const kinds = ['senate', 'governor'].filter(k => s[k]);
-    if (!kinds.length) return `<p class="muted">${esc(usStateName(id))} no elige senador ni gobernador este año. Vota sus bancas de la Cámara de Representantes.</p>`;
-    return `<div class="usr-races">${kinds.map(k => usRaceRows(k, 0, id)).join('')}</div>`;
+    const st = usShareState || {};
+    const ck = kinds.includes(st.ckind) ? st.ckind : kinds[0], cm = st.cmode || 'now';
+    const map = kinds.length ? `<div class="usr-ctybox">
+        <div class="nh-map-head"><h3>${ck === 'senate' ? 'Senado' : 'Gobernación'}: ${cm === 'prev' ? 'la elección anterior' : 'condado por condado'}</h3>
+          <div class="usr-segs">${kinds.length > 1 ? `<div class="seg" data-cty-k>${kinds.map(k => `<button type="button" data-k="${k}" class="${k === ck ? 'is-active' : ''}">${k === 'senate' ? 'Senado' : 'Gobernación'}</button>`).join('')}</div>` : ''}
+          <div class="seg" data-cty-m><button type="button" data-m="now" class="${cm === 'now' ? 'is-active' : ''}">2026</button><button type="button" data-m="prev" class="${cm === 'prev' ? 'is-active' : ''}">Elección anterior</button></div></div></div>
+        <div class="usr-cty-wrap">${usCountyMapSVG(id, ck, cm) || '<p class="muted usr-cty-load">Cargando el mapa por condado…</p>'}</div>
+        ${usCtyLegend(cm)}</div>` : `<p class="muted">${esc(usStateName(id))} no elige senador ni gobernador este año. Vota sus bancas de la Cámara de Representantes.</p>`;
+    return `${map}${kinds.length ? `<div class="usr-races">${kinds.map(k => usRaceRows(k, 0, id)).join('')}</div>` : ''}${usHouseHTML('state', id)}`;
   }
   async function usShareBlob() {
     const card = document.querySelector('#usx-modal .usx');

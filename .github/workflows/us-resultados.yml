@@ -47,9 +47,10 @@ jobs:
           while :; do
             git fetch -q origin main && git reset -q --hard origin/main || true
             timeout 170 python3 tools/us_resultados.py || echo "pasada fallida o lenta"
-            git add -N data/especiales/eeuu-2026-resultados.json data/especiales/eeuu-2026-fotos.json 2>/dev/null || true
+            git add -N data/especiales/eeuu-2026-resultados.json data/especiales/eeuu-2026-fotos.json data/especiales/eeuu-2026-condados.json 2>/dev/null || true
             if ! git diff --quiet -- data/especiales/eeuu-2026-resultados.json; then
               git add data/especiales/eeuu-2026-resultados.json
+              [ -f data/especiales/eeuu-2026-condados.json ] && git add data/especiales/eeuu-2026-condados.json
               grep -q '"__done__"' data/especiales/eeuu-2026-fotos.json 2>/dev/null && git add data/especiales/eeuu-2026-fotos.json
               git commit -q -m "Resultados EE.UU. $(date -u +%H:%M) UTC" || true
               git push -q origin HEAD:main || echo "push rechazado, reintento en la próxima pasada"
