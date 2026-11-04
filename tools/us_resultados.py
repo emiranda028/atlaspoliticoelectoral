@@ -80,7 +80,6 @@ def fill_photos(budget=90):
         print('fotos: error', e, flush=True)
 
 def one_pass():
-    fill_photos()
     sen, gov = get('senate'), get('governor')
     photos = load(FOTOS)
     before = {s['id']: s for s in (load(SPECIAL).get('states') or [])}
@@ -118,6 +117,7 @@ def one_pass():
         us_condados.run(sen, gov)
     except Exception as e:
         print('condados: error', e, flush=True)
+    fill_photos(45)  # after publishing: the next pass carries the new photos
     s, h = out['senate']['parties'], out['house']['parties']
     print(f"ok {out['updatedAt']} · Senado D {s['D']['seats']} R {s['R']['seats']} · Cámara D {h['D']['seats']} R {h['R']['seats']}", flush=True)
 
