@@ -47,7 +47,7 @@ def control(office):
                                                                         'prob': m.get('win_probability')}}
     return out
 
-def race(r, photos, prev):
+def race(r, photos, prev, st):
     t = r.get('top_reporting_unit') or {}
     meta = r.get('candidate_metadata') or {}
     total = sum((c.get('votes') or {}).get('total') or 0 for c in t.get('candidates') or [])
@@ -59,7 +59,7 @@ def race(r, photos, prev):
         v = (c.get('votes') or {}).get('total') or 0
         est = c.get('nyt_model_estimates') or {}
         cands.append({'id': c['nyt_id'], 'name': f"{m.get('first_name', '')} {m.get('last_name', '')}".strip(), 'party': party(m),
-                      'img': (photos.get(c['nyt_id']) or {}).get('img'),
+                      'img': (photos.get(f"{st}:{c['nyt_id']}") or {}).get('img'),
                       'votes': v, 'pct': round(100 * v / total, 1) if total else None, 'winner': c['nyt_id'] in won,
                       'incumbent': bool(m.get('incumbent')), 'prob': est.get('win_probability')})
     cands.sort(key=lambda c: (-(c['votes'] or 0), -(c['prob'] or 0)))
@@ -70,7 +70,8 @@ def race(r, photos, prev):
             'cands': cands[:3]}
 
 def fill_photos(budget=90):
-    if load(FOTOS).get('__done__'): return
+    f = load(FOTOS)
+    if f.get('__done__') and f.get('__v') == 2: return
     try:
         sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
         import us_fotos
@@ -92,7 +93,7 @@ def one_pass():
         for r in data['races']:
             st = (r.get('top_reporting_unit') or {}).get('state_postal')
             prev = ((before.get(st) or {}).get(kind) or {}).get('party')
-            if st: out['states'].setdefault(st, {})[kind] = race(r, photos, prev)
+            if st: out['states'].setdefault(st, {})[kind] = race(r, photos, prev, st)
     tmp = OUT + '.tmp'
     json.dump(out, open(tmp, 'w'), ensure_ascii=False, separators=(',', ':'))
     os.replace(tmp, OUT)
