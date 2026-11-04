@@ -89,6 +89,21 @@ def one_pass():
            'source': 'Associated Press, vía The New York Times',
            'providerUpdatedAt': (gov.get('resultsMeta') or {}).get('resultsUpdatedAt'),
            'senate': control(pc['S']), 'house': control(pc['H']), 'states': {}}
+    # Cámara: las 435 carreras, compactas (distrito, % contado, dos primeros, ganador)
+    try:
+        house = get('house')
+        hr = {}
+        for r in house['races']:
+            t = r.get('top_reporting_unit') or {}
+            st = t.get('state_postal')
+            if not st or st == 'US' or r.get('office_id') != 'H': continue
+            x = race(r, {}, None, st)
+            inc = next((c['party'] for c in x['cands'] if c['incumbent']), None)
+            hr[f"{st}-{int(r.get('seat_number') or 0):02d}"] = {'e': x['eevp'], 'c': x['called'], 'g': x['gained'], 'r': x['rating'], 'inc': inc,
+                'k': [{'n': c['name'], 'p': c['party'], 'v': c['pct'], 'w': c['winner'], 'i': c['incumbent']} for c in x['cands'][:2]]}
+        out['houseRaces'] = hr
+    except Exception as e:
+        print('cámara: error', e, flush=True)
     for kind, data in (('senate', sen), ('governor', gov)):
         for r in data['races']:
             st = (r.get('top_reporting_unit') or {}).get('state_postal')
@@ -97,6 +112,12 @@ def one_pass():
     tmp = OUT + '.tmp'
     json.dump(out, open(tmp, 'w'), ensure_ascii=False, separators=(',', ':'))
     os.replace(tmp, OUT)
+    try:
+        sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+        import us_condados
+        us_condados.run(sen, gov)
+    except Exception as e:
+        print('condados: error', e, flush=True)
     s, h = out['senate']['parties'], out['house']['parties']
     print(f"ok {out['updatedAt']} · Senado D {s['D']['seats']} R {s['R']['seats']} · Cámara D {h['D']['seats']} R {h['R']['seats']}", flush=True)
 
