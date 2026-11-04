@@ -65,7 +65,7 @@ def race(r, photos, prev, st):
     cands.sort(key=lambda c: (-(c['votes'] or 0), -(c['prob'] or 0)))
     e = t.get('eevp') or 0
     e = round(e) if e >= 1 else round(e, 1)
-    return {'status': r.get('race_call_status'), 'eevp': e, 'votes': total,
+    return {'status': r.get('race_call_status'), 'eevp': e, 'votes': total, 'expected': t.get('total_expected_vote'),
             'called': bool(won), 'rating': r.get('rating'), 'prev': prev, 'gained': bool((r.get('outcome') or {}).get('gained')),
             'cands': cands[:3]}
 

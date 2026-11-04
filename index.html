@@ -7003,7 +7003,7 @@
   .usx-dlg-h { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; font: 700 18px var(--font-serif); }
   .usx-x { border: 0; background: var(--surface-2); width: 34px; height: 34px; border-radius: 50%; font-size: 22px; line-height: 1; cursor: pointer; color: var(--ink); }
   .usx-dlg-ficha { margin-bottom: 12px; }
-  .usx-dlg-ficha .usr-races { max-height: none; }
+  .usx-dlg-ficha .usr-races { max-height: none; grid-template-columns: repeat(auto-fill, minmax(min(100%, 330px), 1fr)); }
   .usx-prev-wrap { --k: .7; width: 100%; height: calc(675px * var(--k)); overflow: hidden; border-radius: 10px; }
   .usx-scale { width: 1200px; height: 675px; transform: scale(var(--k)); transform-origin: 0 0; }
   .usx-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
@@ -7060,6 +7060,15 @@
   .usx-cb { height: 8px; border-radius: 4px; background: rgba(255,255,255,.14); margin-top: 6px; overflow: hidden; } .usx-cb i { display: block; height: 100%; }
   .usx-pct { font: 800 26px 'Newsreader', Georgia, serif; } .usx-cand.is-win .usx-pct { font-size: 36px; }
 
+
+  .usr-cand-votes { font-size: 11px; color: var(--muted); font-family: var(--font-mono); }
+  .usr-votes-line { font-size: 11px; color: var(--muted); margin-top: 4px; text-align: right; font-family: var(--font-mono); }
+  .usr-turn { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--line); }
+  .usr-turn > div { display: flex; flex-direction: column; font-size: 11px; color: var(--muted); line-height: 1.3; }
+  .usr-turn b { font: 700 15px var(--font-serif); color: var(--ink); }
+  .usx-turn { display: flex; flex-wrap: wrap; gap: 4px 18px; font-size: 13.5px; color: rgba(255,255,255,.8); border-top: 1px solid rgba(255,255,255,.14); padding-top: 8px; }
+  .usx-turn b { color: #fff; }
+  .usx-races.is-compact .usx-turn { font-size: 12px; padding-top: 6px; }
   .usr-eevp { height: 3px; border-radius: 2px; background: var(--surface-2); margin: 4px 0 4px; overflow: hidden; }
   .usr-eevp span { display: block; height: 100%; background: var(--ink-soft, #55617A); }
   .usr-ctybox { margin-bottom: 12px; }
@@ -33416,6 +33425,22 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
   function usAvatar(c, big) {
     return `<span class="usr-av${big ? ' is-big' : ''}" style="--pc:${usPartyColor(c.party)}"><span>${esc(usInitials(c.name))}</span>${c.img ? `<img src="${esc(c.img)}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()">` : ''}</span>`;
   }
+  const fmtMill = n => n >= 1e6 ? (Math.round(n / 1e5) / 10).toLocaleString('es-AR') + ' millones' : fmtInt(n);
+  // Votos contados, votos esperados (estimación AP/NYT) y participación sobre la
+  // población habilitada para votar (VEP, UF Election Lab)
+  function usTurnout(id, r) {
+    const E = (live.usElect && live.usElect.states || {})[id] || {};
+    const vep = E.vep, v = r.votes || 0, exp = r.expected;
+    return { votes: v, expected: exp, vep, now: vep && v ? 100 * v / vep : null, proj: vep && exp ? 100 * exp / vep : null, t22: E.turnout2022, t24: E.turnout2024 };
+  }
+  function usTurnoutHTML(id, r) {
+    const t = usTurnout(id, r);
+    return `<div class="usr-turn">
+      <div><span>Votos contados</span><b>${fmtInt(t.votes)}</b>${t.expected ? `<small>de ~${fmtMill(t.expected)} esperados</small>` : ''}</div>
+      <div><span>Electores habilitados</span><b>${t.vep ? fmtMill(t.vep) : '—'}</b></div>
+      <div><span>Participación</span><b>${t.now != null ? fmtPct(t.now) : '—'}</b><small>${t.proj ? `se estima ~${fmtPct(t.proj, 0)} al final` : 'hasta ahora'}${t.t22 ? ` · 2022: ${fmtPct(t.t22)}` : ''}</small></div>
+    </div>`;
+  }
   function usRaceRows(kind, limit, only) {
     const st = (live.usRes && live.usRes.states) || {};
     const order = { tossup: 0, 'lean-dem': 1, 'lean-rep': 1, 'likely-dem': 2, 'likely-rep': 2 };
@@ -33434,8 +33459,10 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
         ${prev ? `<div class="usr-prev"><i style="background:${usPartyColor(prev)}"></i>Antes: banca ${usPartyName(prev)}${flip ? ' · <b>cambia de partido</b>' : win ? ' · la retiene' : ''}</div>` : ''}
         ${cs.map(c => `<div class="usr-cand${c.winner ? ' is-win' : ''}">${usAvatar(c, c.winner)}
           <div class="usr-cand-main"><div class="usr-cand-name">${esc(c.name)} <small>${c.party}${c.incumbent ? ' · en el cargo' : ''}</small>${c.winner ? ' <span class="usr-check">✓</span>' : ''}</div>
+            ${c.votes ? `<div class="usr-cand-votes">${fmtInt(c.votes)} votos</div>` : ''}
             <div class="usr-cand-bar"><span style="width:${Math.min(100, c.pct || 0)}%;background:${usPartyColor(c.party)}"></span></div></div>
           <b>${c.pct != null ? fmtPct(c.pct) : '—'}</b></div>`).join('')}
+        ${only ? usTurnoutHTML(id, r) : r.votes ? `<div class="usr-votes-line">${fmtInt(r.votes)} votos contados</div>` : ''}
       </div>`;
     }).join('');
   }
@@ -33622,9 +33649,10 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
         <span>${win ? `<span class="usx-won" style="background:${usPartyColor(win.party)}">${flip ? 'Cambia de partido' : 'Proyectado'}</span>` : r.eevp ? r.eevp + '% del voto contado' : 'Sin votos contados aún'}</span></div>
       ${cs.map(c => `<div class="usx-cand${c.winner ? ' is-win' : ''}">
         <span class="usx-av" style="--pc:${usPartyColor(c.party)}"><span>${esc(usInitials(c.name))}</span>${c.img ? `<img src="${esc(c.img)}" crossorigin="anonymous" alt="">` : ''}</span>
-        <div class="usx-cm"><div class="usx-cn">${esc(c.name)} <small>${c.party === 'D' ? 'Demócrata' : c.party === 'R' ? 'Republicano' : 'Independiente'}${c.incumbent ? ' · en el cargo' : ''}</small>${c.winner ? ' <span class="usx-check">✓ Gana</span>' : ''}</div>
+        <div class="usx-cm"><div class="usx-cn">${esc(c.name)} <small>${c.party === 'D' ? 'Demócrata' : c.party === 'R' ? 'Republicano' : 'Independiente'}${c.incumbent ? ' · en el cargo' : ''}${c.votes ? ' · ' + fmtInt(c.votes) + ' votos' : ''}</small>${c.winner ? ' <span class="usx-check">✓ Gana</span>' : ''}</div>
           <div class="usx-cb"><i style="width:${Math.min(100, c.pct || 0)}%;background:${usPartyColor(c.party)}"></i></div></div>
         <b class="usx-pct">${c.pct != null && r.eevp ? fmtPct(c.pct) : '—'}</b></div>`).join('')}
+      ${(() => { const t = usTurnout(id, r); return t.votes ? `<div class="usx-turn"><span><b>${fmtInt(t.votes)}</b> votos contados</span>${t.now != null ? `<span>Participación <b>${fmtPct(t.now)}</b>${t.proj ? ` (se estima ~${fmtPct(t.proj, 0)})` : ''}</span>` : ''}${t.vep ? `<span><b>${fmtMill(t.vep)}</b> habilitados</span>` : ''}</div>` : ''; })()}
       ${prev ? `<div class="usx-prev"><i style="background:${usPartyColor(prev)}"></i>Antes: banca ${usPartyName(prev)}${flip ? ' · <b>cambia de partido</b>' : win ? ' · la retiene' : ''}</div>` : ''}
     </div>`;
   }
@@ -33669,7 +33697,9 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
         const win = (r.cands || []).find(c => c.winner), top = (r.cands || [])[0];
         return win ? `${lab}: gana ${win.name} (${win.party})${win.pct != null ? ' con ' + fmtPct(win.pct) : ''}` : r.eevp && top ? `${lab}: ${top.name} (${top.party}) adelante, ${fmtPct(top.pct)} con ${r.eevp}% contado` : `${lab}: sin votos contados aún`;
       };
-      return [`🇺🇸 ${usStateName(arg)} · Midterms 2026`, line('senate', '🏛️ Senado'), line('governor', '🏢 Gobernación')].filter(Boolean).join('\n');
+      const k0 = ['senate', 'governor'].find(k => s[k]), t = k0 ? usTurnout(arg, s[k0]) : {};
+      return [`🇺🇸 ${usStateName(arg)} · Midterms 2026`, line('senate', '🏛️ Senado'), line('governor', '🏢 Gobernación'),
+        t.votes ? `🗳️ ${fmtInt(t.votes)} votos contados${t.now != null ? ` · participación ${fmtPct(t.now)}` : ''}` : ''].filter(Boolean).join('\n');
     }
     const sen = `🏛️ Senado: D ${S.D.seats} – R ${S.R.seats} (mayoría: 51)`, cam = `🏠 Cámara: D ${H.D.seats} – R ${H.R.seats} (mayoría: 218)`;
     return [`🇺🇸 Midterms 2026, en vivo (${usHour()} h ARG)`, type === 'house' ? cam : sen, type === 'all' || type === 'map' ? cam : ''].filter(Boolean).join('\n');
@@ -34547,6 +34577,7 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
     if (live.eeuu && Date.now() >= new Date(live.eeuu.dates.electionDay).getTime()) {
       try { live.usRes = await fetchJSON(US_RES_URL); } catch (e) { /* not published yet */ }
       if (live.usRes && !live.usGeo) { try { live.usGeo = await fetchJSON(US_GEO_URL); } catch (e) {} }
+      if (live.usRes && !live.usElect) { try { live.usElect = await fetchJSON('data/especiales/eeuu-2026-electores.json'); } catch (e) {} }
     }
     const prevBr = live.brasil ? JSON.stringify(live.brasil) + JSON.stringify(live.brRes || {}) + JSON.stringify(live.brRes2 || {}) : null;
     if (liveRes.status === 'fulfilled') live.data = liveRes.value;
