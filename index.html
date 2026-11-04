@@ -7006,6 +7006,47 @@
   .usx-dlg-ficha .usr-races { max-height: none; grid-template-columns: repeat(auto-fill, minmax(min(100%, 330px), 1fr)); }
   .usx-prev-wrap { --k: .7; width: 100%; height: calc(675px * var(--k)); overflow: hidden; border-radius: 10px; }
   .usx-scale { width: 1200px; height: 675px; transform: scale(var(--k)); transform-origin: 0 0; }
+
+
+  .usx-ctymap svg { height: 100%; }
+  .usx.is-v .usx-races.n1 { max-width: none; }
+  .usx.is-v .usx-split { grid-template-rows: auto minmax(0, 1fr) auto !important; align-items: stretch; }
+  .usx.is-v .usx-split .usx-map svg { width: 100%; }
+  .usx-keys-h { font: 700 14px Inter, sans-serif; letter-spacing: .1em; text-transform: uppercase; color: #F2C14E; margin-bottom: 8px; }
+  .usx-keys-g { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 8px 16px; }
+  .usx-key { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); row-gap: 2px; min-width: 0; gap: 8px; align-items: center; font-size: 15px; padding: 7px 12px; border-radius: 10px; background: rgba(255,255,255,.07); border-left: 4px solid var(--c); }
+  .usx-key b { font: 800 18px 'Newsreader', Georgia, serif; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; } .usx-key span { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; } .usx-key span.is-win { font-weight: 800; }
+  .usx-key i { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 5px; } .usx-key em { font-style: normal; font-weight: 700; }
+  .usx-key small { font-size: 12px; color: rgba(255,255,255,.65); grid-row: 1; grid-column: 2; justify-self: end; }
+  .usx-key b { grid-row: 1; grid-column: 1; } .usx-key span { grid-row: 2; font-size: 16px; }
+
+  .usx .usr-cty { max-height: none; }
+  .usx.is-v .usx-split .usx-side { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .usx.is-v .usx-split .usx-map { min-height: 0; overflow: hidden; }
+  .usx.is-v .usx-split .usx-map svg { flex: 1; min-height: 0; height: 100%; }
+  .usx.is-v .usx-split > * { min-width: 0; }
+  .usx-fmt { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin: 4px 0 10px; font-size: 12.5px; color: var(--muted); }
+  .usx-prev-wrap { width: 100%; height: calc(var(--H, 675px) * var(--k)); }
+  .usx-prev-wrap.is-v { width: calc(var(--W, 1080px) * var(--k)); margin: 0 auto; }
+  .usx-scale { width: var(--W, 1200px) !important; height: var(--H, 675px) !important; }
+  .usx h2.is-long { font-size: 42px; } .usx h2.is-xlong { font-size: 34px; }
+  .usx-top > div:first-child { min-width: 0; }
+  .usx.is-v { width: 1080px; height: 1350px; padding: 54px 54px 36px; }
+  .usx.is-v .usx-k { font-size: 18px; }
+  .usx.is-v h2 { font-size: 76px; } .usx.is-v h2.is-long { font-size: 60px; } .usx.is-v h2.is-xlong { font-size: 46px; }
+  .usx.is-v .usx-top { flex-direction: column; align-items: flex-start; gap: 10px; margin-bottom: 26px; }
+  .usx.is-v .usx-upd { text-align: left; display: flex; gap: 8px; align-items: baseline; font-size: 18px; } .usx.is-v .usx-upd b { display: inline; font-size: 22px; }
+  .usx.is-v .usx-statesplit { grid-template-columns: 1fr; grid-template-rows: minmax(0, 1fr) auto; gap: 18px; }
+  .usx.is-v .usx-ctymap { min-height: 0; } .usx.is-v .usx-map-h { font-size: 15px; } .usx.is-v .usx-leg { font-size: 15px; }
+  .usx.is-v .usx-races.is-compact.n2 { grid-template-columns: 1fr 1fr !important; }
+  .usx.is-v .usx-races.is-compact .usx-cn { font-size: 17px; } .usx.is-v .usx-races.is-compact .usx-cand.is-win .usx-cn { font-size: 20px; }
+  .usx.is-v .usx-races.is-compact .usx-turn { font-size: 14px; }
+  .usx.is-v .usx-races.n2:not(.is-compact) { grid-template-columns: 1fr; }
+  .usx.is-v .usx-split { grid-template-columns: 1fr; grid-template-rows: auto minmax(0, 1fr); gap: 18px; }
+  .usx.is-v .usx-split .usx-side { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; } .usx.is-v .usx-split .usx-ch + .usx-ch { margin-top: 0; }
+  .usx.is-v .usx-split .usx-map { display: flex; flex-direction: column; justify-content: center; }
+  .usx.is-v .usx-one .usx-nums b { font-size: 150px; }
+  .usx.is-v .usx-foot { padding-top: 18px; } .usx.is-v .usx-brand { font-size: 32px; } .usx.is-v .usx-url { font-size: 22px; } .usx.is-v .usx-src { font-size: 14px; }
   .usx-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
   .usx-btn { border: 1px solid var(--line); background: var(--surface); color: var(--ink); border-radius: 999px; padding: 8px 14px; font: 600 13px var(--font-sans); cursor: pointer; text-decoration: none; }
   .usx-btn.is-main { background: var(--ink); color: #fff; border-color: var(--ink); }
@@ -33665,8 +33706,16 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
       ${prev ? `<div class="usx-prev"><i style="background:${usPartyColor(prev)}"></i>Antes: banca ${usPartyName(prev)}${flip ? ' · <b>cambia de partido</b>' : win ? ' · la retiene' : ''}</div>` : ''}
     </div>`;
   }
+  // Formato de la imagen: 'h' 1200×675 (X, LinkedIn) o 'v' 1080×1350 (WhatsApp, Instagram)
+  const US_FMT = { h: [1200, 675], v: [1080, 1350] };
+  function usxFmt() {
+    if (live.usxFmt) return live.usxFmt;
+    let f = null; try { f = localStorage.getItem('atlas-usx-fmt'); } catch (e) {}
+    return (live.usxFmt = US_FMT[f] ? f : (window.innerWidth < 760 ? 'v' : 'h'));
+  }
   function usxFrame(kicker, title, body) {
-    return `<div class="usx"><div class="usx-top"><div><div class="usx-k"><i></i>${kicker}</div><h2>${title}</h2></div><div class="usx-upd">Actualizado<b>${usHour()} h (Argentina)</b></div></div>
+    const plain = String(title).replace(/<[^>]+>/g, '');
+    return `<div class="usx is-${usxFmt()}"><div class="usx-top"><div><div class="usx-k"><i></i>${kicker}</div><h2 class="${plain.length > 22 ? 'is-xlong' : plain.length > 13 ? 'is-long' : ''}">${title}</h2></div><div class="usx-upd">Actualizado<b>${usHour()} h (Argentina)</b></div></div>
       <div class="usx-body">${body}</div>
       <div class="usx-foot"><div><div class="usx-brand">Atlas <em>Político</em> Mundial</div><div class="usx-src">Datos: Associated Press, vía The New York Times</div></div><div class="usx-url">atlaspoliticoelectoral.com</div></div></div>`;
   }
@@ -33695,7 +33744,14 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
     const head = S.D.winner && H.D.winner ? 'Los demócratas <em>recuperan el Congreso</em>' : S.R.winner && H.R.winner ? 'Los republicanos <em>retienen el Congreso</em>'
       : H.D.winner ? 'Los demócratas <em>ganan la Cámara</em>' : H.R.winner ? 'Los republicanos <em>retienen la Cámara</em>'
       : S.D.winner ? 'Los demócratas <em>ganan el Senado</em>' : S.R.winner ? 'Los republicanos <em>retienen el Senado</em>' : '¿Quién controla <em>el Congreso?</em>';
-    return usxFrame(kicker, head, `<div class="usx-split">${side}${map}</div>`);
+    // Vertical: suma las carreras clave del Senado debajo del mapa
+    const order = { tossup: 0, 'lean-dem': 1, 'lean-rep': 1, 'likely-dem': 2, 'likely-rep': 2 };
+    const keys = usxFmt() === 'v' ? Object.entries(R.states || {}).filter(([, x]) => x.senate).sort((a, b) => (order[a[1].senate.rating] ?? 3) - (order[b[1].senate.rating] ?? 3) || b[1].senate.eevp - a[1].senate.eevp).slice(0, 6) : [];
+    const keyRows = keys.length ? `<div class="usx-keys"><div class="usx-keys-h">Carreras clave del Senado</div><div class="usx-keys-g">${keys.map(([id, x]) => {
+      const r = x.senate, cs = (r.cands || []).filter(c => c.party !== 'I' || (c.pct || 0) > 5 || c.winner).slice(0, 2), win = cs.find(c => c.winner);
+      return `<div class="usx-key" style="--c:${win ? usPartyColor(win.party) : 'rgba(255,255,255,.25)'}"><b>${esc(usStateName(id))}</b>${cs.map(c => `<span class="${c.winner ? 'is-win' : ''}"><i style="background:${usPartyColor(c.party)}"></i>${esc(c.name.split(' ').slice(-1)[0])} <em>${r.eevp && c.pct != null ? fmtPct(c.pct) : '—'}</em>${c.winner ? ' ✓' : ''}</span>`).join('')}<small>${win ? 'Proyectado' : r.eevp ? r.eevp + '% contado' : 'sin votos'}</small></div>`;
+    }).join('')}</div></div>` : '';
+    return usxFrame(kicker, head, `<div class="usx-split">${side}${map}${keyRows}</div>`);
   }
   function usShareText(type, arg) {
     const R = live.usRes, S = R.senate.parties, H = R.house.parties;
@@ -33751,7 +33807,8 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
     m.innerHTML = `<div class="usx-dlg">
       <div class="usx-dlg-h"><b>Compartir · ${esc(title)}</b><button type="button" class="usx-x" data-usx-close aria-label="Cerrar">×</button></div>
       ${type === 'state' ? `<div class="usx-dlg-ficha">${usStateFichaHTML(arg)}</div>` : ''}
-      <div class="usx-prev-wrap"><div class="usx-scale">${usShareCard(type, arg)}</div></div>
+      <div class="usx-fmt"><span>Formato de la imagen</span><div class="seg" data-usx-fmt><button type="button" data-f="v" class="${usxFmt() === 'v' ? 'is-active' : ''}">Vertical · WhatsApp, Instagram</button><button type="button" data-f="h" class="${usxFmt() === 'h' ? 'is-active' : ''}">Horizontal · X, LinkedIn</button></div></div>
+      <div class="usx-prev-wrap is-${usxFmt()}"><div class="usx-scale">${usShareCard(type, arg)}</div></div>
       <div class="usx-actions">
         <button type="button" class="usx-btn is-main" data-usx="native">Compartir imagen</button>
         <button type="button" class="usx-btn" data-usx="png">Descargar imagen</button>
@@ -33761,10 +33818,20 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
         <a class="usx-btn" target="_blank" rel="noopener" href="https://www.linkedin.com/sharing/share-offsite/?url=${enc(url)}">LinkedIn</a>
         <a class="usx-btn" target="_blank" rel="noopener" href="https://www.facebook.com/sharer/sharer.php?u=${enc(url)}">Facebook</a>
       </div>
-      <p class="usx-hint">Para publicar la imagen en X, LinkedIn o Instagram, descargala y adjuntala al posteo. Desde el celular, "Compartir imagen" la manda directo a la app.</p>
+      <p class="usx-hint">Desde el celular, "Compartir imagen" la manda directo a WhatsApp, Instagram o X y deja el texto copiado para pegarlo como mensaje. En la compu, descargala y adjuntala al posteo.</p>
     </div>`;
-    const scaleBox = () => { const w = m.querySelector('.usx-prev-wrap'); if (w) w.style.setProperty('--k', Math.min(1, w.clientWidth / 1200)); };
+    const scaleBox = () => {
+      const w = m.querySelector('.usx-prev-wrap'); if (!w) return;
+      const [W, H] = US_FMT[usxFmt()];
+      // vertical: fit the preview in ~70% of the viewport height too
+      const k = Math.min(1, w.clientWidth / W, usxFmt() === 'v' ? (window.innerHeight * 0.72) / H : 1);
+      w.style.setProperty('--k', k); w.style.setProperty('--W', W + 'px'); w.style.setProperty('--H', H + 'px');
+    };
     requestAnimationFrame(scaleBox);
+    m.querySelectorAll('[data-usx-fmt] [data-f]').forEach(b => b.addEventListener('click', () => {
+      live.usxFmt = b.getAttribute('data-f'); try { localStorage.setItem('atlas-usx-fmt', live.usxFmt); } catch (e) {}
+      usShareRender();
+    }));
     m.querySelectorAll('[data-usx]').forEach(b => b.addEventListener('click', () => usShareAction(b.getAttribute('data-usx'), b, url, text)));
     m.querySelectorAll('[data-cty-k] [data-k]').forEach(b => b.addEventListener('click', () => { usShareState.ckind = b.getAttribute('data-k'); usShareRender(); }));
     m.querySelectorAll('[data-cty-m] [data-m]').forEach(b => b.addEventListener('click', () => { usShareState.cmode = b.getAttribute('data-m'); usShareRender(); }));
@@ -33794,20 +33861,24 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
   async function usShareBlob() {
     const card = document.querySelector('#usx-modal .usx');
     if (!card || !window.htmlToImage) throw new Error('sin librería de imagen');
+    const [W, H] = US_FMT[usxFmt()];
     const clone = card.cloneNode(true);
     const host = document.createElement('div');
-    host.style.cssText = 'position:fixed;left:-20000px;top:0;width:1200px;height:675px;';
+    host.style.cssText = `position:fixed;left:-20000px;top:0;width:${W}px;height:${H}px;`;
     host.appendChild(clone); document.body.appendChild(host);
     try {
+      try { await document.fonts.ready; } catch (e) {}
       await Promise.all(Array.from(clone.querySelectorAll('img')).map(img => img.complete && img.naturalWidth ? null : new Promise(r => { img.onload = img.onerror = r; setTimeout(r, 4000); })));
       clone.querySelectorAll('img').forEach(img => { if (!img.naturalWidth) img.remove(); });
-      return await window.htmlToImage.toBlob(clone, { pixelRatio: 1.5, width: 1200, height: 675, cacheBust: true, backgroundColor: '#0B1B3F' });
+      // JPEG at 1.5×: sharp on phones, light enough for WhatsApp (PNG of a map weighs 3-4×)
+      const canvas = await window.htmlToImage.toCanvas(clone, { pixelRatio: 1.5, width: W, height: H, cacheBust: true, backgroundColor: '#0B1B3F' });
+      return await new Promise((res, rej) => canvas.toBlob(b => b ? res(b) : rej(new Error('toBlob')), 'image/jpeg', 0.92));
     } finally { host.remove(); }
   }
   async function usShareAction(kind, btn, url, text) {
     const label = btn.textContent;
     const done = (t) => { btn.textContent = t; setTimeout(() => { btn.textContent = label; }, 1800); };
-    const name = `atlas-eeuu-${usShareState.type === 'state' ? usShareState.arg.toLowerCase() : US_SHARE_SLUG[usShareState.type]}-${(usHour() || '').replace(':', '')}.png`;
+    const name = `atlas-eeuu-${usShareState.type === 'state' ? usShareState.arg.toLowerCase() : US_SHARE_SLUG[usShareState.type]}-${(usHour() || '').replace(':', '')}-${usxFmt() === 'v' ? 'vertical' : 'horizontal'}.jpg`;
     if (kind === 'copy') {
       try { await navigator.clipboard.writeText(url); done('¡Enlace copiado!'); } catch (e) { prompt('Copiá el enlace:', url); }
       return;
@@ -33815,10 +33886,13 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
     btn.textContent = 'Generando…'; btn.disabled = true;
     try {
       const blob = await usShareBlob();
-      const file = new File([blob], name, { type: 'image/png' });
+      const file = new File([blob], name, { type: 'image/jpeg' });
       if (kind === 'native' && navigator.canShare && navigator.canShare({ files: [file] })) {
-        await navigator.share({ files: [file], text: text + '\n' + url });
-        btn.disabled = false; done('¡Listo!');
+        // WhatsApp and Instagram often drop the text that travels with an image:
+        // leave it in the clipboard so it can be pasted as the message
+        try { await navigator.clipboard.writeText(text + '\n' + url); } catch (e) {}
+        try { await navigator.share({ files: [file], text: text + '\n' + url }); } catch (e) { if (e && e.name === 'AbortError') { btn.disabled = false; btn.textContent = label; return; } throw e; }
+        btn.disabled = false; done('¡Listo! Texto copiado');
         return;
       }
       if (kind === 'native' && navigator.share) { try { await navigator.share({ text, url }); } catch (e) {} }
