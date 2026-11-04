@@ -33552,13 +33552,22 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
     const k = a < 5 ? 0 : a < 15 ? 1 : a < 30 ? 2 : 3;
     return (p === 'D' ? D : p === 'R' ? R : I)[k];
   };
+  // Loads the state's county shapes once and the county results at most every
+  // 90 s, even when the request fails (so the card never loops on a 404).
   async function usLoadCounties(st) {
     live.usCtyGeo = live.usCtyGeo || {};
     const jobs = [];
-    if (!live.usCtyGeo[st]) jobs.push(fetchJSON('data/geo/eeuu-condados/' + st + '.json').then(g => { live.usCtyGeo[st] = g; }).catch(() => { live.usCtyGeo[st] = { counties: [] }; }));
-    if (!live.usCty || Date.now() - (live.usCtyAt || 0) > 90000) jobs.push(fetchJSON(US_CTY_URL).then(d => { live.usCty = d; live.usCtyAt = Date.now(); }).catch(() => {}));
+    if (!(st in live.usCtyGeo)) {
+      live.usCtyGeo[st] = null;
+      jobs.push(fetchJSON('data/geo/eeuu-condados/' + st + '.json').then(g => { live.usCtyGeo[st] = g; }).catch(() => { live.usCtyGeo[st] = { counties: [] }; }));
+    }
+    if (Date.now() - (live.usCtyTry || 0) > 90000) {
+      live.usCtyTry = Date.now();
+      jobs.push(fetchJSON(US_CTY_URL).then(d => { live.usCty = d; }).catch(() => {}));
+    }
     await Promise.all(jobs);
   }
+  const usCtyStamp = st => `${!!(live.usCtyGeo && live.usCtyGeo[st])}|${live.usCty ? live.usCty.updatedAt : ''}`;
   function usCountyMapSVG(st, kind, mode, cls) {
     const g = live.usCtyGeo && live.usCtyGeo[st];
     if (!g || !g.counties || !g.counties.length) return '';
@@ -33713,7 +33722,7 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
   let usShareState = null;
   function usShareOpen(type, arg) {
     if (!live.usRes) return;
-    usShareState = { type, arg };
+    usShareState = { type, arg, stamp: live.usRes.updatedAt };
     let m = document.getElementById('usx-modal');
     if (!m) {
       m = document.createElement('div');
@@ -33759,9 +33768,14 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
     m.querySelectorAll('[data-usx]').forEach(b => b.addEventListener('click', () => usShareAction(b.getAttribute('data-usx'), b, url, text)));
     m.querySelectorAll('[data-cty-k] [data-k]').forEach(b => b.addEventListener('click', () => { usShareState.ckind = b.getAttribute('data-k'); usShareRender(); }));
     m.querySelectorAll('[data-cty-m] [data-m]').forEach(b => b.addEventListener('click', () => { usShareState.cmode = b.getAttribute('data-m'); usShareRender(); }));
-    if (type === 'state' && (!live.usCtyGeo || !live.usCtyGeo[arg] || !live.usCty || Date.now() - (live.usCtyAt || 0) > 90000) && !usShareState.loading) {
+    if (type === 'state' && (!live.usCtyGeo || !(arg in live.usCtyGeo) || Date.now() - (live.usCtyTry || 0) > 90000) && !usShareState.loading) {
       usShareState.loading = true;
-      usLoadCounties(arg).then(() => { if (usShareState && usShareState.arg === arg) { usShareState.loading = false; usShareRender(); } });
+      const before = usCtyStamp(arg);
+      usLoadCounties(arg).then(() => {
+        if (!usShareState || usShareState.arg !== arg) return;
+        usShareState.loading = false;
+        if (usCtyStamp(arg) !== before) usShareRender();
+      });
     }
   }
   function usStateFichaHTML(id) {
@@ -33773,7 +33787,7 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
         <div class="nh-map-head"><h3>${ck === 'senate' ? 'Senado' : 'Gobernación'}: ${cm === 'prev' ? 'la elección anterior' : 'condado por condado'}</h3>
           <div class="usr-segs">${kinds.length > 1 ? `<div class="seg" data-cty-k>${kinds.map(k => `<button type="button" data-k="${k}" class="${k === ck ? 'is-active' : ''}">${k === 'senate' ? 'Senado' : 'Gobernación'}</button>`).join('')}</div>` : ''}
           <div class="seg" data-cty-m><button type="button" data-m="now" class="${cm === 'now' ? 'is-active' : ''}">2026</button><button type="button" data-m="prev" class="${cm === 'prev' ? 'is-active' : ''}">Elección anterior</button></div></div></div>
-        <div class="usr-cty-wrap">${usCountyMapSVG(id, ck, cm) || '<p class="muted usr-cty-load">Cargando el mapa por condado…</p>'}</div>
+        <div class="usr-cty-wrap">${usCountyMapSVG(id, ck, cm) || `<p class="muted usr-cty-load">${live.usCtyGeo && live.usCtyGeo[id] ? 'Mapa por condado no disponible para este estado.' : 'Cargando el mapa por condado…'}</p>`}</div>
         ${usCtyLegend(cm)}</div>` : `<p class="muted">${esc(usStateName(id))} no elige senador ni gobernador este año. Vota sus bancas de la Cámara de Representantes.</p>`;
     return `${map}${kinds.length ? `<div class="usr-races">${kinds.map(k => usRaceRows(k, 0, id)).join('')}</div>` : ''}${usHouseHTML('state', id)}`;
   }
@@ -34607,7 +34621,11 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
     if (isViewActive('argentina') && live.argentina && (JSON.stringify(live.argentina) !== prevAr || !document.querySelector('#esp-argentina .esp-hero'))) renderArgentina();
     if (isViewActive('eeuu') && live.eeuu && (JSON.stringify(live.eeuu) !== prevUs || !document.querySelector('#esp-eeuu .esp-hero'))) renderEeuu();
     else if (isViewActive('eeuu')) renderUsResults();
-    if (live.usRes) { usShareDeepLink(); if (usShareState && !document.querySelector('#usx-modal .usx-btn:disabled')) usShareRender(); }
+    if (live.usRes) {
+      usShareDeepLink();
+      const stamp = live.usRes.updatedAt;
+      if (usShareState && usShareState.stamp !== stamp && !document.querySelector('#usx-modal .usx-btn:disabled')) { usShareState.stamp = stamp; usShareRender(); }
+    }
     scheduleRefresh();
   }
   function scheduleRefresh() {
