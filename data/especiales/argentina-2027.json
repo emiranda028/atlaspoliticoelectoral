@@ -1,7 +1,7 @@
 {
  "id": "argentina-2027",
  "title": "Elecciones 2027",
- "updatedAt": "2026-10-23T15:00:00-03:00",
+ "updatedAt": "2026-11-10T12:00:00-03:00",
  "lede": "El 24 de octubre de 2027 la Argentina elige presidente y vice, renueva 130 de las 257 bancas de Diputados y 24 de las 72 del Senado (ocho provincias). Javier Milei va por la reelección después de ganar las legislativas de 2025 con el 40,7% y quedar como primera minoría en Diputados; enfrente, Axel Kicillof se perfila como la principal figura del peronismo. A un año de la votación, las encuestas muestran un escenario parejo, la desaprobación del Gobierno ronda el 60% y todavía no está claro si habrá PASO: el oficialismo busca suspenderlas o eliminarlas, pero hasta mediados de octubre de 2026 no había reunido los votos en el Senado.",
  "dates": {
   "paso": "2027-08-08",
@@ -493,6 +493,10 @@
    {
     "date": "2026-12",
     "label": "Plazo informal que maneja el oficialismo para votar la suspensión o eliminación de las PASO en el Congreso (sin fecha confirmada)"
+   },
+   {
+    "date": "2027-02-14",
+    "label": "Neuquén elige gobernador, Legislatura e intendentes: la primera provincia en votar (Decreto 1860/2026)"
    },
    {
     "date": "2027-04/05",
@@ -3014,15 +3018,30 @@
    "governorElection2027": true,
    "reelection": "puede (primer mandato)",
    "incumbentRunning": "sí",
-   "date2027": null,
-   "dateStatus": "desdoblada sin fecha",
-   "dateNote": "Figueroa y Gaido acordaron desdoblar. Agosto es la opción más fuerte si se suspenden las PASO nacionales; también se menciona septiembre, y hay versiones de febrero o marzo. La ley no fija fecha.",
-   "system": "sin primarias",
+   "date2027": "2027-02-14",
+   "dateStatus": "confirmada",
+   "dateNote": "Figueroa firmó el 9/11/2026 el Decreto 1860/2026, en acuerdo de ministros, y convocó a elecciones provinciales desdobladas de la nacional para el domingo 14 de febrero de 2027: Neuquén será la primera provincia en votar. Gaido adhirió con un decreto propio para que la capital vote el mismo día.",
+   "system": "Sin PASO ni internas; gobernador por mayoría simple, sin balotaje; Boleta Única Electrónica. Listas hasta el 11/12/2026, campaña desde el 16/12/2026.",
    "candidates": [
     {
      "name": "Rolando Figueroa",
-     "party": "La Neuquinidad",
-     "note": "Irá por la reelección, con apoyo del intendente Mariano Gaido"
+     "party": "La Neuquinidad (con PRO, Frente Grande, Rucci y Primero Neuquén de Gaido)",
+     "note": "Va por la reelección, aunque todavía no lo confirmó formalmente"
+    },
+    {
+     "name": "Nadia Márquez / Pablo Cervi",
+     "party": "La Libertad Avanza",
+     "note": "Márquez, presidenta del partido, promete candidato propio, pero la Ficha Limpia provincial la inhabilitaría (probation de 2013); Cervi suena como alternativa"
+    },
+    {
+     "name": "A definir",
+     "party": "PJ / Fuerza Patria",
+     "note": "Peronismo fragmentado: suenan Darío Martínez, Pablo Todero y Oscar Parrilli"
+    },
+    {
+     "name": "Sin confirmar",
+     "party": "MPN",
+     "note": "Por primera vez en 60 años podría no presentar candidaturas provinciales"
     }
    ],
    "gov2023": {
@@ -3033,15 +3052,31 @@
     "winner": "La Libertad Avanza",
     "pct": 33.38
    },
-   "summary": "Figueroa, que en 2023 cortó 60 años de gobiernos del MPN, buscará la reelección con un MPN debilitado. LLA le ganó por menos de dos puntos en 2025, y el PJ reclama listas propias.",
+   "summary": "Neuquén adelantó y desdobló su elección al 14 de febrero de 2027 y será la primera provincia en votar. Figueroa, que en 2023 cortó 60 años de gobiernos del MPN, llega como favorito con La Neuquinidad (CB Global Data lo ubicó en octubre como el gobernador con mejor imagen del país, 55,8%). LLA promete candidato propio pero su principal figura estaría inhabilitada, el PJ está dividido y el MPN podría no competir.",
    "sources": [
     {
-     "label": "Noticias NQN (20/8/2026): agosto y septiembre, las fechas que toman fuerza",
-     "url": "https://www.noticiasnqn.com.ar/noticias/2026/08/20/348847-agosto-y-septiembre-las-fechas-que-toman-fuerza-para-las-elecciones-en-neuquen"
+     "label": "Letra P (9/11/2026): Figueroa puso el gancho y Neuquén elige gobernador el 14 de febrero",
+     "url": "https://www.letrap.com.ar/enamorado-la-democracia-rolando-figueroa-puso-el-gancho-y-neuquen-elige-gobernador-el-14-febrero-n5428039/amp"
     },
     {
-     "label": "Letra P: Figueroa y Gaido acuerdan elecciones adelantadas",
-     "url": "https://www.letrap.com.ar/politica/neuquen-figueroa-y-gaido-acuerdan-elecciones-adelantadas-y-discuten-cual-es-la-mejor-fecha-n5423479"
+     "label": "Río Negro (9/11/2026): Neuquén adelanta sus elecciones al 14 de febrero de 2027: qué se vota",
+     "url": "https://www.rionegro.com.ar/politica/neuquen-adelantas-sus-elecciones-al-14-de-febrero-de-2027-que-se-vota-y-cual-es-el-panorama-4791356/"
+    },
+    {
+     "label": "Rosario3 (9/11/2026): Neuquén será la primera provincia en ir a las urnas en 2027",
+     "url": "https://www.rosario3.com/politica/neuquen-sera-la-primera-provincia-en-ir-a-las-urnas-en-2027-elegira-gobernador-en-febrero-20261109-0036.html"
+    },
+    {
+     "label": "La Política Online (9/11/2026): El gobernador de Neuquén no esperó a los libertarios y anticipó la elección a febrero",
+     "url": "https://www.lapoliticaonline.com/politica/el-gobernador-de-neuquen-no-espero-a-a-los-libertarios-y-anticipo-la-eleccion-a-febrero/"
+    },
+    {
+     "label": "Ámbito (9/11/2026): Neuquén confirmó desdoblamiento y elegirá gobernador en febrero",
+     "url": "https://www.ambito.com/neuquen-confirmo-desdoblamiento-y-se-anticipa-el-2027-elegira-gobernador-febrero-n6343162"
+    },
+    {
+     "label": "LMNeuquén (22/10/2026): Figueroa, el gobernador con mejor imagen del país (CB Global Data)",
+     "url": "https://www.lmneuquen.com/neuquen/rolando-figueroa-es-el-gobernador-mejor-imagen-todo-el-pais-n1258187"
     },
     {
      "label": "Río Negro: Gaido apoyará la reelección de Figueroa",
@@ -3067,7 +3102,18 @@
     "wiki": "Rolando_Figueroa",
     "lean": "center"
    },
-   "senate2027": false
+   "senate2027": false,
+   "decree": {
+    "number": "1860/2026",
+    "date": "2026-11-09"
+   },
+   "offices": [
+    "Gobernador y vicegobernador (la vicegobernación está vacante desde la destitución de Gloria Ruiz)",
+    "35 diputados provinciales (Legislatura unicameral)",
+    "Intendente y 20 concejales de Neuquén capital, más una consulta por una enmienda a la Carta Orgánica",
+    "Intendentes y concejales de 13 municipios de 2.ª categoría, comisiones municipales de 10 de 3.ª y presidentes de 22 comisiones de fomento",
+    "Consejeros escolares en 14 distritos"
+   ]
   },
   "R": {
    "capital": "Viedma",
