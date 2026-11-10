@@ -33262,7 +33262,10 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
     }
     const polls = il.polls || [];
     return (il.lists || []).map(l => {
-      const vals = polls.map(p => (p.seats && p.seats[l.id]) || 0);
+      // A party missing from a poll is 0 only when the poll folds it into another list (Compromís in
+      // Sumar, UPN in PP); otherwise the pollster just didn't estimate it, so leave that poll out
+      const folded = l.id === 'Compromis' || l.id === 'UPN';
+      const vals = polls.filter(p => folded || (p.seats && p.seats[l.id] != null)).map(p => (p.seats && p.seats[l.id]) || 0);
       const avg = vals.length ? vals.reduce((a, b) => a + b, 0) / vals.length : 0;
       return Object.assign({}, l, { avg, rounded: Math.round(avg) });
     }).sort((a, b) => b.avg - a.avg);
@@ -34363,7 +34366,10 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
   function esAverages(es) {
     const polls = (es.polls || []).filter(p => p.seats && Object.keys(p.seats).length);
     return (es.lists || []).map(l => {
-      const vals = polls.map(p => (p.seats && p.seats[l.id]) || 0);
+      // A party missing from a poll is 0 only when the poll folds it into another list (Compromís in
+      // Sumar, UPN in PP); otherwise the pollster just didn't estimate it, so leave that poll out
+      const folded = l.id === 'Compromis' || l.id === 'UPN';
+      const vals = polls.filter(p => folded || (p.seats && p.seats[l.id] != null)).map(p => (p.seats && p.seats[l.id]) || 0);
       const pv = (es.polls || []).map(p => p.pct && p.pct[l.id]).filter(v => v != null);
       const avg = vals.length ? vals.reduce((a, b) => a + b, 0) / vals.length : 0;
       return Object.assign({}, l, { avg, pctAvg: pv.length ? pv.reduce((a, b) => a + b, 0) / pv.length : null });
