@@ -31746,7 +31746,7 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
     const notes = (live.data && live.data.notes) || [];
     wrap.hidden = !notes.length;
     ul.innerHTML = notes.slice(0, 6).map(n => {
-      const d = n.date ? new Date(n.date) : null;
+      const d = n.date ? new Date(/^\d{4}-\d{2}-\d{2}$/.test(n.date) ? n.date + 'T12:00:00' : n.date) : null; // a bare date is a local day, not UTC midnight
       const when = d ? `${fmtDateShort(d)}${n.date.length > 10 ? ' · ' + String(d.getHours()).padStart(2,'0') + ':' + String(d.getMinutes()).padStart(2,'0') : ''}` : '';
       const body = n.view
         ? `<a href="#${esc(n.view)}" onclick="return window.__atlasGoTo('${esc(n.view)}')">${esc(n.text)}</a>`

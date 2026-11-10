@@ -1,15 +1,15 @@
 {
- "updatedAt": "2026-10-29T12:00:00-03:00",
+ "updatedAt": "2026-11-10T12:30:00-03:00",
  "refreshSeconds": 300,
  "specials": [
   {
    "id": "eeuu-2026",
    "status": "active",
    "iso": "USA",
-   "tag": "Especial · martes 3 de noviembre",
+   "tag": "Especial · resultados",
    "title": "EE.UU. · Midterms",
    "date": "2026-11-03",
-   "blurb": "Toda la Cámara, 35 bancas del Senado y 36 gobernaciones. El mapa estado por estado con los pronósticos, las carreras que definen el Congreso, las encuestas y la relación con Argentina.",
+   "blurb": "Los demócratas recuperan el Congreso: 54 a 44 en el Senado y 254 a 165 en la Cámara (AP, 10/11). Resultados estado por estado y por condado, la Cámara distrito por distrito y fichas para compartir.",
    "view": "eeuu"
   },
   {
@@ -27,10 +27,10 @@
    "view": "argentina",
    "status": "active",
    "iso": "ARG",
-   "tag": "Especial · nuevo",
+   "tag": "Especial · Neuquén vota el 14/2",
    "title": "Argentina 2027",
    "date": "2027-10-24",
-   "blurb": "Presidente, 130 diputados, 24 senadores y las gobernaciones provincia por provincia: fechas, candidatos, datos sociales y económicos, en un mapa bicontinental con Malvinas y la Antártida."
+   "blurb": "Presidente, 130 diputados, 24 senadores y las gobernaciones provincia por provincia. Neuquén abre el calendario el 14 de febrero. Fechas, candidatos, encuestas y datos sociales en un mapa bicontinental con Malvinas y la Antártida."
   },
   {
    "id": "israel-2026",
@@ -40,14 +40,14 @@
    "tag": "Especial · resultado",
    "title": "Israel 2026",
    "date": "2026-10-27",
-   "blurb": "Con el 90% escrutado, el bloque de Netanyahu suma 53 bancas, el de Eisenkot 48 y los partidos árabes 19: nadie llega a 61. La nueva Knéset y la calculadora de coaliciones con los resultados."
+   "blurb": "Resultados oficiales: el bloque de Netanyahu suma 53 bancas, la oposición judía 48 y los partidos árabes 19. Herzog le encargó formar gobierno a Gadi Eisenkot, con plazo hasta el 6 de diciembre. Calculadora de coaliciones."
   },
   {
    "id": "espana-2026",
    "view": "espana",
    "status": "active",
    "iso": "ESP",
-   "tag": "Especial · nuevo",
+   "tag": "Especial · vota el 29 de noviembre",
    "title": "España 2026",
    "date": "2026-11-29",
    "blurb": "Generales anticipadas del 29 de noviembre: 350 diputados en 52 provincias y 176 para la mayoría absoluta. Calculadora de mayorías con las encuestas, Congreso actual, candidatos y relación con Argentina."
@@ -66,10 +66,70 @@
  ],
  "notes": [
   {
-   "date": "2026-10-28",
+   "date": "2026-11-10",
+   "tag": "Encuestas",
+   "view": "espana",
+   "text": "España, a 19 días de las generales del 29-N: casi todas las encuestas ponen primero al PP. DYM (10/11) le da 33,1% contra 27,3% del PSOE y 18,6% de Vox; GAD3 (9/11), 31,9%, 25,9% y 18,6%. El promedio de escaños suma 199 entre PP y Vox, por encima de los 176 de la mayoría."
+  },
+  {
+   "date": "2026-11-10",
+   "tag": "EE.UU.",
+   "view": "eeuu",
+   "text": "EE.UU., con datos de AP al 10/11: los demócratas controlan el Senado (54 a 44) y la Cámara (254 a 165, con 16 bancas por definir). Siguen abiertas las carreras al Senado de Misisipi, donde Scott Colom aventaja a Cindy Hyde-Smith 49,1% a 48,8%, y Alaska, donde Mary Peltola supera a Dan Sullivan 48,6% a 47,5%."
+  },
+  {
+   "date": "2026-11-10",
+   "tag": "Próximas",
+   "view": "elecciones",
+   "text": "Próximas elecciones: Cabo Verde elige presidente el 15 de noviembre (balotaje el 29), España vota el 29 de noviembre y Gambia el 5 de diciembre, donde Adama Barrow busca un tercer mandato."
+  },
+  {
+   "date": "2026-11-10",
+   "tag": "Israel",
+   "view": "israel",
+   "text": "Israel: juró la 26.ª Knéset. Gadi Eisenkot (Yashar), a quien Herzog encargó formar gobierno con 67 recomendaciones, todavía no firmó acuerdos de coalición; tiene plazo hasta el 6 de diciembre, prorrogable al 20."
+  },
+  {
+   "date": "2026-11-09",
+   "tag": "Argentina",
+   "view": "argentina",
+   "text": "Neuquén será la primera provincia en votar en 2027: por el Decreto 1860/2026, Rolando Figueroa desdobló y convocó para el 14 de febrero. Se eligen gobernador, vice, 35 diputados e intendentes, con Boleta Única Electrónica y sin PASO."
+  },
+  {
+   "date": "2026-11-09",
+   "tag": "Argentina",
+   "view": "argentina",
+   "text": "La reforma electoral que elimina las PASO sigue trabada en el Senado: hacen falta 37 votos y los gobernadores de Córdoba, Salta, Tucumán, Misiones y Catamarca condicionan su apoyo. Crece la opción de suspender las primarias solo para 2027 antes del cierre de las sesiones ordinarias, el 30/11."
+  },
+  {
+   "date": "2026-11-07",
    "tag": "Resultado",
-   "text": "Israel: el bloque de Netanyahu suma 53 bancas y el opositor de Eisenkot 48 (preliminar); ninguno llega a 61. Serbia: la Lista Estudiantil ganó con mayoría absoluta (141 de 250). Bulgaria va al balotaje el 1 de noviembre (Iotova vs. Gyurov).",
-   "view": "israel"
+   "view": "elecciones",
+   "text": "Nueva Zelanda: con el escrutinio preliminar, la coalición de Christopher Luxon (National, ACT y NZ First) suma 67 de 131 bancas, una más que la mayoría. El resultado oficial se conoce el 27/11. En Granada, el NDC de Dickon Mitchell ganó un segundo mandato con 14 de 15 bancas."
+  },
+  {
+   "date": "2026-11-04",
+   "tag": "Resultado",
+   "view": "eeuu",
+   "text": "Los demócratas recuperan el Congreso: dieron vuelta 7 bancas del Senado (Texas, Carolina del Norte, Ohio, Maine, Iowa, Kansas y Carolina del Sur), 28 de la Cámara y 5 gobernaciones republicanas, entre ellas Texas, donde Gina Hinojosa venció a Greg Abbott."
+  },
+  {
+   "date": "2026-11-04",
+   "tag": "Resultado",
+   "view": "israel",
+   "text": "Israel, resultados oficiales del 27/10: el bloque de Netanyahu suma 53 bancas, la oposición judía 48 y los partidos árabes un récord de 19; nadie llega a 61. El Likud fue primero con 27 bancas, seguido por Yashar con 21; participación del 78%."
+  },
+  {
+   "date": "2026-11-03",
+   "tag": "España",
+   "view": "espana",
+   "text": "Óscar Puente renunció al Ministerio de Transportes y a encabezar la lista del PSOE por Valladolid tras el choque de trenes de Urda (Toledo), que dejó 69 muertos. Lo reemplaza en la lista la ministra de Igualdad, Ana Redondo."
+  },
+  {
+   "date": "2026-11-01",
+   "tag": "Resultado",
+   "view": "elecciones",
+   "text": "Bulgaria: la presidenta interina Iliana Iotova ganó el balotaje con el 57,6% contra el 39,5% de Andrey Gyurov y será la primera mujer electa presidenta del país. La participación fue de apenas 28,7%."
   },
   {
    "date": "2026-10-26",
@@ -93,48 +153,6 @@
    "date": "2026-10-12",
    "tag": "Brasil",
    "text": "Balotaje del 25 de octubre: Flávio Bolsonaro llega adelante en las encuestas posteriores a la 1.ª vuelta (52–53% de los válidos) y suma el apoyo de Caiado, Zema, Cury, Republicanos, União-PP y Podemos.",
-   "view": "brasil"
-  },
-  {
-   "date": "2026-10-08",
-   "tag": "Brasil",
-   "text": "El TSE anuló los votos de Garotinho y Douglas Ruas (PL) quedó electo gobernador de Río de Janeiro en 1.ª vuelta: el balotaje será en seis estados (AC, AM, DF, ES, RN y TO).",
-   "view": "brasil"
-  },
-  {
-   "date": "2026-10-05",
-   "tag": "Resultado",
-   "text": "Brasil 1.ª vuelta: Flávio Bolsonaro 47,03%, Lula 45,16%. El PL tendrá la mayor bancada de Diputados (121 de 513) y 19 de las 54 bancas del Senado en juego.",
-   "view": "brasil"
-  },
-  {
-   "date": "2026-09-24",
-   "tag": "Nuevo",
-   "text": "Especial Israel 2026: armá tu propia coalición con la calculadora de bancas basada en las encuestas de septiembre.",
-   "view": "israel"
-  },
-  {
-   "date": "2026-09-24",
-   "tag": "Nuevo",
-   "text": "Especial EE.UU. 2026: mapa por estado con los pronósticos del Senado y las gobernaciones, el Congreso actual y las encuestas de septiembre.",
-   "view": "eeuu"
-  },
-  {
-   "date": "2026-09-24",
-   "tag": "Nuevo",
-   "text": "Especial Brasil 2026: mapa de electores por estado, composición del Congreso, candidatos y encuestas de septiembre.",
-   "view": "brasil"
-  },
-  {
-   "date": "2026-09-22",
-   "tag": "Encuestas",
-   "text": "AtlasIntel/Bloomberg (17–22 sep): Lula 45,8% y Flávio Bolsonaro 43,4% en primera vuelta; empate técnico en el balotaje (47,7% a 47,4%).",
-   "view": "brasil"
-  },
-  {
-   "date": "2026-09-11",
-   "tag": "Brasil",
-   "text": "El TSE rechazó por unanimidad la candidatura de Pablo Marçal (PRTB): quedan 12 fórmulas presidenciales.",
    "view": "brasil"
   }
  ],
