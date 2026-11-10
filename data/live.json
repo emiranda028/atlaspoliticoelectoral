@@ -3,6 +3,16 @@
  "refreshSeconds": 300,
  "specials": [
   {
+   "id": "espana-2026",
+   "view": "espana",
+   "status": "active",
+   "iso": "ESP",
+   "tag": "Especial · vota el 29 de noviembre",
+   "title": "España 2026",
+   "date": "2026-11-29",
+   "blurb": "Generales anticipadas del 29 de noviembre: 350 diputados en 52 provincias y 176 para la mayoría absoluta. Calculadora de mayorías con las encuestas, Congreso actual, candidatos y relación con Argentina."
+  },
+  {
    "id": "eeuu-2026",
    "status": "active",
    "iso": "USA",
@@ -11,16 +21,6 @@
    "date": "2026-11-03",
    "blurb": "Los demócratas recuperan el Congreso: 54 a 44 en el Senado y 254 a 165 en la Cámara (AP, 10/11). Resultados estado por estado y por condado, la Cámara distrito por distrito y fichas para compartir.",
    "view": "eeuu"
-  },
-  {
-   "id": "brasil-2026",
-   "view": "brasil",
-   "status": "active",
-   "iso": "BRA",
-   "tag": "Especial · resultado final",
-   "title": "Brasil 2026",
-   "date": "2026-10-25",
-   "blurb": "Lula fue reelecto en el balotaje del 25 de octubre (51,79% contra 48,21% de Flávio Bolsonaro). Resultados por estado, las gobernaciones y el Congreso que asume en 2027."
   },
   {
    "id": "argentina-2027",
@@ -43,14 +43,14 @@
    "blurb": "Resultados oficiales: el bloque de Netanyahu suma 53 bancas, la oposición judía 48 y los partidos árabes 19. Herzog le encargó formar gobierno a Gadi Eisenkot, con plazo hasta el 6 de diciembre. Calculadora de coaliciones."
   },
   {
-   "id": "espana-2026",
-   "view": "espana",
+   "id": "brasil-2026",
+   "view": "brasil",
    "status": "active",
-   "iso": "ESP",
-   "tag": "Especial · vota el 29 de noviembre",
-   "title": "España 2026",
-   "date": "2026-11-29",
-   "blurb": "Generales anticipadas del 29 de noviembre: 350 diputados en 52 provincias y 176 para la mayoría absoluta. Calculadora de mayorías con las encuestas, Congreso actual, candidatos y relación con Argentina."
+   "iso": "BRA",
+   "tag": "Especial · resultado final",
+   "title": "Brasil 2026",
+   "date": "2026-10-25",
+   "blurb": "Lula fue reelecto en el balotaje del 25 de octubre (51,79% contra 48,21% de Flávio Bolsonaro). Resultados por estado, las gobernaciones y el Congreso que asume en 2027."
   },
   {
    "id": "propuesta",
@@ -162,5 +162,5 @@
    "view": "brasil"
   }
  ],
- "featured": "eeuu"
+ "featured": "espana"
 }

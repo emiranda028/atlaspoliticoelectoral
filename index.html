@@ -4884,6 +4884,7 @@
   }
   .next-card.is-brasil { background: linear-gradient(145deg, #0B4F34 0%, #0E6B45 55%, #13784E 100%); }
   .next-card.is-us { background: linear-gradient(145deg, #0B1B3F 0%, #1F3A70 55%, #8E2A2A 140%); }
+  .next-card.is-es { background: linear-gradient(145deg, #3B0A0E 0%, #8A1A20 55%, #C99A1A 160%); }
   .next-card-kicker {
     font-family: var(--font-sans);
     font-size: 11px;
@@ -6944,6 +6945,7 @@
   }
   /* ===== EE.UU. noche electoral ===== */
   .quick-link.is-special.is-us { background: #1F3A70; border-color: #1F3A70; color: #fff; }
+  .quick-link.is-special.is-es { background: #AA151B; border-color: #AA151B; color: #fff; }
   .night-home.is-us .nh-head { background: linear-gradient(135deg, #0B1B3F 0%, #1F3A70 60%, #8E2A2A 130%); }
   .usr-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
   .usr-grid-2 { grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); align-items: start; }
@@ -7339,6 +7341,10 @@
         </svg>
         <span class="topic-nav-brand-text">Atlas</span>
       </a>
+      <a href="#espana" class="topic-nav-link is-special is-special-es" onclick="window.__scrollToSection(event, 'espana')">
+        <span class="topic-nav-num">★</span>
+        <span class="topic-nav-text">España 2026</span>
+      </a>
       <a href="#eeuu" class="topic-nav-link is-special is-special-us" onclick="window.__scrollToSection(event, 'eeuu')">
         <span class="topic-nav-num">★</span>
         <span class="topic-nav-text">EE.UU. 2026</span>
@@ -7350,10 +7356,6 @@
       <a href="#israel" class="topic-nav-link is-special is-special-il" onclick="window.__scrollToSection(event, 'israel')">
         <span class="topic-nav-num">★</span>
         <span class="topic-nav-text">Israel 2026</span>
-      </a>
-      <a href="#espana" class="topic-nav-link is-special is-special-es" onclick="window.__scrollToSection(event, 'espana')">
-        <span class="topic-nav-num">★</span>
-        <span class="topic-nav-text">España 2026</span>
       </a>
       <a href="#argentina" class="topic-nav-link is-special is-special-ar" onclick="window.__scrollToSection(event, 'argentina')">
         <span class="topic-nav-num">★</span>
@@ -7392,11 +7394,11 @@
   <div class="nav-sheet-panel">
     <div class="nav-sheet-head"><span>Secciones</span><div class="lang-switch lang-switch-sheet notranslate" role="group" aria-label="Idioma / Language"><button type="button" data-lang="es" lang="es">ES</button><button type="button" data-lang="en" lang="en">EN</button><button type="button" data-lang="pt" lang="pt">PT</button></div><button type="button" class="nav-sheet-close" id="nav-sheet-close" aria-label="Cerrar">✕</button></div>
     <div class="nav-sheet-group">Especiales</div>
-    <a href="#eeuu" data-go="eeuu"><b>EE.UU. 2026</b><span>Midterms del 3 de noviembre</span></a>
-    <a href="#brasil" data-go="brasil"><b>Brasil 2026</b><span>Balotaje del 25 de octubre · resultados de la 1.ª vuelta</span></a>
-    <a href="#israel" data-go="israel"><b>Israel 2026</b><span>Knéset, 27 de octubre · calculadora de coaliciones</span></a>
-    <a href="#argentina" data-go="argentina"><b>Argentina 2027</b><span>Presidenciales, Congreso y las 24 provincias · mapa bicontinental</span></a>
-    <a href="#espana" data-go="espana"><b>España 2026</b><span>Generales anticipadas del 29 de noviembre · calculadora de mayorías</span></a>
+    <a href="#espana" data-go="espana"><b>España 2026</b><span>Generales del 29 de noviembre · encuestas y calculadora de mayorías</span></a>
+    <a href="#eeuu" data-go="eeuu"><b>EE.UU. 2026</b><span>Resultados de las midterms · estado por estado</span></a>
+    <a href="#brasil" data-go="brasil"><b>Brasil 2026</b><span>Lula reelecto · resultados por estado</span></a>
+    <a href="#israel" data-go="israel"><b>Israel 2026</b><span>Resultados oficiales · Eisenkot busca formar gobierno</span></a>
+    <a href="#argentina" data-go="argentina"><b>Argentina 2027</b><span>Presidenciales, Congreso y las 24 provincias · Neuquén vota el 14/2</span></a>
     <div class="nav-sheet-group">El atlas</div>
     <a href="#inicio" data-go="inicio"><b>Inicio y mapa</b><span>Portada, buscador y mapa mundial</span></a>
     <a href="#elecciones" data-go="elecciones"><b>Calendario electoral</b><span>Quién vota y cuándo</span></a>
@@ -7433,7 +7435,8 @@
         </form>
         <div class="portada-search-hint" id="portada-search-hint" aria-live="polite"></div>
         <div class="portada-quick">
-          <a class="quick-link is-special is-us" href="#eeuu" onclick="return window.__atlasGoTo('eeuu')"><img class="flag-img ql-flag" src="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.3.2/flags/4x3/us.svg" alt="" crossorigin="anonymous"> Resultados EE.UU. 2026</a>
+          <a class="quick-link is-special is-es" href="#espana" onclick="return window.__atlasGoTo('espana')"><img class="flag-img ql-flag" src="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.3.2/flags/4x3/es.svg" alt="" crossorigin="anonymous"> España vota el 29-N</a>
+          <a class="quick-link" href="#eeuu" onclick="return window.__atlasGoTo('eeuu')"><img class="flag-img ql-flag" src="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.3.2/flags/4x3/us.svg" alt="" crossorigin="anonymous"> Resultados EE.UU.</a>
           <a class="quick-link" href="#nav-map" onclick="return window.__portadaToMap()"><span class="ql-icon">🗺️</span> Mapa</a>
           <a class="quick-link" href="#elecciones" onclick="return window.__atlasGoTo('elecciones')"><span class="ql-icon">🗳️</span> Calendario</a>
           <a class="quick-link" href="#analisis" onclick="return window.__atlasGoTo('analisis')"><span class="ql-icon">📊</span> Análisis</a>
@@ -31605,7 +31608,7 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
     const el = document.getElementById('live-updated');
     const dot = document.getElementById('live-dot');
     if (!el) return;
-    const stamps = [live.data && live.data.updatedAt, live.brasil && live.brasil.updatedAt].filter(Boolean).map(s => new Date(s));
+    const stamps = [live.data, live.brasil, live.eeuu, live.usRes, live.israel, live.espana, live.argentina].map(x => x && x.updatedAt).filter(Boolean).map(s => new Date(s)).filter(d => !isNaN(d) && d <= Date.now() + 3600000);
     if (!live.fetchOk && !stamps.length) {
       el.textContent = 'datos del atlas (sin conexión a la fuente en vivo)';
       if (dot) dot.classList.add('is-stale');
@@ -31637,12 +31640,48 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
       ${countdownHTML(ph.target, 'Hoy se vota')}
       <a class="next-card-cta" href="#eeuu" onclick="return window.__atlasGoTo('eeuu')">Abrir el especial EE.UU. 2026 <span aria-hidden="true">→</span></a>`;
   }
+  // Portada card for Spain's general election (featured: 'espana')
+  function esNextCardHTML(es) {
+    const ph = esPhase(es);
+    const av = esAverages(es).filter(l => l.avg > 0);
+    const top = av.slice(0, 4), n = (es.polls || []).length;
+    const pv = (av.find(l => l.id === 'PP') || {}).avg || 0, vx = (av.find(l => l.id === 'Vox') || {}).avg || 0;
+    const right = Math.round(pv + vx);
+    const COL = { PP: '#1D84CE', PSOE: '#E30613', Vox: '#63BE21', Sumar: '#E51C55', Podemos: '#6B2E68' };
+    return `
+      <div class="next-card-kicker"><span class="live-dot" style="background:#F1BF00"></span>${esc(ph.id === 'campaign' ? 'Elecciones generales · ' + fmtDateLong(new Date(es.dates.pollsOpen)) : ph.label)}</div>
+      <div class="next-card-title">${flagOf('ESP')} España elige su Congreso</div>
+      <div class="next-card-sub">Sánchez adelantó las generales: se eligen los 350 diputados y hacen falta 176 para la mayoría absoluta.</div>
+      ${top.length ? `<div class="nc-res">${top.map(l => `<div class="nc-row"><span>${esc(l.short || l.id)} <small>${l.pctAvg != null ? fmtPct(l.pctAvg, 1) : ''}</small></span><b>${Math.round(l.avg)} <small>escaños</small></b><div class="nc-track"><div style="width:${Math.min(l.avg / 176 * 100, 100)}%;background:${COL[l.id] || '#C9D2E0'}"></div></div></div>`).join('')}</div>
+      <div class="next-card-sub">Promedio de ${n} encuestas${right ? ` · PP + Vox: <b>${right}</b> escaños (${right >= 176 ? 'superan' : 'no llegan a'} los 176)` : ''}</div>` : ''}
+      ${countdownHTML(ph.target, 'Hoy se vota')}
+      <a class="next-card-cta" href="#espana" onclick="return window.__atlasGoTo('espana')">Abrir el especial España 2026 <span aria-hidden="true">→</span></a>`;
+  }
+  // After the midterms: the US card shows who controls Congress instead of the preview
+  function usResultsNextCardHTML(R) {
+    const S = R.senate.parties, H = R.house.parties;
+    const won = (P) => P.D.winner ? 'Demócratas' : P.R.winner ? 'Republicanos' : null;
+    const row = (lbl, P, tot, need) => `<div class="nc-row"><span>${lbl} <small>${won(P) ? 'control ' + won(P).toLowerCase() : need + ' para la mayoría'}</small></span><b>D ${P.D.seats} – R ${P.R.seats}</b><div class="nc-track" style="display:flex"><div style="width:${P.D.seats / tot * 100}%;background:#6F8FC0"></div><div style="flex:1"></div><div style="width:${P.R.seats / tot * 100}%;background:#D46A6A"></div></div></div>`;
+    const both = S.D.winner && H.D.winner;
+    return `
+      <div class="next-card-kicker"><span class="live-dot" style="background:#E8ECF4"></span>Midterms 2026 · resultados (AP)</div>
+      <div class="next-card-title">${flagOf('USA')} ${both ? 'Los demócratas recuperan el Congreso' : 'Estados Unidos: quién controla el Congreso'}</div>
+      <div class="nc-res">${row('Senado', S, 100, 51)}${row('Cámara', H, 435, 218)}</div>
+      <div class="next-card-sub">Dieron vuelta ${S.D.flips || 0} bancas del Senado y ${H.D.flips || 0} de la Cámara.</div>
+      <a class="next-card-cta" href="#eeuu" onclick="return window.__atlasGoTo('eeuu')">Ver los resultados estado por estado <span aria-hidden="true">→</span></a>`;
+  }
   function renderNextCard() {
     const card = document.getElementById('next-card');
     if (!card) return;
+    if (live.data && live.data.featured === 'espana' && live.espana) {
+      card.className = 'next-card is-es';
+      card.innerHTML = esNextCardHTML(live.espana);
+      tickCountdowns();
+      return;
+    }
     if (live.data && live.data.featured === 'eeuu' && live.eeuu) {
       card.className = 'next-card is-us';
-      card.innerHTML = usNextCardHTML(live.eeuu);
+      card.innerHTML = live.usRes && usResHas() && Date.now() > new Date(live.eeuu.dates.electionDay).getTime() + 86400000 ? usResultsNextCardHTML(live.usRes) : usNextCardHTML(live.eeuu);
       tickCountdowns();
       return;
     }
