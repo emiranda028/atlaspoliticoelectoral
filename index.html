@@ -6149,6 +6149,7 @@
   .pol-tile b { display: block; font: 700 30px var(--font-serif); margin: 4px 0 2px; }
   .pol-tile small { font-size: 12px; opacity: .7; }
   .pol-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 26px 20px; padding: 6px 4px 10px; }
+  .ar-offices { font-size: 13px; margin: 6px 0 8px; } .ar-offices ul { margin: 4px 0 0 18px; padding: 0; } .ar-offices li { margin: 2px 0; color: var(--ink-soft); }
   .polaroid { background: #fff; padding: 12px 12px 14px; box-shadow: 0 2px 3px rgba(0,0,0,.08), 0 12px 28px rgba(11,22,40,.14); transform: rotate(var(--tilt)); transition: transform .2s; border-radius: 3px; }
   .polaroid:hover { transform: rotate(0) scale(1.02); z-index: 2; }
   .pol-photo { background: linear-gradient(160deg, #F4F7FB, #E6EDF6); border-radius: 2px; padding: 12px; min-height: 150px; }
@@ -31745,7 +31746,7 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
     const notes = (live.data && live.data.notes) || [];
     wrap.hidden = !notes.length;
     ul.innerHTML = notes.slice(0, 6).map(n => {
-      const d = n.date ? new Date(n.date) : null;
+      const d = n.date ? new Date(/^\d{4}-\d{2}-\d{2}$/.test(n.date) ? n.date + 'T12:00:00' : n.date) : null; // a bare date is a local day, not UTC midnight
       const when = d ? `${fmtDateShort(d)}${n.date.length > 10 ? ' · ' + String(d.getHours()).padStart(2,'0') + ':' + String(d.getMinutes()).padStart(2,'0') : ''}` : '';
       const body = n.view
         ? `<a href="#${esc(n.view)}" onclick="return window.__atlasGoTo('${esc(n.view)}')">${esc(n.text)}</a>`
@@ -34074,6 +34075,8 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
       ${p.economy ? `<p class="muted" style="font-size:13px"><b>Economía:</b> ${esc(p.economy)}</p>` : ''}
       ${iso === 'V' ? '<p class="muted" style="font-size:12.5px">Incluye las Islas Malvinas, Georgias del Sur y Sandwich del Sur —ocupadas por el Reino Unido— y el Sector Antártico Argentino.</p>' : ''}
       ${p.dateNote ? `<p class="muted" style="font-size:12.5px">${esc(p.dateNote)}</p>` : ''}
+      ${(p.offices || []).length ? `<div class="ar-offices"><b>Qué se vota</b><ul>${p.offices.map(o => `<li>${esc(o)}</li>`).join('')}</ul></div>` : ''}
+      ${p.system ? `<p class="muted" style="font-size:12.5px"><b>Sistema:</b> ${esc(p.system)}</p>` : ''}
       ${(p.sources || []).length ? `<p class="esp-sources">Fuentes: ${p.sources.slice(0, 3).map(x => `<a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.label)}</a>`).join(' · ')}</p>` : ''}`;
   }
   function renderArMap() {

@@ -1,7 +1,7 @@
 {
  "id": "israel-2026",
  "title": "Elecciones a la Knéset 2026",
- "updatedAt": "2026-10-29T12:00:00-03:00",
+ "updatedAt": "2026-11-10T12:30:00-03:00",
  "lede": "Israel votó el 27 de octubre: con cerca del 90% escrutado, el bloque de Netanyahu suma 53 bancas, el opositor de Gadi Eisenkot 48 y los partidos árabes 19. Nadie llega a 61 y empieza la negociación para formar gobierno.",
  "dates": {
   "pollsOpen": "2026-10-27T07:00:00+02:00",
@@ -609,53 +609,53 @@
   "note": "Nota de datos: no se encontró el total bilateral 2025 del INDEC. 2023: INDEC citado por la prensa; 2024: ONU Comtrade, que puede diferir de la estadística oficial argentina. Solo el complejo carne y cueros bovinos vendió USD 439 M a Israel en 2025 (Bolsa de Comercio de Rosario), por lo que el total 2025 superaría la cifra de 2024."
  },
  "results": {
-  "status": "preliminar",
-  "counted": "≈90,5%",
-  "turnout": 77.7,
+  "status": "final",
+  "counted": "100%",
+  "turnout": 77.98,
   "seats": {
-   "Likud": 26,
+   "Likud": 27,
    "Yashar": 21,
-   "Joint List": 12,
    "B'Yachad": 12,
+   "Joint List": 11,
    "The Democrats": 8,
-   "Ra'am": 7,
+   "Ra'am": 8,
    "Yisrael Beiteinu": 7,
    "UTJ": 7,
    "Otzma Yehudit": 7,
-   "Shas": 7,
+   "Shas": 6,
    "Religious Zionism-Zehut": 6
   },
   "pct": {
-   "Likud": 20.69,
-   "Yashar": 16.19,
-   "Joint List": 9.19,
-   "B'Yachad": 9.02,
-   "The Democrats": 6.51,
-   "Ra'am": 6.02,
-   "Yisrael Beiteinu": 5.94,
-   "UTJ": 5.67,
-   "Otzma Yehudit": 5.54,
-   "Shas": 5.31,
-   "Religious Zionism-Zehut": 4.71
+   "Likud": 20.51,
+   "Yashar": 16.05,
+   "B'Yachad": 9.35,
+   "Joint List": 8.8,
+   "The Democrats": 6.44,
+   "Ra'am": 5.93,
+   "Yisrael Beiteinu": 5.93,
+   "UTJ": 5.49,
+   "Otzma Yehudit": 5.74,
+   "Shas": 5.26,
+   "Religious Zionism-Zehut": 5.11
   },
-  "text": "Con alrededor del 90,5% de los votos escrutados, el bloque de Netanyahu suma 53 bancas, el bloque opositor encabezado por Gadi Eisenkot 48 y los partidos árabes 19, de modo que ningún bloque alcanza la mayoría de 61 en la Knéset de 120. El Likud es la lista más votada (26 bancas, 20,69%) y la participación fue del 77,7%, la más alta desde 1999.",
-  "next": "Restaban contar entre 430.000 y 480.000 votos de doble sobre (soldados, diplomáticos), y los resultados oficiales se publican el 4 de noviembre. Tras recibirlos, el presidente Isaac Herzog abrirá consultas con cada bancada y decidirá si encarga formar gobierno a Netanyahu o a Eisenkot; todavía no encargó a nadie y pidió a los partidos evitar otra elección. Eisenkot descartó un gobierno de unidad bajo Netanyahu, y la oposición solo llegaría a 67 bancas apoyándose en los partidos árabes, una opción que parte de ese bloque resiste.",
+  "text": "Resultados oficiales (Comité Electoral Central, certificados el 4/11): el bloque de Netanyahu suma 53 bancas, la oposición encabezada por Gadi Eisenkot 48 y los partidos árabes un récord de 19, de modo que ningún bloque alcanza los 61 de la Knéset. El Likud es la lista más votada (27 bancas, 20,5%), seguido por Yashar (21), y la participación fue del 78%, la más alta desde 1999.",
+  "next": "El 8/11 Herzog le encargó formar gobierno a Eisenkot, que reunió 67 recomendaciones (incluidas las de los partidos árabes); tiene plazo hasta el 6 de diciembre, prorrogable al 20. La 26.ª Knéset juró el 10/11. Todavía no hay acuerdos de coalición firmados: Liberman dice que el bloque puede llegar a 61 y rechaza un gobierno en minoría, Ra'am apoyaría a Eisenkot sin acuerdo formal y Shas sigue con Netanyahu.",
   "sources": [
    {
-    "label": "en.wikipedia.org",
+    "label": "Times of Israel: el Comité Electoral Central publica los resultados finales",
+    "url": "https://www.timesofisrael.com/liveblog_entry/central-elections-committee-publishes-final-election-results-knesset-to-be-sworn-in-nov-10/"
+   },
+   {
+    "label": "Arutz Sheva: resultados oficiales",
+    "url": "https://www.israelnationalnews.com/news/435375"
+   },
+   {
+    "label": "France 24 (10/11): jura la nueva Knéset, Eisenkot busca formar gobierno",
+    "url": "https://www.france24.com/en/middle-east/20261110-live-new-israeli-parliament-sworn-in-eisenkot-aims-to-form-government-netanyahu-knesset"
+   },
+   {
+    "label": "Wikipedia: 2026 Israeli legislative election",
     "url": "https://en.wikipedia.org/wiki/2026_Israeli_legislative_election"
-   },
-   {
-    "label": "www.timesofisrael.com",
-    "url": "https://www.timesofisrael.com/with-85-of-votes-counted-netanyahu-bloc-has-53-seats-eisenkots-48-arab-parties-surge-to-19/"
-   },
-   {
-    "label": "www.jpost.com",
-    "url": "https://www.jpost.com/israel-election-2026/article-913122"
-   },
-   {
-    "label": "www.timesofisrael.com",
-    "url": "https://www.timesofisrael.com/liveblog-october-28-2026/"
    }
   ]
  }

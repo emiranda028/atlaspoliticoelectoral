@@ -1,7 +1,7 @@
 {
  "id": "argentina-2027",
  "title": "Elecciones 2027",
- "updatedAt": "2026-10-23T15:00:00-03:00",
+ "updatedAt": "2026-11-10T12:00:00-03:00",
  "lede": "El 24 de octubre de 2027 la Argentina elige presidente y vice, renueva 130 de las 257 bancas de Diputados y 24 de las 72 del Senado (ocho provincias). Javier Milei va por la reelección después de ganar las legislativas de 2025 con el 40,7% y quedar como primera minoría en Diputados; enfrente, Axel Kicillof se perfila como la principal figura del peronismo. A un año de la votación, las encuestas muestran un escenario parejo, la desaprobación del Gobierno ronda el 60% y todavía no está claro si habrá PASO: el oficialismo busca suspenderlas o eliminarlas, pero hasta mediados de octubre de 2026 no había reunido los votos en el Senado.",
  "dates": {
   "paso": "2027-08-08",
@@ -495,6 +495,10 @@
     "label": "Plazo informal que maneja el oficialismo para votar la suspensión o eliminación de las PASO en el Congreso (sin fecha confirmada)"
    },
    {
+    "date": "2027-02-14",
+    "label": "Neuquén elige gobernador, Legislatura e intendentes: la primera provincia en votar (Decreto 1860/2026)"
+   },
+   {
     "date": "2027-04/05",
     "label": "Decreto de convocatoria a elecciones (fecha estimada)"
    },
@@ -590,80 +594,509 @@
   "pollSnapshot": {
    "polls": [
     {
-     "pollster": "Universidad de San Andrés (LOOP – ESPOP)",
-     "field": "5–13 oct 2026",
-     "published": "2026-10-15",
-     "n": 1000,
-     "method": "online (adultos conectados a internet), ponderado por voto oct-2025",
-     "moe": 3.15,
-     "headline": "Milei clavado en 36% de aprobación y LLA saca dos puntitos al peronismo, pero uno de cada cuatro no sabe a quién votar",
+     "pollster": "PoliTech (Panel360)",
+     "field": "31 oct–4 nov 2026",
+     "published": "2026-11-05",
+     "n": 1552,
+     "method": "online autoadministrada",
+     "moe": 2.5,
+     "headline": "Milei y Kicillof quedan separados por 1,3 puntos en primera vuelta, con Bullrich y Bregman pegadas abajo de los dos y un balotaje que el modelo de la consultora da casi por seguro.",
+     "approval": null,
+     "mileiImage": null,
+     "vote": {
+      "scenario": "Primera vuelta 2027 (Milei, Kicillof, Bullrich, Bregman, Massa)",
+      "values": {
+       "Javier Milei": 32,
+       "Axel Kicillof": 30.7,
+       "Patricia Bullrich": 9.7,
+       "Myriam Bregman": 9.6,
+       "Sergio Massa": 7.4
+      },
+      "noAvg": false
+     },
+     "runoff": null,
+     "parties": null,
+     "leaders": [],
+     "concerns": [
+      {
+       "issue": "Bajos sueldos",
+       "pct": 51.3
+      }
+     ],
+     "url": "https://www.eldestapeweb.com/politica/encuesta-2027-milei-kicillof-separados-1-3-puntos-incognita-balotaje-2026115125726"
+    },
+    {
+     "pollster": "Aresco",
+     "field": "oct 2026",
+     "published": "2026-11-05",
+     "n": null,
+     "method": null,
+     "moe": null,
+     "headline": "La gestión de Milei tiene balance negativo: 41% positivo contra 56,3% negativo si se reparte el 'regular', y el núcleo duro de apoyo es de 25%.",
      "approval": {
-      "approve": 36,
-      "disapprove": 60
+      "approve": 41,
+      "disapprove": 56.3
      },
      "mileiImage": null,
      "vote": null,
      "runoff": null,
-     "parties": {
-      "LLA": 26,
-      "Peronismo": 24,
-      "Frente de Izquierda": 4,
-      "PRO": 3,
-      "Provincias Unidas": 3,
-      "UCR": 2,
-      "Indecisos/NS-NC": 26
+     "parties": null,
+     "leaders": [],
+     "concerns": [],
+     "url": "https://www.fenix951.com.ar/noticia.php?id=359324"
+    },
+    {
+     "pollster": "RDT Consultores (Reale Dalla Torre)",
+     "field": "22–28 oct 2026",
+     "published": "2026-11-02",
+     "n": 1107,
+     "method": "online (redes sociales)",
+     "moe": 3.8,
+     "headline": "Milei saca nueve puntos en primera vuelta, pero en el mano a mano Kicillof lo pasa por un punto, empate técnico.",
+     "approval": null,
+     "mileiImage": null,
+     "vote": {
+      "scenario": "Primera vuelta 2027 (candidatos individuales, Kicillof y Massa por separado)",
+      "values": {
+       "Javier Milei": 28.9,
+       "Axel Kicillof": 19.8,
+       "Sergio Massa": 11.4,
+       "Myriam Bregman": 7.5,
+       "Victoria Villarruel": 6.4
+      },
+      "noAvg": false
      },
+     "runoff": {
+      "values": {
+       "Axel Kicillof": 37.2,
+       "Javier Milei": 36.2
+      }
+     },
+     "parties": null,
+     "leaders": [],
+     "concerns": [],
+     "url": "https://perfil.com/politica/una-encuesta-midio-tres-formulas-presidenciables-para-2027-quien-lidera-y-quien-queda-afuera-akhAU3i5dF0z"
+    },
+    {
+     "pollster": "Zentrix (Monitor de Opinión Pública)",
+     "field": "19–30 oct 2026",
+     "published": "2026-11-01",
+     "n": 1278,
+     "method": "online",
+     "moe": 2.7,
+     "headline": "La aprobación de Milei sube por tercer mes seguido hasta 36,2%, pero el 59,2% dice que nunca lo votaría.",
+     "approval": {
+      "approve": 36.2,
+      "disapprove": 55.5
+     },
+     "mileiImage": {
+      "positive": 35.9,
+      "negative": 58
+     },
+     "vote": {
+      "scenario": "Voto seguro 2027 (no es intención de primera vuelta)",
+      "values": {
+       "Javier Milei": 24.3,
+       "Axel Kicillof": 28.7,
+       "Patricia Bullrich": 19.1,
+       "Myriam Bregman": 11.8
+      },
+      "noAvg": true
+     },
+     "runoff": null,
+     "parties": null,
      "leaders": [
       {
-       "name": "Patricia Bullrich",
-       "positive": 36,
-       "negative": 54
-      },
-      {
-       "name": "Javier Milei",
-       "positive": 34,
-       "negative": null
-      },
-      {
        "name": "Myriam Bregman",
-       "positive": 32,
-       "negative": null
+       "positive": 42,
+       "negative": 44.8
+      },
+      {
+       "name": "Patricia Bullrich",
+       "positive": 39.6,
+       "negative": 48.4
       },
       {
        "name": "Axel Kicillof",
-       "positive": 31,
-       "negative": null
+       "positive": 39.4,
+       "negative": 54.1
       },
       {
-       "name": "Cristina Fernández de Kirchner",
-       "positive": 30,
-       "negative": null
+       "name": "Javier Milei",
+       "positive": 35.9,
+       "negative": 58
+      },
+      {
+       "name": "Victoria Villarruel",
+       "positive": 25.9,
+       "negative": 57.8
       }
      ],
      "concerns": [
       {
-       "issue": "Falta de trabajo",
-       "pct": 39
+       "issue": "Incertidumbre económica",
+       "pct": 48.2
       },
       {
-       "issue": "Bajos salarios",
-       "pct": 35
+       "issue": "Ingresos y salarios",
+       "pct": 46.2
       },
       {
-       "issue": "Pobreza",
-       "pct": 31
+       "issue": "Desempleo",
+       "pct": 44.6
+      },
+      {
+       "issue": "Corrupción",
+       "pct": 42.9
+      },
+      {
+       "issue": "Tarifas de servicios públicos",
+       "pct": 28.8
+      },
+      {
+       "issue": "Inflación",
+       "pct": 16.7
       }
      ],
-     "url": "https://www.infobae.com/politica/2026/10/19/aciertos-y-deudas-del-gobierno-de-milei-la-desaprobacion-llega-al-60-mientras-crece-la-incertidumbre-electoral-segun-una-encuesta/"
+     "url": "https://perfil.com/politica/encuesta-el-problema-de-milei-no-es-el-voto-que-tiene-sino-el-que-no-puede-conseguir-aPjzT3g8VTbW"
+    },
+    {
+     "pollster": "Hugo Haime & Asociados",
+     "field": "17–25 oct 2026",
+     "published": "2026-10-30",
+     "n": 1200,
+     "method": "presencial",
+     "moe": null,
+     "headline": "Milei gana por poco la primera vuelta contra Kicillof, pero pierde el balotaje por 3,4 puntos, y el 55% quiere un candidato opositor.",
+     "approval": null,
+     "mileiImage": null,
+     "vote": {
+      "scenario": "Primera vuelta 2027 (escenario Milei vs Kicillof)",
+      "values": {
+       "Javier Milei": 35.2,
+       "Axel Kicillof": 33.3
+      },
+      "noAvg": false
+     },
+     "runoff": {
+      "values": {
+       "Axel Kicillof": 45.4,
+       "Javier Milei": 42
+      }
+     },
+     "parties": {
+      "Peronismo": 35.1,
+      "LLA": 33.2,
+      "Izquierda": 7.1
+     },
+     "leaders": [],
+     "concerns": [],
+     "url": "https://noticias.perfil.com/noticias/politica/encuesta-el-29-apoya-la-reeleccion-y-el-12-prefiere-mileismo-sin-milei.phtml"
+    },
+    {
+     "pollster": "Pulso Research (Brújula Social)",
+     "field": "10–17 oct 2026",
+     "published": "2026-10-30",
+     "n": 1500,
+     "method": "online no probabilístico por cuotas",
+     "moe": 3.0,
+     "headline": "Dos de cada tres desaprueban la gestión, y Bregman es la única dirigente con más imagen positiva que negativa.",
+     "approval": {
+      "approve": 28.9,
+      "disapprove": 66.4
+     },
+     "mileiImage": {
+      "positive": 32.4,
+      "negative": 64.6
+     },
+     "vote": null,
+     "runoff": null,
+     "parties": null,
+     "leaders": [
+      {
+       "name": "Myriam Bregman",
+       "positive": 37.9,
+       "negative": 35.3
+      },
+      {
+       "name": "Cristina Fernández de Kirchner",
+       "positive": 45.1,
+       "negative": 51.3
+      },
+      {
+       "name": "Axel Kicillof",
+       "positive": 41.5,
+       "negative": 49.1
+      },
+      {
+       "name": "Sergio Massa",
+       "positive": 39.0,
+       "negative": 54.5
+      },
+      {
+       "name": "Patricia Bullrich",
+       "positive": 38.4,
+       "negative": 56.4
+      },
+      {
+       "name": "Javier Milei",
+       "positive": 32.4,
+       "negative": 64.6
+      },
+      {
+       "name": "Mauricio Macri",
+       "positive": 28.0,
+       "negative": 67.1
+      },
+      {
+       "name": "Diego Santilli",
+       "positive": 25.0,
+       "negative": 44.1
+      },
+      {
+       "name": "Maximiliano Pullaro",
+       "positive": 19.2,
+       "negative": 35.8
+      },
+      {
+       "name": "Sergio Uñac",
+       "positive": 12.1,
+       "negative": 23.8
+      }
+     ],
+     "concerns": [
+      {
+       "issue": "Desempleo / falta de trabajo",
+       "pct": 20.7
+      },
+      {
+       "issue": "Corrupción y privilegios",
+       "pct": 19.9
+      },
+      {
+       "issue": "Economía en general",
+       "pct": 16.3
+      },
+      {
+       "issue": "Bajos salarios y costo de vida",
+       "pct": 10.8
+      },
+      {
+       "issue": "Inflación",
+       "pct": 6.8
+      },
+      {
+       "issue": "Inseguridad",
+       "pct": 6.1
+      }
+     ],
+     "url": "https://perfil.com/politica/una-encuesta-midio-a-10-dirigentes-politicos-y-solo-uno-tiene-mas-imagen-positiva-que-negativa-afypT4u3ceuw"
+    },
+    {
+     "pollster": "CB Global Data",
+     "field": "21–25 oct 2026",
+     "published": "2026-10-28",
+     "n": 1151,
+     "method": "online",
+     "moe": 2.9,
+     "headline": "Milei lidera cómodo la primera vuelta y le gana a Kicillof en el balotaje por 2,4 puntos, pero Bullrich le sacaría 7,2 al gobernador.",
+     "approval": null,
+     "mileiImage": null,
+     "vote": {
+      "scenario": "Primera vuelta 2027 (incluye 'candidato de CFK' aparte de Kicillof)",
+      "values": {
+       "Javier Milei": 27.1,
+       "Axel Kicillof": 16.5,
+       "Candidato de CFK": 12.1,
+       "Patricia Bullrich": 8.5,
+       "Myriam Bregman": 7.3,
+       "Peronismo Federal": 3.5
+      },
+      "noAvg": true
+     },
+     "runoff": {
+      "values": {
+       "Javier Milei": 43,
+       "Axel Kicillof": 40.6
+      }
+     },
+     "parties": null,
+     "leaders": [],
+     "concerns": [],
+     "url": "https://totalnewsagency.com/2026/10/28/encuesta-2027-el-575-pide-un-cambio-y-bullrich-supera-a-milei-frente-a-kicillof/"
+    },
+    {
+     "pollster": "Zuban Córdoba y Asociados",
+     "field": "16–19 oct 2026",
+     "published": "2026-10-26",
+     "n": 1600,
+     "method": "online",
+     "moe": 2.45,
+     "headline": "La desaprobación de Milei sube a 65,2%, y el peronismo le saca cinco puntos a LLA con oferta amplia y 3,2 en el mano a mano.",
+     "approval": {
+      "approve": 34.1,
+      "disapprove": 65.2
+     },
+     "mileiImage": {
+      "positive": 34.9,
+      "negative": 64.1
+     },
+     "vote": null,
+     "runoff": null,
+     "parties": {
+      "Peronismo": 36.6,
+      "LLA": 31.5,
+      "PRO": 5.6,
+      "FIT": 5.5
+     },
+     "leaders": [
+      {
+       "name": "Axel Kicillof",
+       "positive": 46.0,
+       "negative": 52.4
+      },
+      {
+       "name": "Myriam Bregman",
+       "positive": 45.3,
+       "negative": 46.2
+      },
+      {
+       "name": "Patricia Bullrich",
+       "positive": 43.0,
+       "negative": 55.7
+      },
+      {
+       "name": "Cristina Fernández de Kirchner",
+       "positive": 42.5,
+       "negative": 55.8
+      },
+      {
+       "name": "Sergio Massa",
+       "positive": 35.5,
+       "negative": 62.3
+      },
+      {
+       "name": "Natalia de la Sota",
+       "positive": 35.1,
+       "negative": 24.4
+      },
+      {
+       "name": "Javier Milei",
+       "positive": 34.9,
+       "negative": 64.1
+      },
+      {
+       "name": "Mauricio Macri",
+       "positive": 31.8,
+       "negative": 66.2
+      },
+      {
+       "name": "Victoria Villarruel",
+       "positive": 28.6,
+       "negative": 65.4
+      }
+     ],
+     "concerns": [],
+     "url": "https://www.infoplatense.com.ar/encuesta-zuban-cordoba-octubre-2026-kicillof-milei-2027/"
+    },
+    {
+     "pollster": "Universidad Torcuato Di Tella (ICG)",
+     "field": "5–16 oct 2026",
+     "published": "2026-10-26",
+     "n": 1000,
+     "method": null,
+     "moe": null,
+     "headline": "El Índice de Confianza en el Gobierno apenas sube 0,9% a 1,95 puntos sobre 5 y acumula una caída de 20,7% desde diciembre de 2025.",
+     "approval": null,
+     "mileiImage": null,
+     "vote": null,
+     "runoff": null,
+     "parties": null,
+     "leaders": [],
+     "concerns": [],
+     "url": "https://www.forbesargentina.com/today/la-confianza-gobierno-milei-subio-octubre-pero-acumula-una-caida-207-fines-2025-n101138"
+    },
+    {
+     "pollster": "QSocial (QMonitor)",
+     "field": "5–28 sep 2026",
+     "published": "2026-10-26",
+     "n": 1650,
+     "method": "online",
+     "moe": 2.4,
+     "headline": "Milei sigue encabezando el 'nunca lo votaría' con 56%, pero Kicillof sube cinco puntos a 53% y pasa a Villarruel.",
+     "approval": null,
+     "mileiImage": null,
+     "vote": {
+      "scenario": "Voto seguro 2027 (no es intención de primera vuelta)",
+      "values": {
+       "Javier Milei": 25,
+       "Axel Kicillof": 25,
+       "Victoria Villarruel": 11
+      },
+      "noAvg": true
+     },
+     "runoff": null,
+     "parties": null,
+     "leaders": [],
+     "concerns": [],
+     "url": "https://www.perfil.com/noticias/politica/encuesta-2027-se-mueve-el-podio-del-voto-nunca-y-que-pasa-con-villarruel.phtml"
+    },
+    {
+     "pollster": "CELAG",
+     "field": "30 sep–20 oct 2026",
+     "published": "2026-10-22",
+     "n": 2000,
+     "method": "presencial",
+     "moe": 2.19,
+     "headline": "Kicillof y Milei quedan clavados en el balotaje (42,7% a 42,5%), con imagen negativa por encima de 57% para los dos.",
+     "approval": {
+      "approve": 38.7,
+      "disapprove": 60.7
+     },
+     "mileiImage": {
+      "positive": 38.6,
+      "negative": 58.2
+     },
+     "vote": null,
+     "runoff": {
+      "values": {
+       "Axel Kicillof": 42.7,
+       "Javier Milei": 42.5
+      }
+     },
+     "parties": null,
+     "leaders": [
+      {
+       "name": "Javier Milei",
+       "positive": 38.6,
+       "negative": 58.2
+      },
+      {
+       "name": "Axel Kicillof",
+       "positive": 39.1,
+       "negative": 57.1
+      }
+     ],
+     "concerns": [
+      {
+       "issue": "Situación económica cotidiana",
+       "pct": 45.4
+      },
+      {
+       "issue": "Inseguridad",
+       "pct": 22.2
+      }
+     ],
+     "url": "https://noticias.perfil.com/noticias/politica/la-encuesta-que-marca-un-empate-tecnico-entre-milei-y-kicillof-en-el-ballotage.phtml"
     },
     {
      "pollster": "Analogías",
      "field": "10–14 oct 2026",
-     "published": "2026-10-19",
+     "published": "2026-10-21",
      "n": 2863,
-     "method": "telefónica IVR (fijos y móviles), 24 provincias",
-     "moe": 2.2,
-     "headline": "Peronismo unido y Milei, pelo a pelo (31,6 a 30,9), y Cristina asoma con la mejor imagen",
+     "method": null,
+     "moe": null,
+     "headline": "La imagen de Milei corta nueve meses de caída (38,9%), pero el 'Peronismo Unido' le empata la primera vuelta y el 55% elige cambio contra 32,1% de continuidad.",
      "approval": {
       "approve": 31.5,
       "disapprove": 59.5
@@ -672,25 +1105,14 @@
       "positive": 38.9,
       "negative": 56.7
      },
-     "vote": {
-      "scenario": "1.ª vuelta (por espacio)",
-      "values": {
-       "Peronismo unido": 31.6,
-       "Espacio de Milei (LLA)": 30.9,
-       "Izquierda": 8.6,
-       "Fuerza de gobernadores": 7.5,
-       "No sabe": 21.4
-      }
+     "vote": null,
+     "runoff": null,
+     "parties": {
+      "Peronismo": 31.6,
+      "LLA": 30.9,
+      "Izquierda": 8.6,
+      "Fuerza de gobernadores": 7.5
      },
-     "runoff": {
-      "label": "Cambio vs. continuidad (sin candidatos)",
-      "values": {
-       "Cambio de gobierno": 55,
-       "Continuidad": 32.1,
-       "NS/NC": 12.9
-      }
-     },
-     "parties": null,
      "leaders": [
       {
        "name": "Cristina Fernández de Kirchner",
@@ -713,70 +1135,30 @@
        "negative": 56.7
       }
      ],
-     "concerns": null,
-     "url": "https://www.perfil.com/noticias/politica/la-encuesta-que-agita-la-interna-entre-cristina-kirchner-y-axel-kicillof-quien-tiene-mejor-imagen.phtml"
+     "concerns": [],
+     "url": "https://www.cronista.com/economia-politica/midieron-a-milei-y-a-kicillof-para-las-elecciones-2027-quien-gana-un-balotaje-segun-la-ultima-encuesta/"
     },
     {
-     "pollster": "AtlasIntel / Bloomberg (Latam Pulse)",
-     "field": "2–7 oct 2026",
-     "published": "2026-10-15",
-     "n": 2067,
-     "method": "online (no especificado en la nota)",
-     "moe": 2,
-     "headline": "La aprobación de Milei repunta apenas a 38,5%, pero 7 de cada 10 ven mal la economía y la corrupción encabeza las quejas",
-     "approval": {
-      "approve": 38.5,
-      "disapprove": 57.2
-     },
-     "mileiImage": {
-      "positive": 35,
-      "negative": 59
-     },
+     "pollster": "Afiches",
+     "field": "10–15 oct 2026",
+     "published": "2026-10-21",
+     "n": null,
+     "method": "online",
+     "moe": null,
+     "headline": "Milei pierde los balotajes contra Kicillof, Massa y CFK por entre dos y cuatro puntos, y gana contra Bregman, Schiaretti, Brito y Gebel.",
+     "approval": null,
+     "mileiImage": null,
      "vote": null,
-     "runoff": null,
+     "runoff": {
+      "values": {
+       "Axel Kicillof": 37,
+       "Javier Milei": 35
+      }
+     },
      "parties": null,
-     "leaders": [
-      {
-       "name": "Cristina Fernández de Kirchner",
-       "positive": 39,
-       "negative": null
-      },
-      {
-       "name": "Myriam Bregman",
-       "positive": 38,
-       "negative": null
-      },
-      {
-       "name": "Javier Milei",
-       "positive": 38,
-       "negative": null
-      },
-      {
-       "name": "Axel Kicillof",
-       "positive": 37,
-       "negative": null
-      },
-      {
-       "name": "Patricia Bullrich",
-       "positive": 37,
-       "negative": null
-      }
-     ],
-     "concerns": [
-      {
-       "issue": "Corrupción",
-       "pct": 50.3
-      },
-      {
-       "issue": "Desempleo",
-       "pct": 44
-      },
-      {
-       "issue": "Impunidad / sistema judicial",
-       "pct": 34.6
-      }
-     ],
-     "url": "https://eleconomista.com.ar/politica/nueva-encuesta-atlasintel-7-cada-10-argentinos-creen-economia-esta-mal-pero-hay-dato-todavia-peor-n98885/amp"
+     "leaders": [],
+     "concerns": [],
+     "url": "https://noticias.perfil.com/noticias/politica/una-encuesta-afirma-que-milei-perderia-en-distintos-escenarios-de-ballotage.phtml"
     },
     {
      "pollster": "D'Alessio IROL – Berensztein",
@@ -853,6 +1235,110 @@
      "url": "https://www.mdzol.com/politica/2026/10/20/encuesta-fue-uno-de-los-hombres-de-confianza-de-milei-y-ahora-es-el-politico-con-mejor-imagen-del-pa-1989389.html"
     },
     {
+     "pollster": "Proyección Consultores",
+     "field": "1–13 oct 2026",
+     "published": "2026-10-19",
+     "n": 1231,
+     "method": "no especificado",
+     "moe": null,
+     "headline": "Milei gana en las tres: primera vuelta, por partido y balotaje, aunque con Kicillof a tiro (41 a 39,1)",
+     "approval": {
+      "approve": 42,
+      "disapprove": 52.4
+     },
+     "mileiImage": null,
+     "vote": {
+      "scenario": "1.ª vuelta",
+      "values": {
+       "Javier Milei": 37,
+       "Axel Kicillof": 31.6,
+       "Myriam Bregman": 7.4,
+       "Maximiliano Pullaro": 4.3,
+       "Indecisos/blanco": 19.7
+      }
+     },
+     "runoff": {
+      "values": {
+       "Javier Milei": 41,
+       "Axel Kicillof": 39.1,
+       "Indecisos/blanco": 19.9
+      }
+     },
+     "parties": {
+      "LLA": 37.8,
+      "Fuerza Patria": 35.9,
+      "PRO": 4.2,
+      "Provincias Unidas": 4.1,
+      "Frente de Izquierda": 2.9,
+      "Blanco": 15.1
+     },
+     "leaders": null,
+     "concerns": null,
+     "url": "https://www.iprofesional.com/politica/466965-nueva-encuesta-dio-triple-triunfo-a-milei-sobre-kicillof-pese-a-malestar-economico"
+    },
+    {
+     "pollster": "AtlasIntel / Bloomberg (Latam Pulse)",
+     "field": "2–7 oct 2026",
+     "published": "2026-10-15",
+     "n": 2067,
+     "method": "online (no especificado en la nota)",
+     "moe": 2,
+     "headline": "La aprobación de Milei repunta apenas a 38,5%, pero 7 de cada 10 ven mal la economía y la corrupción encabeza las quejas",
+     "approval": {
+      "approve": 38.5,
+      "disapprove": 57.2
+     },
+     "mileiImage": {
+      "positive": 35,
+      "negative": 59
+     },
+     "vote": null,
+     "runoff": null,
+     "parties": null,
+     "leaders": [
+      {
+       "name": "Cristina Fernández de Kirchner",
+       "positive": 39,
+       "negative": null
+      },
+      {
+       "name": "Myriam Bregman",
+       "positive": 38,
+       "negative": null
+      },
+      {
+       "name": "Javier Milei",
+       "positive": 38,
+       "negative": null
+      },
+      {
+       "name": "Axel Kicillof",
+       "positive": 37,
+       "negative": null
+      },
+      {
+       "name": "Patricia Bullrich",
+       "positive": 37,
+       "negative": null
+      }
+     ],
+     "concerns": [
+      {
+       "issue": "Corrupción",
+       "pct": 50.3
+      },
+      {
+       "issue": "Desempleo",
+       "pct": 44
+      },
+      {
+       "issue": "Impunidad / sistema judicial",
+       "pct": 34.6
+      }
+     ],
+     "url": "https://eleconomista.com.ar/politica/nueva-encuesta-atlasintel-7-cada-10-argentinos-creen-economia-esta-mal-pero-hay-dato-todavia-peor-n98885/amp"
+    },
+    {
      "pollster": "Giacobbe & Asociados",
      "field": "30 sep – 5 oct 2026",
      "published": "2026-10-15",
@@ -914,234 +1400,71 @@
      "url": "https://www.perfil.com/noticias/reperfilar/encuesta-javier-milei-tiene-un-56-de-imagen-negativa-pero-consolidado-como-el-politico-de-mejor-imagen-segun-giacobbe.phtml"
     },
     {
-     "pollster": "Proyección Consultores",
-     "field": "1–13 oct 2026",
-     "published": "2026-10-19",
-     "n": 1231,
-     "method": "no especificado",
-     "moe": null,
-     "headline": "Milei gana en las tres: primera vuelta, por partido y balotaje, aunque con Kicillof a tiro (41 a 39,1)",
+     "pollster": "Universidad de San Andrés (LOOP – ESPOP)",
+     "field": "5–13 oct 2026",
+     "published": "2026-10-15",
+     "n": 1000,
+     "method": "online (adultos conectados a internet), ponderado por voto oct-2025",
+     "moe": 3.15,
+     "headline": "Milei clavado en 36% de aprobación y LLA saca dos puntitos al peronismo, pero uno de cada cuatro no sabe a quién votar",
      "approval": {
-      "approve": 42,
-      "disapprove": 52.4
-     },
-     "mileiImage": null,
-     "vote": {
-      "scenario": "1.ª vuelta",
-      "values": {
-       "Javier Milei": 37,
-       "Axel Kicillof": 31.6,
-       "Myriam Bregman": 7.4,
-       "Maximiliano Pullaro": 4.3,
-       "Indecisos/blanco": 19.7
-      }
-     },
-     "runoff": {
-      "values": {
-       "Javier Milei": 41,
-       "Axel Kicillof": 39.1,
-       "Indecisos/blanco": 19.9
-      }
-     },
-     "parties": {
-      "LLA": 37.8,
-      "Fuerza Patria": 35.9,
-      "PRO": 4.2,
-      "Provincias Unidas": 4.1,
-      "Frente de Izquierda": 2.9,
-      "Blanco": 15.1
-     },
-     "leaders": null,
-     "concerns": null,
-     "url": "https://www.iprofesional.com/politica/466965-nueva-encuesta-dio-triple-triunfo-a-milei-sobre-kicillof-pese-a-malestar-economico"
-    },
-    {
-     "pollster": "QSocial (QMonitor)",
-     "field": "5–28 sep 2026",
-     "published": "2026-10-13",
-     "n": 1650,
-     "method": "online",
-     "moe": 2.4,
-     "headline": "Balotaje Milei–Kicillof en empate técnico (42 a 41) y 55% que no quiere la reelección",
-     "approval": {
-      "approve": 35,
-      "disapprove": 61
+      "approve": 36,
+      "disapprove": 60
      },
      "mileiImage": null,
      "vote": null,
-     "runoff": {
-      "values": {
-       "Javier Milei": 42,
-       "Axel Kicillof": 41,
-       "NS/NC": 16
-      }
-     },
+     "runoff": null,
      "parties": {
       "LLA": 26,
-      "Peronismo": 23,
-      "Kirchnerismo": 13,
-      "PRO": 8,
-      "Izquierda": 5,
+      "Peronismo": 24,
+      "Frente de Izquierda": 4,
+      "PRO": 3,
+      "Provincias Unidas": 3,
       "UCR": 2,
-      "Otros": 4,
-      "Blanco": 4,
-      "Indecisos": 15
-     },
-     "leaders": null,
-     "concerns": null,
-     "url": "https://elargentinodiario.com.ar/politica/13/10/2026/empate-con-kicillof-y-55-contra-la-reeleccion-la-encuesta-que-inquieta-a-milei/"
-    },
-    {
-     "pollster": "Equipo Mide",
-     "field": "18–25 sep 2026",
-     "published": "2026-09-30",
-     "n": 2114,
-     "method": "no especificado (ponderado por voto 2023)",
-     "moe": 2.1,
-     "headline": "Milei encabeza con 31 contra 25 de Kicillof, pero la oposición sumada le gana al oficialismo 42 a 34",
-     "approval": {
-      "approve": 38,
-      "disapprove": 59
-     },
-     "mileiImage": {
-      "positive": 39,
-      "negative": 57
-     },
-     "vote": {
-      "scenario": "1.ª vuelta",
-      "values": {
-       "Javier Milei": 31,
-       "Axel Kicillof": 25,
-       "Myriam Bregman": 6,
-       "Victoria Villarruel": 5,
-       "Sergio Massa": 4,
-       "Patricia Bullrich": 4,
-       "Blanco/no vota": 5,
-       "NS": 8
-      }
-     },
-     "runoff": {
-      "label": "Oposición vs. oficialismo (genérico)",
-      "values": {
-       "Oposición": 42,
-       "Oficialismo": 34,
-       "No votaría": 12,
-       "NS/NC": 12
-      }
-     },
-     "parties": {
-      "LLA": 33,
-      "Kirchnerismo": 17,
-      "Peronismo no K": 16,
-      "Izquierda": 6,
-      "PRO": 4
+      "Indecisos/NS-NC": 26
      },
      "leaders": [
       {
        "name": "Patricia Bullrich",
-       "positive": 41,
-       "negative": 52
-      },
-      {
-       "name": "Javier Milei",
-       "positive": 39,
-       "negative": 57
-      },
-      {
-       "name": "Axel Kicillof",
-       "positive": 39,
+       "positive": 36,
        "negative": 54
       },
       {
-       "name": "Sergio Massa",
-       "positive": 32,
-       "negative": 63
-      }
-     ],
-     "concerns": [
-      {
-       "issue": "Salarios bajos frente a la inflación",
-       "pct": 22
-      },
-      {
-       "issue": "Desempleo",
-       "pct": 16
-      },
-      {
-       "issue": "Corrupción",
-       "pct": 16
-      }
-     ],
-     "url": "https://www.perfil.com/noticias/politica/una-encuesta-revela-cuanto-pueden-crecer-milei-kicillof-bullrich-y-massa-para-las-elecciones-del-2027.phtml"
-    },
-    {
-     "pollster": "Zuban Córdoba y Asociados",
-     "field": "16–19 sep 2026",
-     "published": "2026-09-28",
-     "n": 2000,
-     "method": "online, ponderado por voto 1.ª vuelta 2023",
-     "moe": 2.19,
-     "headline": "Desaprobación de 63,6% y empate técnico entre peronismo y LLA; Kicillof, el de mejor imagen",
-     "approval": {
-      "approve": 35.3,
-      "disapprove": 63.6
-     },
-     "mileiImage": {
-      "positive": 36.1,
-      "negative": 61.8
-     },
-     "vote": {
-      "scenario": "1.ª vuelta (tres fuerzas)",
-      "values": {
-       "Peronismo": 35.9,
-       "LLA": 35.1,
-       "Frente de Izquierda": 6.4,
-       "NS": 22.6
-      }
-     },
-     "runoff": null,
-     "parties": {
-      "Peronismo": 34,
-      "LLA": 30.1,
-      "PRO": 5.8,
-      "Frente de Izquierda": 4.6,
-      "Otros": 14.6,
-      "NS": 10.9
-     },
-     "leaders": [
-      {
-       "name": "Axel Kicillof",
-       "positive": 45,
-       "negative": 51.3
-      },
-      {
-       "name": "Cristina Fernández de Kirchner",
-       "positive": 42,
+       "name": "Javier Milei",
+       "positive": 34,
        "negative": null
       },
       {
        "name": "Myriam Bregman",
-       "positive": 40.1,
+       "positive": 32,
        "negative": null
       },
       {
-       "name": "Patricia Bullrich",
-       "positive": 37.6,
+       "name": "Axel Kicillof",
+       "positive": 31,
        "negative": null
       },
       {
-       "name": "Natalia de la Sota",
-       "positive": 36.6,
+       "name": "Cristina Fernández de Kirchner",
+       "positive": 30,
        "negative": null
-      },
-      {
-       "name": "Javier Milei",
-       "positive": 36.1,
-       "negative": 61.8
       }
      ],
-     "concerns": null,
-     "url": "https://eleconomista.com.ar/politica/milei-alcanza-636-desaprobacion-nuevos-datos-sobre-kicillof-elecciones-2027-n98457"
+     "concerns": [
+      {
+       "issue": "Falta de trabajo",
+       "pct": 39
+      },
+      {
+       "issue": "Bajos salarios",
+       "pct": 35
+      },
+      {
+       "issue": "Pobreza",
+       "pct": 31
+      }
+     ],
+     "url": "https://www.infobae.com/politica/2026/10/19/aciertos-y-deudas-del-gobierno-de-milei-la-desaprobacion-llega-al-60-mientras-crece-la-incertidumbre-electoral-segun-una-encuesta/"
     },
     {
      "pollster": "Isasi/Burdman",
@@ -1195,135 +1518,95 @@
       }
      ],
      "url": "https://www.enteratenoticias.com.ar/politica/ingreso-principal-problema-pais-aprobacion-javier-milei-encuesta-isasi-burdman/"
-    },
-    {
-     "pollster": "Zentrix (Monitor de Opinión Pública)",
-     "field": "22–30 sep 2026",
-     "published": "2026-10-07",
-     "n": 1438,
-     "method": "online autoadministrada",
-     "moe": null,
-     "headline": "Milei recupera tres puntos (35,2%), pero seis de cada diez dicen que nunca lo votarían",
-     "approval": {
-      "approve": 35.2,
-      "disapprove": 56.8
-     },
-     "mileiImage": {
-      "positive": 34.9,
-      "negative": 58.5
-     },
-     "vote": {
-      "scenario": "Voto seguro (no es 1.ª vuelta)",
-      "values": {
-       "Javier Milei": 28.3,
-       "Axel Kicillof": 27.1,
-       "Patricia Bullrich": 17.1
-      },
-      "noAvg": true
-     },
-     "runoff": null,
-     "parties": null,
-     "leaders": [
-      {
-       "name": "Axel Kicillof",
-       "positive": 38.2,
-       "negative": 53.6
-      },
-      {
-       "name": "Javier Milei",
-       "positive": 34.9,
-       "negative": 58.5
-      }
-     ],
-     "concerns": [
-      {
-       "issue": "Ingresos y salarios",
-       "pct": 50.1
-      },
-      {
-       "issue": "Incertidumbre económica",
-       "pct": 49.8
-      }
-     ],
-     "url": "https://noticias.perfil.com/noticias/politica/encuesta-ni-milei-ni-kicillof-superan-el-30-por-ciento-de-voto-seguro.phtml"
-    },
-    {
-     "pollster": "Tendencias",
-     "field": "24–29 ago 2026",
-     "published": "2026-09-03",
-     "n": 4958,
-     "method": "online (CAWI)",
-     "moe": 1.4,
-     "headline": "Por primera vez en su serie, Kicillof pasa al frente: 33,7 a 32,4 en primera y 46,1 a 37,4 en balotaje",
-     "approval": {
-      "approve": 37.6,
-      "disapprove": 62.4
-     },
-     "mileiImage": null,
-     "vote": {
-      "scenario": "1.ª vuelta",
-      "values": {
-       "Axel Kicillof": 33.7,
-       "Javier Milei": 32.4,
-       "Myriam Bregman": 10.2
-      }
-     },
-     "runoff": {
-      "values": {
-       "Axel Kicillof": 46.1,
-       "Javier Milei": 37.4,
-       "Blanco": 7.3,
-       "No votaría": 5.8,
-       "Indecisos": 3.5
-      }
-     },
-     "parties": null,
-     "leaders": null,
-     "concerns": null,
-     "url": "https://noticias.perfil.com/noticias/politica/encuesta-kicillof-se-impondria-a-milei-por-46-a-37-en-un-escenario-de-ballotage.phtml"
-    },
-    {
-     "pollster": "CB Global Data",
-     "field": "5–8 oct 2026",
-     "published": "2026-10-12",
-     "n": 3089,
-     "method": "online (CAWI)",
-     "moe": 1.8,
-     "headline": "Milei apenas mejora (36,1%) y queda en la mitad de abajo del ranking de presidentes de la región",
-     "approval": null,
-     "mileiImage": {
-      "positive": 36.1,
-      "negative": 59
-     },
-     "vote": null,
-     "runoff": null,
-     "parties": null,
-     "leaders": null,
-     "concerns": null,
-     "url": "https://grupolaprovincia.com/contenido/602402/encuesta-milei-imagen-negativa-octubre-2026-america-latina"
-    },
-    {
-     "pollster": "Hugo Haime y Asociados",
-     "field": "s/d",
-     "published": "2026-10-14",
-     "n": null,
-     "method": "no informado",
-     "moe": null,
-     "headline": "Aprobación planchada en 34% y un dato que duele: 76% prefiere que mejoren los ingresos antes que bajar la inflación",
-     "approval": {
-      "approve": 34,
-      "disapprove": 63
-     },
-     "mileiImage": null,
-     "vote": null,
-     "runoff": null,
-     "parties": null,
-     "leaders": null,
-     "concerns": null,
-     "url": "https://grupolaprovincia.com/contenido/602483/encuesta-haime-ingresos-inflacion-prioridades-economicas-milei"
     }
    ],
    "provincial": [
+    {
+     "district": "C",
+     "pollster": "DC Consultores",
+     "published": "2026-10-29",
+     "question": "Intención de voto a jefe de Gobierno porteño 2027 (22–26 oct, n=1.360, ±2,5)",
+     "values": {
+      "Jorge Macri": 33.8,
+      "Patricia Bullrich": 27.6,
+      "Leandro Santoro": 19.2,
+      "Horacio Rodríguez Larreta": 7.9,
+      "Roberto García Moritán": 5.8
+     },
+     "url": "https://eduardogerman.com/2026/10/29/encuesta-en-caba-la-libertad-avanza-supera-como-sello-al-pro-pero-jorge-macri-lidera-sobre-patricia-bullrich/"
+    },
+    {
+     "district": "C",
+     "pollster": "DC Consultores",
+     "published": "2026-10-29",
+     "question": "Intención de voto por espacio en CABA 2027",
+     "values": {
+      "LLA": 29.9,
+      "PRO": 28.3
+     },
+     "url": "https://eduardogerman.com/2026/10/29/encuesta-en-caba-la-libertad-avanza-supera-como-sello-al-pro-pero-jorge-macri-lidera-sobre-patricia-bullrich/"
+    },
+    {
+     "district": "S",
+     "pollster": "DC Consultores",
+     "published": "2026-10-29",
+     "question": "Intención de voto para gobernador 2027 por espacio (17–23 oct, n=1.050, ±2,5)",
+     "values": {
+      "Unidos por Santa Fe": 35.8,
+      "LLA": 28.6,
+      "Peronismo tradicional": 11.7,
+      "Kirchnerismo": 9.4,
+      "Somos Vida": 0.4,
+      "Indecisos": 11
+     },
+     "url": "https://eduardogerman.com/2026/10/29/encuesta-en-santa-fe-maximiliano-pullaro-lidera-hacia-2027-y-le-saca-mas-de-siete-puntos-a-la-libertad-avanza/"
+    },
+    {
+     "district": "X",
+     "pollster": "Carlos Sicchar",
+     "published": "2026-10-26",
+     "question": "Intención de voto guiada para gobernador 2027 (16–19 oct, n=1.048)",
+     "values": {
+      "Martín Llaryora": 34.1,
+      "Luis Juez": 15.6,
+      "Gabriel Bornoroni": 9.4,
+      "Rodrigo de Loredo": 6.8,
+      "Natalia de la Sota": 6.3,
+      "Indecisos": 13.1
+     },
+     "url": "https://www.letrap.com.ar/politica/encuesta-cordoba-llaryora-puntea-y-juez-asoma-como-el-rival-mas-competitivo-casi-nueve-puntos-n5427691"
+    },
+    {
+     "district": "B",
+     "pollster": "Zuban Córdoba y Asociados",
+     "published": "2026-10-22",
+     "question": "Techo electoral para gobernador 2027 (voto seguro + probable; no es intención de voto), fines sep–principios oct, n=1.000, ±3,1",
+     "values": {
+      "Diego Santilli": 39.4,
+      "Sergio Massa": 38.9,
+      "Gabriel Katopodis": 35.1,
+      "Victoria Villarruel": 34.6,
+      "Nicolás del Caño": 26.8,
+      "Diego Valenzuela": 26.5
+     },
+     "url": "https://eleconomista.com.ar/politica/nueva-encuesta-bonaerense-kicillof-supera-milei-pero-libertario-sorprende-rumbo-2027-n99125"
+    },
+    {
+     "district": "X",
+     "pollster": "Dialogía",
+     "published": "2026-10-20",
+     "question": "Intención de voto espontánea para gobernador 2027 (11–16 oct, n=700, online, ±3,7)",
+     "values": {
+      "Martín Llaryora": 25.7,
+      "Rodrigo de Loredo": 19.9,
+      "Gabriel Bornoroni": 15.4,
+      "Liliana Olivero": 5.7,
+      "Natalia de la Sota": 4.8,
+      "Aurelio García Elorrio": 2.7,
+      "NS/NC": 21.2
+     },
+     "url": "https://www.letrap.com.ar/politica/encuesta-cordoba-llaryora-lidera-el-257-intencion-voto-y-aventaja-58-puntos-loredo-n5427512"
+    },
     {
      "district": "B",
      "pollster": "Zuban Córdoba (vía Clarín)",
@@ -1334,23 +1617,6 @@
       "Kicillof desaprueba": 45.9,
       "Milei aprueba": 38.6,
       "Milei desaprueba": 59.9
-     },
-     "url": "https://eleconomista.com.ar/politica/nueva-encuesta-bonaerense-kicillof-supera-milei-pero-libertario-sorprende-rumbo-2027-n99125"
-    },
-    {
-     "district": "B",
-     "pollster": "Zuban Córdoba (vía Clarín)",
-     "published": "2026-10-22",
-     "question": "Gobernador 2027: techo de voto (seguro + probable), no es intención de voto",
-     "values": {
-      "Diego Santilli": 39.4,
-      "Sergio Massa": 38.9,
-      "Gabriel Katopodis": 35.1,
-      "Victoria Villarruel": 34.6,
-      "Nicolás del Caño": 26.8,
-      "Diego Valenzuela": 26.5,
-      "Jorge Ferraresi": 26.1,
-      "Facundo Manes": 24.8
      },
      "url": "https://eleconomista.com.ar/politica/nueva-encuesta-bonaerense-kicillof-supera-milei-pero-libertario-sorprende-rumbo-2027-n99125"
     },
@@ -1404,20 +1670,19 @@
      "url": "https://www.letrap.com.ar/politica/encuesta-cordoba-cuales-son-los-numeros-los-que-gabriel-bornoroni-apoya-su-campana-n5426467"
     }
    ],
-   "summary": "Promediando 12 mediciones de septiembre y octubre, la aprobación de la gestión de Milei ronda el 37% y la desaprobación el 59%, que dejó de crecer después del pico de julio. En intención de voto para 2027 hay paridad entre LLA y el peronismo, y los balotajes Milei–Kicillof van del empate técnico a ventajas claras para uno u otro según la consultora. Los bajos salarios y la falta de trabajo desplazaron a la inflación entre las principales preocupaciones.",
+   "summary": "Entre fines de octubre y principios de noviembre, la aprobación de Milei se ubica en la mayoría de las mediciones entre 34% y 39%, con una desaprobación de 56% a 65%. En primera vuelta Milei lidera en todas las encuestas por candidato (de 1,3 a 10 puntos), pero por espacio el peronismo empata o supera a LLA, y el balotaje contra Kicillof está en empate técnico en casi todas (Haime da a Kicillof 3,4 arriba). Preocupan sobre todo los salarios, la incertidumbre económica, el desempleo y la corrupción; la inflación quedó relegada.",
    "notes": [
-    "Todas las cifras salen de notas periodísticas que citan los informes, no de los informes originales; hay pequeñas discrepancias entre medios (por ejemplo, AtlasIntel da a Milei 35% de imagen positiva en un cuadro y 38% en el ranking de dirigentes).",
-    "Aprobación de gestión e imagen personal son preguntas distintas; Tendencias, Proyección y Analogías miden 'evaluación de gobierno' (buena/mala), que se cargó en el campo approval.",
-    "Las metodologías no son comparables entre sí: online/CAWI (UdeSA, Zuban, Tendencias, Isasi/Burdman, QMonitor, Zentrix, CB), IVR (Analogías), móvil (Giacobbe), presencial (CELAG, Grupo Feedback).",
-    "Algunas consultoras tienen sesgos conocidos: Analogías se considera cercana al kirchnerismo; Radar Público (Córdoba) la conduce un consultor que trabaja para LLA.",
-    "Zentrix: los valores en 'vote' son 'voto seguro', no intención de voto de primera vuelta. Zuban Córdoba PBA: los valores de gobernador son techo de voto (seguro + probable).",
-    "Analogías y Equipo Mide: 'runoff' es una pregunta genérica (cambio vs. continuidad, u oposición vs. oficialismo), no un balotaje con nombres.",
-    "Tendencias (campo 24–29 ago) y Zuban Córdoba (16–19 sep) son las mediciones más viejas del set; se incluyeron por ser las últimas publicadas por esas consultoras.",
-    "QMonitor: la intención por espacio (LLA 26, peronismo 23) aparece en una nota del 15/10 que no nombra la consultora; se le atribuye por coincidir n=1.650 y ±2,4.",
-    "CELAG presentó el 22/10 un estudio presencial (n=2.000) con 'empate técnico' Milei–Kicillof en balotaje y Kicillof levemente arriba, pero sin porcentajes publicados; no se incluyó como encuesta (https://www.andigital.com.ar/nota/144436/encuesta-del-celag-marca-empate-tecnico-entre-javier-milei-y-axel-kicillof/).",
-    "No se encontraron mediciones verificables publicadas desde el 1/8/2026 de Poliarquía, Opina Argentina, Management & Fit, Taquion, Synopsis, Circuitos, Trespuntozero, Fixer, Real Time Data, Explanans, Aresco ni Rouvier.",
-    "Santa Fe y CABA: las últimas encuestas encontradas (M&F Santa Fe, campo 22 jun–3 jul; Aresco, DC Consultores y CB en CABA, junio–julio) son anteriores al 1/8/2026, por eso no se cargaron."
-   ]
+    "'Voto seguro' o 'techo/potencial' (Zentrix, QSocial, Zuban PBA) mide disposición hacia cada dirigente por separado, no una elección entre opciones: no suma 100 ni es comparable con la intención de primera vuelta, por eso no entra en los promedios.",
+    "CB Global Data separa a Kicillof del 'candidato de CFK' en primera vuelta, por eso su escenario tampoco entra en el promedio de primera vuelta.",
+    "Muchas de estas encuestas son online por cuotas y no probabilísticas (Zentrix, Pulso, Zuban, CB, PoliTech, QSocial, Afiches): el margen de error que informan es teórico. CELAG y Haime son presenciales.",
+    "El promedio de once encuestas que difundió Clarín el 25/10 no es una encuesta: da balotaje Milei 42,2% vs Kicillof 38,9% y desaprobación 57,6%.",
+    "Aresco: 41/56,3 es la evaluación de gestión con el 'regular' repartido entre los polos; sin repartirlo da 27,6% positivo y 43,9% negativo.",
+    "Analogías: el 31,5/59,5 de gestión sale de citas secundarias (El Cronista / El Intransigente). Su 'balotaje' es 'cambio vs continuidad' (55% vs 32,1%), no Milei vs Kicillof.",
+    "Pulso Research: Perfil informa campo del 10 al 17 de octubre con 1.500 casos; El Ágora, del 13 al 21 con 1.006. Se usó la ficha de Perfil.",
+    "Analogías se considera cercana al kirchnerismo. No se encontraron mediciones nacionales publicadas entre el 20/10 y el 10/11 de Poliarquía (más allá del ICG), Opina Argentina, M&F, D'Alessio IROL–Berensztein, Giacobbe, Isasi/Burdman, Taquion, Fixer, Trespuntozero, Real Time Data, Rouvier, Tendencias ni Equipo Mide.",
+    "Mendoza y Neuquén: no se encontraron encuestas de gobernación 2027 publicadas en el período (en Neuquén, CB Global Data midió en octubre la imagen de Figueroa: 55,8% positiva, la mejor del país)."
+   ],
+   "updatedAt": "2026-11-10"
   }
  },
  "national": {
@@ -3014,15 +3279,30 @@
    "governorElection2027": true,
    "reelection": "puede (primer mandato)",
    "incumbentRunning": "sí",
-   "date2027": null,
-   "dateStatus": "desdoblada sin fecha",
-   "dateNote": "Figueroa y Gaido acordaron desdoblar. Agosto es la opción más fuerte si se suspenden las PASO nacionales; también se menciona septiembre, y hay versiones de febrero o marzo. La ley no fija fecha.",
-   "system": "sin primarias",
+   "date2027": "2027-02-14",
+   "dateStatus": "confirmada",
+   "dateNote": "Figueroa firmó el 9/11/2026 el Decreto 1860/2026, en acuerdo de ministros, y convocó a elecciones provinciales desdobladas de la nacional para el domingo 14 de febrero de 2027: Neuquén será la primera provincia en votar. Gaido adhirió con un decreto propio para que la capital vote el mismo día.",
+   "system": "Sin PASO ni internas; gobernador por mayoría simple, sin balotaje; Boleta Única Electrónica. Listas hasta el 11/12/2026, campaña desde el 16/12/2026.",
    "candidates": [
     {
      "name": "Rolando Figueroa",
-     "party": "La Neuquinidad",
-     "note": "Irá por la reelección, con apoyo del intendente Mariano Gaido"
+     "party": "La Neuquinidad (con PRO, Frente Grande, Rucci y Primero Neuquén de Gaido)",
+     "note": "Va por la reelección, aunque todavía no lo confirmó formalmente"
+    },
+    {
+     "name": "Nadia Márquez / Pablo Cervi",
+     "party": "La Libertad Avanza",
+     "note": "Márquez, presidenta del partido, promete candidato propio, pero la Ficha Limpia provincial la inhabilitaría (probation de 2013); Cervi suena como alternativa"
+    },
+    {
+     "name": "A definir",
+     "party": "PJ / Fuerza Patria",
+     "note": "Peronismo fragmentado: suenan Darío Martínez, Pablo Todero y Oscar Parrilli"
+    },
+    {
+     "name": "Sin confirmar",
+     "party": "MPN",
+     "note": "Por primera vez en 60 años podría no presentar candidaturas provinciales"
     }
    ],
    "gov2023": {
@@ -3033,15 +3313,31 @@
     "winner": "La Libertad Avanza",
     "pct": 33.38
    },
-   "summary": "Figueroa, que en 2023 cortó 60 años de gobiernos del MPN, buscará la reelección con un MPN debilitado. LLA le ganó por menos de dos puntos en 2025, y el PJ reclama listas propias.",
+   "summary": "Neuquén adelantó y desdobló su elección al 14 de febrero de 2027 y será la primera provincia en votar. Figueroa, que en 2023 cortó 60 años de gobiernos del MPN, llega como favorito con La Neuquinidad (CB Global Data lo ubicó en octubre como el gobernador con mejor imagen del país, 55,8%). LLA promete candidato propio pero su principal figura estaría inhabilitada, el PJ está dividido y el MPN podría no competir.",
    "sources": [
     {
-     "label": "Noticias NQN (20/8/2026): agosto y septiembre, las fechas que toman fuerza",
-     "url": "https://www.noticiasnqn.com.ar/noticias/2026/08/20/348847-agosto-y-septiembre-las-fechas-que-toman-fuerza-para-las-elecciones-en-neuquen"
+     "label": "Letra P (9/11/2026): Figueroa puso el gancho y Neuquén elige gobernador el 14 de febrero",
+     "url": "https://www.letrap.com.ar/enamorado-la-democracia-rolando-figueroa-puso-el-gancho-y-neuquen-elige-gobernador-el-14-febrero-n5428039/amp"
     },
     {
-     "label": "Letra P: Figueroa y Gaido acuerdan elecciones adelantadas",
-     "url": "https://www.letrap.com.ar/politica/neuquen-figueroa-y-gaido-acuerdan-elecciones-adelantadas-y-discuten-cual-es-la-mejor-fecha-n5423479"
+     "label": "Río Negro (9/11/2026): Neuquén adelanta sus elecciones al 14 de febrero de 2027: qué se vota",
+     "url": "https://www.rionegro.com.ar/politica/neuquen-adelantas-sus-elecciones-al-14-de-febrero-de-2027-que-se-vota-y-cual-es-el-panorama-4791356/"
+    },
+    {
+     "label": "Rosario3 (9/11/2026): Neuquén será la primera provincia en ir a las urnas en 2027",
+     "url": "https://www.rosario3.com/politica/neuquen-sera-la-primera-provincia-en-ir-a-las-urnas-en-2027-elegira-gobernador-en-febrero-20261109-0036.html"
+    },
+    {
+     "label": "La Política Online (9/11/2026): El gobernador de Neuquén no esperó a los libertarios y anticipó la elección a febrero",
+     "url": "https://www.lapoliticaonline.com/politica/el-gobernador-de-neuquen-no-espero-a-a-los-libertarios-y-anticipo-la-eleccion-a-febrero/"
+    },
+    {
+     "label": "Ámbito (9/11/2026): Neuquén confirmó desdoblamiento y elegirá gobernador en febrero",
+     "url": "https://www.ambito.com/neuquen-confirmo-desdoblamiento-y-se-anticipa-el-2027-elegira-gobernador-febrero-n6343162"
+    },
+    {
+     "label": "LMNeuquén (22/10/2026): Figueroa, el gobernador con mejor imagen del país (CB Global Data)",
+     "url": "https://www.lmneuquen.com/neuquen/rolando-figueroa-es-el-gobernador-mejor-imagen-todo-el-pais-n1258187"
     },
     {
      "label": "Río Negro: Gaido apoyará la reelección de Figueroa",
@@ -3067,7 +3363,18 @@
     "wiki": "Rolando_Figueroa",
     "lean": "center"
    },
-   "senate2027": false
+   "senate2027": false,
+   "decree": {
+    "number": "1860/2026",
+    "date": "2026-11-09"
+   },
+   "offices": [
+    "Gobernador y vicegobernador (la vicegobernación está vacante desde la destitución de Gloria Ruiz)",
+    "35 diputados provinciales (Legislatura unicameral)",
+    "Intendente y 20 concejales de Neuquén capital, más una consulta por una enmienda a la Carta Orgánica",
+    "Intendentes y concejales de 13 municipios de 2.ª categoría, comisiones municipales de 10 de 3.ª y presidentes de 22 comisiones de fomento",
+    "Consejeros escolares en 14 distritos"
+   ]
   },
   "R": {
    "capital": "Viedma",
