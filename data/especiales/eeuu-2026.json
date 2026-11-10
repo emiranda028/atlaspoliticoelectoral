@@ -1,8 +1,8 @@
 {
  "id": "eeuu-2026",
  "title": "Elecciones de medio término de EE.UU. 2026",
- "updatedAt": "2026-10-29T12:00:00-03:00",
- "lede": "A cinco días del 3 de noviembre, los demócratas llegan como favoritos para recuperar la Cámara (Silver Bulletin les da 95%) y con chances reales de dar vuelta el Senado, donde necesitan 4 bancas netas y las carreras de Texas, Ohio, Maine, Alaska, Iowa, Kansas y Míchigan siguen dentro del margen de error. Con la encuesta genérica en torno a D+8 y casi 33 millones de votos anticipados emitidos, es el primer gran examen del segundo mandato de Donald Trump.",
+ "updatedAt": "2026-11-10T15:00:00-03:00",
+ "lede": "Los demócratas recuperaron el Congreso en las midterms del 3 de noviembre: según AP, tienen 54 bancas del Senado contra 44 y 254 de la Cámara contra 165, con algunos distritos todavía por definir. Dieron vuelta siete bancas del Senado (Texas, Carolina del Norte, Ohio, Maine, Iowa, Kansas y Carolina del Sur) y cinco gobernaciones republicanas, entre ellas Texas, donde Gina Hinojosa venció a Greg Abbott. Donald Trump pierde el control del Congreso a mitad de su mandato; el nuevo Congreso asume el 3 de enero.",
  "dates": {
   "electionDay": "2026-11-03T06:00:00-05:00",
   "lastPollsClose": "2026-11-04T01:00:00-05:00",
@@ -1500,5 +1500,5 @@
    "color": "#2A5596"
   }
  ],
- "facesTitle": "Quiénes se disputan el Congreso"
+ "facesTitle": "Los líderes de cada bancada"
 }

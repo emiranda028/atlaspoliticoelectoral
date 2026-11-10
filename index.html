@@ -32709,6 +32709,12 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
             <p class="esp-hero-lede">${esc(br.lede || '')}</p>
             ${(() => {
               const fin = runoffFinalists(br);
+              const r2 = br.results && br.results.round2;
+              if (fin.length === 2 && r2 && (r2.candidates || []).length) {
+                const by = c => r2.candidates.find(x => String(x.n) === String(c.n) || (x.id && x.id === c.id)) || {};
+                const ord = fin.map(c => Object.assign({}, c, { p2: by(c).pct, won: by(c).e })).sort((a, b) => (b.p2 || 0) - (a.p2 || 0));
+                return facesRow(r2.status === 'final' ? 'Resultado del balotaje' : 'Balotaje · escrutinio en curso', ord.map(c => ({ name: c.full || c.name, role: `${c.party} · ${fmtPct(c.p2, 2)}${c.won ? ' · electo' : ''}`, wiki: c.wiki, color: BR_CAND_COLOR[c.n] || leanColor(c.lean) })));
+              }
               if (fin.length === 2) return facesRow('Van al balotaje', fin.map(c => ({ name: c.full || c.name, role: `${c.party} · ${fmtPct(c.pct, 2)} en la 1.ª vuelta`, wiki: c.wiki, color: BR_CAND_COLOR[c.n] || leanColor(c.lean) })));
               const order = pollAverages('r1').avgs.map(a => a.key);
               const cands = ((br.presidential && br.presidential.candidates) || []).filter(c => c.wiki)
@@ -32861,7 +32867,7 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
   }
   function renderBrUpdated() {
     const el = document.getElementById('br-updated');
-    if (el && live.brasil) el.textContent = `Datos actualizados ${relTime(new Date(live.brasil.updatedAt))}${live.lastFetch ? ' · revisado ' + relTime(live.lastFetch) : ''}`;
+    if (el && live.brasil) el.textContent = brasilPhase(live.brasil).id === 'final' ? 'Resultado oficial del TSE (100% escrutado)' : `Datos actualizados ${relTime(new Date(live.brasil.updatedAt))}${live.lastFetch ? ' · revisado ' + relTime(live.lastFetch) : ''}`;
   }
   async function ensureBrGeo() {
     if (!live.geo) live.geo = await fetchJSON(BR_GEO_URL);
@@ -33113,8 +33119,9 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
             ${facesRow(us.facesTitle || 'Protagonistas', us.faces)}
             <div class="esp-hero-dates">
               <div class="esp-date-chip">Elección<strong>${fmtDateShort(ed)}</strong></div>
-              <div class="esp-date-chip">Cámara hoy<strong>${esc(ctl(us.house))}</strong></div>
-              <div class="esp-date-chip">Senado hoy<strong>${esc(ctl(us.senate))}</strong></div>
+              ${live.usRes && usResHas() && ph.id !== 'campaign' ? `<div class="esp-date-chip">Senado electo<strong>D ${live.usRes.senate.parties.D.seats} – R ${live.usRes.senate.parties.R.seats}</strong></div>
+              <div class="esp-date-chip">Cámara electa<strong>D ${live.usRes.house.parties.D.seats} – R ${live.usRes.house.parties.R.seats}</strong></div>` : `<div class="esp-date-chip">Cámara hoy<strong>${esc(ctl(us.house))}</strong></div>
+              <div class="esp-date-chip">Senado hoy<strong>${esc(ctl(us.senate))}</strong></div>`}
               <div class="esp-date-chip">Asume el Congreso<strong>${fmtDateShort(new Date(us.dates.newCongress + 'T12:00:00'))} 2027</strong></div>
             </div>
           </div>
@@ -33252,6 +33259,9 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
     if (t < open) return { id: 'campaign', label: 'Campaña en curso', target: d.pollsOpen, targetLabel: 'para la elección', live: false };
     if (t < close) return { id: 'voting', label: 'Hoy se vota', target: d.pollsClose, targetLabel: 'para el cierre de urnas', live: true };
     if (t < close + 3 * 86400000) return { id: 'counting', label: 'Escrutinio en curso', target: d.knessetSworn || d.pollsClose, targetLabel: 'para que asuma la Knéset', live: true };
+    // After the Knesset is sworn in the clock follows the next milestone (the deadline to form a government)
+    if (d.coalitionDeadline && t >= new Date(d.knessetSworn || d.pollsClose).getTime() && t < new Date(d.coalitionDeadline).getTime())
+      return { id: 'final', label: d.coalitionLabel || 'Formación de gobierno', target: d.coalitionDeadline, targetLabel: d.coalitionDeadlineLabel || 'hasta el plazo para formar gobierno', live: false };
     return { id: 'final', label: 'Resultados', target: d.knessetSworn || d.pollsClose, targetLabel: 'para que asuma la Knéset', live: false };
   }
   // Average projected seats per list across polls (lists missing in a poll count as 0 there)
@@ -33362,7 +33372,7 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
             <span class="esp-status"><span class="live-dot"></span>${esc(ph.label)}</span>
             <h2>Israel <em>2026</em></h2>
             <p class="esp-hero-lede">${esc(il.lede || '')}</p>
-            ${facesRow('Los que pelean el primer puesto', isrAverages(il).filter(l => l.wiki).slice(0, 4).map(l => ({ name: l.faceName || l.leader, role: l.short || l.name, wiki: l.wiki, color: leanColor(l.lean) })))}
+            ${facesRow(il.results ? 'Las listas más votadas' : 'Los que pelean el primer puesto', isrAverages(il).filter(l => l.wiki).slice(0, 4).map(l => ({ name: l.faceName || l.leader, role: (l.short || l.name) + (il.results && il.results.seats[l.id] ? ` · ${il.results.seats[l.id]} bancas` : ''), wiki: l.wiki, color: leanColor(l.lean) })))}
             <div class="esp-hero-dates">
               <div class="esp-date-chip">Elección<strong>${fmtDateShort(ed)}</strong></div>
               <div class="esp-date-chip">Bancas<strong>120</strong></div>
