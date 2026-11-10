@@ -1,8 +1,8 @@
 {
  "id": "espana-2026",
  "title": "Elecciones generales 2026",
- "updatedAt": "2026-10-12T12:00:00-03:00",
- "lede": "España vuelve a las urnas el domingo 29 de noviembre, ocho meses antes de lo previsto: Pedro Sánchez disolvió las Cortes después de que el Congreso le tumbara dos decretos de vivienda. Todas las encuestas ponen primero al PP y le dan a la suma con Vox más de los 176 diputados de la mayoría absoluta.",
+ "updatedAt": "2026-11-10T13:00:00-03:00",
+ "lede": "España vuelve a las urnas el domingo 29 de noviembre, ocho meses antes de lo previsto: Pedro Sánchez disolvió las Cortes después de que el Congreso le tumbara dos decretos de vivienda. Todas las encuestas de noviembre menos una ponen primero al PP, y todas le dan a la suma con Vox más de los 176 diputados de la mayoría absoluta; tras el choque de trenes de Urda renunció el ministro Óscar Puente.",
  "dates": {
   "pollsOpen": "2026-11-29T09:00:00+01:00",
   "pollsClose": "2026-11-29T20:00:00+01:00",
@@ -510,560 +510,637 @@
  ],
  "polls": [
   {
-   "outlet": "El Español",
-   "pollster": "SocioMétrica",
-   "date": "11 oct",
-   "fieldwork": "10–11 oct",
+   "outlet": "20minutos (Henneo)",
+   "pollster": "DYM",
+   "date": "10 nov",
+   "fieldwork": "4–6 nov",
+   "sample": 1025,
+   "pct": {
+    "PP": 33.1,
+    "PSOE": 27.3,
+    "Vox": 18.6,
+    "Sumar": 5.6,
+    "Podemos": 1.9,
+    "SALF": 0.4
+   },
+   "seats": {
+    "PP": 137,
+    "PSOE": 106,
+    "Vox": 64.5,
+    "Sumar": 9,
+    "Podemos": 1.5,
+    "SALF": 0
+   },
+   "seatsAreMidpoints": true,
+   "seatsRange": {
+    "PP": [
+     135,
+     139
+    ],
+    "PSOE": [
+     104,
+     108
+    ],
+    "Vox": [
+     63,
+     66
+    ],
+    "Sumar": [
+     8,
+     10
+    ],
+    "Podemos": [
+     1,
+     2
+    ]
+   },
+   "url": "https://www.democrata.es/encuestas/elecciones-generales/dym-10-noviembre-2026-pp-psoe-bajan-vox-sube/",
+   "note": "Sumar incluye Compromís; DYM no publica estimación de partidos territoriales."
+  },
+  {
+   "outlet": "La Séptima",
+   "pollster": "SW Demoscopia",
+   "date": "9 nov",
+   "fieldwork": "26 oct–8 nov",
+   "sample": 5500,
+   "pct": {
+    "PP": 28.3,
+    "UPN": 0.2,
+    "PSOE": 31.1,
+    "Vox": 17.3,
+    "Sumar": 7.6,
+    "ERC": 2.6,
+    "Junts": 1.3,
+    "EHBildu": 1.4,
+    "PNV": 0.8,
+    "BNG": 1.0,
+    "CC": 0.4,
+    "AA": 1.4,
+    "Podemos": 1.7,
+    "SALF": 2.0
+   },
+   "seats": {
+    "PP": 114.5,
+    "UPN": 2,
+    "PSOE": 129.5,
+    "Vox": 60.5,
+    "Sumar": 12.5,
+    "ERC": 11,
+    "Junts": 4,
+    "EHBildu": 7,
+    "PNV": 2.5,
+    "BNG": 2,
+    "CC": 1,
+    "AA": 3,
+    "Podemos": 0,
+    "SALF": 0
+   },
+   "seatsAreMidpoints": true,
+   "seatsRange": {
+    "PP": [
+     111,
+     118
+    ],
+    "PSOE": [
+     127,
+     132
+    ],
+    "Vox": [
+     57,
+     64
+    ],
+    "Sumar": [
+     11,
+     14
+    ],
+    "ERC": [
+     10,
+     12
+    ],
+    "Junts": [
+     3,
+     5
+    ],
+    "PNV": [
+     2,
+     3
+    ]
+   },
+   "url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Spanish_general_election",
+   "note": "Barómetro diario nº 5 (tracking); único instituto que sitúa al PSOE primero. Sumar incluye Compromís."
+  },
+  {
+   "outlet": "ABC (Vocento)",
+   "pollster": "GAD3",
+   "date": "9 nov",
+   "fieldwork": "3–5 nov",
+   "sample": 1502,
+   "pct": {
+    "PP": 31.9,
+    "PSOE": 25.9,
+    "Vox": 18.6,
+    "Sumar": 6.0,
+    "Compromis": 1.5,
+    "ERC": 2.7,
+    "Junts": 1.4,
+    "EHBildu": 1.5,
+    "PNV": 0.9,
+    "BNG": 0.9,
+    "CC": 0.4,
+    "AA": 1.6,
+    "Podemos": 1.4,
+    "SALF": 1.3
+   },
+   "seats": {
+    "PP": 136,
+    "PSOE": 103,
+    "Vox": 63,
+    "Sumar": 7,
+    "Compromis": 5,
+    "ERC": 12,
+    "Junts": 5,
+    "EHBildu": 8,
+    "PNV": 4,
+    "BNG": 2,
+    "CC": 1,
+    "AA": 3,
+    "Podemos": 1,
+    "SALF": 0
+   },
+   "url": "https://www.abc.es/espana/accidente-urda-apenas-altera-bloques-29n-derecha-20261108023004-nt.html",
+   "note": "Sumar = FA 5,1% (6) + UPC + CHA + Ara Més (1)."
+  },
+  {
+   "outlet": "La Razón",
+   "pollster": "NC Report",
+   "date": "9 nov",
+   "fieldwork": "2–5 nov",
    "sample": 1000,
    "pct": {
     "PP": 32.6,
-    "PSOE": 26.2,
-    "Vox": 18.8,
-    "Sumar": 5.8,
+    "UPN": 0.4,
+    "PSOE": 25.6,
+    "Vox": 19.3,
+    "Sumar": 6.9,
     "ERC": 2.0,
-    "Junts": 1.5,
-    "EHBildu": 1.3,
-    "PNV": 0.8,
-    "BNG": 0.9,
-    "CC": 0.5,
-    "UPN": 0.2,
-    "AA": 0.9,
-    "Podemos": 2.8,
-    "SALF": 2.1
+    "Junts": 1.8,
+    "EHBildu": 1.4,
+    "PNV": 0.9,
+    "BNG": 0.8,
+    "CC": 0.4,
+    "AA": 1.2,
+    "Podemos": 2.4
    },
    "seats": {
-    "PP": 141,
-    "PSOE": 104,
-    "Vox": 64,
-    "Sumar": 8,
+    "PP": 137,
+    "UPN": 2,
+    "PSOE": 100,
+    "Vox": 68,
+    "Sumar": 9.5,
+    "ERC": 7.5,
+    "Junts": 8.5,
+    "EHBildu": 6.5,
+    "PNV": 4.5,
+    "BNG": 2,
+    "CC": 1,
+    "AA": 2.5,
+    "Podemos": 0.5
+   },
+   "seatsAreMidpoints": true,
+   "seatsRange": {
+    "PP": [
+     136,
+     138
+    ],
+    "PSOE": [
+     99,
+     101
+    ],
+    "Vox": [
+     67,
+     69
+    ],
+    "Sumar": [
+     9,
+     10
+    ],
+    "ERC": [
+     7,
+     8
+    ],
+    "Junts": [
+     8,
+     9
+    ],
+    "EHBildu": [
+     6,
+     7
+    ],
+    "PNV": [
+     4,
+     5
+    ],
+    "AA": [
+     2,
+     3
+    ],
+    "Podemos": [
+     0,
+     1
+    ]
+   },
+   "url": "https://www.larazon.es/espana/gana-7-puntos-psoe-que-cae-100-escanos_202611096af1319903bbf30bb045239e.html",
+   "note": "Sumar incluye Compromís. Participación estimada 64,3%."
+  },
+  {
+   "outlet": "El País / Cadena SER (Prisa)",
+   "pollster": "40dB",
+   "date": "9 nov",
+   "fieldwork": "2–4 nov",
+   "sample": 2000,
+   "pct": {
+    "PP": 31.9,
+    "PSOE": 29.9,
+    "Vox": 18.0,
+    "Sumar": 3.9,
+    "Compromis": 1.1,
+    "Podemos": 1.2,
+    "SALF": 2.0
+   },
+   "seats": {
+    "PP": 130.5,
+    "UPN": 2,
+    "PSOE": 119,
+    "Vox": 61,
+    "Sumar": 6,
+    "Compromis": 3,
+    "ERC": 10,
+    "Junts": 3,
+    "EHBildu": 7,
+    "PNV": 3,
+    "BNG": 2,
+    "CC": 1,
+    "AA": 3,
+    "Podemos": 0,
+    "SALF": 0
+   },
+   "seatsAreMidpoints": true,
+   "seatsRange": {
+    "PP": [
+     124,
+     137
+    ],
+    "PSOE": [
+     115,
+     123
+    ],
+    "Vox": [
+     58,
+     64
+    ],
+    "Sumar": [
+     4,
+     8
+    ]
+   },
+   "url": "https://elpais.com/espana/elecciones-generales/2026-11-09/el-bloque-de-la-derecha-mantiene-su-ventaja-pero-el-psoe-se-acerca-al-pp.html",
+   "note": "El 31,9% del PP incluye a UPN. 40dB no publica % de los partidos territoriales. Sumar = FA 3,4% (4–6) + UPC + Ara Més."
+  },
+  {
+   "outlet": "OKdiario",
+   "pollster": "Data10",
+   "date": "9 nov",
+   "fieldwork": "2–3 nov",
+   "sample": 1500,
+   "pct": {
+    "PP": 32.4,
+    "PSOE": 24.7,
+    "Vox": 19.8,
+    "Sumar": 6.9,
+    "ERC": 2.3,
+    "Junts": 1.5,
+    "EHBildu": 1.3,
+    "PNV": 0.7,
+    "BNG": 1.0,
+    "CC": 0.4,
+    "AA": 1.3,
+    "Podemos": 3.1,
+    "SALF": 1.5
+   },
+   "seats": {
+    "PP": 134,
+    "PSOE": 97,
+    "Vox": 69,
+    "Sumar": 14,
+    "ERC": 7,
+    "Junts": 6,
+    "EHBildu": 7,
+    "PNV": 4,
+    "BNG": 2,
+    "CC": 1,
+    "AA": 3,
+    "Podemos": 2,
+    "SALF": 0
+   },
+   "url": "https://okdiario.com/espana/psoe-paga-tragedia-urda-hunde-hasta-97-escanos-mientras-pp-vox-suman-203-20728358",
+   "note": "Sumar incluye Compromís. Participación estimada 68,7%."
+  },
+  {
+   "outlet": "El Español",
+   "pollster": "SocioMétrica",
+   "date": "8 nov",
+   "fieldwork": "1 sep–8 nov",
+   "sample": 5460,
+   "pct": {
+    "PP": 32.0,
+    "UPN": 0.3,
+    "PSOE": 27.7,
+    "Vox": 18.9,
+    "Sumar": 5.0,
+    "Compromis": 0.9,
+    "ERC": 2.4,
+    "Junts": 1.4,
+    "EHBildu": 1.6,
+    "PNV": 0.8,
+    "BNG": 1.0,
+    "CC": 0.5,
+    "AA": 1.7,
+    "Podemos": 1.2,
+    "SALF": 2.2
+   },
+   "seats": {
+    "PP": 134,
+    "UPN": 2,
+    "PSOE": 108,
+    "Vox": 66,
+    "Sumar": 6,
+    "Compromis": 2,
+    "ERC": 9,
+    "Junts": 6,
+    "EHBildu": 8,
+    "PNV": 3,
+    "BNG": 2,
+    "CC": 1,
+    "AA": 3,
+    "Podemos": 0,
+    "SALF": 0
+   },
+   "url": "https://www.elespanol.com/espana/politica/20261108/pp-vox-suman-escanos-sanchez-recupera-perdio-urda-dimision-puente-sondeo-noche/1003744450645_0.html",
+   "note": "Panel acumulado desde septiembre. Sumar = FA 4,4% (5) + CHA (1) + UPC + Ara Més."
+  },
+  {
+   "outlet": "El Mundo",
+   "pollster": "Sigma Dos",
+   "date": "8 nov",
+   "fieldwork": "30 oct–6 nov",
+   "sample": 4172,
+   "pct": {
+    "PP": 31.0,
+    "PSOE": 25.2,
+    "Vox": 19.4,
+    "Sumar": 6.9,
+    "Compromis": 1.2,
+    "ERC": 2.9,
+    "Junts": 1.2,
+    "EHBildu": 1.3,
+    "PNV": 0.9,
+    "BNG": 1.0,
+    "CC": 0.4,
+    "AA": 1.6,
+    "Podemos": 1.6
+   },
+   "seats": {
+    "PP": 134,
+    "PSOE": 103.5,
+    "Vox": 66,
+    "Sumar": 11,
+    "Compromis": 3.5,
+    "ERC": 8.5,
+    "Junts": 5.5,
+    "EHBildu": 7,
+    "PNV": 5,
+    "BNG": 2,
+    "CC": 0.5,
+    "AA": 3.5,
+    "Podemos": 0
+   },
+   "seatsAreMidpoints": true,
+   "seatsRange": {
+    "PP": [
+     131,
+     137
+    ],
+    "PSOE": [
+     101,
+     106
+    ],
+    "Vox": [
+     62,
+     70
+    ],
+    "Sumar": [
+     10,
+     12
+    ],
+    "Compromis": [
+     3,
+     4
+    ],
+    "ERC": [
+     8,
+     9
+    ],
+    "Junts": [
+     5,
+     6
+    ],
+    "EHBildu": [
+     6,
+     8
+    ],
+    "PNV": [
+     4,
+     6
+    ],
+    "CC": [
+     0,
+     1
+    ],
+    "AA": [
+     3,
+     4
+    ]
+   },
+   "url": "https://www.elmundo.es/espana/encuestas/2026/11/08/6af066bee85eceae5a8b4598.html",
+   "note": "PP+Vox: 199 escaños y 50,4% según el titular. Sumar = FA 6,5% (9–11) + UPC (1)."
+  },
+  {
+   "outlet": "El Confidencial",
+   "pollster": "IMOP Insights",
+   "date": "8 nov",
+   "fieldwork": "2–6 nov",
+   "sample": 1000,
+   "pct": {
+    "PP": 29.8,
+    "PSOE": 25.9,
+    "Vox": 19.9,
+    "Sumar": 8.1,
+    "ERC": 2.6,
+    "Junts": 1.2,
+    "EHBildu": 1.6,
+    "PNV": 0.7,
+    "BNG": 1.3,
+    "CC": 0.5,
+    "AA": 1.8,
+    "Podemos": 1.2,
+    "SALF": 1.7
+   },
+   "seats": {
+    "PP": 126,
+    "PSOE": 106,
+    "Vox": 70,
+    "Sumar": 13,
+    "ERC": 11,
+    "Junts": 4,
+    "EHBildu": 7,
+    "PNV": 4,
+    "BNG": 3,
+    "CC": 1,
+    "AA": 4,
+    "Podemos": 1,
+    "SALF": 0
+   },
+   "url": "https://www.elconfidencial.com/espana/2026-11-08/derecha-recupera-seis-escanos-izquierda-castigo-psoe-urda-cbtr_4460900/",
+   "note": "Sumar incluye Compromís."
+  },
+  {
+   "outlet": "Electomanía",
+   "pollster": "EM-Analytics (ElectoPanel)",
+   "date": "8 nov",
+   "fieldwork": "1–6 nov",
+   "sample": 1860,
+   "pct": {
+    "PP": 31.1,
+    "PSOE": 25.3,
+    "Vox": 19.2,
+    "Sumar": 6.1,
+    "Compromis": 1.5,
+    "ERC": 2.2,
+    "Junts": 1.2,
+    "EHBildu": 1.4,
+    "PNV": 0.9,
+    "BNG": 0.9,
+    "CC": 0.3,
+    "AA": 1.0,
+    "Podemos": 1.8,
+    "SALF": 1.9
+   },
+   "seats": {
+    "PP": 131,
+    "PSOE": 108,
+    "Vox": 66,
+    "Sumar": 12,
+    "Compromis": 3,
+    "ERC": 8,
+    "Junts": 5,
+    "EHBildu": 8,
+    "PNV": 4,
+    "BNG": 2,
+    "CC": 0,
+    "AA": 2,
+    "Podemos": 1,
+    "SALF": 0
+   },
+   "url": "https://electomania.es/electopanel-8-nov-el-bipartidismo-cede-terreno-vox-sube-en-escanos-y-eh-bildu-se-distancia-del-pnv/",
+   "note": "Panel online."
+  },
+  {
+   "outlet": "elDiario.es",
+   "pollster": "Ateneo del Dato",
+   "date": "8 nov",
+   "fieldwork": "2–5 nov",
+   "sample": 2000,
+   "pct": {
+    "PP": 31.5,
+    "PSOE": 28.6,
+    "Vox": 18.6,
+    "Sumar": 6.1,
+    "Podemos": 1.5
+   },
+   "seats": {
+    "PP": 128,
+    "PSOE": 112,
+    "Vox": 65,
+    "Sumar": 10,
+    "Podemos": 0
+   },
+   "seatsAreMidpoints": true,
+   "seatsRange": {
+    "PP": [
+     123,
+     133
+    ],
+    "PSOE": [
+     108,
+     116
+    ],
+    "Vox": [
+     61,
+     69
+    ],
+    "Sumar": [
+     9,
+     11
+    ]
+   },
+   "url": "https://www.eldiario.es/politica/psoe-crece-dimision-oscar-puente-pp-vox-mantienen-mayoria-absoluta_1_13643551.html",
+   "note": "Sumar incluye Compromís; no publica datos de partidos territoriales."
+  },
+  {
+   "outlet": "Onda Cero",
+   "pollster": "Celeste-Tel",
+   "date": "6 nov",
+   "fieldwork": "29 oct–3 nov",
+   "sample": 1100,
+   "pct": {
+    "PP": 31.4,
+    "UPN": 0.4,
+    "PSOE": 25.7,
+    "Vox": 19.2,
+    "Sumar": 6.8,
+    "Compromis": 1.2,
+    "ERC": 2.2,
+    "Junts": 1.5,
+    "EHBildu": 1.4,
+    "PNV": 0.9,
+    "BNG": 0.8,
+    "CC": 0.5,
+    "AA": 1.2,
+    "Podemos": 1.9,
+    "SALF": 1.6
+   },
+   "seats": {
+    "PP": 136,
+    "UPN": 2,
+    "PSOE": 101,
+    "Vox": 66,
+    "Sumar": 10,
+    "Compromis": 3,
     "ERC": 8,
     "Junts": 6,
     "EHBildu": 7,
     "PNV": 4,
     "BNG": 2,
     "CC": 1,
-    "UPN": 1,
-    "AA": 1,
-    "Podemos": 2,
-    "SALF": 0
-   },
-   "url": "https://www.elespanol.com/espana/politica/20261011/sanchez-no-funciona-apropiarse-maricarmen-huelga-oposicion-cae-sondeo-noche/1003744416762_0.html",
-   "note": "Sumar incluye a Compromís (0,9 %, 3 escaños)."
-  },
-  {
-   "outlet": "El Debate",
-   "pollster": "Target Point",
-   "date": "11 oct",
-   "fieldwork": "6–9 oct",
-   "sample": 1002,
-   "pct": {
-    "PP": 32.0,
-    "PSOE": 25.9,
-    "Vox": 18.7,
-    "Sumar": 6.9,
-    "Podemos": 3.4,
-    "SALF": 1.3
-   },
-   "seats": {
-    "PP": 136,
-    "PSOE": 104,
-    "Vox": 65,
-    "Sumar": 10,
-    "ERC": 9,
-    "Junts": 5,
-    "EHBildu": 7,
-    "PNV": 5,
-    "BNG": 2,
-    "AA": 2,
-    "Podemos": 2,
-    "SALF": 0
-   },
-   "seatsRange": {
-    "PP": [
-     135,
-     137
-    ],
-    "PSOE": [
-     103,
-     105
-    ],
-    "Vox": [
-     64,
-     66
-    ],
-    "ERC": [
-     8,
-     10
-    ],
-    "Junts": [
-     5,
-     6
-    ],
-    "PNV": [
-     5,
-     6
-    ],
-    "BNG": [
-     2,
-     3
-    ]
-   },
-   "seatsAreMidpoints": true,
-   "url": "https://www.eldebate.com/espana/20261011/izquierda-apenas-reacciona-adelanto-frente-derecha-le-saca-casi-15-puntos_468080.html"
-  },
-  {
-   "outlet": "Electomanía",
-   "pollster": "EM-Analytics (ElectoPanel)",
-   "date": "11 oct",
-   "fieldwork": "5–9 oct",
-   "sample": 4125,
-   "pct": {
-    "PP": 31.5,
-    "PSOE": 26.9,
-    "Vox": 19.1,
-    "Sumar": 6.0,
-    "ERC": 2.0,
-    "Junts": 1.1,
-    "EHBildu": 1.4,
-    "PNV": 1.1,
-    "BNG": 1.0,
-    "CC": 0.3,
-    "UPN": 0.2,
-    "AA": 1.1,
-    "Podemos": 3.4,
-    "SALF": 1.7
-   },
-   "seats": {
-    "PP": 131,
-    "PSOE": 107,
-    "Vox": 67,
-    "Sumar": 11,
-    "ERC": 8,
-    "Junts": 4,
-    "EHBildu": 7,
-    "PNV": 6,
-    "BNG": 3,
-    "CC": 0,
-    "UPN": 1,
     "AA": 3,
-    "Podemos": 2,
-    "SALF": 0
-   },
-   "url": "https://electomania.es/electopanel-11-oct-sumar-se-descalabra-a-la-espera-del-frente-amplio/"
-  },
-  {
-   "outlet": "El País / SER",
-   "pollster": "40dB",
-   "date": "9 oct",
-   "fieldwork": "7–8 oct",
-   "sample": 800,
-   "pct": {
-    "PP": 31.9,
-    "PSOE": 28.1,
-    "Vox": 18.9,
-    "Sumar": 5.3,
-    "Podemos": 2.3,
-    "SALF": 1.8
-   },
-   "seats": {
-    "PP": 131,
-    "PSOE": 111,
-    "Vox": 68,
-    "Sumar": 6,
-    "ERC": 8,
-    "Junts": 7,
-    "EHBildu": 7,
-    "PNV": 6,
-    "BNG": 2,
-    "CC": 1,
-    "UPN": 1,
-    "AA": 1,
-    "Podemos": 2,
-    "SALF": 0
-   },
-   "seatsRange": {
-    "PP": [
-     123,
-     140
-    ],
-    "PSOE": [
-     105,
-     117
-    ],
-    "Vox": [
-     63,
-     74
-    ],
-    "Sumar": [
-     5,
-     7
-    ]
-   },
-   "seatsAreMidpoints": true,
-   "url": "https://elpais.com/espana/2026-10-09/el-pp-y-vox-mantienen-la-mayoria-absoluta-tras-el-adelanto-electoral.html"
-  },
-  {
-   "outlet": "El Periódico (Prensa Ibérica)",
-   "pollster": "GESOP",
-   "date": "12 oct",
-   "fieldwork": "6–8 oct",
-   "sample": 1000,
-   "pct": {
-    "PP": 28.7,
-    "PSOE": 26.1,
-    "Vox": 18.9,
-    "Sumar": 8.0,
-    "ERC": 2.5,
-    "Junts": 1.9,
-    "Podemos": 2.6,
-    "SALF": 2.0
-   },
-   "seats": {
-    "PP": 123,
-    "PSOE": 110,
-    "Vox": 70,
-    "Sumar": 15,
-    "ERC": 10,
-    "Junts": 5,
-    "Podemos": 2,
-    "SALF": 0
-   },
-   "seatsRange": {
-    "PP": [
-     121,
-     125
-    ],
-    "PSOE": [
-     108,
-     112
-    ],
-    "Vox": [
-     68,
-     72
-    ],
-    "Sumar": [
-     14,
-     17
-    ],
-    "ERC": [
-     9,
-     11
-    ],
-    "Junts": [
-     4,
-     6
-    ],
-    "SALF": [
-     0,
-     1
-    ]
-   },
-   "seatsAreMidpoints": true,
-   "url": "https://www.elperiodico.com/es/politica/20261012/encuesta-elecciones-generales-espana-2026-29n-135212729"
-  },
-  {
-   "outlet": "ABC (Vocento)",
-   "pollster": "GAD3",
-   "date": "12 oct",
-   "fieldwork": "6–8 oct",
-   "sample": 1077,
-   "pct": {
-    "PP": 31.4,
-    "PSOE": 26.4,
-    "Vox": 18.2,
-    "Sumar": 7.4,
-    "ERC": 2.6,
-    "Junts": 1.5,
-    "EHBildu": 1.5,
-    "PNV": 1.0,
-    "BNG": 0.9,
-    "CC": 0.4,
-    "UPN": 0.1,
-    "AA": 1.0,
-    "Podemos": 2.3,
-    "SALF": 1.8
-   },
-   "seats": {
-    "PP": 133,
-    "PSOE": 107,
-    "Vox": 65,
-    "Sumar": 10,
-    "ERC": 10,
-    "Junts": 5,
-    "EHBildu": 8,
-    "PNV": 6,
-    "BNG": 2,
-    "CC": 1,
-    "UPN": 0,
-    "AA": 1,
-    "Podemos": 2,
-    "SALF": 0
-   },
-   "url": "https://www.abc.es/espana/derecha-mantiene-mayoria-absoluta-pese-agitacion-callejera-20261012015025-nt.html"
-  },
-  {
-   "outlet": "Vozpópuli",
-   "pollster": "Hamalgama Métrica",
-   "date": "11 oct",
-   "fieldwork": "5–8 oct",
-   "sample": 1000,
-   "pct": {
-    "PP": 33.4,
-    "PSOE": 25.3,
-    "Vox": 19.6,
-    "Sumar": 5.4,
-    "ERC": 1.9,
-    "Junts": 1.7,
-    "EHBildu": 1.3,
-    "PNV": 0.9,
-    "BNG": 0.8,
-    "CC": 0.5,
-    "UPN": 0.2,
-    "Podemos": 3.3,
-    "SALF": 1.8
-   },
-   "seats": {
-    "PP": 144,
-    "PSOE": 103,
-    "Vox": 68,
-    "Sumar": 5,
-    "ERC": 7,
-    "Junts": 7,
-    "EHBildu": 6,
-    "PNV": 4,
-    "BNG": 2,
-    "CC": 1,
-    "UPN": 1,
-    "Podemos": 2,
-    "SALF": 0
-   },
-   "url": "https://www.vozpopuli.com/espana/politica/debacle-de-la-izquierda-pp-y-vox-suman-ya-212-escanos-y-el-53-de-los-votos.html"
-  },
-  {
-   "outlet": "laSexta",
-   "pollster": "InvyMark",
-   "date": "9 oct",
-   "fieldwork": "5–8 oct",
-   "sample": null,
-   "pct": {
-    "PP": 32.8,
-    "PSOE": 28.0,
-    "Vox": 18.8,
-    "Sumar": 6.3,
-    "ERC": 1.9,
-    "Junts": 1.2,
-    "EHBildu": 1.5,
-    "PNV": 1.1,
-    "Podemos": 3.2,
-    "SALF": 1.8
-   },
-   "seats": null,
-   "url": "https://www.lasexta.com/elecciones/generales/barometro-lasexta-protestas-vivienda-impactan-encuestas-que-hunden-bloque-izquierda-disparan-vox_202610096ac8ae9bb79b18452fc08907.html",
-   "note": "Solo estimación de voto, sin reparto de escaños."
-  },
-  {
-   "outlet": "El Mundo",
-   "pollster": "Sigma Dos",
-   "date": "11 oct",
-   "fieldwork": "1–8 oct",
-   "sample": 2017,
-   "pct": {
-    "PP": 31.9,
-    "PSOE": 25.3,
-    "Vox": 19.1,
-    "Sumar": 7.6,
-    "ERC": 2.6,
-    "Junts": 1.2,
-    "EHBildu": 1.1,
-    "PNV": 0.9,
-    "BNG": 0.9,
-    "CC": 0.5,
-    "UPN": 0.2,
-    "AA": 0.8,
-    "Podemos": 3.1
-   },
-   "seats": {
-    "PP": 135,
-    "PSOE": 103,
-    "Vox": 68,
-    "Sumar": 9,
-    "ERC": 9,
-    "Junts": 7,
-    "EHBildu": 6,
-    "PNV": 6,
-    "BNG": 2,
-    "CC": 1,
-    "UPN": 1,
-    "AA": 2,
-    "Podemos": 2
-   },
-   "url": "https://www.elmundo.es/espana/encuestas/2026/10/11/6acba028e85ece77088b4580.html"
-  },
-  {
-   "outlet": "El Confidencial",
-   "pollster": "IMOP Insights",
-   "date": "9 oct",
-   "fieldwork": "5–7 oct",
-   "sample": 900,
-   "pct": {
-    "PP": 30.4,
-    "PSOE": 26.5,
-    "Vox": 19.0,
-    "Sumar": 7.6,
-    "ERC": 2.2,
-    "Junts": 1.1,
-    "EHBildu": 1.3,
-    "PNV": 0.9,
-    "BNG": 1.1,
-    "CC": 0.6,
-    "UPN": 0.2,
-    "AA": 1.0,
-    "Podemos": 2.3,
-    "SALF": 1.9
-   },
-   "seats": {
-    "PP": 130,
-    "PSOE": 110,
-    "Vox": 70,
-    "Sumar": 11,
-    "ERC": 8,
-    "Junts": 4,
-    "EHBildu": 6,
-    "PNV": 4,
-    "BNG": 3,
-    "CC": 1,
-    "UPN": 1,
-    "AA": 1,
     "Podemos": 1,
     "SALF": 0
    },
-   "url": "https://www.elconfidencial.com/espana/2026-10-09/derecha-pp-gana-vox-dispara-sanchez-baja-sumar_4441291/"
-  },
-  {
-   "outlet": "20minutos (Henneo)",
-   "pollster": "DYM",
-   "date": null,
-   "fieldwork": "5–7 oct",
-   "sample": 1011,
-   "pct": {
-    "PP": 34.0,
-    "PSOE": 28.2,
-    "Vox": 18.2,
-    "Sumar": 3.6,
-    "Podemos": 3.6,
-    "SALF": 0.5
-   },
-   "seats": {
-    "PP": 141,
-    "PSOE": 109,
-    "Vox": 63,
-    "Sumar": 4,
-    "Podemos": 1,
-    "SALF": 0
-   },
-   "seatsRange": {
-    "PP": [
-     139,
-     143
-    ],
-    "PSOE": [
-     107,
-     111
-    ],
-    "Vox": [
-     61,
-     65
-    ],
-    "Sumar": [
-     3,
-     5
-    ],
-    "Podemos": [
-     1,
-     2
-    ]
-   },
-   "seatsAreMidpoints": true,
-   "url": "https://www.20minutos.es/nacional/psoe-absorbe-intencion-votos-sumar-podemos-mientras-pp-vox-consolidan-su-mayoria_7046598_0.html",
-   "note": "Fecha de publicación no verificada."
-  },
-  {
-   "outlet": "La Razón",
-   "pollster": "NC Report",
-   "date": "8 oct",
-   "fieldwork": "1–6 oct",
-   "sample": 1000,
-   "pct": {
-    "PP": 34.1,
-    "PSOE": 25.0,
-    "Vox": 18.2,
-    "Sumar": 5.3,
-    "ERC": 1.8,
-    "Junts": 2.9,
-    "EHBildu": 1.4,
-    "PNV": 0.9,
-    "BNG": 0.7,
-    "CC": 0.4,
-    "UPN": 0.2,
-    "Podemos": 3.9
-   },
-   "seats": {
-    "PP": 147,
-    "PSOE": 100,
-    "Vox": 62,
-    "Sumar": 7,
-    "ERC": 6,
-    "Junts": 10,
-    "EHBildu": 6,
-    "PNV": 4,
-    "BNG": 1,
-    "CC": 1,
-    "UPN": 1,
-    "Podemos": 3
-   },
-   "seatsRange": {
-    "PP": [
-     146,
-     148
-    ],
-    "PSOE": [
-     98,
-     102
-    ],
-    "Vox": [
-     61,
-     64
-    ],
-    "Sumar": [
-     6,
-     8
-    ],
-    "ERC": [
-     6,
-     7
-    ],
-    "Junts": [
-     10,
-     11
-    ],
-    "PNV": [
-     4,
-     5
-    ],
-    "BNG": [
-     1,
-     2
-    ],
-    "Podemos": [
-     2,
-     4
-    ]
-   },
-   "seatsAreMidpoints": true,
-   "url": "https://www.larazon.es/espana/adelanto-electoral-refuerza-bloque-vox-junts_202610086ac69166b0108820e09b13b5.html"
+   "url": "https://www.ondacero.es/elecciones/generales/encuestas-vox-lograrian-absolutisima-segun-celeste-tel_202611066aedd355ea8d8979977bbe63.html",
+   "note": "Participación estimada 65,5%."
   }
  ],
- "pollsNote": "Encuestas con trabajo de campo terminado desde el 5 de octubre de 2026. «FA» es el espacio de Sumar, que se presentará como Frente Amplio. Cuando una encuestadora da un rango de escaños se toma el punto medio. No se incluyen los dos sondeos internos de PP y PSOE filtrados el 5 de octubre.",
+ "pollsNote": "Encuestas de institutos independientes publicadas entre el 1 y el 10 de noviembre de 2026 que estiman escaños; del tracking diario de SW Demoscopia solo se incluye la última entrega y se excluyen los sondeos internos de partidos. Si la encuesta da un rango de escaños se toma el punto medio, y si no separa a Compromís va incluido en Sumar (Frente Amplio). El CIS no publicó barómetro de noviembre a esta fecha; la veda de encuestas empieza el 23 de noviembre.",
  "results2023": {
   "turnout": 66.59,
   "parties": [
