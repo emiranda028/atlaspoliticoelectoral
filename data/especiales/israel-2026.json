@@ -2,11 +2,14 @@
  "id": "israel-2026",
  "title": "Elecciones a la Knéset 2026",
  "updatedAt": "2026-11-10T12:30:00-03:00",
- "lede": "Israel votó el 27 de octubre: con cerca del 90% escrutado, el bloque de Netanyahu suma 53 bancas, el opositor de Gadi Eisenkot 48 y los partidos árabes 19. Nadie llega a 61 y empieza la negociación para formar gobierno.",
+ "lede": "Israel votó el 27 de octubre y ningún bloque llegó a 61: según los resultados oficiales, el de Netanyahu suma 53 bancas, la oposición judía de Gadi Eisenkot 48 y los partidos árabes un récord de 19. El Likud fue la lista más votada (27), pero Herzog le encargó formar gobierno a Eisenkot, que reunió 67 recomendaciones. La nueva Knéset juró el 10 de noviembre y Eisenkot tiene hasta el 6 de diciembre, prorrogable al 20.",
  "dates": {
   "pollsOpen": "2026-10-27T07:00:00+02:00",
   "pollsClose": "2026-10-27T22:00:00+02:00",
-  "knessetSworn": "2026-11-18T12:00:00+02:00"
+  "knessetSworn": "2026-11-10T16:00:00+02:00",
+  "coalitionDeadline": "2026-12-06T23:59:00+02:00",
+  "coalitionLabel": "Eisenkot busca formar gobierno",
+  "coalitionDeadlineLabel": "hasta el plazo de Eisenkot para formar gobierno (prorrogable al 20/12)"
  },
  "system": {
   "seats": 120,
