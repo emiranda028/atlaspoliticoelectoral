@@ -182,6 +182,17 @@
     if (game === 'trivia') return Trivia.start();
     hub();
   }
+  // On every step bring the game back under the sticky menu, so the question is in view
+  function toTop() {
+    const g = root && root.querySelector('.jg-game'); if (!g) return;
+    const nav = document.querySelector('.topic-nav');
+    const off = nav ? Math.max(0, nav.getBoundingClientRect().bottom) : 0;
+    const top = g.getBoundingClientRect().top;
+    if (top < off || top > off + 60) window.scrollTo({ top: top + window.scrollY - off - 8, behavior: 'smooth' });
+  }
+  const GAMES = { rosca: ['🏛️', 'La rosca: PASO o no PASO', 'Eliminá las PASO negociando con gobernadores y bloques'], pais: ['🌎', '¿Qué país gobernarías?', 'Tomá 14 decisiones y descubrí a qué país te parecés'], trivia: ['❓', '¿Quién gobierna?', 'Líderes, sistemas, economía y elecciones del mundo'] };
+  const moreGames = cur => `<div class="jg-more"><h4>Seguí jugando</h4><div class="jg-more-list">${Object.keys(GAMES).filter(k => k !== cur).map(k => `<button type="button" class="jg-more-card" data-play="${k}"><span class="jg-more-ico">${GAMES[k][0]}</span><span><b>${esc(GAMES[k][1])}</b><small>${esc(GAMES[k][2])}</small></span><em>Jugar →</em></button>`).join('')}</div></div>`;
+  const wireMore = el => el.querySelectorAll('[data-play]').forEach(b => b.addEventListener('click', () => go(b.getAttribute('data-play'))));
   const backBtn = () => `<button type="button" class="jg-back" data-back>← Todos los juegos</button>`;
   const wireBack = el => el.querySelectorAll('[data-back]').forEach(b => b.addEventListener('click', () => go('hub')));
 
@@ -221,7 +232,7 @@
         <h3 class="jg-q${it.flash ? ' is-flash' : ''}">${esc(Q.q.replace(/^Último momento:\s*(.)/, (m, c) => c.toUpperCase()))}</h3>
         <div class="jg-opts">${Q.options.map((o, k) => `<button type="button" class="jg-opt" data-k="${k}">${esc(o.t)}</button>`).join('')}</div>
         ${st.i ? '<button type="button" class="jg-link" data-prev>← Volver a la anterior</button>' : ''}</section>`;
-      wireBack(root);
+      wireBack(root); toTop();
       root.querySelectorAll('[data-k]').forEach(b => b.addEventListener('click', () => {
         st.ans[st.i] = +b.getAttribute('data-k'); st.i++;
         st.i >= n ? result() : q();
@@ -290,7 +301,8 @@
           <details class="jg-decs"><summary>Tus ${st.seq.length} decisiones: compartí la que quieras como imagen</summary><ol>
             ${st.seq.map((it, i) => `<li data-dec="${i}"${it.flash ? ' class="is-flash"' : ''}><div><span>${it.flash ? '⚡ ' : ''}${esc(it.Q.q.replace(/^Último momento:\s*/, ''))}</span><b>${esc(it.Q.options[st.ans[i]].t)}</b></div><button type="button" class="jg-btn" data-img="share">📸 Compartir</button></li>`).join('')}
           </ol></details>
-          <button type="button" class="jg-btn" data-again>Jugar de nuevo</button>
+          <button type="button" class="jg-btn is-main" data-again>Jugar de nuevo</button>
+          ${moreGames('pais')}
           <p class="jg-note">${esc(D.note)}</p>
         </div></section>`;
       wireBack(root); wireCopy(root);
@@ -306,7 +318,7 @@
       });
       // the main share box is wired after the per-decision buttons, scoped to it
       wireShare(root.querySelector('.jg-sharebox'), text, card, 'pais', { eager: true });
-      root.querySelector('[data-again]').addEventListener('click', start);
+      root.querySelector('[data-again]').addEventListener('click', start); wireMore(root); toTop();
       const f = root.querySelector('[data-ficha]'); if (f) f.addEventListener('click', () => window.__fichaFull && window.__fichaFull(f.getAttribute('data-ficha')));
     }
     return { start };
@@ -316,6 +328,7 @@
   const Rosca = (() => {
     let D = null, S = null;
     const STATS = ['capital', 'imagen', 'caja', 'interna'];
+    const STAT_SHORT = { capital: 'Capital', imagen: 'Imagen', caja: 'Caja', interna: 'Interna' };
     async function start() {
       root.innerHTML = '<div class="jg-loading">Cargando…</div>';
       try { D = D || await getJSON('data/juegos/rosca.json'); } catch (e) { root.innerHTML = '<div class="jg-loading">No se pudo cargar el juego.</div>'; return; }
@@ -382,12 +395,12 @@
       const wk = D.weeks[Math.min(S.turn, D.weeks.length - 1)] || '';
       const left = S.maxTurns - S.turn;
       const meter = ch => { const c = count(ch), need = D.chambers[ch].need, tot = D.chambers[ch].total; const done = ch === 'dip' && S.dipPassed;
-        return `<div class="rs-meter${done ? ' is-done' : ''}"><div class="rs-meter-h"><b>${esc(D.chambers[ch].label)}</b><span>${done ? `Media sanción ✓ (${S.dipVotes})` : `${c.sure} seguros · ~${c.exp} probables · necesitás ${need}`}</span></div>
+        return `<div class="rs-meter${done ? ' is-done' : ''}"><div class="rs-meter-h"><b>${esc(D.chambers[ch].label)}</b><span class="rs-m-l">${done ? `Media sanción ✓ (${S.dipVotes})` : `${c.sure} seguros · ~${c.exp} probables · necesitás ${need}`}</span><span class="rs-m-s">${done ? '✓ aprobado' : `~${c.exp} de ${need}`}</span></div>
           <div class="rs-meter-bar"><span class="is-sure" style="width:${c.sure / tot * 100}%"></span><span class="is-maybe" style="width:${(c.exp - c.sure) / tot * 100}%"></span><i style="left:${need / tot * 100}%"></i></div></div>`; };
       return `<section class="jg-game is-rosca">${backBtn()}
         <div class="rs-top">
           <div class="rs-week"><span>Semana ${Math.min(S.turn + 1, S.maxTurns)} de ${S.maxTurns}</span><b>${esc(wk)}</b><small>${left > 1 ? `quedan ${left} semanas` : 'última semana'}</small></div>
-          <div class="rs-stats">${STATS.map(k => `<div class="rs-stat${stat(k) <= 15 ? ' is-low' : ''}" title="${esc(D.stats[k].help)}"><span>${esc(D.stats[k].label)}</span><div class="rs-stat-bar"><i style="width:${stat(k)}%"></i></div><b>${stat(k)}</b></div>`).join('')}</div>
+          <div class="rs-stats">${STATS.map(k => `<div class="rs-stat${stat(k) <= 15 ? ' is-low' : ''}" title="${esc(D.stats[k].help)}"><span><em class="is-l">${esc(D.stats[k].label)}</em><em class="is-s">${esc(STAT_SHORT[k])}</em></span><div class="rs-stat-bar"><i style="width:${stat(k)}%"></i></div><b>${stat(k)}</b></div>`).join('')}</div>
         </div>
         <div class="rs-meters">${meter('dip')}${meter('sen')}</div>
         ${inner}
@@ -396,7 +409,7 @@
     }
     function design() {
       const d = D.design;
-      root.innerHTML = frame(`<div class="rs-card is-design"><span class="rs-who">Javier Milei · Presidente</span><h3>El proyecto</h3><p>${esc(d.q)}</p>
+      paint(`<div class="rs-card is-design"><span class="rs-who">Javier Milei · Presidente</span><h3>El proyecto</h3><p>${esc(d.q)}</p>
         <div class="jg-opts">${d.options.map((o, k) => `<button type="button" class="jg-opt" data-k="${k}">${esc(o.label)}</button>`).join('')}</div></div>`);
       wireBack(root);
       root.querySelectorAll('[data-k]').forEach(b => b.addEventListener('click', () => {
@@ -414,12 +427,19 @@
         ${m.result ? `<div class="jgx-text is-sm"><i>${esc(m.result)}</i></div>` : ''}
         <div class="jgx-stats is-sm">${STATS.map(k => `<div class="jgx-stat"><span>${esc(D.stats[k].label)}</span><div class="jgx-stat-t"><i style="width:${stat(k)}%"></i></div><b>${stat(k)}</b></div>`).join('')}</div>`);
     }
+    // No intermediate "Seguir" screen: what happened shows on top of the next step
     function outcome(title, text, then, move) {
+      S.last = { title, text, card: move ? moveCard(move) : null, share: move ? `En "La rosca" del Atlas: ${move.title} → ${move.choice}. ¿Vos qué hacías?` : '' };
       const over = checkOver();
-      root.innerHTML = frame(`<div class="rs-card is-outcome"><h3>${esc(title)}</h3><p>${esc(text)}</p>${move ? shareMini() : ''}<button type="button" class="jg-btn is-main" data-next>${over ? 'Ver el final' : 'Seguir'}</button></div>`);
+      return over ? ending(over) : then();
+    }
+    function paint(inner) {
+      const last = S.last; S.last = null;
+      const banner = last ? `<div class="rs-last" role="status"><div><span class="rs-last-k">Lo que pasó</span><b>${esc(last.title)}.</b> ${esc(last.text)}</div>${last.card ? `<button type="button" class="rs-last-share" data-img="share" title="Compartir esta jugada como imagen">📸<span> Compartir</span></button>` : ''}</div>` : '';
+      root.innerHTML = frame(banner + inner);
       wireBack(root);
-      if (move) wireShare(root, `En "La rosca" del Atlas: ${move.title} → ${move.choice}. ¿Vos qué hacías?`, moveCard(move), 'rosca-jugada');
-      root.querySelector('[data-next]').addEventListener('click', () => over ? ending(over) : then());
+      if (last && last.card) wireShare(root.querySelector('.rs-last'), last.share, last.card, 'rosca-jugada');
+      toTop();
     }
     function checkOver() {
       if (S.over) return S.over;
@@ -457,7 +477,7 @@
       const ev = S.queue.shift();
       if (!ev) return actions();
       S.seen[ev.flash ? 'f:' + ev.id : ev.id] = true;
-      root.innerHTML = frame(`<div class="rs-card${ev.flash ? ' is-flash' : ''}">${ev.flash ? (ev.tag === 'farandula' ? '<span class="jg-flash-tag is-faran">Mientras tanto, en la farándula</span>' : '<span class="jg-flash-tag">Último momento</span>') : ''}<span class="rs-who">${esc(ev.who)}${ev.role ? ' · ' + esc(ev.role) : ''}</span><h3>${esc(ev.title)}</h3><p>${esc(ev.text)}</p>
+      paint(`<div class="rs-card${ev.flash ? ' is-flash' : ''}">${ev.flash ? (ev.tag === 'farandula' ? '<span class="jg-flash-tag is-faran">Mientras tanto, en la farándula</span>' : '<span class="jg-flash-tag">Último momento</span>') : ''}<span class="rs-who">${esc(ev.who)}${ev.role ? ' · ' + esc(ev.role) : ''}</span><h3>${esc(ev.title)}</h3><p>${esc(ev.text)}</p>
         <div class="jg-opts">${ev.options.map((o, k) => `<button type="button" class="jg-opt" data-k="${k}">${esc(o.label)}</button>`).join('')}</div></div>`);
       wireBack(root);
       root.querySelectorAll('[data-k]').forEach(b => b.addEventListener('click', () => {
@@ -476,7 +496,7 @@
         const ok = used < 2 && stat('caja') >= cost && stat('capital') >= 5 && !S.actionDone;
         return `<button type="button" class="rs-gov" data-gov="${g.id}"${ok ? '' : ' disabled'}><b>${esc(g.name)}</b><span>${esc(g.prov)} · ${esc(g.pitch)}</span><small>${used >= 2 ? 'Ya negociaste dos veces' : `Cuesta ${cost} de caja`}</small></button>`;
       }).join('');
-      root.innerHTML = frame(`<div class="rs-card is-actions"><h3>Tu jugada de la semana</h3>
+      paint(`<div class="rs-card is-actions"><h3>Tu jugada de la semana</h3>
         <p>${ch === 'dip' ? `En Diputados contás con ${c.sure} votos seguros y unos ${c.exp} probables. Necesitás ${need}.` : `Tenés la media sanción. En el Senado contás con ${c.sure} seguros y unos ${c.exp} probables. Necesitás ${need}.`}</p>
         <div class="rs-acts">
           ${ch === 'sen' && S.turn < (S.senOpen || 0) ? `<button type="button" class="jg-btn is-main" disabled>El Senado sesiona cuando haya dictamen (la semana que viene)</button>` : `<button type="button" class="jg-btn is-main" data-act="vote">Llamar a sesión en ${ch === 'dip' ? 'Diputados' : 'el Senado'}</button>`}
@@ -510,7 +530,7 @@
       if (r.pass && ch === 'dip') { S.dipPassed = true; S.dipVotes = r.yes; S.senOpen = S.turn + 2; apply({ stats: { capital: 8, imagen: 3 } }); title = '¡Media sanción!'; text = `Diputados aprobó el proyecto con ${r.yes} votos. Ahora va al Senado, donde necesitás 37: primero tiene que pasar por la comisión de Asuntos Constitucionales, así que la sesión recién puede ser la semana que viene.`; }
       else if (r.pass) { S.over = S.flags.lemas ? 'winLemas' : 'win'; title = '¡Es ley!'; text = `El Senado aprobó el proyecto con ${r.yes} votos.`; }
       else { apply({ stats: { capital: -15, imagen: -5 } }); Object.values(S.blocs).forEach(b => { if (b.ch === ch && b.aff < 50 && b.aff > -50) b.aff -= 3; }); title = 'Se cayó la sesión'; text = `Solo ${r.yes} se sentaron a favor: no hubo quórum (hacían falta ${r.need}). La oposición festeja y tus aliados toman distancia.`; }
-      root.innerHTML = frame(`<div class="rs-card is-vote"><span class="rs-who">${ch === 'dip' ? 'Sesión especial en Diputados' : 'Sesión en el Senado'}</span><h3>${esc(title)}</h3><p>${esc(text)}</p>
+      paint(`<div class="rs-card is-vote"><span class="rs-who">${ch === 'dip' ? 'Sesión especial en Diputados' : 'Sesión en el Senado'}</span><h3>${esc(title)}</h3><p>${esc(text)}</p>
         <div class="rs-tally"><div class="rs-tally-big"><b class="is-yes">${r.yes}</b><span>a favor</span><b>/ ${r.need}</b><span>necesarios</span></div>
           <div class="rs-vrows"><div class="rs-vrow is-head"><i></i><span>Bloque</span><b>Sí</b><b>No / ausentes</b></div>${rows}</div></div>
         ${shareMini()}<button type="button" class="jg-btn is-main" data-next>${S.over ? 'Ver el final' : 'Seguir'}</button></div>`);
@@ -544,10 +564,11 @@
           <h4>Tus decisiones</h4><ol class="rs-log">${S.log.map(l => `<li${l.flash ? ' class="is-flash"' : ''}><b>${l.flash ? '⚡ ' : ''}${esc(l.t)}:</b> ${esc(l.r)}</li>`).join('')}</ol>
           ${shareBox(text)}
           <button type="button" class="jg-btn is-main" data-again>Volver a jugar</button>
+          ${moreGames('rosca')}
           <p class="jg-note">${esc(D.disclaimer)}</p>
         </div></section>`;
       wireBack(root); wireCopy(root); wireShare(root.querySelector('.jg-sharebox'), text, card, 'rosca', { eager: true });
-      root.querySelector('[data-again]').addEventListener('click', start);
+      root.querySelector('[data-again]').addEventListener('click', start); wireMore(root); toTop();
     }
     return { start };
   })();
@@ -667,7 +688,7 @@
         <h3 class="jg-q">${esc(Q.q)}</h3>
         <div class="jg-opts is-grid">${Q.opts.map((o, k) => `<button type="button" class="jg-opt" data-k="${k}">${Q.optIso ? flag(Q.optIso[k]) + ' ' : ''}${esc(o)}</button>`).join('')}</div>
         <div class="tv-info" hidden></div></section>`;
-      wireBack(root);
+      wireBack(root); toTop();
       root.querySelectorAll('[data-k]').forEach(b => b.addEventListener('click', () => {
         if (st.answered) return; st.answered = true;
         const pick = Q.opts[+b.getAttribute('data-k')], good = pick === Q.ok;
@@ -691,9 +712,9 @@
       root.innerHTML = `<section class="jg-game is-trivia">${backBtn()}
         <div class="jg-result"><span class="jg-kicker">Resultado</span><h2>${ok} de ${n}: <em>${esc(verdict)}</em></h2>
           <p>Las respuestas salen de la base del Atlas, que se actualiza con cada elección.</p>
-          ${shareBox(text)}<button type="button" class="jg-btn is-main" data-again>Otra ronda</button></div></section>`;
+          ${shareBox(text)}<button type="button" class="jg-btn is-main" data-again>Otra ronda</button>${moreGames('trivia')}</div></section>`;
       wireBack(root); wireCopy(root); wireShare(root.querySelector('.jg-sharebox'), text, card, 'trivia', { eager: true });
-      root.querySelector('[data-again]').addEventListener('click', start);
+      root.querySelector('[data-again]').addEventListener('click', start); wireMore(root); toTop();
     }
     return { start };
   })();
