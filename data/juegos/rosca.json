@@ -281,7 +281,8 @@
    ],
    "pitch": "Quiere fondos para la caja de jubilaciones cordobesa y rutas.",
    "deal": "fondos para la caja de jubilaciones de Córdoba y dos rutas nacionales",
-   "origin": "pj"
+   "origin": "pj",
+   "oppDeal": "acompañar en el Congreso el reclamo por la deuda de la Anses con la caja cordobesa"
   },
   {
    "id": "pullaro",
@@ -293,7 +294,8 @@
    ],
    "pitch": "Pide obras de seguridad y la deuda de la Anses con la caja santafesina.",
    "deal": "obras de seguridad y el pago de la deuda de la Anses con la caja de jubilaciones santafesina",
-   "origin": "ucr"
+   "origin": "ucr",
+   "oppDeal": "votar juntos un fondo de seguridad para Rosario y el reclamo por la deuda de la Anses"
   },
   {
    "id": "torres",
@@ -305,7 +307,8 @@
    ],
    "pitch": "Quiere regalías y un 'superdomingo patagónico'.",
    "deal": "un adelanto de regalías petroleras y apoyo a su \"superdomingo patagónico\"",
-   "origin": "pro"
+   "origin": "pro",
+   "oppDeal": "apoyar el reclamo patagónico por las regalías y el régimen de zona fría"
   },
   {
    "id": "saenz",
@@ -317,7 +320,8 @@
    ],
    "pitch": "Pide la obra del gasoducto del norte y rutas nacionales.",
    "deal": "la licitación del gasoducto del norte y obras en rutas nacionales",
-   "origin": "pj"
+   "origin": "pj",
+   "oppDeal": "empujar en el Congreso el gasoducto del norte y un régimen de promoción para el NOA"
   },
   {
    "id": "passalacqua",
@@ -329,7 +333,8 @@
    ],
    "pitch": "Quiere un régimen especial para la yerba y el turismo.",
    "deal": "un régimen especial para la yerba mate y fondos para turismo",
-   "origin": "prov"
+   "origin": "prov",
+   "oppDeal": "votar la zona aduanera especial que pide Misiones"
   },
   {
    "id": "jaldo",
@@ -341,7 +346,8 @@
    ],
    "pitch": "Pide ATN para pagar aguinaldos.",
    "deal": "Aportes del Tesoro (ATN) para pagar los aguinaldos provinciales",
-   "origin": "pj"
+   "origin": "pj",
+   "oppDeal": "un lugar en la mesa chica del PJ y respaldo para su reelección"
   },
   {
    "id": "jalil",
@@ -352,7 +358,8 @@
    ],
    "pitch": "Quiere que el litio catamarqueño entre al RIGI.",
    "deal": "que los proyectos de litio de Catamarca entren al régimen de grandes inversiones (RIGI)",
-   "origin": "pj"
+   "origin": "pj",
+   "oppDeal": "acompañar la ley de litio que pide Catamarca y un lugar en la mesa del PJ"
   },
   {
    "id": "vidal",
@@ -364,7 +371,8 @@
    ],
    "pitch": "Pide fondos para las represas y la caja provincial.",
    "deal": "fondos para terminar las represas y auxilio para la caja provincial",
-   "origin": "prov"
+   "origin": "prov",
+   "oppDeal": "apoyar la ley de represas y la emergencia de la caja santacruceña"
   },
   {
    "id": "orrego",
@@ -375,7 +383,8 @@
    ],
    "pitch": "Quiere financiamiento para la minería de cobre.",
    "deal": "financiamiento para los proyectos de cobre sanjuaninos",
-   "origin": "pro"
+   "origin": "pro",
+   "oppDeal": "acompañar los cambios a la ley de glaciares que pide San Juan"
   },
   {
    "id": "figueroa",
@@ -387,7 +396,8 @@
    ],
    "pitch": "Ya desdobló su elección: pide obras para Vaca Muerta.",
    "deal": "obras de infraestructura para Vaca Muerta",
-   "origin": "prov"
+   "origin": "prov",
+   "oppDeal": "votar en el Presupuesto las obras para Vaca Muerta"
   }
  ],
  "design": {
@@ -5251,5 +5261,1343 @@
     "dip:innov": 4
    }
   }
- ]
+ ],
+ "opp": {
+  "role": "la jefatura de la oposición en el Congreso",
+  "intro": "Noviembre de 2026. El Gobierno mandó al Congreso un proyecto para eliminar las PASO antes de las elecciones de 2027. Coordinás la oposición: Unión por la Patria y los bloques que no quieren tocar las PASO. Tenés ocho semanas para que la ley no salga. Mientras vos negociás, la Casa Rosada también juega: ofrece obras y ATN a los gobernadores y llama a sesión cuando cree que tiene los votos.",
+  "stats": {
+   "capital": {
+    "label": "Capital político",
+    "start": 64,
+    "help": "Si llega a cero, el bloque elige otra conducción."
+   },
+   "imagen": {
+    "label": "Imagen pública",
+    "start": 45,
+    "help": "Cuanto más alta, más les cuesta a los indecisos votar con el Gobierno."
+   },
+   "caja": {
+    "label": "Fichas para negociar",
+    "start": 60,
+    "help": "Lo que podés ofrecer: apoyo a leyes provinciales, cargos en comisiones, lugares en listas."
+   },
+   "interna": {
+    "label": "Unidad del bloque",
+    "start": 60,
+    "help": "Si llega a cero, el bloque se parte."
+   }
+  },
+  "posture": {
+   "q": "¿Con qué postura salís a dar la pelea?",
+   "options": [
+    {
+     "label": "Rechazo total: \"Las PASO no se tocan\"",
+     "result": "Tu bloque se ordena y la militancia aplaude. Los dialoguistas dicen que con vos no se puede hablar.",
+     "e": {
+      "stats": {
+       "interna": 10,
+       "capital": -3
+      },
+      "blocs": {
+       "dip:pu": 4,
+       "dip:ucr": 3,
+       "sen:ucr": 3
+      }
+     }
+    },
+    {
+     "label": "Proponer una alternativa: PASO optativas y con boleta única",
+     "result": "Los dialoguistas se interesan y se alejan del proyecto oficial. En tu bloque, los duros te miran con desconfianza.",
+     "e": {
+      "stats": {
+       "interna": -8,
+       "capital": 4
+      },
+      "blocs": {
+       "dip:pu": -8,
+       "dip:ucr": -6,
+       "dip:cc": -8,
+       "dip:ef": -8,
+       "sen:ucr": -6,
+       "sen:pu": -6
+      }
+     }
+    },
+    {
+     "label": "Salir a la calle con gremios y universidades",
+     "result": "Instalás el tema en la opinión pública. Los gobernadores toman distancia de la marcha.",
+     "e": {
+      "stats": {
+       "imagen": 8,
+       "interna": 4,
+       "caja": -8
+      },
+      "blocs": {
+       "dip:innov": 4,
+       "dip:ind": 4,
+       "dip:elijo": 4
+      }
+     }
+    }
+   ]
+  },
+  "events": [
+   {
+    "id": "o_cfk",
+    "turn": 1,
+    "core": true,
+    "who": "Cristina Fernández de Kirchner",
+    "role": "Presidenta del PJ, desde San José 1111",
+    "title": "Cristina pide línea dura: \"Las PASO no se negocian\"",
+    "text": "Desde el balcón de San José 1111, Cristina manda a decir que nadie del bloque se siente a negociar nada con el Gobierno ni con los gobernadores que \"se arrodillan\".",
+    "options": [
+     {
+      "label": "Acatar: rechazo total y sin reuniones",
+      "result": "El bloque se ordena detrás tuyo, pero los dialoguistas te ven como \"el kirchnerismo de siempre\" y se acercan al Gobierno.",
+      "e": {
+       "stats": {
+        "interna": 8,
+        "capital": 2
+       },
+       "blocs": {
+        "dip:pu": 5,
+        "dip:ucr": 4,
+        "sen:ucr": 4,
+        "dip:cc": 3
+       }
+      }
+     },
+     {
+      "label": "Pedir libertad para hablar con los dialoguistas",
+      "result": "Te la dan a regañadientes. En el Instituto Patria toman nota.",
+      "e": {
+       "stats": {
+        "interna": -7,
+        "capital": 3
+       },
+       "blocs": {
+        "dip:pu": -4,
+        "dip:ef": -4
+       }
+      }
+     }
+    ]
+   },
+   {
+    "id": "o_kicillof",
+    "turn": 1,
+    "who": "Axel Kicillof",
+    "role": "Gobernador de Buenos Aires",
+    "title": "Kicillof quiere PASO para dirimir la interna peronista",
+    "text": "El gobernador bonaerense dice que las PASO son \"la herramienta para que el peronismo elija su candidato sin dedo\". El camporismo lo lee como un desafío.",
+    "options": [
+     {
+      "label": "Poner a Kicillof al frente de la defensa de las PASO",
+      "result": "Kicillof recorre canales y la defensa de las PASO gana volumen. La Cámpora te reprocha el protagonismo que le diste.",
+      "e": {
+       "stats": {
+        "imagen": 5,
+        "interna": -5
+       }
+      }
+     },
+     {
+      "label": "Bajarle el tono: \"las PASO no son para la interna\"",
+      "result": "Ordenás al bloque, pero en La Plata quedan molestos y algunos intendentes enfrían su apoyo.",
+      "e": {
+       "stats": {
+        "interna": 3,
+        "imagen": -2
+       },
+       "blocs": {
+        "dip:up": 3
+       }
+      }
+     }
+    ]
+   },
+   {
+    "id": "o_pichetto",
+    "turn": 2,
+    "who": "Miguel Ángel Pichetto",
+    "role": "Encuentro Federal",
+    "title": "Pichetto ofrece una salida: PASO optativas",
+    "text": "Pichetto te propone un proyecto alternativo: que cada partido decida si hace PASO. \"Con eso junto a los dialoguistas y le saco el número al Gobierno\", te dice.",
+    "options": [
+     {
+      "label": "Firmar el proyecto alternativo",
+      "result": "Encuentro Federal, Coherencia y parte de Provincias Unidas se alejan del proyecto oficial. En tu bloque algunos dicen que \"las optativas son eliminarlas en cuotas\".",
+      "e": {
+       "stats": {
+        "interna": -5,
+        "capital": 2
+       },
+       "blocs": {
+        "dip:ef": -15,
+        "dip:coh": -10,
+        "dip:pu": -5
+       }
+      }
+     },
+     {
+      "label": "Rechazar: \"Las PASO se defienden enteras\"",
+      "result": "Pichetto se va ofendido y dice que va a escuchar \"las dos campanas\".",
+      "e": {
+       "stats": {
+        "interna": 3
+       },
+       "blocs": {
+        "dip:ef": 8,
+        "dip:coh": 4
+       }
+      }
+     }
+    ]
+   },
+   {
+    "id": "o_menem",
+    "turn": 2,
+    "core": true,
+    "who": "Martín Menem",
+    "role": "Presidente de la Cámara de Diputados",
+    "title": "Menem quiere el dictamen a las apuradas",
+    "text": "El presidente de la Cámara gira el proyecto a una sola comisión, la de Asuntos Constitucionales, y convoca a plenario para la semana que viene.",
+    "options": [
+     {
+      "label": "Pedir el giro a tres comisiones",
+      "result": "Conseguís que también pase por Presupuesto y Justicia: el Gobierno pierde una semana. Te costó favores.",
+      "e": {
+       "stats": {
+        "capital": -4,
+        "caja": -5
+       },
+       "govSkip": 1
+      }
+     },
+     {
+      "label": "Denunciarlo en los medios: \"Quieren votar a libro cerrado\"",
+      "result": "La frase prende, pero el plenario se hace igual.",
+      "e": {
+       "stats": {
+        "imagen": 5,
+        "capital": -2
+       }
+      }
+     }
+    ]
+   },
+   {
+    "id": "o_pjgov",
+    "turn": 3,
+    "core": true,
+    "who": "Osvaldo Jaldo, Raúl Jalil y Gustavo Sáenz",
+    "role": "Gobernadores de origen peronista",
+    "title": "Los gobernadores peronistas dialoguistas negocian por su cuenta",
+    "text": "Jaldo, Jalil y Sáenz se sacan una foto con Santilli en la Casa Rosada. Dicen que \"primero está la provincia\" y que sus diputados no responden al bloque.",
+    "options": [
+     {
+      "label": "Ir a verlos al NOA y ofrecerles un lugar en la mesa",
+      "result": "Te reciben con empanadas y dudas. Por ahora, no firman nada con la Rosada.",
+      "e": {
+       "stats": {
+        "caja": -8,
+        "capital": -2
+       },
+       "blocs": {
+        "dip:ind": -8,
+        "dip:elijo": -8,
+        "dip:innov": -5,
+        "sen:ind": -6,
+        "sen:salta": -5
+       }
+      }
+     },
+     {
+      "label": "Acusarlos de traidores en público",
+      "result": "La militancia aplaude. Los tres gobernadores se sienten liberados para negociar con el Gobierno.",
+      "e": {
+       "stats": {
+        "interna": 5,
+        "imagen": 2
+       },
+       "blocs": {
+        "dip:ind": 8,
+        "dip:elijo": 8,
+        "dip:innov": 6,
+        "sen:ind": 6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "id": "o_ucr",
+    "turn": 3,
+    "who": "Senadores radicales",
+    "role": "Bloque UCR del Senado",
+    "title": "Los radicales del Senado dudan",
+    "text": "Un grupo de senadores de la UCR dice que no quiere \"regalarle una ley electoral al Gobierno\" pero tampoco quiere quedar pegado al kirchnerismo.",
+    "options": [
+     {
+      "label": "Ofrecerles la presidencia de una comisión",
+      "result": "Aceptan conversar. Tu bloque se queja de que regalás cargos.",
+      "e": {
+       "stats": {
+        "caja": -6,
+        "interna": -3
+       },
+       "blocs": {
+        "sen:ucr": -10
+       }
+      }
+     },
+     {
+      "label": "No hacer nada: \"Que se definan solos\"",
+      "result": "La Rosada los llama primero.",
+      "e": {
+       "blocs": {
+        "sen:ucr": 5
+       }
+      }
+     }
+    ]
+   },
+   {
+    "id": "o_pu",
+    "turn": 4,
+    "who": "Provincias Unidas",
+    "role": "Pullaro, Llaryora, Torres y compañía",
+    "title": "Provincias Unidas pone condiciones",
+    "text": "El frente de gobernadores dice que apoyaría mantener las PASO si cada provincia puede decidir si las hace para sus cargos locales.",
+    "options": [
+     {
+      "label": "Aceptar: \"Federalismo electoral\"",
+      "result": "Provincias Unidas se aleja del proyecto oficial. En tu bloque hay quienes dicen que les regalaste la bandera.",
+      "e": {
+       "stats": {
+        "interna": -5,
+        "capital": 3
+       },
+       "blocs": {
+        "dip:pu": -12,
+        "sen:pu": -10
+       }
+      }
+     },
+     {
+      "label": "Rechazar: la ley tiene que ser igual para todos",
+      "result": "Provincias Unidas se ofende y sigue negociando con la Rosada.",
+      "e": {
+       "stats": {
+        "interna": 2
+       },
+       "blocs": {
+        "dip:pu": 6,
+        "sen:pu": 5
+       }
+      }
+     }
+    ]
+   },
+   {
+    "id": "o_encuesta",
+    "turn": 4,
+    "who": "Encuestadoras",
+    "role": "",
+    "title": "Una encuesta dice que 6 de cada 10 quieren eliminar las PASO",
+    "text": "La encuesta abre todos los noticieros: \"La gente no quiere votar dos veces\". El Gobierno la reenvía a todos los diputados indecisos.",
+    "options": [
+     {
+      "label": "Cambiar el eje: \"Gastan en la ley y no en jubilados\"",
+      "result": "Llevás la discusión al bolsillo. Algunos compañeros dicen que esquivás el tema.",
+      "e": {
+       "stats": {
+        "imagen": 4,
+        "interna": -3
+       }
+      }
+     },
+     {
+      "label": "Defender las PASO como \"la democracia interna\"",
+      "result": "Sonás coherente, pero el argumento no mueve a nadie fuera del círculo rojo.",
+      "e": {
+       "stats": {
+        "imagen": -2,
+        "interna": 3
+       },
+       "govImg": 3
+      }
+     }
+    ]
+   },
+   {
+    "id": "o_caputo",
+    "turn": 5,
+    "who": "Santiago Caputo",
+    "role": "Asesor presidencial",
+    "title": "Caputo les ofrece cargos a diputados de tu bloque",
+    "text": "Te llegan rumores: el asesor presidencial les ofrece a tres diputados tuyos lugares en organismos nacionales para sus equipos si se ausentan el día de la sesión.",
+    "options": [
+     {
+      "label": "Reunir al bloque y amenazar con expulsiones",
+      "result": "Los tres juran lealtad. El clima en el bloque queda tenso.",
+      "e": {
+       "stats": {
+        "interna": 4,
+        "capital": -3
+       }
+      }
+     },
+     {
+      "label": "Hacerte el distraído",
+      "result": "Los tres arman un bloque propio, \"Peronismo Federal\", y se declaran dialoguistas.",
+      "e": {
+       "stats": {
+        "interna": -4
+       },
+       "split": {
+        "chamber": "dip",
+        "from": "up",
+        "id": "pfed",
+        "name": "Peronismo Federal",
+        "seats": 3,
+        "aff": 35,
+        "color": "#5B86C5"
+       }
+      }
+     }
+    ]
+   },
+   {
+    "id": "o_mayans",
+    "turn": 5,
+    "phase": "sen",
+    "who": "José Mayans",
+    "role": "Jefe del bloque peronista en el Senado",
+    "title": "Mayans quiere manejar la estrategia en el Senado",
+    "text": "Tras la media sanción, el formoseño te dice que en el Senado \"manda él\" y que la negociación con los gobernadores la hace Insfrán.",
+    "options": [
+     {
+      "label": "Dejarle la estrategia del Senado",
+      "result": "El bloque del Senado se ordena. Vos perdés protagonismo.",
+      "e": {
+       "stats": {
+        "interna": 5,
+        "capital": -4
+       },
+       "blocs": {
+        "sen:popular": -5
+       }
+      }
+     },
+     {
+      "label": "Mantener el mando: \"La estrategia es una sola\"",
+      "result": "Mayans acata, pero en Formosa empiezan a hablar con la Rosada.",
+      "e": {
+       "stats": {
+        "interna": -5,
+        "capital": 2
+       },
+       "blocs": {
+        "sen:popular": 5
+       }
+      }
+     }
+    ]
+   },
+   {
+    "id": "o_atn",
+    "turn": 6,
+    "core": true,
+    "who": "Casa Rosada",
+    "role": "Ministerio del Interior",
+    "title": "El Gobierno ofrece adelantar ATN a todas las provincias",
+    "text": "Santilli anuncia un adelanto de Aportes del Tesoro para pagar aguinaldos \"a las provincias que acompañen la modernización electoral\". Los gobernadores hacen cuentas.",
+    "options": [
+     {
+      "label": "Pedirles a tus gobernadores que no firmen",
+      "result": "Algunos te hacen caso. Otros te piden que les pagues vos los aguinaldos.",
+      "e": {
+       "stats": {
+        "caja": -10,
+        "capital": -3
+       },
+       "blocs": {
+        "dip:ind": -6,
+        "dip:elijo": -6,
+        "dip:innov": -5,
+        "sen:ind": -5,
+        "sen:misiones": -5
+       }
+      }
+     },
+     {
+      "label": "Denunciar extorsión en los medios",
+      "result": "Tu denuncia tiene eco y la Rosada baja el tono, pero varios gobernadores ya firmaron.",
+      "e": {
+       "stats": {
+        "imagen": 5
+       },
+       "blocs": {
+        "dip:ind": 5,
+        "dip:innov": 5,
+        "sen:misiones": 4
+       }
+      }
+     }
+    ]
+   },
+   {
+    "id": "o_amparo",
+    "turn": 6,
+    "who": "Tu equipo de abogados",
+    "role": "",
+    "title": "¿Presentás un amparo en la Justicia electoral?",
+    "text": "Los abogados del bloque dicen que hay argumentos para frenar el trámite: cambiar las reglas a menos de un año de la elección.",
+    "options": [
+     {
+      "label": "Presentar el amparo",
+      "result": "La jueza le pide informes al Congreso y el oficialismo pierde una semana.",
+      "e": {
+       "stats": {
+        "capital": -3,
+        "imagen": 2
+       },
+       "govSkip": 1
+      },
+      "alt": {
+       "result": "La jueza lo rechaza in limine y el Gobierno se ríe en redes: \"Judicializan porque no tienen los votos\".",
+       "e": {
+        "stats": {
+         "capital": -5,
+         "imagen": -3
+        }
+       }
+      }
+     },
+     {
+      "label": "No judicializar: \"Esto se gana en el recinto\"",
+      "result": "Quedás como alguien que juega limpio.",
+      "e": {
+       "stats": {
+        "imagen": 2,
+        "capital": 1
+       }
+      }
+     }
+    ]
+   },
+   {
+    "id": "o_villarruel",
+    "turn": 6,
+    "phase": "sen",
+    "who": "Victoria Villarruel",
+    "role": "Presidenta del Senado",
+    "title": "Villarruel no tiene apuro en convocar la sesión",
+    "text": "La vicepresidenta, enfrentada con la Casa Rosada, dice que el Senado \"no es una escribanía\" y que el proyecto sigue el trámite normal.",
+    "options": [
+     {
+      "label": "Pedirle una reunión y agradecerle \"el respeto institucional\"",
+      "result": "Villarruel demora la convocatoria una semana más. En tu bloque no quieren saber nada con la foto.",
+      "e": {
+       "stats": {
+        "interna": -5
+       },
+       "govSkip": 1
+      }
+     },
+     {
+      "label": "No meterte: es una pelea del oficialismo",
+      "result": "Mirás la pelea desde afuera.",
+      "e": {
+       "stats": {
+        "capital": 2
+       }
+      }
+     }
+    ]
+   },
+   {
+    "id": "o_fit",
+    "turn": 7,
+    "who": "Myriam Bregman",
+    "role": "Frente de Izquierda",
+    "title": "La izquierda te corre por izquierda",
+    "text": "Bregman te recuerda en el recinto que en 2022 varios gobernadores de tu espacio querían suspender las PASO: \"Ustedes las defienden cuando les conviene\".",
+    "options": [
+     {
+      "label": "Reconocer el error y pedir unidad para defenderlas",
+      "result": "La izquierda vota igual con vos, pero la frase circula todo el día.",
+      "e": {
+       "stats": {
+        "imagen": -2,
+        "interna": 2
+       }
+      }
+     },
+     {
+      "label": "Responderle: \"Ustedes nunca ganan una elección\"",
+      "result": "Aplausos en tu bancada; el clip se viraliza en contra tuyo.",
+      "e": {
+       "stats": {
+        "interna": 3,
+        "imagen": -4
+       }
+      }
+     }
+    ]
+   }
+  ],
+  "flashes": [
+   {
+    "id": "o_mileitw",
+    "who": "Javier Milei",
+    "role": "Presidente",
+    "title": "Milei te dice \"kuka cavernícola\" en X y te arroba",
+    "text": "El Presidente te dedica un posteo con un león, un dinosaurio y tu foto. Ya tiene 40.000 \"me gusta\".",
+    "options": [
+     {
+      "label": "Responderle con datos de la pobreza",
+      "result": "Tu respuesta tiene más vistas que el tuit original.",
+      "e": {
+       "stats": {
+        "imagen": 4
+       }
+      }
+     },
+     {
+      "label": "Ignorarlo",
+      "result": "No le das aire, pero tus militantes te piden que reacciones.",
+      "e": {
+       "stats": {
+        "interna": -2
+       }
+      }
+     }
+    ]
+   },
+   {
+    "id": "o_grabois",
+    "who": "Juan Grabois",
+    "role": "Dirigente social",
+    "title": "Grabois amenaza con romper si negociás con gobernadores",
+    "text": "\"Si se sientan con los que votaron la Ley Bases, nos vamos\", avisa Grabois en un streaming.",
+    "options": [
+     {
+      "label": "Llamarlo y sumarlo a la estrategia",
+      "result": "Se calma, a cambio de que su gente esté en el acto de cierre.",
+      "e": {
+       "stats": {
+        "interna": 3,
+        "imagen": -1
+       }
+      }
+     },
+     {
+      "label": "Decir que la estrategia la define el bloque",
+      "result": "Grabois arma una conferencia de prensa propia.",
+      "e": {
+       "stats": {
+        "interna": -5
+       }
+      }
+     }
+    ]
+   },
+   {
+    "id": "o_massa",
+    "who": "Sergio Massa",
+    "role": "Frente Renovador",
+    "title": "Massa reaparece y pide \"unidad y gestión\"",
+    "text": "Massa vuelve a hablar en público después de meses y propone \"un gran acuerdo con los gobernadores\". Nadie entiende si es apoyo o crítica.",
+    "options": [
+     {
+      "label": "Invitarlo a la mesa",
+      "result": "Massa aporta contactos con dos gobernadores. El camporismo pone mala cara.",
+      "e": {
+       "stats": {
+        "caja": 6,
+        "interna": -4
+       }
+      }
+     },
+     {
+      "label": "Agradecer en público y nada más",
+      "result": "Massa se queda mirando desde Tigre.",
+      "e": {
+       "stats": {
+        "capital": 1
+       }
+      }
+     }
+    ]
+   },
+   {
+    "id": "o_kpelea",
+    "who": "Interna peronista",
+    "role": "",
+    "title": "Kicillof y La Cámpora se pelean en público otra vez",
+    "text": "Un intendente camporista acusa al gobernador de \"jugar para Milei\" por el desdoblamiento. Los dialoguistas miran y sonríen.",
+    "options": [
+     {
+      "label": "Llamar a los dos a una cena de unidad",
+      "result": "Se sacan la foto, pero nadie come el postre.",
+      "e": {
+       "stats": {
+        "interna": 3,
+        "capital": -3
+       }
+      }
+     },
+     {
+      "label": "Mantenerte al margen",
+      "result": "La pelea sigue en todos los canales.",
+      "e": {
+       "stats": {
+        "interna": -6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "id": "o_pagni",
+    "who": "Carlos Pagni",
+    "role": "Periodista",
+    "title": "Pagni dice que negociás en secreto con Santilli",
+    "text": "En su editorial, Pagni asegura que tuviste \"una cena reservada en Puerto Madero\" con el ministro del Interior. En tu bloque nadie te cree que fuiste a hablar de fútbol.",
+    "options": [
+     {
+      "label": "Desmentirlo con tu agenda en la mano",
+      "result": "La desmentida convence a medias.",
+      "e": {
+       "stats": {
+        "interna": -2,
+        "imagen": 2
+       }
+      }
+     },
+     {
+      "label": "Decir que hablar no es traicionar",
+      "result": "Los dialoguistas valoran la frase; tus duros, no.",
+      "e": {
+       "stats": {
+        "interna": -5
+       },
+       "blocs": {
+        "dip:pu": -4
+       }
+      }
+     }
+    ]
+   },
+   {
+    "id": "o_feinmann",
+    "who": "Eduardo Feinmann",
+    "role": "Periodista",
+    "title": "Feinmann te pregunta en vivo si vas a visitar a Cristina",
+    "text": "En medio de una entrevista sobre las PASO, Feinmann te corta: \"¿Vas a ir a San José 1111 a pedir permiso?\".",
+    "options": [
+     {
+      "label": "\"Voy cuando quiero, como cualquiera\"",
+      "result": "La militancia te banca. El clip circula en los grupos libertarios.",
+      "e": {
+       "stats": {
+        "interna": 4,
+        "imagen": -3
+       }
+      }
+     },
+     {
+      "label": "Volver al tema: \"Hablemos de las PASO\"",
+      "result": "Esquivás la trampa, pero quedás frío.",
+      "e": {
+       "stats": {
+        "imagen": 1,
+        "interna": -2
+       }
+      }
+     }
+    ]
+   },
+   {
+    "id": "o_rossi",
+    "who": "Pablo Rossi",
+    "role": "Periodista",
+    "title": "Pablo Rossi publica cuánto cuestan las PASO",
+    "text": "Rossi muestra en pantalla el costo de las PASO en dólares y lo compara con el presupuesto de los hospitales de Córdoba.",
+    "options": [
+     {
+      "label": "Responder con el costo de la \"casta\" que no ajustó",
+      "result": "Tu dato también circula.",
+      "e": {
+       "stats": {
+        "imagen": 2,
+        "capital": -1
+       }
+      }
+     },
+     {
+      "label": "Dejarlo pasar",
+      "result": "Los cordobeses dudan.",
+      "e": {
+       "blocs": {
+        "dip:pu": 3,
+        "dip:dco": 3
+       }
+      }
+     }
+    ]
+   },
+   {
+    "id": "o_carrio",
+    "who": "Elisa Carrió",
+    "role": "Coalición Cívica",
+    "title": "Carrió dice que las PASO \"son lo único bueno que hizo el kirchnerismo\"",
+    "text": "Lilita aparece en televisión: \"Las PASO las hizo el kirchnerismo, que es el demonio, pero hasta el demonio hace algo bien una vez\".",
+    "options": [
+     {
+      "label": "Agradecerle en público",
+      "result": "La Coalición Cívica se acerca. Carrió aclara que \"no es kirchnerista\".",
+      "e": {
+       "blocs": {
+        "dip:cc": -12
+       }
+      }
+     },
+     {
+      "label": "No decir nada",
+      "result": "La frase sola ya hizo efecto.",
+      "e": {
+       "blocs": {
+        "dip:cc": -6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "id": "o_cgt",
+    "who": "CGT",
+    "role": "",
+    "title": "La CGT anuncia paro general por la caja navideña",
+    "text": "La central obrera convoca a un paro de 24 horas por un bono de fin de año. Te piden que el bloque se sume a la marcha.",
+    "options": [
+     {
+      "label": "Sumarte a la marcha",
+      "result": "Foto en la calle. Los dialoguistas dicen que \"volvió el kirchnerismo de la calle\".",
+      "e": {
+       "stats": {
+        "interna": 5,
+        "imagen": 2
+       },
+       "blocs": {
+        "dip:pu": 3,
+        "dip:ucr": 3
+       }
+      }
+     },
+     {
+      "label": "Apoyar desde el Congreso, sin ir",
+      "result": "La CGT dice que \"los diputados se esconden\".",
+      "e": {
+       "stats": {
+        "interna": -4
+       }
+      }
+     }
+    ]
+   },
+   {
+    "id": "o_univ",
+    "who": "Universidades",
+    "role": "Rectores y estudiantes",
+    "title": "Las universidades marchan por el presupuesto",
+    "text": "Una marcha universitaria gigante llena Plaza de Mayo. Nada que ver con las PASO, pero el Gobierno queda a la defensiva.",
+    "options": [
+     {
+      "label": "Ir a la marcha, sin pechera",
+      "result": "Aparecés en la foto sin protagonismo. Buena lectura.",
+      "e": {
+       "stats": {
+        "imagen": 4
+       },
+       "govImg": -3
+      }
+     },
+     {
+      "label": "Quedarte trabajando en el poroteo",
+      "result": "Te lo reprochan los rectores.",
+      "e": {
+       "stats": {
+        "imagen": -1,
+        "capital": 2
+       }
+      }
+     }
+    ]
+   },
+   {
+    "id": "o_gh",
+    "tag": "farandula",
+    "who": "Farándula",
+    "role": "",
+    "title": "Arranca Gran Hermano y nadie habla de la ley",
+    "text": "La casa más famosa del país abre sus puertas y el debate por las PASO desaparece de los noticieros. Al Gobierno le viene bárbaro: negocia sin cámaras.",
+    "options": [
+     {
+      "label": "Ir a un programa de chimentos a hablar de las PASO",
+      "result": "Te invitan a opinar de un participante. Un éxito de audiencia, aunque hablaste poco de las PASO.",
+      "e": {
+       "stats": {
+        "imagen": 3,
+        "capital": -2
+       }
+      }
+     },
+     {
+      "label": "Aceptar que la semana está perdida",
+      "result": "El Gobierno aprovecha el silencio.",
+      "e": {
+       "blocs": {
+        "dip:innov": 4,
+        "dip:ind": 4
+       }
+      }
+     }
+    ]
+   },
+   {
+    "id": "o_moria",
+    "tag": "farandula",
+    "who": "Moria Casán",
+    "role": "Diva",
+    "title": "Moria opina de las PASO en un living",
+    "text": "\"Las PASO son como los ensayos generales: no los ve nadie y te dejan agotada\", dice Moria. Los noticieros la repiten todo el día.",
+    "options": [
+     {
+      "label": "Responderle con humor",
+      "result": "Tu respuesta funciona y te sacan del bronce.",
+      "e": {
+       "stats": {
+        "imagen": 3
+       }
+      }
+     },
+     {
+      "label": "Ignorarla",
+      "result": "La frase queda como la última palabra del debate.",
+      "e": {
+       "stats": {
+        "imagen": -2
+       },
+       "govImg": 2
+      }
+     }
+    ]
+   },
+   {
+    "id": "o_insfran",
+    "phase": "sen",
+    "who": "Gildo Insfrán",
+    "role": "Gobernador de Formosa",
+    "title": "Insfrán amenaza con negociar con la Rosada",
+    "text": "El gobernador formoseño quiere que el proyecto incluya la ley de lemas. Si no lo apoyás, sus senadores \"van a escuchar al Gobierno\".",
+    "options": [
+     {
+      "label": "Prometerle que vas a defender los lemas",
+      "result": "Insfrán se queda. Carrió te denuncia en televisión.",
+      "e": {
+       "stats": {
+        "imagen": -4,
+        "interna": 2
+       },
+       "blocs": {
+        "dip:cc": 5
+       }
+      }
+     },
+     {
+      "label": "Negarte: \"No vamos a defender los lemas\"",
+      "result": "Los dos senadores formoseños arman un bloque propio y dialogan con la Rosada.",
+      "e": {
+       "stats": {
+        "imagen": 2
+       },
+       "split": {
+        "chamber": "sen",
+        "from": "popular",
+        "id": "formosa",
+        "name": "Senadores de Formosa",
+        "seats": 2,
+        "aff": 35,
+        "color": "#5B86C5"
+       }
+      }
+     }
+    ]
+   },
+   {
+    "id": "o_qatar",
+    "phase": "sen",
+    "who": "Bloque Popular",
+    "role": "Senado",
+    "title": "Un senador tuyo se va a Qatar la semana de la sesión",
+    "text": "Un senador del bloque avisa que tiene \"una misión comercial impostergable\" en Doha justo cuando el Senado podría votar.",
+    "options": [
+     {
+      "label": "Pedirle que vuelva, cueste lo que cueste",
+      "result": "Vuelve, de mal humor. Te pide que el bloque le pague el pasaje.",
+      "e": {
+       "stats": {
+        "caja": -5
+       }
+      }
+     },
+     {
+      "label": "Dejarlo ir",
+      "result": "Es un voto menos contra el proyecto.",
+      "e": {
+       "blocs": {
+        "sen:popular": 6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "id": "o_quintela",
+    "phase": "sen",
+    "who": "Ricardo Quintela",
+    "role": "Gobernador de La Rioja",
+    "title": "Quintela emite su propia moneda... otra vez",
+    "text": "El gobernador riojano vuelve con los \"chachos\" y el Gobierno lo usa para decir que \"la oposición es esto\".",
+    "options": [
+     {
+      "label": "Desmarcarte de Quintela",
+      "result": "Los dialoguistas lo valoran. Quintela te deja de atender.",
+      "e": {
+       "stats": {
+        "interna": -3
+       },
+       "blocs": {
+        "sen:ucr": -3
+       }
+      }
+     },
+     {
+      "label": "Defenderlo: \"Es una provincia asfixiada\"",
+      "result": "Tu bloque te banca; los indecisos se alejan.",
+      "e": {
+       "stats": {
+        "interna": 3,
+        "imagen": -3
+       }
+      }
+     }
+    ]
+   },
+   {
+    "id": "o_tmap",
+    "who": "Santiago Caputo",
+    "role": "Asesor presidencial",
+    "title": "Caputo escribe \"TMAP\" con una psicografía de Parravicini",
+    "text": "El asesor presidencial publica en X una psicografía de Benjamín Solari Parravicini y un \"TMAP\". No sabés si es contra vos o contra los gobernadores.",
+    "options": [
+     {
+      "label": "Responder con otra psicografía",
+      "result": "Un clásico de las redes. Te festejan hasta los libertarios.",
+      "e": {
+       "stats": {
+        "imagen": 3,
+        "capital": -1
+       }
+      }
+     },
+     {
+      "label": "No entrar al juego",
+      "result": "Nadie entiende el tuit; tampoco tu silencio.",
+      "e": {
+       "stats": {
+        "capital": 1
+       }
+      }
+     }
+    ]
+   },
+   {
+    "id": "o_intendente",
+    "who": "Intendentes del conurbano",
+    "role": "",
+    "title": "Un intendente dice que sin PASO \"se ordena todo\"",
+    "text": "Un intendente peronista del conurbano reconoce en una radio que eliminar las PASO \"le ahorra una interna\" en su distrito.",
+    "options": [
+     {
+      "label": "Llamarlo para que se rectifique",
+      "result": "Se rectifica a medias.",
+      "e": {
+       "stats": {
+        "capital": -2,
+        "interna": 2
+       }
+      }
+     },
+     {
+      "label": "Minimizarlo",
+      "result": "Otros dos intendentes dicen lo mismo.",
+      "e": {
+       "stats": {
+        "interna": -5
+       },
+       "blocs": {
+        "dip:up": 3
+       }
+      }
+     }
+    ]
+   },
+   {
+    "id": "o_rosada_gov",
+    "needsGov": true,
+    "who": "{gov}",
+    "role": "Gobernador de {prov}",
+    "title": "La Rosada llama a {gov} con una oferta mejor",
+    "text": "Te llega el dato: el ministro del Interior le ofreció a {gov} el doble de lo que vos le prometiste. Y dejó de atenderte el teléfono.",
+    "options": [
+     {
+      "label": "Viajar a {prov} y mejorar tu oferta",
+      "result": "{gov} te recibe y te dice que \"la palabra vale\". Por ahora.",
+      "e": {
+       "stats": {
+        "caja": -8
+       }
+      },
+      "gov": -6
+     },
+     {
+      "label": "Dejarlo ir y apostar a otros",
+      "result": "{gov} se acerca al Gobierno.",
+      "e": {},
+      "gov": 10
+     }
+    ]
+   },
+   {
+    "id": "o_visto_gov",
+    "needsGov": true,
+    "who": "{gov}",
+    "role": "Gobernador de {prov}",
+    "title": "{gov} te clava el visto",
+    "text": "Después de su reunión con Karina Milei, {gov} no responde tus mensajes. Su gente dice que está \"de gira por la provincia\".",
+    "options": [
+     {
+      "label": "Mandarle un mensaje público en X",
+      "result": "Lo exponés. Te contesta en dos horas, enojado pero adentro.",
+      "e": {
+       "stats": {
+        "imagen": -2
+       }
+      },
+      "gov": -4,
+      "alt": {
+       "result": "Lo exponés y {gov} rompe con vos: sus legisladores se acercan al Gobierno.",
+       "gov": 8
+      }
+     },
+     {
+      "label": "Esperar con paciencia",
+      "result": "Silencio de radio una semana entera.",
+      "e": {},
+      "gov": 5
+     }
+    ]
+   },
+   {
+    "id": "o_lousteau",
+    "who": "Martín Lousteau",
+    "role": "Diputado",
+    "title": "Lousteau propone \"PASO digitales y baratas\"",
+    "text": "Lousteau presenta un proyecto para hacer PASO con boleta única y a mitad de costo. Los dialoguistas lo celebran.",
+    "options": [
+     {
+      "label": "Apoyar la idea en público",
+      "result": "Provincias Unidas y los radicales se alejan del proyecto oficial.",
+      "e": {
+       "stats": {
+        "interna": -3
+       },
+       "blocs": {
+        "dip:pu": -5,
+        "dip:ucr": -4,
+        "sen:ucr": -3
+       }
+      }
+     },
+     {
+      "label": "Decir que \"llega tarde\"",
+      "result": "Lousteau se ofende y vuelve a ser neutral.",
+      "e": {
+       "blocs": {
+        "dip:pu": 3
+       }
+      }
+     }
+    ]
+   },
+   {
+    "id": "o_mundial",
+    "tag": "farandula",
+    "who": "Fútbol",
+    "role": "",
+    "title": "La final de la Libertadores tapa todo",
+    "text": "El país entero habla de la final de la Copa Libertadores. Los diputados indecisos aprovechan para no dar declaraciones.",
+    "options": [
+     {
+      "label": "Hablar de fútbol y de PASO en el mismo tuit",
+      "result": "Tu tuit es mejor recibido de lo que pensabas.",
+      "e": {
+       "stats": {
+        "imagen": 2
+       }
+      }
+     },
+     {
+      "label": "Aprovechar para negociar en silencio",
+      "result": "Te ganás un favor de un gobernador.",
+      "e": {
+       "stats": {
+        "caja": 5,
+        "capital": -1
+       }
+      }
+     }
+    ]
+   }
+  ],
+  "scenarios": [
+   {
+    "id": "o_dividida",
+    "title": "Oposición dividida",
+    "text": "El peronismo llega partido entre Kicillof y La Cámpora. Mantener al bloque unido va a ser la mitad del trabajo.",
+    "stats": {
+     "interna": -15,
+     "capital": 5
+    }
+   },
+   {
+    "id": "o_calle",
+    "title": "La calle está caliente",
+    "text": "Marchas universitarias y paros: el Gobierno está a la defensiva y la opinión pública te escucha.",
+    "stats": {
+     "imagen": 10
+    },
+    "blocs": {
+     "dip:pu": -5,
+     "dip:ucr": -4
+    },
+    "govImg": -4
+   },
+   {
+    "id": "o_triunfo",
+    "title": "El Gobierno viene de ganar",
+    "text": "El oficialismo ganó las legislativas y los aliados quieren estar cerca del ganador. Arrancás de atrás.",
+    "stats": {
+     "capital": -5
+    },
+    "blocs": {
+     "dip:pro": 5,
+     "dip:mid": 5,
+     "sen:ucr": 6,
+     "dip:ucr": 5
+    },
+    "govImg": 4
+   },
+   {
+    "id": "o_cajavacia",
+    "title": "Gobernadores con la caja vacía",
+    "text": "Las provincias no pueden pagar aguinaldos y la Rosada tiene los ATN. Cada gobernador es una tentación.",
+    "blocs": {
+     "dip:ind": 10,
+     "dip:elijo": 10,
+     "dip:innov": 8,
+     "sen:ind": 8,
+     "sen:misiones": 6
+    },
+    "stats": {
+     "caja": 10
+    }
+   },
+   {
+    "id": "o_cfk",
+    "title": "Cristina marca la cancha",
+    "text": "Desde San José 1111 piden línea dura. El bloque está ordenado, pero los dialoguistas no quieren sacarse la foto con vos.",
+    "stats": {
+     "interna": 12,
+     "imagen": -5
+    },
+    "blocs": {
+     "dip:pu": 5,
+     "dip:cc": 4
+    }
+   },
+   {
+    "id": "o_pu",
+    "title": "Provincias Unidas quiere ser la bisagra",
+    "text": "Los gobernadores de Provincias Unidas tienen la llave del quórum y quieren cobrar caro de los dos lados.",
+    "blocs": {
+     "dip:pu": -8,
+     "sen:pu": -5
+    },
+    "stats": {
+     "caja": -10
+    }
+   },
+   {
+    "id": "o_fiestas",
+    "title": "Fiestas y vacaciones",
+    "text": "Entre el aguinaldo, las fiestas y el verano, el Congreso tiene menos semanas. El reloj juega para vos, pero tu bloque quiere irse de vacaciones.",
+    "turns": -1,
+    "stats": {
+     "interna": -5,
+     "capital": -5
+    }
+   },
+   {
+    "id": "o_escandalo",
+    "title": "Escándalo en la Rosada",
+    "text": "Un escándalo de audios golpea a la Casa Rosada. El Gobierno necesita una victoria y va a pagar lo que sea por la ley.",
+    "stats": {
+     "imagen": 6
+    },
+    "govImg": -6,
+    "govMom": 0.15
+   }
+  ],
+  "endings": {
+   "oppTime": {
+    "title": "No hubo ley: las PASO se hacen",
+    "text": "Llegó enero y el Gobierno no consiguió la ley. Las PASO se hacen en agosto de 2027 y vos quedás como la voz de la oposición."
+   },
+   "oppRejected": {
+    "title": "Rechazado en Diputados",
+    "text": "El Gobierno fue a votar y perdió en Diputados. Por el artículo 81 de la Constitución, el proyecto no puede volver a tratarse este año: las PASO se hacen."
+   },
+   "oppRejectedSen": {
+    "title": "Rechazado en el Senado",
+    "text": "El Gobierno tenía la media sanción, pero el Senado votó en contra. No hay tiempo para insistir: las PASO se hacen."
+   },
+   "oppLaw": {
+    "title": "Es ley: no habrá PASO en 2027",
+    "text": "El Gobierno consiguió los votos en las dos cámaras. Las PASO no se hacen y en tu bloque ya buscan culpables."
+   },
+   "oppFired": {
+    "title": "El bloque eligió otra conducción",
+    "text": "Te quedaste sin capital político. El bloque designa otra conducción para la recta final."
+   },
+   "oppSplit": {
+    "title": "Se te partió el bloque",
+    "text": "La unidad del bloque llegó a cero: un grupo de diputados arma un bloque propio y negocia por su cuenta con la Rosada."
+   }
+  }
+ }
 }
