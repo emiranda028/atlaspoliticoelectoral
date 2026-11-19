@@ -1733,12 +1733,12 @@
   {
    "id": "cgt",
    "who": "CGT",
-   "title": "La CGT anuncia paro general",
-   "text": "La central obrera convoca a un paro general de 24 horas contra la reforma laboral y \"el ajuste a los jubilados\". Los gremios del transporte adhieren y los canales arman la cuenta regresiva.",
+   "title": "La CGT anuncia paro general por paritarias libres",
+   "text": "La central obrera convoca a un paro general de 24 horas para exigir paritarias libres y sin techo, y contra \"el ajuste a los jubilados\". Los gremios del transporte adhieren y los canales arman la cuenta regresiva.",
    "options": [
     {
      "label": "Recibir a la mesa chica de la CGT en la Rosada",
-     "result": "Foto con los gremialistas y promesa de \"mesa técnica\". En Balcarce 50 no les gustó nada.",
+     "result": "Foto con los gremialistas y promesa de \"liberar\" algunas paritarias. En Economía no les gustó nada.",
      "e": {
       "stats": {
        "caja": -5,
@@ -4785,6 +4785,114 @@
       "stats": {
        "imagen": 2,
        "interna": -3
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "caja_navidena",
+   "who": "CGT y movimientos sociales",
+   "title": "Paro y movilización por la caja navideña",
+   "text": "La CGT y los movimientos sociales anuncian un paro con movilización para exigir un bono de fin de año y alimentos para los comedores, \"para evitar que haya saqueos en diciembre\". El Ministerio de Seguridad pone en alerta a las fuerzas federales.",
+   "options": [
+    {
+     "label": "Otorgar un bono y reforzar los comedores",
+     "result": "Baja la tensión. Caputo te recuerda que esa plata era para las provincias.",
+     "e": {
+      "stats": {
+       "caja": -8,
+       "imagen": 3,
+       "interna": -3
+      },
+      "blocs": {
+       "sen:popular": 3
+      }
+     }
+    },
+    {
+     "label": "Reforzar la seguridad en los comercios",
+     "result": "No hay incidentes graves, pero las imágenes de los operativos no ayudan.",
+     "e": {
+      "stats": {
+       "interna": 3,
+       "imagen": -3
+      }
+     }
+    },
+    {
+     "label": "Acordar con los intendentes del conurbano",
+     "result": "Los intendentes reparten cajas de alimentos y te cobran el favor en votos peronistas.",
+     "e": {
+      "stats": {
+       "caja": -5
+      },
+      "blocs": {
+       "dip:up": 4
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "ate_aguinaldo",
+   "who": "ATE",
+   "title": "Los estatales paran por el aguinaldo",
+   "text": "ATE anuncia un paro nacional de estatales porque varias provincias no confirman cuándo van a pagar el medio aguinaldo. Los gobernadores te piden adelantos para cubrirlo.",
+   "options": [
+    {
+     "label": "Adelantar fondos a las provincias",
+     "result": "Pagan el aguinaldo y los gobernadores te deben una.",
+     "e": {
+      "stats": {
+       "caja": -8
+      },
+      "blocs": {
+       "sen:salta": 3,
+       "sen:misiones": 3,
+       "sen:chubut": 3,
+       "dip:innov": 3
+      }
+     }
+    },
+    {
+     "label": "Decir que es un problema de cada provincia",
+     "result": "Los gobernadores se enojan y ATE para igual.",
+     "e": {
+      "stats": {
+       "interna": 2
+      },
+      "blocs": {
+       "sen:salta": -3,
+       "sen:misiones": -3
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "paritarias_techo",
+   "who": "Gremios",
+   "title": "Los gremios rompen el techo de las paritarias",
+   "text": "Comercio y Camioneros firman aumentos por encima de la pauta oficial y otros gremios van por lo mismo. Economía amenaza con no homologar los acuerdos.",
+   "options": [
+    {
+     "label": "Homologar y evitar el conflicto",
+     "result": "Se calma la calle; en Economía te miran mal.",
+     "e": {
+      "stats": {
+       "interna": -5,
+       "imagen": 2
+      }
+     }
+    },
+    {
+     "label": "Respaldar a Economía y no homologar",
+     "result": "Los gremios endurecen y amenazan con más paros.",
+     "e": {
+      "stats": {
+       "interna": 4,
+       "imagen": -3
       }
      }
     }
