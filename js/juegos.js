@@ -184,6 +184,10 @@
   }
   // On every step bring the game back under the sticky menu, so the question is in view
   function toTop() {
+    // Nothing should look chosen on a new question (no leftover focus from the last tap)
+    if (document.activeElement && document.activeElement !== document.body && root && root.contains(document.activeElement)) document.activeElement.blur();
+    // ...nor highlighted because the mouse happens to rest where the last click was
+    if (root) { root.classList.add('is-fresh'); root.addEventListener('mousemove', () => root.classList.remove('is-fresh'), { once: true }); }
     const g = root && root.querySelector('.jg-game'); if (!g) return;
     const nav = document.querySelector('.topic-nav');
     const off = nav ? Math.max(0, nav.getBoundingClientRect().bottom) : 0;
