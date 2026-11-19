@@ -234,7 +234,7 @@
         <div class="jg-progress"><span style="width:${st.i / n * 100}%"></span></div>
         ${it.flash ? `<div class="jg-flash"><span class="jg-flash-tag">Último momento</span>${Q.who ? `<span>${esc(Q.who)}</span>` : ''}</div>` : `<div class="jg-qnum">Decisión ${num} de ${nq}</div>`}
         <h3 class="jg-q${it.flash ? ' is-flash' : ''}">${esc(Q.q.replace(/^Último momento:\s*(.)/, (m, c) => c.toUpperCase()))}</h3>
-        <div class="jg-opts">${Q.options.map((o, k) => `<button type="button" class="jg-opt" data-k="${k}">${esc(o.t)}</button>`).join('')}</div>
+        <div class="jg-opts">${(it.order || (it.order = shuffle(Q.options.map((o, k) => k)))).map(k => `<button type="button" class="jg-opt" data-k="${k}">${esc(Q.options[k].t)}</button>`).join('')}</div>
         ${st.i ? '<button type="button" class="jg-link" data-prev>← Volver a la anterior</button>' : ''}</section>`;
       wireBack(root); toTop();
       root.querySelectorAll('[data-k]').forEach(b => b.addEventListener('click', () => {
