@@ -489,11 +489,15 @@
       const rand = D.events.filter(ev => eligible(ev) && ev.random && Math.random() < 0.45);
       S.queue = due.slice(0, 2).concat(due.length < 2 ? rand.slice(0, 1) : []);
       // "Último momento": something unexpected, in the middle of the week's events
-      const fl = (D.flashes || []).filter(f => !S.seen['f:' + f.id]);
-      if (!first && fl.length && Math.random() < 0.6) S.queue.splice(Math.min(1, S.queue.length), 0, Object.assign({ flash: true }, fl[Math.floor(Math.random() * fl.length)]));
+      // Events about "your" governor only show up once you've negotiated with one
+      const fl = (D.flashes || []).filter(f => !S.seen['f:' + f.id] && (!f.needsGov || dealtGovs().length));
+      // Once you've made deals, half of the surprises are about those governors
+      const pick = () => { const g = fl.filter(f => f.needsGov), pool = g.length && Math.random() < 0.5 ? g : fl; const f = pool[Math.floor(Math.random() * pool.length)]; fl.splice(fl.indexOf(f), 1); return Object.assign({ flash: true }, f); };
+      if (!first && fl.length && Math.random() < 0.7) S.queue.splice(Math.min(1, S.queue.length), 0, pick());
+      if (!first && fl.length && Math.random() < 0.15) S.queue.push(pick());
       showEvent();
     }
-    const FLASH = { capital: -5, imagen: -2, gain: 0.6 };
+    const FLASH = { capital: -3, imagen: -1, gain: 0.7 };
     function flashCost(e) {
       const out = { stats: Object.assign({}, e.stats || {}), blocs: {} };
       Object.entries(out.stats).forEach(([k, v]) => { if (v > 0) out.stats[k] = Math.round(v * FLASH.gain); });
@@ -502,9 +506,20 @@
       Object.entries(e.blocs || {}).forEach(([k, v]) => { out.blocs[k] = v > 0 ? Math.round(v * FLASH.gain) : v; });
       return Object.assign({}, e, out);
     }
+    // Fill {gov}/{prov} with a governor you already made a deal with
+    const dealtGovs = () => Object.keys(S.govUsed).filter(id => D.governors.some(g => g.id === id));
+    function withGov(ev) {
+      const ids = dealtGovs(); if (!ids.length) return null;
+      const g = D.governors.find(x => x.id === ids[Math.floor(Math.random() * ids.length)]);
+      if (!g) return null;
+      const f = t => String(t || '').replace(/\{gov\}/g, g.name).replace(/\{prov\}/g, g.prov);
+      return Object.assign({}, ev, { gov: g, who: f(ev.who), title: f(ev.title), text: f(ev.text),
+        options: ev.options.map(o => Object.assign({}, o, { label: f(o.label), result: f(o.result) })) });
+    }
     function showEvent() {
-      const ev = S.queue.shift();
+      let ev = S.queue.shift();
       if (!ev) return actions();
+      if (ev.needsGov) { ev = withGov(ev); if (!ev) return showEvent(); }
       S.seen[ev.flash ? 'f:' + ev.id : ev.id] = true;
       paint(`<div class="rs-card${ev.flash ? ' is-flash' : ''}">${ev.flash ? (ev.tag === 'farandula' ? '<span class="jg-flash-tag is-faran">Mientras tanto, en la farándula</span>' : '<span class="jg-flash-tag">Último momento</span>') : ''}<span class="rs-who">${esc(ev.who)}${ev.role ? ' · ' + esc(ev.role) : ''}</span><h3>${esc(ev.title)}</h3><p>${esc(ev.text)}</p>
         <div class="jg-opts">${ev.options.map((o, k) => `<button type="button" class="jg-opt" data-k="${k}">${esc(o.label)}</button>`).join('')}</div></div>`);
@@ -513,7 +528,10 @@
         const o = ev.options[+b.getAttribute('data-k')];
         // Unexpected events are real problems: whatever you choose, they cost
         // political capital, and the goodwill they buy is worth less
-        apply(ev.flash ? flashCost(o.e) : o.e); S.log.push({ t: ev.title, r: o.label, flash: !!ev.flash });
+        const e = JSON.parse(JSON.stringify(o.e || {}));
+        // "gov": how much the deal with that governor moves (his blocs)
+        if (ev.gov && o.gov) { e.blocs = e.blocs || {}; ev.gov.blocs.forEach(k => { e.blocs[k] = (e.blocs[k] || 0) + o.gov; }); }
+        apply(ev.flash ? flashCost(e) : e); S.log.push({ t: ev.title, r: o.label, flash: !!ev.flash });
         const res = (o.result || '') + (ev.flash ? ' Igual, apagar el incendio te costó capital político.' : '');
         outcome(o.label, res, showEvent, { flash: ev.flash, faran: ev.tag === 'farandula', who: ev.who + (ev.role ? ' · ' + ev.role : ''), title: ev.title, text: ev.text, choice: o.label, result: res });
       }));

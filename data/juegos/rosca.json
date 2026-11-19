@@ -2728,6 +2728,899 @@
     }
    ],
    "tag": "farandula"
+  },
+  {
+   "id": "massa_gov",
+   "who": "Sergio Massa",
+   "title": "Massa llama a {gov}",
+   "text": "Te llega el dato: Sergio Massa estuvo dos horas al teléfono con {gov}. En {prov} ya dicen que el voto \"no está tan firme\" y que el acuerdo con vos \"hay que revisarlo\".",
+   "options": [
+    {
+     "label": "Llamar a {gov} y reforzar el acuerdo",
+     "result": "Te cuesta otra partida, pero {gov} te jura que el voto sigue firme.",
+     "e": {
+      "stats": {
+       "caja": -6
+      }
+     },
+     "gov": 6
+    },
+    {
+     "label": "Hacer trascender que te traiciona",
+     "result": "El gobernador queda expuesto y se enoja. Sus legisladores se alejan.",
+     "e": {
+      "stats": {
+       "imagen": 2,
+       "interna": 2
+      }
+     },
+     "gov": -12
+    },
+    {
+     "label": "Confiar en lo acordado",
+     "result": "Massa sigue hablando. Algunos legisladores de {prov} empiezan a dudar.",
+     "e": {},
+     "gov": -8
+    }
+   ],
+   "role": "Frente Renovador",
+   "needsGov": true
+  },
+  {
+   "id": "cfk_gov",
+   "who": "Cristina Fernández de Kirchner",
+   "title": "Cristina llama a {gov} desde San José 1111",
+   "text": "{gov} recibe un llamado de Cristina: le recuerda \"de dónde viene\" y le pide que sus legisladores no voten \"la proscripción de las PASO\". En el peronismo de {prov} hay nervios.",
+   "options": [
+    {
+     "label": "Ofrecerle a {gov} una obra más",
+     "result": "Acepta, pero te pide que no se entere nadie.",
+     "e": {
+      "stats": {
+       "caja": -8
+      }
+     },
+     "gov": 8
+    },
+    {
+     "label": "Decirle que Cristina ya no ordena nada",
+     "result": "{gov} se ofende: \"a mí no me tratan así\".",
+     "e": {
+      "stats": {
+       "interna": 3
+      }
+     },
+     "gov": -10
+    },
+    {
+     "label": "Esperar a que pase el llamado",
+     "result": "Dos legisladores de {prov} piden licencia el día de la sesión.",
+     "e": {},
+     "gov": -6
+    }
+   ],
+   "role": "desde San José 1111",
+   "needsGov": true
+  },
+  {
+   "id": "kicillof_gov",
+   "who": "Axel Kicillof",
+   "title": "Kicillof le ofrece a {gov} un frente de gobernadores",
+   "text": "Axel Kicillof invita a {gov} a una cumbre en La Plata para armar un \"frente federal en defensa de las PASO\". La foto con los demás gobernadores ya está preparada.",
+   "options": [
+    {
+     "label": "Pedirle a {gov} que no vaya",
+     "result": "No va, pero te cobra el favor con un adelanto de fondos.",
+     "e": {
+      "stats": {
+       "caja": -6
+      }
+     },
+     "gov": 4
+    },
+    {
+     "label": "Dejar que vaya: \"es una foto\"",
+     "result": "Va a la foto y vuelve con dudas.",
+     "e": {},
+     "gov": -7
+    }
+   ],
+   "role": "Gobernador de Buenos Aires",
+   "needsGov": true
+  },
+  {
+   "id": "gov_mas",
+   "who": "{gov}",
+   "title": "{gov}: \"El acuerdo era otro\"",
+   "text": "{gov} dice que lo que le prometiste \"todavía no llegó\" y que sin esos fondos sus legisladores no bajan al recinto.",
+   "options": [
+    {
+     "label": "Liberar los fondos ya",
+     "result": "Caputo te reta, pero {prov} recibe la transferencia.",
+     "e": {
+      "stats": {
+       "caja": -10,
+       "interna": -2
+      }
+     },
+     "gov": 8
+    },
+    {
+     "label": "Pedirle paciencia",
+     "result": "{gov} hace trascender su malestar.",
+     "e": {},
+     "gov": -8
+    }
+   ],
+   "role": "Gobernador",
+   "needsGov": true
+  },
+  {
+   "id": "gov_foto",
+   "who": "{gov}",
+   "title": "{gov} se saca una foto con la oposición",
+   "text": "Aparece una foto de {gov} sonriente con diputados de Fuerza Patria en un restaurante de Puerto Madero. Dice que \"fue una cena de amigos\".",
+   "options": [
+    {
+     "label": "Pedirle explicaciones en privado",
+     "result": "Te jura lealtad. No le creés del todo.",
+     "e": {
+      "stats": {
+       "capital": -1
+      }
+     },
+     "gov": 2
+    },
+    {
+     "label": "Bajarle una obra en represalia",
+     "result": "Se enoja y lo hace público.",
+     "e": {
+      "stats": {
+       "caja": 5,
+       "imagen": -2
+      }
+     },
+     "gov": -10
+    }
+   ],
+   "role": "Gobernador",
+   "needsGov": true
+  },
+  {
+   "id": "carrio2",
+   "who": "Elisa Carrió",
+   "title": "Carrió en A dos voces: \"Las PASO las hizo el demonio\"",
+   "text": "En A dos voces, Elisa Carrió dice que \"las PASO las inventó el demonio, pero el demonio también está en la Biblia, y la Biblia no se toca\". Concluye que la Coalición Cívica \"va a votar con la Constitución en la mano y el rosario en la otra\".",
+   "options": [
+    {
+     "label": "Pedirle una reunión",
+     "result": "Te recibe en Exaltación de la Cruz. Tres horas de charla sobre Dios, la República y las PASO.",
+     "e": {
+      "stats": {
+       "capital": -2
+      },
+      "blocs": {
+       "dip:cc": 8
+      }
+     }
+    },
+    {
+     "label": "Decir que \"no se entiende\"",
+     "result": "Carrió te dedica un hilo de X. La CC se endurece.",
+     "e": {
+      "stats": {
+       "interna": 2
+      },
+      "blocs": {
+       "dip:cc": -8
+      }
+     }
+    }
+   ],
+   "role": "Coalición Cívica"
+  },
+  {
+   "id": "milei_contra",
+   "who": "Javier Milei",
+   "title": "Milei te contradice en una entrevista",
+   "text": "En una entrevista de tres horas, Milei dice que eliminar las PASO \"no es prioridad\" y que \"lo importante es la macro\". Los gobernadores se preguntan para qué están negociando con vos.",
+   "options": [
+    {
+     "label": "Pedirle que lo aclare en X",
+     "result": "Milei tuitea un \"Fin\" ambiguo. Algo es algo.",
+     "e": {
+      "stats": {
+       "interna": -3,
+       "capital": 2
+      }
+     }
+    },
+    {
+     "label": "Salir a decir que el Presidente te respalda",
+     "result": "Nadie te cree del todo.",
+     "e": {
+      "stats": {
+       "imagen": -3
+      }
+     }
+    }
+   ],
+   "role": "Presidente"
+  },
+  {
+   "id": "karina_paralela",
+   "who": "Karina Milei",
+   "title": "Karina negocia por su cuenta",
+   "text": "Te enterás de que Karina Milei recibió a dos gobernadores sin avisarte y les ofreció lo mismo que vos, pero más barato.",
+   "options": [
+    {
+     "label": "Coordinar con ella",
+     "result": "Te ordena la agenda. Perdés protagonismo, ganás votos.",
+     "e": {
+      "stats": {
+       "interna": 4,
+       "capital": -3
+      },
+      "blocs": {
+       "sen:salta": 3,
+       "sen:misiones": 3
+      }
+     }
+    },
+    {
+     "label": "Quejarte con el Presidente",
+     "result": "Milei la respalda a ella.",
+     "e": {
+      "stats": {
+       "interna": -8
+      }
+     }
+    }
+   ],
+   "role": "Secretaria General de la Presidencia"
+  },
+  {
+   "id": "menem_fecha",
+   "who": "Martín Menem",
+   "title": "Menem cambia la fecha de la sesión",
+   "text": "El presidente de la Cámara de Diputados mueve la sesión una semana \"por cuestiones de agenda\". Tus aliados se enteran por los diarios.",
+   "options": [
+    {
+     "label": "Aceptar sin hacer ruido",
+     "result": "Ganás una semana para conseguir votos, pero perdés tiempo.",
+     "e": {
+      "stats": {
+       "capital": 2
+      }
+     }
+    },
+    {
+     "label": "Reclamarle en público",
+     "result": "Menem se enoja y la interna se nota.",
+     "e": {
+      "stats": {
+       "interna": -4,
+       "imagen": 1
+      }
+     }
+    }
+   ],
+   "role": "Presidente de la Cámara de Diputados"
+  },
+  {
+   "id": "villarruel_peron",
+   "who": "Victoria Villarruel",
+   "title": "Villarruel recibe a senadores peronistas",
+   "text": "La vicepresidenta recibe en su despacho a cinco senadores del bloque peronista \"para hablar del reglamento\". Nadie sabe bien de qué hablaron.",
+   "options": [
+    {
+     "label": "Pedirle que te informe",
+     "result": "Te dice que fue una reunión protocolar. No le creés.",
+     "e": {
+      "stats": {
+       "capital": -1
+      }
+     }
+    },
+    {
+     "label": "Ir vos también a verla",
+     "result": "Te recibe con frialdad, pero el Senado nota el gesto.",
+     "e": {
+      "stats": {
+       "interna": -3
+      },
+      "blocs": {
+       "sen:popular": 3,
+       "sen:ucr": 2
+      }
+     }
+    }
+   ],
+   "role": "Vicepresidenta"
+  },
+  {
+   "id": "macri_bullrich",
+   "who": "PRO y LLA",
+   "title": "Macri y Bullrich se cruzan en X",
+   "text": "Mauricio Macri y Patricia Bullrich se tiran indirectas en X por las listas de 2027. Los diputados del PRO dicen que \"así no se puede votar nada\".",
+   "options": [
+    {
+     "label": "Mediar entre los dos",
+     "result": "Una cena tensa en Olivos. Los amarillos vuelven a la mesa.",
+     "e": {
+      "stats": {
+       "capital": -3
+      },
+      "blocs": {
+       "dip:pro": 5
+      }
+     }
+    },
+    {
+     "label": "Mantenerte al margen",
+     "result": "El PRO se enfría.",
+     "e": {
+      "blocs": {
+       "dip:pro": -5,
+       "sen:pro": -3
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "interna_peronista",
+   "who": "Peronismo",
+   "title": "Estalla la interna peronista",
+   "text": "La Cámpora y el kicillofismo se acusan mutuamente en X. Hay diputados peronistas que dicen que \"así no se puede ni ir a sesionar\".",
+   "options": [
+    {
+     "label": "Aprovechar para hablar con los dialoguistas",
+     "result": "Dos peronistas del interior te atienden el teléfono por primera vez.",
+     "e": {
+      "blocs": {
+       "dip:up": 6,
+       "sen:popular": 5
+      }
+     }
+    },
+    {
+     "label": "No meterte",
+     "result": "La interna sigue sola.",
+     "e": {}
+    }
+   ]
+  },
+  {
+   "id": "moyano",
+   "who": "Camioneros",
+   "title": "Camioneros bloquea los centros de distribución",
+   "text": "Los camioneros bloquean los centros de distribución en todo el país. Los supermercados empiezan a quedarse sin mercadería y nadie habla de las PASO.",
+   "options": [
+    {
+     "label": "Negociar con el gremio",
+     "result": "Se levanta el bloqueo, pero te cuesta.",
+     "e": {
+      "stats": {
+       "caja": -6,
+       "interna": -3
+      }
+     }
+    },
+    {
+     "label": "Pedir que intervenga la Justicia",
+     "result": "El conflicto se estira y la imagen del Gobierno cae.",
+     "e": {
+      "stats": {
+       "imagen": -4,
+       "interna": 3
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "bullrich_plata",
+   "who": "Patricia Bullrich",
+   "title": "Bullrich: \"En el Senado no se arregla con plata\"",
+   "text": "En una entrevista, Bullrich dice que \"en el Senado los votos no se compran\" justo cuando cerraste un acuerdo con un gobernador.",
+   "options": [
+    {
+     "label": "Llamarla y coordinar el mensaje",
+     "result": "Bullrich te pide más protagonismo en la negociación.",
+     "e": {
+      "stats": {
+       "interna": -2
+      },
+      "blocs": {
+       "sen:lla": 3
+      }
+     }
+    },
+    {
+     "label": "Ignorar la frase",
+     "result": "Los gobernadores toman nota.",
+     "e": {
+      "blocs": {
+       "sen:salta": -2,
+       "sen:misiones": -2
+      }
+     }
+    }
+   ],
+   "role": "Jefa del bloque LLA en el Senado"
+  },
+  {
+   "id": "bregman",
+   "who": "Myriam Bregman",
+   "title": "Bregman te desafía a un debate en televisión",
+   "text": "Myriam Bregman te desafía a debatir las PASO en un canal de noticias: \"Que venga a explicar por qué le tiene miedo a que la gente vote\".",
+   "options": [
+    {
+     "label": "Aceptar el debate",
+     "result": "Un debate picante: el clip se viraliza y cada uno festeja lo suyo.",
+     "e": {
+      "stats": {
+       "imagen": 3,
+       "capital": -2
+      }
+     }
+    },
+    {
+     "label": "No contestar",
+     "result": "Bregman lo usa en todas sus entrevistas.",
+     "e": {
+      "stats": {
+       "imagen": -2
+      }
+     }
+    }
+   ],
+   "role": "Frente de Izquierda"
+  },
+  {
+   "id": "manes",
+   "who": "Facundo Manes",
+   "title": "Manes: \"Es un daño cerebral para la democracia\"",
+   "text": "Facundo Manes dice en televisión que eliminar las PASO \"le hace a la democracia lo mismo que el estrés crónico al cerebro\". Los radicales lo aplauden.",
+   "options": [
+    {
+     "label": "Invitarlo a dar una charla en la Rosada",
+     "result": "Acepta y te explica la neuroplasticidad durante una hora. Los radicales se ablandan.",
+     "e": {
+      "stats": {
+       "capital": -2
+      },
+      "blocs": {
+       "dip:ucr": 5
+      }
+     }
+    },
+    {
+     "label": "Contestarle con ironía",
+     "result": "La frase suma memes y enoja a los radicales.",
+     "e": {
+      "stats": {
+       "imagen": 1
+      },
+      "blocs": {
+       "dip:ucr": -4
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "schiaretti",
+   "who": "Juan Schiaretti",
+   "title": "Schiaretti propone \"PASO optativas\"",
+   "text": "Juan Schiaretti presenta un proyecto alternativo: que cada partido decida si hace PASO. Provincias Unidas se encolumna detrás.",
+   "options": [
+    {
+     "label": "Incorporar la idea",
+     "result": "Los dialoguistas celebran; en la Rosada, no tanto.",
+     "e": {
+      "stats": {
+       "interna": -5
+      },
+      "blocs": {
+       "dip:pu": 8,
+       "sen:pu": 6
+      }
+     }
+    },
+    {
+     "label": "Rechazarla",
+     "result": "Provincias Unidas se aleja.",
+     "e": {
+      "stats": {
+       "interna": 2
+      },
+      "blocs": {
+       "dip:pu": -6
+      }
+     }
+    }
+   ],
+   "role": "Provincias Unidas"
+  },
+  {
+   "id": "pichetto",
+   "who": "Miguel Ángel Pichetto",
+   "title": "Pichetto da una clase de historia en el recinto",
+   "text": "Miguel Ángel Pichetto habla 40 minutos sobre la ley Sáenz Peña, el fraude patriótico y \"la Argentina que no aprende\". Al final dice que \"va a acompañar si se mejora el texto\".",
+   "options": [
+    {
+     "label": "Mejorar el texto como pide",
+     "result": "Cambios menores, apoyo mayor.",
+     "e": {
+      "stats": {
+       "interna": -2
+      },
+      "blocs": {
+       "dip:ef": 6
+      }
+     }
+    },
+    {
+     "label": "Agradecer la clase y seguir",
+     "result": "Pichetto anota tu nombre en su libreta.",
+     "e": {
+      "blocs": {
+       "dip:ef": -3
+      }
+     }
+    }
+   ],
+   "role": "Encuentro Federal"
+  },
+  {
+   "id": "cne_plazos",
+   "who": "Cámara Nacional Electoral",
+   "title": "La Justicia electoral advierte por los plazos",
+   "text": "La Cámara Nacional Electoral avisa que si la ley no sale antes de fin de año \"no hay tiempo material\" para reorganizar el cronograma de 2027.",
+   "options": [
+    {
+     "label": "Usarlo para apurar a los aliados",
+     "result": "La presión sirve: algunos dudosos se apuran a definirse.",
+     "e": {
+      "blocs": {
+       "dip:mid": 3,
+       "dip:pro": 3
+      }
+     }
+    },
+    {
+     "label": "Decir que los plazos alcanzan",
+     "result": "Los jueces te contestan con un comunicado.",
+     "e": {
+      "stats": {
+       "imagen": -2
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "pase_bloque",
+   "who": "Diputados",
+   "title": "Un diputado se cambia de bloque a mitad de semana",
+   "text": "Un diputado que contabas como propio anuncia que arma su monobloque \"para tener libertad de acción\". En el bloque nadie sabía nada.",
+   "options": [
+    {
+     "label": "Llamarlo y ofrecerle algo",
+     "result": "Vuelve a votar con vos, pero te cuesta.",
+     "e": {
+      "stats": {
+       "caja": -4
+      }
+     }
+    },
+    {
+     "label": "Dejarlo ir",
+     "result": "Un voto menos y una señal de debilidad.",
+     "e": {
+      "blocs": {
+       "dip:lla": -3
+      },
+      "stats": {
+       "imagen": -1
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "jubilados",
+   "who": "Congreso",
+   "title": "La marcha de jubilados termina con incidentes",
+   "text": "La marcha de los miércoles frente al Congreso termina con gases, detenidos y un jubilado herido. Las imágenes recorren el mundo.",
+   "options": [
+    {
+     "label": "Pedir una investigación y recibir a los jubilados",
+     "result": "Bajás la tensión. En Seguridad no les gustó.",
+     "e": {
+      "stats": {
+       "imagen": 3,
+       "interna": -4
+      }
+     }
+    },
+    {
+     "label": "Respaldar a las fuerzas de seguridad",
+     "result": "La oposición pide tu interpelación.",
+     "e": {
+      "stats": {
+       "imagen": -5,
+       "interna": 3
+      },
+      "blocs": {
+       "dip:ucr": -3,
+       "dip:cc": -3
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "temporal",
+   "who": "Clima",
+   "title": "Un temporal deja sin luz a medio AMBA",
+   "text": "Una tormenta histórica deja sin luz a millones de usuarios y se suspende la sesión informativa. Los legisladores del conurbano se van a sus distritos.",
+   "options": [
+    {
+     "label": "Ponerte al frente de la emergencia",
+     "result": "Te ven trabajando. La rosca puede esperar.",
+     "e": {
+      "stats": {
+       "imagen": 3,
+       "caja": -4
+      }
+     }
+    },
+    {
+     "label": "Seguir con la agenda legislativa",
+     "result": "Quedás como alguien que no entiende la urgencia.",
+     "e": {
+      "stats": {
+       "imagen": -4
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "asesor_fiesta",
+   "who": "Escándalo",
+   "title": "Un asesor tuyo aparece en el video de una fiesta",
+   "text": "Se viraliza un video de un asesor de la Jefatura de Gabinete bailando sobre una mesa en una fiesta, un martes a las 3 de la mañana.",
+   "options": [
+    {
+     "label": "Echarlo",
+     "result": "Muestra rápida de autoridad.",
+     "e": {
+      "stats": {
+       "imagen": 2,
+       "capital": -1
+      }
+     }
+    },
+    {
+     "label": "Defenderlo: \"es su vida privada\"",
+     "result": "Los memes duran una semana.",
+     "e": {
+      "stats": {
+       "imagen": -3
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "ascensor",
+   "who": "Filtración",
+   "title": "Te graban en un ascensor del Congreso",
+   "text": "Se filtra un audio tuyo en un ascensor del Congreso diciendo que un bloque provincial \"se vende por una ruta\". El audio llega a todos los grupos.",
+   "options": [
+    {
+     "label": "Pedir disculpas en público",
+     "result": "Te perdonan a medias.",
+     "e": {
+      "stats": {
+       "imagen": -2
+      },
+      "blocs": {
+       "dip:innov": -2
+      }
+     }
+    },
+    {
+     "label": "Decir que el audio está editado",
+     "result": "Nadie te cree. El bloque se enoja de verdad.",
+     "e": {
+      "stats": {
+       "imagen": -3
+      },
+      "blocs": {
+       "dip:innov": -6,
+       "sen:misiones": -4
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "fmi",
+   "who": "FMI",
+   "title": "El FMI elogia la eliminación de las PASO",
+   "text": "Una vocera del FMI dice que eliminar las PASO \"reduce el gasto y la incertidumbre electoral\". Los mercados festejan; el peronismo dice que \"el proyecto lo escribió el Fondo\".",
+   "options": [
+    {
+     "label": "Celebrar el respaldo",
+     "result": "Suben los bonos y baja tu imagen con el peronismo.",
+     "e": {
+      "stats": {
+       "capital": 3
+      },
+      "blocs": {
+       "dip:up": -4,
+       "sen:popular": -4
+      }
+     }
+    },
+    {
+     "label": "Tomar distancia: \"es una decisión argentina\"",
+     "result": "Equilibrio prudente.",
+     "e": {
+      "stats": {
+       "capital": 1
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "amparo",
+   "who": "Justicia federal",
+   "title": "Un amparo pide frenar el tratamiento",
+   "text": "Un juez federal recibe un amparo que pide frenar el tratamiento del proyecto \"por afectar derechos políticos\". Todavía no resolvió, pero el tema gana espacio.",
+   "options": [
+    {
+     "label": "Presentar un informe a la Justicia",
+     "result": "El juez rechaza el amparo en una semana.",
+     "e": {
+      "stats": {
+       "capital": -2
+      }
+     }
+    },
+    {
+     "label": "Decir que los jueces no legislan",
+     "result": "El juez se toma su tiempo.",
+     "e": {
+      "stats": {
+       "interna": 2,
+       "imagen": -2
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "caputo_recorte",
+   "who": "Ministerio de Economía",
+   "title": "Caputo anuncia un recorte de fondos a las provincias",
+   "text": "Luis Caputo anuncia un recorte de transferencias discrecionales a las provincias para cumplir la meta fiscal. Los gobernadores te llaman a vos.",
+   "options": [
+    {
+     "label": "Pedirle a Caputo una excepción para los aliados",
+     "result": "Caputo acepta a regañadientes.",
+     "e": {
+      "stats": {
+       "interna": -5,
+       "caja": 4
+      }
+     }
+    },
+    {
+     "label": "Defender el recorte",
+     "result": "Los gobernadores se enfrían.",
+     "e": {
+      "stats": {
+       "interna": 3
+      },
+      "blocs": {
+       "sen:salta": -4,
+       "sen:misiones": -4,
+       "sen:chubut": -4
+      }
+     }
+    }
+   ],
+   "role": "Ministro de Economía"
+  },
+  {
+   "id": "papa",
+   "who": "Vaticano",
+   "title": "El papa León XIV pide \"diálogo y consensos\"",
+   "text": "En un mensaje a la Argentina, el papa León XIV pide \"diálogo, consensos y respeto por la participación del pueblo\". Los obispos lo citan en todas las misas.",
+   "options": [
+    {
+     "label": "Agradecer el mensaje y convocar al diálogo",
+     "result": "Los dialoguistas valoran el gesto.",
+     "e": {
+      "stats": {
+       "capital": -1
+      },
+      "blocs": {
+       "dip:ucr": 3,
+       "dip:pu": 3
+      }
+     }
+    },
+    {
+     "label": "Decir que el proyecto amplía la participación",
+     "result": "Una lectura creativa del mensaje.",
+     "e": {
+      "stats": {
+       "imagen": -1
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "lali",
+   "who": "Farándula",
+   "title": "Una cantante pop critica al Gobierno en su recital",
+   "text": "En un estadio lleno, una de las cantantes más populares del país dedica una canción \"a los que quieren callar al pueblo\". Los fans entienden la indirecta.",
+   "options": [
+    {
+     "label": "No responder",
+     "result": "El tema se diluye en dos días.",
+     "e": {}
+    },
+    {
+     "label": "Responderle en redes",
+     "result": "La pelea es tendencia mundial y nadie habla de las PASO.",
+     "e": {
+      "stats": {
+       "imagen": -3,
+       "interna": 2
+      }
+     }
+    }
+   ],
+   "tag": "farandula"
+  },
+  {
+   "id": "influencer_ucr",
+   "who": "Redes",
+   "title": "Un influencer libertario ataca a tus aliados radicales",
+   "text": "Un influencer libertario con millones de seguidores llama \"traidores\" a los diputados radicales que acompañan el proyecto. Ellos te piden que lo desautorices.",
+   "options": [
+    {
+     "label": "Desautorizarlo en público",
+     "result": "Los radicales te lo agradecen; las redes libertarias, no.",
+     "e": {
+      "stats": {
+       "interna": -3
+      },
+      "blocs": {
+       "dip:ucr": 5
+      }
+     }
+    },
+    {
+     "label": "No meterte",
+     "result": "Dos radicales dicen que lo van a pensar.",
+     "e": {
+      "blocs": {
+       "dip:ucr": -5
+      }
+     }
+    }
+   ]
   }
  ]
 }
