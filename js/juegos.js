@@ -19,14 +19,6 @@
   const flag = (iso, cls) => (typeof flagOf === 'function' ? flagOf(iso, cls || '') : '');
   const ideoLabel = id => (typeof IDEOLOGIES !== 'undefined' && IDEOLOGIES[id] ? IDEOLOGIES[id].label : '');
   const SITE = 'https://atlaspoliticoelectoral.com/#juegos';
-  const shareRow = text => {
-    const enc = encodeURIComponent;
-    return `<div class="jg-share">
-      <a class="jg-btn" target="_blank" rel="noopener" href="https://wa.me/?text=${enc(text + '\n' + SITE)}">Compartir por WhatsApp</a>
-      <a class="jg-btn" target="_blank" rel="noopener" href="https://twitter.com/intent/tweet?text=${enc(text)}&url=${enc(SITE)}">En X</a>
-      <button type="button" class="jg-btn" data-copy="${esc(text + '\n' + SITE)}">Copiar</button>
-    </div>`;
-  };
   function wireCopy(el) {
     el.querySelectorAll('[data-copy]').forEach(b => b.addEventListener('click', async () => {
       try { await navigator.clipboard.writeText(b.getAttribute('data-copy')); b.textContent = '¡Copiado!'; } catch (e) { prompt('Copiá el texto:', b.getAttribute('data-copy')); }
@@ -79,18 +71,33 @@
     const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = name;
     document.body.appendChild(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(a.href), 4000);
   };
+  // WhatsApp and X links can't carry an image: on phones the buttons open the
+  // share sheet with the image attached; on computers they download the image
+  // and open WhatsApp Web / X with the text, so it only needs to be attached
   const shareBox = text => `<div class="jg-sharebox">
-      <div class="jg-share-h">Compartí tu resultado</div>
+      <div class="jg-share-h">Compartí tu resultado como imagen</div>
       <div class="jg-share">
-        <button type="button" class="jg-btn is-main" data-img="share">Compartir imagen</button>
+        <button type="button" class="jg-btn is-main is-wa" data-img="wa">WhatsApp</button>
+        <button type="button" class="jg-btn is-main" data-img="x">X</button>
+        <button type="button" class="jg-btn is-main" data-img="share">Instagram y otras apps</button>
+      </div>
+      <div class="jg-share">
         <button type="button" class="jg-btn" data-img="jpg">Descargar imagen</button>
         <button type="button" class="jg-btn" data-img="pdf">Descargar PDF</button>
+        <button type="button" class="jg-btn is-ghost" data-copy="${esc(text + '\n' + SITE)}">Copiar texto</button>
       </div>
-      ${shareRow(text)}
+      <div class="jg-share-note" hidden></div>
       <div class="jg-share-prev" hidden></div>
     </div>`;
+  const shareMini = () => `<div class="jg-share is-mini">
+      <button type="button" class="jg-btn" data-img="share">📸 Compartir esta jugada</button>
+      <button type="button" class="jg-btn is-ghost" data-img="jpg">Descargar imagen</button>
+      <button type="button" class="jg-btn is-ghost" data-img="pdf">PDF</button>
+    </div>`;
   // Wires the image/PDF buttons: the card is drawn once, on the first click
-  function wireShare(el, text, cardHTML, slug) {
+  const canShareFiles = () => { try { return !!(navigator.canShare && navigator.canShare({ files: [new File(['x'], 'x.jpg', { type: 'image/jpeg' })] })); } catch (e) { return false; } };
+  function wireShare(el, text, cardHTML, slug, opts) {
+    if (!el) return;
     let made = null;
     const make = () => made || (made = cardCanvas(cardHTML).then(async c => {
       const jpg = await toBlob(c, 'image/jpeg');
@@ -98,22 +105,40 @@
       if (prev) { prev.hidden = false; prev.innerHTML = `<img src="${URL.createObjectURL(jpg)}" alt="Tu resultado como imagen" width="216" height="270">`; }
       return { jpg, w: c.width, h: c.height };
     }).catch(e => { made = null; throw e; }));
+    // Draw the card right away for result screens, so sharing is instant (and
+    // the phone still counts the tap as the gesture that opens the share sheet)
+    if (opts && opts.eager) setTimeout(() => make().catch(() => {}), 400);
     const name = ext => `atlas-juegos-${slug}.${ext}`;
+    const note = t => { const n = el.querySelector('.jg-share-note'); if (n) { n.hidden = false; n.textContent = t; } };
+    const full = text + '\n' + SITE;
     el.querySelectorAll('[data-img]').forEach(b => b.addEventListener('click', async () => {
       const kind = b.getAttribute('data-img'), label = b.textContent;
       const done = t => { b.textContent = t; setTimeout(() => { b.textContent = label; b.disabled = false; }, 1800); };
+      const phone = canShareFiles();
+      // On computers the WhatsApp/X tab must open inside the click, before the image is drawn
+      const tab = !phone && (kind === 'wa' || kind === 'x') ? window.open('', '_blank') : null;
       b.textContent = 'Generando…'; b.disabled = true;
       try {
         const r = await make();
         if (kind === 'pdf') { download(await jpegToPdf(r.jpg, r.w, r.h), name('pdf')); return done('¡PDF listo!'); }
         const file = new File([r.jpg], name('jpg'), { type: 'image/jpeg' });
-        if (kind === 'share' && navigator.canShare && navigator.canShare({ files: [file] })) {
-          try { await navigator.share({ files: [file], text: text + '\n' + SITE }); return done('¡Compartido!'); }
+        if ((kind === 'share' || kind === 'wa' || kind === 'x') && phone) {
+          // Many apps drop the text that travels with an image: copy it too
+          try { await navigator.clipboard.writeText(full); } catch (e) {}
+          try { await navigator.share({ files: [file], text: full }); return done('¡Listo!'); }
           catch (e) { if (e && e.name === 'AbortError') return done(label); }
         }
         download(r.jpg, name('jpg'));
+        if (kind === 'wa' || kind === 'x') {
+          try { await navigator.clipboard.writeText(full); } catch (e) {}
+          const url = kind === 'wa' ? `https://web.whatsapp.com/send?text=${encodeURIComponent(full)}` : `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(SITE)}`;
+          if (tab) tab.location.href = url; else window.open(url, '_blank');
+          note(`La imagen se descargó (${name('jpg')}): adjuntala en ${kind === 'wa' ? 'WhatsApp' : 'X'} con el clip 📎 o arrastrándola. El texto ya está escrito.`);
+          return done('Imagen descargada');
+        }
+        if (kind === 'share') note('Tu navegador no permite compartir imágenes directo: la descargamos para que la subas donde quieras.');
         done(kind === 'share' ? 'Imagen descargada' : '¡Imagen lista!');
-      } catch (e) { done('No se pudo generar'); }
+      } catch (e) { if (tab) tab.close(); done('No se pudo generar'); }
     }));
   }
 
@@ -143,7 +168,7 @@
           <button type="button" class="jg-card is-trivia" data-go="trivia">
             <span class="jg-card-ico">❓</span>
             <b>¿Quién gobierna?</b>
-            <span>Diez preguntas sobre presidentes, primeros ministros y sistemas de gobierno de todo el mundo.</span>
+            <span>Diez preguntas sobre líderes, sistemas electorales, economía y elecciones de todo el mundo, con los datos del Atlas.</span>
             <em>Trivia · 10 preguntas</em>
           </button>
         </div>
@@ -262,10 +287,25 @@
               </div></div>
           </div>
           ${shareBox(text)}
+          <details class="jg-decs"><summary>Tus ${st.seq.length} decisiones: compartí la que quieras como imagen</summary><ol>
+            ${st.seq.map((it, i) => `<li data-dec="${i}"${it.flash ? ' class="is-flash"' : ''}><div><span>${it.flash ? '⚡ ' : ''}${esc(it.Q.q.replace(/^Último momento:\s*/, ''))}</span><b>${esc(it.Q.options[st.ans[i]].t)}</b></div><button type="button" class="jg-btn" data-img="share">📸 Compartir</button></li>`).join('')}
+          </ol></details>
           <button type="button" class="jg-btn" data-again>Jugar de nuevo</button>
           <p class="jg-note">${esc(D.note)}</p>
         </div></section>`;
-      wireBack(root); wireCopy(root); wireShare(root, text, card, 'pais');
+      wireBack(root); wireCopy(root);
+      root.querySelectorAll('[data-dec]').forEach(li => {
+        const i = +li.getAttribute('data-dec'), it = st.seq[i], q = it.Q.q.replace(/^Último momento:\s*(.)/, (m, c) => c.toUpperCase()), ch = it.Q.options[st.ans[i]].t;
+        const num = st.seq.slice(0, i + 1).filter(x => !x.flash).length;
+        const dcard = cardShell('¿Qué país gobernarías?', it.flash ? '#D62839' : '#1F7A5A', `
+          <div class="jgx-kicker">${it.flash ? '⚡ Último momento' : `Decisión ${num} de ${st.seq.filter(x => !x.flash).length}`}</div>
+          <div class="jgx-title is-md${q.length > 70 ? ' is-sm' : ''}">${esc(q)}</div>
+          <div class="jgx-choice"><span>Yo hice esto</span><b>${esc(ch)}</b></div>
+          <div class="jgx-also"><span>Con todas mis decisiones gobernaría como</span><b>${flag(top.iso)} ${esc(C.name)} · ${top.sim}%</b></div>`);
+        wireShare(li, `En "¿Qué país gobernarías?" del Atlas: ${q} → ${ch}. ¿Vos qué harías?`, dcard, 'pais-decision-' + (i + 1));
+      });
+      // the main share box is wired after the per-decision buttons, scoped to it
+      wireShare(root.querySelector('.jg-sharebox'), text, card, 'pais', { eager: true });
       root.querySelector('[data-again]').addEventListener('click', start);
       const f = root.querySelector('[data-ficha]'); if (f) f.addEventListener('click', () => window.__fichaFull && window.__fichaFull(f.getAttribute('data-ficha')));
     }
@@ -361,13 +401,24 @@
       wireBack(root);
       root.querySelectorAll('[data-k]').forEach(b => b.addEventListener('click', () => {
         const o = d.options[+b.getAttribute('data-k')]; apply(o.e); S.log.push({ t: 'Proyecto', r: o.label });
-        outcome('El proyecto entra al Congreso', o.result, () => nextTurn(true));
+        outcome('El proyecto entra al Congreso', o.result, () => nextTurn(true), { who: 'Javier Milei · Presidente', title: 'Cómo eliminar las PASO', choice: o.label, result: o.result });
       }));
     }
-    function outcome(title, text, then) {
+    // Every move can be shared as its own card: the situation, what you chose and what happened
+    function moveCard(m) {
+      return cardShell('La rosca: PASO o no PASO', m.flash ? '#D62839' : '#6C3FB8', `
+        <div class="jgx-kicker">Semana ${Math.min(S.turn + 1, S.maxTurns)} · ${m.flash ? '⚡ Último momento' : esc(m.who || 'Jefatura de Gabinete')}</div>
+        <div class="jgx-title is-md${m.title.length > 48 ? ' is-sm' : ''}">${esc(m.title)}</div>
+        ${m.text ? `<div class="jgx-text is-sm">${esc(m.text)}</div>` : ''}
+        <div class="jgx-choice"><span>La decisión</span><b>${esc(m.choice)}</b></div>
+        ${m.result ? `<div class="jgx-text is-sm"><i>${esc(m.result)}</i></div>` : ''}
+        <div class="jgx-stats is-sm">${STATS.map(k => `<div class="jgx-stat"><span>${esc(D.stats[k].label)}</span><div class="jgx-stat-t"><i style="width:${stat(k)}%"></i></div><b>${stat(k)}</b></div>`).join('')}</div>`);
+    }
+    function outcome(title, text, then, move) {
       const over = checkOver();
-      root.innerHTML = frame(`<div class="rs-card is-outcome"><h3>${esc(title)}</h3><p>${esc(text)}</p><button type="button" class="jg-btn is-main" data-next>${over ? 'Ver el final' : 'Seguir'}</button></div>`);
+      root.innerHTML = frame(`<div class="rs-card is-outcome"><h3>${esc(title)}</h3><p>${esc(text)}</p>${move ? shareMini() : ''}<button type="button" class="jg-btn is-main" data-next>${over ? 'Ver el final' : 'Seguir'}</button></div>`);
       wireBack(root);
+      if (move) wireShare(root, `En "La rosca" del Atlas: ${move.title} → ${move.choice}. ¿Vos qué hacías?`, moveCard(move), 'rosca-jugada');
       root.querySelector('[data-next]').addEventListener('click', () => over ? ending(over) : then());
     }
     function checkOver() {
@@ -390,10 +441,10 @@
       S.queue = due.slice(0, 2).concat(due.length < 2 ? rand.slice(0, 1) : []);
       // "Último momento": something unexpected, in the middle of the week's events
       const fl = (D.flashes || []).filter(f => !S.seen['f:' + f.id]);
-      if (!first && fl.length && Math.random() < 0.55) S.queue.splice(Math.min(1, S.queue.length), 0, Object.assign({ flash: true }, fl[Math.floor(Math.random() * fl.length)]));
+      if (!first && fl.length && Math.random() < 0.6) S.queue.splice(Math.min(1, S.queue.length), 0, Object.assign({ flash: true }, fl[Math.floor(Math.random() * fl.length)]));
       showEvent();
     }
-    const FLASH = { capital: -4, imagen: -1, gain: 0.6 };
+    const FLASH = { capital: -5, imagen: -2, gain: 0.6 };
     function flashCost(e) {
       const out = { stats: Object.assign({}, e.stats || {}), blocs: {} };
       Object.entries(out.stats).forEach(([k, v]) => { if (v > 0) out.stats[k] = Math.round(v * FLASH.gain); });
@@ -414,7 +465,8 @@
         // Unexpected events are real problems: whatever you choose, they cost
         // political capital, and the goodwill they buy is worth less
         apply(ev.flash ? flashCost(o.e) : o.e); S.log.push({ t: ev.title, r: o.label, flash: !!ev.flash });
-        outcome(o.label, (o.result || '') + (ev.flash ? ' Igual, apagar el incendio te costó capital político.' : ''), showEvent);
+        const res = (o.result || '') + (ev.flash ? ' Igual, apagar el incendio te costó capital político.' : '');
+        outcome(o.label, res, showEvent, { flash: ev.flash, who: ev.who + (ev.role ? ' · ' + ev.role : ''), title: ev.title, text: ev.text, choice: o.label, result: res });
       }));
     }
     function actions() {
@@ -440,13 +492,14 @@
         const e = { stats: { caja: -cost, capital: -3 }, blocs: {} };
         g.blocs.forEach(k => { e.blocs[k] = gain; });
         apply(e); S.govUsed[g.id] = used + 1; S.log.push({ t: 'Negociación', r: g.name });
-        outcome(`Reunión con ${g.name}`, `${g.name} se lleva lo suyo para ${g.prov}. Sus legisladores se acercan al proyecto (+${gain}).`, () => nextTurn());
+        const res = `${g.name} se lleva lo suyo para ${g.prov}. Sus legisladores se acercan al proyecto (+${gain}).`;
+        outcome(`Reunión con ${g.name}`, res, () => nextTurn(), { who: g.name + ' · ' + g.prov, title: `Rosca con ${g.name}`, text: g.pitch, choice: `Negociar (${cost} de caja)`, result: res });
       }));
       root.querySelectorAll('[data-act]').forEach(b => b.addEventListener('click', () => {
         const a = b.getAttribute('data-act');
         if (a === 'pass') return nextTurn();
-        if (a === 'media') { apply({ stats: { imagen: 7, capital: -4 } }); return outcome('Gira de medios', 'Pasaste por cuatro canales y dos streams. Instalaste que las PASO son "una encuesta carísima".', () => nextTurn()); }
-        if (a === 'cede') { apply({ stats: { interna: -6 }, blocs: { 'dip:ucr': 12, 'sen:ucr': 12, 'dip:pu': 10, 'sen:pu': 10, 'dip:cc': 8 } }); return outcome('Cambios en el texto', 'Aceptaste plazos más largos y una cláusula de revisión. Los dialoguistas lo valoran; en la Casa Rosada, no tanto.', () => nextTurn()); }
+        if (a === 'media') { apply({ stats: { imagen: 7, capital: -4 } }); const res = 'Pasaste por cuatro canales y dos streams. Instalaste que las PASO son "una encuesta carísima".'; return outcome('Gira de medios', res, () => nextTurn(), { title: 'Gira de medios', choice: 'Ir a los medios', result: res }); }
+        if (a === 'cede') { apply({ stats: { interna: -6 }, blocs: { 'dip:ucr': 12, 'sen:ucr': 12, 'dip:pu': 10, 'sen:pu': 10, 'dip:cc': 8 } }); const res = 'Aceptaste plazos más largos y una cláusula de revisión. Los dialoguistas lo valoran; en la Casa Rosada, no tanto.'; return outcome('Cambios en el texto', res, () => nextTurn(), { title: 'Cambios en el texto', choice: 'Ceder en el texto', result: res }); }
         if (a === 'vote') return session(ch);
       }));
     }
@@ -460,8 +513,14 @@
       root.innerHTML = frame(`<div class="rs-card is-vote"><span class="rs-who">${ch === 'dip' ? 'Sesión especial en Diputados' : 'Sesión en el Senado'}</span><h3>${esc(title)}</h3><p>${esc(text)}</p>
         <div class="rs-tally"><div class="rs-tally-big"><b class="is-yes">${r.yes}</b><span>a favor</span><b>/ ${r.need}</b><span>necesarios</span></div>
           <div class="rs-vrows"><div class="rs-vrow is-head"><i></i><span>Bloque</span><b>Sí</b><b>No / ausentes</b></div>${rows}</div></div>
-        <button type="button" class="jg-btn is-main" data-next>${S.over ? 'Ver el final' : 'Seguir'}</button></div>`);
+        ${shareMini()}<button type="button" class="jg-btn is-main" data-next>${S.over ? 'Ver el final' : 'Seguir'}</button></div>`);
       wireBack(root);
+      const vcard = cardShell('La rosca: PASO o no PASO', r.pass ? '#1F7A5A' : '#D62839', `
+        <div class="jgx-kicker">Semana ${Math.min(S.turn + 1, S.maxTurns)} · ${ch === 'dip' ? 'Sesión especial en Diputados' : 'Sesión en el Senado'}</div>
+        <div class="jgx-title is-md">${esc(title)}</div>
+        <div class="jgx-huge is-md"><b>${r.yes}</b><span>/ ${r.need} votos</span></div>
+        <div class="jgx-vrows">${r.rows.filter(x => x.b.seats > 0).slice(0, 9).map(x => `<div><i style="background:${x.b.color || '#888'}"></i><span>${esc(x.b.name)}</span><b>${x.yes} de ${x.b.seats}</b></div>`).join('')}</div>`);
+      wireShare(root, `En "La rosca" del Atlas: ${title} (${r.yes} votos de ${r.need} necesarios). ¿Te animás?`, vcard, 'rosca-sesion');
       root.querySelector('[data-next]').addEventListener('click', () => S.over ? ending(S.over) : (checkOver() ? ending(S.over) : nextTurn()));
     }
     function ending(kind) {
@@ -487,7 +546,7 @@
           <button type="button" class="jg-btn is-main" data-again>Volver a jugar</button>
           <p class="jg-note">${esc(D.disclaimer)}</p>
         </div></section>`;
-      wireBack(root); wireCopy(root); wireShare(root, text, card, 'rosca');
+      wireBack(root); wireCopy(root); wireShare(root.querySelector('.jg-sharebox'), text, card, 'rosca', { eager: true });
       root.querySelector('[data-again]').addEventListener('click', start);
     }
     return { start };
@@ -498,33 +557,112 @@
     let st = null;
     const pool = () => countries().filter(c => c.leader && c.leader.name && c.ideology && typeof ISO3_TO_ISO2 !== 'undefined' && ISO3_TO_ISO2[c.iso]);
     const BIG = ['ARG', 'BRA', 'CHL', 'URY', 'PRY', 'BOL', 'PER', 'COL', 'MEX', 'USA', 'CAN', 'ESP', 'FRA', 'DEU', 'ITA', 'GBR', 'PRT', 'JPN', 'CHN', 'IND', 'RUS', 'UKR', 'ISR', 'TUR', 'ZAF', 'AUS', 'KOR', 'SLV', 'ECU', 'VEN', 'CUB', 'POL', 'HUN', 'NLD', 'SWE', 'IRN', 'SAU', 'EGY', 'NGA', 'IDN'];
-    function makeQ(c, all) {
-      const kind = Math.random();
-      // Wrong answers from the same region first, so the right one doesn't stand out
-      const others = shuffle(all.filter(x => x.iso !== c.iso && x.region === c.region)).concat(shuffle(all.filter(x => x.iso !== c.iso && x.region !== c.region)));
-      if (kind < 0.5) {
-        const opts = shuffle([c, ...others.slice(0, 3)]);
-        return { q: `¿Quién gobierna ${c.name}?`, flagIso: c.iso, opts: opts.map(o => o.leader.name), ok: c.leader.name, info: `${c.leader.title || 'Gobierno'}: ${c.leader.name}${c.leader.party ? ` (${c.leader.party})` : ''}.` };
+    const nf = (v, d = 1) => Number(v).toLocaleString('es-AR', { minimumFractionDigits: d, maximumFractionDigits: d });
+    const pct = (v, d = 1) => nf(v, d) + '%';
+    const signed = v => (v > 0 ? '+' : '') + pct(v);
+    const lastGdp = c => { const g = c.economy && c.economy.gdpGrowth; return g && g.length ? g[g.length - 1] : null; };
+    const num = v => typeof v === 'number' && isFinite(v);
+    // The base writes systems and electoral methods in many ways: group them
+    const sysCat = s => { s = String(s || '').toLowerCase();
+      if (/junta|transici|consejo presidencial/.test(s)) return 'Gobierno militar o de transición';
+      if (/partido único/.test(s)) return 'Estado de partido único';
+      if (/monarqu/.test(s)) return /absoluta/.test(s) ? 'Monarquía absoluta' : 'Monarquía parlamentaria o constitucional';
+      if (/autoritaria|teocr/.test(s)) return null;
+      if (/semipresidencial/.test(s)) return 'República semipresidencial';
+      if (/presidencial/.test(s)) return 'República presidencial';
+      if (/parlamentaria/.test(s)) return 'República parlamentaria';
+      return null; };
+    const SYS = ['República presidencial', 'República parlamentaria', 'República semipresidencial', 'Monarquía parlamentaria o constitucional', 'Monarquía absoluta', 'Estado de partido único'];
+    const methCat = s => { s = String(s || '').toLowerCase();
+      if (/controlad|lista única|designad|suspendid|sin partidos/.test(s)) return null;
+      if (/mixto/.test(s)) return 'Sistema mixto (distritos + listas proporcionales)';
+      if (/2 vueltas|dos vueltas|doble vuelta/.test(s)) return 'Mayoría a dos vueltas en distritos uninominales';
+      if (/proporcional|d'hondt|preferencial/.test(s)) return 'Representación proporcional por listas';
+      if (/mayor|uninominal|fptp/.test(s)) return 'Mayoría simple en distritos uninominales';
+      return null; };
+    const METH = ['Representación proporcional por listas', 'Sistema mixto (distritos + listas proporcionales)', 'Mayoría simple en distritos uninominales', 'Mayoría a dos vueltas en distritos uninominales'];
+    // Numeric answers: three distractors at least `gap` apart from each other and from the right one
+    function numOpts(v, gap, fmt, lo = -Infinity, hi = Infinity) {
+      const out = [v]; let tries = 0;
+      while (out.length < 4 && tries++ < 200) {
+        const cand = Math.round((v + (Math.random() < 0.5 ? -1 : 1) * gap * (1 + Math.random() * 3)) * 10) / 10;
+        if (cand < lo || cand > hi) continue;
+        if (out.every(x => Math.abs(x - cand) >= gap * 0.9)) out.push(cand);
       }
-      if (kind < 0.8) {
-        const opts = shuffle([c, ...others.slice(0, 3)]);
-        return { q: `${c.leader.name} gobierna…`, opts: opts.map(o => o.name), optIso: opts.map(o => o.iso), ok: c.name, info: `${c.leader.name} es ${String(c.leader.title || 'jefe de gobierno').toLowerCase()} de ${c.name}.` };
+      if (out.length < 4) return null;
+      return { opts: shuffle(out).map(fmt), ok: fmt(v) };
+    }
+    // Four countries of the same region (if possible) that all have the figure
+    function group(c, all, has) {
+      const same = shuffle(all.filter(x => x.iso !== c.iso && x.region === c.region && has(x)));
+      const rest = shuffle(all.filter(x => x.iso !== c.iso && x.region !== c.region && has(x)));
+      return has(c) ? [c, ...same.concat(rest).slice(0, 3)] : null;
+    }
+    const compare = (c, all, has, val, best, q, unit, why) => {
+      const g = group(c, all, has); if (!g) return null;
+      const vals = g.map(val); if (new Set(vals.map(v => v.toFixed(1))).size < 4) return null;
+      const win = g[vals.indexOf(best === 'max' ? Math.max(...vals) : Math.min(...vals))];
+      const opts = shuffle(g);
+      return { q, opts: opts.map(o => o.name), optIso: opts.map(o => o.iso), ok: win.name,
+        info: `${why}: ${g.slice().sort((a, b) => best === 'max' ? val(b) - val(a) : val(a) - val(b)).map(o => `${o.name} ${unit(val(o))}`).join(' · ')}.` };
+    };
+    const ideos = ['far-left', 'left', 'center-left', 'center', 'center-right', 'right', 'far-right', 'authoritarian', 'dictatorship'];
+    const others = (c, all) => shuffle(all.filter(x => x.iso !== c.iso && x.region === c.region)).concat(shuffle(all.filter(x => x.iso !== c.iso && x.region !== c.region)));
+    const KINDS = {
+      lideres: [
+        (c, all) => { const opts = shuffle([c, ...others(c, all).slice(0, 3)]); return { q: `¿Quién gobierna ${c.name}?`, flagIso: c.iso, opts: opts.map(o => o.leader.name), ok: c.leader.name, info: `${c.leader.title || 'Gobierno'}: ${c.leader.name}${c.leader.party ? ` (${c.leader.party})` : ''}.` }; },
+        (c, all) => { const opts = shuffle([c, ...others(c, all).slice(0, 3)]); return { q: `${c.leader.name} gobierna…`, opts: opts.map(o => o.name), optIso: opts.map(o => o.iso), ok: c.name, info: `${c.leader.name} es ${String(c.leader.title || 'jefe de gobierno').toLowerCase()} de ${c.name}.` }; },
+        (c) => { if (!c.ideology) return null; const wrong = shuffle(ideos.filter(i => i !== c.ideology)).slice(0, 3); return { q: `¿Cómo clasifica el Atlas al gobierno de ${c.leader.name} (${c.name})?`, flagIso: c.iso, opts: shuffle([c.ideology, ...wrong]).map(ideoLabel), ok: ideoLabel(c.ideology), info: `El Atlas lo ubica como ${ideoLabel(c.ideology).toLowerCase()}.` }; },
+        (c) => { const y = +String(c.leader.since || '').slice(0, 4); if (!y || y < 1950) return null; const r = numOpts(y, 2, v => String(Math.round(v)), 1960, new Date().getFullYear()); if (!r) return null; return { q: `¿Desde qué año gobierna ${c.leader.name} en ${c.name}?`, flagIso: c.iso, ...r, info: `${c.leader.name} está en el cargo desde ${y}.` }; },
+        (c, all) => { const women = all.filter(x => x.leader.gender === 'F'); if (!women.length) return null; const w = women[Math.floor(Math.random() * women.length)]; const men = shuffle(all.filter(x => x.leader.gender === 'M' && x.region === w.region)).concat(shuffle(all.filter(x => x.leader.gender === 'M'))).filter((x, i, a) => a.indexOf(x) === i).slice(0, 3); const opts = shuffle([w, ...men]); return { q: '¿Cuál de estos países tiene a una mujer al frente del gobierno?', opts: opts.map(o => o.name), optIso: opts.map(o => o.iso), ok: w.name, info: `${w.leader.name} es ${String(w.leader.title || '').toLowerCase()} de ${w.name}.` }; }
+      ],
+      sistemas: [
+        (c) => { const s = sysCat(c.system); if (!s) return null; const opts = shuffle([s, ...shuffle(SYS.filter(x => x !== s)).slice(0, 3)]); return { q: `¿Qué sistema de gobierno tiene ${c.name}?`, flagIso: c.iso, opts, ok: s, info: `${c.name}: ${c.system}.` }; },
+        (c) => { const m = methCat(c.legislature && c.legislature.lower && c.legislature.lower.method); if (!m) return null; return { q: `¿Cómo se eligen los diputados (cámara baja) en ${c.name}?`, flagIso: c.iso, opts: shuffle(METH.slice()), ok: m, info: `${c.legislature.lower.name}: ${c.legislature.lower.method}, ${c.legislature.lower.seats} bancas.` }; },
+        (c) => { const t = String(c.legislature && c.legislature.type || ''); const k = /^unicameral/i.test(t) ? 'Una sola cámara' : /^bicameral/i.test(t) ? 'Dos cámaras' : null; if (!k) return null; return { q: `¿El parlamento de ${c.name} tiene una o dos cámaras?`, flagIso: c.iso, opts: ['Una sola cámara', 'Dos cámaras'], ok: k, info: `${c.name}: ${t}.` }; },
+        (c) => { const n = c.legislature && c.legislature.lower && c.legislature.lower.seats; if (!num(n) || n < 20) return null; const gap = Math.max(10, Math.round(n * 0.15)); const r = numOpts(n, gap, v => String(Math.round(v)), 10); if (!r) return null; return { q: `¿Cuántas bancas tiene la cámara baja de ${c.name} (${c.legislature.lower.name})?`, flagIso: c.iso, ...r, info: `${c.legislature.lower.name}: ${n} bancas, mandatos de ${c.legislature.lower.term || '—'}.` }; }
+      ],
+      economia: [
+        (c) => { const g = lastGdp(c); if (!g || !num(g.pct)) return null; const r = numOpts(g.pct, 1.5, signed, -15, 20); if (!r) return null; return { q: `¿Cuánto creció (o cayó) la economía de ${c.name} en ${g.year}?`, flagIso: c.iso, ...r, info: `PBI de ${c.name} en ${g.year}: ${signed(g.pct)}.` }; },
+        (c, all) => compare(c, all, x => lastGdp(x) && num(lastGdp(x).pct), x => lastGdp(x).pct, 'max', `¿Cuál de estos países creció más en ${(lastGdp(c) || {}).year || 'el último año'}?`, signed, 'Crecimiento del PBI'),
+        (c) => { const p = c.economy && c.economy.povertyRate; if (!num(p)) return null; const r = numOpts(p, 6, v => pct(v, 0), 0, 95); if (!r) return null; return { q: `¿Qué porcentaje de la población de ${c.name} es pobre según la medición oficial más reciente?`, flagIso: c.iso, ...r, info: `Pobreza en ${c.name}: ${pct(p, 1)} (${c.economy.povertyYear}). Cada país la mide distinto.` }; },
+        (c, all) => compare(c, all, x => num(x.economy && x.economy.hdi), x => x.economy.hdi, 'max', '¿Cuál de estos países tiene el Índice de Desarrollo Humano más alto?', v => nf(v, 3), 'IDH'),
+        (c, all) => compare(c, all, x => num(x.economy && x.economy.gini), x => x.economy.gini, 'max', '¿Cuál de estos países es más desigual (índice de Gini más alto)?', v => nf(v, 1), 'Gini'),
+        (c, all) => compare(c, all, x => num(x.economy && x.economy.publicDebt), x => x.economy.publicDebt, 'max', '¿Cuál de estos países tiene más deuda pública en relación con su PBI?', v => pct(v, 0), 'Deuda pública (% del PBI)'),
+        (c, all) => compare(c, all, x => num(x.economy && x.economy.taxBurden), x => x.economy.taxBurden, 'max', '¿En cuál de estos países se pagan más impuestos (presión fiscal)?', v => pct(v, 0), 'Presión fiscal (% del PBI)'),
+        (c, all) => compare(c, all, x => num(x.economy && x.economy.pressFreedom), x => x.economy.pressFreedom, 'max', '¿Cuál de estos países tiene más libertad de prensa?', v => nf(v, 1), 'Índice de RSF')
+      ],
+      elecciones: [
+        (c) => { const t = c.lastElection && c.lastElection.turnout; if (!num(t) || t < 15) return null; const r = numOpts(t, 8, v => pct(v, 0), 10, 99); if (!r) return null; return { q: `¿Qué participación tuvo la última elección de ${c.name} (${c.lastElection.year})?`, flagIso: c.iso, ...r, info: `${c.lastElection.type} (${c.lastElection.year}): votó el ${pct(t)} del padrón.` }; },
+        (c) => { const y = c.nextElection && +c.nextElection.year; const now = new Date().getFullYear(); if (!y || y < now) return null; const opts = shuffle([y, ...shuffle([y - 1, y + 1, y + 2, y + 3].filter(v => v >= now)).slice(0, 3)]); if (opts.length < 3) return null; return { q: `¿En qué año es la próxima elección nacional en ${c.name}?`, flagIso: c.iso, opts: opts.map(String), ok: String(y), info: `${c.nextElection.type}.` }; },
+        (c) => { const r0 = c.lastElection && c.lastElection.results; if (!r0 || r0.length < 2) return null; const top = r0.slice().sort((a, b) => b.pct - a.pct); const opts = shuffle(top.slice(0, 4).map(x => x.party)); if (opts.length < 3) return null; return { q: `¿Quién ganó la última elección en ${c.name} (${c.lastElection.year})?`, flagIso: c.iso, opts, ok: top[0].party, info: `${top.slice(0, 3).map(x => `${x.party} ${pct(x.pct)}`).join(' · ')}.` }; }
+      ]
+    };
+    const CAT_LABEL = { lideres: 'Líderes', sistemas: 'Sistemas políticos', economia: 'Economía', elecciones: 'Elecciones' };
+    // 10 questions: 3 on leaders, 2 on systems, 3 on the economy, 2 on elections
+    const PLAN = ['lideres', 'lideres', 'lideres', 'sistemas', 'sistemas', 'economia', 'economia', 'economia', 'elecciones', 'elecciones'];
+    function makeQ(cat, all, used) {
+      for (let t = 0; t < 40; t++) {
+        const big = all.filter(c => BIG.includes(c.iso) && !used.has(c.iso));
+        const src = Math.random() < 0.7 && big.length ? big : all.filter(c => !used.has(c.iso));
+        const c = src[Math.floor(Math.random() * src.length)];
+        const fns = KINDS[cat], fn = fns[Math.floor(Math.random() * fns.length)];
+        let Q = null; try { Q = fn(c, all); } catch (e) { Q = null; }
+        if (Q && Q.opts && Q.opts.includes(Q.ok) && new Set(Q.opts).size === Q.opts.length) { used.add(c.iso); Q.cat = CAT_LABEL[cat]; return Q; }
       }
-      const ideos = ['far-left', 'left', 'center-left', 'center', 'center-right', 'right', 'far-right', 'authoritarian', 'dictatorship'];
-      const wrong = shuffle(ideos.filter(i => i !== c.ideology)).slice(0, 3);
-      return { q: `¿Cómo clasifica el Atlas al gobierno de ${c.leader.name} (${c.name})?`, flagIso: c.iso, opts: shuffle([c.ideology, ...wrong]).map(ideoLabel), ok: ideoLabel(c.ideology), info: `El Atlas lo ubica como ${ideoLabel(c.ideology).toLowerCase()}.` };
+      return null;
     }
     function start() {
       const all = pool();
-      const picks = shuffle(all.filter(c => BIG.includes(c.iso))).slice(0, 7).concat(shuffle(all.filter(c => !BIG.includes(c.iso))).slice(0, 3));
-      st = { qs: shuffle(picks).map(c => makeQ(c, all)), i: 0, ok: 0, answered: false, res: [] };
+      const used = new Set();
+      st = { qs: shuffle(PLAN).map(cat => makeQ(cat, all, used)).filter(Boolean), i: 0, ok: 0, answered: false, res: [] };
       q();
     }
     function q() {
       const Q = st.qs[st.i], n = st.qs.length;
       root.innerHTML = `<section class="jg-game is-trivia">${backBtn()}
         <div class="jg-progress"><span style="width:${st.i / n * 100}%"></span></div>
-        <div class="jg-qnum">Pregunta ${st.i + 1} de ${n} · ${st.ok} correctas</div>
+        <div class="jg-qnum">Pregunta ${st.i + 1} de ${n} · ${st.ok} correctas${Q.cat ? ` · <span class="tv-cat">${esc(Q.cat)}</span>` : ''}</div>
         ${Q.flagIso ? `<div class="tv-flag">${flag(Q.flagIso, 'fi-lg')}</div>` : ''}
         <h3 class="jg-q">${esc(Q.q)}</h3>
         <div class="jg-opts is-grid">${Q.opts.map((o, k) => `<button type="button" class="jg-opt" data-k="${k}">${Q.optIso ? flag(Q.optIso[k]) + ' ' : ''}${esc(o)}</button>`).join('')}</div>
@@ -545,16 +683,16 @@
       const verdict = ok >= 9 ? 'Nivel canciller' : ok >= 7 ? 'Analista internacional' : ok >= 5 ? 'Lector de diarios' : ok >= 3 ? 'Turista político' : 'Recién llegado';
       const text = `Saqué ${ok} de ${n} en "¿Quién gobierna?" del Atlas Político Mundial: ${verdict}. ¿Cuántas sacás vos?`;
       const card = cardShell('¿Quién gobierna?', '#D9822B', `
-        <div class="jgx-kicker">Trivia de líderes del mundo</div>
+        <div class="jgx-kicker">Trivia del Atlas · líderes, sistemas, economía y elecciones</div>
         <div class="jgx-huge"><b>${ok}</b><span>/ ${n}</span></div>
         <div class="jgx-title is-md">${esc(verdict)}</div>
         <div class="jgx-dots">${st.res.map(r => `<i class="${r ? 'is-ok' : 'is-bad'}">${r ? '✓' : '✗'}</i>`).join('')}</div>
-        <div class="jgx-text">Diez preguntas sobre presidentes, primeros ministros y gobiernos de todo el mundo, con la base del Atlas.</div>`);
+        <div class="jgx-text">Líderes, sistemas electorales, economía y elecciones de 197 países, con los datos del Atlas.</div>`);
       root.innerHTML = `<section class="jg-game is-trivia">${backBtn()}
         <div class="jg-result"><span class="jg-kicker">Resultado</span><h2>${ok} de ${n}: <em>${esc(verdict)}</em></h2>
           <p>Las respuestas salen de la base del Atlas, que se actualiza con cada elección.</p>
           ${shareBox(text)}<button type="button" class="jg-btn is-main" data-again>Otra ronda</button></div></section>`;
-      wireBack(root); wireCopy(root); wireShare(root, text, card, 'trivia');
+      wireBack(root); wireCopy(root); wireShare(root.querySelector('.jg-sharebox'), text, card, 'trivia', { eager: true });
       root.querySelector('[data-again]').addEventListener('click', start);
     }
     return { start };

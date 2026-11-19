@@ -6303,6 +6303,34 @@
   .jgx-dots i { width: 70px; height: 70px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font: 800 34px var(--font-sans); font-style: normal; color: #fff; }
   .jgx-dots i.is-ok { background: #1F7A5A; }
   .jgx-dots i.is-bad { background: #C8C1B5; }
+  .jgx-title.is-md.is-sm { font-size: 60px; }
+  .jgx-text.is-sm { font-size: 28px; line-height: 1.38; }
+  .jgx-choice { display: flex; flex-direction: column; gap: 6px; padding: 22px 26px; background: #fff; border-left: 10px solid var(--jgx); border-radius: 6px; box-shadow: 0 6px 20px rgba(0,0,0,.06); }
+  .jgx-choice span { font: 800 20px var(--font-sans); text-transform: uppercase; letter-spacing: .12em; color: var(--jgx); }
+  .jgx-choice b { font: 800 40px/1.15 var(--font-serif); color: #141821; }
+  .jgx-stats.is-sm { gap: 8px; }
+  .jgx-stats.is-sm .jgx-stat { font-size: 22px; }
+  .jgx-stats.is-sm .jgx-stat-t { height: 12px; }
+  .jgx-huge.is-md b { font-size: 200px; }
+  .jgx-huge.is-md span { font-size: 56px; }
+  .jgx-vrows { display: grid; gap: 8px; }
+  .jgx-vrows div { display: grid; grid-template-columns: 22px 1fr auto; gap: 14px; align-items: center; font: 600 26px var(--font-sans); }
+  .jgx-vrows i { width: 22px; height: 22px; border-radius: 4px; }
+  .jg-decs { margin: 6px 0 16px; border: 1px solid var(--line); border-radius: 14px; background: var(--surface); }
+  .jg-decs summary { cursor: pointer; padding: 14px 18px; font: 700 15px var(--font-sans); color: var(--ink); }
+  .jg-decs ol { margin: 0; padding: 0 18px 12px 38px; display: grid; gap: 10px; }
+  .jg-decs li { display: flex; gap: 12px; align-items: center; justify-content: space-between; padding: 8px 0; border-top: 1px solid var(--line); }
+  .jg-decs li > div { display: flex; flex-direction: column; gap: 3px; font-size: 14px; color: var(--ink-soft); }
+  .jg-decs li b { color: var(--ink); font-size: 15px; }
+  .jg-decs li.is-flash span { color: #B01E2E; }
+  .jg-decs .jg-btn { flex: none; font-size: 13px; padding: 7px 12px; }
+  .jg-btn.is-wa { background: #1FA855; border-color: #1FA855; color: #fff; }
+  .jg-share-note { grid-column: 1; font-size: 14px; line-height: 1.45; color: var(--ink); background: #FFF6D6; border-radius: 10px; padding: 10px 12px; margin-top: 10px; }
+  .jg-share-note[hidden] { display: none; }
+  .jgx-huge, .jgx-huge span, .jgx-huge b { white-space: nowrap; flex-wrap: nowrap; }
+  .tv-cat { color: var(--accent, #A02B3E); font-weight: 700; }
+  .jg-share.is-mini { margin: 4px 0 14px; }
+  .jg-share.is-mini .jg-btn { font-size: 13px; padding: 7px 12px; }
   .jgx-foot { display: flex; flex-direction: column; gap: 4px; padding-top: 26px; border-top: 3px solid #141821; font: 500 26px var(--font-sans); color: #4A5060; position: relative; z-index: 1; }
   .jgx-foot b { font: 800 38px var(--font-sans); color: #141821; }
   /* Rosca */
@@ -7690,7 +7718,7 @@
       <div class="pg-cards">
         <a class="pg-card is-rosca" href="#juegos" onclick="return window.__playGame('rosca')"><span class="pg-ico">🏛️</span><b>La rosca: PASO o no PASO</b><span>Llevás adelante la Jefatura de Gabinete y tenés que eliminar las PASO. Gobernadores, bloques, paros y escándalos.</span><em>Jugar →</em></a>
         <a class="pg-card is-pais" href="#juegos" onclick="return window.__playGame('pais')"><span class="pg-ico">🌎</span><b>¿Qué país gobernarías?</b><span>14 decisiones sorteadas de un banco de más de 100. Descubrí a qué país del mundo se parece tu forma de gobernar.</span><em>Jugar →</em></a>
-        <a class="pg-card is-trivia" href="#juegos" onclick="return window.__playGame('trivia')"><span class="pg-ico">❓</span><b>¿Quién gobierna?</b><span>Diez preguntas sobre presidentes y primeros ministros de todo el mundo.</span><em>Jugar →</em></a>
+        <a class="pg-card is-trivia" href="#juegos" onclick="return window.__playGame('trivia')"><span class="pg-ico">❓</span><b>¿Quién gobierna?</b><span>Líderes, sistemas electorales, economía y elecciones: diez preguntas con los datos de 197 países.</span><em>Jugar →</em></a>
       </div>
     </section>
 
@@ -35088,7 +35116,7 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
     if (window.AtlasJuegos) return window.AtlasJuegos.render(el, game);
     if (document.getElementById('juegos-js')) { pendingGame = game; return; }
     const sc = document.createElement('script');
-    sc.id = 'juegos-js'; sc.src = 'js/juegos.js?v=3';
+    sc.id = 'juegos-js'; sc.src = 'js/juegos.js?v=5';
     sc.onload = () => { const g = game || pendingGame; pendingGame = null; window.AtlasJuegos && window.AtlasJuegos.render(el, g); };
     sc.onerror = () => { el.innerHTML = '<div class="jg-loading">No se pudieron cargar los juegos.</div>'; };
     document.head.appendChild(sc);

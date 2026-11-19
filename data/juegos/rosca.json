@@ -1932,6 +1932,484 @@
      }
     }
    ]
+  },
+  {
+   "id": "pagni",
+   "who": "Carlos Pagni",
+   "title": "Pagni te dedica la editorial del lunes",
+   "text": "En su programa, Carlos Pagni compara tu negociación por las PASO con el Pacto de Olivos, cita a Natalio Botana y concluye que \"el oficialismo descubrió la rosca, pero no sabe para qué\". El clip circula en todos los grupos de WhatsApp de la política.",
+   "options": [
+    {
+     "label": "Llamarlo para explicarle tu estrategia",
+     "result": "Te escucha una hora, te agradece y el lunes siguiente te compara con Alsogaray.",
+     "e": {
+      "stats": {
+       "capital": -1
+      },
+      "blocs": {
+       "dip:ucr": 2,
+       "dip:cc": 2
+      }
+     }
+    },
+    {
+     "label": "Decir que \"los análisis largos no mueven votos\"",
+     "result": "La frase se vuelve meme entre los periodistas. En la Rosada, en cambio, festejan.",
+     "e": {
+      "stats": {
+       "interna": 3,
+       "imagen": -3
+      }
+     }
+    }
+   ],
+   "role": "Periodista, LN+ y La Nación"
+  },
+  {
+   "id": "feinmann",
+   "who": "Eduardo Feinmann",
+   "title": "Feinmann te corta al aire: \"¡Sí o no!\"",
+   "text": "Te invitan a la radio a la mañana. A los tres minutos, Eduardo Feinmann te interrumpe: \"¿Insfrán te pidió la ley de lemas, sí o no? ¡Sí o no!\". El audio se recorta y se viraliza.",
+   "options": [
+    {
+     "label": "Contestar \"no\" y cambiar de tema",
+     "result": "Te salvaste por ahora, pero los formoseños escucharon.",
+     "e": {
+      "stats": {
+       "imagen": 2
+      },
+      "blocs": {
+       "sen:popular": -3
+      }
+     }
+    },
+    {
+     "label": "Hacerte el que se cortó la comunicación",
+     "result": "\"Se cortó, se cortó\": el audio ya es un clásico de los memes.",
+     "e": {
+      "stats": {
+       "imagen": -4
+      }
+     }
+    }
+   ],
+   "role": "Periodista, Radio Mitre y LN+"
+  },
+  {
+   "id": "fantino",
+   "who": "Alejandro Fantino",
+   "title": "Cuatro horas con Fantino",
+   "text": "Alejandro Fantino te invita a su streaming. La charla arranca con las PASO, sigue con la Primera Guerra Mundial y termina hablando de boxeo a la una de la mañana.",
+   "options": [
+    {
+     "label": "Quedarte hasta el final",
+     "result": "La juventud libertaria te adopta. Al día siguiente no podés ni hablar.",
+     "e": {
+      "stats": {
+       "imagen": 5,
+       "interna": 2,
+       "capital": -2
+      }
+     }
+    },
+    {
+     "label": "Irte a la hora con una excusa",
+     "result": "Fantino lo comenta al aire: \"se nos fue el jefe\". Nada grave.",
+     "e": {
+      "stats": {
+       "imagen": 1
+      }
+     }
+    }
+   ],
+   "role": "Neura"
+  },
+  {
+   "id": "navarro",
+   "who": "Roberto Navarro",
+   "title": "El Destape publica \"la lista de los gobernadores comprados\"",
+   "text": "Roberto Navarro publica una nota con lo que, según su versión, recibió cada gobernador para apoyar el proyecto. Los gobernadores aliados te llaman furiosos: \"¿quién filtró?\".",
+   "options": [
+    {
+     "label": "Desmentir todo en conferencia de prensa",
+     "result": "La desmentida le da más difusión a la nota. Los gobernadores se calman un poco.",
+     "e": {
+      "stats": {
+       "imagen": -2
+      },
+      "blocs": {
+       "sen:salta": 2,
+       "sen:misiones": 2
+      }
+     }
+    },
+    {
+     "label": "Ignorarlo: \"es un medio militante\"",
+     "result": "Tu tropa aplaude. Dos gobernadores te dejan de atender por una semana.",
+     "e": {
+      "stats": {
+       "interna": 2
+      },
+      "blocs": {
+       "sen:salta": -4,
+       "sen:chubut": -4
+      }
+     }
+    }
+   ],
+   "role": "El Destape"
+  },
+  {
+   "id": "majul",
+   "who": "Luis Majul",
+   "title": "Majul: \"Con todo respeto, ¿no se están equivocando?\"",
+   "text": "Luis Majul, que suele defender al Gobierno, abre su programa con una pregunta incómoda: si eliminar las PASO no le hace el juego a los gobernadores feudales.",
+   "options": [
+    {
+     "label": "Mandarle los números del ahorro",
+     "result": "Al día siguiente muestra tu planilla al aire: \"me convencieron\".",
+     "e": {
+      "stats": {
+       "imagen": 3
+      }
+     }
+    },
+    {
+     "label": "Quejarte con el canal",
+     "result": "El dueño del canal no te atiende. Majul lo cuenta al aire.",
+     "e": {
+      "stats": {
+       "imagen": -3,
+       "capital": -1
+      }
+     }
+    }
+   ],
+   "role": "LN+"
+  },
+  {
+   "id": "tenembaum",
+   "who": "Radio con Vos",
+   "title": "Tenembaum y O'Donnell se ríen de tu planilla",
+   "text": "En la radio, Ernesto Tenembaum y María O'Donnell leen tu planilla del \"ahorro por eliminar las PASO\" y descubren que suma mal. Se ríen al aire durante diez minutos.",
+   "options": [
+    {
+     "label": "Reconocer el error y corregir",
+     "result": "Te respetan un poco más. La oposición igual lo usa.",
+     "e": {
+      "stats": {
+       "imagen": 1,
+       "capital": -1
+      }
+     }
+    },
+    {
+     "label": "Decir que es \"periodismo militante\"",
+     "result": "En X te festejan; en el Congreso, los dialoguistas dudan de tus números.",
+     "e": {
+      "stats": {
+       "interna": 2
+      },
+      "blocs": {
+       "dip:pu": -3,
+       "dip:cc": -3
+      }
+     }
+    }
+   ],
+   "role": "Periodistas"
+  },
+  {
+   "id": "uba",
+   "who": "UBA",
+   "title": "La UBA presenta un informe contra el proyecto",
+   "text": "Un equipo de la Facultad de Derecho de la UBA presenta un dictamen: eliminar las PASO por ley común \"es constitucional, pero inoportuno\". Los rectores aprovechan para recordar que el presupuesto universitario sigue sin actualizarse.",
+   "options": [
+    {
+     "label": "Prometer una mesa por el presupuesto universitario",
+     "result": "Los rectores bajan el tono. Caputo te llama para preguntarte con qué plata.",
+     "e": {
+      "stats": {
+       "caja": -6,
+       "interna": -3,
+       "imagen": 3
+      },
+      "blocs": {
+       "dip:ucr": 4,
+       "dip:cc": 3
+      }
+     }
+    },
+    {
+     "label": "Decir que la UBA \"hace política\"",
+     "result": "Al otro día hay una marcha universitaria. Las fotos son enormes.",
+     "e": {
+      "stats": {
+       "imagen": -5,
+       "interna": 2
+      },
+      "blocs": {
+       "dip:ucr": -4,
+       "dip:pu": -3
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "ditella",
+   "who": "Universidad Torcuato Di Tella",
+   "title": "Se desploma el Índice de Confianza en el Gobierno",
+   "text": "La Di Tella publica su índice mensual de confianza en el Gobierno: cae cuatro puntos. Los diarios lo ponen en tapa y algunos dialoguistas se acuerdan de que en 2027 también los votan a ellos.",
+   "options": [
+    {
+     "label": "Salir a decir que \"es un mes, no una tendencia\"",
+     "result": "Algunos te creen.",
+     "e": {
+      "stats": {
+       "imagen": -1
+      },
+      "blocs": {
+       "dip:pro": -2
+      }
+     }
+    },
+    {
+     "label": "Lanzar un anuncio para cambiar la agenda",
+     "result": "Anunciás una baja de impuestos que no estaba en los planes. Caputo se entera por la tele.",
+     "e": {
+      "stats": {
+       "imagen": 3,
+       "interna": -5,
+       "caja": -4
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "uca",
+   "who": "Observatorio de la Deuda Social (UCA)",
+   "title": "La UCA publica el dato de pobreza",
+   "text": "El Observatorio de la Deuda Social de la UCA publica su informe trimestral. Los obispos lo citan en la misa del domingo y piden \"que la política se ocupe de lo urgente, no de las PASO\".",
+   "options": [
+    {
+     "label": "Visitar a los obispos",
+     "result": "Foto con la Iglesia. Los senadores del norte lo valoran.",
+     "e": {
+      "stats": {
+       "capital": -2,
+       "imagen": 2
+      },
+      "blocs": {
+       "sen:salta": 3,
+       "sen:popular": 2
+      }
+     }
+    },
+    {
+     "label": "Responder con el dato del INDEC",
+     "result": "Guerra de cifras en los canales. Nadie gana.",
+     "e": {
+      "stats": {
+       "imagen": -2
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "cippec",
+   "who": "CIPPEC",
+   "title": "Un think tank propone \"una alternativa superadora\"",
+   "text": "CIPPEC presenta un documento: mantener las PASO pero optativas para cada partido. Los dialoguistas lo leen con entusiasmo y piden que lo consideres.",
+   "options": [
+    {
+     "label": "Incorporar la idea al texto",
+     "result": "Los dialoguistas celebran. En la Rosada dicen que te \"ablandaste\".",
+     "e": {
+      "stats": {
+       "interna": -6
+      },
+      "blocs": {
+       "dip:pu": 6,
+       "dip:cc": 6,
+       "dip:ucr": 4,
+       "sen:pu": 4
+      }
+     }
+    },
+    {
+     "label": "Agradecer y archivarlo",
+     "result": "Educado y firme. Los dialoguistas toman nota.",
+     "e": {
+      "blocs": {
+       "dip:pu": -2
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "galperin",
+   "who": "Marcos Galperin",
+   "title": "Galperin tuitea a las 2 de la mañana",
+   "text": "Marcos Galperin publica desde el exterior: \"Las PASO son el mejor ejemplo del Estado bobo. Eliminarlas ya\". Lo retuitea medio gabinete. Los gremios lo usan para decir que el proyecto es \"de los ricos\".",
+   "options": [
+    {
+     "label": "Retuitearlo vos también",
+     "result": "Likes por miles. Los peronistas dialoguistas se alejan un poco.",
+     "e": {
+      "stats": {
+       "imagen": 2,
+       "interna": 2
+      },
+      "blocs": {
+       "sen:popular": -3,
+       "dip:up": -3
+      }
+     }
+    },
+    {
+     "label": "No meterte",
+     "result": "El tuit se olvida en un día.",
+     "e": {}
+    }
+   ],
+   "role": "Fundador de Mercado Libre"
+  },
+  {
+   "id": "uia",
+   "who": "Unión Industrial Argentina",
+   "title": "La UIA pide que te ocupes de \"la agenda real\"",
+   "text": "La Unión Industrial publica un comunicado: \"Mientras el Congreso discute las PASO, cierran fábricas\". Lo levantan todos los noticieros.",
+   "options": [
+    {
+     "label": "Recibir a la UIA en la Rosada",
+     "result": "Te piden baja de impuestos y te llevás un dolor de cabeza. Los diputados industriales lo valoran.",
+     "e": {
+      "stats": {
+       "capital": -2,
+       "caja": -3
+      },
+      "blocs": {
+       "dip:pu": 3,
+       "dip:pyt": 3
+      }
+     }
+    },
+    {
+     "label": "Decir que la UIA \"defiende privilegios\"",
+     "result": "Te aplauden en X. Los legisladores de provincias industriales, no.",
+     "e": {
+      "stats": {
+       "interna": 3,
+       "imagen": -2
+      },
+      "blocs": {
+       "dip:pu": -3,
+       "dip:pyt": -3
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "bancos",
+   "who": "Mercados",
+   "title": "Sube el riesgo país por el ruido político",
+   "text": "Las consultoras de Wall Street advierten que \"la pelea por las PASO distrae la agenda de reformas\". El riesgo país sube cien puntos y Caputo te manda un mensaje con un solo emoji.",
+   "options": [
+    {
+     "label": "Acelerar: llamar a sesión cuanto antes",
+     "result": "La presión te sirve para apurar a los propios.",
+     "e": {
+      "stats": {
+       "interna": 2
+      },
+      "blocs": {
+       "dip:pro": 3,
+       "dip:mid": 3
+      }
+     }
+    },
+    {
+     "label": "Bajar el perfil por unos días",
+     "result": "El riesgo país baja. Perdiste unos días.",
+     "e": {
+      "stats": {
+       "capital": -2,
+       "interna": 2
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "techint",
+   "who": "Grupo Techint",
+   "title": "Paolo Rocca habla en un foro empresario",
+   "text": "En el coloquio de un foro empresario, Paolo Rocca dice que \"la Argentina necesita reglas estables, no reformas electorales cada dos años\". Los empresarios aplauden de pie.",
+   "options": [
+    {
+     "label": "Ir al foro a responder en persona",
+     "result": "Te escuchan con cortesía. Algunos gobernadores con industrias en sus provincias toman nota.",
+     "e": {
+      "stats": {
+       "capital": -2
+      },
+      "blocs": {
+       "sen:neuq": 3,
+       "dip:neuq": 3
+      }
+     }
+    },
+    {
+     "label": "No contestar",
+     "result": "El tema queda en los diarios económicos.",
+     "e": {
+      "stats": {
+       "imagen": -1
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "arabia",
+   "who": "Damián Arabia",
+   "role": "Diputado de La Libertad Avanza",
+   "title": "Arabia llora en el recinto: \"¡Es culpa de los kukas!\"",
+   "text": "En plena sesión informativa, Damián Arabia se quiebra en su discurso y culpa a \"los kukas\" de frenar las reformas. Cuando termina, alguien de su equipo ya está editando el reel para TikTok con música triste. En tu bloque nadie sabe si reírse o aplaudir.",
+   "options": [
+    {
+     "label": "Compartir el reel",
+     "result": "Dos millones de vistas. Los dialoguistas te piden que \"bajen un cambio\".",
+     "e": {
+      "stats": {
+       "imagen": 3,
+       "interna": 3
+      },
+      "blocs": {
+       "dip:pu": -3,
+       "dip:cc": -3
+      }
+     }
+    },
+    {
+     "label": "Pedirle que la próxima la llore en privado",
+     "result": "Arabia se ofende y sube otro video. Pero los radicales valoran el gesto.",
+     "e": {
+      "stats": {
+       "interna": -3
+      },
+      "blocs": {
+       "dip:ucr": 3,
+       "dip:cc": 2
+      }
+     }
+    }
+   ]
   }
  ]
 }
