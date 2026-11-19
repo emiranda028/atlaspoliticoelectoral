@@ -2410,6 +2410,39 @@
      }
     }
    ]
+  },
+  {
+   "id": "rossi",
+   "who": "Pablo Rossi",
+   "role": "Periodista",
+   "title": "El editorial de Pablo Rossi: \"¿Y la casta?\"",
+   "text": "Pablo Rossi abre su programa con un editorial filoso: \"El Gobierno que vino a terminar con la casta ahora negocia las PASO en el despacho de los gobernadores de siempre\". Muestra la foto de tu última reunión y la deja en pantalla un minuto entero.",
+   "options": [
+    {
+     "label": "Pedir una entrevista para explicarte",
+     "result": "Te recibe en el piso y te hace la pregunta incómoda tres veces. Salís raspado, pero respetado.",
+     "e": {
+      "stats": {
+       "imagen": 2,
+       "capital": -2
+      },
+      "blocs": {
+       "dip:cc": 3,
+       "dip:ucr": 2
+      }
+     }
+    },
+    {
+     "label": "Decir que \"los periodistas no entienden de gestión\"",
+     "result": "Tu tropa te aplaude en X. Rossi te dedica otro editorial al día siguiente.",
+     "e": {
+      "stats": {
+       "interna": 3,
+       "imagen": -4
+      }
+     }
+    }
+   ]
   }
  ]
 }
