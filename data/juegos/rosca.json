@@ -1,7 +1,7 @@
 {
  "id": "rosca-paso",
  "title": "La rosca: PASO o no PASO",
- "role": "Diego Santilli, jefe de Gabinete",
+ "role": "la Jefatura de Gabinete",
  "intro": "Noviembre de 2026. Javier Milei te encargó una sola cosa: que las PASO no se hagan en 2027. Tenés ocho semanas, una caja finita y un Congreso donde no te alcanza con los propios. Negociá con gobernadores, cedé lo justo y elegí bien cuándo llamar a sesión.",
  "disclaimer": "Simulación de ficción con actores reales de la política argentina. Las bancas por bloque son las del Congreso que asumió en diciembre de 2025; las situaciones, las ofertas y las respuestas de cada dirigente son inventadas para el juego.",
  "turns": 8,
@@ -1203,5 +1203,735 @@
    "title": "Te sacaron la negociación",
    "text": "La interna con la Casa Rosada se rompió: Karina Milei se queda con la mesa de negociación y vos quedás de adorno."
   }
- }
+ },
+ "flashes": [
+  {
+   "id": "cgt",
+   "who": "CGT",
+   "title": "La CGT anuncia paro general",
+   "text": "La central obrera convoca a un paro general de 24 horas contra la reforma laboral y \"el ajuste a los jubilados\". Los gremios del transporte adhieren y los canales arman la cuenta regresiva.",
+   "options": [
+    {
+     "label": "Recibir a la mesa chica de la CGT en la Rosada",
+     "result": "Foto con los gremialistas y promesa de \"mesa técnica\". En Balcarce 50 no les gustó nada.",
+     "e": {
+      "stats": {
+       "caja": -5,
+       "interna": -5,
+       "imagen": 3
+      },
+      "blocs": {
+       "dip:pu": 3,
+       "sen:popular": 3
+      }
+     }
+    },
+    {
+     "label": "Decir que es un paro político",
+     "result": "Tu frase abre los noticieros. El paro se hace igual y los dialoguistas te piden que bajes un cambio.",
+     "e": {
+      "stats": {
+       "interna": 4,
+       "imagen": -3
+      },
+      "blocs": {
+       "dip:pu": -3,
+       "dip:ucr": -2
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "lemoine",
+   "who": "Diputados",
+   "title": "Lemoine y Pagano, a los gritos en el recinto",
+   "text": "Lilia Lemoine y Marcela Pagano se cruzan a los gritos en plena sesión. Hay que levantar el cuarto intermedio y el video ya tiene dos millones de reproducciones.",
+   "options": [
+    {
+     "label": "Pedirle a tu bloque que baje el tono",
+     "result": "Lemoine sube un video diciendo que la querés callar. Los dialoguistas valoran el gesto.",
+     "e": {
+      "stats": {
+       "interna": -3,
+       "capital": 2
+      },
+      "blocs": {
+       "dip:coh": 6,
+       "dip:cc": 3
+      }
+     }
+    },
+    {
+     "label": "Dejar que el escándalo tape la agenda",
+     "result": "Por dos días nadie habla de las PASO. Ni bien ni mal: nadie.",
+     "e": {
+      "stats": {
+       "imagen": -2
+      },
+      "blocs": {
+       "dip:coh": -4
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "deloredo",
+   "who": "Rodrigo de Loredo",
+   "role": "UCR Córdoba",
+   "title": "De Loredo se quiebra en televisión",
+   "text": "En un programa de entrevistas, Rodrigo de Loredo se emociona hasta las lágrimas hablando del radicalismo y de \"los que se fueron\". En redes se discute si fue sincero; el clip no para de circular.",
+   "options": [
+    {
+     "label": "Llamarlo para solidarizarte",
+     "result": "Te agradece el gesto. Los radicales cordobeses te atienden el teléfono con otro tono.",
+     "e": {
+      "stats": {
+       "capital": -2
+      },
+      "blocs": {
+       "dip:ucr": 5,
+       "dip:dco": 5,
+       "sen:ucr": 3
+      }
+     }
+    },
+    {
+     "label": "Que lo comenten los trolls",
+     "result": "El clip se llena de memes libertarios. Los radicales toman nota.",
+     "e": {
+      "stats": {
+       "interna": 3
+      },
+      "blocs": {
+       "dip:ucr": -5,
+       "dip:dco": -4
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "cfk",
+   "who": "Cristina Fernández de Kirchner",
+   "role": "desde San José 1111",
+   "title": "Hilo de 14 tuits desde San José 1111",
+   "text": "Cristina publica un hilo contra la eliminación de las PASO: \"Quieren elegir a dedo hasta a la oposición\". Lo comparte media Fuerza Patria y los gobernadores peronistas leen con atención.",
+   "options": [
+    {
+     "label": "Contestarle en X",
+     "result": "El cruce te da rating y la militancia libertaria festeja. Los peronistas dialoguistas, incómodos.",
+     "e": {
+      "stats": {
+       "imagen": 4,
+       "capital": -2
+      },
+      "blocs": {
+       "sen:popular": -5,
+       "dip:up": -5
+      }
+     }
+    },
+    {
+     "label": "No contestar: \"no discutimos con el pasado\"",
+     "result": "Nadie se entera de tu respuesta, que es justamente la idea.",
+     "e": {
+      "stats": {
+       "capital": 2
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "luz",
+   "who": "Senado",
+   "title": "Se corta la luz en el Senado",
+   "text": "En plena reunión de comisión, un apagón deja a oscuras el Palacio. Alguien filma a un senador buscando la salida con la linterna del celular y el video es tendencia.",
+   "options": [
+    {
+     "label": "Aprovechar el apagón para negociar en los pasillos",
+     "result": "Media hora de rosca a oscuras rinde más que una semana de reuniones.",
+     "e": {
+      "blocs": {
+       "sen:ucr": 4,
+       "sen:neuq": 4,
+       "sen:misiones": 3
+      }
+     }
+    },
+    {
+     "label": "Pedir que se pase la reunión a la semana que viene",
+     "result": "Se pierde un día, pero nadie se quiere sentar sin aire acondicionado.",
+     "e": {
+      "stats": {
+       "capital": -2
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "vuelo",
+   "who": "Aerolíneas Argentinas",
+   "title": "Paro de controladores: los senadores no llegan",
+   "text": "Un paro sorpresivo de controladores aéreos deja varados en las provincias a siete senadores. Algunos avisan que vienen \"en auto, si se puede\".",
+   "options": [
+    {
+     "label": "Mandarles un avión oficial",
+     "result": "Llegan, agradecen y te recuerdan el favor. En la oposición hablan de \"vuelos de la vergüenza\".",
+     "e": {
+      "stats": {
+       "caja": -5,
+       "imagen": -3
+      },
+      "blocs": {
+       "sen:salta": 4,
+       "sen:chubut": 4,
+       "sen:misiones": 3
+      }
+     }
+    },
+    {
+     "label": "Esperar a que se normalicen los vuelos",
+     "result": "Pierden la semana, pero no la paciencia. Por ahora.",
+     "e": {
+      "turns": 0,
+      "stats": {
+       "capital": -1
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "streamer",
+   "who": "Un stream libertario",
+   "title": "Te invitan a un stream de cinco horas",
+   "text": "El canal de streaming más visto del oficialismo te ofrece un programa entero para explicar \"por qué las PASO son un curro\". Hay que ir en zapatillas.",
+   "options": [
+    {
+     "label": "Ir y quedarte hasta el final",
+     "result": "Récord de audiencia y un clip tuyo bailando que se vuelve sticker de WhatsApp.",
+     "e": {
+      "stats": {
+       "imagen": 6,
+       "capital": -2,
+       "interna": 3
+      }
+     }
+    },
+    {
+     "label": "Mandar un video grabado",
+     "result": "Correcto, aburrido y olvidado en una hora.",
+     "e": {
+      "stats": {
+       "imagen": 1
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "grabois",
+   "who": "Juan Grabois",
+   "title": "Grabois anuncia una marcha al Congreso",
+   "text": "Juan Grabois convoca a \"defender las PASO en la calle\" el día que se trate el proyecto y promete carpas frente al Congreso.",
+   "options": [
+    {
+     "label": "Pedir el operativo antipiquetes",
+     "result": "La marcha es chica y el operativo, enorme. Las fotos no ayudan con los dialoguistas.",
+     "e": {
+      "stats": {
+       "interna": 4,
+       "imagen": -2
+      },
+      "blocs": {
+       "dip:cc": -3,
+       "dip:pu": -2
+      }
+     }
+    },
+    {
+     "label": "Ignorarlo y seguir contando votos",
+     "result": "Hay carpas, mate y bombos. Adentro, la rosca sigue.",
+     "e": {
+      "stats": {
+       "capital": 1
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "macri",
+   "who": "Mauricio Macri",
+   "role": "Presidente del PRO",
+   "title": "Macri: \"Las PASO no son el problema\"",
+   "text": "En una entrevista radial, Mauricio Macri dice que las PASO \"no son el problema de la Argentina\" y que el PRO \"va a leer la letra chica\". En el bloque amarillo hay nervios.",
+   "options": [
+    {
+     "label": "Ir a verlo a Acassuso",
+     "result": "Tres horas de charla, café y quejas por la interna. Sale con un \"vamos a acompañar\".",
+     "e": {
+      "stats": {
+       "interna": -4,
+       "capital": -2
+      },
+      "blocs": {
+       "dip:pro": 10,
+       "sen:pro": 10
+      }
+     }
+    },
+    {
+     "label": "Responder que el PRO \"ya no decide nada\"",
+     "result": "La frase cae pésimo en el bloque amarillo.",
+     "e": {
+      "stats": {
+       "interna": 3
+      },
+      "blocs": {
+       "dip:pro": -8,
+       "sen:pro": -6
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "dormido",
+   "who": "Comisión de Asuntos Constitucionales",
+   "title": "Un diputado se duerme en plena comisión",
+   "text": "Mientras defendés el proyecto, las cámaras enfocan a un diputado aliado profundamente dormido. Ya hay remeras con la foto.",
+   "options": [
+    {
+     "label": "Hacer un chiste en vivo",
+     "result": "Te sale bien: el clip suma simpatía y el diputado se ríe… después.",
+     "e": {
+      "stats": {
+       "imagen": 3
+      }
+     }
+    },
+    {
+     "label": "Hacer como que no pasó nada",
+     "result": "La foto sigue circulando, pero no es tu problema.",
+     "e": {}
+    }
+   ]
+  },
+  {
+   "id": "tiktok",
+   "who": "Un gobernador",
+   "title": "Un gobernador sube a TikTok tu reunión secreta",
+   "text": "La reunión era reservada, pero el gobernador subió un video con música épica: \"Defendiendo a mi provincia frente a la Casa Rosada\". Ya lo vieron un millón de personas.",
+   "options": [
+    {
+     "label": "Reírte y compartirlo",
+     "result": "Te muestra de buen humor y el gobernador queda contento.",
+     "e": {
+      "stats": {
+       "imagen": 2,
+       "interna": -2
+      },
+      "blocs": {
+       "sen:neuq": 3,
+       "dip:neuq": 3
+      }
+     }
+    },
+    {
+     "label": "Quejarte en privado",
+     "result": "Borra el video. Ahora todos tienen la captura.",
+     "e": {
+      "stats": {
+       "imagen": -2
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "inflacion",
+   "who": "INDEC",
+   "title": "Sale el dato de inflación",
+   "text": "El INDEC publica el índice del mes y es mejor de lo esperado. En la Rosada hay festejos; en el Congreso, algunos indecisos ven que el Gobierno tiene viento a favor.",
+   "options": [
+    {
+     "label": "Salir a capitalizarlo",
+     "result": "Usás el dato para decir que \"el país se está ordenando\" y que las PASO son un gasto innecesario.",
+     "e": {
+      "stats": {
+       "imagen": 5,
+       "capital": 3
+      }
+     }
+    },
+    {
+     "label": "Dejar que lo festeje Caputo",
+     "result": "Caputo se lleva los aplausos. Vos seguís en tu rosca.",
+     "e": {
+      "stats": {
+       "interna": 3
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "monopatin",
+   "who": "Diputados",
+   "title": "Un diputado llega a la sesión en monopatín eléctrico",
+   "text": "Un legislador aliado entra al Congreso en monopatín, con casco y cámara de streaming, para \"mostrar que la casta no lo representa\". Los ujieres no saben si dejarlo pasar.",
+   "options": [
+    {
+     "label": "Sacarte una foto con él",
+     "result": "Sale en todos los portales. Los dialoguistas ponen los ojos en blanco.",
+     "e": {
+      "stats": {
+       "imagen": 3,
+       "capital": -1
+      },
+      "blocs": {
+       "dip:ucr": -2
+      }
+     }
+    },
+    {
+     "label": "Pedirle que lo deje en la puerta",
+     "result": "Lo deja, pero sube un video quejándose. Nadie se acuerda al día siguiente.",
+     "e": {
+      "stats": {
+       "capital": 1
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "kicillof2",
+   "who": "Axel Kicillof",
+   "title": "Kicillof arma un acto con 40 intendentes",
+   "text": "El gobernador bonaerense reúne a cuarenta intendentes en La Plata y lanza un documento en defensa de las PASO: \"Las primarias son del pueblo\".",
+   "options": [
+    {
+     "label": "Llamar a los intendentes uno por uno",
+     "result": "Tres te atienden. Uno te pide fondos para cloacas antes de hablar de PASO.",
+     "e": {
+      "stats": {
+       "caja": -5
+      },
+      "blocs": {
+       "dip:up": 4
+      }
+     }
+    },
+    {
+     "label": "Decir que es un acto de campaña",
+     "result": "La frase prende en tu tropa y enoja a los peronistas que dudaban.",
+     "e": {
+      "stats": {
+       "interna": 3
+      },
+      "blocs": {
+       "dip:up": -4,
+       "sen:popular": -3
+      }
+     }
+    }
+   ],
+   "role": "Gobernador de Buenos Aires"
+  },
+  {
+   "id": "meme",
+   "who": "Redes sociales",
+   "title": "Te convierten en meme",
+   "text": "Una foto tuya bostezando en la reunión con gobernadores se viraliza con la frase \"cuando te explican las PASO por quinta vez\". Ya hay stickers.",
+   "options": [
+    {
+     "label": "Subir el meme vos mismo",
+     "result": "Te ganás a los jóvenes de X. Algunos gobernadores no entienden el chiste.",
+     "e": {
+      "stats": {
+       "imagen": 5,
+       "capital": -1
+      }
+     }
+    },
+    {
+     "label": "Ignorarlo",
+     "result": "El meme muere solo en dos días.",
+     "e": {}
+    }
+   ]
+  },
+  {
+   "id": "feriado",
+   "who": "Calendario",
+   "title": "Feriado largo en el medio de la negociación",
+   "text": "Cae un fin de semana largo y medio Congreso se va a la costa. La comisión no consigue quórum ni para el café.",
+   "options": [
+    {
+     "label": "Convocar igual a una reunión el lunes feriado",
+     "result": "Van ocho. Los que fueron te lo recuerdan para siempre.",
+     "e": {
+      "stats": {
+       "capital": -2
+      },
+      "blocs": {
+       "dip:pro": 3,
+       "dip:mid": 3
+      }
+     }
+    },
+    {
+     "label": "Aprovechar para descansar vos también",
+     "result": "Volvés con energía, aunque perdiste unos días.",
+     "e": {
+      "stats": {
+       "interna": 2,
+       "imagen": 1
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "bloquepartido",
+   "who": "Diputados",
+   "title": "Se parte un bloque por una foto",
+   "text": "Dos diputados de un bloque provincial se pelean porque uno subió una foto con vos sin avisar. El bloque amenaza con partirse.",
+   "options": [
+    {
+     "label": "Llamar a los dos a tomar un café",
+     "result": "Se reconcilian frente a tus medialunas. Sumás simpatía.",
+     "e": {
+      "stats": {
+       "caja": -2
+      },
+      "blocs": {
+       "dip:innov": 4,
+       "dip:ind": 3
+      }
+     }
+    },
+    {
+     "label": "No meterte en peleas ajenas",
+     "result": "El bloque sigue unido, pero desconfiado.",
+     "e": {
+      "blocs": {
+       "dip:innov": -2
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "karina2",
+   "who": "Casa Rosada",
+   "title": "Karina te deja afuera de una foto",
+   "text": "En el acto de la Casa Rosada, Karina Milei te ubica en la segunda fila, fuera de cuadro. Los periodistas acreditados lo notan enseguida.",
+   "options": [
+    {
+     "label": "Hacer como que no pasó nada",
+     "result": "Te tragás el sapo. En la Rosada valoran la disciplina.",
+     "e": {
+      "stats": {
+       "interna": 4,
+       "imagen": -2
+      }
+     }
+    },
+    {
+     "label": "Hacer trascender tu malestar",
+     "result": "Los diarios hablan de \"tensión en el gabinete\". Ganás perfil propio.",
+     "e": {
+      "stats": {
+       "interna": -6,
+       "imagen": 3
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "diputadotiktok",
+   "who": "Diputados",
+   "title": "Un diputado hace un TikTok bailando en el recinto",
+   "text": "Un diputado sube un video bailando en su banca mientras se vota otro proyecto. La oposición pide sanciones y el video ya pasó los tres millones.",
+   "options": [
+    {
+     "label": "Pedir que se lo sancione",
+     "result": "Quedás como alguien serio. El diputado deja de seguirte en Instagram.",
+     "e": {
+      "stats": {
+       "capital": 2
+      },
+      "blocs": {
+       "dip:cc": 3
+      }
+     }
+    },
+    {
+     "label": "Hacer un dúo con él",
+     "result": "Te volvés tendencia. Los radicales se preguntan si es en serio.",
+     "e": {
+      "stats": {
+       "imagen": 4
+      },
+      "blocs": {
+       "dip:ucr": -3
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "vicegobernador",
+   "who": "Una provincia",
+   "title": "Un vicegobernador se autoproclama gobernador",
+   "text": "En una provincia del norte, el vicegobernador dice que el gobernador \"abandonó el cargo\" por un viaje a Miami y jura en una escribanía. Nadie entiende nada.",
+   "options": [
+    {
+     "label": "Mandar un mediador",
+     "result": "Se arregla todo en una cena. Los dos te deben un favor.",
+     "e": {
+      "stats": {
+       "caja": -4
+      },
+      "blocs": {
+       "sen:salta": 4,
+       "dip:innov": 3
+      }
+     }
+    },
+    {
+     "label": "Decir que es un tema provincial",
+     "result": "La novela sigue una semana más y nadie habla de las PASO.",
+     "e": {
+      "stats": {
+       "capital": -1
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "encuesta2",
+   "who": "Encuestadora",
+   "title": "Una encuesta dice que a nadie le importan las PASO",
+   "text": "Una consultora publica que solo el 4% de la gente sabe qué se está discutiendo. El 60% no sabe qué son las PASO.",
+   "options": [
+    {
+     "label": "Usar la encuesta: \"a nadie le importan\"",
+     "result": "El argumento convence a algunos indecisos.",
+     "e": {
+      "stats": {
+       "imagen": 2
+      },
+      "blocs": {
+       "dip:mid": 3,
+       "dip:pro": 3
+      }
+     }
+    },
+    {
+     "label": "No decir nada",
+     "result": "La encuesta pasa sin pena ni gloria.",
+     "e": {}
+    }
+   ]
+  },
+  {
+   "id": "asado",
+   "who": "Quinta de Olivos",
+   "title": "Asado con senadores que termina a las 4 de la mañana",
+   "text": "Organizás un asado en Olivos con seis senadores. Hay vino, guitarra y un senador que canta zambas hasta las 4. En las fotos todos parecen amigos.",
+   "options": [
+    {
+     "label": "Aprovechar para cerrar acuerdos",
+     "result": "Al día siguiente, nadie se acuerda bien de qué prometió. Pero el clima mejoró.",
+     "e": {
+      "stats": {
+       "caja": -4,
+       "capital": 2
+      },
+      "blocs": {
+       "sen:ucr": 3,
+       "sen:neuq": 3,
+       "sen:chubut": 3,
+       "sen:misiones": 3
+      }
+     }
+    },
+    {
+     "label": "Irte a dormir temprano",
+     "result": "Los senadores siguen sin vos y hablan mal del Gobierno.",
+     "e": {
+      "blocs": {
+       "sen:pu": -2
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "hackeo",
+   "who": "Ciberseguridad",
+   "title": "Hackean la cuenta de X del Senado",
+   "text": "Alguien hackea la cuenta oficial del Senado y publica memes contra todos los bloques. Uno es sobre vos.",
+   "options": [
+    {
+     "label": "Tomarlo con humor",
+     "result": "Tu respuesta graciosa es lo más compartido del día.",
+     "e": {
+      "stats": {
+       "imagen": 3
+      }
+     }
+    },
+    {
+     "label": "Pedir una investigación urgente",
+     "result": "Aparece un adolescente de 15 años. Sus padres piden disculpas.",
+     "e": {
+      "stats": {
+       "capital": 1
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "insfran4",
+   "who": "Formosa",
+   "title": "Formosa celebra las tres décadas de Insfrán con un desfile",
+   "text": "La provincia organiza un desfile por las décadas de gobierno de Gildo Insfrán. Hay carrozas, escuelas y una banda militar. Te mandan una invitación con tu nombre en dorado.",
+   "options": [
+    {
+     "label": "Ir al desfile",
+     "result": "Insfrán te recibe en el palco. La foto recorre el país y la oposición la usa en tu contra.",
+     "e": {
+      "stats": {
+       "imagen": -4,
+       "interna": -2
+      },
+      "blocs": {
+       "sen:popular": 5
+      }
+     }
+    },
+    {
+     "label": "Mandar un saludo por video",
+     "result": "Correcto y distante. En Formosa lo toman como un desaire.",
+     "e": {
+      "blocs": {
+       "sen:popular": -2
+      }
+     }
+    }
+   ]
+  }
+ ]
 }
