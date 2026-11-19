@@ -280,7 +280,8 @@
     "dip:pu"
    ],
    "pitch": "Quiere fondos para la caja de jubilaciones cordobesa y rutas.",
-   "deal": "fondos para la caja de jubilaciones de Córdoba y dos rutas nacionales"
+   "deal": "fondos para la caja de jubilaciones de Córdoba y dos rutas nacionales",
+   "origin": "pj"
   },
   {
    "id": "pullaro",
@@ -291,7 +292,8 @@
     "sen:pu"
    ],
    "pitch": "Pide obras de seguridad y la deuda de la Anses con la caja santafesina.",
-   "deal": "obras de seguridad y el pago de la deuda de la Anses con la caja de jubilaciones santafesina"
+   "deal": "obras de seguridad y el pago de la deuda de la Anses con la caja de jubilaciones santafesina",
+   "origin": "ucr"
   },
   {
    "id": "torres",
@@ -302,7 +304,8 @@
     "dip:pu"
    ],
    "pitch": "Quiere regalías y un 'superdomingo patagónico'.",
-   "deal": "un adelanto de regalías petroleras y apoyo a su \"superdomingo patagónico\""
+   "deal": "un adelanto de regalías petroleras y apoyo a su \"superdomingo patagónico\"",
+   "origin": "pro"
   },
   {
    "id": "saenz",
@@ -313,7 +316,8 @@
     "sen:salta"
    ],
    "pitch": "Pide la obra del gasoducto del norte y rutas nacionales.",
-   "deal": "la licitación del gasoducto del norte y obras en rutas nacionales"
+   "deal": "la licitación del gasoducto del norte y obras en rutas nacionales",
+   "origin": "pj"
   },
   {
    "id": "passalacqua",
@@ -324,7 +328,8 @@
     "sen:misiones"
    ],
    "pitch": "Quiere un régimen especial para la yerba y el turismo.",
-   "deal": "un régimen especial para la yerba mate y fondos para turismo"
+   "deal": "un régimen especial para la yerba mate y fondos para turismo",
+   "origin": "prov"
   },
   {
    "id": "jaldo",
@@ -335,7 +340,8 @@
     "sen:ind"
    ],
    "pitch": "Pide ATN para pagar aguinaldos.",
-   "deal": "Aportes del Tesoro (ATN) para pagar los aguinaldos provinciales"
+   "deal": "Aportes del Tesoro (ATN) para pagar los aguinaldos provinciales",
+   "origin": "pj"
   },
   {
    "id": "jalil",
@@ -345,7 +351,8 @@
     "dip:elijo"
    ],
    "pitch": "Quiere que el litio catamarqueño entre al RIGI.",
-   "deal": "que los proyectos de litio de Catamarca entren al régimen de grandes inversiones (RIGI)"
+   "deal": "que los proyectos de litio de Catamarca entren al régimen de grandes inversiones (RIGI)",
+   "origin": "pj"
   },
   {
    "id": "vidal",
@@ -356,7 +363,8 @@
     "dip:psc"
    ],
    "pitch": "Pide fondos para las represas y la caja provincial.",
-   "deal": "fondos para terminar las represas y auxilio para la caja provincial"
+   "deal": "fondos para terminar las represas y auxilio para la caja provincial",
+   "origin": "prov"
   },
   {
    "id": "orrego",
@@ -366,7 +374,8 @@
     "dip:pyt"
    ],
    "pitch": "Quiere financiamiento para la minería de cobre.",
-   "deal": "financiamiento para los proyectos de cobre sanjuaninos"
+   "deal": "financiamiento para los proyectos de cobre sanjuaninos",
+   "origin": "pro"
   },
   {
    "id": "figueroa",
@@ -377,7 +386,8 @@
     "sen:neuq"
    ],
    "pitch": "Ya desdobló su elección: pide obras para Vaca Muerta.",
-   "deal": "obras de infraestructura para Vaca Muerta"
+   "deal": "obras de infraestructura para Vaca Muerta",
+   "origin": "prov"
   }
  ],
  "design": {
@@ -3271,7 +3281,11 @@
     }
    ],
    "role": "Frente Renovador",
-   "needsGov": true
+   "needsGov": true,
+   "govOrigins": [
+    "pj",
+    "prov"
+   ]
   },
   {
    "id": "cfk_gov",
@@ -3307,7 +3321,10 @@
     }
    ],
    "role": "desde San José 1111",
-   "needsGov": true
+   "needsGov": true,
+   "govOrigins": [
+    "pj"
+   ]
   },
   {
    "id": "kicillof_gov",
@@ -3333,7 +3350,11 @@
     }
    ],
    "role": "Gobernador de Buenos Aires",
-   "needsGov": true
+   "needsGov": true,
+   "govOrigins": [
+    "pj",
+    "prov"
+   ]
   },
   {
    "id": "gov_mas",
@@ -4895,6 +4916,67 @@
        "imagen": -3
       }
      }
+    }
+   ]
+  },
+  {
+   "id": "macri_gov",
+   "who": "Mauricio Macri",
+   "role": "Presidente del PRO",
+   "needsGov": true,
+   "govOrigins": [
+    "pro",
+    "ucr"
+   ],
+   "title": "Macri llama a {gov}",
+   "text": "Mauricio Macri invita a {gov} a almorzar en Acassuso. Le dice que el PRO \"no puede ser furgón de cola\" del Gobierno y que, si acompaña sin condiciones, en 2027 se queda sin nada propio en {prov}.",
+   "options": [
+    {
+     "label": "Llamar a {gov} y ofrecerle un lugar en la mesa de 2027",
+     "result": "{gov} se queda con vos, pero te pide que se note.",
+     "e": {
+      "stats": {
+       "interna": -3
+      }
+     },
+     "gov": 6
+    },
+    {
+     "label": "Dejar que Macri haga lo suyo",
+     "result": "{gov} vuelve del almuerzo con dudas.",
+     "e": {},
+     "gov": -7
+    }
+   ]
+  },
+  {
+   "id": "pu_gov",
+   "who": "Juan Schiaretti",
+   "role": "Provincias Unidas",
+   "needsGov": true,
+   "govOrigins": [
+    "ucr",
+    "pro",
+    "prov"
+   ],
+   "title": "Schiaretti tienta a {gov} con Provincias Unidas",
+   "text": "Juan Schiaretti le propone a {gov} sumarse a una propuesta alternativa de Provincias Unidas: PASO optativas y \"un federalismo en serio\". En {prov} la idea gusta.",
+   "options": [
+    {
+     "label": "Ofrecerle a {gov} sumar su idea al texto",
+     "result": "{gov} se queda, pero en la Rosada dicen que te ablandaste.",
+     "e": {
+      "stats": {
+       "interna": -4
+      }
+     },
+     "gov": 7
+    },
+    {
+     "label": "Recordarle lo que ya le diste",
+     "result": "{gov} se ofende: \"no me lo tenés que recordar\".",
+     "e": {},
+     "gov": -6
     }
    ]
   }

@@ -544,7 +544,7 @@
       S.queue = due.slice(0, 2).concat(due.length < 2 ? rand.slice(0, 1) : []);
       // "Último momento": something unexpected, in the middle of the week's events
       // Events about "your" governor only show up once you've negotiated with one
-      const fl = (D.flashes || []).filter(f => !S.seen['f:' + f.id] && (!f.needsGov || dealtGovs().length) && !(S.dipPassed && onlyDip(f)) && !(f.phase === 'sen' && !S.dipPassed));
+      const fl = (D.flashes || []).filter(f => !S.seen['f:' + f.id] && (!f.needsGov || dealtGovs(f).length) && !(S.dipPassed && onlyDip(f)) && !(f.phase === 'sen' && !S.dipPassed));
       // Once you've made deals, half of the surprises are about those governors
       const pick = () => { const g = fl.filter(f => f.needsGov), sen = fl.filter(f => f.phase === 'sen'), r = Math.random(), pool = sen.length && r < 0.45 ? sen : g.length && r < 0.7 ? g : fl; const f = pool[Math.floor(Math.random() * pool.length)]; fl.splice(fl.indexOf(f), 1); return Object.assign({ flash: true }, f); };
       if (!first && fl.length && Math.random() < 0.7) S.queue.splice(Math.min(1, S.queue.length), 0, pick());
@@ -561,9 +561,11 @@
       return Object.assign({}, e, out);
     }
     // Fill {gov}/{prov} with a governor you already made a deal with
-    const dealtGovs = () => Object.keys(S.govUsed).filter(id => D.governors.some(g => g.id === id && liveBlocs(g.blocs).length));
+    // Governors you made a deal with (and, for each call, only those it makes sense for:
+    // Cristina calls Peronists, Macri calls PRO and radicals...)
+    const dealtGovs = ev => Object.keys(S.govUsed).filter(id => D.governors.some(g => g.id === id && liveBlocs(g.blocs).length && (!ev || !ev.govOrigins || ev.govOrigins.includes(g.origin))));
     function withGov(ev) {
-      const ids = dealtGovs(); if (!ids.length) return null;
+      const ids = dealtGovs(ev); if (!ids.length) return null;
       const g = D.governors.find(x => x.id === ids[Math.floor(Math.random() * ids.length)]);
       if (!g) return null;
       const f = t => String(t || '').replace(/\{gov\}/g, g.name).replace(/\{prov\}/g, g.prov);
