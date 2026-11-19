@@ -33,6 +33,90 @@
     }));
   }
 
+  /* ---------------------------------------------------------- SHARE AS IMAGE / PDF */
+  // Each result builds a 1080×1350 card (the vertical format WhatsApp,
+  // Instagram and X show whole), rendered with html-to-image to a JPEG. The
+  // PDF is that same JPEG wrapped in a one-page PDF, so no extra library.
+  const CARD_W = 1080, CARD_H = 1350;
+  const cardShell = (game, color, body) => `<div class="jgx" style="--jgx:${color}">
+      <div class="jgx-top"><span class="jgx-brand">Atlas Político Mundial</span><span class="jgx-game">${esc(game)}</span></div>
+      <div class="jgx-body">${body}</div>
+      <div class="jgx-foot"><span>¿Y vos? Jugá en</span><b>atlaspoliticoelectoral.com/#juegos</b></div>
+    </div>`;
+  async function cardCanvas(html) {
+    if (!window.htmlToImage) throw new Error('sin librería de imagen');
+    const host = document.createElement('div');
+    host.style.cssText = `position:fixed;left:-20000px;top:0;width:${CARD_W}px;height:${CARD_H}px;`;
+    host.innerHTML = html; document.body.appendChild(host);
+    const card = host.firstElementChild;
+    try {
+      try { await document.fonts.ready; } catch (e) {}
+      await Promise.all([...card.querySelectorAll('img')].map(img => img.complete && img.naturalWidth ? null : new Promise(r => { img.onload = img.onerror = r; setTimeout(r, 4000); })));
+      card.querySelectorAll('img').forEach(img => { if (!img.naturalWidth) img.remove(); });
+      return await window.htmlToImage.toCanvas(card, { pixelRatio: 1, width: CARD_W, height: CARD_H, cacheBust: true, backgroundColor: '#FBF7F0' });
+    } finally { host.remove(); }
+  }
+  const toBlob = (canvas, type) => new Promise((res, rej) => canvas.toBlob(b => b ? res(b) : rej(new Error('toBlob')), type, 0.92));
+  async function jpegToPdf(jpeg, w, h) {
+    const img = new Uint8Array(await jpeg.arrayBuffer());
+    const W = Math.round(w * 0.5), H = Math.round(h * 0.5);  // points: about 19 × 24 cm
+    const enc = new TextEncoder(), parts = [], offs = [];
+    let len = 0;
+    const push = p => { const b = typeof p === 'string' ? enc.encode(p) : p; parts.push(b); len += b.length; };
+    const obj = (n, body) => { offs[n] = len; push(`${n} 0 obj\n`); body(); push('\nendobj\n'); };
+    push('%PDF-1.4\n');
+    obj(1, () => push('<< /Type /Catalog /Pages 2 0 R >>'));
+    obj(2, () => push('<< /Type /Pages /Kids [3 0 R] /Count 1 >>'));
+    obj(3, () => push(`<< /Type /Page /Parent 2 0 R /MediaBox [0 0 ${W} ${H}] /Resources << /XObject << /Im0 4 0 R >> >> /Contents 5 0 R >>`));
+    obj(4, () => { push(`<< /Type /XObject /Subtype /Image /Width ${w} /Height ${h} /ColorSpace /DeviceRGB /BitsPerComponent 8 /Filter /DCTDecode /Length ${img.length} >>\nstream\n`); push(img); push('\nendstream'); });
+    const cs = `q ${W} 0 0 ${H} 0 0 cm /Im0 Do Q`;
+    obj(5, () => push(`<< /Length ${cs.length} >>\nstream\n${cs}\nendstream`));
+    const xref = len;
+    push(`xref\n0 6\n0000000000 65535 f \n${[1, 2, 3, 4, 5].map(n => String(offs[n]).padStart(10, '0') + ' 00000 n \n').join('')}trailer\n<< /Size 6 /Root 1 0 R >>\nstartxref\n${xref}\n%%EOF\n`);
+    return new Blob(parts, { type: 'application/pdf' });
+  }
+  const download = (blob, name) => {
+    const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = name;
+    document.body.appendChild(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(a.href), 4000);
+  };
+  const shareBox = text => `<div class="jg-sharebox">
+      <div class="jg-share-h">Compartí tu resultado</div>
+      <div class="jg-share">
+        <button type="button" class="jg-btn is-main" data-img="share">Compartir imagen</button>
+        <button type="button" class="jg-btn" data-img="jpg">Descargar imagen</button>
+        <button type="button" class="jg-btn" data-img="pdf">Descargar PDF</button>
+      </div>
+      ${shareRow(text)}
+      <div class="jg-share-prev" hidden></div>
+    </div>`;
+  // Wires the image/PDF buttons: the card is drawn once, on the first click
+  function wireShare(el, text, cardHTML, slug) {
+    let made = null;
+    const make = () => made || (made = cardCanvas(cardHTML).then(async c => {
+      const jpg = await toBlob(c, 'image/jpeg');
+      const prev = el.querySelector('.jg-share-prev');
+      if (prev) { prev.hidden = false; prev.innerHTML = `<img src="${URL.createObjectURL(jpg)}" alt="Tu resultado como imagen" width="216" height="270">`; }
+      return { jpg, w: c.width, h: c.height };
+    }).catch(e => { made = null; throw e; }));
+    const name = ext => `atlas-juegos-${slug}.${ext}`;
+    el.querySelectorAll('[data-img]').forEach(b => b.addEventListener('click', async () => {
+      const kind = b.getAttribute('data-img'), label = b.textContent;
+      const done = t => { b.textContent = t; setTimeout(() => { b.textContent = label; b.disabled = false; }, 1800); };
+      b.textContent = 'Generando…'; b.disabled = true;
+      try {
+        const r = await make();
+        if (kind === 'pdf') { download(await jpegToPdf(r.jpg, r.w, r.h), name('pdf')); return done('¡PDF listo!'); }
+        const file = new File([r.jpg], name('jpg'), { type: 'image/jpeg' });
+        if (kind === 'share' && navigator.canShare && navigator.canShare({ files: [file] })) {
+          try { await navigator.share({ files: [file], text: text + '\n' + SITE }); return done('¡Compartido!'); }
+          catch (e) { if (e && e.name === 'AbortError') return done(label); }
+        }
+        download(r.jpg, name('jpg'));
+        done(kind === 'share' ? 'Imagen descargada' : '¡Imagen lista!');
+      } catch (e) { done('No se pudo generar'); }
+    }));
+  }
+
   /* ---------------------------------------------------------- HUB */
   let root = null;
   function hub() {
@@ -47,13 +131,13 @@
           <button type="button" class="jg-card is-pais" data-go="pais">
             <span class="jg-card-ico">🌎</span>
             <b>¿Qué país gobernarías?</b>
-            <span>Tomá 14 decisiones de gobierno y descubrí a qué país del mundo se parece tu forma de gobernar.</span>
+            <span>Tomá 14 decisiones de gobierno, sorteadas de un banco de más de 100, y descubrí a qué país del mundo se parece tu forma de gobernar.</span>
             <em>14 decisiones · 3 minutos</em>
           </button>
           <button type="button" class="jg-card is-rosca" data-go="rosca">
             <span class="jg-card-ico">🏛️</span>
             <b>La rosca: PASO o no PASO</b>
-            <span>Sos Diego Santilli y tenés que eliminar las PASO. Negociá con gobernadores, cuidá la caja y contá los votos, banca por banca.</span>
+            <span>Llevás adelante la Jefatura de Gabinete y tenés que eliminar las PASO. Negociá con gobernadores, aguantá paros y escándalos, y contá los votos banca por banca.</span>
             <em>Estrategia · 8 semanas de rosca</em>
           </button>
           <button type="button" class="jg-card is-trivia" data-go="trivia">
@@ -82,7 +166,18 @@
     async function start() {
       root.innerHTML = '<div class="jg-loading">Cargando…</div>';
       try { D = D || await getJSON('data/juegos/pais.json'); } catch (e) { root.innerHTML = '<div class="jg-loading">No se pudo cargar el juego.</div>'; return; }
-      st = { i: 0, ans: [] };
+      // 14 decisions drawn from the bank, balanced by axis (3 per axis, 2 on
+      // environment), so every game is different but the profile is complete
+      const main = Q => { const ax = {}; Q.options.forEach(o => Object.entries(o.e).forEach(([a, v]) => { ax[a] = Math.max(ax[a] || 0, Math.abs(v)); })); return Object.keys(ax).sort((x, y) => ax[y] - ax[x])[0]; };
+      const QUOTA = { eco: 3, soc: 3, lib: 3, ext: 3, amb: 2 };
+      const picked = [];
+      Object.entries(QUOTA).forEach(([a, k]) => picked.push(...shuffle(D.questions.filter(Q => main(Q) === a)).slice(0, k)));
+      // Two unexpected events, after decisions 5 and 10; they count like any other answer
+      const seq = shuffle(picked).map(Q => ({ Q }));
+      const fl = shuffle(D.flashes || []).slice(0, 2);
+      if (fl[1]) seq.splice(10, 0, { Q: fl[1], flash: true });
+      if (fl[0]) seq.splice(5, 0, { Q: fl[0], flash: true });
+      st = { i: 0, ans: [], seq };
       intro();
     }
     function intro() {
@@ -93,11 +188,12 @@
       root.querySelector('[data-startq]').addEventListener('click', q);
     }
     function q() {
-      const Q = D.questions[st.i], n = D.questions.length;
+      const it = st.seq[st.i], Q = it.Q, n = st.seq.length, nq = st.seq.filter(x => !x.flash).length;
+      const num = st.seq.slice(0, st.i + 1).filter(x => !x.flash).length;
       root.innerHTML = `<section class="jg-game is-pais">${backBtn()}
         <div class="jg-progress"><span style="width:${st.i / n * 100}%"></span></div>
-        <div class="jg-qnum">Decisión ${st.i + 1} de ${n}</div>
-        <h3 class="jg-q">${esc(Q.q)}</h3>
+        ${it.flash ? `<div class="jg-flash"><span class="jg-flash-tag">Último momento</span>${Q.who ? `<span>${esc(Q.who)}</span>` : ''}</div>` : `<div class="jg-qnum">Decisión ${num} de ${nq}</div>`}
+        <h3 class="jg-q${it.flash ? ' is-flash' : ''}">${esc(Q.q.replace(/^Último momento:\s*(.)/, (m, c) => c.toUpperCase()))}</h3>
         <div class="jg-opts">${Q.options.map((o, k) => `<button type="button" class="jg-opt" data-k="${k}">${esc(o.t)}</button>`).join('')}</div>
         ${st.i ? '<button type="button" class="jg-link" data-prev>← Volver a la anterior</button>' : ''}</section>`;
       wireBack(root);
@@ -110,7 +206,7 @@
     function profile() {
       const axes = Object.keys(D.axes), sum = {}, cnt = {};
       axes.forEach(a => { sum[a] = 0; cnt[a] = 0; });
-      D.questions.forEach((Q, i) => {
+      st.seq.forEach(({ Q }, i) => {
         const touched = new Set(); Q.options.forEach(o => Object.keys(o.e).forEach(a => touched.add(a)));
         const e = Q.options[st.ans[i]].e;
         touched.forEach(a => { cnt[a]++; sum[a] += e[a] || 0; });
@@ -134,6 +230,14 @@
       const pt = (v0, v1) => [(6 + (v0 + 2) / 4 * 88).toFixed(1), (6 + (v1 + 2) / 4 * 88).toFixed(1)];
       const [mx, my] = pt(me[0], me[1]);
       const text = `Gobernaría como ${C.name} (${top.sim}% de coincidencia). ¿Y vos? Jugá en el Atlas Político Mundial:`;
+      const card = cardShell('¿Qué país gobernarías?', '#1F7A5A', `
+        <div class="jgx-kicker">Si gobernara, mi país se parecería a…</div>
+        <div class="jgx-flag">${flag(top.iso)}</div>
+        <div class="jgx-title${C.name.length > 16 ? ' is-long' : ''}">${esc(C.name)}</div>
+        <div class="jgx-big"><b>${top.sim}%</b> de coincidencia</div>
+        ${C.leader && C.leader.name ? `<div class="jgx-sub">${esc(C.leader.title || 'Gobierno')}: <b>${esc(C.leader.name)}</b></div>` : ''}
+        <div class="jgx-axes">${me.map((v, i) => { const ax = D.axes[axes[i]]; return `<div class="jgx-ax"><div class="jgx-ax-h">${esc(ax.label)}</div><div class="jgx-ax-row"><span>${esc(ax.neg)}</span><div class="jgx-ax-t"><i style="left:${(4 + (v + 2) / 4 * 92).toFixed(1)}%"></i></div><span>${esc(ax.pos)}</span></div></div>`; }).join('')}</div>
+        <div class="jgx-also"><span>También me parezco a</span>${ranked.slice(1, 4).map(r => { const c = byIso(r.iso) || { name: r.iso }; return `<b>${flag(r.iso)} ${esc(c.name)}</b>`; }).join('')}</div>`);
       root.innerHTML = `<section class="jg-game is-pais">${backBtn()}
         <div class="jg-result">
           <span class="jg-kicker">Tu resultado</span>
@@ -157,11 +261,11 @@
                 <span class="jg-dot is-me" style="left:${mx}%;top:${100 - my}%">Vos</span>
               </div></div>
           </div>
-          ${shareRow(text)}
+          ${shareBox(text)}
           <button type="button" class="jg-btn" data-again>Jugar de nuevo</button>
           <p class="jg-note">${esc(D.note)}</p>
         </div></section>`;
-      wireBack(root); wireCopy(root);
+      wireBack(root); wireCopy(root); wireShare(root, text, card, 'pais');
       root.querySelector('[data-again]').addEventListener('click', start);
       const f = root.querySelector('[data-ficha]'); if (f) f.addEventListener('click', () => window.__fichaFull && window.__fichaFull(f.getAttribute('data-ficha')));
     }
@@ -221,12 +325,13 @@
     function intro() {
       root.innerHTML = `<section class="jg-game is-rosca">${backBtn()}
         <div class="jg-intro"><span class="jg-kicker">Simulación</span><h2>${esc(D.title)}</h2>
-          <p class="jg-role">Jugás como <b>${esc(D.role)}</b>.</p><p>${esc(D.intro)}</p>
+          <p class="jg-role">Llevás adelante <b>${esc(D.role)}</b>.</p><p>${esc(D.intro)}</p>
           <ul class="jg-rules">
             <li>Para la media sanción necesitás <b>129 votos en Diputados</b> (el quórum) y después <b>37 en el Senado</b>.</li>
             <li>Cada semana llega una situación y podés hacer <b>una jugada</b>: negociar con un gobernador, ir a los medios o llamar a sesión.</li>
             <li>Si llamás a sesión sin los votos, la sesión se cae y perdés capital político.</li>
             <li>Si tu capital político o tu interna con la Casa Rosada llegan a cero, perdés.</li>
+            <li>Y como en la política real, en cualquier momento puede pasar algo: <b>paros, escándalos en el recinto, lágrimas en televisión</b>.</li>
           </ul>
           <button type="button" class="jg-btn is-main" data-go-design>Empezar la rosca</button>
           <p class="jg-note">${esc(D.disclaimer)}</p></div></section>`;
@@ -283,17 +388,20 @@
       const due = D.events.filter(ev => eligible(ev) && !ev.random && ev.turn <= S.turn + 1);
       const rand = D.events.filter(ev => eligible(ev) && ev.random && Math.random() < 0.45);
       S.queue = due.slice(0, 2).concat(due.length < 2 ? rand.slice(0, 1) : []);
+      // "Último momento": something unexpected, in the middle of the week's events
+      const fl = (D.flashes || []).filter(f => !S.seen['f:' + f.id]);
+      if (!first && fl.length && Math.random() < 0.55) S.queue.splice(Math.min(1, S.queue.length), 0, Object.assign({ flash: true }, fl[Math.floor(Math.random() * fl.length)]));
       showEvent();
     }
     function showEvent() {
       const ev = S.queue.shift();
       if (!ev) return actions();
-      S.seen[ev.id] = true;
-      root.innerHTML = frame(`<div class="rs-card"><span class="rs-who">${esc(ev.who)}${ev.role ? ' · ' + esc(ev.role) : ''}</span><h3>${esc(ev.title)}</h3><p>${esc(ev.text)}</p>
+      S.seen[ev.flash ? 'f:' + ev.id : ev.id] = true;
+      root.innerHTML = frame(`<div class="rs-card${ev.flash ? ' is-flash' : ''}">${ev.flash ? '<span class="jg-flash-tag">Último momento</span>' : ''}<span class="rs-who">${esc(ev.who)}${ev.role ? ' · ' + esc(ev.role) : ''}</span><h3>${esc(ev.title)}</h3><p>${esc(ev.text)}</p>
         <div class="jg-opts">${ev.options.map((o, k) => `<button type="button" class="jg-opt" data-k="${k}">${esc(o.label)}</button>`).join('')}</div></div>`);
       wireBack(root);
       root.querySelectorAll('[data-k]').forEach(b => b.addEventListener('click', () => {
-        const o = ev.options[+b.getAttribute('data-k')]; apply(o.e); S.log.push({ t: ev.title, r: o.label });
+        const o = ev.options[+b.getAttribute('data-k')]; apply(o.e); S.log.push({ t: ev.title, r: o.label, flash: !!ev.flash });
         outcome(o.label, o.result || '', showEvent);
       }));
     }
@@ -348,17 +456,26 @@
       const E = D.endings[kind] || D.endings.time, win = kind === 'win' || kind === 'winLemas';
       const score = win ? Math.round(stat('imagen') * 0.4 + stat('capital') * 0.3 + stat('caja') * 0.2 + (S.maxTurns - S.turn) * 4 + (S.flags.lemas ? -15 : 0)) : 0;
       const text = win ? `Saqué la ley sin PASO en "La rosca" del Atlas Político Mundial: ${score} puntos. ¿Te animás?` : `Jugué "La rosca: PASO o no PASO" en el Atlas Político Mundial y… ${E.title.toLowerCase()}. ¿Te animás?`;
+      const flashes = S.log.filter(l => l.flash).slice(-3);
+      const card = cardShell('La rosca: PASO o no PASO', '#6C3FB8', `
+        <div class="jgx-kicker">${win ? 'Lo logré' : 'Fin del juego'} · Jefatura de Gabinete</div>
+        <div class="jgx-title is-md">${esc(E.title)}</div>
+        ${win ? `<div class="jgx-score"><b>${score}</b><span>puntos</span></div>` : ''}
+        <div class="jgx-text">${esc(E.text)}</div>
+        <div class="jgx-stats">${STATS.map(k => `<div class="jgx-stat"><span>${esc(D.stats[k].label)}</span><div class="jgx-stat-t"><i style="width:${stat(k)}%"></i></div><b>${stat(k)}</b></div>`).join('')}</div>
+        <div class="jgx-facts"><span>Diputados: <b>${S.dipPassed ? `media sanción (${S.dipVotes} votos)` : 'sin media sanción'}</b></span><span>Semanas: <b>${Math.min(S.turn + 1, S.maxTurns)} de ${S.maxTurns}</b></span></div>
+        ${flashes.length ? `<div class="jgx-flashes"><span>Lo que tuve que aguantar</span>${flashes.map(l => `<b>⚡ ${esc(l.t)}</b>`).join('')}</div>` : ''}`);
       root.innerHTML = `<section class="jg-game is-rosca">${backBtn()}
         <div class="jg-result rs-end ${win ? 'is-win' : 'is-lose'}">
           <span class="jg-kicker">${win ? 'Ganaste' : 'Fin del juego'}</span><h2>${esc(E.title)}</h2><p>${esc(E.text)}</p>
           ${win ? `<div class="rs-score"><b>${score}</b><span>puntos</span></div>` : ''}
           <div class="rs-final">${STATS.map(k => `<div><span>${esc(D.stats[k].label)}</span><b>${stat(k)}</b></div>`).join('')}<div><span>Semanas usadas</span><b>${Math.min(S.turn + 1, S.maxTurns)} de ${S.maxTurns}</b></div></div>
-          <h4>Tus decisiones</h4><ol class="rs-log">${S.log.map(l => `<li><b>${esc(l.t)}:</b> ${esc(l.r)}</li>`).join('')}</ol>
-          ${shareRow(text)}
+          <h4>Tus decisiones</h4><ol class="rs-log">${S.log.map(l => `<li${l.flash ? ' class="is-flash"' : ''}><b>${l.flash ? '⚡ ' : ''}${esc(l.t)}:</b> ${esc(l.r)}</li>`).join('')}</ol>
+          ${shareBox(text)}
           <button type="button" class="jg-btn is-main" data-again>Volver a jugar</button>
           <p class="jg-note">${esc(D.disclaimer)}</p>
         </div></section>`;
-      wireBack(root); wireCopy(root);
+      wireBack(root); wireCopy(root); wireShare(root, text, card, 'rosca');
       root.querySelector('[data-again]').addEventListener('click', start);
     }
     return { start };
@@ -388,7 +505,7 @@
     function start() {
       const all = pool();
       const picks = shuffle(all.filter(c => BIG.includes(c.iso))).slice(0, 7).concat(shuffle(all.filter(c => !BIG.includes(c.iso))).slice(0, 3));
-      st = { qs: shuffle(picks).map(c => makeQ(c, all)), i: 0, ok: 0, answered: false };
+      st = { qs: shuffle(picks).map(c => makeQ(c, all)), i: 0, ok: 0, answered: false, res: [] };
       q();
     }
     function q() {
@@ -404,7 +521,7 @@
       root.querySelectorAll('[data-k]').forEach(b => b.addEventListener('click', () => {
         if (st.answered) return; st.answered = true;
         const pick = Q.opts[+b.getAttribute('data-k')], good = pick === Q.ok;
-        if (good) st.ok++;
+        if (good) st.ok++; st.res[st.i] = good;
         root.querySelectorAll('[data-k]').forEach(x => { const v = Q.opts[+x.getAttribute('data-k')]; x.classList.add(v === Q.ok ? 'is-ok' : x === b ? 'is-bad' : 'is-dim'); x.disabled = true; });
         const info = root.querySelector('.tv-info'); info.hidden = false;
         info.innerHTML = `<b>${good ? '¡Bien!' : 'No.'}</b> ${esc(Q.info)} <button type="button" class="jg-btn is-main" data-next>${st.i + 1 < st.qs.length ? 'Siguiente' : 'Ver resultado'}</button>`;
@@ -415,11 +532,17 @@
       const n = st.qs.length, ok = st.ok;
       const verdict = ok >= 9 ? 'Nivel canciller' : ok >= 7 ? 'Analista internacional' : ok >= 5 ? 'Lector de diarios' : ok >= 3 ? 'Turista político' : 'Recién llegado';
       const text = `Saqué ${ok} de ${n} en "¿Quién gobierna?" del Atlas Político Mundial: ${verdict}. ¿Cuántas sacás vos?`;
+      const card = cardShell('¿Quién gobierna?', '#D9822B', `
+        <div class="jgx-kicker">Trivia de líderes del mundo</div>
+        <div class="jgx-huge"><b>${ok}</b><span>/ ${n}</span></div>
+        <div class="jgx-title is-md">${esc(verdict)}</div>
+        <div class="jgx-dots">${st.res.map(r => `<i class="${r ? 'is-ok' : 'is-bad'}">${r ? '✓' : '✗'}</i>`).join('')}</div>
+        <div class="jgx-text">Diez preguntas sobre presidentes, primeros ministros y gobiernos de todo el mundo, con la base del Atlas.</div>`);
       root.innerHTML = `<section class="jg-game is-trivia">${backBtn()}
         <div class="jg-result"><span class="jg-kicker">Resultado</span><h2>${ok} de ${n}: <em>${esc(verdict)}</em></h2>
           <p>Las respuestas salen de la base del Atlas, que se actualiza con cada elección.</p>
-          ${shareRow(text)}<button type="button" class="jg-btn is-main" data-again>Otra ronda</button></div></section>`;
-      wireBack(root); wireCopy(root);
+          ${shareBox(text)}<button type="button" class="jg-btn is-main" data-again>Otra ronda</button></div></section>`;
+      wireBack(root); wireCopy(root); wireShare(root, text, card, 'trivia');
       root.querySelector('[data-again]').addEventListener('click', start);
     }
     return { start };

@@ -6155,6 +6155,30 @@
   /* ===================== JUEGOS ===================== */
   .jg-root { max-width: 1080px; margin: 0 auto; padding: 24px 16px 60px; }
   .jg-loading { padding: 60px 0; text-align: center; color: var(--muted); }
+
+  /* Portada: games promo */
+  .portada-games { margin: 26px 0 8px; padding: 22px 24px; border-radius: 18px; background: linear-gradient(135deg, #FFF6E5 0%, #FDEBEE 100%); border: 1px solid rgba(160,43,62,.15); }
+  .pg-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 14px; margin-bottom: 14px; }
+  .pg-head h2 { font: 800 26px/1.1 var(--font-serif); margin: 0; color: #141821; letter-spacing: -.01em; }
+  .pg-head p { margin: 0; flex: 1 1 320px; color: #4A5060; font-size: 15px; }
+  .pg-badge { font: 800 11px var(--font-sans); letter-spacing: .12em; text-transform: uppercase; background: #A02B3E; color: #fff; padding: 4px 9px; border-radius: 99px; align-self: center; }
+  .pg-all { font: 700 14px var(--font-sans); color: #A02B3E; text-decoration: none; white-space: nowrap; }
+  .pg-cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+  .pg-card { display: flex; flex-direction: column; gap: 6px; padding: 16px 16px 14px; border-radius: 14px; background: #fff; color: #141821; text-decoration: none; box-shadow: 0 1px 2px rgba(0,0,0,.06); border: 1px solid rgba(0,0,0,.06); transition: transform .15s, box-shadow .15s; }
+  .pg-card:hover { transform: translateY(-2px); box-shadow: 0 8px 22px rgba(0,0,0,.10); }
+  .pg-card b { font: 800 18px/1.2 var(--font-serif); }
+  .pg-card span:not(.pg-ico) { font-size: 14px; line-height: 1.45; color: #4A5060; flex: 1; }
+  .pg-card em { font: 700 13px var(--font-sans); font-style: normal; color: #A02B3E; }
+  .pg-ico { font-size: 26px; line-height: 1; }
+  .pg-card.is-rosca { border-top: 4px solid #6C3FB8; }
+  .pg-card.is-pais { border-top: 4px solid #1F7A5A; }
+  .pg-card.is-trivia { border-top: 4px solid #D9822B; }
+  .quick-link .ql-new { font: 800 9px var(--font-sans); letter-spacing: .08em; text-transform: uppercase; background: #A02B3E; color: #fff; padding: 2px 5px; border-radius: 99px; margin-left: 2px; vertical-align: 1px; }
+  @media (max-width: 760px) {
+    .portada-games { padding: 18px 16px; }
+    .pg-cards { grid-template-columns: 1fr; }
+    .pg-card { padding: 13px 14px; }
+  }
   .jg-kicker { display: inline-block; font: 700 11px var(--font-sans); letter-spacing: .14em; text-transform: uppercase; color: var(--accent, #A02B3E); }
   .jg-hub-head h2, .jg-intro h2, .jg-result h2 { font: 800 clamp(32px, 5vw, 52px)/1.02 var(--font-serif); letter-spacing: -.02em; margin: 8px 0 10px; color: var(--ink); }
   .jg-hub-head h2 em, .jg-result h2 em { font-style: italic; font-weight: 500; color: var(--accent, #A02B3E); }
@@ -6216,6 +6240,70 @@
   .jg-plane-l.is-x0 { left: 8px; top: 50%; transform: translateY(-140%); } .jg-plane-l.is-x1 { right: 8px; top: 50%; transform: translateY(-140%); }
   .jg-plane-l.is-y0 { bottom: 6px; left: 50%; transform: translateX(6px); } .jg-plane-l.is-y1 { top: 6px; left: 50%; transform: translateX(6px); }
   .jg-share { display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0 12px; }
+  /* "Último momento": unexpected events in the games */
+  .jg-flash-tag { display: inline-flex; align-items: center; gap: 6px; font: 800 11px var(--font-sans); letter-spacing: .12em; text-transform: uppercase; background: #D62839; color: #fff; padding: 4px 10px 4px 8px; border-radius: 4px; animation: jgFlash 1.2s ease-in-out 3; }
+  .jg-flash-tag::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: #fff; }
+  @keyframes jgFlash { 50% { opacity: .55; } }
+  .jg-flash { display: flex; align-items: center; gap: 10px; margin: 6px 0 2px; font: 700 13px var(--font-sans); color: var(--ink-soft); }
+  .jg-q.is-flash { border-left: 4px solid #D62839; padding-left: 14px; }
+  .rs-card.is-flash { border-color: #D62839; box-shadow: 0 0 0 3px rgba(214,40,57,.12), 0 10px 30px -22px rgba(11,22,40,.5); }
+  .rs-card.is-flash .jg-flash-tag { margin-bottom: 8px; margin-right: 8px; }
+  .rs-log li.is-flash { color: #B01E2E; }
+  @media (prefers-reduced-motion: reduce) { .jg-flash-tag { animation: none; } }
+  /* Share the result as image / PDF */
+  .jg-sharebox { margin: 22px 0 14px; padding: 16px 18px; border: 1px solid var(--line); border-radius: 14px; background: var(--surface); display: grid; grid-template-columns: 1fr auto; gap: 4px 18px; align-items: start; }
+  .jg-sharebox > :not(.jg-share-prev) { grid-column: 1; }
+  .jg-sharebox .jg-share { margin: 8px 0 0; }
+  .jg-share-h { font: 800 12px var(--font-sans); letter-spacing: .12em; text-transform: uppercase; color: var(--ink-soft); }
+  .jg-share-prev { grid-column: 2; grid-row: 1 / span 3; }
+  .jg-share-prev img { display: block; width: 150px; height: auto; border-radius: 8px; box-shadow: 0 6px 18px rgba(0,0,0,.18); }
+  @media (max-width: 600px) { .jg-sharebox { grid-template-columns: 1fr; } .jg-share-prev { grid-column: 1; grid-row: auto; } .jg-share-prev img { width: 60%; margin: 10px auto 0; } }
+  /* The card itself (1080×1350, drawn off-screen) */
+  .jgx { width: 1080px; height: 1350px; box-sizing: border-box; padding: 64px 72px 56px; display: flex; flex-direction: column; background: #FBF7F0; color: #141821; font-family: var(--font-sans); position: relative; overflow: hidden; border-top: 22px solid var(--jgx); }
+  .jgx::after { content: ''; position: absolute; right: -180px; bottom: -180px; width: 520px; height: 520px; border-radius: 50%; background: var(--jgx); opacity: .07; }
+  .jgx-top { display: flex; justify-content: space-between; align-items: center; font: 800 24px var(--font-sans); letter-spacing: .14em; text-transform: uppercase; color: #4A5060; }
+  .jgx-game { color: var(--jgx); }
+  .jgx-body { flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 22px; }
+  .jgx-kicker { font: 700 34px/1.2 var(--font-sans); color: #4A5060; }
+  .jgx-flag img { width: 240px; height: auto; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,.18); display: block; }
+  .jgx-title { font: 800 110px/0.98 var(--font-serif); letter-spacing: -.02em; color: #141821; }
+  .jgx-title.is-long { font-size: 82px; }
+  .jgx-title.is-md { font-size: 74px; line-height: 1.02; }
+  .jgx-big { font: 600 40px var(--font-sans); color: #4A5060; }
+  .jgx-big b { font: 800 64px var(--font-sans); color: var(--jgx); }
+  .jgx-sub { font: 500 32px/1.3 var(--font-sans); color: #2B303B; }
+  .jgx-axes { display: grid; gap: 14px; margin-top: 6px; }
+  .jgx-ax-h { font: 800 22px var(--font-sans); text-transform: uppercase; letter-spacing: .1em; color: #4A5060; margin-bottom: 4px; }
+  .jgx-ax-row { display: grid; grid-template-columns: 200px 1fr 200px; align-items: center; gap: 16px; font: 500 20px/1.15 var(--font-sans); color: #4A5060; }
+  .jgx-ax-row span:last-child { text-align: right; }
+  .jgx-ax-t { position: relative; height: 12px; border-radius: 6px; background: #E6E0D5; }
+  .jgx-ax-t i { position: absolute; top: 50%; width: 30px; height: 30px; margin: -15px 0 0 -15px; border-radius: 50%; background: var(--jgx); border: 4px solid #fff; box-shadow: 0 2px 6px rgba(0,0,0,.25); }
+  .jgx-also { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 22px; font: 600 26px var(--font-sans); color: #4A5060; }
+  .jgx-also b { color: #141821; display: inline-flex; align-items: center; gap: 8px; }
+  .jgx-also img { width: 40px; height: auto; border-radius: 3px; }
+  .jgx-score { display: flex; align-items: baseline; gap: 14px; }
+  .jgx-score b { font: 800 150px/1 var(--font-sans); color: var(--jgx); }
+  .jgx-score span { font: 700 40px var(--font-sans); color: #4A5060; }
+  .jgx-text { font: 400 32px/1.4 var(--font-serif); color: #2B303B; }
+  .jgx-stats { display: grid; gap: 14px; }
+  .jgx-stat { display: grid; grid-template-columns: 340px 1fr 70px; align-items: center; gap: 18px; font: 600 26px var(--font-sans); }
+  .jgx-stat b { text-align: right; font-weight: 800; }
+  .jgx-stat-t { height: 18px; border-radius: 9px; background: #E6E0D5; overflow: hidden; }
+  .jgx-stat-t i { display: block; height: 100%; background: var(--jgx); }
+  .jgx-facts { display: flex; flex-wrap: wrap; gap: 8px 36px; font: 500 26px var(--font-sans); color: #4A5060; }
+  .jgx-facts b { color: #141821; }
+  .jgx-flashes { display: flex; flex-direction: column; gap: 8px; padding: 22px 26px; border-left: 8px solid #D62839; background: rgba(214,40,57,.06); border-radius: 4px; }
+  .jgx-flashes span { font: 800 20px var(--font-sans); text-transform: uppercase; letter-spacing: .12em; color: #B01E2E; }
+  .jgx-flashes b { font: 600 26px/1.25 var(--font-sans); color: #141821; }
+  .jgx-huge { display: flex; align-items: baseline; gap: 18px; }
+  .jgx-huge b { font: 800 300px/0.9 var(--font-sans); color: var(--jgx); letter-spacing: -.04em; }
+  .jgx-huge span { font: 700 90px var(--font-sans); color: #4A5060; }
+  .jgx-dots { display: flex; gap: 14px; }
+  .jgx-dots i { width: 70px; height: 70px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font: 800 34px var(--font-sans); font-style: normal; color: #fff; }
+  .jgx-dots i.is-ok { background: #1F7A5A; }
+  .jgx-dots i.is-bad { background: #C8C1B5; }
+  .jgx-foot { display: flex; flex-direction: column; gap: 4px; padding-top: 26px; border-top: 3px solid #141821; font: 500 26px var(--font-sans); color: #4A5060; position: relative; z-index: 1; }
+  .jgx-foot b { font: 800 38px var(--font-sans); color: #141821; }
   /* Rosca */
   .rs-top { display: grid; grid-template-columns: 190px minmax(0, 1fr); gap: 14px; align-items: stretch; margin-bottom: 12px; }
   .rs-week { background: linear-gradient(150deg, #2A0F3D, #6B2A7A); color: #fff; border-radius: 14px; padding: 12px 14px; display: flex; flex-direction: column; }
@@ -7580,6 +7668,7 @@
         <div class="portada-search-hint" id="portada-search-hint" aria-live="polite"></div>
         <div class="portada-quick">
           <a class="quick-link is-special is-es" href="#espana" onclick="return window.__atlasGoTo('espana')"><img class="flag-img ql-flag" src="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.3.2/flags/4x3/es.svg" alt="" crossorigin="anonymous"> España vota el 29-N</a>
+          <a class="quick-link is-games" href="#juegos" onclick="return window.__playGame()"><span class="ql-icon">🎮</span> Juegos <small class="ql-new">Nuevo</small></a>
           <a class="quick-link" href="#eeuu" onclick="return window.__atlasGoTo('eeuu')"><img class="flag-img ql-flag" src="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.3.2/flags/4x3/us.svg" alt="" crossorigin="anonymous"> Resultados EE.UU.</a>
           <a class="quick-link" href="#nav-map" onclick="return window.__portadaToMap()"><span class="ql-icon">🗺️</span> Mapa</a>
           <a class="quick-link" href="#elecciones" onclick="return window.__atlasGoTo('elecciones')"><span class="ql-icon">🗳️</span> Calendario</a>
@@ -7589,6 +7678,20 @@
       </div>
       <aside class="next-card" id="next-card" aria-live="polite"></aside>
     </div>
+
+    <section class="portada-games" aria-label="Juegos del Atlas">
+      <div class="pg-head">
+        <span class="pg-badge">Nuevo</span>
+        <h2>Juegos del Atlas</h2>
+        <p>Gobernar, negociar, contar votos. Con los datos del Atlas y los actores reales de la política.</p>
+        <a class="pg-all" href="#juegos" onclick="return window.__playGame()">Ver los juegos <span aria-hidden="true">→</span></a>
+      </div>
+      <div class="pg-cards">
+        <a class="pg-card is-rosca" href="#juegos" onclick="return window.__playGame('rosca')"><span class="pg-ico">🏛️</span><b>La rosca: PASO o no PASO</b><span>Llevás adelante la Jefatura de Gabinete y tenés que eliminar las PASO. Gobernadores, bloques, paros y escándalos.</span><em>Jugar →</em></a>
+        <a class="pg-card is-pais" href="#juegos" onclick="return window.__playGame('pais')"><span class="pg-ico">🌎</span><b>¿Qué país gobernarías?</b><span>14 decisiones sorteadas de un banco de más de 100. Descubrí a qué país del mundo se parece tu forma de gobernar.</span><em>Jugar →</em></a>
+        <a class="pg-card is-trivia" href="#juegos" onclick="return window.__playGame('trivia')"><span class="pg-ico">❓</span><b>¿Quién gobierna?</b><span>Diez preguntas sobre presidentes y primeros ministros de todo el mundo.</span><em>Jugar →</em></a>
+      </div>
+    </section>
 
     <div class="portada-pulse" id="portada-pulse"></div>
 
@@ -34970,14 +35073,22 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
     if (view === 'juegos') loadJuegos();
   };
   // Games live in js/juegos.js and load only when someone opens the section
+  let pendingGame = null;
+  // Open a game straight from the portada (no game: the games hub)
+  window.__playGame = game => {
+    pendingGame = game || 'hub';
+    if (isViewActive('juegos')) loadJuegos(); else window.__atlasGoTo('juegos');
+    return false;
+  };
   function loadJuegos() {
     const el = document.getElementById('juegos-root');
     if (!el) return;
-    if (window.AtlasJuegos) return window.AtlasJuegos.render(el);
-    if (document.getElementById('juegos-js')) return;
+    const game = pendingGame; pendingGame = null;
+    if (window.AtlasJuegos) return window.AtlasJuegos.render(el, game);
+    if (document.getElementById('juegos-js')) { pendingGame = game; return; }
     const sc = document.createElement('script');
-    sc.id = 'juegos-js'; sc.src = 'js/juegos.js?v=1';
-    sc.onload = () => window.AtlasJuegos && window.AtlasJuegos.render(el);
+    sc.id = 'juegos-js'; sc.src = 'js/juegos.js?v=2';
+    sc.onload = () => { const g = game || pendingGame; pendingGame = null; window.AtlasJuegos && window.AtlasJuegos.render(el, g); };
     sc.onerror = () => { el.innerHTML = '<div class="jg-loading">No se pudieron cargar los juegos.</div>'; };
     document.head.appendChild(sc);
   }
@@ -35106,13 +35217,16 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
       const over = () => nav.scrollWidth > nav.clientWidth + 1;
       for (const c of ['fit-1', 'fit-2', 'fit-3']) { if (!over()) return; nav.classList.add(c); }
     };
-    let t; window.addEventListener('resize', () => { clearTimeout(t); t = setTimeout(fit, 120); });
+    let t;
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
     window.addEventListener('load', fit);
-    const later = () => { clearTimeout(t); t = setTimeout(fit, 120); };
+    // Refit only when something outside the fit changes (window size, fonts, a
+    // translation). Watching the links' size made it loop: each fit resized
+    // them and triggered the next one, and the bar kept jumping sideways.
+    let lastW = 0;
+    const later = () => { clearTimeout(t); t = setTimeout(fit, 150); };
+    window.addEventListener('resize', () => { if (window.innerWidth !== lastW) { lastW = window.innerWidth; later(); } });
     new MutationObserver(later).observe(nav, { childList: true, subtree: true, characterData: true });
-    // Fonts and translations change the width of the links after load
-    if (window.ResizeObserver) { const ro = new ResizeObserver(later); nav.querySelectorAll('.topic-nav-link, .topic-nav-brand, .lang-switch-nav').forEach(el => ro.observe(el)); ro.observe(nav); }
     setTimeout(fit, 1500);
     fit();
   })();
