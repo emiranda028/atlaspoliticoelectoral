@@ -6470,6 +6470,23 @@
   .rs-gov { text-align: left; border: 1px solid var(--line); background: var(--surface); border-radius: 12px; padding: 10px 12px; cursor: pointer; display: flex; flex-direction: column; gap: 3px; font-family: var(--font-sans); color: var(--ink); }
   @media (hover: hover) and (pointer: fine) { .jg-root:not(.is-fresh) .rs-gov:hover:not(:disabled) { border-color: #6B2A7A; background: #FAF5FC; } } .rs-gov:disabled { opacity: .45; cursor: not-allowed; }
   .rs-gov b { font-size: 14.5px; } .rs-gov span { font-size: 12.5px; color: var(--ink-soft); line-height: 1.35; } .rs-gov small { font-size: 11.5px; color: #6B2A7A; font-weight: 600; }
+  .rs-roles { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin: 16px 0 10px; }
+  .rs-role { position: relative; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 6px; padding: 14px 12px 16px; border: 1.5px solid var(--line); border-radius: 16px; background: var(--surface); color: var(--ink); font-family: var(--font-sans); cursor: pointer; transition: transform .15s, border-color .15s; }
+  .rs-role svg { width: 100%; max-width: 130px; height: auto; }
+  .rs-role div { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+  .rs-role b { font: 800 19px var(--font-serif); }
+  .rs-role span { font-size: 13px; line-height: 1.4; color: var(--ink-soft); }
+  .rs-role em { position: absolute; top: 8px; right: 8px; font: 800 10px var(--font-sans); letter-spacing: .08em; text-transform: uppercase; background: #FFF1D6; color: #8A5A00; border-radius: 99px; padding: 2px 8px; }
+  .rs-role:disabled { cursor: not-allowed; opacity: .6; }
+  @media (hover: hover) and (pointer: fine) { .rs-role:hover:not(:disabled) { border-color: #6B2A7A; transform: translateY(-2px); } }
+  @media (max-width: 600px) { .rs-roles { grid-template-columns: 1fr; } .rs-role { flex-direction: row; text-align: left; align-items: center; gap: 12px; padding: 10px 12px; } .rs-role svg { width: 74px; flex: none; } }
+  .rs-govnote { background: #EEF3FA; border-left: 4px solid #2F6DB5; border-radius: 10px; padding: 8px 12px; margin-bottom: 10px; font-size: 13.5px; line-height: 1.4; color: var(--ink); }
+  .rs-govnote span { display: block; font: 800 10.5px var(--font-sans); letter-spacing: .1em; text-transform: uppercase; color: #2F6DB5; margin-bottom: 2px; }
+  .rs-govnote p { margin: 0; }
+  .rs-bill { font: italic 600 16px/1.4 var(--font-serif); color: var(--ink); background: #F7F3EA; border-radius: 10px; padding: 8px 12px; }
+  .rs-card.is-vote.is-good h3 { color: #1F7A5A; } .rs-card.is-vote.is-bad h3 { color: #B3261E; }
+  :root[data-theme="dark"] .rs-govnote, :root[data-theme="dark"] .rs-bill { background: rgba(255,255,255,.06); }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .rs-govnote, :root:not([data-theme="light"]) .rs-bill { background: rgba(255,255,255,.06); } }
   .rs-blocs { margin-top: 14px; font-size: 13px; } .rs-blocs summary { cursor: pointer; font-weight: 600; color: var(--ink-soft); }
   .rs-blocs h5 { font: 700 14px var(--font-serif); margin: 12px 0 6px; } .rs-blocs h5 small { font: 400 12px var(--font-sans); color: var(--muted); }
   .rs-bloc-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); gap: 4px 16px; }
@@ -35337,7 +35354,7 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
     if (window.AtlasJuegos) return window.AtlasJuegos.render(el, game);
     if (document.getElementById('juegos-js')) { pendingGame = game; return; }
     const sc = document.createElement('script');
-    sc.id = 'juegos-js'; sc.src = 'js/juegos.js?v=28';
+    sc.id = 'juegos-js'; sc.src = 'js/juegos.js?v=29';
     sc.onload = () => { const g = game || pendingGame; pendingGame = null; window.AtlasJuegos && window.AtlasJuegos.render(el, g); };
     sc.onerror = () => { el.innerHTML = '<div class="jg-loading">No se pudieron cargar los juegos.</div>'; };
     document.head.appendChild(sc);
