@@ -485,8 +485,11 @@
       if (stat('interna') <= 0) return (S.over = 'sidelined');
       return null;
     }
+    // Situations that only move deputies make no sense once Diputados already voted
+    const onlyDip = ev => { const ks = ev.options.flatMap(o => Object.keys((o.e && o.e.blocs) || {})); return ks.length > 0 && ks.every(k => k.startsWith('dip:')); };
     function eligible(ev) {
       if (S.seen[ev.id]) return false;
+      if (S.dipPassed && onlyDip(ev)) return false;
       if (ev.requires && !S.flags[ev.requires]) return false;
       return ev.turn <= S.turn + 1;
     }
@@ -499,7 +502,7 @@
       S.queue = due.slice(0, 2).concat(due.length < 2 ? rand.slice(0, 1) : []);
       // "Último momento": something unexpected, in the middle of the week's events
       // Events about "your" governor only show up once you've negotiated with one
-      const fl = (D.flashes || []).filter(f => !S.seen['f:' + f.id] && (!f.needsGov || dealtGovs().length));
+      const fl = (D.flashes || []).filter(f => !S.seen['f:' + f.id] && (!f.needsGov || dealtGovs().length) && !(S.dipPassed && onlyDip(f)));
       // Once you've made deals, half of the surprises are about those governors
       const pick = () => { const g = fl.filter(f => f.needsGov), pool = g.length && Math.random() < 0.5 ? g : fl; const f = pool[Math.floor(Math.random() * pool.length)]; fl.splice(fl.indexOf(f), 1); return Object.assign({ flash: true }, f); };
       if (!first && fl.length && Math.random() < 0.7) S.queue.splice(Math.min(1, S.queue.length), 0, pick());
@@ -516,7 +519,7 @@
       return Object.assign({}, e, out);
     }
     // Fill {gov}/{prov} with a governor you already made a deal with
-    const dealtGovs = () => Object.keys(S.govUsed).filter(id => D.governors.some(g => g.id === id));
+    const dealtGovs = () => Object.keys(S.govUsed).filter(id => D.governors.some(g => g.id === id && liveBlocs(g.blocs).length));
     function withGov(ev) {
       const ids = dealtGovs(); if (!ids.length) return null;
       const g = D.governors.find(x => x.id === ids[Math.floor(Math.random() * ids.length)]);
@@ -539,25 +542,28 @@
         // political capital, and the goodwill they buy is worth less
         const e = JSON.parse(JSON.stringify(o.e || {}));
         // "gov": how much the deal with that governor moves (his blocs)
-        if (ev.gov && o.gov) { e.blocs = e.blocs || {}; ev.gov.blocs.forEach(k => { e.blocs[k] = (e.blocs[k] || 0) + o.gov; }); }
+        if (ev.gov && o.gov) { e.blocs = e.blocs || {}; liveBlocs(ev.gov.blocs).forEach(k => { e.blocs[k] = (e.blocs[k] || 0) + o.gov; }); }
         apply(ev.flash ? flashCost(e) : e); S.log.push({ t: ev.title, r: o.label, flash: !!ev.flash });
         const res = (o.result || '') + (ev.flash ? ' Igual, apagar el incendio te costó capital político.' : '');
         outcome(o.label, res, showEvent, { flash: ev.flash, faran: ev.tag === 'farandula', who: ev.who + (ev.role ? ' · ' + ev.role : ''), title: ev.title, text: ev.text, choice: o.label, result: res });
       }));
     }
+    const liveBlocs = keys => keys.filter(k => !S.dipPassed || k.startsWith('sen:'));
     function actions() {
       const ch = S.dipPassed ? 'sen' : 'dip', c = count(ch), need = D.chambers[ch].need;
+      // After the half-sanction only senators are still in play
       const govs = D.governors.map(g => {
-        const used = S.govUsed[g.id] || 0, cost = 10 + used * 5;
-        const ok = used < 2 && stat('caja') >= cost && stat('capital') >= 5 && !S.actionDone;
-        return `<button type="button" class="rs-gov" data-gov="${g.id}"${ok ? '' : ' disabled'}><b>${esc(g.name)}</b><span>${esc(g.prov)} · ${esc(g.pitch)}</span><small>${used >= 2 ? 'Ya negociaste dos veces' : `Cuesta ${cost} de caja`}</small></button>`;
+        const used = S.govUsed[g.id] || 0, cost = 10 + used * 5, useful = liveBlocs(g.blocs).length > 0;
+        const ok = useful && used < 2 && stat('caja') >= cost && stat('capital') >= 5 && !S.actionDone;
+        const note = !useful ? 'Sus legisladores ya votaron en Diputados: no tiene senadores para ofrecer' : used >= 2 ? 'Ya negociaste dos veces' : `Cuesta ${cost} de caja${S.dipPassed ? ' · solo mueve senadores' : ''}`;
+        return `<button type="button" class="rs-gov" data-gov="${g.id}"${ok ? '' : ' disabled'}><b>${esc(g.name)}</b><span>${esc(g.prov)} · ${esc(g.pitch)}</span><small>${note}</small></button>`;
       }).join('');
       paint(`<div class="rs-card is-actions"><h3>Tu jugada de la semana</h3>
         <p>${ch === 'dip' ? `En Diputados contás con ${c.sure} votos seguros y unos ${c.exp} probables. Necesitás ${need}.` : `Tenés la media sanción. En el Senado contás con ${c.sure} seguros y unos ${c.exp} probables. Necesitás ${need}.`}</p>
         <div class="rs-acts">
           ${ch === 'sen' && S.turn < (S.senOpen || 0) ? `<button type="button" class="jg-btn is-main" disabled>El Senado sesiona cuando haya dictamen (la semana que viene)</button>` : `<button type="button" class="jg-btn is-main" data-act="vote">Llamar a sesión en ${ch === 'dip' ? 'Diputados' : 'el Senado'}</button>`}
           <button type="button" class="jg-btn" data-act="media"${stat('capital') >= 4 ? '' : ' disabled'}>Ir a los medios (+imagen, −capital)</button>
-          <button type="button" class="jg-btn" data-act="cede"${stat('interna') >= 6 ? '' : ' disabled'}>Ceder en el texto (+radicales y PU, −interna)</button>
+          <button type="button" class="jg-btn" data-act="cede"${stat('interna') >= 6 ? '' : ' disabled'}>Ceder en el texto (+${S.dipPassed ? 'senadores radicales y de PU' : 'radicales y PU'}, −interna)</button>
           <button type="button" class="jg-btn is-ghost" data-act="pass">Esperar a la semana que viene</button>
         </div>
         <h4 class="rs-sub">O negociá con un gobernador</h4><div class="rs-govs">${govs}</div></div>`);
@@ -566,11 +572,12 @@
         const g = D.governors.find(x => x.id === b.getAttribute('data-gov')), used = S.govUsed[g.id] || 0, cost = 10 + used * 5;
         const gain = Math.round(rnd(11, 19) - used * 4);
         const e = { stats: { caja: -cost, capital: -3 }, blocs: {} };
-        g.blocs.forEach(k => { e.blocs[k] = gain; });
+        // In the Senate each vote weighs more: the deal moves senators a bit more
+        liveBlocs(g.blocs).forEach(k => { e.blocs[k] = S.dipPassed ? Math.round(gain * 1.3) : gain; });
         const before = { dip: count('dip').exp, sen: count('sen').exp };
         apply(e); S.govUsed[g.id] = used + 1; S.log.push({ t: 'Negociación', r: g.name });
         // Say exactly what was agreed and what it bought, in votes
-        const blocNames = [...new Set(g.blocs.map(k => S.blocs[k] && S.blocs[k].name).filter(Boolean))];
+        const blocNames = [...new Set(liveBlocs(g.blocs).map(k => S.blocs[k] && (S.dipPassed ? `${S.blocs[k].name} en el Senado` : S.blocs[k].name)).filter(Boolean))];
         const moved = ['dip', 'sen'].map(ch => { const now = count(ch).exp, was = before[ch]; return now !== was ? `${ch === 'dip' ? 'Diputados' : 'Senado'}: de ~${was} a ~${now} votos probables` : ''; }).filter(Boolean);
         const res = `Le prometiste ${g.deal || 'fondos para su provincia'} (te cuesta ${cost} de caja). ${blocNames.length ? `Se acercan al proyecto: ${blocNames.join(' y ')}.` : ''} ${moved.length ? moved.join(' · ') + '.' : 'Por ahora no se traduce en votos nuevos.'}`.replace(/\s+/g, ' ').trim();
         outcome(`Reunión con ${g.name}`, res, () => nextTurn(), { who: g.name + ' · ' + g.prov, title: `Rosca con ${g.name}`, text: g.pitch, choice: `Negociar (${cost} de caja)`, decision: `Negociar con ${g.name} (${g.prov})`, result: res });
@@ -579,7 +586,7 @@
         const a = b.getAttribute('data-act');
         if (a === 'pass') return nextTurn();
         if (a === 'media') { apply({ stats: { imagen: 7, capital: -4 } }); const res = 'Pasaste por cuatro canales y dos streams. Instalaste que las PASO son "una encuesta carísima".'; return outcome('Gira de medios', res, () => nextTurn(), { title: 'Gira de medios', choice: 'Ir a los medios', decision: 'Ir a los medios', result: res }); }
-        if (a === 'cede') { apply({ stats: { interna: -6 }, blocs: { 'dip:ucr': 12, 'sen:ucr': 12, 'dip:pu': 10, 'sen:pu': 10, 'dip:cc': 8 } }); const res = 'Aceptaste plazos más largos y una cláusula de revisión. Los dialoguistas lo valoran; en la Casa Rosada, no tanto.'; return outcome('Cambios en el texto', res, () => nextTurn(), { title: 'Cambios en el texto', choice: 'Ceder en el texto', decision: 'Ceder en el texto', result: res }); }
+        if (a === 'cede') { const cb = { 'dip:ucr': 12, 'sen:ucr': 12, 'dip:pu': 10, 'sen:pu': 10, 'dip:cc': 8 }; apply({ stats: { interna: -6 }, blocs: Object.fromEntries(liveBlocs(Object.keys(cb)).map(k => [k, cb[k]])) }); const res = 'Aceptaste plazos más largos y una cláusula de revisión. Los dialoguistas lo valoran; en la Casa Rosada, no tanto.'; return outcome('Cambios en el texto', res, () => nextTurn(), { title: 'Cambios en el texto', choice: 'Ceder en el texto', decision: 'Ceder en el texto', result: res }); }
         if (a === 'vote') return session(ch);
       }));
     }
