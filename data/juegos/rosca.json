@@ -279,7 +279,8 @@
    "blocs": [
     "dip:pu"
    ],
-   "pitch": "Quiere fondos para la caja de jubilaciones cordobesa y rutas."
+   "pitch": "Quiere fondos para la caja de jubilaciones cordobesa y rutas.",
+   "deal": "fondos para la caja de jubilaciones de Córdoba y dos rutas nacionales"
   },
   {
    "id": "pullaro",
@@ -289,7 +290,8 @@
     "dip:pu",
     "sen:pu"
    ],
-   "pitch": "Pide obras de seguridad y la deuda de la Anses con la caja santafesina."
+   "pitch": "Pide obras de seguridad y la deuda de la Anses con la caja santafesina.",
+   "deal": "obras de seguridad y el pago de la deuda de la Anses con la caja de jubilaciones santafesina"
   },
   {
    "id": "torres",
@@ -299,7 +301,8 @@
     "sen:chubut",
     "dip:pu"
    ],
-   "pitch": "Quiere regalías y un 'superdomingo patagónico'."
+   "pitch": "Quiere regalías y un 'superdomingo patagónico'.",
+   "deal": "un adelanto de regalías petroleras y apoyo a su \"superdomingo patagónico\""
   },
   {
    "id": "saenz",
@@ -309,7 +312,8 @@
     "dip:innov",
     "sen:salta"
    ],
-   "pitch": "Pide la obra del gasoducto del norte y rutas nacionales."
+   "pitch": "Pide la obra del gasoducto del norte y rutas nacionales.",
+   "deal": "la licitación del gasoducto del norte y obras en rutas nacionales"
   },
   {
    "id": "passalacqua",
@@ -319,7 +323,8 @@
     "dip:innov",
     "sen:misiones"
    ],
-   "pitch": "Quiere un régimen especial para la yerba y el turismo."
+   "pitch": "Quiere un régimen especial para la yerba y el turismo.",
+   "deal": "un régimen especial para la yerba mate y fondos para turismo"
   },
   {
    "id": "jaldo",
@@ -329,7 +334,8 @@
     "dip:ind",
     "sen:ind"
    ],
-   "pitch": "Pide ATN para pagar aguinaldos."
+   "pitch": "Pide ATN para pagar aguinaldos.",
+   "deal": "Aportes del Tesoro (ATN) para pagar los aguinaldos provinciales"
   },
   {
    "id": "jalil",
@@ -338,7 +344,8 @@
    "blocs": [
     "dip:elijo"
    ],
-   "pitch": "Quiere que el litio catamarqueño entre al RIGI."
+   "pitch": "Quiere que el litio catamarqueño entre al RIGI.",
+   "deal": "que los proyectos de litio de Catamarca entren al régimen de grandes inversiones (RIGI)"
   },
   {
    "id": "vidal",
@@ -348,7 +355,8 @@
     "sen:movere",
     "dip:psc"
    ],
-   "pitch": "Pide fondos para las represas y la caja provincial."
+   "pitch": "Pide fondos para las represas y la caja provincial.",
+   "deal": "fondos para terminar las represas y auxilio para la caja provincial"
   },
   {
    "id": "orrego",
@@ -357,7 +365,8 @@
    "blocs": [
     "dip:pyt"
    ],
-   "pitch": "Quiere financiamiento para la minería de cobre."
+   "pitch": "Quiere financiamiento para la minería de cobre.",
+   "deal": "financiamiento para los proyectos de cobre sanjuaninos"
   },
   {
    "id": "figueroa",
@@ -367,7 +376,8 @@
     "dip:neuq",
     "sen:neuq"
    ],
-   "pitch": "Ya desdobló su elección: pide obras para Vaca Muerta."
+   "pitch": "Ya desdobló su elección: pide obras para Vaca Muerta.",
+   "deal": "obras de infraestructura para Vaca Muerta"
   }
  ],
  "design": {

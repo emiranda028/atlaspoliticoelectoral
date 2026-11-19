@@ -536,8 +536,12 @@
         const gain = Math.round(rnd(11, 19) - used * 4);
         const e = { stats: { caja: -cost, capital: -3 }, blocs: {} };
         g.blocs.forEach(k => { e.blocs[k] = gain; });
+        const before = { dip: count('dip').exp, sen: count('sen').exp };
         apply(e); S.govUsed[g.id] = used + 1; S.log.push({ t: 'Negociación', r: g.name });
-        const res = `${g.name} se lleva lo suyo para ${g.prov}. Sus legisladores se acercan al proyecto (+${gain}).`;
+        // Say exactly what was agreed and what it bought, in votes
+        const blocNames = [...new Set(g.blocs.map(k => S.blocs[k] && S.blocs[k].name).filter(Boolean))];
+        const moved = ['dip', 'sen'].map(ch => { const now = count(ch).exp, was = before[ch]; return now !== was ? `${ch === 'dip' ? 'Diputados' : 'Senado'}: de ~${was} a ~${now} votos probables` : ''; }).filter(Boolean);
+        const res = `Le prometiste ${g.deal || 'fondos para su provincia'} (te cuesta ${cost} de caja). ${blocNames.length ? `Se acercan al proyecto: ${blocNames.join(' y ')}.` : ''} ${moved.length ? moved.join(' · ') + '.' : 'Por ahora no se traduce en votos nuevos.'}`.replace(/\s+/g, ' ').trim();
         outcome(`Reunión con ${g.name}`, res, () => nextTurn(), { who: g.name + ' · ' + g.prov, title: `Rosca con ${g.name}`, text: g.pitch, choice: `Negociar (${cost} de caja)`, decision: `Negociar con ${g.name} (${g.prov})`, result: res });
       }));
       root.querySelectorAll('[data-act]').forEach(b => b.addEventListener('click', () => {
