@@ -486,7 +486,13 @@
       return null;
     }
     // Situations that only move deputies make no sense once Diputados already voted
-    const onlyDip = ev => { const ks = ev.options.flatMap(o => Object.keys((o.e && o.e.blocs) || {})); return ks.length > 0 && ks.every(k => k.startsWith('dip:')); };
+    const onlyDip = ev => {
+      const ks = ev.options.flatMap(o => Object.keys((o.e && o.e.blocs) || {}));
+      if (ks.length > 0 && ks.every(k => k.startsWith('dip:'))) return true;
+      // ...or that talk only about deputies (the PRO deputies, a deputy who switches blocs...)
+      const t = `${ev.title} ${ev.text} ${ev.who || ''}`;
+      return ev.phase === 'dip' || (/diputad/i.test(t) && !/senad/i.test(t));
+    };
     function eligible(ev) {
       if (S.seen[ev.id]) return false;
       if (S.dipPassed && onlyDip(ev)) return false;
@@ -679,22 +685,43 @@
       wireShare(root.querySelector('.rs-card.is-vote'), `En "La rosca" del Atlas: ${title} (${r.yes} votos de ${r.need} necesarios). ¿Te animás?`, vcard, 'rosca-sesion');
       root.querySelector('[data-next]').addEventListener('click', () => S.over ? ending(S.over) : (checkOver() ? ending(S.over) : nextTurn()));
     }
+    // The rosca: whole and crowned if you won, bitten if the rosca ate you
+    const ROSCA_LINE = { win: '¡Ganaste la rosca!', winLemas: 'Ganaste la rosca… con lemas', time: 'Te comió la rosca', fired: 'La rosca te pasó por arriba', sidelined: 'Te sacaron de la rosca', rejected: 'No pudiste con la rosca', rejectedSen: 'La rosca del Senado te ganó' };
+    function roscaSVG(kind, bg) {
+      const win = kind === 'win' || kind === 'winLemas', id = 'r' + Math.random().toString(36).slice(2, 8);
+      const fruit = [20, 75, 130, 185, 240, 295].map((a, i) => { const r = a * Math.PI / 180, x = 100 + 60 * Math.cos(r), y = 112 + 60 * Math.sin(r);
+        return i % 2 ? `<rect x="${(x - 6).toFixed(1)}" y="${(y - 4).toFixed(1)}" width="12" height="8" rx="2" fill="#3E9B4F" transform="rotate(${a} ${x.toFixed(1)} ${y.toFixed(1)})"/>` : `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="7.5" fill="#C8102E"/><circle cx="${(x - 2.5).toFixed(1)}" cy="${(y - 2.5).toFixed(1)}" r="2.2" fill="#fff" opacity=".6"/>`; }).join('');
+      const bites = kind === 'fired' ? [[150, 52, 30], [176, 84, 26], [128, 38, 22], [182, 118, 20]] : [[152, 56, 24], [172, 84, 21], [132, 44, 18]];
+      return `<svg viewBox="0 0 200 200" class="rs-art" role="img" aria-label="${esc(ROSCA_LINE[kind] || '')}">
+        <defs><radialGradient id="g${id}" cx="50%" cy="45%" r="60%"><stop offset="0" stop-color="#F2C37A"/><stop offset="1" stop-color="#C77D2E"/></radialGradient></defs>
+        <ellipse cx="100" cy="182" rx="74" ry="9" fill="#000" opacity=".12"/>
+        <g>
+          <circle cx="100" cy="112" r="60" fill="none" stroke="url(#g${id})" stroke-width="50"/>
+          <circle cx="100" cy="112" r="60" fill="none" stroke="#FFF6E2" stroke-width="16" stroke-dasharray="18 10" opacity=".85"/>
+          <circle cx="100" cy="112" r="84" fill="none" stroke="#B06A22" stroke-width="2" opacity=".5"/>
+          ${fruit}
+        </g>
+        ${win ? '' : bites.map(([x, y, r]) => `<circle cx="${x}" cy="${y}" r="${r}" fill="${bg || '#fff'}"/>`).join('')}
+        ${win ? `<g transform="translate(62 6)"><path d="M6 44 L0 10 L20 26 L38 0 L56 26 L76 10 L70 44 Z" fill="#F2B705" stroke="#B8860B" stroke-width="3" stroke-linejoin="round"/><circle cx="38" cy="30" r="5" fill="#C8102E"/><rect x="6" y="44" width="64" height="9" rx="3" fill="#E0A800"/></g>
+          <g fill="#F2B705"><path d="M20 40 l4 10 10 4 -10 4 -4 10 -4 -10 -10 -4 10 -4z"/><path d="M178 30 l3 7 7 3 -7 3 -3 7 -3 -7 -7 -3 7 -3z"/></g>`
+        : `<g fill="#C77D2E">${[[186, 50, 3], [192, 64, 2.2], [176, 30, 2.5], [196, 100, 2]].map(([x, y, r]) => `<circle cx="${x}" cy="${y}" r="${r}"/>`).join('')}</g>`}
+      </svg>`;
+    }
     function ending(kind) {
       const E = D.endings[kind] || D.endings.time, win = kind === 'win' || kind === 'winLemas';
       const score = win ? Math.round(stat('imagen') * 0.4 + stat('capital') * 0.3 + stat('caja') * 0.2 + (S.maxTurns - S.turn) * 4 + (S.flags.lemas ? -15 : 0)) : 0;
-      const text = win ? `Saqué la ley sin PASO en "La rosca" del Atlas Político Mundial: ${score} puntos. ¿Te animás?` : `Jugué "La rosca: PASO o no PASO" en el Atlas Político Mundial y… ${E.title.toLowerCase()}. ¿Te animás?`;
+      const text = win ? `¡Gané la rosca! Saqué la ley sin PASO en el Atlas Político Mundial: ${score} puntos. ¿Te animás?` : `Jugué "La rosca: PASO o no PASO" en el Atlas Político Mundial y… ${(ROSCA_LINE[kind] || E.title).toLowerCase()}. ¿Te animás?`;
       const flashes = S.log.filter(l => l.flash).slice(-3);
       const card = cardShell('La rosca: PASO o no PASO', '#6C3FB8', `
         <div class="jgx-kicker">${win ? 'Lo logré' : 'Fin del juego'} · Jefatura de Gabinete${S.scenario ? ` · ${esc(S.scenario.title)}` : ''}</div>
-        <div class="jgx-title is-md">${esc(E.title)}</div>
-        ${win ? `<div class="jgx-score"><b>${score}</b><span>puntos</span></div>` : ''}
-        <div class="jgx-text">${esc(E.text)}</div>
+        <div class="jgx-rosca">${roscaSVG(kind, '#FBF7F0')}<div><b>${esc(ROSCA_LINE[kind] || E.title)}</b><span>${esc(E.title)}</span>${win ? `<em>${score} puntos</em>` : ''}</div></div>
+        <div class="jgx-text is-sm">${esc(E.text)}</div>
         <div class="jgx-stats">${STATS.map(k => `<div class="jgx-stat"><span>${esc(D.stats[k].label)}</span><div class="jgx-stat-t"><i style="width:${stat(k)}%"></i></div><b>${stat(k)}</b></div>`).join('')}</div>
         <div class="jgx-facts"><span>Diputados: <b>${S.dipPassed ? `media sanción (${S.dipVotes} votos)` : 'sin media sanción'}</b></span><span>Semanas: <b>${Math.min(S.turn + 1, S.maxTurns)} de ${S.maxTurns}</b></span></div>
         ${flashes.length ? `<div class="jgx-flashes"><span>Lo que tuve que aguantar</span>${flashes.map(l => `<b>⚡ ${esc(l.t)}</b>`).join('')}</div>` : ''}`);
       root.innerHTML = `<section class="jg-game is-rosca">${backBtn()}
         <div class="jg-result rs-end ${win ? 'is-win' : 'is-lose'}">
-          <span class="jg-kicker">${win ? 'Ganaste' : 'Fin del juego'}</span><h2>${esc(E.title)}</h2><p>${esc(E.text)}</p>${S.scenario ? `<p class="rs-scen-end">Escenario: <b>${esc(S.scenario.title)}</b></p>` : ''}
+          <div class="rs-end-art">${roscaSVG(kind, getComputedStyle(document.documentElement).getPropertyValue('--surface').trim() || '#fff')}<div><span class="jg-kicker">${win ? 'Ganaste' : 'Fin del juego'}</span><h2>${esc(ROSCA_LINE[kind] || E.title)}</h2><p class="rs-end-sub">${esc(E.title)}</p></div></div><p>${esc(E.text)}</p>${S.scenario ? `<p class="rs-scen-end">Escenario: <b>${esc(S.scenario.title)}</b></p>` : ''}
           ${win ? `<div class="rs-score"><b>${score}</b><span>puntos</span></div>` : ''}
           <div class="rs-final">${STATS.map(k => `<div><span>${esc(D.stats[k].label)}</span><b>${stat(k)}</b></div>`).join('')}<div><span>Semanas usadas</span><b>${Math.min(S.turn + 1, S.maxTurns)} de ${S.maxTurns}</b></div></div>
           <h4>Tus decisiones</h4><ol class="rs-log">${S.log.map(l => `<li${l.flash ? ' class="is-flash"' : ''}><b>${l.flash ? '⚡ ' : ''}${esc(l.t)}:</b> ${esc(l.r)}</li>`).join('')}</ol>

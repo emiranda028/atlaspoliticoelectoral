@@ -532,7 +532,8 @@
       }
      }
     }
-   ]
+   ],
+   "phase": "dip"
   },
   {
    "id": "insfran",
@@ -1068,7 +1069,8 @@
       }
      }
     }
-   ]
+   ],
+   "phase": "dip"
   },
   {
    "id": "carrio",
@@ -1179,7 +1181,8 @@
       }
      }
     }
-   ]
+   ],
+   "phase": "dip"
   },
   {
    "id": "navidad",
@@ -1237,7 +1240,8 @@
      }
     }
    ],
-   "role": "Diputados"
+   "role": "Diputados",
+   "phase": "dip"
   },
   {
    "id": "fichalimpia",
@@ -1270,7 +1274,8 @@
      }
     }
    ],
-   "role": "Bloque PRO"
+   "role": "Bloque PRO",
+   "phase": "dip"
   },
   {
    "id": "dividir",
@@ -1348,7 +1353,8 @@
      }
     }
    ],
-   "role": "Bloque UCR"
+   "role": "Bloque UCR",
+   "phase": "dip"
   },
   {
    "id": "frigerio",
@@ -1501,7 +1507,8 @@
      "result": "Nada cambia.",
      "e": {}
     }
-   ]
+   ],
+   "phase": "dip"
   },
   {
    "id": "sesion_paralela",
@@ -1532,7 +1539,8 @@
       }
      }
     }
-   ]
+   ],
+   "phase": "dip"
   },
   {
    "id": "reelecciones",
