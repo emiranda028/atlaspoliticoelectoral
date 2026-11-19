@@ -6332,6 +6332,11 @@
   .tv-cat { color: var(--accent, #A02B3E); font-weight: 700; }
   .jg-share.is-mini { margin: 4px 0 14px; }
   .jg-share.is-mini .jg-btn { font-size: 13px; padding: 7px 12px; }
+  .jgx-rosca { display: flex; align-items: center; gap: 30px; }
+  .jgx-rosca .rs-art { width: 260px; height: 260px; flex: none; }
+  .jgx-rosca b { display: block; font: 800 76px/1 var(--font-serif); color: #141821; letter-spacing: -.02em; }
+  .jgx-rosca span { display: block; font: 600 30px var(--font-sans); color: #4A5060; margin-top: 10px; }
+  .jgx-rosca em { display: block; font: 800 44px var(--font-sans); font-style: normal; color: var(--jgx); margin-top: 8px; }
   .jgx-foot { display: flex; flex-direction: column; gap: 4px; padding-top: 26px; border-top: 3px solid #141821; font: 500 26px var(--font-sans); color: #4A5060; position: relative; z-index: 1; }
   .jgx-foot b { font: 800 38px var(--font-sans); color: #141821; }
   /* Rosca */
@@ -6359,6 +6364,11 @@
   .rs-scen span { display: block; font: 800 10.5px var(--font-sans); letter-spacing: .12em; text-transform: uppercase; color: #6B2A7A; }
   .rs-scen b { display: block; font: 800 19px var(--font-serif); margin: 2px 0 4px; }
   .rs-scen p { margin: 0; font-size: 14.5px; } .rs-scen small { display: block; margin-top: 6px; color: var(--muted); font-size: 12px; }
+  .rs-end-art { display: flex; align-items: center; gap: 18px; }
+  .rs-end-art .rs-art { width: 150px; height: 150px; flex: none; }
+  .rs-end-art h2 { margin: 4px 0 2px !important; }
+  .rs-end-sub { margin: 0; font-weight: 700; color: var(--ink-soft); }
+  @media (max-width: 600px) { .rs-end-art { gap: 10px; } .rs-end-art .rs-art { width: 104px; height: 104px; } }
   .rs-scen-end { font-size: 14px; color: var(--ink-soft); }
   .rs-calls { background: #FFF4E5; border-left: 4px solid #E08A1E; border-radius: 10px; padding: 9px 12px; margin: 8px 0 10px; font-size: 13.5px; }
   .rs-calls ul { margin: 4px 0 0; padding-left: 18px; } .rs-calls li { margin: 2px 0; }
@@ -35199,7 +35209,7 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
     if (window.AtlasJuegos) return window.AtlasJuegos.render(el, game);
     if (document.getElementById('juegos-js')) { pendingGame = game; return; }
     const sc = document.createElement('script');
-    sc.id = 'juegos-js'; sc.src = 'js/juegos.js?v=16';
+    sc.id = 'juegos-js'; sc.src = 'js/juegos.js?v=17';
     sc.onload = () => { const g = game || pendingGame; pendingGame = null; window.AtlasJuegos && window.AtlasJuegos.render(el, g); };
     sc.onerror = () => { el.innerHTML = '<div class="jg-loading">No se pudieron cargar los juegos.</div>'; };
     document.head.appendChild(sc);
