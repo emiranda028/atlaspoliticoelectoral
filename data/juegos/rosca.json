@@ -4660,6 +4660,53 @@
     }
    ],
    "phase": "sen"
+  },
+  {
+   "id": "scaputo_tmap",
+   "who": "Santiago Caputo",
+   "role": "Asesor presidencial",
+   "title": "Santiago Caputo publica una psicografía de Parravicini: \"TMAP\"",
+   "text": "A las 2 de la mañana, Santiago Caputo sube a X una psicografía de Benjamín Solari Parravicini con un dibujo de un hombre sosteniendo una rosca y una sola sigla: \"TMAP\". Nadie sabe si es un respaldo a tu gestión o un aviso de que tus días están contados. Los periodistas te llaman para preguntarte qué significa.",
+   "options": [
+    {
+     "label": "Retuitearlo con un \"TMAP\" propio",
+     "result": "Te la jugaste: el mensaje era un respaldo. En la Rosada leen que estás alineado.",
+     "e": {
+      "stats": {
+       "interna": 5,
+       "imagen": 1
+      }
+     },
+     "alt": {
+      "result": "Te la jugaste y salió mal: al día siguiente Caputo sube otra psicografía, esta vez de un hombre cayendo por una escalera. En la Rosada se ríen de vos.",
+      "e": {
+       "stats": {
+        "interna": -6,
+        "imagen": -2
+       }
+      }
+     }
+    },
+    {
+     "label": "Llamarlo para preguntarle qué quiso decir",
+     "result": "No te atiende. Te contesta con un sticker de Parravicini. Seguís sin saber.",
+     "e": {
+      "stats": {
+       "capital": -1
+      }
+     }
+    },
+    {
+     "label": "Decir que no leés a Parravicini",
+     "result": "La frase se viraliza. En el entorno de Caputo no les causó gracia.",
+     "e": {
+      "stats": {
+       "imagen": 2,
+       "interna": -3
+      }
+     }
+    }
+   ]
   }
  ],
  "scenarios": [

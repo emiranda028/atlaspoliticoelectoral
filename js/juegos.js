@@ -544,7 +544,9 @@
         <div class="jg-opts">${ev.options.map((o, k) => `<button type="button" class="jg-opt" data-k="${k}">${esc(o.label)}</button>`).join('')}</div></div>`);
       wireBack(root);
       root.querySelectorAll('[data-k]').forEach(b => b.addEventListener('click', () => {
-        const o = ev.options[+b.getAttribute('data-k')];
+        let o = ev.options[+b.getAttribute('data-k')];
+        // Some answers are a gamble: half of the time they go the other way
+        if (o.alt && Math.random() < 0.5) o = Object.assign({}, o, o.alt);
         // Unexpected events are real problems: whatever you choose, they cost
         // political capital, and the goodwill they buy is worth less
         const e = JSON.parse(JSON.stringify(o.e || {}));
