@@ -8716,6 +8716,36 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 <!-- html-to-image: lightweight DOM → PNG. Used for "Export as image" buttons. -->
+<script>
+/* ===========================================================
+   MÉTRICAS (GoatCounter: sin cookies, panel privado del dueño)
+   Para activarlas, poné acá el código de la cuenta de GoatCounter
+   (si el panel es https://atlaspolitico.goatcounter.com, el código
+   es "atlaspolitico"). Vacío = no se mide nada.
+   Qué se registra:
+   - cada sección que se abre (/inicio, /espana, /juegos...)
+   - cada ficha de país (/ficha/ARG)
+   - juegos: inicio y final (/juego/rosca/inicio, /juego/rosca/fin/win)
+   - cada vez que se comparte o descarga una imagen (/compartir/...)
+   =========================================================== */
+window.ATLAS_GOATCOUNTER = '';
+(function () {
+  const code = window.ATLAS_GOATCOUNTER;
+  const q = [];
+  window.atlasTrack = function (path, title, event) {
+    if (!code) return;
+    const hit = { path: String(path || '/').replace(/^#/, '/'), title: title || document.title, event: !!event };
+    if (window.goatcounter && window.goatcounter.count) window.goatcounter.count(hit); else q.push(hit);
+  };
+  if (!code || /localhost|127\.0\.0\.1/.test(location.hostname)) return;
+  window.goatcounter = { no_onload: true };
+  const sc = document.createElement('script');
+  sc.async = true; sc.src = 'https://gc.zgo.at/count.js';
+  sc.setAttribute('data-goatcounter', `https://${code}.goatcounter.com/count`);
+  sc.onload = () => { q.splice(0).forEach(h => window.goatcounter.count(h)); };
+  document.head.appendChild(sc);
+})();
+</script>
 <script src="https://cdn.jsdelivr.net/npm/html-to-image@1.11.11/dist/html-to-image.min.js"></script>
 <script>
 /* ===========================================================
@@ -28826,6 +28856,7 @@ function countryFichaHTML(c) {
 let fichaLastFocus = null;
 function openFicha(c, opts) {
   opts = opts || {};
+  if (window.atlasTrack && c && c.iso) window.atlasTrack('/ficha/' + c.iso, 'Ficha: ' + (c.name || c.iso));
   let modal = document.getElementById('ficha-modal');
   if (!modal) {
     modal = document.createElement('div');
@@ -31303,6 +31334,7 @@ function renderElectionsTimeline() {  const today = new Date();
     if (view !== 'inicio' && window.hideMapQuick) window.hideMapQuick();
     if (view !== 'inicio' && window.closeFicha) window.closeFicha({ keepURL: true });
     if (window.__onViewShown) window.__onViewShown(view);
+    if (window.atlasTrack) window.atlasTrack('/' + view);
 
     // Update the URL hash without adding noise to history when restoring
     if (!opts.skipHash) {
@@ -34394,6 +34426,7 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
     } finally { host.remove(); }
   }
   async function usShareAction(kind, btn, url, text) {
+    if (window.atlasTrack) window.atlasTrack(`/compartir/eeuu/${kind}`, `Compartir EE.UU. (${kind})`, true);
     const label = btn.textContent;
     const done = (t) => { btn.textContent = t; setTimeout(() => { btn.textContent = label; }, 1800); };
     const name = `atlas-eeuu-${usShareState.type === 'state' ? usShareState.arg.toLowerCase() : US_SHARE_SLUG[usShareState.type]}-${(usHour() || '').replace(':', '')}-${usxFmt() === 'v' ? 'vertical' : 'horizontal'}.jpg`;
@@ -35262,7 +35295,7 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
     if (window.AtlasJuegos) return window.AtlasJuegos.render(el, game);
     if (document.getElementById('juegos-js')) { pendingGame = game; return; }
     const sc = document.createElement('script');
-    sc.id = 'juegos-js'; sc.src = 'js/juegos.js?v=24';
+    sc.id = 'juegos-js'; sc.src = 'js/juegos.js?v=25';
     sc.onload = () => { const g = game || pendingGame; pendingGame = null; window.AtlasJuegos && window.AtlasJuegos.render(el, g); };
     sc.onerror = () => { el.innerHTML = '<div class="jg-loading">No se pudieron cargar los juegos.</div>'; };
     document.head.appendChild(sc);

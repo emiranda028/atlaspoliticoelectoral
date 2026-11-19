@@ -118,6 +118,7 @@
     const full = text + '\n' + SITE;
     el.querySelectorAll('[data-img]').forEach(b => b.addEventListener('click', async () => {
       const kind = b.getAttribute('data-img'), label = b.textContent;
+      track(`/compartir/${slug}/${kind}`, `Compartir ${slug} (${kind})`);
       const done = t => { b.textContent = t; setTimeout(() => { b.textContent = label; b.disabled = false; }, 1800); };
       const phone = canShareFiles();
       // On computers the WhatsApp/X tab must open inside the click, before the image is drawn
@@ -219,7 +220,9 @@
       </section>`;
     root.querySelectorAll('[data-go]').forEach(b => b.addEventListener('click', () => go(b.getAttribute('data-go'))));
   }
+  const track = (path, title) => { try { window.atlasTrack && window.atlasTrack(path, title, true); } catch (e) {} };
   function go(game) {
+    if (game && game !== 'hub') track(`/juego/${game}/inicio`, `Juego: ${game}`);
     window.scrollTo({ top: (root.getBoundingClientRect().top + window.scrollY) - 80, behavior: 'smooth' });
     if (game === 'pais') return Pais.start();
     if (game === 'rosca') return Rosca.start();
@@ -301,6 +304,7 @@
       return axes.map(a => cnt[a] ? clamp(sum[a] / cnt[a] * 1.15, -2, 2) : 0);
     }
     function result() {
+      track('/juego/pais/fin', '¿Qué país gobernarías?: fin');
       const me = profile(), axes = Object.keys(D.axes);
       const W = [1.1, 1, 1.2, 0.9, 0.8];
       const ranked = D.countries.map(c => {
@@ -816,6 +820,7 @@
     }
     const endingArt = (kind, bg) => kind === 'rejected' ? congressSVG('dip', bg) : kind === 'rejectedSen' ? congressSVG('sen', bg) : kind === 'fired' ? boletinSVG() : roscaSVG(kind, bg);
     function ending(kind) {
+      track(`/juego/rosca/fin/${kind}`, `La rosca: ${kind}`);
       const E = D.endings[kind] || D.endings.time, win = kind === 'win' || kind === 'winLemas';
       const score = win ? Math.round(stat('imagen') * 0.4 + stat('capital') * 0.3 + stat('caja') * 0.2 + (S.maxTurns - S.turn) * 4 + (S.flags.lemas ? -15 : 0)) : 0;
       const text = win ? `¡Gané la rosca! Saqué la ley sin PASO en el Atlas Político Mundial: ${score} puntos. ¿Te animás?` : `Jugué "La rosca: PASO o no PASO" en el Atlas Político Mundial y… ${(ROSCA_LINE[kind] || E.title).toLowerCase()}. ¿Te animás?`;
@@ -972,6 +977,7 @@
     }
     function end() {
       const n = st.qs.length, ok = st.ok;
+      track(`/juego/trivia/fin/${ok}`, `Trivia: ${ok} de ${n}`);
       const verdict = ok >= 9 ? 'Nivel canciller' : ok >= 7 ? 'Analista internacional' : ok >= 5 ? 'Lector de diarios' : ok >= 3 ? 'Turista político' : 'Recién llegado';
       const text = `Saqué ${ok} de ${n} en "¿Quién gobierna?" del Atlas Político Mundial: ${verdict}. ¿Cuántas sacás vos?`;
       const card = cardShell('¿Quién gobierna?', '#D9822B', `
@@ -1076,6 +1082,7 @@
     }
     function end() {
       const total = Math.round(st.ans.reduce((a, x) => a + x.pts, 0) / st.ans.length);
+      track(`/juego/percepcion/fin/${Math.floor(total / 10) * 10}`, `Percepción: ${total}`);
       const verdict = total >= 80 ? 'Ojo de analista' : total >= 65 ? 'Bien informado' : total >= 50 ? 'Percepción de sobremesa' : total >= 35 ? 'Te ganó el ruido' : 'Vivís en otra Argentina';
       const soc = st.qs.map((Q, i) => Q.social ? st.ans[i].diff : null).filter(v => v !== null);
       const bias = soc.length ? soc.reduce((a, b) => a + b, 0) / soc.length : 0;
@@ -1168,6 +1175,7 @@
     }
     function end() {
       const all = st.steps.filter(S => st.picks[S.id]);
+      track(`/juego/prode/fin/${all.length}`, `Prode: ${all.length} predicciones`);
       const prov = all.filter(S => S.kind === 'prov');
       const judged = prov.filter(S => S.p.result2027 && S.p.result2027.winner);
       const hits = judged.filter(S => clean(S.p.result2027.winner) === clean(st.picks[S.id]) || (st.picks[S.id] === 'Otro' && !S.p.candidates.some(c => clean(c.name) === clean(S.p.result2027.winner))));
