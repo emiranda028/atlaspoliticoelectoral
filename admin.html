@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Panel del Atlas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Source+Serif+4:wght@700;800&display=swap" rel="stylesheet">
+<style>
+  /* Panel de métricas privado del Atlas Político Mundial.
+     Lee las estadísticas de GoatCounter con la clave de API del dueño; la clave
+     queda solo en este navegador. Sin clave no se muestra ningún dato. */
+  :root {
+    color-scheme: light;
+    --bg: #f4f5f7; --surface: #ffffff; --surface-2: #f6f7f9; --line: #e1e5eb;
+    --ink: #0b1628; --ink-2: #4a5060; --muted: #7a8090;
+    --s1: #2a78d6; --s2: #eb6834; --accent: #a02b3e; --grid: #e9ecf1;
+    --font-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    --font-serif: 'Source Serif 4', Georgia, serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:where(:not([data-theme="light"])) {
+      color-scheme: dark;
+      --bg: #121315; --surface: #1a1a19; --surface-2: #222321; --line: #30312e;
+      --ink: #f0efec; --ink-2: #c3c2b7; --muted: #9a998f;
+      --s1: #3987e5; --s2: #d95926; --accent: #e2687c; --grid: #2a2b29;
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --bg: #121315; --surface: #1a1a19; --surface-2: #222321; --line: #30312e;
+    --ink: #f0efec; --ink-2: #c3c2b7; --muted: #9a998f;
+    --s1: #3987e5; --s2: #d95926; --accent: #e2687c; --grid: #2a2b29;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 15px/1.5 var(--font-sans); }
+  a { color: var(--s1); }
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 18px 16px 60px; }
+  header.top { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 18px; }
+  .brand { display: flex; flex-direction: column; }
+  .brand small { font: 800 11px var(--font-sans); letter-spacing: .14em; text-transform: uppercase; color: var(--accent); }
+  .brand b { font: 800 28px/1.1 var(--font-serif); }
+  .controls { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+  .seg { display: inline-flex; border: 1px solid var(--line); border-radius: 999px; overflow: hidden; background: var(--surface); }
+  .seg button { border: 0; background: none; padding: 8px 14px; font: 600 13px var(--font-sans); color: var(--ink-2); cursor: pointer; }
+  .seg button[aria-pressed="true"] { background: var(--ink); color: var(--bg); }
+  .btn { border: 1px solid var(--line); background: var(--surface); color: var(--ink); border-radius: 999px; padding: 8px 14px; font: 600 13px var(--font-sans); cursor: pointer; }
+  .btn.is-main { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+  .kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 12px; margin-bottom: 14px; }
+  .kpi { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; }
+  .kpi span { display: block; font: 700 12px var(--font-sans); letter-spacing: .06em; text-transform: uppercase; color: var(--ink-2); }
+  .kpi b { display: block; font: 800 32px/1.15 var(--font-sans); font-variant-numeric: tabular-nums; margin-top: 4px; }
+  .kpi small { color: var(--muted); font-size: 12.5px; }
+  .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+  .card { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 16px 18px; min-width: 0; }
+  .card.wide { grid-column: 1 / -1; }
+  .card h2 { font: 800 17px var(--font-sans); margin: 0 0 2px; }
+  .card p.sub { margin: 0 0 12px; color: var(--muted); font-size: 13px; }
+  .empty { color: var(--muted); font-size: 14px; padding: 8px 0; }
+  /* horizontal bars (single series: one hue) */
+  .bars { display: grid; gap: 7px; }
+  .bar { display: grid; grid-template-columns: minmax(0, 38%) minmax(0, 1fr) auto; align-items: center; gap: 10px; font-size: 13.5px; }
+  .bar .l { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--ink); }
+  .bar .t { height: 12px; background: var(--surface-2); border-radius: 0 4px 4px 0; position: relative; }
+  .bar .t i { position: absolute; left: 0; top: 0; bottom: 0; background: var(--s1); border-radius: 0 4px 4px 0; min-width: 2px; }
+  .bar .v { font-variant-numeric: tabular-nums; font-weight: 700; color: var(--ink); min-width: 44px; text-align: right; }
+  /* two-series bars: started vs finished */
+  .legend { display: flex; gap: 14px; font-size: 13px; color: var(--ink-2); margin: 0 0 10px; }
+  .legend i { display: inline-block; width: 12px; height: 12px; border-radius: 3px; margin-right: 6px; vertical-align: -1px; }
+  .pair { display: grid; grid-template-columns: minmax(0, 32%) minmax(0, 1fr) auto; gap: 10px; align-items: center; font-size: 13.5px; padding: 6px 0; border-bottom: 1px solid var(--line); }
+  .pair:last-child { border-bottom: 0; }
+  .pair .ts { display: grid; gap: 3px; }
+  .pair .ts span { display: block; height: 10px; border-radius: 0 4px 4px 0; min-width: 2px; }
+  .pair .ts span.a { background: var(--s1); } .pair .ts span.b { background: var(--s2); }
+  .pair .n { font-variant-numeric: tabular-nums; text-align: right; font-size: 12.5px; color: var(--ink-2); white-space: nowrap; }
+  .pair .n b { color: var(--ink); }
+  table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+  th, td { text-align: left; padding: 6px 4px; border-bottom: 1px solid var(--line); }
+  th { font-size: 12px; color: var(--ink-2); text-transform: uppercase; letter-spacing: .05em; }
+  td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+  /* line chart */
+  .chart { position: relative; }
+  .chart svg { display: block; width: 100%; height: 240px; overflow: visible; }
+  .chart .tip { position: absolute; pointer-events: none; background: var(--ink); color: var(--bg); border-radius: 8px; padding: 6px 10px; font-size: 12.5px; white-space: nowrap; transform: translate(-50%, -110%); display: none; }
+  .tscroll { overflow-x: auto; max-width: 100%; }
+  .tablev summary { cursor: pointer; color: var(--ink-2); font-size: 13px; margin-top: 8px; }
+  /* login */
+  .login { max-width: 460px; margin: 10vh auto; background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 26px 24px; }
+  .login h1 { font: 800 28px/1.1 var(--font-serif); margin: 4px 0 8px; }
+  .login p { color: var(--ink-2); font-size: 14.5px; }
+  .login input[type=password] { width: 100%; padding: 12px 14px; border: 1px solid var(--line); border-radius: 10px; font: 15px var(--font-sans); background: var(--surface-2); color: var(--ink); margin: 6px 0 10px; }
+  .login label.rem { display: flex; gap: 8px; align-items: center; font-size: 13.5px; color: var(--ink-2); margin-bottom: 14px; }
+  .login .err { color: #c0392b; font-size: 13.5px; min-height: 20px; }
+  .login ol { font-size: 13.5px; color: var(--ink-2); padding-left: 20px; }
+  .status { font-size: 13px; color: var(--muted); }
+  @media (max-width: 760px) {
+    .grid { grid-template-columns: 1fr; }
+    .brand b { font-size: 22px; }
+    .bar { grid-template-columns: minmax(0, 44%) minmax(0, 1fr) auto; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap" id="app"></div>
+<script>
+(function () {
+  'use strict';
+  const SITE = 'atlaspolitico';                       // código de GoatCounter
+  const API = `https://${SITE}.goatcounter.com/api/v0`;
+  const KEY = 'atlas-admin-gc-key';
+  const app = document.getElementById('app');
+  const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
+  const nf = n => Number(n || 0).toLocaleString('es-AR');
+  const store = {
+    get() { try { return localStorage.getItem(KEY) || sessionStorage.getItem(KEY) || ''; } catch (e) { return ''; } },
+    set(v, remember) { try { (remember ? localStorage : sessionStorage).setItem(KEY, v); } catch (e) {} },
+    clear() { try { localStorage.removeItem(KEY); sessionStorage.removeItem(KEY); } catch (e) {} }
+  };
+  const DEMO = /[?&]demo=1/.test(location.search);
+
+  // Friendly names for what the Atlas records
+  const SECTION = { '/inicio': 'Portada y mapa', '/espana': 'España 2026', '/eeuu': 'EE.UU. 2026', '/argentina': 'Argentina 2027', '/israel': 'Israel 2026', '/brasil': 'Brasil 2026', '/propuesta': 'Propuesta', '/juegos': 'Juegos', '/elecciones': 'Calendario electoral', '/analisis': 'Análisis', '/cambio': '¿Cambio o continuidad?', '/sobre': 'Sobre el Atlas', '/metodologia': 'Metodología' };
+  const GAME = { rosca: 'La rosca', pais: '¿Qué país gobernarías?', trivia: '¿Quién gobierna?', percepcion: 'Test de percepción', prode: 'Prode 2027' };
+  const ROSCA_END = { win: 'Ganó la ley', winLemas: 'Ganó con lemas', time: 'Se terminó el tiempo', fired: 'Le pidieron la renuncia', sidelined: 'Lo sacaron de la negociación', rejected: 'Rechazado en Diputados', rejectedSen: 'Rechazado en el Senado' };
+  const CHANNEL = { wa: 'WhatsApp', x: 'X', share: 'Otras apps', native: 'Compartir (celular)', jpg: 'Descarga de imagen', pdf: 'Descarga de PDF', copy: 'Copiar enlace' };
+  const SHARE_GAME = s => s.startsWith('rosca') ? 'La rosca' : s.startsWith('pais') ? '¿Qué país gobernarías?' : s === 'trivia' ? '¿Quién gobierna?' : s === 'percepcion' ? 'Test de percepción' : s.startsWith('prode') ? 'Prode 2027' : s === 'eeuu' ? 'Especial EE.UU.' : s;
+  const sectionName = p => SECTION[p] || p.replace(/^\//, '').replace(/-/g, ' ') || 'Portada';
+
+  /* ---------------------------------------------- data */
+  let range = 7;
+  const iso = d => d.toISOString().slice(0, 13) + ':00:00Z';
+  function period(days) {
+    const end = new Date(); end.setUTCMinutes(0, 0, 0); end.setUTCHours(end.getUTCHours() + 1);
+    const start = new Date(end); start.setUTCDate(start.getUTCDate() - days);
+    return { start: iso(start), end: iso(end) };
+  }
+  const sleep = ms => new Promise(r => setTimeout(r, ms));
+  async function api(path, params, key) {
+    const u = new URL(API + path);
+    Object.entries(params || {}).forEach(([k, v]) => u.searchParams.set(k, v));
+    const r = await fetch(u, { headers: { Authorization: 'Bearer ' + key, 'Content-Type': 'application/json' } });
+    if (r.status === 401 || r.status === 403) throw Object.assign(new Error('auth'), { auth: true });
+    if (r.status === 429) { await sleep(1200); return api(path, params, key); }
+    if (!r.ok) throw new Error('HTTP ' + r.status);
+    return r.json();
+  }
+  async function loadAll(key, days) {
+    if (DEMO) return demoData(days);
+    const p = period(days);
+    // GoatCounter allows ~4 requests per second: go one by one
+    const out = {};
+    out.hits = await api('/stats/hits', Object.assign({ limit: 100, daily: true }, p), key); await sleep(300);
+    for (const page of ['toprefs', 'locations', 'sizes', 'browsers']) {
+      try { out[page] = await api('/stats/' + page, Object.assign({ limit: 10 }, p), key); } catch (e) { if (e.auth) throw e; out[page] = { stats: [] }; }
+      await sleep(300);
+    }
+    return out;
+  }
+
+  /* ---------------------------------------------- views */
+  function login(msg) {
+    app.innerHTML = `<div class="login">
+      <span class="brand"><small>Atlas Político Mundial</small></span>
+      <h1>Panel de administración</h1>
+      <p>Visitas, secciones, juegos y contenidos compartidos del Atlas. Para entrar, pegá tu clave de acceso.</p>
+      <form id="f"><input type="password" id="k" autocomplete="current-password" placeholder="Clave de acceso" required>
+        <label class="rem"><input type="checkbox" id="r" checked> Recordarme en este navegador</label>
+        <div class="err" id="e">${esc(msg || '')}</div>
+        <button class="btn is-main" type="submit">Entrar</button></form>
+      <details style="margin-top:16px"><summary class="status">¿Cómo consigo la clave?</summary>
+        <ol><li>Entrá a <a href="https://${SITE}.goatcounter.com" target="_blank" rel="noopener">${SITE}.goatcounter.com</a> con tu usuario.</li>
+          <li>Andá a <b>Configuración → API</b> (o <i>Settings → API</i>) y creá una clave nueva.</li>
+          <li>Tildá solo <b>«Read statistics»</b> (leer estadísticas) y guardala.</li>
+          <li>Copiá la clave y pegala acá. Queda guardada solo en este navegador.</li></ol></details>
+    </div>`;
+    document.getElementById('f').addEventListener('submit', async ev => {
+      ev.preventDefault();
+      const k = document.getElementById('k').value.trim(), r = document.getElementById('r').checked;
+      document.getElementById('e').textContent = 'Verificando…';
+      try { await api('/stats/total', period(1), k); store.set(k, r); dashboard(); }
+      catch (e) { document.getElementById('e').textContent = e.auth ? 'La clave no es válida o no tiene permiso para leer estadísticas.' : 'No se pudo conectar con GoatCounter. Probá de nuevo en un rato.'; }
+    });
+  }
+
+  function barsHTML(rows, max) {
+    if (!rows.length) return '<div class="empty">Todavía no hay datos en este período.</div>';
+    max = max || Math.max(...rows.map(r => r.v), 1);
+    return `<div class="bars">${rows.map(r => `<div class="bar" title="${esc(r.l)}: ${nf(r.v)}"><span class="l">${esc(r.l)}</span><span class="t"><i style="width:${(r.v / max * 100).toFixed(1)}%"></i></span><b class="v">${nf(r.v)}</b></div>`).join('')}</div>`;
+  }
+
+  // Line chart: visits per day, with a crosshair tooltip
+  function lineChart(el, days) {
+    if (!days.length || days.every(d => !d.v)) { el.innerHTML = '<div class="empty">Todavía no hay visitas en este período.</div>'; return; }
+    const W = 1000, H = 240, P = { l: 44, r: 12, t: 12, b: 28 };
+    const max = Math.max(...days.map(d => d.v), 1), nice = Math.ceil(max / 5) * 5 || 5;
+    const x = i => P.l + (days.length === 1 ? 0.5 : i / (days.length - 1)) * (W - P.l - P.r);
+    const y = v => P.t + (1 - v / nice) * (H - P.t - P.b);
+    const ticks = [0, nice / 2, nice];
+    const path = days.map((d, i) => `${i ? 'L' : 'M'}${x(i).toFixed(1)},${y(d.v).toFixed(1)}`).join('');
+    const area = `${path}L${x(days.length - 1).toFixed(1)},${y(0)}L${x(0).toFixed(1)},${y(0)}Z`;
+    const every = Math.ceil(days.length / 8);
+    el.innerHTML = `<div class="chart"><svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" role="img" aria-label="Visitas por día">
+        ${ticks.map(t => `<line x1="${P.l}" x2="${W - P.r}" y1="${y(t)}" y2="${y(t)}" stroke="var(--grid)" stroke-width="1"/><text x="${P.l - 8}" y="${y(t) + 4}" text-anchor="end" font-size="12" fill="var(--muted)">${nf(t)}</text>`).join('')}
+        <path d="${area}" fill="var(--s1)" opacity=".10"/>
+        <path d="${path}" fill="none" stroke="var(--s1)" stroke-width="2" vector-effect="non-scaling-stroke" stroke-linejoin="round"/>
+        ${days.map((d, i) => { const last = days.length - 1; return (i % every === 0 && last - i >= every * 0.6) || i === last; }).map((show, i) => show ? `<text x="${x(i)}" y="${H - 8}" text-anchor="middle" font-size="12" fill="var(--muted)">${esc(days[i].label)}</text>` : '').join('')}
+        <line class="cx" x1="0" x2="0" y1="${P.t}" y2="${H - P.b}" stroke="var(--ink-2)" stroke-width="1" opacity="0"/>
+        <circle class="dot" r="5" fill="var(--s1)" stroke="var(--surface)" stroke-width="2" opacity="0"/>
+        <rect x="${P.l}" y="0" width="${W - P.l - P.r}" height="${H}" fill="transparent" class="hit"/>
+      </svg><div class="tip"></div></div>
+      <details class="tablev"><summary>Ver como tabla</summary><table><thead><tr><th>Día</th><th class="num">Visitas</th></tr></thead><tbody>${days.map(d => `<tr><td>${esc(d.full)}</td><td class="num">${nf(d.v)}</td></tr>`).join('')}</tbody></table></details>`;
+    const svg = el.querySelector('svg'), tip = el.querySelector('.tip'), cx = el.querySelector('.cx'), dot = el.querySelector('.dot');
+    const move = ev => {
+      const r = svg.getBoundingClientRect(), px = (ev.clientX - r.left) / r.width * W;
+      const i = Math.max(0, Math.min(days.length - 1, Math.round((px - P.l) / (W - P.l - P.r) * (days.length - 1))));
+      const X = x(i), Y = y(days[i].v);
+      cx.setAttribute('x1', X); cx.setAttribute('x2', X); cx.setAttribute('opacity', '.5');
+      dot.setAttribute('cx', X); dot.setAttribute('cy', Y); dot.setAttribute('opacity', '1');
+      tip.style.display = 'block'; tip.style.left = (X / W * 100) + '%'; tip.style.top = (Y / H * r.height) + 'px';
+      tip.innerHTML = `<b>${nf(days[i].v)}</b> visitas · ${esc(days[i].full)}`;
+    };
+    svg.addEventListener('pointermove', move);
+    svg.addEventListener('pointerleave', () => { tip.style.display = 'none'; cx.setAttribute('opacity', '0'); dot.setAttribute('opacity', '0'); });
+  }
+
+  function summarize(d, days) {
+    const hits = (d.hits && d.hits.hits) || [];
+    const pages = hits.filter(h => !h.event && !/^\/(ficha|juego|compartir)\//.test(h.path));
+    const fichas = hits.filter(h => /^\/ficha\//.test(h.path));
+    const ev = hits.filter(h => /^\/(juego|compartir)\//.test(h.path));
+    const sum = a => a.reduce((s, h) => s + (h.count || 0), 0);
+    // Visits per day (pages only)
+    const byDay = {};
+    pages.concat(fichas).forEach(h => (h.stats || []).forEach(s => { byDay[s.day] = (byDay[s.day] || 0) + (s.daily || 0); }));
+    const dayList = [];
+    for (let i = days - 1; i >= 0; i--) {
+      const dt = new Date(); dt.setDate(dt.getDate() - i);
+      const k = dt.toISOString().slice(0, 10);
+      dayList.push({ k, v: byDay[k] || 0, label: dt.toLocaleDateString('es-AR', { day: 'numeric', month: 'short' }), full: dt.toLocaleDateString('es-AR', { weekday: 'long', day: 'numeric', month: 'long' }) });
+    }
+    // Games
+    const games = Object.keys(GAME).map(g => ({ g, name: GAME[g], start: sum(ev.filter(h => h.path === `/juego/${g}/inicio`)), end: sum(ev.filter(h => h.path.startsWith(`/juego/${g}/fin`))) }));
+    const roscaEnds = Object.keys(ROSCA_END).map(k => ({ l: ROSCA_END[k], v: sum(ev.filter(h => h.path === `/juego/rosca/fin/${k}`)) })).filter(r => r.v).sort((a, b) => b.v - a.v);
+    const shares = ev.filter(h => h.path.startsWith('/compartir/')).map(h => { const [, , slug, ch] = h.path.split('/'); return { game: SHARE_GAME(slug || ''), ch: CHANNEL[ch] || ch, v: h.count || 0 }; });
+    return {
+      visits: sum(pages) + sum(fichas), sectionsN: pages.length,
+      sections: pages.map(h => ({ l: sectionName(h.path), v: h.count || 0 })).sort((a, b) => b.v - a.v).slice(0, 12),
+      fichas: fichas.map(h => ({ l: String(h.title || h.path).replace(/^Ficha:\s*/, ''), v: h.count || 0 })).sort((a, b) => b.v - a.v).slice(0, 10),
+      fichasN: sum(fichas), dayList, games, roscaEnds, shares,
+      started: games.reduce((s, g) => s + g.start, 0), finished: games.reduce((s, g) => s + g.end, 0), sharesN: shares.reduce((s, x) => s + x.v, 0)
+    };
+  }
+
+  async function dashboard() {
+    const key = store.get();
+    if (!key && !DEMO) return login();
+    app.innerHTML = `<header class="top"><div class="brand"><small>Atlas Político Mundial · Administración</small><b>Panel del Atlas</b></div>
+      <div class="controls"><div class="seg" role="group" aria-label="Período">${[[1, 'Hoy'], [7, '7 días'], [30, '30 días'], [90, '90 días']].map(([d, l]) => `<button type="button" data-d="${d}" aria-pressed="${d === range}">${l}</button>`).join('')}</div>
+        <button class="btn" data-reload type="button">Actualizar</button><button class="btn" data-out type="button">Salir</button></div></header>
+      <div id="body"><p class="status">Cargando estadísticas…</p></div>`;
+    app.querySelectorAll('[data-d]').forEach(b => b.addEventListener('click', () => { range = +b.getAttribute('data-d'); dashboard(); }));
+    app.querySelector('[data-reload]').addEventListener('click', dashboard);
+    app.querySelector('[data-out]').addEventListener('click', () => { store.clear(); login(); });
+    let d;
+    try { d = await loadAll(key, range); } catch (e) { if (e.auth) { store.clear(); return login('Tu clave ya no es válida. Ingresala de nuevo.'); } document.getElementById('body').innerHTML = `<p class="status">No se pudieron cargar las estadísticas (${esc(e.message)}). Probá con «Actualizar».</p>`; return; }
+    const S = summarize(d, Math.max(range, 1));
+    const refs = ((d.toprefs && d.toprefs.stats) || []).map(r => ({ l: r.name || '(directo)', v: r.count || 0 }));
+    const locs = ((d.locations && d.locations.stats) || []).map(r => ({ l: r.name || r.id, v: r.count || 0 }));
+    const sizes = ((d.sizes && d.sizes.stats) || []).map(r => ({ l: ({ phone: 'Celular', tablet: 'Tablet', desktop: 'Computadora', desktophd: 'Computadora grande', larger: 'Pantalla grande', unknown: 'Desconocido' })[String(r.name || r.id).toLowerCase()] || r.name || r.id, v: r.count || 0 }));
+    const brows = ((d.browsers && d.browsers.stats) || []).map(r => ({ l: r.name || r.id, v: r.count || 0 }));
+    const gMax = Math.max(1, ...S.games.map(g => Math.max(g.start, g.end)));
+    const shareTable = (() => {
+      if (!S.shares.length) return '<div class="empty">Todavía nadie compartió en este período.</div>';
+      const by = {}; S.shares.forEach(s => { by[s.game] = by[s.game] || {}; by[s.game][s.ch] = (by[s.game][s.ch] || 0) + s.v; });
+      const chs = [...new Set(S.shares.map(s => s.ch))];
+      return `<div class="tscroll"><table><thead><tr><th>Contenido</th>${chs.map(c => `<th class="num">${esc(c)}</th>`).join('')}<th class="num">Total</th></tr></thead><tbody>${Object.entries(by).map(([g, m]) => `<tr><td>${esc(g)}</td>${chs.map(c => `<td class="num">${nf(m[c] || 0)}</td>`).join('')}<td class="num"><b>${nf(Object.values(m).reduce((a, b) => a + b, 0))}</b></td></tr>`).join('')}</tbody></table></div>`;
+    })();
+    document.getElementById('body').innerHTML = `
+      ${DEMO ? '<p class="status">Modo de demostración: datos inventados para ver el diseño.</p>' : ''}
+      <div class="kpis">
+        <div class="kpi"><span>Visitas</span><b>${nf(S.visits)}</b><small>vistas de secciones y fichas</small></div>
+        <div class="kpi"><span>Partidas empezadas</span><b>${nf(S.started)}</b><small>en los 5 juegos</small></div>
+        <div class="kpi"><span>Partidas terminadas</span><b>${nf(S.finished)}</b><small>${S.started ? Math.round(S.finished / S.started * 100) + '% de las empezadas' : '—'}</small></div>
+        <div class="kpi"><span>Compartidos</span><b>${nf(S.sharesN)}</b><small>imágenes, PDF y enlaces</small></div>
+        <div class="kpi"><span>Fichas de países</span><b>${nf(S.fichasN)}</b><small>fichas abiertas</small></div>
+      </div>
+      <div class="grid">
+        <section class="card wide"><h2>Visitas por día</h2><p class="sub">Secciones y fichas vistas cada día.</p><div id="line"></div></section>
+        <section class="card"><h2>Secciones más vistas</h2><p class="sub">Qué parte del Atlas se abre.</p>${barsHTML(S.sections)}</section>
+        <section class="card"><h2>Juegos: empezadas y terminadas</h2><p class="sub">Cuánta gente arranca cada juego y cuánta llega al final.</p>
+          <div class="legend"><span><i style="background:var(--s1)"></i>Empezadas</span><span><i style="background:var(--s2)"></i>Terminadas</span></div>
+          ${S.games.map(g => `<div class="pair" title="${esc(g.name)}: ${nf(g.start)} empezadas, ${nf(g.end)} terminadas"><span>${esc(g.name)}</span><span class="ts"><span class="a" style="width:${(g.start / gMax * 100).toFixed(1)}%"></span><span class="b" style="width:${(g.end / gMax * 100).toFixed(1)}%"></span></span><span class="n"><b>${nf(g.start)}</b> · ${nf(g.end)}${g.start ? ` (${Math.round(g.end / g.start * 100)}%)` : ''}</span></div>`).join('')}
+        </section>
+        <section class="card"><h2>Cómo terminan las partidas de La rosca</h2><p class="sub">Finales de las partidas terminadas.</p>${barsHTML(S.roscaEnds)}</section>
+        <section class="card"><h2>Qué se comparte y por dónde</h2><p class="sub">Toques en los botones de compartir y descargar.</p>${shareTable}</section>
+        <section class="card"><h2>Fichas de países más abiertas</h2><p class="sub">Top 10 del período.</p>${barsHTML(S.fichas)}</section>
+        <section class="card"><h2>De dónde llegan</h2><p class="sub">Sitios y buscadores que traen visitas.</p>${barsHTML(refs)}</section>
+        <section class="card"><h2>Países</h2><p class="sub">Desde dónde se visita el Atlas.</p>${barsHTML(locs)}</section>
+        <section class="card"><h2>Dispositivo</h2><p class="sub">Tamaño de pantalla.</p>${barsHTML(sizes)}</section>
+        <section class="card"><h2>Navegadores</h2><p class="sub">Con qué navegador entran.</p>${barsHTML(brows)}</section>
+      </div>
+      <p class="status" style="margin-top:16px">Datos de GoatCounter (sin cookies). Algunos bloqueadores de publicidad impiden contar visitas, así que los números pueden quedar algo por debajo de los reales. Actualizado: ${new Date().toLocaleString('es-AR')}.</p>`;
+    lineChart(document.getElementById('line'), S.dayList);
+  }
+
+  /* ---------------------------------------------- demo data (?demo=1) */
+  function demoData(days) {
+    const rnd = (a, b) => Math.round(a + Math.random() * (b - a));
+    const mk = (path, base, event, title) => { const stats = []; let count = 0; for (let i = days - 1; i >= 0; i--) { const dt = new Date(); dt.setDate(dt.getDate() - i); const v = rnd(base * 0.5, base * 1.5); count += v; stats.push({ day: dt.toISOString().slice(0, 10), daily: v }); } return { path, event, title, count, stats }; };
+    const hits = [mk('/inicio', 120), mk('/espana', 60), mk('/eeuu', 45), mk('/argentina', 38), mk('/juegos', 30), mk('/elecciones', 12), mk('/analisis', 8),
+      mk('/ficha/ARG', 14, false, 'Ficha: Argentina'), mk('/ficha/USA', 9, false, 'Ficha: Estados Unidos'), mk('/ficha/ESP', 8, false, 'Ficha: España'), mk('/ficha/BRA', 5, false, 'Ficha: Brasil'),
+      mk('/juego/rosca/inicio', 12, true), mk('/juego/rosca/fin/win', 2, true), mk('/juego/rosca/fin/time', 3, true), mk('/juego/rosca/fin/rejectedSen', 2, true), mk('/juego/rosca/fin/fired', 1, true),
+      mk('/juego/pais/inicio', 10, true), mk('/juego/pais/fin', 7, true), mk('/juego/trivia/inicio', 6, true), mk('/juego/trivia/fin/6', 5, true),
+      mk('/juego/percepcion/inicio', 4, true), mk('/juego/percepcion/fin/50', 3, true), mk('/juego/prode/inicio', 5, true), mk('/juego/prode/fin/24', 2, true),
+      mk('/compartir/rosca/wa', 3, true), mk('/compartir/pais/share', 2, true), mk('/compartir/pais/jpg', 1, true), mk('/compartir/eeuu/native', 2, true), mk('/compartir/prode-2027/wa', 1, true)];
+    return { hits: { hits }, toprefs: { stats: [{ name: 'Google', count: 140 }, { name: 'WhatsApp', count: 90 }, { name: '(directo)', count: 70 }, { name: 'X / Twitter', count: 40 }, { name: 'Facebook', count: 12 }] },
+      locations: { stats: [{ name: 'Argentina', count: 320 }, { name: 'España', count: 40 }, { name: 'Uruguay', count: 18 }, { name: 'Chile', count: 12 }, { name: 'Estados Unidos', count: 9 }] },
+      sizes: { stats: [{ name: 'phone', count: 260 }, { name: 'desktop', count: 110 }, { name: 'tablet', count: 20 }] },
+      browsers: { stats: [{ name: 'Chrome', count: 210 }, { name: 'Safari', count: 140 }, { name: 'Firefox', count: 20 }, { name: 'Edge', count: 15 }] } };
+  }
+
+  dashboard();
+})();
+</script>
+</body>
+</html>
