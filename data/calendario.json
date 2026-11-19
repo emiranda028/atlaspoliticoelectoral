@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-10-29",
+ "updatedAt": "2026-11-19",
  "note": "Resúmenes elaborados por el equipo del Atlas a partir de organismos electorales y prensa. Las fechas marcadas como estimadas no están oficialmente convocadas.",
  "briefs": {
   "AGO": {
@@ -349,7 +349,7 @@
    "polls": null,
    "stake": "¿Lograba Davis el primer segundo mandato consecutivo de un primer ministro bahameño desde 1997?",
    "summary": "El PLP de Philip Davis ganó 33 de los 41 escaños y renovó el mandato. La participación rondó el 58%, un mínimo histórico.",
-   "result": "PLP 33 escaños (51,2%), FNM 8 (35,3%); Davis reelecto.",
+   "result": "El PLP de Philip Davis retuvo el gobierno con 33 de 41 bancas; Davis juró un segundo mandato el 14 de mayo, el primer premier reelecto en Bahamas desde 1997.",
    "sources": [
     {
      "label": "Al Jazeera",
@@ -400,7 +400,7 @@
    "polls": null,
    "stake": "¿Retiene el SNSD de Dodik —inhabilitado judicialmente— el control de la República Srpska y quién gana el disputado puesto croata de la Presidencia?",
    "summary": "Fue la participación más baja de la historia en una elección general (42,45% en la presidencial) y la primera con escrutinio electrónico. El SNSD de Milorad Dodik, inhabilitado para ejercer cargos, se proclamó ganador en la República Srpska, mientras que en la Federación la SDA fue la más votada. Filipović reemplaza a Željko Komšić, que no podía buscar otro mandato; la Comisión Electoral Central todavía debe certificar los resultados.",
-   "result": "Resultados preliminares (≈99% escrutado): Denis Bećirović (SDP) retuvo la banca bosnia con 38,1% frente a Bakir Izetbegović (SDA, 34,0%); Darijana Filipović (HDZ BiH) ganó la croata con 46,5%; y Željka Cvijanović (SNSD) retuvo la serbia con 55,6%. En la República Srpska, Savo Minić (SNSD) ganó la presidencia; Branko Blanuša (SDS) reconoció la derrota.",
+   "result": "El SDA fue la lista más votada a la Cámara de Representantes (9 de 42 escaños) con la participación más baja de la historia. Para la Presidencia colegiada fueron elegidos Denis Bećirović (SDP, reelegido), Darijana Filipović (HDZ BiH) y Željka Cvijanović (SNSD, reelegida).",
    "sources": [
     {
      "label": "Wikipedia – 2026 Bosnian general election",
@@ -521,7 +521,7 @@
    "polls": null,
    "stake": "¿Repetiría el BLP el pleno de escaños?",
    "summary": "La elección, prevista para 2027, se adelantó al 11 de febrero de 2026. El Partido Laborista de Barbados ganó los 30 escaños por tercera vez consecutiva, con una participación del 42%.",
-   "result": "BLP 69,8% y 30 de 30 escaños; DLP 27,3% y ningún escaño. Mottley inicia su tercer mandato.",
+   "result": "El BLP de Mia Mottley ganó las 30 bancas por tercera vez consecutiva; Mottley juró su tercer mandato el 12 de febrero, con una participación récord baja (~42%).",
    "sources": [
     {
      "label": "Wikipedia: 2026 Barbadian general election",
@@ -708,7 +708,7 @@
    "polls": null,
    "stake": "¿Conservaba Frederiksen el poder tras perder la mayoría la coalición de centro que gobernaba desde 2022?",
    "summary": "Dinamarca votó de forma anticipada el 24 de marzo de 2026, con una participación del 84%. Ningún bloque obtuvo mayoría y, tras 69 días de negociaciones, Mette Frederiksen formó un gobierno en minoría con SF, Radikale Venstre y Moderados (82 de 179 escaños). La próxima elección debe celebrarse a más tardar en marzo de 2030.",
-   "result": "Los Socialdemócratas fueron primera fuerza con 38 escaños (21,9%, su peor resultado desde 1903); el gobierno saliente perdió la mayoría y Frederiksen formó una nueva coalición minoritaria de centroizquierda el 1/6/2026.",
+   "result": "Los Socialdemócratas siguieron primeros pese a su peor resultado desde 1903. Tras 69 días de negociación, Mette Frederiksen formó (2-3 jun 2026) un gobierno minoritario de centroizquierda con SF, Moderados y Social-Liberales, y empezó su tercer mandato.",
    "sources": [
     {
      "label": "Folketinget – Results of the Danish general election 2026",
@@ -985,7 +985,7 @@
     "trade": {
      "year": 2025,
      "exports": 32.2,
-     "imports": 128.0,
+     "imports": 128,
      "topExports": "mayormente bajo secreto estadístico; vino y maní",
      "topImports": "automóviles, medicamentos, químicos y equipos de telecomunicaciones"
     },
@@ -1168,7 +1168,7 @@
     "trade": {
      "year": 2025,
      "exports": 385.3,
-     "imports": 1124.0,
+     "imports": 1124,
      "topExports": "harina de soja, vacunas y productos farmacéuticos, maní, pellets de girasol",
      "topImports": "medicamentos, autopartes, automóviles, motores diésel, perfumes"
     },
@@ -1434,9 +1434,9 @@
    }
   },
   "GRD": {
-   "date": "2027-10-15",
+   "date": "2026-11-05",
    "dateConfirmed": false,
-   "status": "upcoming",
+   "status": "held",
    "offices": "15 escaños de la Cámara de Representantes",
    "electorate": null,
    "electorateNote": "Sin dato verificado",
@@ -1463,22 +1463,20 @@
      "note": "Nuevo partido"
     }
    ],
-   "polls": "Proyección publicada en abril de 2026 (The New Today) daba 9 escaños al NNP y 6 al NDC; no hay encuestas recientes verificadas.",
    "stake": "¿Retiene el NDC el poder frente al regreso del NNP y la irrupción del DPM?",
-   "summary": "La elección vence a más tardar en 2027 (las fuentes citan octubre o noviembre como límite) y el primer ministro puede adelantarla. A septiembre de 2026 no se ha anunciado fecha ni disuelto el Parlamento.",
-   "result": null,
+   "result": "El NDC de Dickon Mitchell ganó un segundo mandato con 14 de 15 bancas (60,8%); el NNP de Emmalin Pierre retuvo solo una. Mitchell ya juró su segundo mandato.",
    "sources": [
     {
-     "label": "Wikipedia: 2027 Grenadian general election",
-     "url": "https://en.wikipedia.org/wiki/2027_Grenadian_general_election"
+     "label": "www.jamaicaobserver.com",
+     "url": "https://www.jamaicaobserver.com/2026/11/06/mitchells-national-democratic-congress-sweeps-grenada-polls/"
     },
     {
-     "label": "NOW Grenada: líderes políticos (jul 2026)",
-     "url": "https://nowgrenada.com/2026/07/comparing-grenadas-political-leaders-in-a-changing-political-landscape/"
+     "label": "jamaica-gleaner.com",
+     "url": "https://jamaica-gleaner.com/article/world-news/20261005/grenadians-vote-new-government-november-5"
     },
     {
-     "label": "The New Today: proyección abril 2026",
-     "url": "https://www.thenewtodaygrenada.com/commentary/nnp-projected-to-win-9-seats-a-ddata-deep-dive-into-grenadas-current-electoral-landscape-april-17-2026/"
+     "label": "www.caribbeannationalweekly.com",
+     "url": "https://www.caribbeannationalweekly.com/posts/grenada-pm-dickon-mitchell-calls-for-unity-after-swearing-in-for-second-term"
     }
    ],
    "verified": false
@@ -1553,7 +1551,7 @@
     "trade": {
      "year": 2025,
      "exports": 320.3,
-     "imports": 6.0,
+     "imports": 6,
      "topExports": "Vehículos y autopartes (cap. 87), aceites, medicamentos, maíz",
      "topImports": "Caucho natural, semillas, café"
     },
@@ -1578,7 +1576,7 @@
    }
   },
   "HTI": {
-   "date": "2026-12-13",
+   "date": "2027-07-18",
    "dateConfirmed": false,
    "status": "postponed",
    "offices": "Presidente, Senado y Cámara de Diputados (primera vuelta; eventual balotaje el 21/2/2027)",
@@ -1610,31 +1608,15 @@
    "polls": null,
    "stake": "¿Puede Haití votar por primera vez desde 2016 en medio de la violencia de las pandillas?",
    "summary": "El calendario de julio fijaba la primera vuelta para el 13 de diciembre de 2026 y el balotaje para el 21 de febrero de 2027. El 5 de octubre el Consejo Electoral Provisorio postergó la campaña, extendió la inscripción de candidatos hasta el 31 de octubre y prometió un nuevo calendario, que todavía no se publicó; algunas fuentes ya hablan de una postergación sin fecha. El país lo gobierna el primer ministro Alix Didier Fils-Aimé, único titular del Ejecutivo desde que el 7 de febrero venció el mandato del Consejo Presidencial de Transición.",
-   "result": null,
+   "result": "El Consejo Electoral Provisional postergó otra vez los comicios: la 1ra vuelta pasó del 13 dic 2026 al 18 jul 2027 y el balotaje al 4 oct 2027.",
    "sources": [
     {
-     "label": "Wikipedia – 2026 Haitian general election",
-     "url": "https://en.wikipedia.org/wiki/2026_Haitian_general_election"
+     "label": "www.riotimesonline.com",
+     "url": "https://www.riotimesonline.com/haiti-election-delayed-to-july-2027-2026/"
     },
     {
-     "label": "Canada-Haiti – CEP propone el 13 de diciembre y el 21 de febrero",
-     "url": "https://canada-haiti.ca/content/haiti-elections-cep-proposes-december-13-2026-first-round-and-february-21-2027-runoff"
-    },
-    {
-     "label": "HaitiDocs – Calendario electoral oficial 2026-2027",
-     "url": "https://www.haitidocs.org/doc/cep-calendrier-2026-07-publication-officielle"
-    },
-    {
-     "label": "France 24",
-     "url": "https://www.france24.com/en/americas/20260727-haiti-sets-december-presidential-election-despite-security-concerns"
-    },
-    {
-     "label": "The Haitian Times",
-     "url": "https://haitiantimes.com/2026/09/23/haiti-elections-candidate-voter-registration-updates/"
-    },
-    {
-     "label": "HaitiLibre",
-     "url": "https://www.haitilibre.com/en/news-48510-provisional-list-of-the-9-candidates-registered-for-the-presidency-in-haiti.html"
+     "label": "www.wlrn.org",
+     "url": "https://www.wlrn.org/americas/2026-05-12/haiti-prime-minister-alix-didier-fils-aime-august-elections-impossible-under-current-crisis"
     }
    ],
    "verified": false,
@@ -1716,7 +1698,7 @@
    "polls": "Kan 11/Kantar (11 de octubre): Yashar 22, Likud 20, Juntos 12, Otzma Yehudit 9, Yisrael Beiteinu 8, Demócratas 8, Judaísmo Unido de la Torá 8, Lista Conjunta 8, Shas 7, Ra'am 5, Sionismo Religioso 5, Amcha Yisrael 4, Reservistas 4; la coalición sumaría 53, el bloque de Eisenkot 50 y los partidos árabes 13.",
    "stake": "¿Retiene Netanyahu el poder, o consigue el bloque de Eisenkot y Bennett armar una mayoría de 61?",
    "summary": "Restaban contar entre 430.000 y 480.000 votos de doble sobre (soldados, diplomáticos), y los resultados oficiales se publican el 4 de noviembre. Tras recibirlos, el presidente Isaac Herzog abrirá consultas con cada bancada y decidirá si encarga formar gobierno a Netanyahu o a Eisenkot; todavía no encargó a nadie y pidió a los partidos evitar otra elección. Eisenkot descartó un gobierno de unidad bajo Netanyahu, y la oposición solo llegaría a 67 bancas apoyándose en los partidos árabes, una opción que parte de ese bloque resiste.",
-   "result": "Con alrededor del 90,5% de los votos escrutados, el bloque de Netanyahu suma 53 bancas, el bloque opositor encabezado por Gadi Eisenkot 48 y los partidos árabes 19, de modo que ningún bloque alcanza la mayoría de 61 en la Knéset de 120. El Likud es la lista más votada (26 bancas, 20,69%) y la participación fue del 77,7%, la más alta desde 1999.",
+   "result": "Parlamento sin mayoría: el bloque de Netanyahu cae a 53 escaños, el bloque de Eisenkot obtiene 48 y los partidos árabes 19. El 8 nov el presidente Herzog encargó formar gobierno a Gadi Eisenkot (Yashar); Netanyahu sigue como primer ministro en funciones.",
    "sources": [
     {
      "label": "en.wikipedia.org",
@@ -1930,7 +1912,7 @@
     "summary": "Argentina tiene embajada en Nairobi. El embajador Luis Levit presentó cartas credenciales ante Ruto en 2024 y avanzó en 2025 en contactos comerciales y sanitarios (KNCCI, KEPHIS-SENASA). No hubo visitas presidenciales; el vínculo es sobre todo comercial y gira en torno al trigo.",
     "trade": {
      "year": 2025,
-     "exports": 237.0,
+     "exports": 237,
      "imports": 1.5,
      "topExports": "Trigo y otros cereales",
      "topImports": "Semillas, té"
@@ -2098,7 +2080,7 @@
    "polls": "El promedio de PolitPro (25/9/2026) da a la Lista Unida 23,4%, seguida por LPV 12,7%, Progresistas 12,3%, Soberanía (SV) 10,2%, ZZS 9,5%, Alianza Nacional 9,1% y Nueva Unidad 7%.",
    "stake": "¿Consolida la Lista Unida de Kulbergs el liderazgo del gobierno o crecen las fuerzas populistas como LPV y Soberanía?",
    "summary": "Kulbergs, que asumió en mayo como jefe de un gobierno interino tras la renuncia de Evika Siliņa, salió fortalecido de las urnas y seis partidos entraron a la Saeima. El 6 de octubre el presidente Edgars Rinkēvičs le encargó formar el próximo gobierno; las negociaciones arrancan con sus actuales socios, la Alianza Nacional y Nueva Unidad, y el presidente espera avances concretos para comienzos de noviembre. La nominación formal llegará cuando se constituya la nueva Saeima.",
-   "result": "Lista Unida (AS), del primer ministro Andris Kulbergs, ganó con 35,8% y 41 de 100 bancas, el mejor resultado de un partido desde 1991; Letonia Primero (LPV, Ainārs Šlesers) quedó segunda con 13,3% y 17 bancas. La Unión de Verdes y Agricultores (ZZS), socia de la coalición, quedó afuera con 4,46%.",
+   "result": "La Lista Unida del primer ministro Andris Kulbergs ganó con el 35,8% y 41 escaños, con la participación más baja de la historia letona. El 17 nov el Saeima aprobó (57–34) su nuevo gobierno con la Alianza Nacional.",
    "sources": [
     {
      "label": "Wikipedia – 2026 Latvian parliamentary election (datos de la CVK)",
@@ -2157,7 +2139,7 @@
    "polls": null,
    "stake": "¿Conservaba el RNI de Ajanuch la jefatura del gobierno tras las protestas de la Generación Z?",
    "summary": "El PAM ganó con 97 escaños y el RNI de Ajanuch cayó de 102 a 66; el PJD islamista resurgió con 54. La participación bajó al 38,02%, la segunda más baja de la historia. El rey Mohammed VI debe designar al jefe de gobierno del partido más votado.",
-   "result": "PAM 97 escaños, RNI 66, Istiqlal 65, PJD 54; participación 38%.",
+   "result": "El PAM ganó 97 de 395 escaños (sin mayoría); El Mansouri fue nombrada el 29 sep y su gobierno PAM–Istiqlal–USFP–PPS (207 escaños) obtuvo la confianza el 22 oct (204 votos a favor, 127 en contra).",
    "sources": [
     {
      "label": "Morocco World News",
@@ -2355,7 +2337,7 @@
    "polls": null,
    "stake": "¿Lograría el laborismo un cuarto triunfo consecutivo?",
    "summary": "Abela adelantó un año la elección, celebrada el 30 de mayo de 2026. El Partido Laborista ganó por cuarta vez consecutiva, aunque con menor diferencia que en 2022; la participación fue del 87,4%.",
-   "result": "Laboristas 51,8% y 42 escaños; Nacionalistas 44,7% y 37 escaños. Abela sigue como primer ministro.",
+   "result": "El Partido Laborista revalidó la mayoría con el 51,8% de primeras preferencias y 42 escaños (incluidos los de corrección de género), frente a 37 del Partido Nacionalista. Robert Abela juró un nuevo mandato el 1 jun 2026.",
    "sources": [
     {
      "label": "Euronews: laborismo gana cuarto mandato",
@@ -2505,7 +2487,7 @@
     "trade": {
      "year": 2025,
      "exports": 4.5,
-     "imports": 0.0,
+     "imports": 0,
      "topExports": "Montos menores (mayormente confidenciales)",
      "topImports": "Prácticamente nulas"
     },
@@ -2705,7 +2687,7 @@
   "NZL": {
    "date": "2026-11-07",
    "dateConfirmed": true,
-   "status": "upcoming",
+   "status": "held",
    "offices": "Los escaños de la Cámara de Representantes (sistema proporcional mixto, al menos 120)",
    "electorate": 3600000,
    "electorateNote": "Aproximado: ~3,6 millones de inscriptos (Elections NZ vía RNZ, agosto 2026)",
@@ -2727,26 +2709,20 @@
      "note": "Líder de la oposición."
     }
    ],
-   "polls": "1News–Verian (1-5 de octubre): Nacional 29%, Laborista 28%, Verdes 16%, NZ First 10%, ACT 9% y TOP 7%; Taxpayers' Union–Curia (misma fecha): Nacional 28,5% y Laborista 28,2%.",
    "stake": "¿Renueva la coalición de centroderecha de Luxon o vuelve un gobierno de centroizquierda encabezado por los laboristas?",
-   "summary": "Luxon fijó la elección para el 7 de noviembre en enero. Nacionales y laboristas están empatados y las proyecciones de bancas oscilan entre una mayoría Nacional–ACT–NZ First y otra Laborista–Verdes–TOP–Te Pāti Māori, según la encuesta.",
-   "result": null,
+   "result": "Recuento preliminar: Laborista y Nacional casi empatados (~29%), pero la coalición Nacional–ACT–NZ First suma 67 de 131 escaños (mayoría: 66). Luxon sigue como primer ministro en funciones a la espera del resultado oficial.",
    "sources": [
     {
-     "label": "Wikipedia – Opinion polling for the 2026 New Zealand general election",
-     "url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_New_Zealand_general_election"
+     "label": "en.wikipedia.org",
+     "url": "https://en.wikipedia.org/wiki/2026_New_Zealand_general_election"
     },
     {
-     "label": "Beehive.govt.nz",
-     "url": "https://www.beehive.govt.nz/release/general-election-be-held-7-november"
+     "label": "www.aljazeera.com",
+     "url": "https://www.aljazeera.com/news/2026/11/7/governing-party-leads-in-new-zealands-knife-edge-vote-early-results"
     },
     {
-     "label": "Elections NZ – key dates",
-     "url": "https://elections.nz/media-and-news/2026/key-dates-for-2026-general-election"
-    },
-    {
-     "label": "RNZ",
-     "url": "https://www.rnz.co.nz/news/politics_election-2026/1382772/possible-hung-parliament-as-labour-and-national-slump-in-latest-poll"
+     "label": "elections.nz",
+     "url": "https://elections.nz/media-and-news/2026/2026-general-election-preliminary-results"
     }
    ],
    "verified": true,
@@ -2994,7 +2970,7 @@
    "polls": null,
    "stake": "¿Amplía Rusia Unida su mayoría constitucional en la primera elección legislativa en tiempo de guerra?",
    "summary": "Según resultados preliminares de la Comisión Electoral Central, Rusia Unida obtuvo cerca del 58% del voto por lista y 349 escaños (reparto final). Participación oficial del 59,68%. Los comicios se celebraron sin oposición real habilitada.",
-   "result": "Rusia Unida ~57,8% y 349 de 450 escaños (mayoría de dos tercios); KPRF 37, LDPR 23, Gente Nueva 19, Rusia Justa 17.",
+   "result": "Rusia Unida obtuvo un récord de 349 de 450 escaños y mantiene la mayoría constitucional en unos comicios controlados por el Kremlin; KPRF 37, LDPR 23, Gente Nueva 19, Rusia Justa 17.",
    "sources": [
     {
      "label": "Al Jazeera",
@@ -3054,7 +3030,7 @@
    "polls": "Las encuestas divergen: Faktor Plus (publicada el 21 de septiembre) da 48,6% a la lista de Vučić y 37,1% a la Lista Estudiantil, mientras que NSPM (publicada el 30 de septiembre, campo de comienzos de septiembre) pone adelante a los estudiantes con 44,4% contra 41,7%.",
    "stake": "¿Puede la lista surgida de las protestas estudiantiles terminar con más de una década de dominio del SNS?",
    "summary": "La Lista Estudiantil puede gobernar sin socios, pero todavía no presentó candidato a primer ministro. Entre los nombres que circulan figuran el cardiólogo Ilija Srdanović y el exgobernador del Banco Nacional Dejan Šoškić. La Asamblea debe constituirse dentro de los 30 días posteriores a la proclamación de los resultados oficiales, y la propuesta de primer ministro le corresponde a la presidenta interina Ana Brnabić; el primer ministro saliente es Đuro Macut (independiente).",
-   "result": "La Lista Estudiantil ganó con el 53,71% y 141 de las 250 bancas, mayoría absoluta (el umbral es 126), frente al 39,48% y 103 bancas de la lista de Aleksandar Vučić (SNS), que reconoció la derrota. La participación fue del 68,98%, con el 99,27% escrutado.",
+   "result": "La Lista Estudiantil ganó por mayoría absoluta (140 de 250 escaños) y terminó con 14 años de gobiernos del SNS. Vučić, que había dimitido como presidente para encabezar la lista, reconoció la derrota. El nuevo parlamento se constituyó el 17 nov y eligió presidente de la Asamblea a Aleksandar Čupić el 19 nov.",
    "sources": [
     {
      "label": "en.wikipedia.org",
@@ -3192,7 +3168,7 @@
    "polls": null,
    "stake": "¿Retenía el bloque de centroderecha el gobierno con apoyo de los Demócratas de Suecia?",
    "summary": "El bloque rojiverde ganó por un escaño de mayoría (176 contra 173) y Magdalena Andersson se perfila para volver a la jefatura de gobierno. Kristersson anunció su renuncia.",
-   "result": "Bloque de centroizquierda 176 escaños vs. 173; Socialdemócratas 28,0%, Moderados 19,9%, Demócratas de Suecia 17,5%.",
+   "result": "El bloque de centroizquierda (S, V, MP, C) ganó por 176 a 173 escaños y Kristersson dimitió el 17 sep, pero sigue en funciones: el Riksdag rechazó a Magdalena Andersson (15 oct) y a Elisabeth Thand Ringqvist (3 nov) como primeras ministras.",
    "sources": [
     {
      "label": "Valmyndigheten",
@@ -3210,9 +3186,9 @@
    "verified": true
   },
   "SYR": {
-   "date": null,
+   "date": "2025-10-05",
    "dateConfirmed": false,
-   "status": "none",
+   "status": "held",
    "offices": "Sin votación nacional programada para 2027. La presidencial está prevista al término del periodo de transición de cinco años (hacia 2030).",
    "electorate": null,
    "electorateNote": "No existe padrón nacional actualizado.",
@@ -3223,22 +3199,16 @@
     "note": "Gobierna bajo la Declaración Constitucional de marzo de 2025."
    },
    "contenders": [],
-   "polls": null,
    "stake": "Cuándo y cómo se celebrarán elecciones directas tras la caída del régimen de Assad.",
-   "summary": "Siria no tiene elecciones directas programadas en 2027. La Asamblea Popular de 210 miembros se integró en 2025-2026 mediante colegios electorales indirectos (140 escaños) y designación presidencial (70). La Declaración Constitucional fija una transición de cinco años antes de una presidencial.",
-   "result": null,
+   "result": "Primera elección parlamentaria tras Assad, indirecta mediante colegios electorales para unos 2/3 de los 210 escaños (el resto los nombra al-Sharaa); sin partidos, mayoría de diputados suníes y hombres; escaños de Suwayda, Raqqa y Hasakah quedaron vacantes.",
    "sources": [
     {
-     "label": "Wikipedia: elecciones parlamentarias sirias 2025-2026",
-     "url": "https://en.wikipedia.org/wiki/2025%E2%80%932026_Syrian_parliamentary_election"
+     "label": "www.aljazeera.com",
+     "url": "https://www.aljazeera.com/news/2025/10/6/syria-declares-results-of-1st-parliamentary-poll-amid-inclusivity-concerns"
     },
     {
-     "label": "Al Jazeera: Declaración Constitucional de cinco años",
-     "url": "https://www.aljazeera.com/news/2025/3/13/syrias-al-sharaa-signs-five-year-temporary-constitution"
-    },
-    {
-     "label": "CFR: la elección de transición en Siria",
-     "url": "https://www.cfr.org/articles/syrias-transitional-election"
+     "label": "www.idea.int",
+     "url": "https://www.idea.int/democracytracker/report/syrian-arab-republic/october-2025"
     }
    ],
    "verified": true
@@ -3276,7 +3246,7 @@
    "polls": null,
    "stake": "Si el campo conservador o el Partido del Pueblo, de orientación reformista, formaría gobierno.",
    "summary": "Tailandia adelantó sus elecciones generales al 8 de febrero de 2026. El Bhumjaithai triplicó sus escaños y Anutin fue reelegido primer ministro; la participación fue del 71,4%. El referéndum para redactar una nueva Constitución fue aprobado con cerca del 60%.",
-   "result": "Bhumjaithai ganó 192 de 500 escaños, el Partido del Pueblo 120 y Pheu Thai 74; Anutin Charnvirakul fue reelegido primer ministro el 19 de marzo de 2026.",
+   "result": "Bhumjaithai fue el partido más votado en escaños (192 de 500) aunque el Partido del Pueblo ganó el voto de lista. Anutin fue reelegido primer ministro por el Parlamento el 19 mar 2026 al frente de una coalición con Pheu Thai.",
    "sources": [
     {
      "label": "CNBC: victoria de Anutin",
@@ -3367,7 +3337,7 @@
   "USA": {
    "date": "2026-11-03",
    "dateConfirmed": true,
-   "status": "upcoming",
+   "status": "held",
    "offices": "Los 435 escaños de la Cámara de Representantes, 35 bancas del Senado y 36 gobernaciones, además de legislaturas estaduales.",
    "electorate": null,
    "electorateNote": "",
@@ -3389,34 +3359,24 @@
      "note": "Controla ambas cámaras y defiende la mayoría bajo la presidencia de Donald Trump."
     }
    ],
-   "polls": "El promedio de Silver Bulletin da a los demócratas +8,9 puntos en la intención de voto genérica (9 de octubre); FiftyPlusOne marca D+8 (11 de octubre) y RealClearPolling D+7,9.",
    "stake": "¿Recuperan los demócratas la Cámara y también el Senado?",
-   "summary": "El modelo de Silver Bulletin (8 de octubre) da a los demócratas 93,1% de chances de ganar la Cámara y 74,8% el Senado; Decision Desk HQ les asigna 56% en el Senado. Cook Political Report (9 de octubre) proyecta que los demócratas ganarían entre 9 y 19 bancas en la Cámara. En el Senado, Cook ubica como tossups Alaska, Iowa, Kansas, Maine, Michigan, Ohio y Texas.",
-   "result": null,
+   "result": "Los demócratas ganaron el control de las dos cámaras: al menos 257 bancas en la Cámara de Representantes (7 sin definir) y 55 en el Senado contando a los independientes, con Alaska todavía en recuento (Peltola adelante). Trump sigue como presidente, pero desde enero de 2027 tendrá un Congreso opositor.",
    "sources": [
     {
-     "label": "Silver Bulletin – Generic ballot average",
-     "url": "https://www.natesilver.net/p/generic-ballot-average-2026-nate-silver-bulletin-congress-polls"
+     "label": "www.yahoo.com",
+     "url": "https://www.yahoo.com/news/politics/article/lots-of-2026-midterm-races-still-havent-been-called-heres-where-things-stand-205425643.html"
     },
     {
-     "label": "Newsweek – Nate Silver forecast",
-     "url": "https://www.newsweek.com/democrat-chances-of-winning-house-senate-hit-new-high-nate-silver-forecast-12545290"
+     "label": "en.wikipedia.org",
+     "url": "https://en.wikipedia.org/wiki/2026_United_States_elections"
     },
     {
-     "label": "Cook Political Report – House ratings",
-     "url": "https://www.cookpolitical.com/ratings/house-race-ratings"
+     "label": "newsweek.com",
+     "url": "https://newsweek.com/democrats-win-biggest-midterm-vote-share-since-watergate-12715915"
     },
     {
-     "label": "Cook Political Report – Senate overview (Kansas a Toss Up)",
-     "url": "https://www.cookpolitical.com/analysis/senate/senate-overview/senate-majority-squarely-democrats-sights-kansas-moves-toss-two"
-    },
-    {
-     "label": "Decision Desk HQ – 2026 Senate forecast",
-     "url": "https://votes.decisiondeskhq.com/forecast/2026/senate"
-    },
-    {
-     "label": "Cook Political Report",
-     "url": "https://www.cookpolitical.com/"
+     "label": "www.brookings.edu",
+     "url": "https://www.brookings.edu/articles/how-democrats-won-big-and-why-2028-remains-an-open-question/"
     }
    ],
    "verified": true,
@@ -3481,9 +3441,7 @@
      "note": "31,95% en la 1.ª vuelta"
     }
    ],
-   "polls": "1.ª vuelta (25 de octubre): Iliana Iotova 34,76%, Andrey Gyurov 31,95%, Kostadin Kostadinov 12,55%. Participación: 22,98%.",
    "stake": "¿Consolida Radev su control total del poder con Iotova en la presidencia, o la oposición proeuropea fuerza un balotaje y conserva un contrapeso?",
-   "summary": "Como nadie superó el 50%, Iotova y Gyurov se enfrentan en el balotaje del 1 de noviembre de 2026. La campaña está polarizada por la guerra en Ucrania: Gyurov apoya la ayuda a Kiev e Iotova se opone a la asistencia militar.",
    "why": "Una victoria de Iotova dejaría gobierno, Parlamento y presidencia en manos del mismo bloque por primera vez en décadas, sin el contrapeso del veto presidencial. Es además la primera prueba electoral del gobierno Radev, cuyas posiciones sobre Rusia y la UE se siguen de cerca en Bruselas.",
    "sources": [
     {
@@ -3491,21 +3449,17 @@
      "url": "https://en.wikipedia.org/wiki/2026_Bulgarian_presidential_election"
     },
     {
-     "label": "aa.com.tr",
-     "url": "https://aa.com.tr/en/europe/bulgaria-s-president-yotova-leads-1st-round-vote-heads-to-runoff/4101466"
+     "label": "www.thestar.com.my",
+     "url": "https://www.thestar.com.my/news/world/2026/11/02/bulgaria039s-iotova-wins-presidential-runoff-near-final-results-show"
     },
     {
-     "label": "balkaninsight.com",
-     "url": "https://balkaninsight.com/2026/10/26/bulgarias-presidential-election-heads-to-runoff-after-record-low-turnout/bi/"
-    },
-    {
-     "label": "www.bloomberg.com",
-     "url": "https://www.bloomberg.com/news/articles/2026-10-25/bulgarian-president-set-to-win-first-round-of-election-poll"
+     "label": "brusselssignal.eu",
+     "url": "https://brusselssignal.eu/2026/11/bulgaria-elects-iotova-as-its-first-woman-president/"
     }
    ],
-   "status": "upcoming",
+   "status": "held",
    "dateConfirmed": true,
-   "result": "La presidenta en ejercicio Iliana Iotova ganó la primera vuelta con el 34,76%, seguida por el ex primer ministro interino Andrey Gyurov con el 31,95% y por Kostadin Kostadinov (Vazrazhdane) con el 12,55%. La participación fue del 22,98%, la más baja de la historia búlgara.",
+   "result": "Iliana Iotova, presidenta en funciones desde que Radev dimitió en enero, ganó la segunda vuelta con el 57,6% frente al 39,5% de Andrey Gurov (PP–DB). Es la primera mujer elegida presidenta de Bulgaria.",
    "verified": true
   }
  }
