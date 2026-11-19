@@ -2622,13 +2622,13 @@
    "tag": "farandula"
   },
   {
-   "id": "messi",
-   "who": "Selección",
-   "title": "Messi se lesiona y el país está en vilo",
-   "text": "El parte médico de la Selección dice \"molestia muscular\" y todo el país entra en pánico. Los noticieros tienen un móvil en la puerta del predio de Ezeiza. Tu proyecto desaparece de la agenda.",
+   "id": "pumas",
+   "who": "Deportes",
+   "title": "Los Pumas le ganan a los All Blacks y el país se olvida del Congreso",
+   "text": "Un try en el último minuto y Los Pumas le ganan a Nueva Zelanda. Durante tres días no se habla de otra cosa: los noticieros repiten la jugada en loop y tu proyecto desaparece de la agenda.",
    "options": [
     {
-     "label": "Esperar a que pase la tormenta",
+     "label": "Esperar a que pase la euforia",
      "result": "Una semana sin poder instalar el tema.",
      "e": {
       "stats": {
@@ -2638,7 +2638,7 @@
     },
     {
      "label": "Aprovechar el silencio para negociar en voz baja",
-     "result": "Cerrás un acuerdo con un bloque provincial mientras todos miran el parte médico.",
+     "result": "Cerrás un acuerdo con un bloque provincial mientras todos miran el try.",
      "e": {
       "blocs": {
        "dip:innov": 4,
