@@ -13,6 +13,14 @@
    "blurb": "Generales anticipadas del 29 de noviembre: 350 diputados en 52 provincias y 176 para la mayoría absoluta. Calculadora de mayorías con las encuestas, Congreso actual, candidatos y relación con Argentina."
   },
   {
+   "id": "juegos",
+   "view": "juegos",
+   "status": "active",
+   "tag": "Nuevo · Juegos",
+   "title": "Jugá a la política",
+   "blurb": "¿Qué país gobernarías? Descubrilo en 14 decisiones. Y en «La rosca» sos Santilli: negociá con los gobernadores y contá los votos para eliminar las PASO. Más una trivia sobre quién gobierna el mundo."
+  },
+  {
    "id": "eeuu-2026",
    "status": "active",
    "iso": "USA",
@@ -65,6 +73,12 @@
   }
  ],
  "notes": [
+  {
+   "date": "2026-11-19",
+   "tag": "Nuevo",
+   "view": "juegos",
+   "text": "Nuevo: Juegos del Atlas. «¿Qué país gobernarías?», «La rosca: PASO o no PASO», con los bloques y gobernadores reales, y la trivia «¿Quién gobierna?»."
+  },
   {
    "date": "2026-11-10",
    "tag": "Encuestas",

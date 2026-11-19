@@ -1,0 +1,1207 @@
+{
+ "id": "rosca-paso",
+ "title": "La rosca: PASO o no PASO",
+ "role": "Diego Santilli, jefe de Gabinete",
+ "intro": "Noviembre de 2026. Javier Milei te encargó una sola cosa: que las PASO no se hagan en 2027. Tenés ocho semanas, una caja finita y un Congreso donde no te alcanza con los propios. Negociá con gobernadores, cedé lo justo y elegí bien cuándo llamar a sesión.",
+ "disclaimer": "Simulación de ficción con actores reales de la política argentina. Las bancas por bloque son las del Congreso que asumió en diciembre de 2025; las situaciones, las ofertas y las respuestas de cada dirigente son inventadas para el juego.",
+ "turns": 8,
+ "weeks": [
+  "16 de noviembre",
+  "23 de noviembre",
+  "30 de noviembre",
+  "7 de diciembre",
+  "14 de diciembre",
+  "21 de diciembre",
+  "28 de diciembre",
+  "4 de enero"
+ ],
+ "stats": {
+  "capital": {
+   "label": "Capital político",
+   "start": 60,
+   "help": "Si llega a cero, Milei te pide la renuncia."
+  },
+  "imagen": {
+   "label": "Imagen pública",
+   "start": 45,
+   "help": "Mueve a los indecisos al momento de votar."
+  },
+  "caja": {
+   "label": "Caja",
+   "start": 70,
+   "help": "Fondos para obras y transferencias a las provincias (ATN)."
+  },
+  "interna": {
+   "label": "Interna con Karina y Milei",
+   "start": 65,
+   "help": "Si llega a cero, te sacan las negociaciones."
+  }
+ },
+ "chambers": {
+  "dip": {
+   "label": "Diputados",
+   "need": 129,
+   "total": 257,
+   "who": "Martín Menem preside la Cámara",
+   "blocs": [
+    {
+     "id": "lla",
+     "name": "La Libertad Avanza",
+     "seats": 95,
+     "aff": 100,
+     "leader": "Gabriel Bornoroni",
+     "color": "#7A3FB0"
+    },
+    {
+     "id": "pro",
+     "name": "PRO",
+     "seats": 12,
+     "aff": 72,
+     "leader": "Cristian Ritondo",
+     "color": "#F2C200"
+    },
+    {
+     "id": "mid",
+     "name": "MID",
+     "seats": 2,
+     "aff": 72,
+     "color": "#5A4FA0"
+    },
+    {
+     "id": "pyt",
+     "name": "Producción y Trabajo (San Juan)",
+     "seats": 2,
+     "aff": 30,
+     "color": "#8C8C8C"
+    },
+    {
+     "id": "ucr",
+     "name": "UCR",
+     "seats": 6,
+     "aff": 30,
+     "color": "#D63A35"
+    },
+    {
+     "id": "neuq",
+     "name": "La Neuquinidad",
+     "seats": 1,
+     "aff": 20,
+     "color": "#2B8C8C"
+    },
+    {
+     "id": "innov",
+     "name": "Innovación Federal (Salta y Misiones)",
+     "seats": 7,
+     "aff": 5,
+     "color": "#3E8E5A"
+    },
+    {
+     "id": "ind",
+     "name": "Independencia (Tucumán)",
+     "seats": 3,
+     "aff": 5,
+     "color": "#4A7DB8"
+    },
+    {
+     "id": "elijo",
+     "name": "Elijo Catamarca",
+     "seats": 3,
+     "aff": 5,
+     "color": "#4A7DB8"
+    },
+    {
+     "id": "psc",
+     "name": "Por Santa Cruz",
+     "seats": 1,
+     "aff": 5,
+     "color": "#8C8C8C"
+    },
+    {
+     "id": "aba",
+     "name": "Adelante Buenos Aires",
+     "seats": 1,
+     "aff": 0,
+     "color": "#8C8C8C"
+    },
+    {
+     "id": "pu",
+     "name": "Provincias Unidas",
+     "seats": 18,
+     "aff": -5,
+     "color": "#E08A2E"
+    },
+    {
+     "id": "cc",
+     "name": "Coalición Cívica",
+     "seats": 2,
+     "aff": -10,
+     "color": "#2E9DB8"
+    },
+    {
+     "id": "ef",
+     "name": "Encuentro Federal",
+     "seats": 2,
+     "aff": -15,
+     "leader": "Miguel Ángel Pichetto",
+     "color": "#8C8C8C"
+    },
+    {
+     "id": "dco",
+     "name": "Defendamos Córdoba",
+     "seats": 1,
+     "aff": -20,
+     "color": "#8C8C8C"
+    },
+    {
+     "id": "coh",
+     "name": "Coherencia",
+     "seats": 3,
+     "aff": -30,
+     "color": "#8C8C8C"
+    },
+    {
+     "id": "pjsl",
+     "name": "PJ San Luis",
+     "seats": 1,
+     "aff": -40,
+     "color": "#2F6DB5"
+    },
+    {
+     "id": "up",
+     "name": "Unión por la Patria / Fuerza Patria",
+     "seats": 93,
+     "aff": -80,
+     "leader": "Germán Martínez",
+     "color": "#2F6DB5"
+    },
+    {
+     "id": "fit",
+     "name": "Frente de Izquierda",
+     "seats": 4,
+     "aff": -100,
+     "color": "#B3202A"
+    }
+   ]
+  },
+  "sen": {
+   "label": "Senado",
+   "need": 37,
+   "total": 72,
+   "who": "Victoria Villarruel preside el Senado",
+   "blocs": [
+    {
+     "id": "lla",
+     "name": "La Libertad Avanza",
+     "seats": 21,
+     "aff": 100,
+     "leader": "Patricia Bullrich",
+     "color": "#7A3FB0"
+    },
+    {
+     "id": "pro",
+     "name": "PRO",
+     "seats": 3,
+     "aff": 72,
+     "color": "#F2C200"
+    },
+    {
+     "id": "ucr",
+     "name": "UCR",
+     "seats": 10,
+     "aff": 35,
+     "color": "#D63A35"
+    },
+    {
+     "id": "neuq",
+     "name": "La Neuquinidad",
+     "seats": 1,
+     "aff": 20,
+     "color": "#2B8C8C"
+    },
+    {
+     "id": "movere",
+     "name": "Movere por Santa Cruz",
+     "seats": 2,
+     "aff": 10,
+     "color": "#8C8C8C"
+    },
+    {
+     "id": "ind",
+     "name": "Independencia (Tucumán)",
+     "seats": 1,
+     "aff": 10,
+     "color": "#4A7DB8"
+    },
+    {
+     "id": "misiones",
+     "name": "Frente Renovador de la Concordia (Misiones)",
+     "seats": 2,
+     "aff": 5,
+     "color": "#3E8E5A"
+    },
+    {
+     "id": "salta",
+     "name": "Primero los Salteños",
+     "seats": 1,
+     "aff": 5,
+     "color": "#3E8E5A"
+    },
+    {
+     "id": "chubut",
+     "name": "Despierta Chubut",
+     "seats": 1,
+     "aff": 5,
+     "color": "#E08A2E"
+    },
+    {
+     "id": "pu",
+     "name": "Provincias Unidas",
+     "seats": 2,
+     "aff": 0,
+     "color": "#E08A2E"
+    },
+    {
+     "id": "popular",
+     "name": "Bloque Popular (peronismo)",
+     "seats": 28,
+     "aff": -75,
+     "leader": "José Mayans",
+     "color": "#2F6DB5"
+    }
+   ]
+  }
+ },
+ "governors": [
+  {
+   "id": "llaryora",
+   "name": "Martín Llaryora",
+   "prov": "Córdoba",
+   "blocs": [
+    "dip:pu"
+   ],
+   "pitch": "Quiere fondos para la caja de jubilaciones cordobesa y rutas."
+  },
+  {
+   "id": "pullaro",
+   "name": "Maximiliano Pullaro",
+   "prov": "Santa Fe",
+   "blocs": [
+    "dip:pu",
+    "sen:pu"
+   ],
+   "pitch": "Pide obras de seguridad y la deuda de la Anses con la caja santafesina."
+  },
+  {
+   "id": "torres",
+   "name": "Ignacio Torres",
+   "prov": "Chubut",
+   "blocs": [
+    "sen:chubut",
+    "dip:pu"
+   ],
+   "pitch": "Quiere regalías y un 'superdomingo patagónico'."
+  },
+  {
+   "id": "saenz",
+   "name": "Gustavo Sáenz",
+   "prov": "Salta",
+   "blocs": [
+    "dip:innov",
+    "sen:salta"
+   ],
+   "pitch": "Pide la obra del gasoducto del norte y rutas nacionales."
+  },
+  {
+   "id": "passalacqua",
+   "name": "Hugo Passalacqua",
+   "prov": "Misiones",
+   "blocs": [
+    "dip:innov",
+    "sen:misiones"
+   ],
+   "pitch": "Quiere un régimen especial para la yerba y el turismo."
+  },
+  {
+   "id": "jaldo",
+   "name": "Osvaldo Jaldo",
+   "prov": "Tucumán",
+   "blocs": [
+    "dip:ind",
+    "sen:ind"
+   ],
+   "pitch": "Pide ATN para pagar aguinaldos."
+  },
+  {
+   "id": "jalil",
+   "name": "Raúl Jalil",
+   "prov": "Catamarca",
+   "blocs": [
+    "dip:elijo"
+   ],
+   "pitch": "Quiere que el litio catamarqueño entre al RIGI."
+  },
+  {
+   "id": "vidal",
+   "name": "Claudio Vidal",
+   "prov": "Santa Cruz",
+   "blocs": [
+    "sen:movere",
+    "dip:psc"
+   ],
+   "pitch": "Pide fondos para las represas y la caja provincial."
+  },
+  {
+   "id": "orrego",
+   "name": "Marcelo Orrego",
+   "prov": "San Juan",
+   "blocs": [
+    "dip:pyt"
+   ],
+   "pitch": "Quiere financiamiento para la minería de cobre."
+  },
+  {
+   "id": "figueroa",
+   "name": "Rolando Figueroa",
+   "prov": "Neuquén",
+   "blocs": [
+    "dip:neuq",
+    "sen:neuq"
+   ],
+   "pitch": "Ya desdobló su elección: pide obras para Vaca Muerta."
+  }
+ ],
+ "design": {
+  "q": "Antes de mandar el proyecto, Milei te pide que definas qué va a decir. ¿Qué proyecto presentás?",
+  "options": [
+   {
+    "label": "Eliminar las PASO para siempre, con Ficha Limpia y sin financiamiento estatal de campañas",
+    "result": "El proyecto de máxima: entusiasma a Bullrich, al PRO y a la Coalición Cívica, pero los gobernadores peronistas lo miran de reojo.",
+    "e": {
+     "stats": {
+      "interna": 10,
+      "capital": -5
+     },
+     "blocs": {
+      "dip:pro": 8,
+      "dip:cc": 20,
+      "dip:ucr": 8,
+      "sen:ucr": 8,
+      "sen:pro": 8,
+      "dip:innov": -10,
+      "dip:ind": -10,
+      "dip:elijo": -10,
+      "sen:misiones": -10,
+      "sen:salta": -10,
+      "sen:ind": -10,
+      "sen:movere": -10
+     },
+     "flags": {
+      "maxima": true
+     }
+    }
+   },
+   {
+    "label": "Eliminar las PASO, sin agregar nada más",
+    "result": "Un proyecto corto y claro. Nadie se entusiasma, pero nadie se enoja demasiado.",
+    "e": {
+     "stats": {
+      "interna": 5
+     }
+    }
+   },
+   {
+    "label": "Suspenderlas solo para 2027",
+    "result": "A los gobernadores les gusta: cada uno ordena su provincia sin internas. En la Casa Rosada dicen que es 'la mitad de la reforma'.",
+    "e": {
+     "stats": {
+      "interna": -10
+     },
+     "blocs": {
+      "dip:innov": 12,
+      "dip:ind": 12,
+      "dip:elijo": 12,
+      "sen:misiones": 12,
+      "sen:salta": 12,
+      "sen:ind": 12,
+      "sen:movere": 12,
+      "dip:pu": 8,
+      "sen:pu": 8,
+      "dip:cc": -10,
+      "sen:lla": -5
+     },
+     "flags": {
+      "suspension": true
+     }
+    }
+   }
+  ]
+ },
+ "events": [
+  {
+   "id": "bullrich",
+   "turn": 1,
+   "who": "Patricia Bullrich",
+   "role": "Jefa del bloque LLA en el Senado",
+   "title": "Bullrich quiere que el texto lo escriba su bloque",
+   "text": "Bullrich te avisa que en el Senado ella cuenta los votos y que quiere que el proyecto entre primero por su Cámara.",
+   "options": [
+    {
+     "label": "Que entre por Diputados, como estaba previsto",
+     "result": "Menem se pone contento. Bullrich, no tanto.",
+     "e": {
+      "stats": {
+       "interna": -3
+      },
+      "blocs": {
+       "sen:lla": -5
+      }
+     }
+    },
+    {
+     "label": "Darle el control del texto en el Senado",
+     "result": "Bullrich se pone el proyecto al hombro y endurece el texto.",
+     "e": {
+      "stats": {
+       "interna": 5,
+       "capital": -5
+      },
+      "blocs": {
+       "sen:ucr": 4,
+       "sen:misiones": -5,
+       "sen:salta": -5
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "pu",
+   "turn": 1,
+   "who": "Llaryora y Pullaro",
+   "role": "Gobernadores de Provincias Unidas",
+   "title": "Provincias Unidas pone precio",
+   "text": "Llaryora y Pullaro te dicen que sus 18 diputados no se mueven sin un acuerdo por las cajas previsionales no transferidas.",
+   "options": [
+    {
+     "label": "Firmar el convenio por las cajas",
+     "result": "Firmaron en la Casa Rosada. Caputo puso cara de pocos amigos.",
+     "e": {
+      "stats": {
+       "caja": -15,
+       "interna": -3
+      },
+      "blocs": {
+       "dip:pu": 19,
+       "sen:pu": 15
+      }
+     }
+    },
+    {
+     "label": "Prometer que se va a 'estudiar'",
+     "result": "Se fueron con una foto y sin plata. Van a volver.",
+     "e": {
+      "stats": {
+       "capital": -3
+      },
+      "blocs": {
+       "dip:pu": 4
+      }
+     }
+    },
+    {
+     "label": "Negarse y criticarlos en redes",
+     "result": "Las redes libertarias festejan. En Provincias Unidas se cierran.",
+     "e": {
+      "stats": {
+       "imagen": 3,
+       "interna": 5
+      },
+      "blocs": {
+       "dip:pu": -15,
+       "sen:pu": -10
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "insfran",
+   "turn": 2,
+   "who": "Gildo Insfrán",
+   "role": "Gobernador de Formosa",
+   "title": "Insfrán te recibe en Formosa",
+   "text": "Insfrán te ofrece que dos senadores del Bloque Popular den quórum y voten a favor si el proyecto habilita la ley de lemas en todo el país y no se mete con las reelecciones provinciales.",
+   "options": [
+    {
+     "label": "Aceptar el trato",
+     "result": "Te sumás dos votos en el Senado. La Coalición Cívica habla de 'pacto con el feudalismo' y los radicales se enojan.",
+     "e": {
+      "stats": {
+       "imagen": -12,
+       "capital": 5
+      },
+      "blocs": {
+       "dip:cc": -30,
+       "dip:pro": -10,
+       "dip:ucr": -15,
+       "sen:ucr": -10
+      },
+      "split": {
+       "chamber": "sen",
+       "from": "popular",
+       "id": "formosa",
+       "name": "Senadores formoseños (acuerdo Insfrán)",
+       "seats": 2,
+       "aff": 80,
+       "color": "#1F5FA8"
+      },
+      "flags": {
+       "lemas": true
+      }
+     }
+    },
+    {
+     "label": "Rechazarlo en público",
+     "result": "Ganás titulares. Insfrán te recuerda que el Senado es largo.",
+     "e": {
+      "stats": {
+       "imagen": 6,
+       "interna": 3
+      },
+      "blocs": {
+       "sen:popular": -5
+      }
+     }
+    },
+    {
+     "label": "Decirle que lo vas a pensar",
+     "result": "Insfrán sonríe. No es la primera vez que espera.",
+     "e": {
+      "stats": {
+       "capital": -2
+      },
+      "flags": {
+       "insfranEspera": true
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "insfran2",
+   "turn": 4,
+   "requires": "lemas",
+   "who": "Gildo Insfrán",
+   "role": "Gobernador de Formosa",
+   "title": "Insfrán redobla la apuesta",
+   "text": "Ahora Insfrán quiere que el proyecto habilite la reelección indefinida de gobernadores en todo el país. Dice que es 'una cuestión de federalismo'.",
+   "options": [
+    {
+     "label": "Romper el acuerdo",
+     "result": "Los formoseños vuelven al Bloque Popular. Recuperás algo de imagen.",
+     "e": {
+      "stats": {
+       "imagen": 8
+      },
+      "blocs": {
+       "sen:formosa": -120
+      }
+     }
+    },
+    {
+     "label": "Aceptar 'estudiarlo' en una comisión",
+     "result": "Los radicales amenazan con no dar quórum. Las encuestas castigan.",
+     "e": {
+      "stats": {
+       "imagen": -15,
+       "capital": -5
+      },
+      "blocs": {
+       "sen:ucr": -20,
+       "dip:ucr": -20,
+       "dip:pro": -15,
+       "dip:cc": -30
+      }
+     }
+    },
+    {
+     "label": "Mandarlo a un 'consejo federal' que no se reúne nunca",
+     "result": "Ganaste tiempo. Insfrán no te cree, pero tampoco rompe.",
+     "e": {
+      "stats": {
+       "capital": -4
+      },
+      "blocs": {
+       "sen:formosa": -20
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "insfran3",
+   "turn": 4,
+   "requires": "insfranEspera",
+   "who": "Gildo Insfrán",
+   "role": "Gobernador de Formosa",
+   "title": "Insfrán se cansa de esperar",
+   "text": "El Bloque Popular anuncia que no va a dar quórum 'ni para el Presupuesto' mientras el Gobierno discrimine a Formosa.",
+   "options": [
+    {
+     "label": "Lo dejás pasar",
+     "result": "El peronismo del Senado se endurece un poco más.",
+     "e": {
+      "blocs": {
+       "sen:popular": -10
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "norte",
+   "turn": 2,
+   "who": "Sáenz, Jaldo, Jalil y Passalacqua",
+   "role": "Gobernadores del norte",
+   "title": "Los gobernadores del norte arman un frente",
+   "text": "Salta, Tucumán, Catamarca y Misiones controlan 13 diputados y 4 senadores. Piden ATN para aguinaldos y obras.",
+   "options": [
+    {
+     "label": "Pagar lo que piden",
+     "result": "Fotos sonrientes. Los cuatro bloques se acercan.",
+     "e": {
+      "stats": {
+       "caja": -20
+      },
+      "blocs": {
+       "dip:innov": 19,
+       "dip:ind": 19,
+       "dip:elijo": 19,
+       "sen:misiones": 19,
+       "sen:salta": 19,
+       "sen:ind": 19
+      }
+     }
+    },
+    {
+     "label": "Pagar la mitad",
+     "result": "Se acercan, pero se guardan algo para la próxima.",
+     "e": {
+      "stats": {
+       "caja": -10
+      },
+      "blocs": {
+       "dip:innov": 9,
+       "dip:ind": 9,
+       "dip:elijo": 9,
+       "sen:misiones": 9,
+       "sen:salta": 9,
+       "sen:ind": 9
+      }
+     }
+    },
+    {
+     "label": "No hay plata",
+     "result": "Caputo te felicita. Los gobernadores, no.",
+     "e": {
+      "stats": {
+       "interna": 5
+      },
+      "blocs": {
+       "dip:innov": -15,
+       "dip:ind": -15,
+       "dip:elijo": -15,
+       "sen:misiones": -15,
+       "sen:salta": -15,
+       "sen:ind": -15
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "kicillof",
+   "turn": 2,
+   "who": "Axel Kicillof",
+   "role": "Gobernador de Buenos Aires",
+   "title": "Kicillof sale a defender las PASO",
+   "text": "Kicillof dice que eliminar las PASO es 'quitarle la voz al pueblo' y Fuerza Patria presenta un proyecto propio para mantenerlas.",
+   "options": [
+    {
+     "label": "Confrontar: 'las PASO son una encuesta carísima'",
+     "result": "Tu frase se viraliza. El peronismo se cierra todavía más.",
+     "e": {
+      "stats": {
+       "imagen": 4
+      },
+      "blocs": {
+       "dip:up": -5,
+       "sen:popular": -5
+      }
+     }
+    },
+    {
+     "label": "Negociar por separado con los gobernadores peronistas",
+     "result": "Jaldo y Jalil se muestran más abiertos. Kicillof queda aislado en la discusión.",
+     "e": {
+      "stats": {
+       "capital": -3
+      },
+      "blocs": {
+       "dip:ind": 8,
+       "dip:elijo": 8,
+       "sen:ind": 8
+      }
+     }
+    },
+    {
+     "label": "Ignorarlo",
+     "result": "La discusión sigue su curso.",
+     "e": {}
+    }
+   ]
+  },
+  {
+   "id": "figueroa",
+   "turn": 2,
+   "who": "Rolando Figueroa",
+   "role": "Gobernador de Neuquén",
+   "title": "Neuquén desdobla y vota el 14 de febrero",
+   "text": "Figueroa firmó el decreto para votar el 14 de febrero. Te dice que, con su elección resuelta, las PASO nacionales ya no le quitan el sueño.",
+   "options": [
+    {
+     "label": "Prometer obras para Vaca Muerta",
+     "result": "Figueroa queda conforme: su diputado y su senador te acompañan.",
+     "e": {
+      "stats": {
+       "caja": -8
+      },
+      "blocs": {
+       "dip:neuq": 35,
+       "sen:neuq": 35
+      }
+     }
+    },
+    {
+     "label": "Dejarlo así",
+     "result": "Figueroa toma nota.",
+     "e": {
+      "blocs": {
+       "dip:neuq": -5,
+       "sen:neuq": -5
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "torres",
+   "turn": 3,
+   "who": "Ignacio Torres",
+   "role": "Gobernador de Chubut",
+   "title": "Torres propone un 'superdomingo patagónico'",
+   "text": "Torres quiere que las provincias patagónicas voten todas el mismo día y te pide que el proyecto lo facilite.",
+   "options": [
+    {
+     "label": "Apoyar la idea",
+     "result": "Torres te devuelve el gesto con su senadora.",
+     "e": {
+      "stats": {
+       "capital": -3
+      },
+      "blocs": {
+       "sen:chubut": 19,
+       "dip:pu": 4
+      }
+     }
+    },
+    {
+     "label": "Rechazarla: 'cada provincia que haga lo que quiera'",
+     "result": "Torres se enoja y lo dice en televisión.",
+     "e": {
+      "blocs": {
+       "sen:chubut": -15
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "extra",
+   "turn": 3,
+   "who": "Javier Milei",
+   "role": "Presidente",
+   "title": "Termina el período ordinario",
+   "text": "El 30 de noviembre terminan las sesiones ordinarias. Milei tiene que convocar a extraordinarias y decidir el temario.",
+   "options": [
+    {
+     "label": "Que incluya las PASO en el temario",
+     "result": "Milei firma el decreto: la reforma sigue en juego en diciembre.",
+     "e": {
+      "stats": {
+       "interna": 3
+      }
+     }
+    },
+    {
+     "label": "Priorizar el Presupuesto y dejar las PASO para febrero",
+     "result": "Ganás aire, pero perdés dos semanas de calendario.",
+     "e": {
+      "stats": {
+       "capital": 10
+      },
+      "turns": -2
+     }
+    }
+   ]
+  },
+  {
+   "id": "karina",
+   "turn": 3,
+   "who": "Karina Milei",
+   "role": "Secretaria General de la Presidencia",
+   "title": "Karina quiere manejar la negociación",
+   "text": "Karina Milei te pide que las reuniones con los gobernadores pasen por su despacho.",
+   "options": [
+    {
+     "label": "Cederle el control",
+     "result": "Mejora la relación con la Casa Rosada, pero los gobernadores no saben con quién hablar.",
+     "e": {
+      "stats": {
+       "interna": 15,
+       "capital": -10
+      }
+     }
+    },
+    {
+     "label": "Defender tu rol",
+     "result": "Ganás autonomía. En Balcarce 50 alguien toma nota.",
+     "e": {
+      "stats": {
+       "interna": -12,
+       "capital": 6
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "caputo",
+   "turn": 4,
+   "who": "Luis Caputo",
+   "role": "Ministro de Economía",
+   "title": "Caputo cierra la canilla",
+   "text": "Caputo te avisa que, para cumplir el superávit, este año no hay más transferencias discrecionales para las provincias.",
+   "options": [
+    {
+     "label": "Aceptar",
+     "result": "Tu caja se achica. Caputo y Milei te lo agradecen.",
+     "e": {
+      "stats": {
+       "caja": -15,
+       "interna": 6
+      }
+     }
+    },
+    {
+     "label": "Pelear por fondos frente a Milei",
+     "result": "Conseguís algo de plata y una mala relación con Economía.",
+     "e": {
+      "stats": {
+       "caja": 10,
+       "interna": -12
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "ucr",
+   "turn": 4,
+   "who": "Bloque radical",
+   "role": "UCR en el Senado",
+   "title": "Los radicales piden PASO optativas",
+   "text": "Los senadores de la UCR proponen que las primarias sigan para los partidos que quieran usarlas.",
+   "options": [
+    {
+     "label": "Aceptar las PASO optativas",
+     "result": "La UCR se suma. Bullrich lo ve como una concesión innecesaria.",
+     "e": {
+      "stats": {
+       "interna": -5
+      },
+      "blocs": {
+       "sen:ucr": 19,
+       "dip:ucr": 15,
+       "sen:lla": -5
+      }
+     }
+    },
+    {
+     "label": "Rechazar",
+     "result": "La UCR se queda en duda.",
+     "e": {
+      "blocs": {
+       "sen:ucr": -10,
+       "dip:ucr": -5
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "cne",
+   "turn": 5,
+   "who": "Cámara Nacional Electoral",
+   "role": "Justicia electoral",
+   "title": "La justicia electoral advierte por los plazos",
+   "text": "La Cámara Nacional Electoral recuerda que, si las reglas cambian demasiado cerca del calendario, se complica organizar la elección.",
+   "options": [
+    {
+     "label": "Acelerar: hay que votar ya",
+     "result": "La presión mediática te ayuda un poco.",
+     "e": {
+      "stats": {
+       "imagen": 3,
+       "capital": -3
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "audios",
+   "turn": 3,
+   "random": true,
+   "who": "Escándalo",
+   "role": "Una filtración",
+   "title": "Se filtran audios de un funcionario",
+   "text": "Un funcionario de segunda línea aparece en audios hablando de 'cajas' para conseguir votos. No tiene relación directa con vos, pero los medios lo vinculan con la negociación.",
+   "options": [
+    {
+     "label": "Echarlo en el día",
+     "result": "Cortaste el tema rápido.",
+     "e": {
+      "stats": {
+       "imagen": 2,
+       "capital": -5
+      }
+     }
+    },
+    {
+     "label": "Negar todo",
+     "result": "El tema dura una semana más en los medios.",
+     "e": {
+      "stats": {
+       "imagen": -10
+      }
+     }
+    },
+    {
+     "label": "Culpar a la oposición",
+     "result": "Tu núcleo te cree. El resto, no.",
+     "e": {
+      "stats": {
+       "imagen": -4
+      },
+      "blocs": {
+       "dip:pu": -5,
+       "dip:cc": -5
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "ruptura",
+   "turn": 4,
+   "random": true,
+   "who": "Bloque LLA",
+   "role": "Diputados",
+   "title": "Tres diputados libertarios arman un bloque propio",
+   "text": "Molestos por las listas de 2027, tres diputados de La Libertad Avanza anuncian un bloque propio.",
+   "options": [
+    {
+     "label": "Ofrecerles cargos para que voten igual",
+     "result": "Votarían el proyecto, pero el bloque sigue separado.",
+     "e": {
+      "stats": {
+       "caja": -5
+      },
+      "split": {
+       "chamber": "dip",
+       "from": "lla",
+       "id": "disidentes",
+       "name": "Disidentes libertarios",
+       "seats": 3,
+       "aff": 70,
+       "color": "#9A6FC8"
+      }
+     }
+    },
+    {
+     "label": "Dejarlos ir",
+     "result": "Tres votos menos asegurados.",
+     "e": {
+      "split": {
+       "chamber": "dip",
+       "from": "lla",
+       "id": "disidentes",
+       "name": "Disidentes libertarios",
+       "seats": 3,
+       "aff": 15,
+       "color": "#9A6FC8"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "carrio",
+   "turn": 5,
+   "requires": "lemas",
+   "who": "Elisa Carrió",
+   "role": "Coalición Cívica",
+   "title": "Carrió denuncia el 'pacto de los lemas'",
+   "text": "Elisa Carrió dice que el acuerdo con Insfrán es una estafa electoral y promete ir a la Justicia.",
+   "options": [
+    {
+     "label": "Responderle",
+     "result": "La pelea dura dos días en la televisión.",
+     "e": {
+      "stats": {
+       "imagen": -5
+      },
+      "blocs": {
+       "dip:cc": -20
+      }
+     }
+    },
+    {
+     "label": "Ignorarla",
+     "result": "El tema pierde fuerza, pero no del todo.",
+     "e": {
+      "stats": {
+       "imagen": -3
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "villarruel",
+   "turn": 5,
+   "who": "Victoria Villarruel",
+   "role": "Vicepresidenta, preside el Senado",
+   "title": "Villarruel no tiene apuro",
+   "text": "Villarruel, enfrentada con la Casa Rosada, dice que va a convocar a sesión 'cuando estén los dictámenes en regla'.",
+   "options": [
+    {
+     "label": "Presionarla en público",
+     "result": "La Casa Rosada aplaude. El Senado se tensa.",
+     "e": {
+      "stats": {
+       "interna": 5,
+       "capital": -5
+      }
+     }
+    },
+    {
+     "label": "Negociar en silencio con ella",
+     "result": "Villarruel acepta poner fecha.",
+     "e": {
+      "stats": {
+       "capital": -3,
+       "interna": -3
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "encuesta",
+   "turn": 6,
+   "random": true,
+   "who": "Encuesta",
+   "role": "Opinión pública",
+   "title": "Una encuesta dice que la gente está cansada de votar",
+   "text": "Una consultora publica que la mayoría prefiere votar menos veces. El oficialismo la difunde en todas partes.",
+   "options": [
+    {
+     "label": "Aprovecharla",
+     "result": "Tu imagen sube.",
+     "e": {
+      "stats": {
+       "imagen": 6
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "menem",
+   "turn": 6,
+   "who": "Martín Menem",
+   "role": "Presidente de Diputados",
+   "title": "Menem quiere fecha",
+   "text": "Menem te dice que, si no sesionan antes de Navidad, la oposición va a instalar que el proyecto está muerto.",
+   "options": [
+    {
+     "label": "Prometer sesión la semana que viene",
+     "result": "Menem arma la agenda.",
+     "e": {
+      "stats": {
+       "capital": 2
+      }
+     }
+    },
+    {
+     "label": "Pedirle paciencia",
+     "result": "Menem duda.",
+     "e": {
+      "stats": {
+       "capital": -5
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "navidad",
+   "turn": 7,
+   "who": "El Congreso",
+   "role": "Fin de año",
+   "title": "Se viene Navidad",
+   "text": "Los legisladores quieren irse de vacaciones. Si hay sesión, tiene que ser ya.",
+   "options": [
+    {
+     "label": "Seguir",
+     "result": "Quedan pocas semanas de calendario.",
+     "e": {}
+    }
+   ]
+  }
+ ],
+ "endings": {
+  "win": {
+   "title": "¡Ley! No habrá PASO en 2027",
+   "text": "El Senado convirtió el proyecto en ley. Milei lo festeja en redes y vos te convertís en el armador del oficialismo para 2027."
+  },
+  "winLemas": {
+   "title": "Ley… con lemas",
+   "text": "Sacaste la ley, pero con la ley de lemas de Insfrán adentro. Carrió ya presentó una denuncia y la oposición promete llevarlo a la Corte."
+  },
+  "time": {
+   "title": "Se terminó el tiempo",
+   "text": "No llegaste a sancionar la ley a tiempo. Las PASO se hacen en agosto de 2027 y la oposición celebra."
+  },
+  "fired": {
+   "title": "Milei te pidió la renuncia",
+   "text": "Te quedaste sin capital político. La negociación pasa a manos de Karina Milei."
+  },
+  "sidelined": {
+   "title": "Te sacaron la negociación",
+   "text": "La interna con la Casa Rosada se rompió: Karina Milei se queda con la mesa de negociación y vos quedás de adorno."
+  }
+ }
+}
