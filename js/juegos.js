@@ -182,7 +182,7 @@
         <div class="jg-hub-head">
           <span class="jg-kicker">Nuevo · Juegos del Atlas</span>
           <h2>Jugá a la <em>política</em></h2>
-          <p>Gobernar, negociar, contar votos. Tres juegos hechos con los datos del Atlas y los actores reales de la política.</p>
+          <p>Gobernar, negociar, contar votos, predecir. Cinco juegos hechos con los datos del Atlas y los actores reales de la política.</p>
         </div>
         <div class="jg-cards">
           <button type="button" class="jg-card is-pais" data-go="pais">
@@ -203,6 +203,18 @@
             <span>Diez preguntas sobre líderes, sistemas electorales, economía y elecciones de todo el mundo, con los datos del Atlas.</span>
             <em>Trivia · 10 preguntas</em>
           </button>
+          <button type="button" class="jg-card is-percep" data-go="percepcion">
+            <span class="jg-card-ico">🔍</span>
+            <b>Test de percepción</b>
+            <span>¿Cuánto sabés de la Argentina real? Estimá pobreza, desempleo, votos y bancas de la Argentina y sus provincias, y compará con los datos.</span>
+            <em>Nuevo · 10 preguntas</em>
+          </button>
+          <button type="button" class="jg-card is-prode" data-go="prode">
+            <span class="jg-card-ico">🗳️</span>
+            <b>Prode electoral 2027</b>
+            <span>Predecí quién gana la presidencia y las gobernaciones provincia por provincia. Volvé después de cada elección para ver tus aciertos.</span>
+            <em>Nuevo · Predicción</em>
+          </button>
         </div>
       </section>`;
     root.querySelectorAll('[data-go]').forEach(b => b.addEventListener('click', () => go(b.getAttribute('data-go'))));
@@ -212,6 +224,8 @@
     if (game === 'pais') return Pais.start();
     if (game === 'rosca') return Rosca.start();
     if (game === 'trivia') return Trivia.start();
+    if (game === 'percepcion') return Percep.start();
+    if (game === 'prode') return Prode.start();
     hub();
   }
   // On every step bring the game back under the sticky menu, so the question is in view
@@ -226,7 +240,7 @@
     const top = g.getBoundingClientRect().top;
     if (top < off || top > off + 60) window.scrollTo({ top: top + window.scrollY - off - 8, behavior: 'smooth' });
   }
-  const GAMES = { rosca: ['🏛️', 'La rosca: PASO o no PASO', 'Eliminá las PASO negociando con gobernadores y bloques'], pais: ['🌎', '¿Qué país gobernarías?', 'Tomá 14 decisiones y descubrí a qué país te parecés'], trivia: ['❓', '¿Quién gobierna?', 'Líderes, sistemas, economía y elecciones del mundo'] };
+  const GAMES = { rosca: ['🏛️', 'La rosca: PASO o no PASO', 'Eliminá las PASO negociando con gobernadores y bloques'], pais: ['🌎', '¿Qué país gobernarías?', 'Tomá 14 decisiones y descubrí a qué país te parecés'], trivia: ['❓', '¿Quién gobierna?', 'Líderes, sistemas, economía y elecciones del mundo'], percepcion: ['🔍', 'Test de percepción', '¿Cuánto sabés de la Argentina real? Pobreza, votos y poder'], prode: ['🗳️', 'Prode electoral 2027', 'Predecí quién gana la presidencia y cada provincia'] };
   const moreGames = cur => `<div class="jg-more"><h4>Seguí jugando</h4><div class="jg-more-list">${Object.keys(GAMES).filter(k => k !== cur).map(k => `<button type="button" class="jg-more-card" data-play="${k}"><span class="jg-more-ico">${GAMES[k][0]}</span><span><b>${esc(GAMES[k][1])}</b><small>${esc(GAMES[k][2])}</small></span><em>Jugar →</em></button>`).join('')}</div></div>`;
   const wireMore = el => el.querySelectorAll('[data-play]').forEach(b => b.addEventListener('click', () => go(b.getAttribute('data-play'))));
   const backBtn = () => `<button type="button" class="jg-back" data-back>← Todos los juegos</button>`;
@@ -972,6 +986,210 @@
           ${shareBox(text)}<button type="button" class="jg-btn is-main" data-again>Otra ronda</button>${moreGames('trivia')}</div></section>`;
       wireBack(root); wireCopy(root); wireShare(root.querySelector('.jg-sharebox'), text, card, 'trivia', { eager: true });
       root.querySelector('[data-again]').addEventListener('click', start); wireMore(root); toTop();
+    }
+    return { start };
+  })();
+
+  /* ---------------------------------------------------------- 4. TEST DE PERCEPCIÓN (Argentina) */
+  // Guess a real number about Argentina and its provinces, then see the data.
+  // Everything comes from the Argentina 2027 special (INDEC, CNE, election results).
+  const AR_URL = 'data/especiales/argentina-2027.json';
+  const fmt1 = v => Number(v).toLocaleString('es-AR', { maximumFractionDigits: 1 });
+  const Percep = (() => {
+    let A = null, st = null;
+    const pick = a => a[Math.floor(Math.random() * a.length)];
+    function makeBank() {
+      const N = A.national || {}, n = A.nacional || {}, P = Object.values(A.provinces || {});
+      const res = (n.results2025 && n.results2025.national) || [];
+      const dip = (n.diputados && n.diputados.parties) || [], sen = (n.senado && n.senado.parties) || [];
+      const withPov = P.filter(p => p.poverty && typeof p.poverty.pct === 'number');
+      const withGov = P.filter(p => p.gov2023 && typeof p.gov2023.pct === 'number');
+      const withDip = P.filter(p => p.dip2025 && typeof p.dip2025.pct === 'number');
+      const regions = Object.entries(N.regionsPoverty1S2026 || {});
+      const pct = (q, real, src, opts) => Object.assign({ q, real, src, min: 0, max: 100, step: 0.5, unit: '%', social: false }, opts || {});
+      const B = [];
+      if (N.poverty) B.push(() => pct('¿Qué porcentaje de las personas es pobre en la Argentina urbana?', N.poverty.pct, `INDEC-EPH, ${N.poverty.period}`, { social: true }));
+      if (N.indigence) B.push(() => pct('¿Qué porcentaje de las personas es indigente (no cubre la canasta de alimentos)?', N.indigence.pct, `INDEC-EPH, ${N.indigence.period}`, { max: 50, social: true }));
+      if (N.unemployment) B.push(() => pct('¿Qué porcentaje de la población activa está desocupada?', N.unemployment.pct, `INDEC-EPH, ${N.unemployment.period}`, { max: 40, social: true }));
+      if (withPov.length) B.push(() => { const p = pick(withPov); return pct(`¿Qué porcentaje de las personas es pobre en ${p.poverty.aglomerado || p.capital} (${p.name})?`, p.poverty.pct, `INDEC-EPH, ${p.poverty.period}`, { social: true }); });
+      if (regions.length) B.push(() => { const [r, v] = pick(regions); return pct(`¿Qué porcentaje de pobreza tiene la región ${r === 'GBA' ? 'del Gran Buenos Aires' : r}?`, v, 'INDEC-EPH, 1er semestre 2026', { social: true }); });
+      if (res[0]) B.push(() => pct(`¿Qué porcentaje de los votos sacó ${res[0].party.replace(/\s*\(.*\)/, '')} en las legislativas nacionales de 2025?`, res[0].pct, 'Resultados de Diputados, 26/10/2025'));
+      if (res[1]) B.push(() => pct(`¿Qué porcentaje de los votos sacó ${res[1].party.replace(/\s*\(.*\)/, '')} en las legislativas nacionales de 2025?`, res[1].pct, 'Resultados de Diputados, 26/10/2025'));
+      const fit = res.find(r => /Izquierda/i.test(r.party));
+      if (fit) B.push(() => pct('¿Qué porcentaje de los votos sacó el Frente de Izquierda en las legislativas de 2025?', fit.pct, 'Resultados de Diputados, 26/10/2025', { max: 30 }));
+      const lla = dip.find(x => /Libertad/i.test(x.party));
+      if (lla) B.push(() => ({ q: '¿Cuántas bancas tiene La Libertad Avanza en la Cámara de Diputados (sobre 257)?', real: lla.seats, src: 'Composición de la Cámara, dic 2025', min: 0, max: 257, step: 1, unit: ' bancas' }));
+      if (sen[0]) B.push(() => ({ q: '¿Cuántas bancas tiene el bloque peronista en el Senado (sobre 72)?', real: sen[0].seats, src: 'Composición del Senado, dic 2025', min: 0, max: 72, step: 1, unit: ' bancas' }));
+      if (withGov.length) B.push(() => { const p = pick(withGov); const w = String(p.gov2023.winner).replace(/\s*\(.*\)/, ''); return pct(`¿Con qué porcentaje ganó ${w} la gobernación de ${p.name} en 2023?`, p.gov2023.pct, 'Resultados provinciales 2023'); });
+      if (withDip.length) B.push(() => { const p = pick(withDip); const w = String(p.dip2025.winner).replace(/\s*\(.*\)/, ''); return pct(`¿Qué porcentaje sacó ${w}, la lista ganadora en ${p.name}, en las legislativas de 2025?`, p.dip2025.pct, 'Resultados de Diputados 2025'); });
+      const ba = A.provinces && A.provinces.B;
+      if (ba && ba.electoratePct) B.push(() => pct('¿Qué porcentaje del padrón nacional vota en la provincia de Buenos Aires?', ba.electoratePct, 'Padrón electoral 2025 (CNE)', { max: 70 }));
+      const withPop = P.filter(p => p.population > 0);
+      if (withPop.length) B.push(() => { const p = pick(withPop); const m = Math.round(p.population / 1e5) / 10; return { q: `¿Cuántos habitantes tiene ${p.name}? (en millones)`, real: m, src: 'Censo 2022 (INDEC)', min: 0, max: m > 6 ? 25 : 5, step: 0.1, unit: ' millones' }; });
+      return B;
+    }
+    async function start() {
+      root.innerHTML = '<div class="jg-loading">Cargando…</div>';
+      try { A = A || await getJSON(AR_URL); } catch (e) { root.innerHTML = '<div class="jg-loading">No se pudo cargar el juego.</div>'; return; }
+      const bank = shuffle(makeBank());
+      st = { qs: bank.slice(0, 10).map(f => f()), i: 0, ans: [] };
+      intro();
+    }
+    function intro() {
+      root.innerHTML = `<section class="jg-game is-percep">${backBtn()}
+        <div class="jg-intro"><span class="jg-kicker">Test de percepción</span><h2>¿Cuánto sabés de la Argentina real?</h2>
+          <p>Diez preguntas sobre pobreza, empleo, votos y poder en la Argentina y sus provincias. Estimá el número y compará con el dato. No es un examen: muchas veces la percepción se aleja de la realidad, y eso también dice algo.</p>
+          <button type="button" class="jg-btn is-main" data-startp>Empezar</button>
+          <p class="jg-note">Los datos salen del especial Argentina 2027 del Atlas (INDEC, resultados oficiales y composición del Congreso).</p></div></section>`;
+      wireBack(root); toTop();
+      root.querySelector('[data-startp]').addEventListener('click', q);
+    }
+    function q() {
+      const Q = st.qs[st.i], n = st.qs.length, mid = Math.round(((Q.min + Q.max) / 2) / Q.step) * Q.step;
+      root.innerHTML = `<section class="jg-game is-percep">${backBtn()}
+        <div class="jg-progress"><span style="width:${st.i / n * 100}%"></span></div>
+        <div class="jg-qnum">Pregunta ${st.i + 1} de ${n}</div>
+        <h3 class="jg-q">${esc(Q.q)}</h3>
+        <div class="pc-guess"><b class="pc-val">${fmt1(mid)}<small>${esc(Q.unit)}</small></b>
+          <div class="pc-row"><button type="button" class="pc-step" data-d="-1" aria-label="Menos">−</button>
+          <input type="range" class="pc-range" min="${Q.min}" max="${Q.max}" step="${Q.step}" value="${mid}" aria-label="Tu estimación">
+          <button type="button" class="pc-step" data-d="1" aria-label="Más">+</button></div>
+          <div class="pc-ends"><span>${fmt1(Q.min)}${esc(Q.unit)}</span><span>${fmt1(Q.max)}${esc(Q.unit)}</span></div></div>
+        <button type="button" class="jg-btn is-main" data-confirm>Confirmar</button>
+        <div class="pc-reveal" hidden></div></section>`;
+      wireBack(root); toTop();
+      const r = root.querySelector('.pc-range'), val = root.querySelector('.pc-val');
+      const show = () => { val.innerHTML = `${fmt1(+r.value)}<small>${esc(Q.unit)}</small>`; };
+      r.addEventListener('input', show);
+      root.querySelectorAll('.pc-step').forEach(b => b.addEventListener('click', () => { const d = +b.getAttribute('data-d'); const big = (Q.max - Q.min) > 60 ? 1 : Q.step * 2; r.value = clamp(+r.value + d * Math.max(Q.step, big), Q.min, Q.max); show(); }));
+      root.querySelector('[data-confirm]').addEventListener('click', e => {
+        const g = +r.value, err = Math.abs(g - Q.real) / (Q.max - Q.min), pts = Math.round(100 * Math.max(0, 1 - err * 4));
+        st.ans[st.i] = { g, pts, diff: g - Q.real };
+        r.disabled = true; root.querySelectorAll('.pc-step').forEach(b => { b.disabled = true; }); e.target.remove();
+        const rv = root.querySelector('.pc-reveal'); rv.hidden = false;
+        const lo = Math.min(g, Q.real), hi = Math.max(g, Q.real), pos = v => ((v - Q.min) / (Q.max - Q.min) * 100).toFixed(1);
+        rv.innerHTML = `<div class="pc-bar"><span class="pc-gap" style="left:${pos(lo)}%;width:${(pos(hi) - pos(lo)).toFixed(1)}%"></span><i class="pc-you" style="left:${pos(g)}%"><em>Vos</em></i><i class="pc-real" style="left:${pos(Q.real)}%"><em>Dato</em></i></div>
+          <p><b>El dato: ${fmt1(Q.real)}${esc(Q.unit)}.</b> Dijiste ${fmt1(g)}${esc(Q.unit)} (${pts >= 85 ? '¡muy cerca!' : pts >= 55 ? 'bastante cerca' : g > Q.real ? 'lo sobreestimaste' : 'lo subestimaste'}). <small>Fuente: ${esc(Q.src)}.</small></p>
+          <button type="button" class="jg-btn is-main" data-next>${st.i + 1 < st.qs.length ? 'Siguiente' : 'Ver mi resultado'}</button>`;
+        rv.querySelector('[data-next]').addEventListener('click', () => { st.i++; st.i < st.qs.length ? q() : end(); });
+      });
+    }
+    function end() {
+      const total = Math.round(st.ans.reduce((a, x) => a + x.pts, 0) / st.ans.length);
+      const verdict = total >= 80 ? 'Ojo de analista' : total >= 65 ? 'Bien informado' : total >= 50 ? 'Percepción de sobremesa' : total >= 35 ? 'Te ganó el ruido' : 'Vivís en otra Argentina';
+      const soc = st.qs.map((Q, i) => Q.social ? st.ans[i].diff : null).filter(v => v !== null);
+      const bias = soc.length ? soc.reduce((a, b) => a + b, 0) / soc.length : 0;
+      const biasTxt = soc.length && Math.abs(bias) >= 4 ? (bias > 0 ? 'Tendés a ver los problemas sociales peor de lo que marcan los datos.' : 'Tendés a ver los problemas sociales mejor de lo que marcan los datos.') : 'Tu percepción de los problemas sociales está bastante cerca de los datos.';
+      const worst = st.qs.map((Q, i) => ({ Q, a: st.ans[i] })).sort((x, y) => x.a.pts - y.a.pts)[0];
+      const text = `Hice el test de percepción política del Atlas: ${total}/100, «${verdict}». ¿Cuánto sabés vos de la Argentina real?`;
+      const card = cardShell('Test de percepción', '#B5541C', `
+        <div class="jgx-kicker">¿Cuánto sé de la Argentina real?</div>
+        <div class="jgx-huge"><b>${total}</b><span>/ 100</span></div>
+        <div class="jgx-title is-md">${esc(verdict)}</div>
+        <div class="jgx-text is-sm">${esc(biasTxt)}</div>
+        ${worst ? `<div class="jgx-choice"><span>Lo que más me sorprendió</span><b>${esc(worst.Q.q)}</b><em class="jgx-cmp">Dije ${fmt1(worst.a.g)}${esc(worst.Q.unit)} · el dato es ${fmt1(worst.Q.real)}${esc(worst.Q.unit)}</em></div>` : ''}`);
+      root.innerHTML = `<section class="jg-game is-percep">${backBtn()}
+        <div class="jg-result"><span class="jg-kicker">Tu percepción</span><h2>${total}/100: <em>${esc(verdict)}</em></h2>
+          <p>${esc(biasTxt)}</p>
+          <ol class="pc-list">${st.qs.map((Q, i) => `<li><span>${esc(Q.q)}</span><b>Dijiste ${fmt1(st.ans[i].g)}${esc(Q.unit)} · dato ${fmt1(Q.real)}${esc(Q.unit)}</b><i class="${st.ans[i].pts >= 55 ? 'is-ok' : 'is-bad'}">${st.ans[i].pts}</i></li>`).join('')}</ol>
+          ${shareBox(text)}
+          <button type="button" class="jg-btn is-main" data-again>Otra ronda</button>
+          ${moreGames('percepcion')}
+          <p class="jg-note">Datos: INDEC-EPH, resultados oficiales y composición del Congreso, del especial Argentina 2027 del Atlas.</p></div></section>`;
+      wireBack(root); wireCopy(root); wireShare(root.querySelector('.jg-sharebox'), text, card, 'percepcion', { eager: true });
+      root.querySelector('[data-again]').addEventListener('click', start); wireMore(root); toTop();
+    }
+    return { start };
+  })();
+
+  /* ---------------------------------------------------------- 5. PRODE 2027 */
+  // Predict the 2027 winners (national and province by province). Picks stay in
+  // this device; when a province's result is loaded in the special
+  // (provinces[x].result2027.winner) the game marks hits and misses.
+  const Prode = (() => {
+    let A = null, st = null;
+    const KEY = 'atlas-prode-2027';
+    const load = () => { try { return JSON.parse(localStorage.getItem(KEY)) || {}; } catch (e) { return {}; } };
+    const save = v => { try { localStorage.setItem(KEY, JSON.stringify(v)); } catch (e) {} };
+    const clean = s => String(s || '').replace(/\s*\(.*\)/, '').trim();
+    function steps() {
+      const n = A.nacional || {};
+      const cands = (n.candidates || []).filter(c => c.featured).map(c => c.name);
+      const P = Object.entries(A.provinces || {}).filter(([, p]) => p.governorElection2027 && (p.candidates || []).length)
+        .sort(([, a], [, b]) => (a.date2027 || '2027-10-24').localeCompare(b.date2027 || '2027-10-24') || a.name.localeCompare(b.name));
+      const out = [
+        { id: 'pres', kind: 'nac', title: '¿Quién gana la presidencia en 2027?', text: 'Elecciones generales previstas para el 24 de octubre de 2027.', opts: cands.concat(['Otro candidato']) },
+        { id: 'balotaje', kind: 'nac', title: '¿Habrá balotaje?', text: 'Para ganar en primera vuelta hace falta más del 45%, o 40% con diez puntos de ventaja.', opts: ['Sí, hay segunda vuelta', 'No, se define en primera vuelta'] }
+      ];
+      const label = c => /a definir|sin definir/i.test(c.name) ? `${c.party} (candidato a definir)` : c.name;
+      P.forEach(([k, p]) => out.push({ id: k, kind: 'prov', p, title: `¿Quién gana la gobernación de ${p.name}?`, opts: p.candidates.map(label).concat(['Otro']), labels: Object.fromEntries(p.candidates.map(c => [label(c), c])) }));
+      return out;
+    }
+    async function start() {
+      root.innerHTML = '<div class="jg-loading">Cargando…</div>';
+      try { A = A || await getJSON(AR_URL); } catch (e) { root.innerHTML = '<div class="jg-loading">No se pudo cargar el juego.</div>'; return; }
+      st = { steps: steps(), i: 0, picks: load() };
+      intro();
+    }
+    function intro() {
+      const have = Object.keys(st.picks).length;
+      root.innerHTML = `<section class="jg-game is-prode">${backBtn()}
+        <div class="jg-intro"><span class="jg-kicker">Predicción de resultados</span><h2>Prode electoral 2027</h2>
+          <p>Predecí quién gana la presidencia y las gobernaciones en juego en 2027, provincia por provincia, con los candidatos que sigue el especial Argentina 2027 del Atlas. Tus predicciones quedan guardadas en este dispositivo: cuando haya resultados, volvé a ver cuántas acertaste.</p>
+          <button type="button" class="jg-btn is-main" data-startpr>${have ? 'Revisar mi prode' : 'Armar mi prode'}</button>
+          ${have ? '<button type="button" class="jg-btn" data-summary>Ver mi prode</button> <button type="button" class="jg-btn is-ghost" data-reset>Empezar de cero</button>' : ''}
+          <p class="jg-note">Los candidatos y las fechas se actualizan con el especial. Neuquén vota primero, el 14 de febrero de 2027.</p></div></section>`;
+      wireBack(root); toTop();
+      root.querySelector('[data-startpr]').addEventListener('click', () => { st.i = 0; step(); });
+      const s = root.querySelector('[data-summary]'); if (s) s.addEventListener('click', end);
+      const r = root.querySelector('[data-reset]'); if (r) r.addEventListener('click', () => { st.picks = {}; save({}); intro(); });
+    }
+    function step() {
+      const S = st.steps[st.i], n = st.steps.length, cur = st.picks[S.id];
+      const p = S.p;
+      const info = p ? `<div class="pr-info">
+          <span><b>${esc(p.date2027 ? new Date(p.date2027 + 'T12:00:00').toLocaleDateString('es-AR', { day: 'numeric', month: 'long', year: 'numeric' }) : (p.dateStatus || 'Fecha a definir'))}</b></span>
+          ${p.gov2023 ? `<span>2023: ganó ${esc(clean(p.gov2023.winner))} (${fmt1(p.gov2023.pct)}%)</span>` : ''}
+          ${p.dip2025 ? `<span>Legislativas 2025: ${esc(clean(p.dip2025.winner))} (${fmt1(p.dip2025.pct)}%)</span>` : ''}
+          ${p.reelection ? `<span>Reelección: ${esc(p.reelection)}</span>` : ''}
+        </div>${p.summary ? `<p class="pr-sum">${esc(p.summary)}</p>` : ''}` : `<p class="pr-sum">${esc(S.text)}</p>`;
+      const notes = p ? Object.fromEntries(Object.entries(S.labels || {}).map(([l, c]) => [l, (/a definir/i.test(c.name) ? [c.note] : [c.party, c.note]).filter(Boolean).join(' · ')])) : {};
+      root.innerHTML = `<section class="jg-game is-prode">${backBtn()}
+        <div class="jg-progress"><span style="width:${st.i / n * 100}%"></span></div>
+        <div class="jg-qnum">${S.kind === 'nac' ? 'Nacional' : 'Provincias'} · ${st.i + 1} de ${n}</div>
+        <h3 class="jg-q">${esc(S.title)}</h3>${info}
+        <div class="jg-opts">${S.opts.map(o => `<button type="button" class="jg-opt${cur === o ? ' is-picked' : ''}" data-o="${esc(o)}"><b>${esc(o)}</b>${notes[o] ? `<small>${esc(notes[o])}</small>` : ''}</button>`).join('')}</div>
+        <div class="pr-nav">${st.i ? '<button type="button" class="jg-link" data-prev>← Anterior</button>' : '<span></span>'}<button type="button" class="jg-link" data-skip>${st.i + 1 < n ? 'Saltar →' : 'Ver mi prode →'}</button></div></section>`;
+      wireBack(root); toTop();
+      const nextStep = () => { st.i++; st.i < n ? step() : end(); };
+      root.querySelectorAll('[data-o]').forEach(b => b.addEventListener('click', () => { st.picks[S.id] = b.getAttribute('data-o'); save(st.picks); nextStep(); }));
+      root.querySelector('[data-skip]').addEventListener('click', nextStep);
+      const pv = root.querySelector('[data-prev]'); if (pv) pv.addEventListener('click', () => { st.i--; step(); });
+    }
+    function end() {
+      const all = st.steps.filter(S => st.picks[S.id]);
+      const prov = all.filter(S => S.kind === 'prov');
+      const judged = prov.filter(S => S.p.result2027 && S.p.result2027.winner);
+      const hits = judged.filter(S => clean(S.p.result2027.winner) === clean(st.picks[S.id]) || (st.picks[S.id] === 'Otro' && !S.p.candidates.some(c => clean(c.name) === clean(S.p.result2027.winner))));
+      const pres = st.picks.pres, bal = st.picks.balotaje;
+      const text = `Armé mi prode electoral 2027 en el Atlas Político Mundial${pres ? `: gana ${pres}` : ''}${prov.length ? ` y elegí en ${prov.length} provincias` : ''}. ¿Cuál es el tuyo?`;
+      const short = n => n === 'Ciudad Autónoma de Buenos Aires' ? 'CABA' : n === 'Santiago del Estero' ? 'Sgo. del Estero' : n === 'Tierra del Fuego' ? 'T. del Fuego' : n;
+      const rows = prov.slice(0, 12).map(S => `<div><span>${esc(short(S.p.name))}</span><b>${esc(st.picks[S.id])}</b></div>`).join('');
+      const card = cardShell('Prode electoral 2027', '#1F5FAD', `
+        <div class="jgx-kicker">Mis predicciones para 2027</div>
+        ${pres ? `<div class="jgx-choice"><span>Presidencia</span><b>${esc(pres)}</b>${bal ? `<em class="jgx-cmp">${esc(bal)}</em>` : ''}</div>` : ''}
+        ${rows ? `<div class="jgx-prode">${rows}</div>` : ''}
+        ${prov.length > 12 ? `<div class="jgx-text is-sm">y ${prov.length - 12} provincias más</div>` : ''}`);
+      root.innerHTML = `<section class="jg-game is-prode">${backBtn()}
+        <div class="jg-result"><span class="jg-kicker">Tu prode</span><h2>${all.length ? `Predijiste ${all.length} resultados` : 'Todavía no elegiste nada'}</h2>
+          ${judged.length ? `<p class="pr-score"><b>${hits.length} de ${judged.length}</b> aciertos en las provincias que ya votaron.</p>` : '<p>Todavía no votó ninguna provincia. Guardamos tus predicciones en este dispositivo: volvé después de cada elección para ver tus aciertos. La primera es Neuquén, el 14 de febrero de 2027.</p>'}
+          <ul class="pr-list">${all.map(S => { const r = S.p && S.p.result2027 && S.p.result2027.winner; const ok = r && (clean(r) === clean(st.picks[S.id])); return `<li><span>${esc(S.kind === 'nac' ? S.title.replace(/^¿|\?$/g, '') : S.p.name)}</span><b>${esc(st.picks[S.id])}</b>${r ? `<i class="${ok ? 'is-ok' : 'is-bad'}">${ok ? '✓' : `✗ ${esc(clean(r))}`}</i>` : ''}</li>`; }).join('')}</ul>
+          ${shareBox(text)}
+          <button type="button" class="jg-btn is-main" data-edit>Cambiar predicciones</button>
+          ${moreGames('prode')}
+          <p class="jg-note">Juego de predicción sin apuestas. Los candidatos salen del especial Argentina 2027 y pueden cambiar hasta el cierre de listas.</p></div></section>`;
+      wireBack(root); wireCopy(root); wireShare(root.querySelector('.jg-sharebox'), text, card, 'prode-2027', { eager: true });
+      root.querySelector('[data-edit]').addEventListener('click', () => { st.i = 0; step(); }); wireMore(root); toTop();
     }
     return { start };
   })();
