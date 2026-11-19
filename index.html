@@ -6353,6 +6353,10 @@
   .jgx-prode div { display: flex; flex-direction: column; border-left: 6px solid var(--jgx); padding-left: 12px; min-width: 0; }
   .jgx-prode span { font: 600 20px var(--font-sans); color: #4A5060; text-transform: uppercase; letter-spacing: .06em; }
   .jgx-prode b { font: 800 26px/1.2 var(--font-sans); color: #141821; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .jgx-tv { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+  .jgx-tv > div { min-width: 0; }
+  .jgx-tv .rs-art { width: 300px; height: 300px; flex: none; }
+  .jgx-tv .jgx-huge b { font-size: 240px; }
   .jgx-foot { display: flex; flex-direction: column; gap: 4px; padding-top: 26px; border-top: 3px solid #141821; font: 500 26px var(--font-sans); color: #4A5060; position: relative; z-index: 1; }
   .jgx-foot b { font: 800 38px var(--font-sans); color: #141821; }
   /* Rosca */
@@ -35298,7 +35302,7 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
     if (window.AtlasJuegos) return window.AtlasJuegos.render(el, game);
     if (document.getElementById('juegos-js')) { pendingGame = game; return; }
     const sc = document.createElement('script');
-    sc.id = 'juegos-js'; sc.src = 'js/juegos.js?v=25';
+    sc.id = 'juegos-js'; sc.src = 'js/juegos.js?v=26';
     sc.onload = () => { const g = game || pendingGame; pendingGame = null; window.AtlasJuegos && window.AtlasJuegos.render(el, g); };
     sc.onerror = () => { el.innerHTML = '<div class="jg-loading">No se pudieron cargar los juegos.</div>'; };
     document.head.appendChild(sc);
