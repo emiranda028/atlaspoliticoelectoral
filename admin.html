@@ -63,7 +63,7 @@
   .bar { display: grid; grid-template-columns: minmax(0, 38%) minmax(0, 1fr) auto; align-items: center; gap: 10px; font-size: 13.5px; }
   .bar .l { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--ink); }
   .bar .t { height: 12px; background: var(--surface-2); border-radius: 0 4px 4px 0; position: relative; }
-  .bar .t i { position: absolute; left: 0; top: 0; bottom: 0; background: var(--s1); border-radius: 0 4px 4px 0; min-width: 2px; }
+  .bar .t i { position: absolute; left: 0; top: 0; bottom: 0; background: var(--s1); border-radius: 0 4px 4px 0; }
   .bar .v { font-variant-numeric: tabular-nums; font-weight: 700; color: var(--ink); min-width: 44px; text-align: right; }
   /* two-series bars: started vs finished */
   .legend { display: flex; gap: 14px; font-size: 13px; color: var(--ink-2); margin: 0 0 10px; }
@@ -71,7 +71,8 @@
   .pair { display: grid; grid-template-columns: minmax(0, 32%) minmax(0, 1fr) auto; gap: 10px; align-items: center; font-size: 13.5px; padding: 6px 0; border-bottom: 1px solid var(--line); }
   .pair:last-child { border-bottom: 0; }
   .pair .ts { display: grid; gap: 3px; }
-  .pair .ts span { display: block; height: 10px; border-radius: 0 4px 4px 0; min-width: 2px; }
+  .pair .ts span { display: block; height: 10px; border-radius: 0 4px 4px 0; }
+  .pair .ts span:not([style*="width:0"]) { min-width: 2px; }
   .pair .ts span.a { background: var(--s1); } .pair .ts span.b { background: var(--s2); }
   .pair .n { font-variant-numeric: tabular-nums; text-align: right; font-size: 12.5px; color: var(--ink-2); white-space: nowrap; }
   .pair .n b { color: var(--ink); }
