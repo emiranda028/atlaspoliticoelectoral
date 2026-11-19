@@ -5710,7 +5710,7 @@
     "turn": 6,
     "core": true,
     "who": "Casa Rosada",
-    "role": "Ministerio del Interior",
+    "role": "Jefatura de Gabinete",
     "title": "El Gobierno ofrece adelantar ATN a todas las provincias",
     "text": "Santilli anuncia un adelanto de Aportes del Tesoro para pagar aguinaldos \"a las provincias que acompañen la modernización electoral\". Los gobernadores hacen cuentas.",
     "options": [
@@ -5965,7 +5965,7 @@
     "who": "Carlos Pagni",
     "role": "Periodista",
     "title": "Pagni dice que negociás en secreto con Santilli",
-    "text": "En su editorial, Pagni asegura que tuviste \"una cena reservada en Puerto Madero\" con el ministro del Interior. En tu bloque nadie te cree que fuiste a hablar de fútbol.",
+    "text": "En su editorial, Pagni asegura que tuviste \"una cena reservada en Puerto Madero\" con el jefe de Gabinete. En tu bloque nadie te cree que fuiste a hablar de fútbol.",
     "options": [
      {
       "label": "Desmentirlo con tu agenda en la mano",
@@ -6362,7 +6362,7 @@
     "who": "{gov}",
     "role": "Gobernador de {prov}",
     "title": "La Rosada llama a {gov} con una oferta mejor",
-    "text": "Te llega el dato: el ministro del Interior le ofreció a {gov} el doble de lo que vos le prometiste. Y dejó de atenderte el teléfono.",
+    "text": "Te llega el dato: el jefe de Gabinete le ofreció a {gov} el doble de lo que vos le prometiste. Y dejó de atenderte el teléfono.",
     "options": [
      {
       "label": "Viajar a {prov} y mejorar tu oferta",
@@ -6663,9 +6663,9 @@
     "id": "n_santilli",
     "turn": 1,
     "who": "Diego Santilli",
-    "role": "Ministro del Interior",
+    "role": "Jefe de Gabinete",
     "title": "Santilli te invita a la Casa Rosada",
-    "text": "El ministro del Interior quiere una foto con todo el bloque en el Salón de los Científicos. \"Es solo un café\", dice.",
+    "text": "El jefe de Gabinete quiere una foto con todo el bloque en el Salón de los Científicos. \"Es solo un café\", dice.",
     "options": [
      {
       "label": "Ir y sacarse la foto",
@@ -7006,7 +7006,7 @@
     "id": "n_robo",
     "turn": 3,
     "who": "Casa Rosada",
-    "role": "Ministerio del Interior",
+    "role": "Jefatura de Gabinete",
     "title": "La Rosada quiere llevarse a dos de tus diputados",
     "text": "Santilli les ofrece a dos diputados de tu bloque armar un monobloque \"dialoguista\" con fondos propios para sus distritos.",
     "options": [
@@ -7641,7 +7641,7 @@
     "who": "Prensa",
     "role": "",
     "title": "Te cruzan cenando con Santilli y con Massa la misma noche",
-    "text": "Un fotógrafo te encuentra en dos restaurantes de Puerto Madero con dos horas de diferencia: primero con el ministro del Interior, después con Sergio Massa.",
+    "text": "Un fotógrafo te encuentra en dos restaurantes de Puerto Madero con dos horas de diferencia: primero con el jefe de Gabinete, después con Sergio Massa.",
     "options": [
      {
       "label": "Decir que \"el postre fue con Massa\"",
