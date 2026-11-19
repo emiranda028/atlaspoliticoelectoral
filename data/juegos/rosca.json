@@ -1615,6 +1615,88 @@
     }
    ],
    "role": "Presidente"
+  },
+  {
+   "id": "menem_fuego",
+   "turn": 2,
+   "requires": "fuegoAmigo",
+   "who": "Martín Menem",
+   "role": "Presidente de la Cámara de Diputados",
+   "title": "Menem: \"La negociación la tendría que manejar otro\"",
+   "text": "En una charla con periodistas acreditados, Martín Menem deja trascender que la Jefatura de Gabinete \"no está a la altura\" y que la negociación con los gobernadores debería pasar por la Cámara.",
+   "options": [
+    {
+     "label": "Pedir una reunión con Karina para aclarar los roles",
+     "result": "Karina te respalda en público. En privado, te pide resultados rápidos.",
+     "e": {
+      "stats": {
+       "interna": 5,
+       "capital": -3
+      }
+     }
+    },
+    {
+     "label": "Contestarle en los medios",
+     "result": "La pelea interna abre todos los portales. La oposición festeja.",
+     "e": {
+      "stats": {
+       "imagen": -3,
+       "interna": -6
+      }
+     }
+    },
+    {
+     "label": "Ignorarlo y mostrar votos",
+     "result": "Te concentrás en la rosca. Menem sigue hablando.",
+     "e": {
+      "stats": {
+       "capital": -1
+      }
+     }
+    }
+   ],
+   "core": true
+  },
+  {
+   "id": "caputo_fuego",
+   "turn": 4,
+   "requires": "fuegoAmigo",
+   "who": "Santiago Caputo",
+   "role": "Asesor presidencial",
+   "title": "Una cuenta anónima publica tus errores",
+   "text": "Una cuenta anónima de X, que en el Gobierno todos atribuyen al entorno de Santiago Caputo, publica un hilo con \"los errores de la Jefatura de Gabinete en la negociación\". Lo retuitean varios funcionarios.",
+   "options": [
+    {
+     "label": "Pedirle a Caputo que lo frene",
+     "result": "Caputo dice que no tiene nada que ver, pero la cuenta deja de publicar.",
+     "e": {
+      "stats": {
+       "interna": 3,
+       "capital": -2
+      }
+     }
+    },
+    {
+     "label": "Responder con tus propios números",
+     "result": "Ganás la discusión en redes y sumás un enemigo adentro.",
+     "e": {
+      "stats": {
+       "imagen": 3,
+       "interna": -5
+      }
+     }
+    },
+    {
+     "label": "Hacerte el distraído",
+     "result": "El hilo sigue circulando entre los legisladores.",
+     "e": {
+      "stats": {
+       "capital": -3
+      }
+     }
+    }
+   ],
+   "core": true
   }
  ],
  "endings": {
@@ -4802,6 +4884,181 @@
     "dip:ucr": -5,
     "sen:pro": -4,
     "sen:ucr": -4
+   }
+  },
+  {
+   "id": "fuego_amigo",
+   "title": "Fuego amigo",
+   "text": "Los Menem y Santiago Caputo cuestionan tu rol: dicen que la Jefatura de Gabinete \"no cuenta los votos\" y que la negociación debería pasar por otro lado. Cada paso que des lo van a mirar con lupa desde adentro.",
+   "stats": {
+    "interna": -12,
+    "capital": -4
+   },
+   "flags": {
+    "fuegoAmigo": true
+   }
+  },
+  {
+   "id": "calendario",
+   "title": "Calendario apretado",
+   "text": "La Justicia Electoral pide que la ley salga antes: tenés una semana menos de lo previsto. A cambio, en la Rosada te dan más respaldo para apurar los tiempos.",
+   "stats": {
+    "capital": 6,
+    "interna": 4
+   },
+   "turns": -1
+  },
+  {
+   "id": "senado_hostil",
+   "title": "Senado hostil",
+   "text": "En Diputados el clima es bueno, pero los senadores de las provincias se sienten ninguneados y avisan que no van a ser \"escribanía\" de nadie.",
+   "blocs": {
+    "sen:salta": -6,
+    "sen:misiones": -6,
+    "sen:chubut": -6,
+    "sen:movere": -6,
+    "sen:ind": -6,
+    "sen:neuq": -6,
+    "sen:ucr": -4,
+    "sen:pu": -4,
+    "dip:pro": 3,
+    "dip:mid": 3
+   }
+  },
+  {
+   "id": "luna_miel",
+   "title": "Luna de miel con los gobernadores",
+   "text": "Acabás de cerrar el reparto de fondos de fin de año y los gobernadores están contentos. Eso sí: la caja quedó más flaca.",
+   "stats": {
+    "caja": -10
+   },
+   "blocs": {
+    "dip:innov": 6,
+    "dip:ind": 6,
+    "dip:elijo": 6,
+    "dip:psc": 6,
+    "dip:neuq": 6,
+    "dip:pyt": 6,
+    "sen:salta": 6,
+    "sen:misiones": 6,
+    "sen:chubut": 6,
+    "sen:movere": 6,
+    "sen:ind": 6,
+    "sen:neuq": 6
+   }
+  },
+  {
+   "id": "crisis",
+   "title": "Crisis económica",
+   "text": "Saltó el dólar y la inflación volvió a subir. La gente tiene otras preocupaciones y a muchos legisladores les cuesta defender una reforma electoral en este momento.",
+   "stats": {
+    "imagen": -5,
+    "caja": -6
+   },
+   "blocs": {
+    "dip:pu": -3,
+    "dip:ucr": -3
+   }
+  },
+  {
+   "id": "milei_alto",
+   "title": "Milei en su mejor momento",
+   "text": "El Presidente está en su pico de popularidad y el Gobierno se siente imparable. Los dialoguistas temen quedar pegados, pero nadie quiere enfrentarlo.",
+   "stats": {
+    "imagen": 8,
+    "interna": 4
+   },
+   "blocs": {
+    "dip:cc": -4,
+    "dip:ucr": -2
+   }
+  },
+  {
+   "id": "bullrich_manda",
+   "title": "Bullrich manda en el Senado",
+   "text": "Patricia Bullrich ordenó su bloque y tiene línea directa con los senadores del PRO y de la UCR. Te abre puertas, pero quiere ser la cara del proyecto.",
+   "stats": {
+    "interna": -4
+   },
+   "blocs": {
+    "sen:pro": 6,
+    "sen:ucr": 5
+   }
+  },
+  {
+   "id": "kicillof_2027",
+   "title": "Kicillof lanzado a 2027",
+   "text": "Axel Kicillof ya se mueve como candidato presidencial y convirtió las PASO en su bandera. El peronismo se ordena detrás de él y la polarización te ayuda con tu tropa.",
+   "stats": {
+    "imagen": 3,
+    "interna": 2
+   },
+   "blocs": {
+    "dip:up": -8,
+    "sen:popular": -6
+   }
+  },
+  {
+   "id": "rigi",
+   "title": "Caja llena",
+   "text": "Entraron inversiones grandes y el Tesoro tiene margen: podés ofrecer obras. Pero en la calle se habla de \"compra de votos\" cada vez que firmás un convenio.",
+   "stats": {
+    "caja": 15,
+    "imagen": -3
+   }
+  },
+  {
+   "id": "peronismo_calle",
+   "title": "El peronismo en la calle",
+   "text": "Hay movilizaciones peronistas todas las semanas en defensa de Cristina y de las PASO. Los legisladores peronistas no pueden ni sacarse una foto con vos.",
+   "stats": {
+    "capital": -2
+   },
+   "blocs": {
+    "dip:up": -6,
+    "sen:popular": -5
+   }
+  },
+  {
+   "id": "encuestas_favor",
+   "title": "Las encuestas te acompañan",
+   "text": "Varias encuestas muestran que la mayoría quiere eliminar las PASO por su costo. Los dialoguistas sienten que acompañar no les cuesta.",
+   "stats": {
+    "imagen": 5
+   },
+   "blocs": {
+    "dip:pu": 4,
+    "dip:ucr": 3,
+    "sen:ucr": 3
+   }
+  },
+  {
+   "id": "radicales_rotos",
+   "title": "Radicales partidos",
+   "text": "La UCR está dividida entre los que quieren acompañar al Gobierno y los que se fueron a Provincias Unidas. Cada radical negocia por su cuenta.",
+   "blocs": {
+    "dip:ucr": -5,
+    "sen:ucr": -4,
+    "dip:pu": 4,
+    "sen:pu": 3
+   }
+  },
+  {
+   "id": "desdoblados",
+   "title": "Gobernadores desdoblados",
+   "text": "Varios gobernadores ya separaron sus elecciones provinciales de las nacionales: las PASO les importan poco y están dispuestos a negociar, pero cobran caro.",
+   "stats": {
+    "caja": -6
+   },
+   "blocs": {
+    "sen:salta": 5,
+    "sen:misiones": 5,
+    "sen:chubut": 5,
+    "sen:movere": 5,
+    "sen:ind": 5,
+    "sen:neuq": 5,
+    "dip:neuq": 5,
+    "dip:innov": 4
    }
   }
  ]
