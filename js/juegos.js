@@ -1109,6 +1109,28 @@
         rv.querySelector('[data-next]').addEventListener('click', () => { st.i++; st.i < st.qs.length ? q() : end(); });
       });
     }
+    // A drawing for each perception level
+    function percepArt(total) {
+      let body;
+      if (total >= 80) body = `<ellipse cx="88" cy="96" rx="66" ry="40" fill="#fff" stroke="#2B303B" stroke-width="6"/>
+        <circle cx="88" cy="96" r="24" fill="#B5541C"/><circle cx="88" cy="96" r="11" fill="#1B1B1B"/><circle cx="80" cy="88" r="5" fill="#fff"/>
+        <circle cx="146" cy="138" r="30" fill="#DCEBFA" fill-opacity=".55" stroke="#2B303B" stroke-width="9"/><path d="M168 160 L192 186" stroke="#2B303B" stroke-width="13" stroke-linecap="round"/>`;
+      else if (total >= 65) body = `<rect x="46" y="28" width="108" height="150" rx="10" fill="#C9965A" stroke="#7A5530" stroke-width="3"/>
+        <rect x="58" y="44" width="84" height="122" rx="4" fill="#fff"/><rect x="80" y="20" width="40" height="18" rx="5" fill="#8A8F99"/>
+        ${[62, 92, 122].map(y => `<path d="M68 ${y + 8} l7 7 13 -15" fill="none" stroke="#1F7A5A" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><rect x="96" y="${y + 6}" width="38" height="5" rx="2.5" fill="#C9C3B6"/>`).join('')}`;
+      else if (total >= 50) body = `<path d="M44 92 H132 V140 Q132 172 100 172 H76 Q44 172 44 140 Z" fill="#fff" stroke="#2B303B" stroke-width="5"/>
+        <path d="M132 104 Q160 104 160 124 Q160 144 132 140" fill="none" stroke="#2B303B" stroke-width="5"/>
+        <ellipse cx="88" cy="92" rx="44" ry="7" fill="#6B4423"/><path d="M70 74 q6 -10 0 -20 M92 74 q6 -10 0 -20" fill="none" stroke="#9C968A" stroke-width="4" stroke-linecap="round"/>
+        <path d="M118 20 h62 a8 8 0 0 1 8 8 v24 a8 8 0 0 1 -8 8 h-38 l-12 12 v-12 h-12 a8 8 0 0 1 -8 -8 v-24 a8 8 0 0 1 8 -8z" fill="#E3EAF2" stroke="#8FA7C4" stroke-width="2"/>
+        <text x="149" y="46" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#3A4A5E">bla bla</text>`;
+      else if (total >= 35) body = `<path d="M40 82 L110 50 V150 L40 118 Z" fill="#B5541C" stroke="#7A3A12" stroke-width="4" stroke-linejoin="round"/>
+        <rect x="24" y="80" width="20" height="40" rx="4" fill="#7A3A12"/><path d="M56 122 L66 160 H82 L76 128" fill="#7A3A12"/>
+        ${[[128, 70, 156, 50], [134, 100, 168, 100], [128, 130, 156, 150], [150, 60, 176, 34], [150, 140, 176, 166]].map(([a, b, c, d]) => `<path d="M${a} ${b} L${c} ${d}" stroke="#2B303B" stroke-width="6" stroke-linecap="round"/>`).join('')}`;
+      else body = `<circle cx="100" cy="100" r="50" fill="#74ACDF"/><path d="M50 100 H150" stroke="#fff" stroke-width="30" opacity=".85"/><circle cx="100" cy="100" r="9" fill="#F6B40E"/>
+        <ellipse cx="100" cy="104" rx="88" ry="20" fill="none" stroke="#B5541C" stroke-width="7" transform="rotate(-14 100 104)"/>
+        <circle cx="34" cy="40" r="3" fill="#9C968A"/><circle cx="168" cy="34" r="4" fill="#9C968A"/><circle cx="176" cy="168" r="3" fill="#9C968A"/><circle cx="26" cy="160" r="2.5" fill="#9C968A"/>`;
+      return `<svg viewBox="0 0 200 200" class="rs-art" role="img" aria-hidden="true">${body}</svg>`;
+    }
     function end() {
       const total = Math.round(st.ans.reduce((a, x) => a + x.pts, 0) / st.ans.length);
       track(`/juego/percepcion/fin/${Math.floor(total / 10) * 10}`, `Percepción: ${total}`);
@@ -1120,12 +1142,11 @@
       const text = `Hice el test de percepción política del Atlas: ${total}/100, «${verdict}». ¿Cuánto sabés vos de la Argentina real?`;
       const card = cardShell('Test de percepción', '#B5541C', `
         <div class="jgx-kicker">¿Cuánto sé de la Argentina real?</div>
-        <div class="jgx-huge"><b>${total}</b><span>/ 100</span></div>
-        <div class="jgx-title is-md">${esc(verdict)}</div>
+        <div class="jgx-tv"><div><div class="jgx-huge"><b>${total}</b><span>/ 100</span></div><div class="jgx-title is-md">${esc(verdict)}</div></div>${percepArt(total)}</div>
         <div class="jgx-text is-sm">${esc(biasTxt)}</div>
         ${worst ? `<div class="jgx-choice"><span>Lo que más me sorprendió</span><b>${esc(worst.Q.q)}</b><em class="jgx-cmp">Dije ${fmt1(worst.a.g)}${esc(worst.Q.unit)} · el dato es ${fmt1(worst.Q.real)}${esc(worst.Q.unit)}</em></div>` : ''}`);
       root.innerHTML = `<section class="jg-game is-percep">${backBtn()}
-        <div class="jg-result"><span class="jg-kicker">Tu percepción</span><h2>${total}/100: <em>${esc(verdict)}</em></h2>
+        <div class="jg-result"><div class="rs-end-art">${percepArt(total)}<div><span class="jg-kicker">Tu percepción</span><h2>${total}/100: <em>${esc(verdict)}</em></h2></div></div>
           <p>${esc(biasTxt)}</p>
           <ol class="pc-list">${st.qs.map((Q, i) => `<li><span>${esc(Q.q)}</span><b>Dijiste ${fmt1(st.ans[i].g)}${esc(Q.unit)} · dato ${fmt1(Q.real)}${esc(Q.unit)}</b><i class="${st.ans[i].pts >= 55 ? 'is-ok' : 'is-bad'}">${st.ans[i].pts}</i></li>`).join('')}</ol>
           ${shareBox(text)}
@@ -1143,23 +1164,53 @@
   // this device; when a province's result is loaded in the special
   // (provinces[x].result2027.winner) the game marks hits and misses.
   const Prode = (() => {
+    // A real prode: winner + percentage for each race, cast into a ballot box.
+    // Picks stay on this device; each province closes on its election day.
+    // Scoring, once a result is loaded in the special (result2027: {winner, pct}):
+    //   10 points for the right winner + up to 10 for the percentage
+    //   (10 minus the gap in points), so each race is worth up to 20.
     let A = null, st = null;
     const KEY = 'atlas-prode-2027';
-    const load = () => { try { return JSON.parse(localStorage.getItem(KEY)) || {}; } catch (e) { return {}; } };
+    const load = () => { try { const v = JSON.parse(localStorage.getItem(KEY)) || {}; Object.keys(v).forEach(k => { if (typeof v[k] === 'string') v[k] = { c: v[k] }; }); return v; } catch (e) { return {}; } };
     const save = v => { try { localStorage.setItem(KEY, JSON.stringify(v)); } catch (e) {} };
-    const clean = s => String(s || '').replace(/\s*\(.*\)/, '').trim();
+    const clean = s => String(s || '').replace(/\s*\(.*\)/, '').trim().toLowerCase();
+    const today = () => new Date().toISOString().slice(0, 10);
+    const closed = S => !!(S.date && S.date <= today());
+    const short = n => n === 'Ciudad Autónoma de Buenos Aires' ? 'CABA' : n === 'Santiago del Estero' ? 'Sgo. del Estero' : n === 'Tierra del Fuego' ? 'T. del Fuego' : n;
+
+    // Ballot box drawing; `n` envelopes inside, `drop` animates one falling in
+    function urnaSVG(n, drop) {
+      const env = Math.min(n || 0, 6);
+      return `<svg viewBox="0 0 220 200" class="pr-urna${drop ? ' is-drop' : ''}" aria-hidden="true">
+        <defs><linearGradient id="urnF" x1="0" x2="1"><stop offset="0" stop-color="#E9F1FB"/><stop offset="1" stop-color="#C9DBF0"/></linearGradient>
+          <linearGradient id="urnS" x1="0" x2="1"><stop offset="0" stop-color="#B7CDE8"/><stop offset="1" stop-color="#9DB9DE"/></linearGradient></defs>
+        <ellipse cx="110" cy="188" rx="86" ry="9" fill="#000" opacity=".12"/>
+        <path d="M40 70 L150 70 L150 180 L40 180 Z" fill="url(#urnF)" stroke="#1F5FAD" stroke-width="3"/>
+        <path d="M150 70 L186 50 L186 160 L150 180 Z" fill="url(#urnS)" stroke="#1F5FAD" stroke-width="3"/>
+        <path d="M40 70 L76 50 L186 50 L150 70 Z" fill="#DDE9F7" stroke="#1F5FAD" stroke-width="3"/>
+        <path d="M86 58 L136 58 L130 62 L80 62 Z" fill="#14325C"/>
+        ${Array.from({ length: env }, (_, i) => `<rect x="${52 + (i % 3) * 30}" y="${150 - Math.floor(i / 3) * 14}" width="26" height="16" rx="2" fill="#FFFFFF" stroke="#8FA7C4" transform="rotate(${(i * 37) % 20 - 10} ${65 + (i % 3) * 30} ${158 - Math.floor(i / 3) * 14})"/>`).join('')}
+        <text x="95" y="100" text-anchor="middle" font-family="Georgia, serif" font-size="17" font-weight="700" fill="#1F5FAD" letter-spacing="2">PRODE</text>
+        <text x="95" y="116" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="700" fill="#1F5FAD">2027</text>
+        <g class="pr-env"><rect x="92" y="6" width="40" height="28" rx="3" fill="#FFF8E7" stroke="#B5862B" stroke-width="2"/><path d="M92 8 L112 22 L132 8" fill="none" stroke="#B5862B" stroke-width="2"/></g>
+      </svg>`;
+    }
     function steps() {
       const n = A.nacional || {};
-      const cands = (n.candidates || []).filter(c => c.featured).map(c => c.name);
+      const cands = (n.candidates || []).filter(c => c.featured).map(c => ({ name: c.name, note: c.party }));
       const P = Object.entries(A.provinces || {}).filter(([, p]) => p.governorElection2027 && (p.candidates || []).length)
         .sort(([, a], [, b]) => (a.date2027 || '2027-10-24').localeCompare(b.date2027 || '2027-10-24') || a.name.localeCompare(b.name));
-      const out = [
-        { id: 'pres', kind: 'nac', title: '¿Quién gana la presidencia en 2027?', text: 'Elecciones generales previstas para el 24 de octubre de 2027.', opts: cands.concat(['Otro candidato']) },
-        { id: 'balotaje', kind: 'nac', title: '¿Habrá balotaje?', text: 'Para ganar en primera vuelta hace falta más del 45%, o 40% con diez puntos de ventaja.', opts: ['Sí, hay segunda vuelta', 'No, se define en primera vuelta'] }
-      ];
       const label = c => /a definir|sin definir/i.test(c.name) ? `${c.party} (candidato a definir)` : c.name;
-      P.forEach(([k, p]) => out.push({ id: k, kind: 'prov', p, title: `¿Quién gana la gobernación de ${p.name}?`, opts: p.candidates.map(label).concat(['Otro']), labels: Object.fromEntries(p.candidates.map(c => [label(c), c])) }));
+      const out = [{ id: 'pres', kind: 'nac', name: 'Presidencia', title: '¿Quién gana la presidencia en 2027?', text: 'Elecciones generales previstas para el 24 de octubre de 2027. Elegí al ganador y con qué porcentaje gana (en la primera vuelta).', date: (A.dates && A.dates.general) || '2027-10-24', cands: cands.concat([{ name: 'Otro candidato' }]), result: n.result2027 }];
+      P.forEach(([k, p]) => out.push({ id: k, kind: 'prov', p, name: p.name, date: p.date2027 || null, title: `¿Quién gana la gobernación de ${p.name}?`,
+        cands: p.candidates.map(c => ({ name: label(c), note: (/a definir/i.test(c.name) ? [c.note] : [c.party, c.note]).filter(Boolean).join(' · ') })).concat([{ name: 'Otro' }]), result: p.result2027 }));
       return out;
+    }
+    function points(S, pick) {
+      const r = S.result; if (!r || !r.winner || !pick) return null;
+      const won = clean(r.winner) === clean(pick.c) || (pick.c.startsWith('Otro') && !S.cands.some(c => clean(c.name) === clean(r.winner)));
+      const pctPts = won && typeof r.pct === 'number' && typeof pick.pct === 'number' ? Math.max(0, Math.round(10 - Math.abs(r.pct - pick.pct))) : 0;
+      return { won, pts: (won ? 10 : 0) + pctPts };
     }
     async function start() {
       root.innerHTML = '<div class="jg-loading">Cargando…</div>';
@@ -1168,65 +1219,81 @@
       intro();
     }
     function intro() {
-      const have = Object.keys(st.picks).length;
+      const have = Object.keys(st.picks).length, open = st.steps.filter(S => !closed(S)).length;
       root.innerHTML = `<section class="jg-game is-prode">${backBtn()}
-        <div class="jg-intro"><span class="jg-kicker">Predicción de resultados</span><h2>Prode electoral 2027</h2>
-          <p>Predecí quién gana la presidencia y las gobernaciones en juego en 2027, provincia por provincia, con los candidatos que sigue el especial Argentina 2027 del Atlas. Tus predicciones quedan guardadas en este dispositivo: cuando haya resultados, volvé a ver cuántas acertaste.</p>
-          <button type="button" class="jg-btn is-main" data-startpr>${have ? 'Revisar mi prode' : 'Armar mi prode'}</button>
-          ${have ? '<button type="button" class="jg-btn" data-summary>Ver mi prode</button> <button type="button" class="jg-btn is-ghost" data-reset>Empezar de cero</button>' : ''}
-          <p class="jg-note">Los candidatos y las fechas se actualizan con el especial. Neuquén vota primero, el 14 de febrero de 2027.</p></div></section>`;
+        <div class="pr-hero">${urnaSVG(have)}<div><span class="jg-kicker">Prode electoral</span><h2>Prode 2027</h2>
+          <p>Elegí quién gana la presidencia y cada gobernación, y con qué porcentaje. Cada voto va a la urna. Cuando haya resultados sumás puntos: <b>10 por acertar el ganador</b> y <b>hasta 10 más</b> según qué tan cerca estuviste del porcentaje.</p></div></div>
+        <ul class="pr-rules"><li>${st.steps.length} elecciones: la presidencial y ${st.steps.length - 1} gobernaciones, en orden de fecha (Neuquén vota primero, el 14 de febrero).</li>
+          <li>Podés cambiar tus votos hasta el día de cada elección: después la urna se cierra.</li>
+          <li>Tu prode queda guardado en este dispositivo. Compartilo y compará con tus amigos.</li></ul>
+        <div class="pr-acts"><button type="button" class="jg-btn is-main" data-startpr>${have ? 'Seguir votando' : 'Empezar a votar'}</button>
+          ${have ? '<button type="button" class="jg-btn" data-summary>Ver mi prode</button><button type="button" class="jg-btn is-ghost" data-reset>Empezar de cero</button>' : ''}</div>
+        <p class="jg-note">${open} urnas abiertas. Juego de predicción sin apuestas; candidatos y fechas del especial Argentina 2027.</p></section>`;
       wireBack(root); toTop();
-      root.querySelector('[data-startpr]').addEventListener('click', () => { st.i = 0; step(); });
+      root.querySelector('[data-startpr]').addEventListener('click', () => { const i = st.steps.findIndex(S => !st.picks[S.id] && !closed(S)); st.i = i >= 0 ? i : 0; step(); });
       const s = root.querySelector('[data-summary]'); if (s) s.addEventListener('click', end);
-      const r = root.querySelector('[data-reset]'); if (r) r.addEventListener('click', () => { st.picks = {}; save({}); intro(); });
+      const r = root.querySelector('[data-reset]'); if (r) r.addEventListener('click', () => { if (confirm('¿Borrar todas tus predicciones?')) { st.picks = {}; save({}); intro(); } });
     }
     function step() {
-      const S = st.steps[st.i], n = st.steps.length, cur = st.picks[S.id];
-      const p = S.p;
-      const info = p ? `<div class="pr-info">
-          <span><b>${esc(p.date2027 ? new Date(p.date2027 + 'T12:00:00').toLocaleDateString('es-AR', { day: 'numeric', month: 'long', year: 'numeric' }) : (p.dateStatus || 'Fecha a definir'))}</b></span>
-          ${p.gov2023 ? `<span>2023: ganó ${esc(clean(p.gov2023.winner))} (${fmt1(p.gov2023.pct)}%)</span>` : ''}
-          ${p.dip2025 ? `<span>Legislativas 2025: ${esc(clean(p.dip2025.winner))} (${fmt1(p.dip2025.pct)}%)</span>` : ''}
-          ${p.reelection ? `<span>Reelección: ${esc(p.reelection)}</span>` : ''}
-        </div>${p.summary ? `<p class="pr-sum">${esc(p.summary)}</p>` : ''}` : `<p class="pr-sum">${esc(S.text)}</p>`;
-      const notes = p ? Object.fromEntries(Object.entries(S.labels || {}).map(([l, c]) => [l, (/a definir/i.test(c.name) ? [c.note] : [c.party, c.note]).filter(Boolean).join(' · ')])) : {};
+      const S = st.steps[st.i], n = st.steps.length, cur = st.picks[S.id] || {}, p = S.p, lock = closed(S);
+      const dateTxt = S.date ? new Date(S.date + 'T12:00:00').toLocaleDateString('es-AR', { day: 'numeric', month: 'long', year: 'numeric' }) : ((p && p.dateStatus) || 'Fecha a definir');
+      const info = p ? `<div class="pr-info"><span>🗓️ <b>${esc(dateTxt)}</b></span>
+          ${p.gov2023 ? `<span>2023: ${esc(String(p.gov2023.winner).replace(/\s*\(.*\)/, ''))} ${fmt1(p.gov2023.pct)}%</span>` : ''}
+          ${p.dip2025 ? `<span>2025: ${esc(String(p.dip2025.winner).replace(/\s*\(.*\)/, ''))} ${fmt1(p.dip2025.pct)}%</span>` : ''}</div>
+          ${p.summary ? `<p class="pr-sum">${esc(p.summary)}</p>` : ''}` : `<div class="pr-info"><span>🗓️ <b>${esc(dateTxt)}</b></span></div><p class="pr-sum">${esc(S.text)}</p>`;
+      const pct = typeof cur.pct === 'number' ? cur.pct : 45;
       root.innerHTML = `<section class="jg-game is-prode">${backBtn()}
         <div class="jg-progress"><span style="width:${st.i / n * 100}%"></span></div>
-        <div class="jg-qnum">${S.kind === 'nac' ? 'Nacional' : 'Provincias'} · ${st.i + 1} de ${n}</div>
+        <div class="jg-qnum">${S.kind === 'nac' ? 'Nacional' : 'Gobernaciones'} · ${st.i + 1} de ${n}${lock ? ' · <b class="pr-lock">Urna cerrada</b>' : ''}</div>
         <h3 class="jg-q">${esc(S.title)}</h3>${info}
-        <div class="jg-opts">${S.opts.map(o => `<button type="button" class="jg-opt${cur === o ? ' is-picked' : ''}" data-o="${esc(o)}"><b>${esc(o)}</b>${notes[o] ? `<small>${esc(notes[o])}</small>` : ''}</button>`).join('')}</div>
+        <div class="pr-ballot">
+          <div class="pr-cands">${S.cands.map(c => `<label class="pr-cand${cur.c === c.name ? ' is-picked' : ''}"><input type="radio" name="pc" value="${esc(c.name)}"${cur.c === c.name ? ' checked' : ''}${lock ? ' disabled' : ''}><span class="pr-box"></span><span><b>${esc(c.name)}</b>${c.note ? `<small>${esc(c.note)}</small>` : ''}</span></label>`).join('')}</div>
+          <div class="pr-pct"><span>¿Con qué porcentaje gana?</span><b class="pr-pct-v">${pct}%</b>
+            <input type="range" class="pc-range" min="20" max="80" step="1" value="${pct}"${lock ? ' disabled' : ''} aria-label="Porcentaje del ganador"></div>
+        </div>
+        <div class="pr-cast">${urnaSVG(Object.keys(st.picks).length)}<button type="button" class="jg-btn is-main" data-cast${cur.c ? '' : ' disabled'}${lock ? ' hidden' : ''}>🗳️ Meter el voto en la urna</button></div>
         <div class="pr-nav">${st.i ? '<button type="button" class="jg-link" data-prev>← Anterior</button>' : '<span></span>'}<button type="button" class="jg-link" data-skip>${st.i + 1 < n ? 'Saltar →' : 'Ver mi prode →'}</button></div></section>`;
       wireBack(root); toTop();
+      const sel = () => { const r = root.querySelector('input[name=pc]:checked'); return r && r.value; };
+      const range = root.querySelector('.pr-pct .pc-range'), pv = root.querySelector('.pr-pct-v'), cast = root.querySelector('[data-cast]');
+      range.addEventListener('input', () => { pv.textContent = range.value + '%'; });
+      root.querySelectorAll('input[name=pc]').forEach(r => r.addEventListener('change', () => { root.querySelectorAll('.pr-cand').forEach(l => l.classList.toggle('is-picked', l.contains(r) && r.checked)); cast.disabled = false; }));
       const nextStep = () => { st.i++; st.i < n ? step() : end(); };
-      root.querySelectorAll('[data-o]').forEach(b => b.addEventListener('click', () => { st.picks[S.id] = b.getAttribute('data-o'); save(st.picks); nextStep(); }));
+      cast.addEventListener('click', () => {
+        const c = sel(); if (!c) return;
+        st.picks[S.id] = { c, pct: +range.value, at: today() }; save(st.picks);
+        const u = root.querySelector('.pr-cast .pr-urna'); u.classList.add('is-drop'); cast.disabled = true; cast.textContent = '¡Voto en la urna!';
+        setTimeout(nextStep, 900);
+      });
       root.querySelector('[data-skip]').addEventListener('click', nextStep);
-      const pv = root.querySelector('[data-prev]'); if (pv) pv.addEventListener('click', () => { st.i--; step(); });
+      const pr = root.querySelector('[data-prev]'); if (pr) pr.addEventListener('click', () => { st.i--; step(); });
     }
     function end() {
-      const all = st.steps.filter(S => st.picks[S.id]);
-      track(`/juego/prode/fin/${all.length}`, `Prode: ${all.length} predicciones`);
-      const prov = all.filter(S => S.kind === 'prov');
-      const judged = prov.filter(S => S.p.result2027 && S.p.result2027.winner);
-      const hits = judged.filter(S => clean(S.p.result2027.winner) === clean(st.picks[S.id]) || (st.picks[S.id] === 'Otro' && !S.p.candidates.some(c => clean(c.name) === clean(S.p.result2027.winner))));
-      const pres = st.picks.pres, bal = st.picks.balotaje;
-      const text = `Armé mi prode electoral 2027 en el Atlas Político Mundial${pres ? `: gana ${pres}` : ''}${prov.length ? ` y elegí en ${prov.length} provincias` : ''}. ¿Cuál es el tuyo?`;
-      const short = n => n === 'Ciudad Autónoma de Buenos Aires' ? 'CABA' : n === 'Santiago del Estero' ? 'Sgo. del Estero' : n === 'Tierra del Fuego' ? 'T. del Fuego' : n;
-      const rows = prov.slice(0, 12).map(S => `<div><span>${esc(short(S.p.name))}</span><b>${esc(st.picks[S.id])}</b></div>`).join('');
+      const voted = st.steps.filter(S => st.picks[S.id]);
+      const judged = voted.map(S => ({ S, r: points(S, st.picks[S.id]) })).filter(x => x.r);
+      const score = judged.reduce((a, x) => a + x.r.pts, 0), max = judged.length * 20;
+      const pres = st.picks.pres;
+      track(`/juego/prode/fin/${voted.length}`, `Prode: ${voted.length} votos`);
+      const text = `Ya voté en mi prode 2027 del Atlas Político Mundial${pres ? `: ${pres.c} gana con ${pres.pct}%` : ''}${voted.length > 1 ? ` y elegí en ${voted.length - (pres ? 1 : 0)} provincias` : ''}. ¿Cuál es el tuyo?`;
+      const rows = voted.filter(S => S.kind === 'prov').slice(0, 8).map(S => `<div><span>${esc(short(S.name))}</span><b>${esc(st.picks[S.id].c)}</b><em>${st.picks[S.id].pct != null ? st.picks[S.id].pct + '%' : ''}</em></div>`).join('');
       const card = cardShell('Prode electoral 2027', '#1F5FAD', `
-        <div class="jgx-kicker">Mis predicciones para 2027</div>
-        ${pres ? `<div class="jgx-choice"><span>Presidencia</span><b>${esc(pres)}</b>${bal ? `<em class="jgx-cmp">${esc(bal)}</em>` : ''}</div>` : ''}
-        ${rows ? `<div class="jgx-prode">${rows}</div>` : ''}
-        ${prov.length > 12 ? `<div class="jgx-text is-sm">y ${prov.length - 12} provincias más</div>` : ''}`);
+        <div class="jgx-tv"><div><div class="jgx-kicker">Mi prode 2027</div>
+          ${pres ? `<div class="jgx-title is-md">${esc(pres.c)}</div><div class="jgx-big"><b>${pres.pct}%</b> en primera vuelta</div>` : `<div class="jgx-title is-md">${voted.length} votos en la urna</div>`}</div>${urnaSVG(voted.length)}</div>
+        ${max ? `<div class="jgx-choice"><span>Mi puntaje</span><b>${score} de ${max} puntos</b></div>` : ''}
+        ${rows ? `<div class="jgx-prode is-pct">${rows}</div>` : ''}
+        ${voted.filter(S => S.kind === 'prov').length > 8 ? `<div class="jgx-text is-sm">y ${voted.filter(S => S.kind === 'prov').length - 8} provincias más</div>` : ''}`);
       root.innerHTML = `<section class="jg-game is-prode">${backBtn()}
-        <div class="jg-result"><span class="jg-kicker">Tu prode</span><h2>${all.length ? `Predijiste ${all.length} resultados` : 'Todavía no elegiste nada'}</h2>
-          ${judged.length ? `<p class="pr-score"><b>${hits.length} de ${judged.length}</b> aciertos en las provincias que ya votaron.</p>` : '<p>Todavía no votó ninguna provincia. Guardamos tus predicciones en este dispositivo: volvé después de cada elección para ver tus aciertos. La primera es Neuquén, el 14 de febrero de 2027.</p>'}
-          <ul class="pr-list">${all.map(S => { const r = S.p && S.p.result2027 && S.p.result2027.winner; const ok = r && (clean(r) === clean(st.picks[S.id])); return `<li><span>${esc(S.kind === 'nac' ? S.title.replace(/^¿|\?$/g, '') : S.p.name)}</span><b>${esc(st.picks[S.id])}</b>${r ? `<i class="${ok ? 'is-ok' : 'is-bad'}">${ok ? '✓' : `✗ ${esc(clean(r))}`}</i>` : ''}</li>`; }).join('')}</ul>
+        <div class="jg-result"><div class="pr-hero">${urnaSVG(voted.length)}<div><span class="jg-kicker">Tu prode</span>
+          <h2>${voted.length ? `${voted.length} ${voted.length === 1 ? 'voto' : 'votos'} en la urna` : 'Tu urna está vacía'}</h2>
+          ${max ? `<p class="pr-score"><b>${score}</b> de ${max} puntos en las ${judged.length} elecciones que ya se votaron.</p>` : '<p>Todavía no se votó ninguna elección. Cuando haya resultados, acá vas a ver tus puntos: 10 por el ganador y hasta 10 por el porcentaje.</p>'}</div></div>
+          <div class="pr-table"><div class="pr-row is-head"><span>Elección</span><span>Tu voto</span><span>%</span><span>Puntos</span></div>
+            ${st.steps.map(S => { const k = st.picks[S.id], r = k && points(S, k); return `<div class="pr-row${k ? '' : ' is-empty'}"><span>${esc(short(S.name))}${closed(S) ? ' 🔒' : ''}</span><span>${k ? esc(k.c) : '—'}</span><span>${k && k.pct != null ? k.pct + '%' : ''}</span><span>${r ? `<b class="${r.won ? 'is-ok' : 'is-bad'}">${r.pts}</b>` : S.result ? '0' : '<small>pendiente</small>'}</span></div>`; }).join('')}</div>
           ${shareBox(text)}
-          <button type="button" class="jg-btn is-main" data-edit>Cambiar predicciones</button>
+          <button type="button" class="jg-btn is-main" data-edit>Seguir votando</button>
           ${moreGames('prode')}
           <p class="jg-note">Juego de predicción sin apuestas. Los candidatos salen del especial Argentina 2027 y pueden cambiar hasta el cierre de listas.</p></div></section>`;
       wireBack(root); wireCopy(root); wireShare(root.querySelector('.jg-sharebox'), text, card, 'prode-2027', { eager: true });
-      root.querySelector('[data-edit]').addEventListener('click', () => { st.i = 0; step(); }); wireMore(root); toTop();
+      root.querySelector('[data-edit]').addEventListener('click', () => { const i = st.steps.findIndex(S => !st.picks[S.id] && !closed(S)); st.i = i >= 0 ? i : 0; step(); }); wireMore(root); toTop();
     }
     return { start };
   })();
