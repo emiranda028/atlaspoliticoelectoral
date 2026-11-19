@@ -6555,6 +6555,28 @@
     .export-fab, .back-to-top { transform: scale(.9); }
   }
 
+
+  /* ===== Top nav: fit every section on screen (fitNav adds fit-1/2/3) ===== */
+  .tn-short { display: none; }
+  @media (min-width: 761px) {
+    .topic-nav-link { padding-right: 0; margin-right: 26px; }
+    .topic-nav-link::after { right: 0; }
+    .topic-nav.fit-1 .topic-nav-link { margin-right: 18px; }
+    .topic-nav.fit-1 .topic-nav-text { font-size: 14.5px; }
+    .topic-nav.fit-2 .topic-nav-num { display: none; }
+    .topic-nav.fit-2 .topic-nav-link { margin-right: 14px; gap: 0; }
+    .topic-nav.fit-2 .topic-nav-text { font-size: 14px; }
+    .topic-nav.fit-2 .tn-full { display: none; } .topic-nav.fit-2 .tn-short { display: inline; }
+    .topic-nav.fit-2 .topic-nav-brand-text { display: none; }
+    .topic-nav.fit-2 .topic-nav-brand { padding-right: 14px; margin-right: 14px; }
+    .topic-nav.fit-3 .nav-menu-btn {
+      display: inline-flex; align-items: center; gap: 6px;
+      position: sticky; right: 0; margin-left: 8px; flex-shrink: 0;
+      font: inherit; font-size: 13.5px; font-weight: 700; color: #fff;
+      background: var(--brand); border: 0; padding: 0 14px; cursor: pointer;
+      box-shadow: -18px 0 14px -2px var(--surface);
+    }
+  }
   /* ===== Faces dropping into the specials ===== */
   .esp-faces { margin: 18px 0 4px; }
   .esp-faces-title { font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; opacity: .75; margin-bottom: 10px; }
@@ -7460,23 +7482,23 @@
       </a>
       <a href="#espana" class="topic-nav-link is-special is-special-es" onclick="window.__scrollToSection(event, 'espana')">
         <span class="topic-nav-num">★</span>
-        <span class="topic-nav-text">España 2026</span>
+        <span class="topic-nav-text"><span class="tn-full">España 2026</span><span class="tn-short">España</span></span>
       </a>
       <a href="#eeuu" class="topic-nav-link is-special is-special-us" onclick="window.__scrollToSection(event, 'eeuu')">
         <span class="topic-nav-num">★</span>
-        <span class="topic-nav-text">EE.UU. 2026</span>
+        <span class="topic-nav-text"><span class="tn-full">EE.UU. 2026</span><span class="tn-short">EE.UU.</span></span>
       </a>
       <a href="#brasil" class="topic-nav-link is-special" onclick="window.__scrollToSection(event, 'brasil')">
         <span class="topic-nav-num">★</span>
-        <span class="topic-nav-text">Brasil 2026</span>
+        <span class="topic-nav-text"><span class="tn-full">Brasil 2026</span><span class="tn-short">Brasil</span></span>
       </a>
       <a href="#israel" class="topic-nav-link is-special is-special-il" onclick="window.__scrollToSection(event, 'israel')">
         <span class="topic-nav-num">★</span>
-        <span class="topic-nav-text">Israel 2026</span>
+        <span class="topic-nav-text"><span class="tn-full">Israel 2026</span><span class="tn-short">Israel</span></span>
       </a>
       <a href="#argentina" class="topic-nav-link is-special is-special-ar" onclick="window.__scrollToSection(event, 'argentina')">
         <span class="topic-nav-num">★</span>
-        <span class="topic-nav-text">Argentina 2027</span>
+        <span class="topic-nav-text"><span class="tn-full">Argentina 2027</span><span class="tn-short">Argentina</span></span>
       </a>
       <a href="#nav-map" class="topic-nav-link" onclick="window.__scrollToSection(event, 'nav-map')">
         <span class="topic-nav-num">01</span>
@@ -35073,6 +35095,27 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
    MOBILE SECTION SHEET
    =========================================================== */
 (function () {
+
+  // Fit the top nav on screen: tighter spacing, then short labels, then the "Secciones" button
+  (function () {
+    const nav = document.querySelector('.topic-nav');
+    if (!nav) return;
+    const fit = () => {
+      nav.classList.remove('fit-1', 'fit-2', 'fit-3');
+      if (window.innerWidth <= 760) return;
+      const over = () => nav.scrollWidth > nav.clientWidth + 1;
+      for (const c of ['fit-1', 'fit-2', 'fit-3']) { if (!over()) return; nav.classList.add(c); }
+    };
+    let t; window.addEventListener('resize', () => { clearTimeout(t); t = setTimeout(fit, 120); });
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
+    window.addEventListener('load', fit);
+    const later = () => { clearTimeout(t); t = setTimeout(fit, 120); };
+    new MutationObserver(later).observe(nav, { childList: true, subtree: true, characterData: true });
+    // Fonts and translations change the width of the links after load
+    if (window.ResizeObserver) { const ro = new ResizeObserver(later); nav.querySelectorAll('.topic-nav-link, .topic-nav-brand, .lang-switch-nav').forEach(el => ro.observe(el)); ro.observe(nav); }
+    setTimeout(fit, 1500);
+    fit();
+  })();
   const btn = document.getElementById('nav-menu-btn');
   const sheet = document.getElementById('nav-sheet');
   if (!btn || !sheet) return;
