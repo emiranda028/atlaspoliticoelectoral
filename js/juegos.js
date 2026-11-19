@@ -379,7 +379,7 @@
       // some move a week earlier or later)
       const sc = D.scenarios && D.scenarios.length ? D.scenarios[Math.floor(Math.random() * D.scenarios.length)] : null;
       S.scenario = sc;
-      if (sc) apply({ stats: sc.stats, blocs: sc.blocs });
+      if (sc) apply({ stats: sc.stats, blocs: sc.blocs, flags: sc.flags, turns: sc.turns });
       S.events = D.events.filter(e => e.core || e.random || Math.random() < 0.85)
         .map(e => e.core || e.random || Math.random() > 0.3 ? e : Object.assign({}, e, { turn: clamp(e.turn + (Math.random() < 0.5 ? -1 : 1), 1, 7) }));
       intro();
