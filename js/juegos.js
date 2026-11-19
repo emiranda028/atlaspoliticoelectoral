@@ -43,6 +43,11 @@
     const card = host.firstElementChild;
     try {
       try { await document.fonts.ready; } catch (e) {}
+      // Flags come from a CDN: embed them first, or Safari leaves them out of the image
+      await Promise.all([...card.querySelectorAll('img')].map(async img => {
+        const src = img.getAttribute('src'); if (!src || src.startsWith('data:')) return;
+        try { const b = await fetch(src, { mode: 'cors' }).then(r => r.blob()); img.src = await new Promise(res => { const fr = new FileReader(); fr.onload = () => res(fr.result); fr.readAsDataURL(b); }); } catch (e) {}
+      }));
       await Promise.all([...card.querySelectorAll('img')].map(img => img.complete && img.naturalWidth ? null : new Promise(r => { img.onload = img.onerror = r; setTimeout(r, 4000); })));
       card.querySelectorAll('img').forEach(img => { if (!img.naturalWidth) img.remove(); });
       return await window.htmlToImage.toCanvas(card, { pixelRatio: 1, width: CARD_W, height: CARD_H, cacheBust: true, backgroundColor: '#FBF7F0' });
@@ -142,6 +147,33 @@
     }));
   }
 
+  /* ---------------------------------------------------------- COUNTRY OUTLINE */
+  let GEO = null, geoP = null;
+  const loadGeo = () => geoP || (geoP = fetch('data/geo/world.json').then(r => r.json()).then(j => (GEO = j)).catch(() => null));
+  function outlineSVG(iso, color, cls) {
+    if (!GEO) return '';
+    // France and Norway come without ISO code in Natural Earth; the Malvinas are Argentine (editorial line of the Atlas)
+    const BY_NAME = { FRA: 'France', NOR: 'Norway', XKX: 'Kosovo' }, EXTRA = { ARG: ['FLK'] };
+    const isos = [iso].concat(EXTRA[iso] || []);
+    const feats = GEO.features.filter(x => x.properties && (isos.includes(x.properties['ISO3166-1-Alpha-3']) || x.properties.name === BY_NAME[iso]));
+    if (!feats.length) return '';
+    const polys = feats.flatMap(f => f.geometry.type === 'Polygon' ? [f.geometry.coordinates] : f.geometry.type === 'MultiPolygon' ? f.geometry.coordinates : []);
+    if (!polys.length) return '';
+    const bb = ring => ring.reduce((b, [x, y]) => [Math.min(b[0], x), Math.min(b[1], y), Math.max(b[2], x), Math.max(b[3], y)], [180, 90, -180, -90]);
+    const boxes = polys.map(p => bb(p[0])), area = b => (b[2] - b[0]) * (b[3] - b[1]);
+    const M = boxes[boxes.reduce((m, b, i) => area(b) > area(boxes[m]) ? i : m, 0)];
+    const w = Math.max(M[2] - M[0], 3), h = Math.max(M[3] - M[1], 3);
+    // The main landmass and what is near it (no far-away overseas territories)
+    const far = { NOR: b => b[1] > 74 }[iso] || (() => false);   // Svalbard
+    const keep = polys.filter((p, i) => { const b = boxes[i]; return !far(b) && b[0] > M[0] - w * 1.2 && b[2] < M[2] + w * 1.2 && b[1] > M[1] - h * 1.2 && b[3] < M[3] + h * 1.2; });
+    const all = keep.map(p => bb(p[0])).reduce((a, b) => [Math.min(a[0], b[0]), Math.min(a[1], b[1]), Math.max(a[2], b[2]), Math.max(a[3], b[3])]);
+    const k = Math.cos((all[1] + all[3]) / 2 * Math.PI / 180);
+    const W = (all[2] - all[0]) * k, H = all[3] - all[1], S = 280 / Math.max(W, H);
+    const ox = (300 - W * S) / 2, oy = (300 - H * S) / 2;
+    const d = keep.map(p => p.map(ring => 'M' + ring.map(([x, y]) => `${(ox + (x - all[0]) * k * S).toFixed(1)},${(oy + (all[3] - y) * S).toFixed(1)}`).join('L') + 'Z').join('')).join('');
+    return `<svg viewBox="0 0 300 300" class="${cls || ''}" aria-hidden="true"><path d="${d}" fill="${color}" fill-rule="evenodd" stroke="#fff" stroke-width="1.5" stroke-linejoin="round"/></svg>`;
+  }
+
   /* ---------------------------------------------------------- HUB */
   let root = null;
   function hub() {
@@ -206,6 +238,7 @@
     async function start() {
       root.innerHTML = '<div class="jg-loading">Cargando…</div>';
       try { D = D || await getJSON('data/juegos/pais.json'); } catch (e) { root.innerHTML = '<div class="jg-loading">No se pudo cargar el juego.</div>'; return; }
+      loadGeo();
       // 14 decisions drawn from the bank, balanced by axis (3 per axis, 2 on
       // environment), so every game is different but the profile is complete
       const main = Q => { const ax = {}; Q.options.forEach(o => Object.entries(o.e).forEach(([a, v]) => { ax[a] = Math.max(ax[a] || 0, Math.abs(v)); })); return Object.keys(ax).sort((x, y) => ax[y] - ax[x])[0]; };
@@ -260,6 +293,8 @@
         const d = Math.sqrt(c.v.reduce((s, v, i) => s + W[i] * (v - me[i]) ** 2, 0));
         return Object.assign({}, c, { d, sim: Math.round(clamp(100 - d / Math.sqrt(16 * W.reduce((a, b) => a + b, 0)) * 140, 5, 99)) });
       }).sort((a, b) => a.d - b.d);
+      const dist = (a, b) => Math.sqrt(a.reduce((s, v, i) => s + W[i] * (v - b[i]) ** 2, 0));
+      const also = ranked.slice(1).map(c => Object.assign({}, c, { mix: c.d + 0.7 * dist(c.v, ranked[0].v) })).sort((a, b) => a.mix - b.mix).slice(0, 3);
       const top = ranked[0], C = byIso(top.iso) || { name: top.iso, leader: {} };
       const far = ranked[ranked.length - 1], F = byIso(far.iso) || { name: far.iso };
       const bar = (v, i) => { const ax = D.axes[axes[i]]; const pct = 4 + (v + 2) / 4 * 92; const tv = top.v[i], tp = 4 + (tv + 2) / 4 * 92;
@@ -272,24 +307,24 @@
       const text = `Gobernaría como ${C.name} (${top.sim}% de coincidencia). ¿Y vos? Jugá en el Atlas Político Mundial:`;
       const card = cardShell('¿Qué país gobernarías?', '#1F7A5A', `
         <div class="jgx-kicker">Si gobernara, mi país se parecería a…</div>
-        <div class="jgx-flag">${flag(top.iso)}</div>
+        <div class="jgx-flag">${flag(top.iso)}${outlineSVG(top.iso, '#1F7A5A', 'jgx-outline')}</div>
         <div class="jgx-title${C.name.length > 16 ? ' is-long' : ''}">${esc(C.name)}</div>
         <div class="jgx-big"><b>${top.sim}%</b> de coincidencia</div>
         ${C.leader && C.leader.name ? `<div class="jgx-sub">${esc(C.leader.title || 'Gobierno')}: <b>${esc(C.leader.name)}</b></div>` : ''}
         <div class="jgx-axes">${me.map((v, i) => { const ax = D.axes[axes[i]]; return `<div class="jgx-ax"><div class="jgx-ax-h">${esc(ax.label)}</div><div class="jgx-ax-row"><span>${esc(ax.neg)}</span><div class="jgx-ax-t"><i style="left:${(4 + (v + 2) / 4 * 92).toFixed(1)}%"></i></div><span>${esc(ax.pos)}</span></div></div>`; }).join('')}</div>
-        <div class="jgx-also"><span>También me parezco a</span>${ranked.slice(1, 4).map(r => { const c = byIso(r.iso) || { name: r.iso }; return `<b>${flag(r.iso)} ${esc(c.name)}</b>`; }).join('')}</div>`);
+        <div class="jgx-also"><span>También me parezco a</span>${also.map(r => { const c = byIso(r.iso) || { name: r.iso }; return `<b>${flag(r.iso)} ${esc(c.name)}</b>`; }).join('')}</div>`);
       root.innerHTML = `<section class="jg-game is-pais">${backBtn()}
         <div class="jg-result">
           <span class="jg-kicker">Tu resultado</span>
           <h2>Gobernarías como <em>${esc(C.name)}</em></h2>
           <div class="jg-match">
-            <div class="jg-match-flag">${flag(top.iso, 'fi-lg')}</div>
+            <div class="jg-match-flag">${flag(top.iso, 'fi-lg')}${outlineSVG(top.iso, '#1F7A5A', 'jg-outline')}</div>
             <div><div class="jg-match-sim"><b>${top.sim}%</b> de coincidencia</div>
               <div class="jg-match-who">${esc((C.leader && C.leader.title) || 'Gobierno')}: <b>${esc((C.leader && C.leader.name) || '')}</b>${C.leader && C.leader.party ? ` (${esc(C.leader.party)})` : ''}</div>
               <div class="jg-match-ideo">${esc(ideoLabel(C.ideology))}${C.system ? ' · ' + esc(C.system) : ''}</div>
               ${byIso(top.iso) ? `<button type="button" class="jg-link" data-ficha="${top.iso}">Ver la ficha de ${esc(C.name)} en el Atlas →</button>` : ''}</div>
           </div>
-          <div class="jg-also"><b>También te parecés a:</b> ${ranked.slice(1, 4).map(r => { const c = byIso(r.iso) || { name: r.iso }; return `<span>${flag(r.iso)} ${esc(c.name)} <small>${r.sim}%</small></span>`; }).join('')}</div>
+          <div class="jg-also"><b>También te parecés a:</b> ${also.map(r => { const c = byIso(r.iso) || { name: r.iso }; return `<span>${flag(r.iso)} ${esc(c.name)} <small>${r.sim}%</small></span>`; }).join('')}</div>
           <div class="jg-also"><b>Tu opuesto:</b> <span>${flag(far.iso)} ${esc(F.name)} <small>${far.sim}%</small></span></div>
           <div class="jg-cols">
             <div><h4>Tu perfil, eje por eje</h4>${me.map(bar).join('')}</div>
