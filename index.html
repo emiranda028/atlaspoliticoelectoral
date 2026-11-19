@@ -6243,6 +6243,7 @@
   .jg-share { display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0 12px; }
   /* "Último momento": unexpected events in the games */
   .jg-flash-tag { display: inline-flex; align-items: center; gap: 6px; font: 800 11px var(--font-sans); letter-spacing: .12em; text-transform: uppercase; background: #D62839; color: #fff; padding: 4px 10px 4px 8px; border-radius: 4px; animation: jgFlash 1.2s ease-in-out 3; }
+  .jg-flash-tag.is-faran { background: #C2185B; }
   .jg-flash-tag::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: #fff; }
   @keyframes jgFlash { 50% { opacity: .55; } }
   .jg-flash { display: flex; align-items: center; gap: 10px; margin: 6px 0 2px; font: 700 13px var(--font-sans); color: var(--ink-soft); }
@@ -35116,7 +35117,7 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
     if (window.AtlasJuegos) return window.AtlasJuegos.render(el, game);
     if (document.getElementById('juegos-js')) { pendingGame = game; return; }
     const sc = document.createElement('script');
-    sc.id = 'juegos-js'; sc.src = 'js/juegos.js?v=5';
+    sc.id = 'juegos-js'; sc.src = 'js/juegos.js?v=6';
     sc.onload = () => { const g = game || pendingGame; pendingGame = null; window.AtlasJuegos && window.AtlasJuegos.render(el, g); };
     sc.onerror = () => { el.innerHTML = '<div class="jg-loading">No se pudieron cargar los juegos.</div>'; };
     document.head.appendChild(sc);
