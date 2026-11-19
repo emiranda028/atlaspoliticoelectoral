@@ -8732,9 +8732,12 @@ window.ATLAS_GOATCOUNTER = 'atlaspolitico';
 (function () {
   const code = window.ATLAS_GOATCOUNTER;
   const q = [];
+  let last = '', lastT = 0;
   window.atlasTrack = function (path, title, event) {
     if (!code) return;
     const hit = { path: String(path || '/').replace(/^#/, '/'), title: title || document.title, event: !!event };
+    // The site shows the first view twice while booting: count it once
+    const now = Date.now(); if (hit.path === last && now - lastT < 3000) return; last = hit.path; lastT = now;
     if (window.goatcounter && window.goatcounter.count) window.goatcounter.count(hit); else q.push(hit);
   };
   if (!code || /localhost|127\.0\.0\.1/.test(location.hostname)) return;
