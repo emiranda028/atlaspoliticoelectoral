@@ -339,6 +339,14 @@
       const blocs = {};
       ['dip', 'sen'].forEach(ch => D.chambers[ch].blocs.forEach(b => { blocs[ch + ':' + b.id] = Object.assign({ ch }, b); }));
       S = { turn: 0, maxTurns: D.turns, stats: Object.fromEntries(STATS.map(k => [k, D.stats[k].start])), blocs, flags: {}, seen: {}, queue: [], log: [], dipPassed: false, dipVotes: null, govUsed: {}, actionDone: false, over: null, lastVote: null };
+      // Every game is a different negotiation: a starting scenario and a draw of
+      // the main situations (the core story always happens, the rest may not, and
+      // some move a week earlier or later)
+      const sc = D.scenarios && D.scenarios.length ? D.scenarios[Math.floor(Math.random() * D.scenarios.length)] : null;
+      S.scenario = sc;
+      if (sc) apply({ stats: sc.stats, blocs: sc.blocs });
+      S.events = D.events.filter(e => e.core || e.random || Math.random() < 0.85)
+        .map(e => e.core || e.random || Math.random() > 0.3 ? e : Object.assign({}, e, { turn: clamp(e.turn + (Math.random() < 0.5 ? -1 : 1), 1, 7) }));
       intro();
     }
     const stat = k => S.stats[k];
@@ -386,6 +394,7 @@
       root.innerHTML = `<section class="jg-game is-rosca">${backBtn()}
         <div class="jg-intro"><span class="jg-kicker">Simulación</span><h2>${esc(D.title)}</h2>
           <p class="jg-role">Llevás adelante <b>${esc(D.role)}</b>.</p><p>${esc(D.intro)}</p>
+          ${S.scenario ? `<div class="rs-scen"><span>Tu escenario en esta partida</span><b>${esc(S.scenario.title)}</b><p>${esc(S.scenario.text)}</p><small>Cada partida tiene un escenario y situaciones distintas.</small></div>` : ''}
           <ul class="jg-rules">
             <li>Para la media sanción necesitás <b>129 votos en Diputados</b> (el quórum) y después <b>37 en el Senado</b>.</li>
             <li>Cada semana llega una situación y podés hacer <b>una jugada</b>: negociar con un gobernador, ir a los medios o llamar a sesión.</li>
@@ -485,8 +494,8 @@
       if (!first) S.turn++;
       if (S.turn >= S.maxTurns) return ending('time');
       S.actionDone = false;
-      const due = D.events.filter(ev => eligible(ev) && !ev.random && ev.turn <= S.turn + 1);
-      const rand = D.events.filter(ev => eligible(ev) && ev.random && Math.random() < 0.45);
+      const due = S.events.filter(ev => eligible(ev) && !ev.random && ev.turn <= S.turn + 1);
+      const rand = S.events.filter(ev => eligible(ev) && ev.random && Math.random() < 0.45);
       S.queue = due.slice(0, 2).concat(due.length < 2 ? rand.slice(0, 1) : []);
       // "Último momento": something unexpected, in the middle of the week's events
       // Events about "your" governor only show up once you've negotiated with one
@@ -669,7 +678,7 @@
       const text = win ? `Saqué la ley sin PASO en "La rosca" del Atlas Político Mundial: ${score} puntos. ¿Te animás?` : `Jugué "La rosca: PASO o no PASO" en el Atlas Político Mundial y… ${E.title.toLowerCase()}. ¿Te animás?`;
       const flashes = S.log.filter(l => l.flash).slice(-3);
       const card = cardShell('La rosca: PASO o no PASO', '#6C3FB8', `
-        <div class="jgx-kicker">${win ? 'Lo logré' : 'Fin del juego'} · Jefatura de Gabinete</div>
+        <div class="jgx-kicker">${win ? 'Lo logré' : 'Fin del juego'} · Jefatura de Gabinete${S.scenario ? ` · ${esc(S.scenario.title)}` : ''}</div>
         <div class="jgx-title is-md">${esc(E.title)}</div>
         ${win ? `<div class="jgx-score"><b>${score}</b><span>puntos</span></div>` : ''}
         <div class="jgx-text">${esc(E.text)}</div>
@@ -678,7 +687,7 @@
         ${flashes.length ? `<div class="jgx-flashes"><span>Lo que tuve que aguantar</span>${flashes.map(l => `<b>⚡ ${esc(l.t)}</b>`).join('')}</div>` : ''}`);
       root.innerHTML = `<section class="jg-game is-rosca">${backBtn()}
         <div class="jg-result rs-end ${win ? 'is-win' : 'is-lose'}">
-          <span class="jg-kicker">${win ? 'Ganaste' : 'Fin del juego'}</span><h2>${esc(E.title)}</h2><p>${esc(E.text)}</p>
+          <span class="jg-kicker">${win ? 'Ganaste' : 'Fin del juego'}</span><h2>${esc(E.title)}</h2><p>${esc(E.text)}</p>${S.scenario ? `<p class="rs-scen-end">Escenario: <b>${esc(S.scenario.title)}</b></p>` : ''}
           ${win ? `<div class="rs-score"><b>${score}</b><span>puntos</span></div>` : ''}
           <div class="rs-final">${STATS.map(k => `<div><span>${esc(D.stats[k].label)}</span><b>${stat(k)}</b></div>`).join('')}<div><span>Semanas usadas</span><b>${Math.min(S.turn + 1, S.maxTurns)} de ${S.maxTurns}</b></div></div>
           <h4>Tus decisiones</h4><ol class="rs-log">${S.log.map(l => `<li${l.flash ? ' class="is-flash"' : ''}><b>${l.flash ? '⚡ ' : ''}${esc(l.t)}:</b> ${esc(l.r)}</li>`).join('')}</ol>

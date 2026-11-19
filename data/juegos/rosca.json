@@ -595,7 +595,8 @@
       }
      }
     }
-   ]
+   ],
+   "core": true
   },
   {
    "id": "insfran2",
@@ -646,7 +647,8 @@
       }
      }
     }
-   ]
+   ],
+   "core": true
   },
   {
    "id": "insfran3",
@@ -666,7 +668,8 @@
       }
      }
     }
-   ]
+   ],
+   "core": true
   },
   {
    "id": "norte",
@@ -863,7 +866,8 @@
       "turns": -2
      }
     }
-   ]
+   ],
+   "core": true
   },
   {
    "id": "karina",
@@ -1096,7 +1100,8 @@
       }
      }
     }
-   ]
+   ],
+   "core": true
   },
   {
    "id": "villarruel",
@@ -1189,7 +1194,419 @@
      "result": "Quedan pocas semanas de calendario.",
      "e": {}
     }
+   ],
+   "core": true
+  },
+  {
+   "id": "comision",
+   "turn": 2,
+   "who": "Comisión de Asuntos Constitucionales",
+   "title": "No hay dictamen",
+   "text": "La comisión de Asuntos Constitucionales no consigue las firmas para el dictamen de mayoría. Sin dictamen, para tratar el proyecto vas a necesitar dos tercios o una moción de emplazamiento.",
+   "options": [
+    {
+     "label": "Aceptar cambios para conseguir las firmas",
+     "result": "Llegás al dictamen, con un texto más moderado.",
+     "e": {
+      "stats": {
+       "interna": -4
+      },
+      "blocs": {
+       "dip:pu": 5,
+       "dip:ucr": 5
+      }
+     }
+    },
+    {
+     "label": "Pedir un emplazamiento en el recinto",
+     "result": "Lo conseguís, pero la oposición habla de \"atropello\".",
+     "e": {
+      "stats": {
+       "capital": -5,
+       "imagen": -2
+      }
+     }
+    },
+    {
+     "label": "Esperar una semana más",
+     "result": "La comisión sigue trabada.",
+     "e": {
+      "stats": {
+       "capital": -2
+      }
+     }
+    }
+   ],
+   "role": "Diputados"
+  },
+  {
+   "id": "fichalimpia",
+   "turn": 3,
+   "who": "PRO",
+   "title": "El PRO quiere sumar Ficha Limpia",
+   "text": "Los diputados del PRO dicen que solo acompañan si el proyecto incluye Ficha Limpia, para impedir que sean candidatos los condenados por corrupción en segunda instancia.",
+   "options": [
+    {
+     "label": "Incluir Ficha Limpia",
+     "result": "El PRO se encolumna; el peronismo se cierra por completo.",
+     "e": {
+      "blocs": {
+       "dip:pro": 8,
+       "sen:pro": 6,
+       "dip:cc": 5,
+       "dip:up": -10,
+       "sen:popular": -10
+      }
+     }
+    },
+    {
+     "label": "Decir que se trata aparte",
+     "result": "El PRO se enoja, pero el peronismo dialoguista respira.",
+     "e": {
+      "blocs": {
+       "dip:pro": -6,
+       "sen:popular": 4
+      }
+     }
+    }
+   ],
+   "role": "Bloque PRO"
+  },
+  {
+   "id": "dividir",
+   "turn": 4,
+   "who": "Bloques dialoguistas",
+   "title": "Piden dividir el proyecto en dos",
+   "text": "Los dialoguistas proponen separar el proyecto: por un lado suspender las PASO de 2027, por otro la eliminación definitiva, que se discutiría el año que viene.",
+   "options": [
+    {
+     "label": "Aceptar: solo suspender las de 2027",
+     "result": "Ganás votos, pero en la Rosada dicen que es \"media reforma\".",
+     "e": {
+      "stats": {
+       "interna": -6
+      },
+      "blocs": {
+       "dip:pu": 6,
+       "dip:ucr": 6,
+       "dip:cc": 4,
+       "sen:ucr": 5
+      }
+     }
+    },
+    {
+     "label": "Insistir con la eliminación definitiva",
+     "result": "Los dialoguistas se enfrían.",
+     "e": {
+      "stats": {
+       "interna": 3
+      },
+      "blocs": {
+       "dip:pu": -4,
+       "dip:ucr": -4
+      }
+     }
+    }
    ]
+  },
+  {
+   "id": "ucr_comision",
+   "turn": 3,
+   "who": "UCR",
+   "title": "Los radicales piden la presidencia de una comisión",
+   "text": "El bloque radical pide la presidencia de la comisión de Presupuesto como gesto de buena voluntad para acompañar el proyecto.",
+   "options": [
+    {
+     "label": "Concederla",
+     "result": "Los radicales te lo agradecen. Menem, no.",
+     "e": {
+      "stats": {
+       "interna": -4
+      },
+      "blocs": {
+       "dip:ucr": 8,
+       "sen:ucr": 4
+      }
+     }
+    },
+    {
+     "label": "Ofrecer otra comisión menor",
+     "result": "Aceptan a regañadientes.",
+     "e": {
+      "blocs": {
+       "dip:ucr": 3
+      }
+     }
+    },
+    {
+     "label": "Negarte",
+     "result": "Los radicales se ofenden.",
+     "e": {
+      "blocs": {
+       "dip:ucr": -6
+      }
+     }
+    }
+   ],
+   "role": "Bloque UCR"
+  },
+  {
+   "id": "frigerio",
+   "turn": 2,
+   "who": "Rogelio Frigerio",
+   "title": "Frigerio pide fondos para Entre Ríos",
+   "text": "El gobernador de Entre Ríos ofrece el apoyo de sus legisladores a cambio de obras en rutas y en el puerto de Concepción del Uruguay.",
+   "options": [
+    {
+     "label": "Prometer las obras",
+     "result": "Frigerio cumple: sus diputados se suman.",
+     "e": {
+      "stats": {
+       "caja": -6
+      },
+      "blocs": {
+       "dip:pro": 6
+      }
+     }
+    },
+    {
+     "label": "Decirle que ya tiene lo suyo",
+     "result": "Frigerio no se enoja, pero tampoco ayuda.",
+     "e": {}
+    }
+   ],
+   "role": "Gobernador de Entre Ríos"
+  },
+  {
+   "id": "cornejo",
+   "turn": 3,
+   "who": "Alfredo Cornejo",
+   "title": "Cornejo pide obras hídricas",
+   "text": "El gobernador de Mendoza pide financiamiento para obras de agua y que el proyecto no toque el calendario electoral provincial.",
+   "options": [
+    {
+     "label": "Aceptar las dos cosas",
+     "result": "Cornejo ordena a los suyos.",
+     "e": {
+      "stats": {
+       "caja": -6
+      },
+      "blocs": {
+       "dip:ucr": 6,
+       "sen:ucr": 4
+      }
+     }
+    },
+    {
+     "label": "Solo garantizar el calendario provincial",
+     "result": "Le alcanza a medias.",
+     "e": {
+      "blocs": {
+       "dip:ucr": 2
+      }
+     }
+    }
+   ],
+   "role": "Gobernador de Mendoza"
+  },
+  {
+   "id": "jujuy_corrientes",
+   "turn": 4,
+   "who": "Carlos Sadir y Juan Pablo Valdés",
+   "title": "Jujuy y Corrientes ofrecen votos",
+   "text": "Los gobernadores de Jujuy y Corrientes ofrecen los votos de sus legisladores si reciben fondos de emergencia por la sequía y por las inundaciones.",
+   "options": [
+    {
+     "label": "Firmar los convenios",
+     "result": "Te cuesta caja, pero sumás votos radicales.",
+     "e": {
+      "stats": {
+       "caja": -8
+      },
+      "blocs": {
+       "dip:pu": 5,
+       "dip:ucr": 5,
+       "sen:ucr": 4
+      }
+     }
+    },
+    {
+     "label": "Ofrecer la mitad",
+     "result": "Aceptan la mitad del apoyo.",
+     "e": {
+      "stats": {
+       "caja": -4
+      },
+      "blocs": {
+       "dip:ucr": 3
+      }
+     }
+    }
+   ],
+   "role": "Gobernadores"
+  },
+  {
+   "id": "quintela",
+   "turn": 3,
+   "who": "Ricardo Quintela",
+   "title": "Quintela organiza el frente del no",
+   "text": "El gobernador de La Rioja reúne a los gobernadores peronistas duros y anuncia que van a votar en contra \"en bloque\".",
+   "options": [
+    {
+     "label": "Ofrecerle algo a La Rioja para romper el frente",
+     "result": "Quintela no cede, pero algún senador duda.",
+     "e": {
+      "stats": {
+       "caja": -6
+      },
+      "blocs": {
+       "sen:popular": 4
+      }
+     }
+    },
+    {
+     "label": "Ignorarlo y trabajar con los otros",
+     "result": "El frente del no se consolida.",
+     "e": {
+      "blocs": {
+       "sen:popular": -4,
+       "dip:up": -3
+      }
+     }
+    }
+   ],
+   "role": "Gobernador de La Rioja"
+  },
+  {
+   "id": "intendentes",
+   "turn": 2,
+   "who": "Intendentes del conurbano",
+   "title": "Los intendentes quieren hablar",
+   "text": "Un grupo de intendentes peronistas del conurbano te pide una reunión reservada: sin PASO, temen que el kirchnerismo arme las listas solo.",
+   "options": [
+    {
+     "label": "Recibirlos en secreto",
+     "result": "La reunión se filtra, pero algunos diputados peronistas empiezan a dudar.",
+     "e": {
+      "stats": {
+       "interna": -3
+      },
+      "blocs": {
+       "dip:up": 6
+      }
+     }
+    },
+    {
+     "label": "No recibirlos",
+     "result": "Nada cambia.",
+     "e": {}
+    }
+   ]
+  },
+  {
+   "id": "sesion_paralela",
+   "turn": 5,
+   "who": "Oposición",
+   "title": "La oposición pide sesión el mismo día",
+   "text": "La oposición pide una sesión especial para tratar el financiamiento universitario el mismo día y a la misma hora que la tuya. Algunos aliados dicen que van a ir a esa.",
+   "options": [
+    {
+     "label": "Mover tu sesión un día",
+     "result": "Perdés tiempo, pero no aliados.",
+     "e": {
+      "stats": {
+       "capital": -2
+      }
+     }
+    },
+    {
+     "label": "Mantener la fecha y presionar a los aliados",
+     "result": "Algunos aliados se molestan.",
+     "e": {
+      "stats": {
+       "interna": 2
+      },
+      "blocs": {
+       "dip:ucr": -4,
+       "dip:pu": -3
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "reelecciones",
+   "turn": 4,
+   "who": "Gobernadores",
+   "title": "Los gobernadores quieren sumar las reelecciones",
+   "text": "Varios gobernadores proponen que el proyecto también habilite reelecciones indefinidas en las provincias que quieran. Te ofrecen votos a cambio.",
+   "options": [
+    {
+     "label": "Aceptar",
+     "result": "Sumás votos, pero la Coalición Cívica y los radicales ponen el grito en el cielo.",
+     "e": {
+      "stats": {
+       "imagen": -6
+      },
+      "blocs": {
+       "sen:salta": 8,
+       "sen:misiones": 8,
+       "dip:innov": 6,
+       "dip:cc": -10,
+       "dip:ucr": -6
+      }
+     }
+    },
+    {
+     "label": "Rechazar en público",
+     "result": "Ganás imagen y algún gobernador se enoja.",
+     "e": {
+      "stats": {
+       "imagen": 4
+      },
+      "blocs": {
+       "sen:salta": -4,
+       "sen:misiones": -4
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "veto_amenaza",
+   "turn": 5,
+   "who": "Javier Milei",
+   "title": "Milei amenaza con vetar cambios",
+   "text": "Milei dice que si el Congreso \"le mete cambios\" al proyecto, lo veta. Los dialoguistas que negociaron modificaciones se sienten traicionados.",
+   "options": [
+    {
+     "label": "Pedirle que lo desmienta",
+     "result": "Lo hace a medias.",
+     "e": {
+      "stats": {
+       "interna": -4
+      },
+      "blocs": {
+       "dip:pu": 2
+      }
+     }
+    },
+    {
+     "label": "Usarlo como presión: \"o esto o nada\"",
+     "result": "Algunos se ordenan, otros se van.",
+     "e": {
+      "stats": {
+       "interna": 3
+      },
+      "blocs": {
+       "dip:pro": 3,
+       "dip:pu": -4,
+       "dip:ucr": -3
+      }
+     }
+    }
+   ],
+   "role": "Presidente"
   }
  ],
  "endings": {
@@ -3768,6 +4185,102 @@
     }
    ],
    "role": "FIT-U"
+  }
+ ],
+ "scenarios": [
+  {
+   "id": "triunfo",
+   "title": "Después del triunfo",
+   "text": "El oficialismo viene de ganar las legislativas y tiene la iniciativa. Los aliados quieren estar cerca del ganador.",
+   "stats": {
+    "capital": 10,
+    "imagen": 8
+   },
+   "blocs": {
+    "dip:pro": 5,
+    "dip:mid": 5,
+    "sen:pro": 5
+   }
+  },
+  {
+   "id": "escandalo",
+   "title": "Golpeado por un escándalo",
+   "text": "Una causa de corrupción salpica al Gobierno justo cuando arranca la negociación. Nadie quiere sacarse la foto con vos.",
+   "stats": {
+    "imagen": -6,
+    "capital": -2
+   },
+   "blocs": {
+    "dip:ucr": -2,
+    "dip:cc": -4
+   }
+  },
+  {
+   "id": "caja",
+   "title": "Caja flaca",
+   "text": "Caputo recortó todo para cumplir la meta fiscal: tenés poca plata para ofrecer y vas a tener que negociar con otra cosa.",
+   "stats": {
+    "caja": -12,
+    "capital": 5
+   }
+  },
+  {
+   "id": "gobernadores",
+   "title": "Gobernadores en pie de guerra",
+   "text": "Los gobernadores están enojados por los recortes de fondos y se cerraron en bloque. Para destrabarlos vas a tener que poner plata.",
+   "stats": {
+    "caja": 10
+   },
+   "blocs": {
+    "dip:innov": -5,
+    "dip:ind": -5,
+    "dip:elijo": -5,
+    "dip:psc": -5,
+    "dip:neuq": -5,
+    "dip:pyt": -5,
+    "sen:salta": -5,
+    "sen:misiones": -5,
+    "sen:chubut": -5,
+    "sen:movere": -5,
+    "sen:ind": -5,
+    "sen:neuq": -5
+   }
+  },
+  {
+   "id": "peronismo",
+   "title": "Peronismo partido",
+   "text": "La interna entre La Cámpora y el kicillofismo estalló: hay peronistas del interior dispuestos a escucharte. En la Rosada desconfían de esas charlas.",
+   "stats": {
+    "interna": -2
+   },
+   "blocs": {
+    "dip:up": 20,
+    "sen:popular": 20
+   }
+  },
+  {
+   "id": "interna",
+   "title": "Interna caliente en la Rosada",
+   "text": "Karina Milei no te quiere al frente de la negociación y espera tu primer error. Afuera, en cambio, tenés buena imagen.",
+   "stats": {
+    "interna": -8,
+    "imagen": 6
+   }
+  },
+  {
+   "id": "aliados",
+   "title": "Aliados exigentes",
+   "text": "El PRO, la UCR y el MID sienten que el Gobierno los ninguneó y quieren cobrar cada voto. Por suerte, la caja está llena.",
+   "stats": {
+    "caja": 12
+   },
+   "blocs": {
+    "dip:pro": -5,
+    "dip:mid": -5,
+    "dip:ucr": -5,
+    "sen:pro": -4,
+    "sen:ucr": -4
+   }
   }
  ]
 }
