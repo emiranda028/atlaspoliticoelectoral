@@ -959,8 +959,8 @@
       root.querySelector('[data-next]').addEventListener('click', () => S.over ? ending(S.over) : (checkOver() ? ending(S.over) : nextTurn()));
     }
     // The rosca: whole and crowned if you won, bitten if the rosca ate you
-    const ROSCA_LINE = { win: '¡Ganaste la rosca!', winLemas: 'Ganaste la rosca… con lemas', time: 'Te comió la rosca', fired: 'La rosca te pasó por arriba', sidelined: 'Te sacaron de la rosca', rejected: 'Diputados se comió la rosca', rejectedSen: 'El Senado se comió la rosca',
-      oppTime: '¡Ganaste la rosca! Hay PASO', oppRejected: 'Diputados se comió la rosca del Gobierno', oppRejectedSen: 'El Senado se comió la rosca del Gobierno', oppLaw: 'Te comieron la rosca', oppFired: 'La rosca te pasó por arriba', oppSplit: 'Se te partió la rosca' };
+    const ROSCA_LINE = { win: '¡Ganaste la rosca!', winLemas: 'Ganaste la rosca… con lemas', time: 'La rosca te comió', fired: 'La rosca te pasó por arriba', sidelined: 'Te sacaron de la rosca', rejected: 'Diputados se comió la rosca', rejectedSen: 'El Senado se comió la rosca',
+      oppTime: '¡Ganaste la rosca! Hay PASO', oppRejected: 'Diputados se comió la rosca del Gobierno', oppRejectedSen: 'El Senado se comió la rosca del Gobierno', oppLaw: 'La rosca te ganó', oppFired: 'La rosca te pasó por arriba', oppSplit: 'Se te partió la rosca' };
     const WINS = ['win', 'winLemas', 'oppTime', 'oppRejected', 'oppRejectedSen'];
     function roscaSVG(kind, bg) {
       const win = kind === 'win' || kind === 'winLemas' || kind === 'oppTime', id = 'r' + Math.random().toString(36).slice(2, 8);
