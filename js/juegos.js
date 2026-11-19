@@ -418,7 +418,7 @@
       wireBack(root);
       root.querySelectorAll('[data-k]').forEach(b => b.addEventListener('click', () => {
         const o = d.options[+b.getAttribute('data-k')]; apply(o.e); S.log.push({ t: 'Proyecto', r: o.label });
-        outcome('El proyecto entra al Congreso', o.result, () => nextTurn(true), { who: 'Javier Milei · Presidente', title: 'Cómo eliminar las PASO', choice: o.label, result: o.result });
+        outcome('El proyecto entra al Congreso', o.result, () => nextTurn(true), { who: 'Javier Milei · Presidente', title: 'Cómo eliminar las PASO', choice: o.label, decision: `Proyecto: ${o.label}`, result: o.result });
       }));
     }
     // Every move can be shared as its own card: the situation, what you chose and what happened
@@ -432,17 +432,38 @@
         <div class="jgx-stats is-sm">${STATS.map(k => `<div class="jgx-stat"><span>${esc(D.stats[k].label)}</span><div class="jgx-stat-t"><i style="width:${stat(k)}%"></i></div><b>${stat(k)}</b></div>`).join('')}</div>`);
     }
     // No intermediate "Seguir" screen: what happened shows on top of the next step
+    // What changed since the screen where the decision was taken
+    function deltas() {
+      const p = S.snap; if (!p) return [];
+      const out = STATS.map(k => [STAT_SHORT[k], S.stats[k] - p.stats[k]]);
+      return out.filter(([, v]) => v);
+    }
     function outcome(title, text, then, move) {
-      S.last = { title, text, card: move ? moveCard(move) : null, share: move ? `En "La rosca" del Atlas: ${move.title} → ${move.choice}. ¿Vos qué hacías?` : '' };
+      const decision = move ? (move.decision || move.choice) : title;
+      S.last = { decision, context: move && !move.decision ? move.title : '', text, turn: S.turn, d: deltas(), card: move ? moveCard(move) : null, share: move ? `En "La rosca" del Atlas: ${move.title} → ${move.choice}. ¿Vos qué hacías?` : '' };
       const over = checkOver();
       return over ? ending(over) : then();
     }
+    // No intermediate screen: the result of your last decision on top, clearly
+    // separated from the new situation below it
     function paint(inner) {
       const last = S.last; S.last = null;
-      const banner = last ? `<div class="rs-last" role="status"><div><span class="rs-last-k">Lo que pasó</span><b>${esc(last.title)}.</b> ${esc(last.text)}</div>${last.card ? `<button type="button" class="rs-last-share" data-img="share" title="Compartir esta jugada como imagen">📸<span> Compartir</span></button>` : ''}</div>` : '';
+      let banner = '';
+      if (last) {
+        const chips = last.d.map(([k, v]) => `<span class="${v > 0 ? 'is-up' : 'is-down'}">${esc(k)} ${v > 0 ? '+' : '−'}${Math.abs(v)}</span>`).join('');
+        banner = `<div class="rs-last" role="status">
+            <div class="rs-last-body"><span class="rs-last-k">✓ Tu decisión</span>
+              <b class="rs-last-dec">${esc(last.decision)}</b>${last.context ? `<small class="rs-last-ctx">ante «${esc(last.context)}»</small>` : ''}
+              <p class="rs-last-res"><span>Resultado:</span> ${esc(last.text)}</p>
+              ${chips ? `<div class="rs-last-chips">${chips}</div>` : ''}</div>
+            ${last.card ? `<button type="button" class="rs-last-share" data-img="share" title="Compartir esta jugada como imagen">📸<span> Compartir</span></button>` : ''}
+          </div>
+          <div class="rs-next-k">${S.turn !== last.turn ? `Empieza la semana ${Math.min(S.turn + 1, S.maxTurns)} · nueva situación` : 'Siguiente situación'} <span aria-hidden="true">↓</span></div>`;
+      }
       root.innerHTML = frame(banner + inner);
       wireBack(root);
       if (last && last.card) wireShare(root.querySelector('.rs-last'), last.share, last.card, 'rosca-jugada');
+      S.snap = { stats: Object.assign({}, S.stats), dip: count('dip').exp, sen: count('sen').exp };
       toTop();
     }
     function checkOver() {
@@ -517,13 +538,13 @@
         g.blocs.forEach(k => { e.blocs[k] = gain; });
         apply(e); S.govUsed[g.id] = used + 1; S.log.push({ t: 'Negociación', r: g.name });
         const res = `${g.name} se lleva lo suyo para ${g.prov}. Sus legisladores se acercan al proyecto (+${gain}).`;
-        outcome(`Reunión con ${g.name}`, res, () => nextTurn(), { who: g.name + ' · ' + g.prov, title: `Rosca con ${g.name}`, text: g.pitch, choice: `Negociar (${cost} de caja)`, result: res });
+        outcome(`Reunión con ${g.name}`, res, () => nextTurn(), { who: g.name + ' · ' + g.prov, title: `Rosca con ${g.name}`, text: g.pitch, choice: `Negociar (${cost} de caja)`, decision: `Negociar con ${g.name} (${g.prov})`, result: res });
       }));
       root.querySelectorAll('[data-act]').forEach(b => b.addEventListener('click', () => {
         const a = b.getAttribute('data-act');
         if (a === 'pass') return nextTurn();
-        if (a === 'media') { apply({ stats: { imagen: 7, capital: -4 } }); const res = 'Pasaste por cuatro canales y dos streams. Instalaste que las PASO son "una encuesta carísima".'; return outcome('Gira de medios', res, () => nextTurn(), { title: 'Gira de medios', choice: 'Ir a los medios', result: res }); }
-        if (a === 'cede') { apply({ stats: { interna: -6 }, blocs: { 'dip:ucr': 12, 'sen:ucr': 12, 'dip:pu': 10, 'sen:pu': 10, 'dip:cc': 8 } }); const res = 'Aceptaste plazos más largos y una cláusula de revisión. Los dialoguistas lo valoran; en la Casa Rosada, no tanto.'; return outcome('Cambios en el texto', res, () => nextTurn(), { title: 'Cambios en el texto', choice: 'Ceder en el texto', result: res }); }
+        if (a === 'media') { apply({ stats: { imagen: 7, capital: -4 } }); const res = 'Pasaste por cuatro canales y dos streams. Instalaste que las PASO son "una encuesta carísima".'; return outcome('Gira de medios', res, () => nextTurn(), { title: 'Gira de medios', choice: 'Ir a los medios', decision: 'Ir a los medios', result: res }); }
+        if (a === 'cede') { apply({ stats: { interna: -6 }, blocs: { 'dip:ucr': 12, 'sen:ucr': 12, 'dip:pu': 10, 'sen:pu': 10, 'dip:cc': 8 } }); const res = 'Aceptaste plazos más largos y una cláusula de revisión. Los dialoguistas lo valoran; en la Casa Rosada, no tanto.'; return outcome('Cambios en el texto', res, () => nextTurn(), { title: 'Cambios en el texto', choice: 'Ceder en el texto', decision: 'Ceder en el texto', result: res }); }
         if (a === 'vote') return session(ch);
       }));
     }
