@@ -6355,6 +6355,9 @@
   .rs-card.is-outcome { border-left: 4px solid #6B2A7A; }
   .rs-warn { font-size: 13.5px !important; background: #FFF6D6; border-radius: 10px; padding: 8px 12px; color: var(--ink) !important; }
   .rs-card.is-q { border-color: #6B2A7A; }
+  .rs-calls { background: #FFF4E5; border-left: 4px solid #E08A1E; border-radius: 10px; padding: 9px 12px; margin: 8px 0 10px; font-size: 13.5px; }
+  .rs-calls ul { margin: 4px 0 0; padding-left: 18px; } .rs-calls li { margin: 2px 0; }
+  .rs-calls em { font-style: normal; font-weight: 800; margin-left: 4px; } .rs-calls .is-down em { color: #A3262F; } .rs-calls .is-up em { color: #1F6B45; }
   .rs-card.is-noq .rs-tally { grid-template-columns: 1fr; }
   .rs-acts { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0 6px; }
   .rs-sub { font: 700 15px var(--font-serif); margin: 16px 0 8px; }
@@ -35191,7 +35194,7 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
     if (window.AtlasJuegos) return window.AtlasJuegos.render(el, game);
     if (document.getElementById('juegos-js')) { pendingGame = game; return; }
     const sc = document.createElement('script');
-    sc.id = 'juegos-js'; sc.src = 'js/juegos.js?v=13';
+    sc.id = 'juegos-js'; sc.src = 'js/juegos.js?v=14';
     sc.onload = () => { const g = game || pendingGame; pendingGame = null; window.AtlasJuegos && window.AtlasJuegos.render(el, g); };
     sc.onerror = () => { el.innerHTML = '<div class="jg-loading">No se pudieron cargar los juegos.</div>'; };
     document.head.appendChild(sc);
