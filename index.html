@@ -6299,6 +6299,7 @@
   .jgx-stat b { text-align: right; font-weight: 800; }
   .jgx-stat-t { height: 18px; border-radius: 9px; background: #E6E0D5; overflow: hidden; }
   .jgx-stat-t i { display: block; height: 100%; background: var(--jgx); }
+  .jgx-record { display: inline-block; align-self: flex-start; font: 800 26px var(--font-sans); color: #3D2B00; background: #F7D774; border-radius: 12px; padding: 10px 18px; }
   .jgx-facts { display: flex; flex-wrap: wrap; gap: 8px 36px; font: 500 26px var(--font-sans); color: #4A5060; }
   .jgx-facts b { color: #141821; }
   .jgx-flashes { display: flex; flex-direction: column; gap: 8px; padding: 22px 26px; border-left: 8px solid #D62839; background: rgba(214,40,57,.06); border-radius: 4px; }
@@ -6483,6 +6484,18 @@
   .rs-govnote { background: #EEF3FA; border-left: 4px solid #2F6DB5; border-radius: 10px; padding: 8px 12px; margin-bottom: 10px; font-size: 13.5px; line-height: 1.4; color: var(--ink); }
   .rs-govnote span { display: block; font: 800 10.5px var(--font-sans); letter-spacing: .1em; text-transform: uppercase; color: #2F6DB5; margin-bottom: 2px; }
   .rs-govnote p { margin: 0; }
+  .rs-blocpick { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin: 14px 0 12px; }
+  .rs-role.is-bloc { align-items: stretch; text-align: left; }
+  .rs-role.is-bloc span { font-size: 13px; }
+  .rs-bp-seats { font-weight: 700; color: var(--ink) !important; }
+  .rs-bp-best { font-weight: 700; color: #8A5A00 !important; }
+  @media (max-width: 600px) { .rs-blocpick { grid-template-columns: 1fr; } }
+  .is-reparto .jg-opt { display: flex; flex-direction: column; align-items: flex-start; gap: 2px; text-align: left; }
+  .is-reparto .jg-opt small { font-size: 12.5px; color: var(--ink-soft); font-weight: 400; }
+  .rs-record { font: 700 15px var(--font-sans); color: #8A5A00; background: #FFF6D6; border-radius: 10px; padding: 8px 12px; display: inline-block; }
+  .rs-record.is-new { background: #F2B705; color: #3D2B00; }
+  :root[data-theme="dark"] .rs-record { background: rgba(242,183,5,.15); color: #F2C94C; }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .rs-record { background: rgba(242,183,5,.15); color: #F2C94C; } }
   .rs-offers { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin: 10px 0; }
   .rs-offer { display: flex; flex-direction: column; gap: 4px; padding: 12px; border-radius: 12px; border: 1.5px solid var(--line); background: var(--surface); min-width: 0; }
   .rs-offer.is-gov { border-color: #B98AC9; background: #FAF5FC; } .rs-offer.is-opp { border-color: #8FB0DA; background: #F2F6FC; }
@@ -35366,7 +35379,7 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
     if (window.AtlasJuegos) return window.AtlasJuegos.render(el, game);
     if (document.getElementById('juegos-js')) { pendingGame = game; return; }
     const sc = document.createElement('script');
-    sc.id = 'juegos-js'; sc.src = 'js/juegos.js?v=31';
+    sc.id = 'juegos-js'; sc.src = 'js/juegos.js?v=32';
     sc.onload = () => { const g = game || pendingGame; pendingGame = null; window.AtlasJuegos && window.AtlasJuegos.render(el, g); };
     sc.onerror = () => { el.innerHTML = '<div class="jg-loading">No se pudieron cargar los juegos.</div>'; };
     document.head.appendChild(sc);

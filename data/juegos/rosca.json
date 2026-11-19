@@ -6601,8 +6601,8 @@
   }
  },
  "neg": {
-  "role": "la presidencia de Provincias Unidas, el bloque bisagra",
-  "intro": "Noviembre de 2026. El Gobierno quiere eliminar las PASO y la oposición quiere frenarlo. En el medio estás vos: presidís el bloque de Provincias Unidas, con 18 diputados y 2 senadores que responden a los gobernadores de Santa Fe, Córdoba y Chubut. No te importa tanto si la ley sale o no: te importa cuánto le sacás a cada lado para tus provincias.",
+  "role": "la presidencia de un bloque bisagra",
+  "intro": "Noviembre de 2026. El Gobierno quiere eliminar las PASO y la oposición quiere frenarlo. En el medio estás vos: presidís {bloc}, con {nd} diputados y {ns} senadores que responden a {govs}. No te importa tanto si la ley sale o no: te importa cuánto le sacás a cada lado para tus provincias.",
   "stats": {
    "capital": {
     "label": "Credibilidad",
@@ -6625,41 +6625,19 @@
     "help": "Si llega a cero, tu bloque se parte y negocia cada uno por su cuenta."
    }
   },
-  "mine": [
-   "dip:pu",
-   "sen:pu"
-  ],
-  "govOffers": [
-   "obras de seguridad para Rosario",
-   "el pago de la deuda de la Anses con las cajas de Santa Fe y Córdoba",
-   "la autovía de la ruta 33",
-   "un adelanto de regalías para Chubut",
-   "fondos para la circunvalación de Córdoba",
-   "ATN para pagar aguinaldos",
-   "obras de agua para el norte santafesino",
-   "el gasoducto a la costa chubutense"
-  ],
-  "oppOffers": [
-   "acompañar tu ley de seguridad federal",
-   "la presidencia de la comisión de Presupuesto",
-   "votar juntos el reclamo por la deuda de la Anses",
-   "apoyar el fondo de compensación para tus provincias",
-   "una ley de biocombustibles para Santa Fe y Córdoba",
-   "el régimen de zona fría para Chubut"
-  ],
   "events": [
    {
     "id": "n_jefes",
     "turn": 1,
     "core": true,
-    "who": "Maximiliano Pullaro y Martín Llaryora",
-    "role": "Gobernadores de Provincias Unidas",
-    "title": "Tus dos gobernadores tiran para lados distintos",
-    "text": "Pullaro quiere cerrar rápido con la Rosada por la deuda de la Anses con la caja santafesina. Llaryora prefiere esperar: \"Si nos apuramos, cobramos la mitad\".",
+    "who": "{g1} y {g2}",
+    "role": "Tus gobernadores",
+    "title": "Tus gobernadores tiran para lados distintos",
+    "text": "{g1} quiere cerrar rápido con la Rosada: necesita fondos ya. {g2} prefiere esperar: \"Si nos apuramos, cobramos la mitad\".",
     "options": [
      {
-      "label": "Darle la razón a Llaryora: esperar y subir el precio",
-      "result": "Pullaro acepta a regañadientes. La Rosada nota que no tenés apuro.",
+      "label": "Darle la razón a {g2}: esperar y subir el precio",
+      "result": "{g1} acepta a regañadientes. La Rosada nota que no tenés apuro.",
       "e": {
        "stats": {
         "interna": -4
@@ -6669,7 +6647,7 @@
       }
      },
      {
-      "label": "Darle la razón a Pullaro: mostrarse dispuestos a cerrar",
+      "label": "Darle la razón a {g1}: mostrarse dispuestos a cerrar",
       "result": "La Rosada te atiende enseguida, pero sabe que estás apurado.",
       "e": {
        "stats": {
@@ -6758,9 +6736,9 @@
     "turn": 2,
     "core": true,
     "who": "Un diputado de tu bloque",
-    "role": "Provincias Unidas",
+    "role": "{bloc}",
     "title": "Uno de tus diputados quiere votar ya con el Gobierno",
-    "text": "Un diputado santafesino anuncia en una radio que \"va a acompañar al Gobierno pase lo que pase\". Si lo dejás, otros pueden seguirlo.",
+    "text": "Un diputado de {p1} anuncia en una radio que \"va a acompañar al Gobierno pase lo que pase\". Si lo dejás, otros pueden seguirlo.",
     "options": [
      {
       "label": "Pedirle disciplina de bloque",
@@ -6785,16 +6763,16 @@
     ]
    },
    {
-    "id": "n_torres",
+    "id": "n_solo",
     "turn": 3,
-    "who": "Ignacio Torres",
-    "role": "Gobernador de Chubut",
-    "title": "Torres quiere algo solo para Chubut",
-    "text": "El gobernador chubutense pide que el próximo acuerdo incluya un adelanto de regalías para su provincia, aunque sea a costa del resto.",
+    "who": "{sg}",
+    "role": "Gobernador de {sp}",
+    "title": "{sg} quiere algo solo para {sp}",
+    "text": "{sg} pide que el próximo acuerdo incluya {sw}, aunque sea a costa del resto del bloque.",
     "options": [
      {
-      "label": "Aceptar: Chubut primero en la lista",
-      "result": "Torres contento. Los demás gobernadores del bloque hacen cuentas.",
+      "label": "Aceptar: {sp} primero en la lista",
+      "result": "{sg} contento. Los demás gobernadores del bloque hacen cuentas.",
       "e": {
        "stats": {
         "interna": -5,
@@ -6804,7 +6782,7 @@
      },
      {
       "label": "Rechazar: \"Todo se reparte entre todos\"",
-      "result": "Torres amenaza con negociar por su cuenta.",
+      "result": "{sg} amenaza con negociar por su cuenta.",
       "e": {
        "stats": {
         "interna": 2,
@@ -6910,7 +6888,7 @@
     "who": "Encuestadoras",
     "role": "",
     "title": "En tus provincias, 6 de cada 10 quieren eliminar las PASO",
-    "text": "Una encuesta en Santa Fe y Córdoba muestra que la mayoría quiere votar una sola vez. Tus intendentes te piden que no quedes del lado \"equivocado\".",
+    "text": "Una encuesta en {provs} muestra que la mayoría quiere votar una sola vez. Tus intendentes te piden que no quedes del lado \"equivocado\".",
     "options": [
      {
       "label": "Usarla para presionar a la oposición",
@@ -6939,9 +6917,9 @@
     "turn": 5,
     "phase": "sen",
     "who": "Tus senadores",
-    "role": "Provincias Unidas",
-    "title": "Tus dos senadores piden su parte",
-    "text": "Ahora que el proyecto está en el Senado, tus dos senadores quieren que algo del acuerdo vaya a sus provincias. Si no, amenazan con votar por su cuenta.",
+    "role": "{bloc}",
+    "title": "Tus senadores piden su parte",
+    "text": "Ahora que el proyecto está en el Senado, tus senadores quieren que algo del acuerdo vaya a sus provincias. Si no, amenazan con votar por su cuenta.",
     "options": [
      {
       "label": "Darles una parte del botín",
@@ -7023,6 +7001,217 @@
       }
      }
     ]
+   },
+   {
+    "id": "n_robo",
+    "turn": 3,
+    "who": "Casa Rosada",
+    "role": "Ministerio del Interior",
+    "title": "La Rosada quiere llevarse a dos de tus diputados",
+    "text": "Santilli les ofrece a dos diputados de tu bloque armar un monobloque \"dialoguista\" con fondos propios para sus distritos.",
+    "options": [
+     {
+      "label": "Retenerlos con una parte del botín",
+      "result": "Se quedan, pero te cuesta.",
+      "e": {
+       "stats": {
+        "caja": -5,
+        "interna": 4
+       }
+      }
+     },
+     {
+      "label": "Dejarlos ir: \"La puerta está abierta\"",
+      "result": "Se van con todo y tu bloque queda más chico y más débil.",
+      "e": {
+       "stats": {
+        "interna": -10
+       },
+       "pg": -0.1,
+       "po": -0.05
+      }
+     }
+    ]
+   },
+   {
+    "id": "n_intendentes",
+    "turn": 4,
+    "who": "Intendentes de {p1}",
+    "role": "",
+    "title": "Los intendentes de {p1} quieren su parte",
+    "text": "Los intendentes de la provincia te recuerdan que ellos ponen los votos en 2027: quieren obras en sus municipios, no \"en la capital\".",
+    "options": [
+     {
+      "label": "Prometerles una parte del botín",
+      "result": "Los intendentes se ordenan. El botín se achica.",
+      "e": {
+       "stats": {
+        "caja": -4,
+        "imagen": 3,
+        "interna": 3
+       }
+      }
+     },
+     {
+      "label": "Decirles que primero está la provincia",
+      "result": "Te critican en las radios locales.",
+      "e": {
+       "stats": {
+        "imagen": -4
+       }
+      }
+     }
+    ]
+   },
+   {
+    "id": "n_listas",
+    "turn": 5,
+    "who": "La Libertad Avanza",
+    "role": "",
+    "title": "La Libertad Avanza le ofrece una candidatura a uno de tus diputados",
+    "text": "Karina Milei le ofrece a uno de tus diputados encabezar la lista libertaria en {p2} en 2027. Si acepta, se lleva su voto.",
+    "options": [
+     {
+      "label": "Ofrecerle tu apoyo para otra candidatura",
+      "result": "Se queda en tu bloque. Te debe una.",
+      "e": {
+       "stats": {
+        "capital": -3,
+        "interna": 3
+       }
+      }
+     },
+     {
+      "label": "Dejarlo decidir solo",
+      "result": "Acepta y vota con el Gobierno pase lo que pase.",
+      "e": {
+       "stats": {
+        "interna": -6
+       },
+       "pg": -0.1
+      }
+     }
+    ]
+   },
+   {
+    "id": "n_interna",
+    "turn": 5,
+    "who": "La oposición",
+    "role": "",
+    "title": "La oposición te ofrece una interna abierta en 2027",
+    "text": "Un sector de la oposición te propone competir en una interna abierta para 2027 si tu bloque vota en contra. \"Para eso están las PASO\", te dicen.",
+    "options": [
+     {
+      "label": "Mostrarte interesado",
+      "result": "La oposición sube su oferta. La Rosada se preocupa.",
+      "e": {
+       "stats": {
+        "capital": -2
+       },
+       "pg": 0.05,
+       "po": 0.15
+      }
+     },
+     {
+      "label": "Rechazar: \"Nuestro proyecto es provincial\"",
+      "result": "Sumás imagen en tus provincias.",
+      "e": {
+       "stats": {
+        "imagen": 3
+       }
+      }
+     }
+    ]
+   },
+   {
+    "id": "n_corte",
+    "turn": 6,
+    "who": "Corte Suprema",
+    "role": "",
+    "title": "La Corte demora un fallo sobre la coparticipación de {p1}",
+    "text": "Un reclamo de la provincia por fondos de coparticipación sigue sin fallo. La Rosada te sugiere que \"un gesto en el Congreso\" podría ayudar a destrabarlo.",
+    "options": [
+     {
+      "label": "Usarlo para subir el precio del Gobierno",
+      "result": "La Rosada mejora su oferta.",
+      "e": {
+       "stats": {
+        "capital": -2
+       },
+       "pg": 0.15
+      }
+     },
+     {
+      "label": "Separar los temas: \"La Justicia es la Justicia\"",
+      "result": "Ganás respeto, no botín.",
+      "e": {
+       "stats": {
+        "capital": 4,
+        "imagen": 2
+       }
+      }
+     }
+    ]
+   },
+   {
+    "id": "n_lealtad",
+    "turn": 7,
+    "who": "{g1}",
+    "role": "Gobernador de {p1}",
+    "title": "{g1} te pide que cierres ya",
+    "text": "\"No quiero quedar como el que subastó las PASO\", te dice {g1}. Quiere que el bloque defina antes del fin de semana.",
+    "options": [
+     {
+      "label": "Pedirle una semana más",
+      "result": "Acepta, pero te lo va a cobrar en el reparto.",
+      "e": {
+       "stats": {
+        "interna": -5
+       }
+      }
+     },
+     {
+      "label": "Prometerle que cerrás ya",
+      "result": "Se tranquiliza. Los dos lados notan tu apuro.",
+      "e": {
+       "stats": {
+        "interna": 4
+       },
+       "pg": -0.1,
+       "po": -0.1
+      }
+     }
+    ]
+   },
+   {
+    "id": "n_pragma",
+    "turn": 6,
+    "who": "Encuestadoras",
+    "role": "",
+    "title": "Una encuesta dice que tu bloque es \"el más pragmático\" del Congreso",
+    "text": "En {provs}, la gente valora que \"negocies por la provincia\". El dato llega a la Rosada y a la oposición.",
+    "options": [
+     {
+      "label": "Usarlo en los medios",
+      "result": "Tus votos cotizan más.",
+      "e": {
+       "stats": {
+        "imagen": 3
+       },
+       "pg": 0.05,
+       "po": 0.05
+      }
+     },
+     {
+      "label": "No hacer olas",
+      "result": "La encuesta pasa sin pena ni gloria.",
+      "e": {
+       "stats": {
+        "capital": 2
+       }
+      }
+     }
+    ]
    }
   ],
   "flashes": [
@@ -7062,7 +7251,7 @@
     "text": "\"¿Cuánto vale tu voto? ¿Una ruta? ¿Dos?\", te dispara en medio de la entrevista.",
     "options": [
      {
-      "label": "\"Vale lo que necesitan los santafesinos y los cordobeses\"",
+      "label": "\"Vale lo que necesita la gente de {provs}\"",
       "result": "La respuesta funciona en tus provincias.",
       "e": {
        "stats": {
@@ -7108,6 +7297,9 @@
        }
       }
      }
+    ],
+    "only": [
+     "pu"
     ]
    },
    {
@@ -7227,7 +7419,7 @@
     "who": "Elisa Carrió",
     "role": "Coalición Cívica",
     "title": "Carrió dice que tu bloque \"es el diablo con boleta única\"",
-    "text": "Lilita, en un living de televisión: \"Provincias Unidas es el diablo vestido de boleta única. Pero hasta el diablo puede arrepentirse\".",
+    "text": "Lilita, en un living de televisión: \"{bloc} es el diablo vestido de boleta única. Pero hasta el diablo puede arrepentirse\".",
     "options": [
      {
       "label": "Invitarla a tomar un café",
@@ -7360,6 +7552,227 @@
       }
      }
     ]
+   },
+   {
+    "id": "n_chats",
+    "who": "Prensa",
+    "role": "",
+    "title": "Se filtran tus chats con los dos lados",
+    "text": "Un portal publica capturas de tus mensajes con Santilli y con dirigentes de la oposición, el mismo día y casi con las mismas palabras.",
+    "options": [
+     {
+      "label": "Decir que \"hablar con todos es mi trabajo\"",
+      "result": "Algunos te creen.",
+      "e": {
+       "stats": {
+        "capital": -4,
+        "imagen": 2
+       }
+      }
+     },
+     {
+      "label": "Denunciar una operación",
+      "result": "Nadie te cree y los dos lados desconfían.",
+      "e": {
+       "stats": {
+        "capital": -7
+       }
+      }
+     }
+    ]
+   },
+   {
+    "id": "n_fmi",
+    "who": "FMI",
+    "role": "",
+    "title": "El FMI pide cortar las transferencias discrecionales a las provincias",
+    "text": "Un informe del Fondo recomienda \"eliminar los ATN discrecionales\". La Rosada dice que \"no cambia nada\", pero baja el tono de sus ofertas.",
+    "options": [
+     {
+      "label": "Pedir que lo prometido quede por decreto",
+      "result": "Te miran mal en Economía.",
+      "e": {
+       "stats": {
+        "capital": 2
+       },
+       "pg": -0.05
+      }
+     },
+     {
+      "label": "Ignorarlo",
+      "result": "La Rosada aprovecha para ofrecerte menos.",
+      "e": {
+       "pg": -0.1
+      }
+     }
+    ]
+   },
+   {
+    "id": "n_streamer",
+    "tag": "farandula",
+    "who": "Streaming",
+    "role": "",
+    "title": "Un streamer te hace un personaje: \"el señor del 50 y 50\"",
+    "text": "Un programa de streaming te imita con una balanza en la mano. El sketch tiene millones de vistas.",
+    "options": [
+     {
+      "label": "Ir al programa y reírte de vos mismo",
+      "result": "Te ganás simpatía.",
+      "e": {
+       "stats": {
+        "imagen": 5,
+        "capital": -1
+       }
+      }
+     },
+     {
+      "label": "Pedir que lo bajen",
+      "result": "Efecto Streisand: lo ve el doble de gente.",
+      "e": {
+       "stats": {
+        "imagen": -5
+       }
+      }
+     }
+    ]
+   },
+   {
+    "id": "n_restaurante",
+    "who": "Prensa",
+    "role": "",
+    "title": "Te cruzan cenando con Santilli y con Massa la misma noche",
+    "text": "Un fotógrafo te encuentra en dos restaurantes de Puerto Madero con dos horas de diferencia: primero con el ministro del Interior, después con Sergio Massa.",
+    "options": [
+     {
+      "label": "Decir que \"el postre fue con Massa\"",
+      "result": "El chiste funciona, a medias.",
+      "e": {
+       "stats": {
+        "imagen": 2,
+        "capital": -3
+       }
+      }
+     },
+     {
+      "label": "No dar explicaciones",
+      "result": "La foto queda flotando una semana.",
+      "e": {
+       "stats": {
+        "capital": -5
+       }
+      }
+     }
+    ]
+   },
+   {
+    "id": "n_obras",
+    "who": "Vialidad Nacional",
+    "role": "",
+    "title": "Vialidad dice que las obras para tus provincias \"no están en el Presupuesto\"",
+    "text": "Un funcionario de Vialidad reconoce en una entrevista que varias obras que te prometen \"no tienen partida\".",
+    "options": [
+     {
+      "label": "Exigirle a Santilli que lo ponga por escrito",
+      "result": "Santilli lo pone por escrito. Te mira mal.",
+      "e": {
+       "stats": {
+        "capital": 2
+       },
+       "pg": -0.05
+      }
+     },
+     {
+      "label": "Usarlo para escuchar más a la oposición",
+      "result": "La oposición se entusiasma.",
+      "e": {
+       "pg": -0.05,
+       "po": 0.1
+      }
+     }
+    ]
+   },
+   {
+    "id": "n_milei_traidor",
+    "who": "Javier Milei",
+    "role": "Presidente",
+    "title": "Milei te dice \"traidor\" antes de que votes",
+    "text": "En un acto, el Presidente te nombra entre \"los que se venden por una ruta\". Todavía no votaste nada.",
+    "options": [
+     {
+      "label": "Responderle: \"Defendemos a {provs}\"",
+      "result": "Tu respuesta se celebra en tus provincias.",
+      "e": {
+       "stats": {
+        "imagen": 4
+       },
+       "pg": 0.05
+      }
+     },
+     {
+      "label": "No contestar",
+      "result": "Santilli te llama para pedir disculpas en privado.",
+      "e": {
+       "stats": {
+        "capital": 2
+       }
+      }
+     }
+    ]
+   },
+   {
+    "id": "n_bregman",
+    "who": "Myriam Bregman",
+    "role": "Frente de Izquierda",
+    "title": "Bregman: \"Esto es un mercado persa\"",
+    "text": "En el recinto, la diputada de izquierda muestra un cartel con tu foto y la palabra \"Subasta\".",
+    "options": [
+     {
+      "label": "Responderle en el recinto",
+      "result": "El cruce se viraliza. Te favorece en tus provincias.",
+      "e": {
+       "stats": {
+        "imagen": 2
+       }
+      }
+     },
+     {
+      "label": "Ignorarla",
+      "result": "El cartel es la foto del día.",
+      "e": {
+       "stats": {
+        "imagen": -3
+       }
+      }
+     }
+    ]
+   },
+   {
+    "id": "n_baile",
+    "tag": "farandula",
+    "who": "Redes sociales",
+    "role": "",
+    "title": "Tu baile en una fiesta provincial se vuelve viral",
+    "text": "Un video tuyo bailando cumbia en la fiesta del pueblo tiene más vistas que todas tus entrevistas juntas.",
+    "options": [
+     {
+      "label": "Subirlo vos también",
+      "result": "Te convertís en tendencia por un día.",
+      "e": {
+       "stats": {
+        "imagen": 4
+       }
+      }
+     },
+     {
+      "label": "Hacerte el serio",
+      "result": "Te sacan memes igual.",
+      "e": {
+       "stats": {
+        "imagen": -1
+       }
+      }
+     }
+    ]
    }
   ],
   "scenarios": [
@@ -7437,7 +7850,134 @@
    "negBurned": {
     "title": "Nadie te atiende el teléfono",
     "text": "Cambiaste tantas veces de lado que perdiste toda la credibilidad. Ni el Gobierno ni la oposición te vuelven a llamar."
+   },
+   "negSplitShare": {
+    "title": "Se pelearon por el reparto",
+    "text": "Conseguiste el botín, pero el reparto entre tus gobernadores rompió el bloque. Cada uno se va a negociar por su cuenta la próxima ley."
    }
-  }
+  },
+  "blocs": [
+   {
+    "id": "pu",
+    "name": "Provincias Unidas",
+    "short": "Santa Fe, Córdoba y Chubut",
+    "mine": [
+     "dip:pu",
+     "sen:pu"
+    ],
+    "govs": [
+     "pullaro",
+     "llaryora",
+     "torres"
+    ],
+    "expect": {
+     "pullaro": 0.4,
+     "llaryora": 0.4,
+     "torres": 0.2
+    },
+    "mult": 1.1,
+    "pitch": "El bloque bisagra más grande: 18 diputados. Todos te llaman, pero adentro tenés tres gobernadores con ego propio.",
+    "solo": {
+     "gov": "Ignacio Torres",
+     "prov": "Chubut",
+     "what": "un adelanto de regalías petroleras"
+    },
+    "govOffers": [
+     "obras de seguridad para Rosario",
+     "el pago de la deuda de la Anses con las cajas de Santa Fe y Córdoba",
+     "la autovía de la ruta 33",
+     "un adelanto de regalías para Chubut",
+     "fondos para la circunvalación de Córdoba",
+     "ATN para pagar aguinaldos",
+     "obras de agua para el norte santafesino",
+     "el gasoducto a la costa chubutense"
+    ],
+    "oppOffers": [
+     "acompañar tu ley de seguridad federal",
+     "la presidencia de la comisión de Presupuesto",
+     "votar juntos el reclamo por la deuda de la Anses",
+     "apoyar el fondo de compensación para tus provincias",
+     "una ley de biocombustibles para Santa Fe y Córdoba",
+     "el régimen de zona fría para Chubut"
+    ]
+   },
+   {
+    "id": "innov",
+    "name": "Innovación Federal",
+    "short": "Salta y Misiones",
+    "mine": [
+     "dip:innov",
+     "sen:misiones",
+     "sen:salta"
+    ],
+    "govs": [
+     "saenz",
+     "passalacqua"
+    ],
+    "expect": {
+     "saenz": 0.45,
+     "passalacqua": 0.55
+    },
+    "mult": 1.8,
+    "pitch": "7 diputados y 3 senadores: en el Senado pesás más que en Diputados. Sáenz y Passalacqua negocian juntos… casi siempre.",
+    "solo": {
+     "gov": "Hugo Passalacqua",
+     "prov": "Misiones",
+     "what": "la zona aduanera especial"
+    },
+    "govOffers": [
+     "la licitación del gasoducto del norte",
+     "fondos para las rutas salteñas",
+     "un régimen especial para la yerba mate",
+     "obras para el puerto de Posadas",
+     "ATN para pagar aguinaldos",
+     "la zona aduanera especial para Misiones"
+    ],
+    "oppOffers": [
+     "un régimen de promoción para el NOA",
+     "acompañar la ley de la yerba mate",
+     "la presidencia de la comisión de Economías Regionales",
+     "apoyar la emergencia hídrica del norte salteño"
+    ]
+   },
+   {
+    "id": "norte",
+    "name": "Bloque del Norte",
+    "short": "Tucumán y Catamarca",
+    "mine": [
+     "dip:ind",
+     "dip:elijo",
+     "sen:ind"
+    ],
+    "govs": [
+     "jaldo",
+     "jalil"
+    ],
+    "expect": {
+     "jaldo": 0.6,
+     "jalil": 0.4
+    },
+    "mult": 1.95,
+    "pitch": "Solo 6 diputados y 1 senador: valés mucho cuando la cuenta está finita y nada cuando no. Para expertos.",
+    "solo": {
+     "gov": "Raúl Jalil",
+     "prov": "Catamarca",
+     "what": "que el litio catamarqueño entre primero al RIGI"
+    },
+    "govOffers": [
+     "ATN para pagar aguinaldos en Tucumán",
+     "el ingreso del litio catamarqueño al RIGI",
+     "obras de agua para el Gran Tucumán",
+     "la repavimentación de la ruta 38",
+     "un adelanto de coparticipación"
+    ],
+    "oppOffers": [
+     "acompañar una ley de promoción del azúcar",
+     "un lugar en la mesa chica del PJ",
+     "apoyar una ley de regalías mineras",
+     "la presidencia de la comisión de Minería"
+    ]
+   }
+  ]
  }
 }
