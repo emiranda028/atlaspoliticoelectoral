@@ -6483,6 +6483,18 @@
   .rs-govnote { background: #EEF3FA; border-left: 4px solid #2F6DB5; border-radius: 10px; padding: 8px 12px; margin-bottom: 10px; font-size: 13.5px; line-height: 1.4; color: var(--ink); }
   .rs-govnote span { display: block; font: 800 10.5px var(--font-sans); letter-spacing: .1em; text-transform: uppercase; color: #2F6DB5; margin-bottom: 2px; }
   .rs-govnote p { margin: 0; }
+  .rs-offers { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin: 10px 0; }
+  .rs-offer { display: flex; flex-direction: column; gap: 4px; padding: 12px; border-radius: 12px; border: 1.5px solid var(--line); background: var(--surface); min-width: 0; }
+  .rs-offer.is-gov { border-color: #B98AC9; background: #FAF5FC; } .rs-offer.is-opp { border-color: #8FB0DA; background: #F2F6FC; }
+  .rs-offer > span { font: 800 10.5px var(--font-sans); letter-spacing: .1em; text-transform: uppercase; color: var(--ink-soft); }
+  .rs-offer > b { font: 800 22px var(--font-serif); color: var(--ink); }
+  .rs-offer > small { font-size: 12.5px; line-height: 1.35; color: var(--ink-soft); flex: 1; }
+  .rs-offer .jg-btn { margin-top: 6px; width: 100%; }
+  .rs-govnote.is-oppnote { background: #FBEFEA; border-left-color: #C2552E; } .rs-govnote.is-oppnote span { color: #C2552E; }
+  .rs-vrow.is-mine { background: #FFF6D6; border-radius: 6px; font-weight: 700; }
+  :root[data-theme="dark"] .rs-offer.is-gov, :root[data-theme="dark"] .rs-offer.is-opp, :root[data-theme="dark"] .rs-govnote.is-oppnote, :root[data-theme="dark"] .rs-vrow.is-mine { background: rgba(255,255,255,.06); }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .rs-offer.is-gov, :root:not([data-theme="light"]) .rs-offer.is-opp, :root:not([data-theme="light"]) .rs-govnote.is-oppnote, :root:not([data-theme="light"]) .rs-vrow.is-mine { background: rgba(255,255,255,.06); } }
+  @media (max-width: 600px) { .rs-offers { grid-template-columns: 1fr; gap: 8px; } .rs-offer { padding: 10px; } .rs-offer > b { font-size: 19px; } }
   .rs-bill { font: italic 600 16px/1.4 var(--font-serif); color: var(--ink); background: #F7F3EA; border-radius: 10px; padding: 8px 12px; }
   .rs-card.is-vote.is-good h3 { color: #1F7A5A; } .rs-card.is-vote.is-bad h3 { color: #B3261E; }
   :root[data-theme="dark"] .rs-govnote, :root[data-theme="dark"] .rs-bill { background: rgba(255,255,255,.06); }
@@ -35354,7 +35366,7 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
     if (window.AtlasJuegos) return window.AtlasJuegos.render(el, game);
     if (document.getElementById('juegos-js')) { pendingGame = game; return; }
     const sc = document.createElement('script');
-    sc.id = 'juegos-js'; sc.src = 'js/juegos.js?v=30';
+    sc.id = 'juegos-js'; sc.src = 'js/juegos.js?v=31';
     sc.onload = () => { const g = game || pendingGame; pendingGame = null; window.AtlasJuegos && window.AtlasJuegos.render(el, g); };
     sc.onerror = () => { el.innerHTML = '<div class="jg-loading">No se pudieron cargar los juegos.</div>'; };
     document.head.appendChild(sc);

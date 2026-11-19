@@ -387,7 +387,8 @@
     const STATS = ['capital', 'imagen', 'caja', 'interna'];
     const STAT_SHORT = { capital: 'Capital', imagen: 'Imagen', caja: 'Caja', interna: 'Interna' };
     const OPP_SHORT = { capital: 'Capital', imagen: 'Imagen', caja: 'Fichas', interna: 'Unidad' };
-    const short = k => (S && S.role === 'opp' ? OPP_SHORT : STAT_SHORT)[k];
+    const NEG_SHORT = { capital: 'Credibilidad', imagen: 'Imagen', caja: 'Botín', interna: 'Unidad' };
+    const short = k => (S && S.role === 'opp' ? OPP_SHORT : S && S.role === 'neg' ? NEG_SHORT : STAT_SHORT)[k];
     async function start() {
       root.innerHTML = '<div class="jg-loading">Cargando…</div>';
       try { D = D || await getJSON('data/juegos/rosca.json'); } catch (e) { root.innerHTML = '<div class="jg-loading">No se pudo cargar el juego.</div>'; return; }
@@ -407,7 +408,7 @@
           <div class="rs-roles">
             <button type="button" class="rs-role" data-role="gov">${ROLE_ART.gov}<div><b>Gobierno</b><span>Llevás adelante la Jefatura de Gabinete. Conseguí los votos para que no haya PASO.</span></div></button>
             <button type="button" class="rs-role" data-role="opp">${ROLE_ART.opp}<div><b>Oposición</b><span>Coordinás la oposición en el Congreso. Frená la ley mientras la Casa Rosada negocia.</span></div></button>
-            <button type="button" class="rs-role" disabled>${ROLE_ART.neg}<div><b>Negociador</b><span>Un bloque bisagra que cobra caro su voto. Muy pronto.</span></div><em>Próximamente</em></button>
+            <button type="button" class="rs-role" data-role="neg">${ROLE_ART.neg}<div><b>Negociador</b><span>Presidís un bloque bisagra. Los dos lados te necesitan: cobrá caro tu voto.</span></div><em>Nuevo</em></button>
           </div>
           <p class="jg-note">${esc(D.disclaimer)}</p></div></section>`;
       wireBack(root);
@@ -416,10 +417,11 @@
     }
     function begin(role) {
       track(`/juego/rosca/rol/${role}`, `La rosca: ${role}`);
-      const R = role === 'opp' ? D.opp : D;
+      const R = role === 'opp' ? D.opp : role === 'neg' ? D.neg : D;
       const blocs = {};
       ['dip', 'sen'].forEach(ch => D.chambers[ch].blocs.forEach(b => { blocs[ch + ':' + b.id] = Object.assign({ ch }, b); }));
-      S = { role, turn: 0, maxTurns: D.turns, stats: Object.fromEntries(STATS.map(k => [k, R.stats[k].start])), blocs, flags: {}, seen: {}, queue: [], log: [], dipPassed: false, dipVotes: null, govUsed: {}, aiUsed: {}, govImg: 50, govMom: 1, govSkip: 0, actionDone: false, over: null, lastVote: null };
+      S = { role, turn: 0, maxTurns: D.turns, stats: Object.fromEntries(STATS.map(k => [k, R.stats[k].start])), blocs, flags: {}, seen: {}, queue: [], log: [], dipPassed: false, dipVotes: null, govUsed: {}, aiUsed: {}, govImg: 50, govMom: 1, govSkip: 0, actionDone: false, over: null, lastVote: null,
+        mine: role === 'neg' ? D.neg.mine.slice() : [], got: {}, commit: null, price: { gov: 1, opp: 1 }, flips: 0, decisive: false, asked: 0 };
       // Every game is a different negotiation: a starting scenario and a draw of
       // the main situations (the core story always happens, the rest may not, and
       // some move a week earlier or later)
@@ -431,12 +433,17 @@
       intro();
     }
     const OPP = () => S && S.role === 'opp';
-    const DD = () => OPP() ? D.opp : D;
+    const NEG = () => S && S.role === 'neg';
+    const DD = () => OPP() ? D.opp : NEG() ? D.neg : D;
+    // Your own bloc (the negotiator's) only moves when you commit it
+    const isMine = k => S && S.mine && S.mine.includes(k);
     const stat = k => S.stats[k];
     function apply(e) {
       if (!e) return;
       Object.entries(e.stats || {}).forEach(([k, v]) => { S.stats[k] = clamp(S.stats[k] + v, 0, 100); });
-      Object.entries(e.blocs || {}).forEach(([k, v]) => { if (S.blocs[k]) S.blocs[k].aff = clamp(S.blocs[k].aff + v, -100, 100); });
+      Object.entries(e.blocs || {}).forEach(([k, v]) => { if (S.blocs[k] && !isMine(k)) S.blocs[k].aff = clamp(S.blocs[k].aff + v, -100, 100); });
+      if (e.pg) S.price.gov = clamp(S.price.gov + e.pg, 0.5, 2.2);
+      if (e.po) S.price.opp = clamp(S.price.opp + e.po, 0.5, 2.2);
       Object.assign(S.flags, e.flags || {});
       if (e.turns) S.maxTurns = clamp(S.maxTurns + e.turns, S.turn + 1, 12);
       // The government's side, when you play the opposition
@@ -454,7 +461,7 @@
       Object.entries(S.blocs).forEach(([k, b]) => { if (b.isNew && b.aff <= -100 && b.id === 'formosa') { S.blocs['sen:popular'].seats += b.seats; delete S.blocs[k]; } });
     }
     // Expected yes-votes of a bloc (deterministic, for the meters)
-    const share = b => { const eff = b.aff + (OPP() ? (S.govImg - stat('imagen')) / 4 : (stat('imagen') - 50) / 4); return eff >= 55 ? 1 : eff <= 0 ? 0 : Math.pow(eff / 55, 1.15); };
+    const share = b => { const eff = b.aff + (OPP() ? (S.govImg - stat('imagen')) / 4 : NEG() ? (S.govImg - 50) / 4 : (stat('imagen') - 50) / 4); return eff >= 55 ? 1 : eff <= 0 ? 0 : Math.pow(eff / 55, 1.15); };
     function count(ch) {
       let sure = 0, maybe = 0;
       let away = 0;
@@ -479,6 +486,7 @@
 
     function intro() {
       if (OPP()) return oppIntro();
+      if (NEG()) return negIntro();
       root.innerHTML = `<section class="jg-game is-rosca">${backBtn()}
         <div class="jg-intro"><span class="jg-kicker">Simulación</span><h2>${esc(D.title)}</h2>
           <p class="jg-role">Llevás adelante <b>${esc(D.role)}</b>.</p><p>${esc(D.intro)}</p>
@@ -500,7 +508,7 @@
       const wk = D.weeks[Math.min(S.turn, D.weeks.length - 1)] || '';
       const left = S.maxTurns - S.turn;
       const meter = ch => { const c = count(ch), need = D.chambers[ch].need, tot = D.chambers[ch].total; const done = ch === 'dip' && S.dipPassed;
-        return `<div class="rs-meter${done ? ' is-done' : ''}"><div class="rs-meter-h"><b>${esc(D.chambers[ch].label)}</b><span class="rs-m-l">${done ? `Media sanción ✓ (${S.dipVotes})` : OPP() ? `El Gobierno: ${c.sure} seguros · ~${c.exp} probables · necesita ${need}` : `${c.sure} seguros · ~${c.exp} probables · necesitás ${need}`}</span><span class="rs-m-s">${done ? '✓ aprobado' : `~${c.exp} de ${need}`}</span></div>
+        return `<div class="rs-meter${done ? ' is-done' : ''}"><div class="rs-meter-h"><b>${esc(D.chambers[ch].label)}</b><span class="rs-m-l">${done ? `Media sanción ✓ (${S.dipVotes})` : OPP() || NEG() ? `El Gobierno: ${c.sure} seguros · ~${c.exp} probables · necesita ${need}` : `${c.sure} seguros · ~${c.exp} probables · necesitás ${need}`}</span><span class="rs-m-s">${done ? '✓ aprobado' : `~${c.exp} de ${need}`}</span></div>
           <div class="rs-meter-bar"><span class="is-sure" style="width:${c.sure / tot * 100}%"></span><span class="is-maybe" style="width:${(c.exp - c.sure) / tot * 100}%"></span><i style="left:${need / tot * 100}%"></i></div></div>`; };
       return `<section class="jg-game is-rosca">${backBtn()}
         <div class="rs-top">
@@ -513,7 +521,7 @@
       </section>`;
     }
     function design() {
-      if (OPP()) return oppDesign();
+      if (OPP() || NEG()) return oppDesign();
       const d = D.design;
       paint(`<div class="rs-card is-design"><span class="rs-who">Javier Milei · Presidente</span><h3>El proyecto</h3><p>${esc(d.q)}</p>
         <div class="jg-opts">${d.options.map((o, k) => `<button type="button" class="jg-opt" data-k="${k}">${esc(o.label)}</button>`).join('')}</div></div>`);
@@ -526,7 +534,7 @@
     // Every move can be shared as its own card: the situation, what you chose and what happened
     function moveCard(m) {
       return cardShell('La rosca: PASO o no PASO', m.faran ? '#C2185B' : m.flash ? '#D62839' : '#6C3FB8', `
-        <div class="jgx-kicker">Semana ${Math.min(S.turn + 1, S.maxTurns)} · ${m.flash ? (m.faran ? '✨ Mientras tanto, en la farándula' : '⚡ Último momento') : esc(m.who || (OPP() ? 'Oposición' : 'Jefatura de Gabinete'))}</div>
+        <div class="jgx-kicker">Semana ${Math.min(S.turn + 1, S.maxTurns)} · ${m.flash ? (m.faran ? '✨ Mientras tanto, en la farándula' : '⚡ Último momento') : esc(m.who || (OPP() ? 'Oposición' : NEG() ? 'Provincias Unidas' : 'Jefatura de Gabinete'))}</div>
         <div class="jgx-title is-md${m.title.length > 48 ? ' is-sm' : ''}">${esc(m.title)}</div>
         ${m.text ? `<div class="jgx-text is-sm">${esc(m.text)}</div>` : ''}
         <div class="jgx-choice"><span>La decisión</span><b>${esc(m.choice)}</b></div>
@@ -563,6 +571,8 @@
           <div class="rs-next-k">${S.turn !== last.turn ? `Empieza la semana ${Math.min(S.turn + 1, S.maxTurns)} · nueva situación` : 'Siguiente situación'} <span aria-hidden="true">↓</span></div>`;
       }
       const gn = S.govNote; S.govNote = null;
+      const on = S.oppNote; S.oppNote = null;
+      if (on) { const note = `<div class="rs-govnote is-oppnote" role="status"><span>🗣️ Mientras tanto, en la oposición</span><p>${esc(on)}</p></div>`; const at = banner.indexOf('<div class="rs-next-k">'); banner = at >= 0 ? banner.slice(0, at) + note + banner.slice(at) : note + `<div class="rs-next-k">Empieza la semana ${Math.min(S.turn + 1, S.maxTurns)} <span aria-hidden="true">↓</span></div>`; }
       if (gn) { const note = `<div class="rs-govnote" role="status"><span>🏛️ Mientras tanto, en la Casa Rosada</span><p>${esc(gn)}</p></div>`; const at = banner.indexOf('<div class="rs-next-k">'); banner = at >= 0 ? banner.slice(0, at) + note + banner.slice(at) : note + `<div class="rs-next-k">Empieza la semana ${Math.min(S.turn + 1, S.maxTurns)} <span aria-hidden="true">↓</span></div>`; }
       root.innerHTML = frame(banner + inner);
       wireBack(root);
@@ -571,9 +581,10 @@
       toTop();
     }
     function checkOver() {
+      if (S.over === 'negEnd') return (S.over = negKind());
       if (S.over) return S.over;
-      if (stat('capital') <= 0) return (S.over = OPP() ? 'oppFired' : 'fired');
-      if (stat('interna') <= 0) return (S.over = OPP() ? 'oppSplit' : 'sidelined');
+      if (stat('capital') <= 0) return (S.over = OPP() ? 'oppFired' : NEG() ? 'negBurned' : 'fired');
+      if (stat('interna') <= 0) return (S.over = OPP() ? 'oppSplit' : NEG() ? 'negSplit' : 'sidelined');
       return null;
     }
     // Situations that only move deputies make no sense once Diputados already voted
@@ -593,7 +604,7 @@
     }
     function nextTurn(first) {
       if (!first) S.turn++;
-      if (S.turn >= S.maxTurns) return ending(OPP() ? 'oppTime' : 'time');
+      if (S.turn >= S.maxTurns) return ending(OPP() ? 'oppTime' : NEG() ? negKind() : 'time');
       S.actionDone = false;
       const due = S.events.filter(ev => eligible(ev) && !ev.random && ev.turn <= S.turn + 1);
       const rand = S.events.filter(ev => eligible(ev) && ev.random && Math.random() < 0.45);
@@ -653,6 +664,7 @@
     const liveBlocs = keys => keys.filter(k => !S.dipPassed || k.startsWith('sen:'));
     function actions() {
       if (OPP()) return oppActions();
+      if (NEG()) return negActions();
       const ch = S.dipPassed ? 'sen' : 'dip', c = count(ch), need = D.chambers[ch].need;
       // After the half-sanction only senators are still in play
       const govs = D.governors.map(g => {
@@ -806,7 +818,13 @@
     function oppDesign() {
       const g = D.design.options[Math.floor(Math.random() * D.design.options.length)];
       apply({ blocs: g.e.blocs }); S.bill = g.label;
-      const p = D.opp.posture;
+      const p = DD().posture;
+      if (!p) {
+        paint(`<div class="rs-card is-design"><span class="rs-who">Casa Rosada · Proyecto de ley</span><h3>El Gobierno mandó su proyecto</h3><p class="rs-bill">«${esc(g.label)}»</p><p>Sin tus ${D.neg ? '18 diputados' : 'votos'} no le alcanza, y la oposición tampoco puede frenarlo sola. Los dos lados ya te están llamando.</p>
+          <button type="button" class="jg-btn is-main" data-start-neg>Empezar a negociar</button></div>`);
+        root.querySelector('[data-start-neg]').addEventListener('click', () => nextTurn(true));
+        return;
+      }
       paint(`<div class="rs-card is-design"><span class="rs-who">Casa Rosada · Proyecto de ley</span><h3>El Gobierno mandó su proyecto</h3><p class="rs-bill">«${esc(g.label)}»</p><p>${esc(p.q)}</p>
         <div class="jg-opts">${p.options.map((o, k) => `<button type="button" class="jg-opt" data-k="${k}">${esc(o.label)}</button>`).join('')}</div></div>`);
       root.querySelectorAll('[data-k]').forEach(b => b.addEventListener('click', () => {
@@ -861,9 +879,9 @@
       const canSit = !(ch === 'sen' && S.turn < (S.senOpen || 0));
       // A blocked procedure stops the session, not the phone calls
       const blocked = S.govSkip > 0; if (blocked) S.govSkip--;
-      if (!blocked && canSit && (est >= need + 2 || (est >= need && Math.random() < 0.3) || (last && est >= need - 2))) return oppSession(ch);
+      if (!blocked && canSit && (est >= need + 2 || (est >= need && Math.random() < 0.3) || (last && est >= need - 2))) return NEG() ? negSession(ch) : oppSession(ch);
       const aiKey = id => (S.dipPassed ? 'sen:' : 'dip:') + id;
-      const govs = D.governors.filter(g => (S.aiUsed[aiKey(g.id)] || 0) < 2 && liveBlocs(g.blocs).some(k => S.blocs[k] && share(S.blocs[k]) < 1));
+      const govs = D.governors.filter(g => (S.aiUsed[aiKey(g.id)] || 0) < 2 && liveBlocs(g.blocs).some(k => S.blocs[k] && !isMine(k) && share(S.blocs[k]) < 1));
       if (!govs.length || Math.random() < G.idle) {
         if (Math.random() < 0.5) { S.govImg = clamp(S.govImg + 5, 20, 80); S.govNote = 'Milei hizo una cadena de entrevistas: "Las PASO son una encuesta carísima que pagan los jubilados".'; }
         else { const cb = { 'dip:ucr': 8, 'sen:ucr': 8, 'dip:pu': 7, 'sen:pu': 7, 'dip:cc': 6 }; apply({ blocs: Object.fromEntries(liveBlocs(Object.keys(cb)).map(k => [k, cb[k]])) }); S.govNote = 'El Gobierno aceptó cambios en el texto para sumar a radicales y Provincias Unidas.'; }
@@ -871,13 +889,14 @@
         return nextTurn();
       }
       // It goes for the governor with the most undecided seats
-      const weight = g => liveBlocs(g.blocs).reduce((a, k) => a + (S.blocs[k] && share(S.blocs[k]) < 1 ? S.blocs[k].seats * (k.startsWith('sen:') ? 3.5 : 1) : 0), 0) * rnd(0.6, 1.4);
+      const weight = g => liveBlocs(g.blocs).reduce((a, k) => a + (S.blocs[k] && !isMine(k) && share(S.blocs[k]) < 1 ? S.blocs[k].seats * (k.startsWith('sen:') ? 3.5 : 1) : 0), 0) * rnd(0.6, 1.4);
       const g = govs.sort((a, b) => weight(b) - weight(a))[0], used = S.aiUsed[aiKey(g.id)] || 0;
       const gain = Math.max(4, Math.round(rnd(G.lo, G.hi) * S.govMom - used * 4 - (S.govUsed[g.id] || 0) * 2));
       const before = count(ch).exp;
       apply({ blocs: Object.fromEntries(liveBlocs(g.blocs).map(k => [k, k.startsWith('sen:') ? Math.round(gain * G.sen) : gain])) });
       S.aiUsed[aiKey(g.id)] = used + 1; S.aiUsed[g.id] = (S.aiUsed[g.id] || 0) + 1;
       const now = count(ch).exp;
+      if (NEG()) S.govNote = null;
       S.govNote = `${blocked ? 'El trámite quedó trabado y esta semana no puede llamar a sesión, pero sigue negociando: ' : ''}Santilli cerró con ${g.name} (${g.prov}): ${g.deal}.${now !== before ? ` El Gobierno pasa de ~${before} a ~${now} votos probables en ${ch === 'dip' ? 'Diputados' : 'el Senado'}.` : ''}${S.govUsed[g.id] ? ' Te había dado su palabra a vos.' : ''}`;
       S.log.push({ t: 'Casa Rosada', r: `Acuerdo con ${g.name}` });
       if (Math.random() < (S.dipPassed ? 0.7 : G.extra)) { const cb = { 'dip:ucr': 6, 'sen:ucr': 9, 'dip:pu': 6, 'sen:pu': 6, 'dip:cc': 4, 'dip:ef': 4 }; apply({ blocs: Object.fromEntries(liveBlocs(Object.keys(cb)).map(k => [k, cb[k]])) }); S.govNote += ' Además, aceptó cambios en el texto para sumar a radicales y Provincias Unidas.'; }
@@ -958,15 +977,198 @@
       wireShare(root.querySelector('.rs-card.is-vote'), `En "La rosca" del Atlas jugué de oposición: ${title}. ¿Te animás?`, vcard, 'rosca-sesion');
       root.querySelector('[data-next]').addEventListener('click', () => S.over ? ending(S.over) : (checkOver() ? ending(S.over) : nextTurn()));
     }
+
+    /* ---- Playing the negotiator: both sides bid for your votes ---- */
+    function negIntro() {
+      const N = D.neg;
+      root.innerHTML = `<section class="jg-game is-rosca is-neg">${backBtn()}
+        <div class="jg-intro"><span class="jg-kicker">Simulación · Negociador</span><h2>${esc(D.title)}</h2>
+          <p class="jg-role">Llevás adelante <b>${esc(N.role)}</b>.</p><p>${esc(N.intro)}</p>
+          ${S.scenario ? `<div class="rs-scen"><span>Tu escenario en esta partida</span><b>${esc(S.scenario.title)}</b><p>${esc(S.scenario.text)}</p><small>Cada partida tiene un escenario y situaciones distintas.</small></div>` : ''}
+          <ul class="jg-rules">
+            <li>Cada semana el <b>Gobierno</b> y la <b>oposición</b> te hacen una oferta. Cuanto más decisivos son tus votos, más te ofrecen.</li>
+            <li>Podés <b>cerrar con un lado</b>, <b>subir el precio</b> o esperar. Ojo: mientras esperás, los dos lados negocian con otros gobernadores y tus votos pueden dejar de hacer falta.</li>
+            <li>Si cerrás con un lado y después te pasás al otro, cobrás más pero <b>perdés credibilidad</b>. Si llega a cero, nadie te atiende el teléfono.</li>
+            <li>Cuando el Gobierno llama a sesión, llegan los <b>llamados de último minuto</b>: votás a favor, en contra o te levantás de la banca.</li>
+            <li>Tu puntaje es el <b>botín para tus provincias</b>. Si además tus votos definen la votación, te llevás un premio extra.</li>
+          </ul>
+          <button type="button" class="jg-btn is-main" data-go-design>Empezar la rosca</button>
+          <p class="jg-note">${esc(D.disclaimer)}</p></div></section>`;
+      wireBack(root);
+      root.querySelector('[data-go-design]').addEventListener('click', design);
+    }
+    const myBloc = ch => S.blocs[ch + ':pu'];
+    // How many votes the Government has without you, and how much your votes matter
+    function leverage(ch) {
+      const need = D.chambers[ch].need, mb = myBloc(ch), mine = mb ? Math.round(mb.seats * share(mb)) : 0;
+      const without = count(ch).exp - mine, seats = mb ? mb.seats : 0, gap = need - without;
+      const L = gap <= 0 ? Math.max(0.1, 1 + gap / 5) : gap > seats ? Math.max(0.1, 1 - (gap - seats) / 8) : 1;
+      return { without, seats, need, gap, L };
+    }
+    const pickOf = list => list[Math.floor(Math.random() * list.length)];
+    function offers() {
+      const ch = S.dipPassed ? 'sen' : 'dip', lv = leverage(ch), sen = ch === 'sen' ? 0.8 : 1;
+      // As the deadline gets closer, a decisive bloc gets more expensive
+      const urg = 1 + 0.05 * S.turn * lv.L;
+      // Nobody pays much to someone whose word is worth little
+      const cred = 0.45 + stat('capital') / 110;
+      const val = (base, k, price) => Math.max(2, Math.round((base + k * lv.L) * price * sen * urg * cred * rnd(0.85, 1.15)));
+      // The side you closed with only pays to keep you; the other one pays more to make you switch
+      const gov = S.commit === 'yes' ? 0 : Math.round(val(3, 13, S.price.gov) * (S.commit === 'no' ? 0.6 : 1));
+      const opp = S.commit === 'no' ? 0 : Math.round(val(2, 11, S.price.opp) * (S.commit === 'yes' ? 0.6 : 1));
+      return { ch, lv, gov, opp, govWhat: pickOf(D.neg.govOffers), oppWhat: pickOf(D.neg.oppOffers) };
+    }
+    function commitTo(side) {
+      const prev = S.commit;
+      S.commit = side;
+      S.mine.forEach(k => { if (S.blocs[k]) S.blocs[k].aff = side === 'yes' ? 100 : side === 'no' ? -100 : -5; });
+      if (prev && prev !== side) {
+        S.flips++;
+        // The side you leave freezes part of what it had promised you
+        const lost = Math.round((S.got[prev] || 0) * 0.4); S.got[prev] = (S.got[prev] || 0) - lost;
+        apply({ stats: { capital: -20 - S.flips * 5, interna: -8, caja: -lost } });
+        S.lostNote = lost ? ` ${prev === 'yes' ? 'La Rosada' : 'La oposición'} congela lo que te había prometido: perdés ${lost} de botín.` : '';
+      }
+    }
+    const earn = (side, v) => { S.got[side] = (S.got[side] || 0) + v; apply({ stats: { caja: v } }); };
+    function negActions() {
+      const of = S.offer = offers(), lv = of.lv, ch = of.ch;
+      const status = lv.gap <= 0 ? `El Gobierno ya tiene ~${lv.without} sin vos: <b>tus votos casi no le hacen falta</b>.` : lv.gap > lv.seats ? `Sin vos el Gobierno tiene ~${lv.without} y le faltan ${lv.gap}: ni con tus ${lv.seats} le alcanza. <b>Tus votos valen poco.</b>` : `Sin vos el Gobierno tiene ~${lv.without} y necesita ${lv.need}: <b>tus ${lv.seats} votos definen</b>.`;
+      const commitTxt = S.commit === 'yes' ? 'Cerraste con el Gobierno.' : S.commit === 'no' ? 'Cerraste con la oposición.' : 'Todavía no cerraste con nadie.';
+      const card = (side, v, what) => {
+        const closed = (side === 'gov' && S.commit === 'yes') || (side === 'opp' && S.commit === 'no');
+        const flip = S.commit && !closed;
+        return `<div class="rs-offer is-${side}"><span>${side === 'gov' ? '🏛️ Oferta del Gobierno' : '🗣️ Oferta de la oposición'}</span>
+          ${closed ? `<b>Ya tiene tus votos</b><small>Podés reclamarle que cumpla y sume algo más.</small><button type="button" class="jg-btn" data-neg="ask-${side}"${S.asked > S.turn ? ' disabled' : ''}>Reclamar más (−credibilidad)</button>`
+          : `<b>+${v} de botín</b><small>${esc(what)}${side === 'gov' ? ' · a cambio de votar a favor' : ' · a cambio de votar en contra'}</small><button type="button" class="jg-btn${flip ? '' : ' is-main'}" data-neg="${side}">${flip ? 'Cambiarte de lado (−credibilidad)' : 'Cerrar el trato'}</button>`}</div>`;
+      };
+      paint(`<div class="rs-card is-actions"><h3>Tu jugada de la semana</h3>
+        <p>${status} ${commitTxt}</p>
+        <div class="rs-offers">${card('gov', of.gov, of.govWhat)}${card('opp', of.opp, of.oppWhat)}</div>
+        <div class="rs-acts">
+          <button type="button" class="jg-btn" data-neg="raise"${S.commit || stat('capital') < 4 ? ' disabled' : ''}>Subir el precio a los dos (−credibilidad, −unidad)</button>
+          <button type="button" class="jg-btn" data-neg="govs">Reunión con tus gobernadores (+unidad)</button>
+          <button type="button" class="jg-btn" data-neg="media">Ir a los medios (+imagen)</button>
+          <button type="button" class="jg-btn is-ghost" data-neg="pass">Esperar a la semana que viene</button>
+        </div></div>`);
+      root.querySelectorAll('[data-neg]').forEach(b => b.addEventListener('click', () => {
+        const a = b.getAttribute('data-neg');
+        if (a === 'gov' || a === 'opp') {
+          const v = a === 'gov' ? of.gov : of.opp, what = a === 'gov' ? of.govWhat : of.oppWhat, flip = !!S.commit;
+          S.lostNote = ''; commitTo(a === 'gov' ? 'yes' : 'no'); earn(a === 'gov' ? 'yes' : 'no', v); if (flip) apply({ stats: { imagen: -5 } });
+          S.log.push({ t: flip ? 'Cambio de lado' : 'Trato cerrado', r: `${a === 'gov' ? 'Con el Gobierno' : 'Con la oposición'}: ${what} (+${v})` });
+          const res = `${flip ? 'Te diste vuelta. ' : ''}${a === 'gov' ? 'Santilli' : 'La oposición'} se compromete a ${what}. Tu bloque ${a === 'gov' ? 'vota a favor' : 'vota en contra'}.${flip ? ' En el Congreso nadie se olvida de un cambio de bando.' + S.lostNote : ''}`;
+          return outcome('Trato cerrado', res, negAfter, { who: 'Provincias Unidas', title: a === 'gov' ? 'Oferta del Gobierno' : 'Oferta de la oposición', text: what, choice: flip ? 'Cambiarse de lado' : 'Cerrar el trato', decision: `${flip ? 'Cambiarte' : 'Cerrar'} con ${a === 'gov' ? 'el Gobierno' : 'la oposición'}: +${v} de botín`, result: res });
+        }
+        if (a.startsWith('ask-')) {
+          const side = a.slice(4), v = Math.max(2, Math.round(lv.L * 6 * S.price[side === 'gov' ? 'gov' : 'opp'] * rnd(0.7, 1.2)));
+          S.asked = S.turn + 1; earn(side === 'gov' ? 'yes' : 'no', v); apply({ stats: { capital: -4 }, [side === 'gov' ? 'pg' : 'po']: -0.15 });
+          const res = `Reclamaste que el acuerdo se cumpla y sumaste algo más: +${v} de botín. ${side === 'gov' ? 'En la Rosada' : 'En la oposición'} se quejan de que "nunca te alcanza".`;
+          S.log.push({ t: 'Reclamo', r: `+${v}` });
+          return outcome('Reclamar más', res, negAfter, { title: 'Reclamar más', choice: 'Reclamar más', decision: 'Reclamar más a tu socio', result: res });
+        }
+        if (a === 'raise') { apply({ stats: { capital: -4, interna: -3 }, pg: 0.2, po: 0.2 }); const res = 'Le avisaste a los dos lados que tus votos cuestan más. Te van a ofrecer más… si todavía te necesitan.'; S.log.push({ t: 'Precio', r: 'Subir' }); return outcome('Subir el precio', res, negAfter, { title: 'Subir el precio', choice: 'Subir el precio', decision: 'Subir el precio a los dos', result: res }); }
+        if (a === 'govs') { apply({ stats: { interna: 7, capital: -1 } }); const res = 'Cena con Pullaro, Llaryora y Torres. Se reparten lo que viene y el bloque se ordena.'; return outcome('Reunión con tus gobernadores', res, negAfter, { title: 'Reunión con tus gobernadores', choice: 'Ordenar el bloque', decision: 'Reunión con tus gobernadores', result: res }); }
+        if (a === 'media') { apply({ stats: { imagen: 6, capital: -2 }, pg: 0.05, po: 0.05 }); const res = 'Hablaste de "federalismo" en cuatro canales. Los dos lados notan que tu voto tiene apoyo.'; return outcome('Gira de medios', res, negAfter, { title: 'Gira de medios', choice: 'Ir a los medios', decision: 'Ir a los medios', result: res }); }
+        if (a === 'pass') { S.log.push({ t: 'Semana', r: 'Esperar' }); return negAfter(); }
+      }));
+    }
+    // The opposition moves too: it tries to pull governors away from the Government
+    function negAfter() {
+      if (checkOver()) return ending(S.over);
+      // Low image: your governors want you to close anything
+      if (stat('imagen') < 25) apply({ stats: { interna: -3 } });
+      // Waiting makes the side that doesn't need you lose interest
+      if (!S.commit) { const lv = leverage(S.dipPassed ? 'sen' : 'dip'); if (lv.L < 0.5) apply({ pg: -0.05, po: -0.05 }); }
+      const pool = D.governors.filter(g => liveBlocs(g.blocs).some(k => S.blocs[k] && !isMine(k) && share(S.blocs[k]) > 0 && share(S.blocs[k]) < 1));
+      if (pool.length && Math.random() < 0.75) {
+        const g = pickOf(pool), gain = Math.round(rnd(9, 16));
+        apply({ blocs: Object.fromEntries(liveBlocs(g.blocs).filter(k => !isMine(k)).map(k => [k, -gain])) });
+        S.oppNote = `Kicillof y los gobernadores peronistas convencieron a ${g.name} (${g.prov}) de no acompañar todavía.`;
+      }
+      govMove();
+    }
+    // The Government calls a session: last-minute calls to you
+    function negSession(ch) {
+      const need = D.chambers[ch].need, lv = leverage(ch), where = ch === 'dip' ? 'Sesión especial en Diputados' : 'Sesión en el Senado';
+      const k = Math.max(0.15, lv.L);
+      const cred = 0.45 + stat('capital') / 110;
+      const lmG = Math.round((4 + 12 * k) * S.price.gov * cred * (S.commit === 'no' ? 0.5 : 1) * rnd(0.8, 1.2)), lmO = Math.round((3 + 10 * k) * S.price.opp * cred * (S.commit === 'yes' ? 0.5 : 1) * rnd(0.8, 1.2));
+      const word = S.commit === 'yes' ? 'Le diste tu palabra al Gobierno.' : S.commit === 'no' ? 'Le diste tu palabra a la oposición.' : 'Todavía no cerraste con nadie.';
+      paint(`<div class="rs-card is-vote is-q"><span class="rs-who">${where}</span><h3>📞 Llamados de último minuto</h3>
+        <p>El Gobierno llamó a sesión. Sin vos tiene <b>~${lv.without}</b> y necesita <b>${need}</b>; tu bloque tiene <b>${lv.seats}</b> bancas. ${word}</p>
+        <div class="rs-offers">
+          <div class="rs-offer is-gov"><span>🏛️ Te llama Santilli</span><b>${S.commit === 'yes' ? 'Que cumplas' : `+${lmG} de botín`}</b><small>${S.commit === 'yes' ? 'Si votás a favor, sumás credibilidad' : 'si tu bloque vota a favor'}</small><button type="button" class="jg-btn is-main" data-vote="yes">Votar a favor</button></div>
+          <div class="rs-offer is-opp"><span>🗣️ Te llama la oposición</span><b>${S.commit === 'no' ? 'Que cumplas' : `+${lmO} de botín`}</b><small>${S.commit === 'no' ? 'Si votás en contra, sumás credibilidad' : 'si tu bloque vota en contra'}</small><button type="button" class="jg-btn is-main" data-vote="no">Votar en contra</button></div>
+        </div>
+        <button type="button" class="jg-btn is-ghost" data-vote="out">Levantarte de la banca: ni a favor ni en contra${S.commit ? ' (−credibilidad)' : ''}</button></div>`);
+      root.querySelectorAll('[data-vote]').forEach(btn => btn.addEventListener('click', () => {
+        const how = btn.getAttribute('data-vote'), side = how === 'yes' ? 'yes' : how === 'no' ? 'no' : null;
+        let gain = 0;
+        if (side && S.commit === side) apply({ stats: { capital: 6 } });
+        else if (side) { gain = side === 'yes' ? lmG : lmO; S.lostNote = ''; commitTo(side); earn(side, gain); }
+        else { if (S.commit) apply({ stats: { capital: -8 } }); S.mine.forEach(k => { if (S.blocs[k]) S.blocs[k].aff = -5; }); S.commit = null; }
+        S.log.push({ t: where, r: (side === 'yes' ? `A favor${gain ? ` (+${gain})` : ''}` : side === 'no' ? `En contra${gain ? ` (+${gain})` : ''}` : 'Te levantaste de la banca') + (S.lostNote || '') });
+        const r = vote(ch);
+        // Out of the room: your bloc's votes don't count for anyone
+        if (!side) r.rows.forEach(x => { if (isMine(ch + ':' + x.b.id)) { r.yes -= x.yes; x.no += x.yes; x.yes = 0; } });
+        // Without the votes, the Government prefers to send the bill back to committee
+        if (r.yes < need - 2 && Math.random() < 0.6) {
+          S.log.push({ t: where, r: 'El Gobierno pidió la vuelta a comisión' });
+          return negVote(ch, r, [], { back: true, gain });
+        }
+        const calls = lastMinute(ch, r);
+        negVote(ch, r, calls, { side, gain });
+      }));
+    }
+    function negVote(ch, r, calls, o) {
+      const where = ch === 'dip' ? 'Sesión especial en Diputados' : 'Sesión en el Senado', need = D.chambers[ch].need;
+      r.pass = r.yes >= need;
+      const mineRow = r.rows.find(x => isMine(ch + ':' + x.b.id)), my = mineRow ? mineRow.b.seats : 0;
+      let title, text;
+      if (o.back) { title = 'El Gobierno pidió la vuelta a comisión'; text = 'Sin los números, el oficialismo mandó el proyecto de vuelta a comisión. La negociación sigue: todavía te necesitan.'; }
+      else {
+        // Decisive: had your bloc voted the other way, the result would have flipped
+        const alt = o.side === 'yes' ? r.yes - (mineRow ? mineRow.yes : 0) : r.yes + my;
+        const dec = o.side && ((r.yes >= need) !== (alt >= need));
+        if (dec) { S.decisive = true; apply({ stats: { caja: 10, imagen: 3 } }); }
+        if (r.pass && ch === 'dip') { S.dipPassed = true; S.dipVotes = r.yes; S.senOpen = S.turn + 1; title = 'Media sanción'; text = `Diputados aprobó el proyecto con ${r.yes} votos. Ahora la pelea es en el Senado, donde tu bloque tiene ${myBloc('sen') ? myBloc('sen').seats : 0} bancas.`; }
+        else if (r.pass) { S.over = 'negEnd'; S.law = 'es ley'; title = 'Es ley'; text = `El Senado aprobó el proyecto con ${r.yes} votos.`; }
+        else { S.over = 'negEnd'; S.law = 'rechazada'; title = ch === 'dip' ? 'Rechazado en Diputados' : 'Rechazado en el Senado'; text = `El Gobierno consiguió ${r.yes} votos y necesitaba ${need}. El proyecto queda rechazado por este año.`; }
+        if (dec) text += ` Tus votos definieron la votación: +10 de botín extra.`;
+        S.log.push({ t: where, r: `${title} (${r.yes} votos)${dec ? ' · decisivos' : ''}` });
+      }
+      const voted = !o.back;
+      const rows = r.rows.filter(x => x.b.seats > 0).map(x => `<div class="rs-vrow${isMine(ch + ':' + x.b.id) ? ' is-mine' : ''}"><i style="background:${x.b.color || '#888'}"></i><span>${esc(x.b.name)}${isMine(ch + ':' + x.b.id) ? ' (tu bloque)' : ''}</span><b class="is-yes">${x.yes}</b><b class="is-no">${x.no}</b></div>`).join('');
+      const callsH = calls.length ? `<div class="rs-calls"><b>📞 Otros llamados de último minuto</b><ul>${calls.map(x => `<li class="${x.v > 0 ? 'is-up' : 'is-down'}">${esc(x.t)} <em>${x.v > 0 ? '+' : '−'}${Math.abs(x.v)}</em></li>`).join('')}</ul></div>` : '';
+      paint(`<div class="rs-card is-vote"><span class="rs-who">${where}</span><h3>${esc(title)}</h3><p>${esc(text)}</p>${voted ? callsH : ''}
+        ${voted ? `<div class="rs-tally"><div class="rs-tally-big"><b class="${r.pass ? 'is-yes' : 'is-no'}">${r.yes}</b><span>a favor</span><b>/ ${need}</b><span>necesarios</span></div>
+          <div class="rs-vrows"><div class="rs-vrow is-head"><i></i><span>Bloque</span><b>Sí</b><b>No / ausentes</b></div>${rows}</div></div>` : ''}
+        ${shareMini()}<button type="button" class="jg-btn is-main" data-next>${S.over ? 'Ver el final' : 'Seguir'}</button></div>`);
+      const vcard = cardShell('La rosca: PASO o no PASO', '#B06A22', `
+        <div class="jgx-kicker">Semana ${Math.min(S.turn + 1, S.maxTurns)} · Negociador · ${where}</div>
+        <div class="jgx-title is-md">${esc(title)}</div>
+        ${voted ? `<div class="jgx-huge is-md"><b>${r.yes}</b><span>/ ${need} votos</span></div>
+        <div class="jgx-vrows">${r.rows.filter(x => x.b.seats > 0).slice(0, 9).map(x => `<div><i style="background:${x.b.color || '#888'}"></i><span>${esc(x.b.name)}</span><b>${x.yes} de ${x.b.seats}</b></div>`).join('')}</div>` : `<div class="jgx-text">${esc(text)}</div>`}
+        <div class="jgx-text is-sm">Botín para mis provincias: <b>${stat('caja')}</b></div>`);
+      wireShare(root.querySelector('.rs-card.is-vote'), `En "La rosca" del Atlas jugué de negociador: ${title}. Botín: ${stat('caja')}. ¿Cuánto sacás vos?`, vcard, 'rosca-sesion');
+      root.querySelector('[data-next]').addEventListener('click', () => S.over ? ending(S.over === 'negEnd' ? negKind() : S.over) : (checkOver() ? ending(S.over) : nextTurn()));
+    }
+    function negKind() {
+      if (S.over && S.over !== 'negEnd') return S.over;
+      const b = stat('caja');
+      return S.decisive && b >= 45 ? 'negDecisive' : b >= 55 ? 'negRich' : b >= 28 ? 'negMid' : 'negOut';
+    }
     // The rosca: whole and crowned if you won, bitten if the rosca ate you
     const ROSCA_LINE = { win: '¡Ganaste la rosca!', winLemas: 'Ganaste la rosca… con lemas', time: 'La rosca te comió', fired: 'La rosca te pasó por arriba', sidelined: 'Te sacaron de la rosca', rejected: 'Diputados se comió la rosca', rejectedSen: 'El Senado se comió la rosca',
       oppTime: '¡Ganaste la rosca! Hay PASO', oppRejected: 'Diputados se comió la rosca del Gobierno', oppRejectedSen: 'El Senado se comió la rosca del Gobierno', oppLaw: 'La rosca te ganó', oppFired: 'La rosca te pasó por arriba', oppSplit: 'Se te partió la rosca' };
-    const WINS = ['win', 'winLemas', 'oppTime', 'oppRejected', 'oppRejectedSen'];
+    Object.assign(ROSCA_LINE, { negDecisive: '¡Ganaste la rosca!', negRich: '¡Ganaste la rosca!', negMid: 'Te llevaste un pedazo de la rosca', negOut: 'Te quedaste sin rosca', negSplit: 'Se te partió la rosca', negBurned: 'La rosca se quemó' });
+    const WINS = ['win', 'winLemas', 'oppTime', 'oppRejected', 'oppRejectedSen', 'negDecisive', 'negRich'];
     function roscaSVG(kind, bg) {
-      const win = kind === 'win' || kind === 'winLemas' || kind === 'oppTime', id = 'r' + Math.random().toString(36).slice(2, 8);
+      const win = WINS.includes(kind) && !/Rejected/.test(kind), id = 'r' + Math.random().toString(36).slice(2, 8);
       const fruit = [20, 75, 130, 185, 240, 295].map((a, i) => { const r = a * Math.PI / 180, x = 100 + 60 * Math.cos(r), y = 112 + 60 * Math.sin(r);
         return i % 2 ? `<rect x="${(x - 6).toFixed(1)}" y="${(y - 4).toFixed(1)}" width="12" height="8" rx="2" fill="#3E9B4F" transform="rotate(${a} ${x.toFixed(1)} ${y.toFixed(1)})"/>` : `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="7.5" fill="#C8102E"/><circle cx="${(x - 2.5).toFixed(1)}" cy="${(y - 2.5).toFixed(1)}" r="2.2" fill="#fff" opacity=".6"/>`; }).join('');
-      const bites = kind === 'fired' || kind === 'oppFired' || kind === 'oppSplit' ? [[150, 52, 30], [176, 84, 26], [128, 38, 22], [182, 118, 20]] : [[152, 56, 24], [172, 84, 21], [132, 44, 18]];
+      const bites = ['fired', 'oppFired', 'oppSplit', 'negSplit', 'negBurned', 'negOut'].includes(kind) ? [[150, 52, 30], [176, 84, 26], [128, 38, 22], [182, 118, 20]] : [[152, 56, 24], [172, 84, 21], [132, 44, 18]];
       return `<svg viewBox="0 0 200 200" class="rs-art" role="img" aria-label="${esc(ROSCA_LINE[kind] || '')}">
         <defs><radialGradient id="g${id}" cx="50%" cy="45%" r="60%"><stop offset="0" stop-color="#F2C37A"/><stop offset="1" stop-color="#C77D2E"/></radialGradient></defs>
         <ellipse cx="100" cy="182" rx="74" ry="9" fill="#000" opacity=".12"/>
@@ -1038,18 +1240,18 @@
     const endingArt = (kind, bg) => kind === 'rejected' || kind === 'oppRejected' ? congressSVG('dip', bg) : kind === 'rejectedSen' || kind === 'oppRejectedSen' ? congressSVG('sen', bg) : kind === 'fired' ? boletinSVG() : roscaSVG(kind, bg);
     function ending(kind) {
       track(`/juego/rosca/fin/${kind}`, `La rosca: ${kind}`);
-      const opp = OPP(), E = DD().endings[kind] || D.endings.time, win = WINS.includes(kind);
-      const score = !win ? 0 : opp ? Math.round(stat('imagen') * 0.35 + stat('capital') * 0.3 + stat('interna') * 0.25 + stat('caja') * 0.1 + (kind !== 'oppTime' ? 15 : 0) + (S.dipPassed ? 0 : 10))
+      const opp = OPP(), neg = NEG(), E = DD().endings[kind] || D.endings.time, win = WINS.includes(kind);
+      const score = !win ? 0 : neg ? Math.round(stat('caja') + stat('capital') * 0.2 + stat('interna') * 0.1 + (S.decisive ? 15 : 0)) : opp ? Math.round(stat('imagen') * 0.35 + stat('capital') * 0.3 + stat('interna') * 0.25 + stat('caja') * 0.1 + (kind !== 'oppTime' ? 15 : 0) + (S.dipPassed ? 0 : 10))
         : Math.round(stat('imagen') * 0.4 + stat('capital') * 0.3 + stat('caja') * 0.2 + (S.maxTurns - S.turn) * 4 + (S.flags.lemas ? -15 : 0));
-      const roleName = opp ? 'Oposición' : 'Jefatura de Gabinete';
-      const text = win ? (opp ? `¡Gané la rosca jugando de oposición: frené la ley y hay PASO! ${score} puntos en el Atlas Político Mundial. ¿Te animás?` : `¡Gané la rosca! Saqué la ley sin PASO en el Atlas Político Mundial: ${score} puntos. ¿Te animás?`) : `Jugué "La rosca: PASO o no PASO" ${opp ? 'de oposición ' : ''}en el Atlas Político Mundial y… ${(ROSCA_LINE[kind] || E.title).toLowerCase()}. ¿Te animás?`;
+      const roleName = opp ? 'Oposición' : neg ? 'Negociador' : 'Jefatura de Gabinete';
+      const text = neg ? `Jugué "La rosca" del Atlas Político Mundial de negociador: ${(ROSCA_LINE[kind] || E.title).replace(/^¡|!$/g, '')}. Saqué ${stat('caja')} de botín para mis provincias. ¿Cuánto sacás vos?` : win ? (opp ? `¡Gané la rosca jugando de oposición: frené la ley y hay PASO! ${score} puntos en el Atlas Político Mundial. ¿Te animás?` : `¡Gané la rosca! Saqué la ley sin PASO en el Atlas Político Mundial: ${score} puntos. ¿Te animás?`) : `Jugué "La rosca: PASO o no PASO" ${opp ? 'de oposición ' : ''}en el Atlas Político Mundial y… ${(ROSCA_LINE[kind] || E.title).toLowerCase()}. ¿Te animás?`;
       const flashes = S.log.filter(l => l.flash).slice(-3);
       const card = cardShell('La rosca: PASO o no PASO', '#6C3FB8', `
         <div class="jgx-kicker">${win ? 'Lo logré' : 'Fin del juego'} · ${roleName}${S.scenario ? ` · ${esc(S.scenario.title)}` : ''}</div>
         <div class="jgx-rosca">${endingArt(kind, '#FBF7F0')}<div><b>${esc(ROSCA_LINE[kind] || E.title)}</b><span>${esc(E.title)}</span>${win ? `<em>${score} puntos</em>` : ''}</div></div>
         <div class="jgx-text is-sm">${esc(E.text)}</div>
         <div class="jgx-stats">${STATS.map(k => `<div class="jgx-stat"><span>${esc(DD().stats[k].label)}</span><div class="jgx-stat-t"><i style="width:${stat(k)}%"></i></div><b>${stat(k)}</b></div>`).join('')}</div>
-        <div class="jgx-facts"><span>${opp ? 'El Gobierno en Diputados' : 'Diputados'}: <b>${S.dipPassed ? `media sanción (${S.dipVotes} votos)` : 'sin media sanción'}</b></span><span>Semanas: <b>${Math.min(S.turn + 1, S.maxTurns)} de ${S.maxTurns}</b></span></div>
+        <div class="jgx-facts"><span>${neg ? 'Tus votos' : opp ? 'El Gobierno en Diputados' : 'Diputados'}: <b>${neg ? (S.decisive ? 'decisivos ✓' : S.commit === 'yes' ? 'con el Gobierno' : S.commit === 'no' ? 'con la oposición' : 'sin cerrar') + '</b></span><span>Ley: <b>' + (S.law || (S.dipPassed ? 'media sanción' : 'sin sanción')) : ''}${neg ? '' : S.dipPassed ? `media sanción (${S.dipVotes} votos)` : 'sin media sanción'}</b></span><span>Semanas: <b>${Math.min(S.turn + 1, S.maxTurns)} de ${S.maxTurns}</b></span></div>
         ${flashes.length ? `<div class="jgx-flashes"><span>Lo que tuve que aguantar</span>${flashes.map(l => `<b>⚡ ${esc(l.t)}</b>`).join('')}</div>` : ''}`);
       root.innerHTML = `<section class="jg-game is-rosca">${backBtn()}
         <div class="jg-result rs-end ${win ? 'is-win' : 'is-lose'}">
@@ -1059,13 +1261,13 @@
           <h4>Tus decisiones</h4><ol class="rs-log">${S.log.map(l => `<li${l.flash ? ' class="is-flash"' : ''}><b>${l.flash ? '⚡ ' : ''}${esc(l.t)}:</b> ${esc(l.r)}</li>`).join('')}</ol>
           ${shareBox(text)}
           <button type="button" class="jg-btn is-main" data-again>Volver a jugar</button>
-          <button type="button" class="jg-btn" data-switch>Jugar del otro lado: ${opp ? 'Gobierno' : 'Oposición'}</button>
+          <button type="button" class="jg-btn" data-switch>Probar otro rol</button>
           ${moreGames('rosca')}
           <p class="jg-note">${esc(D.disclaimer)}</p>
         </div></section>`;
       wireBack(root); wireCopy(root); wireShare(root.querySelector('.jg-sharebox'), text, card, 'rosca', { eager: true });
       root.querySelector('[data-again]').addEventListener('click', () => begin(S.role));
-      root.querySelector('[data-switch]').addEventListener('click', () => begin(opp ? 'gov' : 'opp')); wireMore(root); toTop();
+      root.querySelector('[data-switch]').addEventListener('click', pickRole); wireMore(root); toTop();
     }
     return { start };
   })();
