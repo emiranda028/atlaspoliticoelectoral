@@ -406,8 +406,8 @@
     }
     // Every move can be shared as its own card: the situation, what you chose and what happened
     function moveCard(m) {
-      return cardShell('La rosca: PASO o no PASO', m.flash ? '#D62839' : '#6C3FB8', `
-        <div class="jgx-kicker">Semana ${Math.min(S.turn + 1, S.maxTurns)} · ${m.flash ? '⚡ Último momento' : esc(m.who || 'Jefatura de Gabinete')}</div>
+      return cardShell('La rosca: PASO o no PASO', m.faran ? '#C2185B' : m.flash ? '#D62839' : '#6C3FB8', `
+        <div class="jgx-kicker">Semana ${Math.min(S.turn + 1, S.maxTurns)} · ${m.flash ? (m.faran ? '✨ Mientras tanto, en la farándula' : '⚡ Último momento') : esc(m.who || 'Jefatura de Gabinete')}</div>
         <div class="jgx-title is-md${m.title.length > 48 ? ' is-sm' : ''}">${esc(m.title)}</div>
         ${m.text ? `<div class="jgx-text is-sm">${esc(m.text)}</div>` : ''}
         <div class="jgx-choice"><span>La decisión</span><b>${esc(m.choice)}</b></div>
@@ -457,7 +457,7 @@
       const ev = S.queue.shift();
       if (!ev) return actions();
       S.seen[ev.flash ? 'f:' + ev.id : ev.id] = true;
-      root.innerHTML = frame(`<div class="rs-card${ev.flash ? ' is-flash' : ''}">${ev.flash ? '<span class="jg-flash-tag">Último momento</span>' : ''}<span class="rs-who">${esc(ev.who)}${ev.role ? ' · ' + esc(ev.role) : ''}</span><h3>${esc(ev.title)}</h3><p>${esc(ev.text)}</p>
+      root.innerHTML = frame(`<div class="rs-card${ev.flash ? ' is-flash' : ''}">${ev.flash ? (ev.tag === 'farandula' ? '<span class="jg-flash-tag is-faran">Mientras tanto, en la farándula</span>' : '<span class="jg-flash-tag">Último momento</span>') : ''}<span class="rs-who">${esc(ev.who)}${ev.role ? ' · ' + esc(ev.role) : ''}</span><h3>${esc(ev.title)}</h3><p>${esc(ev.text)}</p>
         <div class="jg-opts">${ev.options.map((o, k) => `<button type="button" class="jg-opt" data-k="${k}">${esc(o.label)}</button>`).join('')}</div></div>`);
       wireBack(root);
       root.querySelectorAll('[data-k]').forEach(b => b.addEventListener('click', () => {
@@ -466,7 +466,7 @@
         // political capital, and the goodwill they buy is worth less
         apply(ev.flash ? flashCost(o.e) : o.e); S.log.push({ t: ev.title, r: o.label, flash: !!ev.flash });
         const res = (o.result || '') + (ev.flash ? ' Igual, apagar el incendio te costó capital político.' : '');
-        outcome(o.label, res, showEvent, { flash: ev.flash, who: ev.who + (ev.role ? ' · ' + ev.role : ''), title: ev.title, text: ev.text, choice: o.label, result: res });
+        outcome(o.label, res, showEvent, { flash: ev.flash, faran: ev.tag === 'farandula', who: ev.who + (ev.role ? ' · ' + ev.role : ''), title: ev.title, text: ev.text, choice: o.label, result: res });
       }));
     }
     function actions() {

@@ -2443,6 +2443,267 @@
      }
     }
    ]
+  },
+  {
+   "id": "wanda",
+   "who": "Farándula",
+   "title": "Nuevo capítulo del culebrón de Wanda Nara",
+   "text": "Wanda Nara publica un video de madrugada y el país entero se olvida del Congreso. Los canales de noticias interrumpen la cobertura de la comisión para mostrar sus historias de Instagram minuto a minuto.",
+   "options": [
+    {
+     "label": "Aprovechar que nadie mira para cerrar acuerdos",
+     "result": "Firmás dos compromisos con gobernadores sin una sola cámara encima.",
+     "e": {
+      "blocs": {
+       "sen:misiones": 4,
+       "sen:salta": 4
+      }
+     }
+    },
+    {
+     "label": "Intentar que se hable de las PASO",
+     "result": "Tu conferencia de prensa tiene cuatro periodistas. Tres preguntan por Wanda.",
+     "e": {
+      "stats": {
+       "imagen": -2,
+       "capital": -1
+      }
+     }
+    }
+   ],
+   "tag": "farandula"
+  },
+  {
+   "id": "mirtha",
+   "who": "Mirtha Legrand",
+   "title": "Mirtha te invita a almorzar",
+   "text": "La Chiqui te sienta a su mesa un sábado al mediodía, junto a un actor, una vedette y un economista. A los diez minutos te pregunta, delante de todos: \"¿Y usted para qué quiere sacar las PASO, querido?\".",
+   "options": [
+    {
+     "label": "Contestar con una sonrisa y una frase preparada",
+     "result": "Mirtha te felicita por los modales. El rating ayuda.",
+     "e": {
+      "stats": {
+       "imagen": 5,
+       "capital": -1
+      }
+     }
+    },
+    {
+     "label": "Enredarte en una explicación técnica",
+     "result": "Mirtha te interrumpe: \"no entendí nada\". El clip se viraliza.",
+     "e": {
+      "stats": {
+       "imagen": -4
+      }
+     }
+    }
+   ],
+   "tag": "farandula",
+   "role": "La Noche de Mirtha"
+  },
+  {
+   "id": "gh",
+   "who": "Televisión",
+   "title": "La final de Gran Hermano frena el país",
+   "text": "La final del reality mide más que el Mundial. Hay diputados que piden levantar la sesión de comisión \"para votar por el teléfono\". El ganador ya tiene más seguidores que todo el Congreso junto.",
+   "options": [
+    {
+     "label": "Postergar la reunión de comisión",
+     "result": "Nadie te lo reprocha. Perdiste unos días.",
+     "e": {
+      "stats": {
+       "capital": -1
+      },
+      "turns": 0
+     }
+    },
+    {
+     "label": "Hacer la reunión igual",
+     "result": "Van ocho legisladores con el celular en la mano. Avanzás poco, pero ellos valoran tu seriedad.",
+     "e": {
+      "stats": {
+       "capital": 1
+      },
+      "blocs": {
+       "dip:cc": 2
+      }
+     }
+    }
+   ],
+   "tag": "farandula"
+  },
+  {
+   "id": "moria",
+   "who": "Moria Casán",
+   "title": "Moria opina de las PASO",
+   "text": "En un programa de la tarde, Moria Casán dice que las PASO \"son como un casting: si no te eligen, no sos nadie\" y que el Gobierno \"tiene miedo de no pasar el casting\". La frase es tendencia todo el día.",
+   "options": [
+    {
+     "label": "Contestarle con humor en X",
+     "result": "Moria te responde. El intercambio lo ven millones y nadie habla de política.",
+     "e": {
+      "stats": {
+       "imagen": 3,
+       "interna": -1
+      }
+     }
+    },
+    {
+     "label": "Hacer como que no la escuchaste",
+     "result": "La frase de Moria queda como la mejor definición de las PASO del año.",
+     "e": {
+      "stats": {
+       "imagen": -2
+      }
+     }
+    }
+   ],
+   "tag": "farandula"
+  },
+  {
+   "id": "superclasico",
+   "who": "Fútbol",
+   "title": "Superclásico con polémica del VAR",
+   "text": "Un penal dudoso en el Superclásico desata una guerra nacional. Los diputados de Boca y los de River no se saludan en los pasillos y la comisión no consigue quórum.",
+   "options": [
+    {
+     "label": "Declararte neutral",
+     "result": "Nadie te cree, pero nadie se ofende.",
+     "e": {
+      "stats": {
+       "capital": -1
+      }
+     }
+    },
+    {
+     "label": "Decir de qué cuadro sos",
+     "result": "La mitad del país te ama y la otra mitad te odia. Como siempre.",
+     "e": {
+      "stats": {
+       "imagen": 2
+      },
+      "blocs": {
+       "dip:pro": 3,
+       "dip:up": -3
+      }
+     }
+    }
+   ],
+   "tag": "farandula"
+  },
+  {
+   "id": "tinelli",
+   "who": "Marcelo Tinelli",
+   "title": "Tinelli vuelve a la tele y te invita a bailar",
+   "text": "Marcelo Tinelli anuncia su regreso y te invita a la apertura: quiere un funcionario en la pista. En la Rosada dicen que sería \"un golazo comunicacional\". Los dialoguistas, que sería \"un papelón\".",
+   "options": [
+    {
+     "label": "Ir y bailar una cumbia",
+     "result": "El video es lo más visto del año. En el Congreso te miran distinto.",
+     "e": {
+      "stats": {
+       "imagen": 6,
+       "interna": 3,
+       "capital": -3
+      },
+      "blocs": {
+       "dip:ucr": -3,
+       "dip:cc": -3
+      }
+     }
+    },
+    {
+     "label": "Declinar con elegancia",
+     "result": "Tinelli lo comenta al aire con una broma. No pasa nada más.",
+     "e": {}
+    }
+   ],
+   "tag": "farandula"
+  },
+  {
+   "id": "messi",
+   "who": "Selección",
+   "title": "Messi se lesiona y el país está en vilo",
+   "text": "El parte médico de la Selección dice \"molestia muscular\" y todo el país entra en pánico. Los noticieros tienen un móvil en la puerta del predio de Ezeiza. Tu proyecto desaparece de la agenda.",
+   "options": [
+    {
+     "label": "Esperar a que pase la tormenta",
+     "result": "Una semana sin poder instalar el tema.",
+     "e": {
+      "stats": {
+       "capital": -1
+      }
+     }
+    },
+    {
+     "label": "Aprovechar el silencio para negociar en voz baja",
+     "result": "Cerrás un acuerdo con un bloque provincial mientras todos miran el parte médico.",
+     "e": {
+      "blocs": {
+       "dip:innov": 4,
+       "dip:neuq": 3
+      }
+     }
+    }
+   ],
+   "tag": "farandula"
+  },
+  {
+   "id": "lgante",
+   "who": "Farándula",
+   "title": "Un cantante se presenta en el Congreso sin avisar",
+   "text": "Un cantante de cumbia urbana aparece en el Salón de los Pasos Perdidos para grabar un videoclip. Media planta de empleados se saca fotos y la sesión informativa empieza con una hora de demora.",
+   "options": [
+    {
+     "label": "Sacarte una selfie con él",
+     "result": "Te ganás a los jóvenes. Los senadores mayores no entienden quién es.",
+     "e": {
+      "stats": {
+       "imagen": 3,
+       "capital": -1
+      }
+     }
+    },
+    {
+     "label": "Pedir que lo acompañen a la salida",
+     "result": "Se va, pero sube un video diciendo que lo echaste. Dos millones de vistas.",
+     "e": {
+      "stats": {
+       "imagen": -3
+      }
+     }
+    }
+   ],
+   "tag": "farandula"
+  },
+  {
+   "id": "susana",
+   "who": "Susana Giménez",
+   "title": "Susana te llama en vivo",
+   "text": "En plena entrevista de Susana Giménez a un invitado, suena el teléfono del estudio: sos vos, porque alguien de tu equipo ganó un concurso. Susana no entiende quién sos y te pregunta si sos \"el del clima\".",
+   "options": [
+    {
+     "label": "Seguirle el juego",
+     "result": "Media hora de risas en horario central. Nadie habló de las PASO, pero te conoce todo el país.",
+     "e": {
+      "stats": {
+       "imagen": 5,
+       "interna": -2
+      }
+     }
+    },
+    {
+     "label": "Cortar rápido",
+     "result": "Susana dice al aire \"qué maleducado\". Te persigue una semana.",
+     "e": {
+      "stats": {
+       "imagen": -3
+      }
+     }
+    }
+   ],
+   "tag": "farandula"
   }
  ]
 }
