@@ -117,14 +117,14 @@ o `status: "active"` + `view` (tarjeta que abre el especial).
 | Tipo | Fuente |
 |------|--------|
 | Resultados electorales | Organismos electorales nacionales (INE, ONPE, Servel, TSE, CNE), IDEA International, IPU Parline, Wikipedia |
-| Crecimiento PBI | FMI World Economic Outlook 2025, Banco Mundial |
-| Coeficiente de Gini | World Bank Poverty & Inequality Platform |
+| Crecimiento PBI | FMI World Economic Outlook 2026 (DataMapper), Banco Mundial |
+| Coeficiente de Gini | Banco Mundial (SI.POV.GINI, actualizado nov 2026) |
 | Salario promedio mensual USD | OCDE, UNECE, ILO |
 | Presión tributaria | OCDE Revenue Statistics 2025, CEPAL/CIAT/BID |
-| Tasa de pobreza | Banco Mundial (línea nacional de pobreza) |
-| Índice de Desarrollo Humano | PNUD HDR 2024 |
-| Deuda pública / PBI | FMI 2024 |
-| Libertad de prensa | RSF Press Freedom Index 2024 |
+| Tasa de pobreza | Banco Mundial (línea nacional de pobreza, SI.POV.NAHC, actualizado nov 2026) |
+| Índice de Desarrollo Humano | PNUD HDR 2025 (datos 2023; no hay informe más nuevo) |
+| Deuda pública / PBI | FMI WEO 2026 (dato 2025) |
+| Libertad de prensa | RSF Press Freedom Index 2026 |
 | Cartografía base | [datasets/geo-countries](https://github.com/datasets/geo-countries) (GeoJSON sobre Natural Earth), sin mapa base de terceros |
 | Fotos de líderes | Wikipedia / Wikimedia Commons (MediaWiki API) |
 
