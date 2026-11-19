@@ -975,6 +975,36 @@
         info.querySelector('[data-next]').addEventListener('click', () => { st.i++; st.answered = false; st.i < st.qs.length ? q() : end(); });
       }));
     }
+    // A drawing for each level: canciller, analista, lector, turista, recién llegado
+    function triviaArt(ok) {
+      const globe = (cx, cy, r) => `<circle cx="${cx}" cy="${cy}" r="${r}" fill="#2F6FB0"/>
+        <path d="M${cx - r * 0.55} ${cy - r * 0.45} q${r * 0.25} -${r * 0.2} ${r * 0.45} ${r * 0.05} t${r * 0.2} ${r * 0.35} -${r * 0.35} ${r * 0.2} -${r * 0.3} -${r * 0.4}z M${cx + r * 0.1} ${cy + r * 0.1} q${r * 0.3} -${r * 0.15} ${r * 0.5} ${r * 0.1} t-${r * 0.05} ${r * 0.45} -${r * 0.35} ${r * 0.05}z" fill="#5FB37A"/>
+        <ellipse cx="${cx}" cy="${cy}" rx="${r * 0.45}" ry="${r}" fill="none" stroke="#fff" stroke-width="2" opacity=".55"/>
+        <path d="M${cx - r} ${cy} H${cx + r} M${cx - r * 0.87} ${cy - r * 0.5} H${cx + r * 0.87} M${cx - r * 0.87} ${cy + r * 0.5} H${cx + r * 0.87}" stroke="#fff" stroke-width="2" opacity=".55"/>
+        <circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="#1E4E80" stroke-width="3"/>`;
+      const leaves = side => [0, 1, 2, 3, 4, 5].map(i => { const a = (200 + i * 24) * Math.PI / 180, x = 100 + side * 78 * Math.cos(a) * -1, y = 112 + 78 * Math.sin(a) * -1; return `<ellipse cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" rx="13" ry="6" fill="#4E9A4E" transform="rotate(${side * (i * 24 - 60)} ${x.toFixed(1)} ${y.toFixed(1)})"/>`; }).join('');
+      let body;
+      if (ok >= 9) body = `${globe(100, 100, 56)}${leaves(1)}${leaves(-1)}<path d="M100 18 l7 15 16 2 -12 11 3 16 -14 -8 -14 8 3 -16 -12 -11 16 -2z" fill="#F2B705" stroke="#B8860B" stroke-width="2"/>`;
+      else if (ok >= 7) body = `${globe(88, 92, 58)}<circle cx="138" cy="140" r="30" fill="#DCEBFA" fill-opacity=".55" stroke="#2B303B" stroke-width="9"/><path d="M160 162 L188 190" stroke="#2B303B" stroke-width="13" stroke-linecap="round"/>`;
+      else if (ok >= 5) body = `<g transform="rotate(-6 100 100)"><rect x="34" y="34" width="132" height="140" rx="4" fill="#FBFAF6" stroke="#9C968A" stroke-width="3"/>
+        <text x="100" y="62" text-anchor="middle" font-family="Georgia, serif" font-size="20" font-weight="700" fill="#1B1B1B">EL DIARIO</text>
+        <rect x="46" y="70" width="108" height="3" fill="#1B1B1B"/><rect x="46" y="80" width="108" height="10" rx="2" fill="#3A3A3A"/>
+        <rect x="46" y="98" width="50" height="40" rx="2" fill="#B9C7D6"/><path d="M50 134 l14 -16 10 10 8 -8 10 14z" fill="#7F93A8"/>
+        ${[98, 106, 114, 122, 130].map(y => `<rect x="102" y="${y}" width="52" height="4" rx="2" fill="#C9C3B6"/>`).join('')}
+        ${[146, 154, 162].map(y => `<rect x="46" y="${y}" width="108" height="4" rx="2" fill="#C9C3B6"/>`).join('')}</g>`;
+      else if (ok >= 3) body = `<rect x="78" y="40" width="44" height="22" rx="8" fill="none" stroke="#6B4423" stroke-width="7"/>
+        <rect x="36" y="58" width="128" height="104" rx="12" fill="#B5652E" stroke="#6B4423" stroke-width="4"/>
+        <rect x="36" y="96" width="128" height="8" fill="#6B4423" opacity=".5"/>
+        <circle cx="66" cy="82" r="13" fill="#F2B705"/><rect x="108" y="70" width="34" height="22" rx="4" fill="#2F6FB0" transform="rotate(10 125 81)"/>
+        <circle cx="128" cy="134" r="14" fill="#C8102E"/><rect x="52" y="120" width="40" height="22" rx="4" fill="#5FB37A" transform="rotate(-8 72 131)"/>
+        <circle cx="58" cy="170" r="8" fill="#3B3B3B"/><circle cx="142" cy="170" r="8" fill="#3B3B3B"/>`;
+      else body = `<ellipse cx="62" cy="58" rx="30" ry="14" fill="#E3EAF2"/><ellipse cx="148" cy="78" rx="26" ry="11" fill="#E3EAF2"/>
+        <path d="M30 160 H190" stroke="#9C968A" stroke-width="4" stroke-dasharray="14 10"/>
+        <g transform="translate(100 112) rotate(14)"><path d="M-62 0 Q-62 -10 -48 -10 H42 Q66 -10 70 0 Q66 10 42 10 H-48 Q-62 10 -62 0z" fill="#F4F6F9" stroke="#3A4A5E" stroke-width="3"/>
+        <path d="M-6 -8 L-30 -46 H-16 L22 -8z M-6 8 L-30 46 H-16 L22 8z" fill="#2F6FB0" stroke="#1E4E80" stroke-width="2"/>
+        <path d="M-56 -6 L-70 -30 H-60 L-44 -8z" fill="#2F6FB0"/>${[-30, -14, 2, 18].map(x => `<circle cx="${x}" cy="-1" r="3" fill="#3A4A5E"/>`).join('')}</g>`;
+      return `<svg viewBox="0 0 200 200" class="rs-art" role="img" aria-hidden="true">${body}</svg>`;
+    }
     function end() {
       const n = st.qs.length, ok = st.ok;
       track(`/juego/trivia/fin/${ok}`, `Trivia: ${ok} de ${n}`);
@@ -982,12 +1012,11 @@
       const text = `Saqué ${ok} de ${n} en "¿Quién gobierna?" del Atlas Político Mundial: ${verdict}. ¿Cuántas sacás vos?`;
       const card = cardShell('¿Quién gobierna?', '#D9822B', `
         <div class="jgx-kicker">Trivia del Atlas · líderes, sistemas, economía y elecciones</div>
-        <div class="jgx-huge"><b>${ok}</b><span>/ ${n}</span></div>
-        <div class="jgx-title is-md">${esc(verdict)}</div>
+        <div class="jgx-tv"><div><div class="jgx-huge"><b>${ok}</b><span>/ ${n}</span></div><div class="jgx-title is-md">${esc(verdict)}</div></div>${triviaArt(ok)}</div>
         <div class="jgx-dots">${st.res.map(r => `<i class="${r ? 'is-ok' : 'is-bad'}">${r ? '✓' : '✗'}</i>`).join('')}</div>
         <div class="jgx-text">Líderes, sistemas electorales, economía y elecciones de 197 países, con los datos del Atlas.</div>`);
       root.innerHTML = `<section class="jg-game is-trivia">${backBtn()}
-        <div class="jg-result"><span class="jg-kicker">Resultado</span><h2>${ok} de ${n}: <em>${esc(verdict)}</em></h2>
+        <div class="jg-result"><div class="rs-end-art">${triviaArt(ok)}<div><span class="jg-kicker">Resultado</span><h2>${ok} de ${n}: <em>${esc(verdict)}</em></h2></div></div>
           <p>Las respuestas salen de la base del Atlas, que se actualiza con cada elección.</p>
           ${shareBox(text)}<button type="button" class="jg-btn is-main" data-again>Otra ronda</button>${moreGames('trivia')}</div></section>`;
       wireBack(root); wireCopy(root); wireShare(root.querySelector('.jg-sharebox'), text, card, 'trivia', { eager: true });
