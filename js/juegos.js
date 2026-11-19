@@ -598,7 +598,7 @@
       const est = count(ch).exp;
       paint(`<div class="rs-card is-vote is-q"><span class="rs-who">${where}</span><h3>Hay quórum: ${sit} sentados</h3>
         <p>Se abre la sesión y la oposición entra al recinto para votar en contra. Según tu poroteo tenés <b>unos ${est} votos a favor</b> (±2) y necesitás <b>${need}</b>.</p>
-        <p class="rs-warn">Si se vota y perdés, el proyecto queda rechazado y no puede volver a tratarse en las sesiones de este año (artículo 81 de la Constitución). Si no estás seguro, podés pedir que vuelva a comisión: conserva estado parlamentario y lo intentás más adelante.</p>
+        <p class="rs-warn">Ojo: el poroteo no ve los llamados de último minuto, de propios y ajenos. Si se vota y perdés, el proyecto queda rechazado y no puede volver a tratarse en las sesiones de este año (artículo 81 de la Constitución). Si no estás seguro, podés pedir que vuelva a comisión: conserva estado parlamentario y lo intentás más adelante.</p>
         <div class="rs-acts is-vote-acts">
           <button type="button" class="jg-btn is-main" data-vote="go">Votar ahora</button>
           <button type="button" class="jg-btn" data-vote="back">Pedir la vuelta a comisión</button>
@@ -611,8 +611,37 @@
           { who: where, title: 'Hay quórum, pero no los votos', choice: 'Vuelta a comisión', decision: 'Pedir la vuelta a comisión', result: 'El proyecto conserva estado parlamentario.' });
       }));
     }
+    // Last-minute calls nobody counted: a governor who asks "his" legislator to
+    // leave, an ally who doesn't show up... and once in a while a surprise yes
+    function lastMinute(ch, r) {
+      const turned = [];
+      if (Math.random() > 0.35) return turned;
+      const pool = r.rows.filter(x => x.yes > 0 && x.b.id !== 'fit');
+      const n = ch === 'dip' ? 1 + Math.floor(Math.random() * 2) : 1;
+      const why = [
+        b => `Un legislador de ${b.name} recibió un llamado de su gobernador y se levantó de la banca`,
+        b => `Dos de ${b.name} se abstuvieron a último momento "por pedido de sus bases"`,
+        b => `Uno de ${b.name} avisó que estaba "descompuesto" y no bajó al recinto`,
+        b => `Un integrante de ${b.name} votó en contra tras una charla en un pasillo`,
+        b => `Uno de ${b.name} se quedó afuera: llegó tarde por un vuelo demorado`
+      ];
+      for (let i = 0; i < n && pool.length; i++) {
+        const x = pool[Math.floor(Math.random() * pool.length)], k = Math.floor(Math.random() * why.length);
+        const lost = Math.min(x.yes, k === 1 ? 2 : 1); if (!lost) continue;
+        x.yes -= lost; x.no += lost; r.yes -= lost;
+        turned.push({ t: why[k](x.b), v: -lost });
+      }
+      // Sometimes the calls work for you: someone you didn't count votes yes
+      if (Math.random() < 0.35) {
+        const opp = r.rows.filter(x => x.no > 0 && x.b.id !== 'fit');
+        if (opp.length) { const x = opp[Math.floor(Math.random() * opp.length)]; x.yes += 1; x.no -= 1; r.yes += 1; turned.push({ t: `Sorpresa: uno de ${x.b.name} votó a favor después de un llamado de último minuto`, v: 1 }); }
+      }
+      r.pass = r.yes >= r.need;
+      return turned;
+    }
     function result(ch, r) {
       const where = ch === 'dip' ? 'Sesión especial en Diputados' : 'Sesión en el Senado';
+      const turned = lastMinute(ch, r);
       S.lastVote = r;
       const rows = r.rows.filter(x => x.b.seats > 0).map(x => `<div class="rs-vrow"><i style="background:${x.b.color || '#888'}"></i><span>${esc(x.b.name)}</span><b class="is-yes">${x.yes}</b><b class="is-no">${x.no}</b></div>`).join('');
       let title, text;
@@ -621,7 +650,8 @@
       else if (ch === 'dip') { S.over = 'rejected'; title = 'Rechazado en Diputados'; text = `Votaron ${r.yes} a favor y hacían falta ${r.need}. El proyecto quedó rechazado en la cámara de origen y no puede volver a tratarse este año.`; }
       else { S.over = 'rejectedSen'; title = 'Rechazado en el Senado'; text = `Votaron ${r.yes} a favor y hacían falta ${r.need}. El proyecto vuelve a Diputados, pero ya no hay tiempo para insistir antes de las PASO.`; }
       S.log.push({ t: where, r: `${title} (${r.yes} votos)` });
-      paint(`<div class="rs-card is-vote"><span class="rs-who">${where}</span><h3>${esc(title)}</h3><p>${esc(text)}</p>
+      const calls = turned.length ? `<div class="rs-calls"><b>📞 Llamados de último minuto</b><ul>${turned.map(x => `<li class="${x.v > 0 ? 'is-up' : 'is-down'}">${esc(x.t)} <em>${x.v > 0 ? '+' : '−'}${Math.abs(x.v)}</em></li>`).join('')}</ul></div>` : '';
+      paint(`<div class="rs-card is-vote"><span class="rs-who">${where}</span><h3>${esc(title)}</h3><p>${esc(text)}</p>${calls}
         <div class="rs-tally"><div class="rs-tally-big"><b class="${r.pass ? 'is-yes' : 'is-no'}">${r.yes}</b><span>a favor</span><b>/ ${r.need}</b><span>necesarios</span></div>
           <div class="rs-vrows"><div class="rs-vrow is-head"><i></i><span>Bloque</span><b>Sí</b><b>No / ausentes</b></div>${rows}</div></div>
         ${shareMini()}<button type="button" class="jg-btn is-main" data-next>${S.over ? 'Ver el final' : 'Seguir'}</button></div>`);

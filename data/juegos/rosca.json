@@ -3621,6 +3621,153 @@
      }
     }
    ]
+  },
+  {
+   "id": "fit_privilegio",
+   "who": "Frente de Izquierda",
+   "title": "La izquierda pide 14 cuestiones de privilegio",
+   "text": "Los diputados del Frente de Izquierda piden la palabra por cuestión de privilegio una y otra vez. La sesión informativa se estira hasta la medianoche y la mitad de tus aliados se va a dormir.",
+   "options": [
+    {
+     "label": "Pedir que se cierre la lista de oradores",
+     "result": "Lo lográs, pero la izquierda denuncia \"censura\" y el clip circula.",
+     "e": {
+      "stats": {
+       "imagen": -2,
+       "capital": 1
+      }
+     }
+    },
+    {
+     "label": "Aguantar hasta el final",
+     "result": "Terminás a las 3 de la mañana. Tus aliados valoran que estuviste.",
+     "e": {
+      "stats": {
+       "capital": -1
+      },
+      "blocs": {
+       "dip:mid": 2,
+       "dip:pro": 2
+      }
+     }
+    }
+   ],
+   "role": "FIT-U"
+  },
+  {
+   "id": "fit_9dejulio",
+   "who": "Frente de Izquierda",
+   "title": "La izquierda corta la 9 de Julio contra la reforma",
+   "text": "Columnas del Frente de Izquierda y organizaciones sociales cortan la 9 de Julio con la consigna \"Las PASO no se tocan\". Son pocos en el Congreso, pero en la calle se hacen ver.",
+   "options": [
+    {
+     "label": "Pedir que se aplique el protocolo antipiquetes",
+     "result": "El corte se levanta con tensión. Las fotos no ayudan con los dialoguistas.",
+     "e": {
+      "stats": {
+       "interna": 3,
+       "imagen": -3
+      },
+      "blocs": {
+       "dip:cc": -2
+      }
+     }
+    },
+    {
+     "label": "Dejar que la marcha termine sola",
+     "result": "Hay bombos hasta la tarde. Nadie te reprocha nada.",
+     "e": {
+      "stats": {
+       "capital": -1
+      }
+     }
+    }
+   ],
+   "role": "FIT-U"
+  },
+  {
+   "id": "fit_sueldo",
+   "who": "Frente de Izquierda",
+   "title": "\"Que los legisladores ganen como una maestra\"",
+   "text": "El Frente de Izquierda vuelve a presentar su proyecto para que los legisladores cobren lo mismo que una docente y lo pone en el centro del debate: \"Si quieren ahorrar, empiecen por la dieta, no por las PASO\".",
+   "options": [
+    {
+     "label": "Decir que lo van a estudiar",
+     "result": "Los demás bloques te miran con desconfianza.",
+     "e": {
+      "stats": {
+       "imagen": 2
+      },
+      "blocs": {
+       "dip:pro": -2,
+       "dip:mid": -2
+      }
+     }
+    },
+    {
+     "label": "Responder que es demagogia",
+     "result": "Se arma una discusión en redes que la izquierda gana por cantidad de memes.",
+     "e": {
+      "stats": {
+       "imagen": -2
+      }
+     }
+    }
+   ],
+   "role": "FIT-U"
+  },
+  {
+   "id": "fit_rotacion",
+   "who": "Frente de Izquierda",
+   "title": "La izquierda rota la banca justo antes de la votación",
+   "text": "Por el sistema de rotación del Frente de Izquierda, asume una diputada nueva que pide una semana para \"estudiar el expediente\" y presenta un dictamen de minoría de 80 páginas.",
+   "options": [
+    {
+     "label": "Contestar el dictamen punto por punto",
+     "result": "Tus asesores no duermen, pero el debate queda ordenado.",
+     "e": {
+      "stats": {
+       "capital": -2
+      },
+      "blocs": {
+       "dip:ucr": 2
+      }
+     }
+    },
+    {
+     "label": "Ignorarlo",
+     "result": "El dictamen se lee en el recinto durante una hora.",
+     "e": {
+      "stats": {
+       "capital": -1
+      }
+     }
+    }
+   ],
+   "role": "FIT-U"
+  },
+  {
+   "id": "fit_consulta",
+   "who": "Frente de Izquierda",
+   "title": "La izquierda junta firmas para una consulta popular",
+   "text": "El Frente de Izquierda lanza una campaña para que las PASO se decidan en una consulta popular. En una semana juntan miles de firmas en universidades y estaciones de tren.",
+   "options": [
+    {
+     "label": "Decir que la Constitución no lo permite así",
+     "result": "Tenés razón técnica; la izquierda gana la pelea comunicacional.",
+     "e": {
+      "stats": {
+       "imagen": -2
+      }
+     }
+    },
+    {
+     "label": "No darle importancia",
+     "result": "La campaña se desinfla sola.",
+     "e": {}
+    }
+   ],
+   "role": "FIT-U"
   }
  ]
 }
