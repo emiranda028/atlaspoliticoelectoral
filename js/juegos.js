@@ -496,6 +496,7 @@
     function eligible(ev) {
       if (S.seen[ev.id]) return false;
       if (S.dipPassed && onlyDip(ev)) return false;
+      if (ev.phase === 'sen' && !S.dipPassed) return false;
       if (ev.requires && !S.flags[ev.requires]) return false;
       return ev.turn <= S.turn + 1;
     }
@@ -508,9 +509,9 @@
       S.queue = due.slice(0, 2).concat(due.length < 2 ? rand.slice(0, 1) : []);
       // "Último momento": something unexpected, in the middle of the week's events
       // Events about "your" governor only show up once you've negotiated with one
-      const fl = (D.flashes || []).filter(f => !S.seen['f:' + f.id] && (!f.needsGov || dealtGovs().length) && !(S.dipPassed && onlyDip(f)));
+      const fl = (D.flashes || []).filter(f => !S.seen['f:' + f.id] && (!f.needsGov || dealtGovs().length) && !(S.dipPassed && onlyDip(f)) && !(f.phase === 'sen' && !S.dipPassed));
       // Once you've made deals, half of the surprises are about those governors
-      const pick = () => { const g = fl.filter(f => f.needsGov), pool = g.length && Math.random() < 0.5 ? g : fl; const f = pool[Math.floor(Math.random() * pool.length)]; fl.splice(fl.indexOf(f), 1); return Object.assign({ flash: true }, f); };
+      const pick = () => { const g = fl.filter(f => f.needsGov), sen = fl.filter(f => f.phase === 'sen'), r = Math.random(), pool = sen.length && r < 0.45 ? sen : g.length && r < 0.7 ? g : fl; const f = pool[Math.floor(Math.random() * pool.length)]; fl.splice(fl.indexOf(f), 1); return Object.assign({ flash: true }, f); };
       if (!first && fl.length && Math.random() < 0.7) S.queue.splice(Math.min(1, S.queue.length), 0, pick());
       if (!first && fl.length && Math.random() < 0.15) S.queue.push(pick());
       showEvent();
@@ -686,7 +687,7 @@
       root.querySelector('[data-next]').addEventListener('click', () => S.over ? ending(S.over) : (checkOver() ? ending(S.over) : nextTurn()));
     }
     // The rosca: whole and crowned if you won, bitten if the rosca ate you
-    const ROSCA_LINE = { win: '¡Ganaste la rosca!', winLemas: 'Ganaste la rosca… con lemas', time: 'Te comió la rosca', fired: 'La rosca te pasó por arriba', sidelined: 'Te sacaron de la rosca', rejected: 'No pudiste con la rosca', rejectedSen: 'La rosca del Senado te ganó' };
+    const ROSCA_LINE = { win: '¡Ganaste la rosca!', winLemas: 'Ganaste la rosca… con lemas', time: 'Te comió la rosca', fired: 'La rosca te pasó por arriba', sidelined: 'Te sacaron de la rosca', rejected: 'Diputados se comió la rosca', rejectedSen: 'El Senado se comió la rosca' };
     function roscaSVG(kind, bg) {
       const win = kind === 'win' || kind === 'winLemas', id = 'r' + Math.random().toString(36).slice(2, 8);
       const fruit = [20, 75, 130, 185, 240, 295].map((a, i) => { const r = a * Math.PI / 180, x = 100 + 60 * Math.cos(r), y = 112 + 60 * Math.sin(r);
@@ -707,6 +708,60 @@
         : `<g fill="#C77D2E">${[[186, 50, 3], [192, 64, 2.2], [176, 30, 2.5], [196, 100, 2]].map(([x, y, r]) => `<circle cx="${x}" cy="${y}" r="${r}"/>`).join('')}</g>`}
       </svg>`;
     }
+    // The Congress eats the rosca (rejected in a chamber)
+    function congressSVG(chamber, bg) {
+      const cols = [0, 1, 2, 3, 4, 5, 6, 7].map(i => `<rect x="${42 + i * 16}" y="110" width="7" height="40" fill="#F6F1E7" stroke="#B7AD9A" stroke-width="1"/>`).join('');
+      const ribs = [-24, -12, 0, 12, 24].map(dx => `<path d="M${100 + dx * 1.45} 60 Q${100 + dx * 0.6} 28 100 20" fill="none" stroke="#2F6B52" stroke-width="1.4"/>`).join('');
+      return `<svg viewBox="0 0 200 200" class="rs-art" role="img" aria-label="El Congreso se comió la rosca">
+        <ellipse cx="100" cy="186" rx="88" ry="8" fill="#000" opacity=".12"/>
+        <rect x="18" y="150" width="164" height="32" rx="2" fill="#E6DDCB" stroke="#9E9482"/>
+        <rect x="26" y="146" width="148" height="6" fill="#D8CDB6"/>
+        ${cols}
+        <rect x="34" y="100" width="132" height="11" fill="#EDE5D6" stroke="#9E9482"/>
+        <polygon points="34,100 100,80 166,100" fill="#EDE5D6" stroke="#9E9482"/>
+        <text x="100" y="96" text-anchor="middle" font-family="Georgia, serif" font-size="8.5" font-weight="700" fill="#5A5246" letter-spacing="1">${chamber === 'sen' ? 'SENADO' : 'DIPUTADOS'}</text>
+        <rect x="68" y="58" width="64" height="24" fill="#E6DDCB" stroke="#9E9482"/>
+        ${[0, 1, 2, 3, 4].map(i => `<rect x="${74 + i * 12}" y="63" width="5" height="14" rx="2" fill="#B7AD9A"/>`).join('')}
+        <path d="M62 60 Q100 -4 138 60 Z" fill="#4E8F72" stroke="#2F6B52" stroke-width="2"/>${ribs}
+        <rect x="95" y="10" width="10" height="14" fill="#4E8F72" stroke="#2F6B52"/><circle cx="100" cy="8" r="4" fill="#C9A227"/>
+        <g>
+          <circle cx="118" cy="168" r="15" fill="none" stroke="#D99442" stroke-width="10"/>
+          <circle cx="118" cy="168" r="15" fill="none" stroke="#FFF6E2" stroke-width="3" stroke-dasharray="5 4"/>
+          <circle cx="131" cy="160" r="3" fill="#C8102E"/><circle cx="127" cy="179" r="2.6" fill="#3E9B4F"/>
+        </g>
+        <path d="M84 184 L84 158 Q100 142 116 158 L116 184 Z" fill="#3B2F2F"/>
+        <path d="M90 160 l4 6 4 -6 4 6 4 -6 4 6 4 -6" fill="none" stroke="#F6F1E7" stroke-width="2" stroke-linejoin="round"/>
+        <g fill="#C77D2E"><circle cx="70" cy="178" r="2"/><circle cx="62" cy="172" r="1.6"/><circle cx="132" cy="178" r="1.8"/><circle cx="140" cy="171" r="1.4"/></g>
+      </svg>`;
+    }
+    // The resignation, published in the Boletín Oficial and signed
+    function boletinSVG() {
+      const line = (y, w) => `<rect x="44" y="${y}" width="${w}" height="3" rx="1.5" fill="#C9C3B6"/>`;
+      return `<svg viewBox="0 0 200 200" class="rs-art" role="img" aria-label="Boletín Oficial: decreto que acepta la renuncia">
+        <g transform="rotate(-4 100 100)">
+          <rect x="34" y="14" width="136" height="178" rx="2" fill="#000" opacity=".12" transform="translate(4 4)"/>
+          <rect x="34" y="14" width="136" height="178" rx="2" fill="#fff" stroke="#CFC8BA"/>
+          <rect x="34" y="14" width="136" height="24" fill="#1E3A5F"/>
+          <text x="102" y="27" text-anchor="middle" font-family="Georgia, serif" font-size="10" font-weight="700" fill="#fff">BOLETÍN OFICIAL</text>
+          <text x="102" y="34" text-anchor="middle" font-family="Arial, sans-serif" font-size="4.6" fill="#DCE6F2" letter-spacing=".6">DE LA REPÚBLICA ARGENTINA</text>
+          <text x="44" y="52" font-family="Arial, sans-serif" font-size="7.5" font-weight="700" fill="#1E3A5F">DECRETO 1312/2026</text>
+          <text x="44" y="62" font-family="Arial, sans-serif" font-size="5" fill="#555">JEFATURA DE GABINETE DE MINISTROS</text>
+          <text x="44" y="76" font-family="Georgia, serif" font-size="6.2" fill="#222">Artículo 1°.- Acéptase la renuncia</text>
+          <text x="44" y="84" font-family="Georgia, serif" font-size="6.2" fill="#222">presentada a la Jefatura de</text>
+          <text x="44" y="92" font-family="Georgia, serif" font-size="6.2" fill="#222">Gabinete de Ministros.</text>
+          ${line(100, 112)}${line(107, 96)}${line(114, 104)}
+          <text x="44" y="128" font-family="Georgia, serif" font-size="5.6" fill="#222">Art. 2°.- Comuníquese, publíquese,</text>
+          <text x="44" y="135" font-family="Georgia, serif" font-size="5.6" fill="#222">dese a la Dirección Nacional del</text>
+          <text x="44" y="142" font-family="Georgia, serif" font-size="5.6" fill="#222">Registro Oficial y archívese.</text>
+          <path d="M96 166 C102 150 108 172 114 158 S124 150 128 164 S140 156 150 160" fill="none" stroke="#1F3A93" stroke-width="2" stroke-linecap="round"/>
+          <rect x="92" y="170" width="64" height="1" fill="#555"/>
+          <text x="124" y="179" text-anchor="middle" font-family="Arial, sans-serif" font-size="5.5" font-weight="700" fill="#222">MILEI</text>
+          <circle cx="62" cy="168" r="13" fill="none" stroke="#B3261E" stroke-width="2" opacity=".7"/>
+          <text x="62" y="170" text-anchor="middle" font-family="Arial, sans-serif" font-size="4.5" font-weight="700" fill="#B3261E" opacity=".8">ACEPTADA</text>
+        </g>
+      </svg>`;
+    }
+    const endingArt = (kind, bg) => kind === 'rejected' ? congressSVG('dip', bg) : kind === 'rejectedSen' ? congressSVG('sen', bg) : kind === 'fired' ? boletinSVG() : roscaSVG(kind, bg);
     function ending(kind) {
       const E = D.endings[kind] || D.endings.time, win = kind === 'win' || kind === 'winLemas';
       const score = win ? Math.round(stat('imagen') * 0.4 + stat('capital') * 0.3 + stat('caja') * 0.2 + (S.maxTurns - S.turn) * 4 + (S.flags.lemas ? -15 : 0)) : 0;
@@ -714,14 +769,14 @@
       const flashes = S.log.filter(l => l.flash).slice(-3);
       const card = cardShell('La rosca: PASO o no PASO', '#6C3FB8', `
         <div class="jgx-kicker">${win ? 'Lo logré' : 'Fin del juego'} · Jefatura de Gabinete${S.scenario ? ` · ${esc(S.scenario.title)}` : ''}</div>
-        <div class="jgx-rosca">${roscaSVG(kind, '#FBF7F0')}<div><b>${esc(ROSCA_LINE[kind] || E.title)}</b><span>${esc(E.title)}</span>${win ? `<em>${score} puntos</em>` : ''}</div></div>
+        <div class="jgx-rosca">${endingArt(kind, '#FBF7F0')}<div><b>${esc(ROSCA_LINE[kind] || E.title)}</b><span>${esc(E.title)}</span>${win ? `<em>${score} puntos</em>` : ''}</div></div>
         <div class="jgx-text is-sm">${esc(E.text)}</div>
         <div class="jgx-stats">${STATS.map(k => `<div class="jgx-stat"><span>${esc(D.stats[k].label)}</span><div class="jgx-stat-t"><i style="width:${stat(k)}%"></i></div><b>${stat(k)}</b></div>`).join('')}</div>
         <div class="jgx-facts"><span>Diputados: <b>${S.dipPassed ? `media sanción (${S.dipVotes} votos)` : 'sin media sanción'}</b></span><span>Semanas: <b>${Math.min(S.turn + 1, S.maxTurns)} de ${S.maxTurns}</b></span></div>
         ${flashes.length ? `<div class="jgx-flashes"><span>Lo que tuve que aguantar</span>${flashes.map(l => `<b>⚡ ${esc(l.t)}</b>`).join('')}</div>` : ''}`);
       root.innerHTML = `<section class="jg-game is-rosca">${backBtn()}
         <div class="jg-result rs-end ${win ? 'is-win' : 'is-lose'}">
-          <div class="rs-end-art">${roscaSVG(kind, getComputedStyle(document.documentElement).getPropertyValue('--surface').trim() || '#fff')}<div><span class="jg-kicker">${win ? 'Ganaste' : 'Fin del juego'}</span><h2>${esc(ROSCA_LINE[kind] || E.title)}</h2><p class="rs-end-sub">${esc(E.title)}</p></div></div><p>${esc(E.text)}</p>${S.scenario ? `<p class="rs-scen-end">Escenario: <b>${esc(S.scenario.title)}</b></p>` : ''}
+          <div class="rs-end-art">${endingArt(kind, getComputedStyle(document.documentElement).getPropertyValue('--surface').trim() || '#fff')}<div><span class="jg-kicker">${win ? 'Ganaste' : 'Fin del juego'}</span><h2>${esc(ROSCA_LINE[kind] || E.title)}</h2><p class="rs-end-sub">${esc(E.title)}</p></div></div><p>${esc(E.text)}</p>${S.scenario ? `<p class="rs-scen-end">Escenario: <b>${esc(S.scenario.title)}</b></p>` : ''}
           ${win ? `<div class="rs-score"><b>${score}</b><span>puntos</span></div>` : ''}
           <div class="rs-final">${STATS.map(k => `<div><span>${esc(D.stats[k].label)}</span><b>${stat(k)}</b></div>`).join('')}<div><span>Semanas usadas</span><b>${Math.min(S.turn + 1, S.maxTurns)} de ${S.maxTurns}</b></div></div>
           <h4>Tus decisiones</h4><ol class="rs-log">${S.log.map(l => `<li${l.flash ? ' class="is-flash"' : ''}><b>${l.flash ? '⚡ ' : ''}${esc(l.t)}:</b> ${esc(l.r)}</li>`).join('')}</ol>

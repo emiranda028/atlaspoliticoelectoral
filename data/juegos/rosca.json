@@ -4193,6 +4193,473 @@
     }
    ],
    "role": "FIT-U"
+  },
+  {
+   "id": "mayans",
+   "who": "José Mayans",
+   "title": "Mayans pide una cuestión de privilegio de dos horas",
+   "text": "El jefe del bloque peronista en el Senado habla dos horas sobre \"la proscripción del pueblo\", cita a Perón y a Sampay y advierte que \"esta ley no pasa\".",
+   "options": [
+    {
+     "label": "Responder con un senador propio",
+     "result": "Debate duro; los indecisos se quedan con tu respuesta.",
+     "e": {
+      "stats": {
+       "capital": -1
+      },
+      "blocs": {
+       "sen:ucr": 2
+      }
+     }
+    },
+    {
+     "label": "Dejarlo hablar y no contestar",
+     "result": "El discurso circula en redes peronistas.",
+     "e": {
+      "stats": {
+       "imagen": -1
+      }
+     }
+    }
+   ],
+   "phase": "sen",
+   "role": "Bloque Popular"
+  },
+  {
+   "id": "senador_licencia",
+   "who": "Senado",
+   "title": "Un senador aliado pide licencia por salud",
+   "text": "Un senador que contabas como voto seguro pide licencia médica justo la semana de la sesión. Su suplente es de otro partido.",
+   "options": [
+    {
+     "label": "Pedirle que vote por videoconferencia",
+     "result": "El reglamento no lo permite para esta sesión; el voto se pierde igual.",
+     "e": {
+      "blocs": {
+       "sen:ucr": -4
+      }
+     }
+    },
+    {
+     "label": "Negociar con el suplente",
+     "result": "Te cuesta caja, pero el suplente se suma.",
+     "e": {
+      "stats": {
+       "caja": -5
+      }
+     }
+    }
+   ],
+   "phase": "sen"
+  },
+  {
+   "id": "abdala",
+   "who": "Bartolomé Abdala",
+   "title": "El presidente provisional del Senado no fija fecha",
+   "text": "Bartolomé Abdala dice que no va a fijar la sesión hasta que haya \"un acuerdo amplio\" en Labor Parlamentaria. Bullrich se enoja.",
+   "options": [
+    {
+     "label": "Pedirle a Bullrich que acuerde con él",
+     "result": "Se destraba la fecha, pero Bullrich gana protagonismo.",
+     "e": {
+      "stats": {
+       "interna": -2,
+       "capital": 2
+      }
+     }
+    },
+    {
+     "label": "Esperar el acuerdo amplio",
+     "result": "Perdés tiempo, pero ganás buena voluntad.",
+     "e": {
+      "blocs": {
+       "sen:ucr": 3,
+       "sen:pu": 3
+      }
+     }
+    }
+   ],
+   "phase": "sen",
+   "role": "Presidente provisional del Senado"
+  },
+  {
+   "id": "senadora_viaje",
+   "who": "Senado",
+   "title": "Una senadora clave se va a Europa",
+   "text": "Una senadora indecisa viaja a un foro en Bruselas justo la semana de la sesión y dice que vuelve \"si se puede\".",
+   "options": [
+    {
+     "label": "Pagarle el pasaje de vuelta",
+     "result": "Vuelve y vota con vos. La oposición habla de \"pasajes de la vergüenza\".",
+     "e": {
+      "stats": {
+       "caja": -4,
+       "imagen": -2
+      },
+      "blocs": {
+       "sen:misiones": 4
+      }
+     }
+    },
+    {
+     "label": "Dejarla viajar",
+     "result": "Un voto menos en el poroteo.",
+     "e": {
+      "blocs": {
+       "sen:misiones": -4
+      }
+     }
+    }
+   ],
+   "phase": "sen"
+  },
+  {
+   "id": "misiones_rovira",
+   "who": "Carlos Rovira",
+   "title": "Rovira quiere su propia reforma",
+   "text": "El conductor del Frente Renovador misionero pide que el proyecto le permita a Misiones mantener su sistema electoral propio. Sus dos senadores esperan la orden.",
+   "options": [
+    {
+     "label": "Aceptar una cláusula provincial",
+     "result": "Rovira da la orden; la Coalición Cívica protesta.",
+     "e": {
+      "blocs": {
+       "sen:misiones": 8,
+       "dip:cc": -3
+      }
+     }
+    },
+    {
+     "label": "Negarte",
+     "result": "Los senadores misioneros se abstienen.",
+     "e": {
+      "blocs": {
+       "sen:misiones": -6
+      }
+     }
+    }
+   ],
+   "phase": "sen",
+   "role": "Frente Renovador de la Concordia"
+  },
+  {
+   "id": "ucr_senado",
+   "who": "UCR",
+   "title": "Los senadores radicales piden cambios",
+   "text": "El bloque radical del Senado dice que si el proyecto no vuelve con cambios, no lo acompaña. Pero si hay cambios, tiene que volver a Diputados.",
+   "options": [
+    {
+     "label": "Comprometer los cambios en la reglamentación",
+     "result": "Los radicales aceptan: los cambios van por decreto reglamentario y el proyecto no vuelve a Diputados. En la Rosada no les gusta nada.",
+     "e": {
+      "stats": {
+       "interna": -6,
+       "capital": -3
+      },
+      "blocs": {
+       "sen:ucr": 10
+      }
+     }
+    },
+    {
+     "label": "Convencerlos uno por uno sin cambios",
+     "result": "Te cuesta caja y no todos aceptan.",
+     "e": {
+      "stats": {
+       "caja": -8
+      },
+      "blocs": {
+       "sen:ucr": 4
+      }
+     }
+    }
+   ],
+   "phase": "sen",
+   "role": "Bloque UCR del Senado"
+  },
+  {
+   "id": "santacruz_senado",
+   "who": "Claudio Vidal",
+   "title": "Santa Cruz pide la represa",
+   "text": "El gobernador de Santa Cruz dice que sus dos senadores votan si se reactivan las obras de las represas sobre el río Santa Cruz.",
+   "options": [
+    {
+     "label": "Firmar la reactivación",
+     "result": "Te cuesta caja; Santa Cruz se suma.",
+     "e": {
+      "stats": {
+       "caja": -8
+      },
+      "blocs": {
+       "sen:movere": 10
+      }
+     }
+    },
+    {
+     "label": "Prometer que se va a estudiar",
+     "result": "Los santacruceños dudan.",
+     "e": {
+      "blocs": {
+       "sen:movere": -3
+      }
+     }
+    }
+   ],
+   "phase": "sen",
+   "role": "Gobernador de Santa Cruz"
+  },
+  {
+   "id": "tucuman_senado",
+   "who": "Osvaldo Jaldo",
+   "title": "Jaldo duda a último momento",
+   "text": "El gobernador de Tucumán dice que \"está todo bien\", pero su senadora no confirma el voto. En el peronismo tucumano le recuerdan que en 2027 hay elecciones.",
+   "options": [
+    {
+     "label": "Adelantarle fondos a Tucumán",
+     "result": "La senadora confirma.",
+     "e": {
+      "stats": {
+       "caja": -6
+      },
+      "blocs": {
+       "sen:ind": 8
+      }
+     }
+    },
+    {
+     "label": "Confiar en su palabra",
+     "result": "La senadora sigue sin confirmar.",
+     "e": {
+      "blocs": {
+       "sen:ind": -4
+      }
+     }
+    }
+   ],
+   "phase": "sen",
+   "role": "Gobernador de Tucumán"
+  },
+  {
+   "id": "mayans_quorum",
+   "who": "Bloque Popular",
+   "title": "El peronismo amenaza con no dar quórum en nada",
+   "text": "El bloque peronista anuncia que si se trata el proyecto, no va a dar quórum para ninguna otra ley hasta marzo, incluido el presupuesto.",
+   "options": [
+    {
+     "label": "Ofrecer tratar primero el presupuesto",
+     "result": "Baja la tensión; perdés una semana.",
+     "e": {
+      "stats": {
+       "capital": -2
+      },
+      "blocs": {
+       "sen:popular": 4
+      }
+     }
+    },
+    {
+     "label": "Seguir adelante igual",
+     "result": "El peronismo se cierra por completo.",
+     "e": {
+      "stats": {
+       "interna": 2
+      },
+      "blocs": {
+       "sen:popular": -6,
+       "sen:pu": -2
+      }
+     }
+    }
+   ],
+   "phase": "sen"
+  },
+  {
+   "id": "villarruel_desempate",
+   "who": "Victoria Villarruel",
+   "title": "¿Y si hay empate?",
+   "text": "En los pasillos se calcula que la votación puede terminar empatada. En ese caso desempata la vicepresidenta, que no confirma qué haría.",
+   "options": [
+    {
+     "label": "Pedirle una reunión a Villarruel",
+     "result": "Te recibe con frialdad, pero no se niega a ayudar.",
+     "e": {
+      "stats": {
+       "interna": -3,
+       "capital": 2
+      }
+     }
+    },
+    {
+     "label": "Contar votos para no depender de ella",
+     "result": "Te cuesta caja.",
+     "e": {
+      "stats": {
+       "caja": -5
+      },
+      "blocs": {
+       "sen:salta": 3,
+       "sen:chubut": 3
+      }
+     }
+    }
+   ],
+   "phase": "sen",
+   "role": "Vicepresidenta"
+  },
+  {
+   "id": "senado_comision",
+   "who": "Asuntos Constitucionales del Senado",
+   "title": "La comisión del Senado pide más audiencias",
+   "text": "La comisión de Asuntos Constitucionales del Senado convoca a constitucionalistas y a la Justicia Electoral. Las audiencias pueden durar semanas.",
+   "options": [
+    {
+     "label": "Acortar las audiencias",
+     "result": "La oposición dice que es un trámite exprés.",
+     "e": {
+      "stats": {
+       "imagen": -2,
+       "capital": 1
+      }
+     }
+    },
+    {
+     "label": "Aceptar las audiencias",
+     "result": "Los indecisos valoran el debate.",
+     "e": {
+      "stats": {
+       "capital": -2
+      },
+      "blocs": {
+       "sen:ucr": 3,
+       "sen:pu": 3
+      }
+     }
+    }
+   ],
+   "phase": "sen"
+  },
+  {
+   "id": "chubut_senado",
+   "who": "Ignacio Torres",
+   "title": "Torres pide regalías para votar",
+   "text": "El gobernador de Chubut condiciona el voto de su senador a un adelanto de regalías petroleras.",
+   "options": [
+    {
+     "label": "Firmar el adelanto",
+     "result": "Chubut se suma.",
+     "e": {
+      "stats": {
+       "caja": -6
+      },
+      "blocs": {
+       "sen:chubut": 9
+      }
+     }
+    },
+    {
+     "label": "Ofrecer solo obras menores",
+     "result": "El senador chubutense duda.",
+     "e": {
+      "blocs": {
+       "sen:chubut": -3
+      }
+     }
+    }
+   ],
+   "phase": "sen",
+   "role": "Gobernador de Chubut"
+  },
+  {
+   "id": "senador_cambio",
+   "who": "Senado",
+   "title": "Un senador peronista se ofrece a votar en secreto",
+   "text": "Un senador del bloque peronista te manda un mensaje: está dispuesto a ausentarse en la votación si su provincia recibe una obra. Nadie tiene que enterarse.",
+   "options": [
+    {
+     "label": "Aceptar el trato",
+     "result": "Una ausencia que baja el número que necesitás… si no se filtra.",
+     "e": {
+      "stats": {
+       "caja": -7,
+       "imagen": -1
+      },
+      "blocs": {
+       "sen:popular": 6
+      }
+     }
+    },
+    {
+     "label": "Rechazarlo",
+     "result": "Te quedás con la conciencia tranquila y un voto menos.",
+     "e": {
+      "stats": {
+       "imagen": 1
+      }
+     }
+    }
+   ],
+   "phase": "sen"
+  },
+  {
+   "id": "bullrich_senado",
+   "who": "Patricia Bullrich",
+   "title": "Bullrich quiere la foto del triunfo",
+   "text": "Patricia Bullrich dice que si el proyecto sale del Senado, el mérito es de su bloque, y pide encabezar la conferencia de prensa.",
+   "options": [
+    {
+     "label": "Concederle la foto",
+     "result": "Bullrich se pone el proyecto al hombro.",
+     "e": {
+      "stats": {
+       "interna": -2
+      },
+      "blocs": {
+       "sen:lla": 3,
+       "sen:pro": 3
+      }
+     }
+    },
+    {
+     "label": "Pedir que sea una foto conjunta",
+     "result": "Bullrich acepta de mala gana.",
+     "e": {
+      "stats": {
+       "capital": 1
+      }
+     }
+    }
+   ],
+   "phase": "sen",
+   "role": "Jefa del bloque LLA en el Senado"
+  },
+  {
+   "id": "senado_feriado",
+   "who": "Senado",
+   "title": "La sesión del Senado coincide con el cierre de las paritarias",
+   "text": "El Senado programa la sesión el mismo día que se firman las paritarias estatales. Los senadores del interior prefieren estar en sus provincias.",
+   "options": [
+    {
+     "label": "Mover la sesión",
+     "result": "Perdés unos días, pero te asegurás la asistencia.",
+     "e": {
+      "stats": {
+       "capital": -1
+      }
+     }
+    },
+    {
+     "label": "Mantener la fecha",
+     "result": "Algunos aliados no llegan.",
+     "e": {
+      "blocs": {
+       "sen:salta": -3,
+       "sen:chubut": -3,
+       "sen:neuq": -3
+      }
+     }
+    }
+   ],
+   "phase": "sen"
   }
  ],
  "scenarios": [
