@@ -69,6 +69,8 @@ las páginas abiertas se actualizan sin recargar.
 | `data/especiales/brasil-2026.json` | Todo el especial Brasil 2026: fechas, padrón por estado, cargos, bancadas, candidatos, encuestas, calendario y resultados |
 | `data/especiales/eeuu-2026.json` | Especial EE.UU. 2026 (midterms): bancas por estado, carreras al Senado y gobernaciones con pronóstico, composición del Congreso, encuestas, carreras clave y calendario |
 | `data/especiales/israel-2026.json` | Especial Israel 2026: sistema electoral, Knéset actual, listas, encuestas de bancas (alimentan la calculadora de coaliciones) y calendario |
+| `data/juegos/pais.json` | Juego «¿Qué país gobernarías?»: las 14 decisiones, los cinco ejes y la ubicación editorial de 46 gobiernos (el líder sale de la base del Atlas) |
+| `data/juegos/rosca.json` | Juego «La rosca: PASO o no PASO»: bloques de Diputados y Senado (bancas reales desde dic-2025, afinidad inicial ficticia), gobernadores, eventos y finales |
 | `data/geo/world.json` | Mapa mundial liviano (~1,4 MB) generado con `python3 tools/simplify_geo.py countries.geojson data/geo/world.json` a partir de datasets/geo-countries (Natural Earth, 14 MB); si falta, el sitio usa la versión completa del CDN |
 | `data/especiales/argentina-2027.json` | Especial Argentina 2027: elección nacional (fechas, cargos, Congreso, candidatos, encuestas, economía) y las 24 provincias (gobernador, reelección, fecha 2027, candidatos, población, padrón, pobreza y desempleo EPH, PBG) |
 | `data/geo/argentina.json` | Mapa bicontinental (provincias, Malvinas, Georgias y Sandwich del Sur, Sector Antártico, CABA ampliada) generado con `python3 tools/build_argentina_map.py provincias.geojson data/geo/argentina.json` desde la capa del IGN (georef-ar) |
@@ -289,3 +291,7 @@ El sitio se escribe en español. Con el selector **ES · EN · PT** (o `?lang=en
 **Cuando cambian textos o datos:**
 1. Serví el sitio (`npx http-server -p 8765 -s .`) y corré `node i18n/harvest.js`: recorre todas las secciones y fichas y deja en `i18n/missing-en.json` / `missing-pt.json` las frases nuevas sin traducir.
 2. Traducí esas frases (respetando `{0}`, `{M}`, `[[0]]`) y agregalas a `i18n/en.json` / `i18n/pt.json`.
+
+### Juegos
+
+El código de los juegos está en `js/juegos.js` y se carga solo al entrar a `#juegos`. Para sumar un evento a «La rosca» alcanza con agregarlo a `data/juegos/rosca.json`: cada opción lleva sus efectos (`stats`, `blocs` con claves `dip:<bloque>` o `sen:<bloque>`, `flags`, `split` para partir un bloque y `turns` para sumar o restar semanas). Un evento con `requires` solo aparece si antes se activó ese flag.
