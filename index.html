@@ -6156,6 +6156,7 @@
   .jg-root { max-width: 1080px; margin: 0 auto; padding: 24px 16px 60px; }
   .jg-loading { padding: 60px 0; text-align: center; color: var(--muted); }
 
+  .topic-nav.is-fitting, .topic-nav.is-fitting * { transition: none !important; }
   /* Portada: games promo */
   .portada-games { margin: 26px 0 8px; padding: 22px 24px; border-radius: 18px; background: linear-gradient(135deg, #FFF6E5 0%, #FDEBEE 100%); border: 1px solid rgba(160,43,62,.15); }
   .pg-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 14px; margin-bottom: 14px; }
@@ -35087,7 +35088,7 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
     if (window.AtlasJuegos) return window.AtlasJuegos.render(el, game);
     if (document.getElementById('juegos-js')) { pendingGame = game; return; }
     const sc = document.createElement('script');
-    sc.id = 'juegos-js'; sc.src = 'js/juegos.js?v=2';
+    sc.id = 'juegos-js'; sc.src = 'js/juegos.js?v=3';
     sc.onload = () => { const g = game || pendingGame; pendingGame = null; window.AtlasJuegos && window.AtlasJuegos.render(el, g); };
     sc.onerror = () => { el.innerHTML = '<div class="jg-loading">No se pudieron cargar los juegos.</div>'; };
     document.head.appendChild(sc);
@@ -35211,15 +35212,29 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
   (function () {
     const nav = document.querySelector('.topic-nav');
     if (!nav) return;
+    // Links animate their padding: measuring mid-transition read the old,
+    // narrower widths, so the bar "fit", then grew past the screen, and the
+    // next fit shrank it again (the back-and-forth). Measure with transitions off.
+    let fitT;
     const fit = () => {
+      nav.classList.add('is-fitting');
       nav.classList.remove('fit-1', 'fit-2', 'fit-3');
-      if (window.innerWidth <= 760) return;
-      const over = () => nav.scrollWidth > nav.clientWidth + 1;
-      for (const c of ['fit-1', 'fit-2', 'fit-3']) { if (!over()) return; nav.classList.add(c); }
+      if (window.innerWidth > 760) {
+        const over = () => nav.scrollWidth > nav.clientWidth + 1;
+        for (const c of ['fit-1', 'fit-2', 'fit-3']) { if (!over()) break; nav.classList.add(c); }
+      }
+      void nav.offsetWidth;
+      clearTimeout(fitT); fitT = setTimeout(() => nav.classList.remove('is-fitting'), 50);
     };
     let t;
-    if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
-    window.addEventListener('load', fit);
+    // Web fonts arrive after the first fit and widen every label: measure
+    // again once each font batch is laid out (two frames after it loads)
+    const afterLayout = () => requestAnimationFrame(() => requestAnimationFrame(fit));
+    if (document.fonts) {
+      if (document.fonts.ready) document.fonts.ready.then(afterLayout);
+      if (document.fonts.addEventListener) document.fonts.addEventListener('loadingdone', afterLayout);
+    }
+    window.addEventListener('load', afterLayout);
     // Refit only when something outside the fit changes (window size, fonts, a
     // translation). Watching the links' size made it loop: each fit resized
     // them and triggered the next one, and the bar kept jumping sideways.
@@ -35227,7 +35242,7 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
     const later = () => { clearTimeout(t); t = setTimeout(fit, 150); };
     window.addEventListener('resize', () => { if (window.innerWidth !== lastW) { lastW = window.innerWidth; later(); } });
     new MutationObserver(later).observe(nav, { childList: true, subtree: true, characterData: true });
-    setTimeout(fit, 1500);
+    [1500, 3000, 6000].forEach(ms => setTimeout(fit, ms));
     fit();
   })();
   const btn = document.getElementById('nav-menu-btn');

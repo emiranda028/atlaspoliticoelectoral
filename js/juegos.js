@@ -393,6 +393,15 @@
       if (!first && fl.length && Math.random() < 0.55) S.queue.splice(Math.min(1, S.queue.length), 0, Object.assign({ flash: true }, fl[Math.floor(Math.random() * fl.length)]));
       showEvent();
     }
+    const FLASH = { capital: -4, imagen: -1, gain: 0.6 };
+    function flashCost(e) {
+      const out = { stats: Object.assign({}, e.stats || {}), blocs: {} };
+      Object.entries(out.stats).forEach(([k, v]) => { if (v > 0) out.stats[k] = Math.round(v * FLASH.gain); });
+      out.stats.capital = (out.stats.capital || 0) + FLASH.capital;
+      out.stats.imagen = (out.stats.imagen || 0) + FLASH.imagen;
+      Object.entries(e.blocs || {}).forEach(([k, v]) => { out.blocs[k] = v > 0 ? Math.round(v * FLASH.gain) : v; });
+      return Object.assign({}, e, out);
+    }
     function showEvent() {
       const ev = S.queue.shift();
       if (!ev) return actions();
@@ -401,8 +410,11 @@
         <div class="jg-opts">${ev.options.map((o, k) => `<button type="button" class="jg-opt" data-k="${k}">${esc(o.label)}</button>`).join('')}</div></div>`);
       wireBack(root);
       root.querySelectorAll('[data-k]').forEach(b => b.addEventListener('click', () => {
-        const o = ev.options[+b.getAttribute('data-k')]; apply(o.e); S.log.push({ t: ev.title, r: o.label, flash: !!ev.flash });
-        outcome(o.label, o.result || '', showEvent);
+        const o = ev.options[+b.getAttribute('data-k')];
+        // Unexpected events are real problems: whatever you choose, they cost
+        // political capital, and the goodwill they buy is worth less
+        apply(ev.flash ? flashCost(o.e) : o.e); S.log.push({ t: ev.title, r: o.label, flash: !!ev.flash });
+        outcome(o.label, (o.result || '') + (ev.flash ? ' Igual, apagar el incendio te costó capital político.' : ''), showEvent);
       }));
     }
     function actions() {
