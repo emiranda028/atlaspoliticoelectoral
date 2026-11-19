@@ -362,13 +362,16 @@
     const share = b => { const eff = b.aff + (stat('imagen') - 50) / 4; return eff >= 55 ? 1 : eff <= 0 ? 0 : Math.pow(eff / 55, 1.15); };
     function count(ch) {
       let sure = 0, maybe = 0;
-      Object.values(S.blocs).filter(b => b.ch === ch).forEach(b => { const s = share(b); if (s >= 1) sure += b.seats; else if (s > 0) maybe += b.seats * s; });
-      return { sure, maybe: Math.round(maybe), exp: Math.round(sure + maybe) };
+      let away = 0;
+      Object.values(S.blocs).filter(b => b.ch === ch).forEach(b => { const s = share(b); if (s >= 1) { sure += b.seats; if (b.id !== 'lla') away += b.seats * 0.04; else if (b.seats > 10) away += 0.5; } else if (s > 0) maybe += b.seats * s; });
+      // The count already discounts the usual absences of allies, so it's an honest forecast
+      return { sure, maybe: Math.round(maybe), exp: Math.round(sure + maybe - away) };
     }
     function vote(ch) {
       const rows = Object.values(S.blocs).filter(b => b.ch === ch).map(b => {
-        const s = clamp(share(b) + (share(b) > 0 && share(b) < 1 ? rnd(-0.25, 0.25) : 0), 0, 1);
-        let yes = Math.round(b.seats * s); if (b.seats > 3 && s > 0 && s < 1) yes = clamp(yes + Math.round(rnd(-1, 1)), 0, b.seats);
+        // Undecided blocs vary a little around the count (about ±2 votes in total)
+        const s = clamp(share(b) + (share(b) > 0 && share(b) < 1 ? rnd(-0.12, 0.12) : 0), 0, 1);
+        let yes = Math.round(b.seats * s);
         // Even allies miss sessions: a few absences outside the ruling party's own bloc
         if (s >= 1 && b.id !== 'lla') for (let k = 0; k < b.seats; k++) if (Math.random() < 0.04) yes--;
         if (b.id === 'lla' && b.seats > 10 && Math.random() < 0.5) yes -= 1;
@@ -386,7 +389,8 @@
           <ul class="jg-rules">
             <li>Para la media sanción necesitás <b>129 votos en Diputados</b> (el quórum) y después <b>37 en el Senado</b>.</li>
             <li>Cada semana llega una situación y podés hacer <b>una jugada</b>: negociar con un gobernador, ir a los medios o llamar a sesión.</li>
-            <li>Si llamás a sesión sin los votos, la sesión se cae y perdés capital político.</li>
+            <li>Si llamás a sesión y no hay quórum, la sesión se cae: el proyecto sigue vivo pero perdés capital político.</li>
+            <li>Si hay quórum y perdés la votación, el proyecto queda rechazado y no puede volver a tratarse este año. Si no te dan los números, pedí la vuelta a comisión.</li>
             <li>Si tu capital político o tu interna con la Casa Rosada llegan a cero, perdés.</li>
             <li>Y como en la política real, en cualquier momento puede pasar algo: <b>paros, escándalos en el recinto, lágrimas en televisión</b>.</li>
           </ul>
@@ -552,24 +556,63 @@
         if (a === 'vote') return session(ch);
       }));
     }
+    // A session in three steps, as in the real Congress:
+    // 1) quorum: if not enough legislators sit, the session falls, there is no
+    //    vote and the bill stays alive;
+    // 2) with quorum you can still send the bill back to committee to save it;
+    // 3) if it's voted and lost, the bill is rejected: by article 81 of the
+    //    Constitution it can't be treated again this year (game over).
     function session(ch) {
-      const r = vote(ch); S.lastVote = r;
+      const r = vote(ch), need = D.chambers[ch].need, where = ch === 'dip' ? 'Sesión especial en Diputados' : 'Sesión en el Senado';
+      // Who sits: your votes plus about half of the undecided; the opposition stays out
+      const sit = r.rows.reduce((a, x) => { const sh = share(x.b); return a + x.yes + (sh > 0 && sh < 1 ? Math.round((x.b.seats - x.yes) * 0.5) : 0); }, 0);
+      if (sit < need) {
+        apply({ stats: { capital: -10, imagen: -4 } });
+        Object.values(S.blocs).forEach(b => { if (b.ch === ch && b.aff < 50 && b.aff > -50) b.aff -= 3; });
+        S.log.push({ t: where, r: `Sin quórum (${sit} de ${need})` });
+        paint(`<div class="rs-card is-vote is-noq"><span class="rs-who">${where}</span><h3>Sin quórum: se cayó la sesión</h3>
+          <p>Solo ${sit} legisladores se sentaron en sus bancas y hacían falta ${need} para abrir la sesión. No hubo votación: <b>el proyecto sigue vivo</b>, pero la oposición festeja y tus aliados toman distancia.</p>
+          <div class="rs-tally"><div class="rs-tally-big"><b class="is-no">${sit}</b><span>sentados</span><b>/ ${need}</b><span>para el quórum</span></div></div>
+          <button type="button" class="jg-btn is-main" data-next>Seguir</button></div>`);
+        root.querySelector('[data-next]').addEventListener('click', () => checkOver() ? ending(S.over) : nextTurn());
+        return;
+      }
+      const est = count(ch).exp;
+      paint(`<div class="rs-card is-vote is-q"><span class="rs-who">${where}</span><h3>Hay quórum: ${sit} sentados</h3>
+        <p>Se abre la sesión y la oposición entra al recinto para votar en contra. Según tu poroteo tenés <b>unos ${est} votos a favor</b> (±2) y necesitás <b>${need}</b>.</p>
+        <p class="rs-warn">Si se vota y perdés, el proyecto queda rechazado y no puede volver a tratarse en las sesiones de este año (artículo 81 de la Constitución). Si no estás seguro, podés pedir que vuelva a comisión: conserva estado parlamentario y lo intentás más adelante.</p>
+        <div class="rs-acts is-vote-acts">
+          <button type="button" class="jg-btn is-main" data-vote="go">Votar ahora</button>
+          <button type="button" class="jg-btn" data-vote="back">Pedir la vuelta a comisión</button>
+        </div></div>`);
+      root.querySelectorAll('[data-vote]').forEach(btn => btn.addEventListener('click', () => {
+        if (btn.getAttribute('data-vote') === 'go') return result(ch, r);
+        apply({ stats: { capital: -6, interna: -3 } });
+        S.log.push({ t: where, r: 'Vuelta a comisión' });
+        outcome('Vuelta a comisión', 'Con una moción de vuelta a comisión, el proyecto no se vota: conserva estado parlamentario y podés volver a llamar a sesión cuando tengas los votos. La oposición dice que "no te dan los números".', () => nextTurn(),
+          { who: where, title: 'Hay quórum, pero no los votos', choice: 'Vuelta a comisión', decision: 'Pedir la vuelta a comisión', result: 'El proyecto conserva estado parlamentario.' });
+      }));
+    }
+    function result(ch, r) {
+      const where = ch === 'dip' ? 'Sesión especial en Diputados' : 'Sesión en el Senado';
+      S.lastVote = r;
       const rows = r.rows.filter(x => x.b.seats > 0).map(x => `<div class="rs-vrow"><i style="background:${x.b.color || '#888'}"></i><span>${esc(x.b.name)}</span><b class="is-yes">${x.yes}</b><b class="is-no">${x.no}</b></div>`).join('');
       let title, text;
       if (r.pass && ch === 'dip') { S.dipPassed = true; S.dipVotes = r.yes; S.senOpen = S.turn + 2; apply({ stats: { capital: 8, imagen: 3 } }); title = '¡Media sanción!'; text = `Diputados aprobó el proyecto con ${r.yes} votos. Ahora va al Senado, donde necesitás 37: primero tiene que pasar por la comisión de Asuntos Constitucionales, así que la sesión recién puede ser la semana que viene.`; }
       else if (r.pass) { S.over = S.flags.lemas ? 'winLemas' : 'win'; title = '¡Es ley!'; text = `El Senado aprobó el proyecto con ${r.yes} votos.`; }
-      else { apply({ stats: { capital: -15, imagen: -5 } }); Object.values(S.blocs).forEach(b => { if (b.ch === ch && b.aff < 50 && b.aff > -50) b.aff -= 3; }); title = 'Se cayó la sesión'; text = `Solo ${r.yes} se sentaron a favor: no hubo quórum (hacían falta ${r.need}). La oposición festeja y tus aliados toman distancia.`; }
-      paint(`<div class="rs-card is-vote"><span class="rs-who">${ch === 'dip' ? 'Sesión especial en Diputados' : 'Sesión en el Senado'}</span><h3>${esc(title)}</h3><p>${esc(text)}</p>
-        <div class="rs-tally"><div class="rs-tally-big"><b class="is-yes">${r.yes}</b><span>a favor</span><b>/ ${r.need}</b><span>necesarios</span></div>
+      else if (ch === 'dip') { S.over = 'rejected'; title = 'Rechazado en Diputados'; text = `Votaron ${r.yes} a favor y hacían falta ${r.need}. El proyecto quedó rechazado en la cámara de origen y no puede volver a tratarse este año.`; }
+      else { S.over = 'rejectedSen'; title = 'Rechazado en el Senado'; text = `Votaron ${r.yes} a favor y hacían falta ${r.need}. El proyecto vuelve a Diputados, pero ya no hay tiempo para insistir antes de las PASO.`; }
+      S.log.push({ t: where, r: `${title} (${r.yes} votos)` });
+      paint(`<div class="rs-card is-vote"><span class="rs-who">${where}</span><h3>${esc(title)}</h3><p>${esc(text)}</p>
+        <div class="rs-tally"><div class="rs-tally-big"><b class="${r.pass ? 'is-yes' : 'is-no'}">${r.yes}</b><span>a favor</span><b>/ ${r.need}</b><span>necesarios</span></div>
           <div class="rs-vrows"><div class="rs-vrow is-head"><i></i><span>Bloque</span><b>Sí</b><b>No / ausentes</b></div>${rows}</div></div>
         ${shareMini()}<button type="button" class="jg-btn is-main" data-next>${S.over ? 'Ver el final' : 'Seguir'}</button></div>`);
-      wireBack(root);
       const vcard = cardShell('La rosca: PASO o no PASO', r.pass ? '#1F7A5A' : '#D62839', `
-        <div class="jgx-kicker">Semana ${Math.min(S.turn + 1, S.maxTurns)} · ${ch === 'dip' ? 'Sesión especial en Diputados' : 'Sesión en el Senado'}</div>
+        <div class="jgx-kicker">Semana ${Math.min(S.turn + 1, S.maxTurns)} · ${where}</div>
         <div class="jgx-title is-md">${esc(title)}</div>
         <div class="jgx-huge is-md"><b>${r.yes}</b><span>/ ${r.need} votos</span></div>
         <div class="jgx-vrows">${r.rows.filter(x => x.b.seats > 0).slice(0, 9).map(x => `<div><i style="background:${x.b.color || '#888'}"></i><span>${esc(x.b.name)}</span><b>${x.yes} de ${x.b.seats}</b></div>`).join('')}</div>`);
-      wireShare(root, `En "La rosca" del Atlas: ${title} (${r.yes} votos de ${r.need} necesarios). ¿Te animás?`, vcard, 'rosca-sesion');
+      wireShare(root.querySelector('.rs-card.is-vote'), `En "La rosca" del Atlas: ${title} (${r.yes} votos de ${r.need} necesarios). ¿Te animás?`, vcard, 'rosca-sesion');
       root.querySelector('[data-next]').addEventListener('click', () => S.over ? ending(S.over) : (checkOver() ? ending(S.over) : nextTurn()));
     }
     function ending(kind) {

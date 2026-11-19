@@ -1212,6 +1212,14 @@
   "sidelined": {
    "title": "Te sacaron la negociación",
    "text": "La interna con la Casa Rosada se rompió: Karina Milei se queda con la mesa de negociación y vos quedás de adorno."
+  },
+  "rejected": {
+   "title": "Rechazado en Diputados",
+   "text": "Fuiste a votar sin los números y perdiste. El proyecto quedó rechazado en la cámara de origen y, por el artículo 81 de la Constitución, no puede volver a tratarse en las sesiones de este año. Las PASO se hacen en 2027."
+  },
+  "rejectedSen": {
+   "title": "Rechazado en el Senado",
+   "text": "Tenías la media sanción, pero el Senado votó en contra. El proyecto vuelve a Diputados y ya no hay tiempo para insistir: las PASO se hacen en 2027."
   }
  },
  "flashes": [
