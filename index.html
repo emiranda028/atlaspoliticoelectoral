@@ -6630,6 +6630,46 @@
   .pol-meta { font-size: 11px; color: var(--muted); margin: 0 4px; }
   .pol-meta a { color: inherit; }
   .pol-sub { font: 700 20px var(--font-serif); margin: 22px 0 10px; }
+  /* Tendencia de encuestas (Argentina) */
+  .ptr { --pt-a: #6D3FC0; --pt-b: #1C86D6; --pt-c: #D13B3B; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 16px 18px 14px; margin: 0 0 26px; }
+  :root[data-theme="dark"] .ptr { --pt-a: #A45BE0; --pt-b: #19A3C4; --pt-c: #E2564F; }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .ptr { --pt-a: #A45BE0; --pt-b: #19A3C4; --pt-c: #E2564F; } }
+  .ptr .pt-a { --c: var(--pt-a); } .ptr .pt-b { --c: var(--pt-b); } .ptr .pt-c { --c: var(--pt-c); }
+  .ptr-head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 8px; }
+  .ptr-head h4 { margin: 0; font: 700 18px var(--font-serif); color: var(--ink); }
+  .ptr-legend { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 12.5px; color: var(--ink-soft); margin: 4px 0 6px; }
+  .ptr-legend span { display: inline-flex; align-items: center; gap: 6px; }
+  .ptr-sw { display: inline-block; width: 10px; height: 10px; border-radius: 3px; background: var(--c); margin-right: 5px; vertical-align: -1px; }
+  .ptr-legend .ptr-sw { margin-right: 0; }
+  .ptr-dotlg { width: 8px; height: 8px; border-radius: 50%; background: var(--muted); opacity: .45; display: inline-block; }
+  .ptr-linelg { width: 18px; height: 2px; background: var(--ink-soft); display: inline-block; border-radius: 2px; }
+  .ptr-chart { position: relative; }
+  .ptr-svg { width: 100%; height: auto; display: block; overflow: visible; }
+  .ptr-grid { stroke: var(--line); stroke-width: 1; } .ptr-vgrid { stroke: var(--line); stroke-width: 1; stroke-dasharray: 2 4; }
+  .ptr-ax { fill: var(--muted); font: 500 11px var(--font-sans); }
+  .ptr-dot { fill: var(--c); fill-opacity: .32; stroke: var(--surface); stroke-width: 1; }
+  .ptr-line { fill: none; stroke: var(--c); stroke-width: 2.5; stroke-linejoin: round; stroke-linecap: round; }
+  .ptr-end { fill: var(--c); stroke: var(--surface); stroke-width: 2; }
+  .ptr-swatch { fill: var(--c); }
+  .ptr-lab { fill: var(--ink-soft); font: 600 12px var(--font-sans); } .ptr-val { fill: var(--ink); font: 700 14px var(--font-sans); }
+  .ptr-cross { stroke: var(--ink-soft); stroke-width: 1; stroke-dasharray: 3 3; pointer-events: none; }
+  .ptr-hit { fill: transparent; cursor: crosshair; }
+  .ptr-tip { position: absolute; top: 4px; min-width: 170px; max-width: 240px; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; box-shadow: 0 8px 24px rgba(11,22,40,.16); padding: 8px 10px; font-size: 12.5px; color: var(--ink); pointer-events: none; z-index: 2; }
+  .ptr-tip b { display: block; margin-bottom: 4px; } .ptr-tip div { display: flex; align-items: center; } .ptr-tip div span { margin-left: auto; font-weight: 700; padding-left: 10px; }
+  .ptr-tip small { display: block; color: var(--muted); margin-top: 4px; line-height: 1.3; }
+  .ptr-method { font-size: 12px; color: var(--muted); line-height: 1.45; margin: 10px 0 0; }
+  .ptr-tablewrap { max-height: 420px; overflow: auto; border: 1px solid var(--line); border-radius: 10px; -webkit-overflow-scrolling: touch; }
+  .ptr-table { width: 100%; border-collapse: separate; border-spacing: 0; font-size: 13px; color: var(--ink); }
+  .ptr-table th, .ptr-table td { padding: 7px 10px; border-bottom: 1px solid var(--line); text-align: left; white-space: nowrap; }
+  .ptr-table thead th { position: sticky; top: 0; z-index: 2; background: var(--bg); font: 700 10.5px var(--font-sans); letter-spacing: .07em; text-transform: uppercase; color: var(--muted); }
+  .ptr-table th:first-child, .ptr-table td:first-child { position: sticky; left: 0; background: var(--surface); z-index: 1; }
+  .ptr-table thead th:first-child { z-index: 3; background: var(--bg); }
+  .ptr-table .num { text-align: right; font-variant-numeric: tabular-nums; }
+  .ptr-table a { color: inherit; text-decoration: underline; text-decoration-color: var(--line); }
+  .ptr-avgrow td { font-weight: 700; background: var(--bg) !important; }
+  .ptr-table tr.is-old td { color: var(--muted); }
+  .ptr-note { color: var(--accent); cursor: help; font-weight: 700; }
+  @media (max-width: 600px) { .ptr { padding: 12px 10px; } .ptr-table { font-size: 12px; } .ptr-table th, .ptr-table td { padding: 6px 8px; } .ptr-ax { font-size: 13px; } .ptr-lab { font-size: 14px; } .ptr-val { font-size: 16px; } }
   .pol-notes { margin-top: 16px; font-size: 12.5px; color: var(--muted); }
   .pol-notes summary { cursor: pointer; font-weight: 600; color: var(--ink-soft); }
   .pol-notes ul { margin: 8px 0 0; padding-left: 18px; display: grid; gap: 4px; }
@@ -34996,13 +35036,131 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
     return `<div class="pol-split"><span style="width:${(a / t * 100).toFixed(1)}%;background:${ca}"></span><span style="width:${(b / t * 100).toFixed(1)}%;background:${cb}"></span></div>
       <div class="pol-split-lbl"><span>${la} <b>${fmtPct(a, 0)}</b></span><span>${lb} <b>${fmtPct(b, 0)}</b></span></div>`;
   }
-  function arPolaroidHTML(ps) {
+  // ---- Tendencia de encuestas: promedio ponderado (recencia × muestra × método × encuestadora) ----
+  const AR_TREND = {
+    fr: { label: '1.ª vuelta', title: 'Intención de voto en primera vuelta', keys: ['Javier Milei', 'Axel Kicillof', 'Myriam Bregman'], get: p => p.fr },
+    ro: { label: 'Balotaje', title: 'Balotaje Milei vs. Kicillof', keys: ['Javier Milei', 'Axel Kicillof'], get: p => p.ro },
+    ap: { label: 'Aprobación', title: 'Aprobación de la gestión de Milei', keys: ['Aprueba', 'Desaprueba'], get: p => (p.ap != null || p.dis != null) ? { Aprueba: p.ap, Desaprueba: p.dis } : null }
+  };
+  const AR_TC = { 'Javier Milei': 'a', 'Axel Kicillof': 'b', 'Myriam Bregman': 'c', Aprueba: 'a', Desaprueba: 'c' };
+  const AR_TSHORT = k => ({ 'Javier Milei': 'Milei', 'Axel Kicillof': 'Kicillof', 'Myriam Bregman': 'Bregman' })[k] || k;
+  const AR_HALF = 21, AR_WIN = 60, AR_MINP = 3;
+  const arT = p => new Date((p.fieldEnd || p.published) + 'T12:00:00').getTime();
+  const arMethodW = m => { m = m || ''; const off = /presencial|telef|ivr|cati|domicili|cara a cara/i.test(m), on = /online|web|cawi|redes|m[óo]vil|dispositiv|internet/i.test(m);
+    return /mixt/i.test(m) || (off && on) ? 0.9 : off ? 1 : on ? 0.8 : 0.85; };
+  function arTrendCalc(series, kind) {
+    const cfg = AR_TREND[kind];
+    const polls = (series || []).map(p => ({ p, t: arT(p), v: cfg.get(p) })).filter(x => x.v && cfg.keys.some(k => typeof x.v[k] === 'number') && !isNaN(x.t)).sort((a, b) => a.t - b.t);
+    if (polls.length < AR_MINP) return null;
+    const base = p => Math.sqrt(Math.min(p.n || 800, 3000) / 1000) * arMethodW(p.method);
+    const weights = t => {
+      const inWin = polls.filter(x => x.t <= t && (t - x.t) / 864e5 <= AR_WIN);
+      const cnt = {}; inWin.forEach(x => { cnt[x.p.pollster] = (cnt[x.p.pollster] || 0) + 1; });
+      return inWin.map(x => ({ x, w: Math.pow(0.5, (t - x.t) / 864e5 / AR_HALF) * base(x.p) / cnt[x.p.pollster] }));
+    };
+    const avgAt = t => {
+      const ws = weights(t), out = { t, n: ws.length };
+      cfg.keys.forEach(k => { const h = ws.filter(o => typeof o.x.v[k] === 'number'); const sw = h.reduce((a, o) => a + o.w, 0); out[k] = h.length >= AR_MINP && sw ? h.reduce((a, o) => a + o.w * o.x.v[k], 0) / sw : null; });
+      return out;
+    };
+    const today = startOfDay(new Date()).getTime() + 12 * 36e5;
+    const t0 = polls[0].t, t1 = Math.max(today, polls[polls.length - 1].t);
+    const grid = []; for (let t = t0; t < t1; t += 3 * 864e5) grid.push(avgAt(t)); grid.push(avgAt(t1));
+    const last = grid[grid.length - 1];
+    const wNow = weights(t1); const sw = wNow.reduce((a, o) => a + o.w, 0) || 1;
+    const share = new Map(wNow.map(o => [o.x, o.w / sw * 100]));
+    return { cfg, polls, grid, last, t0, t1, share };
+  }
+  function arTrendSVG(c) {
+    const W = 760, H = 320, L = 40, R = 104, T = 14, B = 30, keys = c.cfg.keys;
+    const vals = []; c.polls.forEach(x => keys.forEach(k => typeof x.v[k] === 'number' && vals.push(x.v[k])));
+    let y0 = Math.max(0, Math.floor((Math.min(...vals) - 3) / 5) * 5), y1 = Math.min(100, Math.ceil((Math.max(...vals) + 3) / 5) * 5);
+    const X = t => L + (t - c.t0) / Math.max(1, c.t1 - c.t0) * (W - L - R), Y = v => T + (y1 - v) / (y1 - y0) * (H - T - B);
+    const step = y1 - y0 > 40 ? 10 : 5;
+    let g = '';
+    for (let v = y0; v <= y1; v += step) g += `<line x1="${L}" x2="${W - R}" y1="${Y(v).toFixed(1)}" y2="${Y(v).toFixed(1)}" class="ptr-grid"/><text x="${L - 6}" y="${(Y(v) + 4).toFixed(1)}" class="ptr-ax" text-anchor="end">${v}%</text>`;
+    const MES = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'];
+    const d0 = new Date(c.t0); for (let d = new Date(d0.getFullYear(), d0.getMonth() + 1, 1); d.getTime() <= c.t1; d = new Date(d.getFullYear(), d.getMonth() + 1, 1)) {
+      const x = X(d.getTime()); g += `<line x1="${x.toFixed(1)}" x2="${x.toFixed(1)}" y1="${T}" y2="${H - B}" class="ptr-vgrid"/><text x="${x.toFixed(1)}" y="${H - B + 17}" class="ptr-ax" text-anchor="middle">${MES[d.getMonth()]}${d.getMonth() === 0 ? ' ' + d.getFullYear() : ''}</text>`;
+    }
+    let dots = '', lines = '';
+    keys.forEach(k => {
+      const cl = 'pt-' + AR_TC[k];
+      c.polls.forEach(x => { if (typeof x.v[k] === 'number') dots += `<circle cx="${X(x.t).toFixed(1)}" cy="${Y(x.v[k]).toFixed(1)}" r="4" class="ptr-dot ${cl}"><title>${esc(x.p.pollster)} · ${esc(AR_TSHORT(k))} ${fmtPct(x.v[k], 1)}</title></circle>`; });
+      let d = '', pen = false; c.grid.forEach(o => { if (o[k] == null) { pen = false; return; } d += `${pen ? 'L' : 'M'}${X(o.t).toFixed(1)},${Y(o[k]).toFixed(1)}`; pen = true; });
+      if (d) lines += `<path d="${d}" class="ptr-line ${cl}"/>`;
+    });
+    // etiquetas directas al final de cada línea, sin superponerse
+    const labs = keys.filter(k => c.last[k] != null).map(k => ({ k, y: Y(c.last[k]) })).sort((a, b) => a.y - b.y);
+    for (let i = 1; i < labs.length; i++) if (labs[i].y - labs[i - 1].y < 30) labs[i].y = labs[i - 1].y + 30;
+    const ends = labs.map(l => `<circle cx="${X(c.t1).toFixed(1)}" cy="${Y(c.last[l.k]).toFixed(1)}" r="4.5" class="ptr-end pt-${AR_TC[l.k]}"/><text x="${(W - R + 10).toFixed(1)}" y="${(l.y - 2).toFixed(1)}" class="ptr-lab">${esc(AR_TSHORT(l.k))}</text><text x="${(W - R + 10).toFixed(1)}" y="${(l.y + 14).toFixed(1)}" class="ptr-val">${fmtPct(c.last[l.k], 1)}</text><rect x="${W - R + 2}" y="${(l.y - 12).toFixed(1)}" width="3" height="30" rx="1.5" class="pt-${AR_TC[l.k]} ptr-swatch"/>`).join('');
+    return `<svg viewBox="0 0 ${W} ${H}" class="ptr-svg" role="img" aria-label="${esc(c.cfg.title)}: promedio ponderado y encuestas individuales">${g}${dots}${lines}${ends}
+      <line class="ptr-cross" x1="0" x2="0" y1="${T}" y2="${H - B}" style="display:none"/><rect class="ptr-hit" x="${L}" y="${T}" width="${W - L - R}" height="${H - T - B}" data-l="${L}" data-w="${W - L - R}" data-w0="${W}"/></svg>`;
+  }
+  function arTrendTable(c) {
+    const keys = c.cfg.keys, diff = keys[0] === 'Javier Milei' && keys[1] === 'Axel Kicillof';
+    const rows = c.polls.slice().reverse();
+    const lastPs = c.last;
+    return `<div class="ptr-tablewrap"><table class="ptr-table"><thead><tr><th>Encuestadora</th><th>Campo</th><th class="num">Casos</th><th>Método</th>${keys.map(k => `<th class="num"><i class="ptr-sw pt-${AR_TC[k]}"></i>${esc(AR_TSHORT(k))}</th>`).join('')}${diff ? '<th class="num">Dif.</th>' : ''}<th class="num" title="Peso de cada encuesta en el promedio de hoy">Peso hoy</th></tr></thead><tbody>
+      <tr class="ptr-avgrow"><td>Promedio ponderado</td><td>hoy</td><td class="num">${c.last.n}</td><td>—</td>${keys.map(k => `<td class="num">${fmtPct(lastPs[k], 1)}</td>`).join('')}${diff ? `<td class="num">${lastPs[keys[0]] != null && lastPs[keys[1]] != null ? (lastPs[keys[0]] - lastPs[keys[1]] > 0 ? '+' : '') + (lastPs[keys[0]] - lastPs[keys[1]]).toLocaleString('es-AR', { maximumFractionDigits: 1, minimumFractionDigits: 1 }) : '—'}</td>` : ''}<td class="num">100%</td></tr>
+      ${rows.map(x => { const sh = c.share.get(x); const a = x.v[keys[0]], b = x.v[keys[1]]; const dd = typeof a === 'number' && typeof b === 'number' ? a - b : null; return `<tr class="${sh ? '' : 'is-old'}"><td>${x.p.url ? `<a href="${esc(x.p.url)}" target="_blank" rel="noopener">${esc(x.p.pollster)}</a>` : esc(x.p.pollster)}${x.p.note ? ` <span class="ptr-note" title="${esc(x.p.note)}">*</span>` : ''}</td><td>${fmtDateShort(new Date(x.t))}</td><td class="num">${x.p.n ? fmtInt(x.p.n) : '—'}</td><td>${esc(x.p.method || '—')}</td>${keys.map(k => `<td class="num">${typeof x.v[k] === 'number' ? fmtPct(x.v[k], 1) : '—'}</td>`).join('')}${diff ? `<td class="num">${dd == null ? '—' : (dd > 0 ? '+' : '') + dd.toLocaleString('es-AR', { maximumFractionDigits: 1, minimumFractionDigits: 1 })}</td>` : ''}<td class="num">${sh ? fmtPct(sh, 0) : '—'}</td></tr>`; }).join('')}
+    </tbody></table></div>`;
+  }
+  function arTrendInner(series, kind) {
+    const c = arTrendCalc(series, kind);
+    if (!c) return `<p class="muted">Todavía no hay suficientes encuestas para calcular el promedio.</p>`;
+    return `<div class="ptr-legend">${c.cfg.keys.map(k => `<span><i class="ptr-sw pt-${AR_TC[k]}"></i>${esc(AR_TSHORT(k))}</span>`).join('')}<span><i class="ptr-dotlg"></i>una encuesta</span><span><i class="ptr-linelg"></i>promedio ponderado</span></div>
+      <div class="ptr-chart">${arTrendSVG(c)}<div class="ptr-tip" hidden></div></div>
+      <h4 class="pol-sub">Comparativo: ${c.polls.length} encuestas</h4>${arTrendTable(c)}`;
+  }
+  function arTrendHTML(series) {
+    const kind = AR_TREND[live.arTrend] ? live.arTrend : 'fr';
+    const kinds = Object.keys(AR_TREND).filter(k => arTrendCalc(series, k));
+    if (!kinds.length) return '';
+    return `<div class="ptr" id="ar-trend">
+      <div class="ptr-head"><h4>Tendencia y promedio ponderado</h4><div class="seg" role="tablist">${kinds.map(k => `<button type="button" data-artrend="${k}" class="${k === kind ? 'is-active' : ''}">${AR_TREND[k].label}</button>`).join('')}</div></div>
+      <div id="ar-trend-body">${arTrendInner(series, kind)}</div>
+      <p class="ptr-method">Cada punto es una encuesta; la línea es el promedio ponderado al día (cada 3 días). Peso de cada encuesta = <b>recencia</b> (vale la mitad cada ${AR_HALF} días y sale a los ${AR_WIN}) × <b>tamaño</b> (raíz de los casos, tope 3.000) × <b>método</b> (presencial o telefónica 1; mixta 0,9; sin dato 0,85; online 0,8) ÷ <b>cantidad de encuestas de la misma consultora</b> en la ventana, para que ninguna pese más por publicar seguido. Hacen falta al menos ${AR_MINP} encuestas para trazar la línea. No entran el "voto seguro" ni los techos.</p>
+    </div>`;
+  }
+  function bindArTrend(root, series) {
+    const box = root.querySelector('#ar-trend'); if (!box) return;
+    box.querySelectorAll('[data-artrend]').forEach(b => b.addEventListener('click', () => {
+      live.arTrend = b.getAttribute('data-artrend');
+      box.querySelectorAll('[data-artrend]').forEach(x => x.classList.toggle('is-active', x === b));
+      box.querySelector('#ar-trend-body').innerHTML = arTrendInner(series, live.arTrend);
+      hook();
+    }));
+    const hook = () => {
+      const svg = box.querySelector('.ptr-svg'), hit = box.querySelector('.ptr-hit'), tip = box.querySelector('.ptr-tip'), cross = box.querySelector('.ptr-cross');
+      if (!svg || !hit) return;
+      const c = arTrendCalc(series, AR_TREND[live.arTrend] ? live.arTrend : 'fr');
+      const Lx = +hit.dataset.l, Wd = +hit.dataset.w, W0 = +hit.dataset.w0;
+      const move = ev => {
+        const r = svg.getBoundingClientRect(); const cx = ((ev.touches ? ev.touches[0].clientX : ev.clientX) - r.left) * W0 / r.width;
+        const t = c.t0 + Math.min(1, Math.max(0, (cx - Lx) / Wd)) * (c.t1 - c.t0);
+        const o = c.grid.reduce((a, b) => Math.abs(b.t - t) < Math.abs(a.t - t) ? b : a);
+        const x = Lx + (o.t - c.t0) / Math.max(1, c.t1 - c.t0) * Wd;
+        cross.setAttribute('x1', x); cross.setAttribute('x2', x); cross.style.display = '';
+        const near = c.polls.filter(p => Math.abs(p.t - o.t) <= 1.5 * 864e5);
+        tip.innerHTML = `<b>${fmtDateShort(new Date(o.t))} ${new Date(o.t).getFullYear()}</b>${c.cfg.keys.map(k => `<div><i class="ptr-sw pt-${AR_TC[k]}"></i>${esc(AR_TSHORT(k))} <span>${fmtPct(o[k], 1)}</span></div>`).join('')}<small>Promedio de ${o.n} encuesta${o.n === 1 ? '' : 's'} de los últimos ${AR_WIN} días</small>${near.length ? `<small class="ptr-near">Publicadas acá: ${near.map(p => esc(p.p.pollster)).join(', ')}</small>` : ''}`;
+        tip.hidden = false;
+        const px = x / W0 * r.width; tip.style.left = Math.min(Math.max(px - tip.offsetWidth / 2, 0), r.width - tip.offsetWidth) + 'px';
+      };
+      const out = () => { tip.hidden = true; cross.style.display = 'none'; };
+      hit.addEventListener('mousemove', move); hit.addEventListener('touchstart', move, { passive: true }); hit.addEventListener('touchmove', move, { passive: true }); hit.addEventListener('mouseleave', out);
+    };
+    hook();
+  }
+  function arPolaroidHTML(ps, series) {
     const polls = (ps.polls || []).slice().sort((a, b) => String(b.published || '').localeCompare(String(a.published || '')));
     const ap = arAvg(polls, p => p.approval && p.approval.approve), dis = arAvg(polls, p => p.approval && p.approval.disapprove);
     const im = arAvg(polls, p => p.mileiImage && p.mileiImage.positive), imn = arAvg(polls, p => p.mileiImage && p.mileiImage.negative);
     const fv = p => p.vote && !p.vote.noAvg && p.vote.values;
     const mv = arAvg(polls, p => fv(p) && fv(p)['Javier Milei']), kv = arAvg(polls, p => fv(p) && fv(p)['Axel Kicillof']);
     const mr = arAvg(polls, p => p.runoff && p.runoff.values && p.runoff.values['Javier Milei']), kr = arAvg(polls, p => p.runoff && p.runoff.values && p.runoff.values['Axel Kicillof']);
+    const tw = { fr: arTrendCalc(series, 'fr'), ro: arTrendCalc(series, 'ro'), ap: arTrendCalc(series, 'ap') };
+    const wt = (c, a, b) => c && c.last[a] != null && (b == null || c.last[b] != null) ? c : null;
     const tile = (lbl, val, sub) => `<div class="pol-tile"><span>${lbl}</span><b>${val}</b><small>${sub}</small></div>`;
     const card = (p, i) => {
       const vote = p.vote && p.vote.values ? Object.entries(p.vote.values).sort((a, b) => b[1] - a[1]).slice(0, 4) : [];
@@ -35026,11 +35184,13 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
       <div class="esp-sec-head"><span class="kicker">05 · El clima</span><h3>Polaroid de encuestas</h3>
         <p>${esc(ps.summary || 'Las últimas encuestas nacionales, una por una.')}</p></div>
       <div class="pol-tiles">
-        ${ap ? tile('Aprobación del Gobierno', fmtPct(ap.v, 0), `promedio de ${ap.n} encuesta${ap.n > 1 ? 's' : ''}${dis ? ` · desaprobación ${fmtPct(dis.v, 0)}` : ''}`) : ''}
+        ${wt(tw.ap, 'Aprueba') ? tile('Aprobación de la gestión', fmtPct(tw.ap.last.Aprueba, 0), `promedio ponderado de ${tw.ap.last.n} encuestas${tw.ap.last.Desaprueba != null ? ` · desaprobación ${fmtPct(tw.ap.last.Desaprueba, 0)}` : ''}`) : ap ? tile('Aprobación del Gobierno', fmtPct(ap.v, 0), `promedio de ${ap.n} encuesta${ap.n > 1 ? 's' : ''}${dis ? ` · desaprobación ${fmtPct(dis.v, 0)}` : ''}`) : ''}
         ${im ? tile('Imagen positiva de Milei', fmtPct(im.v, 0), `promedio de ${im.n}${imn ? ` · negativa ${fmtPct(imn.v, 0)}` : ''}`) : ''}
-        ${mv && kv ? tile('Milei vs. Kicillof · 1.ª vuelta', `${fmtPct(mv.v, 0)} – ${fmtPct(kv.v, 0)}`, `promedio de ${Math.min(mv.n, kv.n)} escenarios`) : ''}
-        ${mr && kr ? tile('Milei vs. Kicillof · balotaje', `${fmtPct(mr.v, 0)} – ${fmtPct(kr.v, 0)}`, `promedio de ${Math.min(mr.n, kr.n)}`) : ''}
+        ${wt(tw.fr, 'Javier Milei', 'Axel Kicillof') ? tile('Milei vs. Kicillof · 1.ª vuelta', `${fmtPct(tw.fr.last['Javier Milei'], 0)} – ${fmtPct(tw.fr.last['Axel Kicillof'], 0)}`, `promedio ponderado de ${tw.fr.last.n} encuestas`) : mv && kv ? tile('Milei vs. Kicillof · 1.ª vuelta', `${fmtPct(mv.v, 0)} – ${fmtPct(kv.v, 0)}`, `promedio de ${Math.min(mv.n, kv.n)} escenarios`) : ''}
+        ${wt(tw.ro, 'Javier Milei', 'Axel Kicillof') ? tile('Milei vs. Kicillof · balotaje', `${fmtPct(tw.ro.last['Javier Milei'], 0)} – ${fmtPct(tw.ro.last['Axel Kicillof'], 0)}`, `promedio ponderado de ${tw.ro.last.n} encuestas`) : mr && kr ? tile('Milei vs. Kicillof · balotaje', `${fmtPct(mr.v, 0)} – ${fmtPct(kr.v, 0)}`, `promedio de ${Math.min(mr.n, kr.n)}`) : ''}
       </div>
+      ${arTrendHTML(series)}
+      <h4 class="pol-sub">Las últimas, una por una</h4>
       <div class="pol-grid">${polls.map(card).join('')}</div>
       ${(ps.provincial || []).length ? `<h4 class="pol-sub">Las encuestas en las provincias</h4><div class="ro-grid">${ps.provincial.map(pp => { const vals = Object.entries(pp.values || {}).sort((a, b) => b[1] - a[1]); const mx = Math.max(...vals.map(v => v[1]), 1); return `<div class="ro-card"><h4>${esc(arProv(pp.district).name || pp.district)}</h4><div class="muted">${esc(pp.pollster || '')}${pp.published ? ' · ' + esc(pp.published) : ''} · ${esc(pp.question || '')}</div>
         ${vals.map(([k, v]) => `<div class="pbar"><div class="pbar-top"><span>${esc(k)}</span><b>${fmtPct(v)}</b></div><div class="pbar-track"><div class="pbar-fill" style="width:${(v / mx * 100).toFixed(1)}%;background:#4A90C8"></div></div></div>`).join('')}
@@ -35119,7 +35279,7 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
             <div class="office-detail">${esc(c.status || '')}</div></div>`).join('')}</div>
       </section>
 
-      ${n.pollSnapshot ? arPolaroidHTML(n.pollSnapshot) : (n.polls || []).length ? `<section class="esp-sec" id="ar-sec-encuestas">
+      ${n.pollSnapshot ? arPolaroidHTML(n.pollSnapshot, n.pollSeries) : (n.polls || []).length ? `<section class="esp-sec" id="ar-sec-encuestas">
         <div class="esp-sec-head"><span class="kicker">05 · El clima</span><h3>Qué dicen las encuestas</h3></div>
         <div class="ro-grid">${n.polls.map(pl => { const vals = Object.entries(pl.values || {}).sort((a, b) => b[1] - a[1]); const mx = Math.max(...vals.map(v => v[1]), 1); return `<div class="ro-card"><h4>${esc(pl.pollster)}</h4><div class="muted">${esc(pl.question || '')}${pl.date ? ' · ' + esc(pl.date) : ''}</div>
           ${vals.map(([k, v]) => `<div class="pbar"><div class="pbar-top"><span>${esc(k)}</span><b>${fmtPct(v)}</b></div><div class="pbar-track"><div class="pbar-fill" style="width:${(v / mx * 100).toFixed(1)}%;background:#4A90C8"></div></div></div>`).join('')}
@@ -35159,6 +35319,7 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
       const t = document.querySelector(a.getAttribute('href'));
       if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }));
+    bindArTrend(root, n.pollSeries);
     root.querySelectorAll('[data-armetric]').forEach(b => b.addEventListener('click', () => {
       live.arMetric = b.getAttribute('data-armetric');
       root.querySelectorAll('[data-armetric]').forEach(x => x.classList.toggle('is-active', x === b));

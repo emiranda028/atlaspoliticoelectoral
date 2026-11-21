@@ -499,6 +499,10 @@
     "label": "Neuquén elige gobernador, Legislatura e intendentes: la primera provincia en votar (Decreto 1860/2026)"
    },
    {
+    "date": "2027-03-21",
+    "label": "Chubut elige gobernador, Legislatura, intendentes y concejales, con Boleta Única de Papel y sin PASO (Decreto 1872/26)"
+   },
+   {
     "date": "2027-04/05",
     "label": "Decreto de convocatoria a elecciones (fecha estimada)"
    },
@@ -2235,10 +2239,10 @@
    "governorElection2027": true,
    "reelection": "puede (primer mandato)",
    "incumbentRunning": "sí",
-   "date2027": null,
-   "dateStatus": "desdoblada sin fecha",
-   "dateNote": "Torres confirmó el desdoblamiento; analiza julio-agosto y deslizó agosto si se eliminan las PASO nacionales. Sin decreto.",
-   "system": "sin primarias (PASO eliminadas en la provincia); boleta única; sin balotaje",
+   "date2027": "2027-03-21",
+   "dateStatus": "confirmada",
+   "dateNote": "Torres firmó el 20/11/2026 el Decreto 1872/26 y convocó a elecciones provinciales desdobladas para el domingo 21 de marzo de 2027: gobernador y vice, los 27 diputados provinciales, intendentes y concejales (2027-2031). Los municipios tienen 30 días para adherir y votar el mismo día.",
+   "system": "Primera elección con el Código Electoral provincial (2024): sin PASO, Boleta Única de Papel, Ficha Limpia y debate obligatorio entre candidatos a gobernador; gobernador por mayoría simple, sin balotaje.",
    "candidates": [
     {
      "name": "Ignacio Torres",
@@ -2266,6 +2270,14 @@
    },
    "summary": "Torres, uno de los gobernadores de Provincias Unidas, busca la reelección con un partido provincial y sin acuerdo con LLA, que ganó en 2025 por un margen mínimo. Al no haber segunda vuelta, la fragmentación opositora es clave.",
    "sources": [
+    {
+     "label": "El Chubut (20/11/2026): Torres confirmó que Chubut votará el 21 de marzo",
+     "url": "https://www.elchubut.com.ar/regionales/2026-11-20-21-35-0-torres-confirmo-que-chubut-votara-el-21-de-marzo"
+    },
+    {
+     "label": "Noticias Argentinas: Chubut elegirá gobernador el 21 de marzo de 2027",
+     "url": "https://noticiasargentinas.com/politica/chubut-elegira-gobernador-el-21-de-marzo-de-2027-con-nuevas-reglas-electorales_a6b0067f5f48d6d3ab47d4078"
+    },
     {
      "label": "Letra P (7/10/2026): Torres analiza votar en agosto",
      "url": "https://www.letrap.com.ar/politica/ignacio-torres-provincilaiza-su-estrategia-y-analiza-votar-agosto-si-la-casa-rosada-voltea-las-paso-n5427180"
