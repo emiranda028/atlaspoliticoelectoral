@@ -6632,8 +6632,6 @@
   .pol-sub { font: 700 20px var(--font-serif); margin: 22px 0 10px; }
   /* Tendencia de encuestas (Argentina) */
   .ptr { --pt-a: #6D3FC0; --pt-b: #1C86D6; --pt-c: #D13B3B; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 16px 18px 14px; margin: 0 0 26px; }
-  :root[data-theme="dark"] .ptr { --pt-a: #A45BE0; --pt-b: #19A3C4; --pt-c: #E2564F; }
-  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .ptr { --pt-a: #A45BE0; --pt-b: #19A3C4; --pt-c: #E2564F; } }
   .ptr .pt-a { --c: var(--pt-a); } .ptr .pt-b { --c: var(--pt-b); } .ptr .pt-c { --c: var(--pt-c); }
   .ptr-head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 8px; }
   .ptr-head h4 { margin: 0; font: 700 18px var(--font-serif); color: var(--ink); }
@@ -6669,7 +6667,8 @@
   .ptr-avgrow td { font-weight: 700; background: var(--bg) !important; }
   .ptr-table tr.is-old td { color: var(--muted); }
   .ptr-note { color: var(--accent); cursor: help; font-weight: 700; }
-  @media (max-width: 600px) { .ptr { padding: 12px 10px; } .ptr-table { font-size: 12px; } .ptr-table th, .ptr-table td { padding: 6px 8px; } .ptr-ax { font-size: 13px; } .ptr-lab { font-size: 14px; } .ptr-val { font-size: 16px; } }
+  .ptr-svg.is-sm .ptr-ax { font-size: 10.5px; } .ptr-svg.is-sm .ptr-lab { font-size: 11.5px; } .ptr-svg.is-sm .ptr-val { font-size: 13.5px; }
+  @media (max-width: 600px) { .ptr { padding: 12px 10px; } .ptr-table { font-size: 12px; } .ptr-table th, .ptr-table td { padding: 6px 8px; } .ptr-tip { position: static; max-width: none; margin-top: 6px; box-shadow: none; } }
   .pol-notes { margin-top: 16px; font-size: 12.5px; color: var(--muted); }
   .pol-notes summary { cursor: pointer; font-weight: 600; color: var(--ink-soft); }
   .pol-notes ul { margin: 8px 0 0; padding-left: 18px; display: grid; gap: 4px; }
@@ -35059,7 +35058,7 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
       return inWin.map(x => ({ x, w: Math.pow(0.5, (t - x.t) / 864e5 / AR_HALF) * base(x.p) / cnt[x.p.pollster] }));
     };
     const avgAt = t => {
-      const ws = weights(t), out = { t, n: ws.length };
+      const ws = weights(t), out = { t, n: ws.filter(o => cfg.keys.some(k => typeof o.x.v[k] === 'number')).length };
       cfg.keys.forEach(k => { const h = ws.filter(o => typeof o.x.v[k] === 'number'); const sw = h.reduce((a, o) => a + o.w, 0); out[k] = h.length >= AR_MINP && sw ? h.reduce((a, o) => a + o.w * o.x.v[k], 0) / sw : null; });
       return out;
     };
@@ -35072,7 +35071,7 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
     return { cfg, polls, grid, last, t0, t1, share };
   }
   function arTrendSVG(c) {
-    const W = 760, H = 320, L = 40, R = 104, T = 14, B = 30, keys = c.cfg.keys;
+    const sm = window.innerWidth < 640, W = sm ? 400 : 760, H = sm ? 300 : 320, L = sm ? 34 : 40, R = sm ? 84 : 104, T = 14, B = 30, keys = c.cfg.keys;
     const vals = []; c.polls.forEach(x => keys.forEach(k => typeof x.v[k] === 'number' && vals.push(x.v[k])));
     let y0 = Math.max(0, Math.floor((Math.min(...vals) - 3) / 5) * 5), y1 = Math.min(100, Math.ceil((Math.max(...vals) + 3) / 5) * 5);
     const X = t => L + (t - c.t0) / Math.max(1, c.t1 - c.t0) * (W - L - R), Y = v => T + (y1 - v) / (y1 - y0) * (H - T - B);
@@ -35094,16 +35093,16 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
     const labs = keys.filter(k => c.last[k] != null).map(k => ({ k, y: Y(c.last[k]) })).sort((a, b) => a.y - b.y);
     for (let i = 1; i < labs.length; i++) if (labs[i].y - labs[i - 1].y < 30) labs[i].y = labs[i - 1].y + 30;
     const ends = labs.map(l => `<circle cx="${X(c.t1).toFixed(1)}" cy="${Y(c.last[l.k]).toFixed(1)}" r="4.5" class="ptr-end pt-${AR_TC[l.k]}"/><text x="${(W - R + 10).toFixed(1)}" y="${(l.y - 2).toFixed(1)}" class="ptr-lab">${esc(AR_TSHORT(l.k))}</text><text x="${(W - R + 10).toFixed(1)}" y="${(l.y + 14).toFixed(1)}" class="ptr-val">${fmtPct(c.last[l.k], 1)}</text><rect x="${W - R + 2}" y="${(l.y - 12).toFixed(1)}" width="3" height="30" rx="1.5" class="pt-${AR_TC[l.k]} ptr-swatch"/>`).join('');
-    return `<svg viewBox="0 0 ${W} ${H}" class="ptr-svg" role="img" aria-label="${esc(c.cfg.title)}: promedio ponderado y encuestas individuales">${g}${dots}${lines}${ends}
+    return `<svg viewBox="0 0 ${W} ${H}" class="ptr-svg${sm ? ' is-sm' : ''}" role="img" aria-label="${esc(c.cfg.title)}: promedio ponderado y encuestas individuales">${g}${dots}${lines}${ends}
       <line class="ptr-cross" x1="0" x2="0" y1="${T}" y2="${H - B}" style="display:none"/><rect class="ptr-hit" x="${L}" y="${T}" width="${W - L - R}" height="${H - T - B}" data-l="${L}" data-w="${W - L - R}" data-w0="${W}"/></svg>`;
   }
   function arTrendTable(c) {
     const keys = c.cfg.keys, diff = keys[0] === 'Javier Milei' && keys[1] === 'Axel Kicillof';
     const rows = c.polls.slice().reverse();
     const lastPs = c.last;
-    return `<div class="ptr-tablewrap"><table class="ptr-table"><thead><tr><th>Encuestadora</th><th>Campo</th><th class="num">Casos</th><th>Método</th>${keys.map(k => `<th class="num"><i class="ptr-sw pt-${AR_TC[k]}"></i>${esc(AR_TSHORT(k))}</th>`).join('')}${diff ? '<th class="num">Dif.</th>' : ''}<th class="num" title="Peso de cada encuesta en el promedio de hoy">Peso hoy</th></tr></thead><tbody>
-      <tr class="ptr-avgrow"><td>Promedio ponderado</td><td>hoy</td><td class="num">${c.last.n}</td><td>—</td>${keys.map(k => `<td class="num">${fmtPct(lastPs[k], 1)}</td>`).join('')}${diff ? `<td class="num">${lastPs[keys[0]] != null && lastPs[keys[1]] != null ? (lastPs[keys[0]] - lastPs[keys[1]] > 0 ? '+' : '') + (lastPs[keys[0]] - lastPs[keys[1]]).toLocaleString('es-AR', { maximumFractionDigits: 1, minimumFractionDigits: 1 }) : '—'}</td>` : ''}<td class="num">100%</td></tr>
-      ${rows.map(x => { const sh = c.share.get(x); const a = x.v[keys[0]], b = x.v[keys[1]]; const dd = typeof a === 'number' && typeof b === 'number' ? a - b : null; return `<tr class="${sh ? '' : 'is-old'}"><td>${x.p.url ? `<a href="${esc(x.p.url)}" target="_blank" rel="noopener">${esc(x.p.pollster)}</a>` : esc(x.p.pollster)}${x.p.note ? ` <span class="ptr-note" title="${esc(x.p.note)}">*</span>` : ''}</td><td>${fmtDateShort(new Date(x.t))}</td><td class="num">${x.p.n ? fmtInt(x.p.n) : '—'}</td><td>${esc(x.p.method || '—')}</td>${keys.map(k => `<td class="num">${typeof x.v[k] === 'number' ? fmtPct(x.v[k], 1) : '—'}</td>`).join('')}${diff ? `<td class="num">${dd == null ? '—' : (dd > 0 ? '+' : '') + dd.toLocaleString('es-AR', { maximumFractionDigits: 1, minimumFractionDigits: 1 })}</td>` : ''}<td class="num">${sh ? fmtPct(sh, 0) : '—'}</td></tr>`; }).join('')}
+    return `<div class="ptr-tablewrap"><table class="ptr-table"><thead><tr><th>Encuestadora</th>${keys.map(k => `<th class="num"><i class="ptr-sw pt-${AR_TC[k]}"></i>${esc(AR_TSHORT(k))}</th>`).join('')}${diff ? '<th class="num">Dif.</th>' : ''}<th>Campo</th><th class="num">Casos</th><th>Método</th><th class="num" title="Peso de cada encuesta en el promedio de hoy">Peso hoy</th></tr></thead><tbody>
+      <tr class="ptr-avgrow"><td>Promedio ponderado</td>${keys.map(k => `<td class="num">${fmtPct(lastPs[k], 1)}</td>`).join('')}${diff ? `<td class="num">${lastPs[keys[0]] != null && lastPs[keys[1]] != null ? (lastPs[keys[0]] - lastPs[keys[1]] > 0 ? '+' : '') + (lastPs[keys[0]] - lastPs[keys[1]]).toLocaleString('es-AR', { maximumFractionDigits: 1, minimumFractionDigits: 1 }) : '—'}</td>` : ''}<td>hoy</td><td class="num">—</td><td>${c.last.n} encuestas</td><td class="num">100%</td></tr>
+      ${rows.map(x => { const sh = c.share.get(x); const a = x.v[keys[0]], b = x.v[keys[1]]; const dd = typeof a === 'number' && typeof b === 'number' ? a - b : null; return `<tr class="${sh ? '' : 'is-old'}"><td>${x.p.url ? `<a href="${esc(x.p.url)}" target="_blank" rel="noopener">${esc(x.p.pollster)}</a>` : esc(x.p.pollster)}${x.p.note ? ` <span class="ptr-note" title="${esc(x.p.note)}">*</span>` : ''}</td>${keys.map(k => `<td class="num">${typeof x.v[k] === 'number' ? fmtPct(x.v[k], 1) : '—'}</td>`).join('')}${diff ? `<td class="num">${dd == null ? '—' : (dd > 0 ? '+' : '') + dd.toLocaleString('es-AR', { maximumFractionDigits: 1, minimumFractionDigits: 1 })}</td>` : ''}<td>${fmtDateShort(new Date(x.t))}</td><td class="num">${x.p.n ? fmtInt(x.p.n) : '—'}</td><td>${esc(x.p.method || '—')}</td><td class="num">${sh ? fmtPct(sh, 0) : '—'}</td></tr>`; }).join('')}
     </tbody></table></div>`;
   }
   function arTrendInner(series, kind) {
