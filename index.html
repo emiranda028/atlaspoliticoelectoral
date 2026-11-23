@@ -216,7 +216,7 @@
 </script>
 <style>html.i18n-wait body { opacity: 0; } body { transition: opacity .15s; }</style>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Atlas Político Mundial · 2026 — por Emmanuel Miranda, Martín Paratz y Ernesto Demian Abbott</title>
+<title>Atlas Político Electoral · 2026 — por Emmanuel Miranda, Martín Paratz y Ernesto Demian Abbott</title>
 <meta name="description" content="Cartografía interactiva del poder mundial en 2026: 197 países, sistemas electorales, ideologías de gobiernos, indicadores socioeconómicos comparados. Por Mg. Emmanuel Miranda, Lic. Martín Paratz y Abg. Ernesto Demian Abbott.">
 <meta name="author" content="Emmanuel Miranda, Martín Paratz, Ernesto Demian Abbott">
 <meta name="keywords" content="atlas político, mapa mundial, elecciones 2026, ideología, sistemas electorales, América Latina, geopolítica, datos electorales, comparación países">
@@ -228,13 +228,13 @@
 <link rel="alternate" hreflang="pt" href="https://atlaspoliticoelectoral.com/?lang=pt">
 <meta property="og:url" content="https://atlaspoliticoelectoral.com/">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Atlas Político Mundial · 2026">
+<meta property="og:title" content="Atlas Político Electoral · 2026">
 <meta property="og:description" content="Cartografía interactiva del poder mundial en 2026: 197 países, sistemas electorales, ideologías de gobiernos, indicadores socioeconómicos comparados.">
 <meta property="og:locale" content="es_AR">
 
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Atlas Político Mundial · 2026">
+<meta name="twitter:title" content="Atlas Político Electoral · 2026">
 <meta name="twitter:description" content="Cartografía interactiva del poder mundial en 2026 — 197 países comparados en 8 dimensiones.">
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
@@ -2242,7 +2242,7 @@
 
     /* Print-specific footer with citation on every page */
     body::after {
-      content: "Atlas Político Mundial 2026 · Mg. Emmanuel Miranda, Lic. Martín Paratz y Abg. Ernesto Demian Abbott";
+      content: "Atlas Político Electoral 2026 · Mg. Emmanuel Miranda, Lic. Martín Paratz y Abg. Ernesto Demian Abbott";
       position: fixed;
       bottom: 0;
       left: 0;
@@ -7708,7 +7708,7 @@
 <!-- ===== INTRO — "el mundo sale de la urna" =====
      Plays once per visit (sessionStorage). Skippable by click, Esc or the
      button; not shown with prefers-reduced-motion. Pure SVG + CSS. -->
-<div class="intro" id="intro" role="dialog" aria-label="Presentación del Atlas Político Mundial" hidden>
+<div class="intro" id="intro" role="dialog" aria-label="Presentación del Atlas Político Electoral" hidden>
   <button type="button" class="intro-skip" id="intro-skip">Saltar ›</button>
   <div class="intro-stage">
     <svg class="intro-svg" viewBox="0 0 400 420" aria-hidden="true">
@@ -7763,7 +7763,7 @@
       </g>
     </svg>
     <div class="intro-text">
-      <div class="intro-title">Atlas <em>Político</em> Mundial</div>
+      <div class="intro-title">Atlas <em>Político</em> Electoral</div>
       <div class="intro-sub">Quién gobierna el mundo y quién vota ahora</div>
       <div class="intro-authors">Por Mg. Emmanuel Miranda, Lic. Martín Paratz y Abg. Ernesto Demian Abbott</div>
     </div>
@@ -7818,7 +7818,7 @@
       </div>
     </div>
     <div class="masthead-main">
-      <a href="#" class="atlas-logo" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;" aria-label="Volver al inicio del Atlas Político Mundial" title="Volver al inicio">
+      <a href="#" class="atlas-logo" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;" aria-label="Volver al inicio del Atlas Político Electoral" title="Volver al inicio">
         <svg viewBox="0 0 64 64" width="56" height="56" aria-hidden="true">
           <circle cx="32" cy="32" r="29" fill="none" stroke="currentColor" stroke-width="1.8"/>
           <ellipse cx="32" cy="32" rx="29" ry="11" fill="none" stroke="currentColor" stroke-width="1.2" opacity="0.55"/>
@@ -7838,7 +7838,7 @@
             <span class="masthead-kicker-dash"></span>
             <span class="masthead-kicker-label">Cartografía del poder · Edición Beta 2026</span>
           </div>
-          <h1 class="title">Atlas <em>Político</em> Mundial</h1>
+          <h1 class="title">Atlas <em>Político</em> Electoral</h1>
           <p class="subtitle">
             <span class="subtitle-rule"></span>
             Sistemas electorales, gobiernos vigentes, economía y desigualdad —
@@ -8791,12 +8791,12 @@
     <div class="footer-credit-block citation-block">
       <h4>Cómo citar este atlas</h4>
       <p style="margin-bottom: 4px;"><strong>Formato APA:</strong></p>
-      <code class="citation">Miranda, E., Paratz, M. y Abbott, E. D. (2026). <em>Atlas Político Mundial 2026</em>
+      <code class="citation">Miranda, E., Paratz, M. y Abbott, E. D. (2026). <em>Atlas Político Electoral 2026</em>
         [Visualización interactiva de datos]. Recuperado de
         <span class="citation-url">https://atlaspoliticoelectoral.com</span></code>
 
       <p style="margin: 12px 0 4px;"><strong>Formato breve:</strong></p>
-      <code class="citation">Miranda, E., Paratz, M. y Abbott, E. D. (2026). Atlas Político Mundial 2026. atlaspoliticoelectoral.com</code>
+      <code class="citation">Miranda, E., Paratz, M. y Abbott, E. D. (2026). Atlas Político Electoral 2026. atlaspoliticoelectoral.com</code>
 
       <p style="margin: 12px 0 0; font-size: 11.5px; opacity: 0.7;">
         Si usás este atlas en una publicación, artículo, presentación o trabajo académico,
@@ -31669,7 +31669,7 @@ function renderElectionsTimeline() {  const today = new Date();
       filename = `atlas-politico-preview-${date}.csv`;
     } else {
       const payload = {
-        atlas: 'Atlas Político Mundial 2026',
+        atlas: 'Atlas Político Electoral 2026',
         author: 'Mg. Emmanuel Miranda, Lic. Martín Paratz y Abg. Ernesto Demian Abbott',
         contact: ['https://www.linkedin.com/in/emiranda028/', 'https://www.linkedin.com/in/martinparatz/', 'https://www.linkedin.com/in/abbottdemian/'],
         license: 'CC BY 4.0 — Reconocimiento requerido al citar',
@@ -32114,10 +32114,10 @@ function getCitationFooterHTML() {
   const dateStr = today.toLocaleDateString('es-AR', { day: '2-digit', month: 'long', year: 'numeric' });
   return `
     <div class="export-citation">
-      <div class="export-citation-title"><strong>Atlas Político Mundial 2026</strong> · Edición Beta</div>
+      <div class="export-citation-title"><strong>Atlas Político Electoral 2026</strong> · Edición Beta</div>
       <div class="export-citation-author">Por Mg. Emmanuel Miranda, Lic. Martín Paratz y Abg. Ernesto Demian Abbott</div>
       <div class="export-citation-meta">
-        Cómo citar (APA): Miranda, E., Paratz, M. y Abbott, E. D. (2026). <em>Atlas Político Mundial: cartografía
+        Cómo citar (APA): Miranda, E., Paratz, M. y Abbott, E. D. (2026). <em>Atlas Político Electoral: cartografía
         multidimensional del poder en 2026</em>.
         <br>Exportado el ${dateStr}.
       </div>
@@ -32158,7 +32158,7 @@ async function exportSectionAsPNG(sectionEl, sectionTitle) {
   `;
   wrap.innerHTML = `
     <div class="export-header" style="border-bottom: 2px solid ${inkColor}; padding-bottom: 12px; margin-bottom: 18px; display: flex; justify-content: space-between; align-items: baseline; gap: 16px; flex-wrap: wrap;">
-      <div class="export-header-title" style="font-family: 'Newsreader', Georgia, serif; font-size: 22px; font-weight: 700; font-style: italic; color: ${inkColor}; letter-spacing: -0.01em;">Atlas Político Mundial <span style="color: ${accentColor}">·</span> 2026</div>
+      <div class="export-header-title" style="font-family: 'Newsreader', Georgia, serif; font-size: 22px; font-weight: 700; font-style: italic; color: ${inkColor}; letter-spacing: -0.01em;">Atlas Político Electoral <span style="color: ${accentColor}">·</span> 2026</div>
       <div class="export-header-section" style="font-family: 'JetBrains Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.15em; color: ${accentColor};">${sectionTitle || ''}</div>
     </div>
   `;
@@ -34669,7 +34669,7 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
     const plain = String(title).replace(/<[^>]+>/g, '');
     return `<div class="usx is-${usxFmt()}"><div class="usx-top"><div><div class="usx-k"><i></i>${kicker}</div><h2 class="${plain.length > 22 ? 'is-xlong' : plain.length > 13 ? 'is-long' : ''}">${title}</h2></div><div class="usx-upd">Actualizado<b>${usHour()} h (Argentina)</b></div></div>
       <div class="usx-body">${body}</div>
-      <div class="usx-foot"><div><div class="usx-brand">Atlas <em>Político</em> Mundial</div><div class="usx-src">Datos: Associated Press, vía The New York Times</div></div><div class="usx-url">atlaspoliticoelectoral.com</div></div></div>`;
+      <div class="usx-foot"><div><div class="usx-brand">Atlas <em>Político</em> Electoral</div><div class="usx-src">Datos: Associated Press, vía The New York Times</div></div><div class="usx-url">atlaspoliticoelectoral.com</div></div></div>`;
   }
   function usShareCard(type, arg) {
     const R = live.usRes; if (!R) return '';
@@ -35819,7 +35819,7 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
     if (window.AtlasJuegos) return window.AtlasJuegos.render(el, game);
     if (document.getElementById('juegos-js')) { pendingGame = game; return; }
     const sc = document.createElement('script');
-    sc.id = 'juegos-js'; sc.src = 'js/juegos.js?v=33';
+    sc.id = 'juegos-js'; sc.src = 'js/juegos.js?v=34';
     sc.onload = () => { const g = game || pendingGame; pendingGame = null; window.AtlasJuegos && window.AtlasJuegos.render(el, g); };
     sc.onerror = () => { el.innerHTML = '<div class="jg-loading">No se pudieron cargar los juegos.</div>'; };
     document.head.appendChild(sc);
