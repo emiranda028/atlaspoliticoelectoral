@@ -3799,6 +3799,45 @@
   .cont-segment { border-radius: 0 !important; }
   .chart-card select { border: 1px solid var(--line-strong, #CBD2DC) !important; border-radius: 10px !important; padding: 8px 12px !important; background-color: var(--surface) !important; font: 500 14px var(--font-sans) !important; color: var(--ink) !important; }
   @media (max-width: 640px) { .chart-card { padding: 18px 16px !important; } .chart-card h3 { font-size: 21px; } .cc-kicker { padding-right: 112px; } .ideo-row { grid-template-columns: 110px 1fr 70px !important; } }
+
+  /* ===== Navegación: Especiales ===== */
+  .topic-nav-link.is-especiales .topic-nav-num { color: var(--accent); }
+  /* ===== Análisis en solapas ===== */
+  .an-tabs { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px; margin: 6px 0 10px; }
+  .an-tabs button { text-align: left; border: 1px solid var(--line); background: var(--surface); border-radius: 14px; padding: 12px 14px; cursor: pointer; font: inherit; color: var(--ink); transition: border-color .15s, box-shadow .15s, background .15s; }
+  .an-tabs button b { display: block; font: 700 15px var(--font-sans); }
+  .an-tabs button small { display: block; font-size: 12px; color: var(--muted); margin-top: 2px; line-height: 1.3; }
+  .an-tabs button:hover { border-color: var(--ink-soft); }
+  .an-tabs button.is-active { background: var(--ink); border-color: var(--ink); color: var(--surface); box-shadow: 0 6px 18px rgba(11,22,40,.18); }
+  .an-tabs button.is-active small { color: rgba(255,255,255,.72); }
+  .an-lede { font-size: 15px; color: var(--ink-soft); margin: 4px 0 18px; max-width: 860px; }
+  .charts-grid > [hidden] { display: none !important; }
+  @media (max-width: 900px) { .an-tabs { display: flex; overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; margin: 6px -16px 10px; padding: 0 16px; } .an-tabs::-webkit-scrollbar { display: none; } .an-tabs button { flex: none; width: 180px; } }
+  /* ===== Índice de especiales ===== */
+  .esh { max-width: 1180px; margin: 0 auto; padding: 28px 20px 60px; }
+  .esh-head h2 { font: 700 clamp(28px, 4vw, 40px)/1.1 var(--font-serif); color: var(--ink); margin: 6px 0 8px; }
+  .esh-head p { font-size: 16px; color: var(--ink-soft); max-width: 720px; margin: 0 0 8px; }
+  .esh-sub { font: 700 12px var(--font-sans); letter-spacing: .12em; text-transform: uppercase; color: var(--accent); margin: 26px 0 12px; }
+  .esh-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 14px; }
+  .esh-card { display: flex; gap: 16px; align-items: flex-start; padding: 18px; border: 1px solid var(--line); border-radius: 16px; background: var(--surface); color: inherit; text-decoration: none; transition: border-color .15s, box-shadow .15s, transform .15s; }
+  .esh-card:hover { border-color: var(--ink-soft); box-shadow: 0 10px 26px rgba(11,22,40,.12); transform: translateY(-2px); }
+  .esh-card.is-big { grid-column: 1 / -1; background: linear-gradient(135deg, var(--brand, #0B1F3A), #13305A); color: #fff; border: 0; padding: 26px; }
+  .esh-flag { width: 64px; height: 48px; border-radius: 6px; object-fit: cover; flex: none; box-shadow: 0 0 0 1px rgba(0,0,0,.08); }
+  .esh-card.is-big .esh-flag { width: 96px; height: 72px; }
+  .esh-body { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+  .esh-kind { font: 700 11px var(--font-sans); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+  .esh-body b { font: 700 22px/1.15 var(--font-serif); }
+  .esh-card.is-big .esh-body b { font-size: 32px; }
+  .esh-date { font-size: 13px; color: var(--ink-soft); }
+  .esh-pill { align-self: flex-start; margin: 4px 0; font: 700 11px var(--font-sans); letter-spacing: .05em; text-transform: uppercase; padding: 3px 9px; border-radius: 999px; background: var(--bg); color: var(--ink-soft); border: 1px solid var(--line); }
+  .esh-pill.is-next { background: rgba(194,65,12,.1); color: var(--accent); border-color: rgba(194,65,12,.3); }
+  .esh-pill.is-live { background: var(--accent); color: #fff; border-color: var(--accent); }
+  .esh-desc { font-size: 14px; color: var(--ink-soft); line-height: 1.45; }
+  .esh-cta { font: 600 13px var(--font-sans); color: var(--accent); margin-top: 6px; }
+  .esh-card.is-big .esh-kind, .esh-card.is-big .esh-date, .esh-card.is-big .esh-desc { color: rgba(255,255,255,.8); }
+  .esh-card.is-big .esh-cta { color: #FFB066; }
+  .esh-card.is-big .esh-pill.is-next { background: rgba(255,176,102,.18); color: #FFB066; border-color: rgba(255,176,102,.4); }
+  @media (max-width: 600px) { .esh-card { flex-direction: column; } .esh-card.is-big .esh-body b { font-size: 26px; } }
   /* ===== Barra común: PNG, minimizar, maximizar ===== */
   .cc-box { position: relative; }
   .cc-tools { position: absolute; top: 14px; right: 14px; display: flex; gap: 6px; z-index: 6; }
@@ -8032,21 +8071,13 @@
         <span class="topic-nav-num">★</span>
         <span class="topic-nav-text"><span class="tn-full">España 2026</span><span class="tn-short">España</span></span>
       </a>
-      <a href="#eeuu" class="topic-nav-link is-special is-special-us" onclick="window.__scrollToSection(event, 'eeuu')">
-        <span class="topic-nav-num">★</span>
-        <span class="topic-nav-text"><span class="tn-full">EE.UU. 2026</span><span class="tn-short">EE.UU.</span></span>
-      </a>
-      <a href="#brasil" class="topic-nav-link is-special" onclick="window.__scrollToSection(event, 'brasil')">
-        <span class="topic-nav-num">★</span>
-        <span class="topic-nav-text"><span class="tn-full">Brasil 2026</span><span class="tn-short">Brasil</span></span>
-      </a>
-      <a href="#israel" class="topic-nav-link is-special is-special-il" onclick="window.__scrollToSection(event, 'israel')">
-        <span class="topic-nav-num">★</span>
-        <span class="topic-nav-text"><span class="tn-full">Israel 2026</span><span class="tn-short">Israel</span></span>
-      </a>
       <a href="#argentina" class="topic-nav-link is-special is-special-ar" onclick="window.__scrollToSection(event, 'argentina')">
         <span class="topic-nav-num">★</span>
         <span class="topic-nav-text"><span class="tn-full">Argentina 2027</span><span class="tn-short">Argentina</span></span>
+      </a>
+      <a href="#especiales" class="topic-nav-link is-especiales" onclick="window.__scrollToSection(event, 'especiales')">
+        <span class="topic-nav-num">★</span>
+        <span class="topic-nav-text">Especiales</span>
       </a>
       <a href="#nav-map" class="topic-nav-link" onclick="window.__scrollToSection(event, 'nav-map')">
         <span class="topic-nav-num">01</span>
@@ -8060,16 +8091,12 @@
         <span class="topic-nav-num">03</span>
         <span class="topic-nav-text">Análisis</span>
       </a>
-      <a href="#nav-change" class="topic-nav-link" onclick="window.__scrollToSection(event, 'nav-change')">
-        <span class="topic-nav-num">04</span>
-        <span class="topic-nav-text">Cambio</span>
-      </a>
       <a href="#nav-methodology" class="topic-nav-link" onclick="window.__scrollToSection(event, 'nav-methodology')">
-        <span class="topic-nav-num">05</span>
+        <span class="topic-nav-num">04</span>
         <span class="topic-nav-text">Metodología</span>
       </a>
       <a href="#juegos" class="topic-nav-link is-games" onclick="window.__scrollToSection(event, 'juegos')">
-        <span class="topic-nav-num">06</span>
+        <span class="topic-nav-num">05</span>
         <span class="topic-nav-text">Juegos</span>
       </a>
       <div class="lang-switch lang-switch-nav notranslate" role="group" aria-label="Idioma / Language"><button type="button" data-lang="es" lang="es">ES</button><button type="button" data-lang="en" lang="en">EN</button><button type="button" data-lang="pt" lang="pt">PT</button></div>
@@ -8084,18 +8111,19 @@
 <div class="nav-sheet" id="nav-sheet" role="dialog" aria-modal="true" aria-label="Secciones del atlas" hidden>
   <div class="nav-sheet-panel">
     <div class="nav-sheet-head"><span>Secciones</span><div class="lang-switch lang-switch-sheet notranslate" role="group" aria-label="Idioma / Language"><button type="button" data-lang="es" lang="es">ES</button><button type="button" data-lang="en" lang="en">EN</button><button type="button" data-lang="pt" lang="pt">PT</button></div><button type="button" class="nav-sheet-close" id="nav-sheet-close" aria-label="Cerrar">✕</button></div>
-    <div class="nav-sheet-group">Especiales</div>
+    <div class="nav-sheet-group">Especiales · en marcha</div>
     <a href="#espana" data-go="espana"><b>España 2026</b><span>Generales del 29 de noviembre · encuestas y calculadora de mayorías</span></a>
+    <a href="#argentina" data-go="argentina"><b>Argentina 2027</b><span>Presidenciales, Congreso y las 24 provincias · Neuquén vota el 14/2</span></a>
+    <div class="nav-sheet-group">Especiales · ya votaron</div>
     <a href="#eeuu" data-go="eeuu"><b>EE.UU. 2026</b><span>Resultados de las midterms · estado por estado</span></a>
     <a href="#brasil" data-go="brasil"><b>Brasil 2026</b><span>Lula reelecto · resultados por estado</span></a>
     <a href="#israel" data-go="israel"><b>Israel 2026</b><span>Resultados oficiales · Eisenkot busca formar gobierno</span></a>
-    <a href="#argentina" data-go="argentina"><b>Argentina 2027</b><span>Presidenciales, Congreso y las 24 provincias · Neuquén vota el 14/2</span></a>
+    <a href="#especiales" data-go="especiales"><b>Todos los especiales</b><span>Las coberturas del Atlas, elección por elección</span></a>
     <div class="nav-sheet-group">El atlas</div>
     <a href="#inicio" data-go="inicio"><b>Inicio y mapa</b><span>Portada, buscador y mapa mundial</span></a>
     <a href="#elecciones" data-go="elecciones"><b>Calendario electoral</b><span>Quién vota y cuándo</span></a>
     <a href="#juegos" data-go="juegos"><b>Juegos</b><span>¿Qué país gobernarías? · La rosca de las PASO · Trivia</span></a>
-    <a href="#analisis" data-go="analisis"><b>Análisis</b><span>Ideologías, sistemas, rankings y perfiles</span></a>
-    <a href="#cambio" data-go="cambio"><b>¿Cambio o continuidad?</b><span>Los giros ideológicos desde 2023</span></a>
+    <a href="#analisis" data-go="analisis"><b>Análisis</b><span>Panorama, economía y sociedad, rankings, un país y los giros desde 2023</span></a>
     <a href="#metodologia" data-go="metodologia"><b>Metodología</b><span>Fuentes, criterios y cómo citar</span></a>
   </div>
 </div>
@@ -8336,40 +8364,48 @@
 <div class="scroll-anchor" id="nav-analytics"></div>
 <section class="analytics">
   <div class="analytics-head">
-    <h2>El mundo, por su signo político</h2>
-    <span class="kicker">Análisis agregado</span>
+    <h2 id="an-title">El mundo, por su signo político</h2>
+    <span class="kicker">Análisis</span>
   </div>
+  <nav class="an-tabs" role="tablist" aria-label="Secciones del análisis">
+    <button type="button" role="tab" data-antab="panorama"><b>Panorama</b><small>Ideologías, sistemas, regiones y género</small></button>
+    <button type="button" role="tab" data-antab="economia"><b>Economía y sociedad</b><small>Ocho indicadores por bloque y cruces</small></button>
+    <button type="button" role="tab" data-antab="rankings"><b>Rankings</b><small>Quién lidera y quién queda último</small></button>
+    <button type="button" role="tab" data-antab="pais"><b>Un país</b><small>Su lugar en cada indicador</small></button>
+    <button type="button" role="tab" data-antab="giros"><b>Giros desde 2023</b><small>¿Cambio o continuidad?</small></button>
+  </nav>
+  <p class="an-lede" id="an-lede"></p>
   <div class="charts-grid">
-    <div class="chart-card">
-      <span class="cc-kicker">01 · Ideología</span><h3>Distribución por ideología</h3>
+    <div data-atab="panorama" class="chart-card">
+      <span class="cc-kicker">Panorama · Ideología</span><h3>Distribución por ideología</h3>
       <p class="chart-subtitle">Cantidad de países según el signo del <strong>partido gobernante</strong>.
         Es distinto del sistema institucional: un país puede tener gobierno autoritario en
         ideología pero sistema parlamentario formal.</p>
       <div class="ideo-dist" id="ideo-dist"></div>
     </div>
-    <div class="chart-card">
-      <span class="cc-kicker">02 · Instituciones</span><h3>Por tipo de sistema de gobierno</h3>
+    <div data-atab="panorama" class="chart-card">
+      <span class="cc-kicker">Panorama · Instituciones</span><h3>Por tipo de sistema de gobierno</h3>
       <p class="chart-subtitle">Cómo está organizado <strong>institucionalmente</strong> el poder
         ejecutivo. Distinto del signo político: refleja reglas formales (elecciones,
         separación de poderes) más que orientación.</p>
       <div class="ideo-dist" id="system-dist"></div>
     </div>
 
-    <div class="chart-card chart-card-wide">
-      <span class="cc-kicker">03 · Regiones</span><h3>El mundo por continente</h3>
+    <div data-atab="panorama" class="chart-card chart-card-wide">
+      <span class="cc-kicker">Panorama · Regiones</span><h3>El mundo por continente</h3>
       <p class="chart-subtitle">Composición ideológica de cada región. Ayuda a ver qué bloques
         dominan en Europa, qué pasa en África, y dónde están los autoritarismos del mundo.</p>
       <div class="continent-dist" id="continent-dist"></div>
     </div>
 
-    <div class="chart-card chart-card-wide">
-      <span class="cc-kicker">04 · Género</span><h3>Mujeres al frente del gobierno</h3>
+    <div data-atab="panorama" class="chart-card chart-card-wide">
+      <span class="cc-kicker">Panorama · Género</span><h3>Mujeres al frente del gobierno</h3>
       <p class="chart-subtitle">Las mujeres encabezan el <span id="gender-pct-inline" class="accent">…</span> de los gobiernos del mundo:
         quiénes son, desde cuándo y dónde.</p>
       <div id="gender-dist"></div>
     </div>
-    <div class="chart-card chart-card-wide">
-      <span class="cc-kicker">05 · Indicadores</span><h3>Ocho miradas, no una sola</h3>
+    <div data-atab="economia" class="chart-card chart-card-wide">
+      <span class="cc-kicker">Economía y sociedad · Indicadores</span><h3>Ocho miradas, no una sola</h3>
       <p class="chart-subtitle">Promedio por bloque ideológico en ocho dimensiones distintas.
         <strong>Crecer no es lo mismo que repartir</strong>; un país con altos salarios no
         necesariamente tiene baja desigualdad o pobreza. Cada columna cuenta una historia:
@@ -8384,8 +8420,8 @@
       </p>
     </div>
 
-    <div class="chart-card chart-card-wide">
-      <span class="cc-kicker">06 · Cruces</span><h3>Cruce entre dos variables</h3>
+    <div data-atab="economia" class="chart-card chart-card-wide">
+      <span class="cc-kicker">Economía y sociedad · Cruces</span><h3>Cruce entre dos variables</h3>
       <p class="chart-subtitle">Elegí dos dimensiones y observá cómo se distribuyen los países.
         Cada punto es un país, coloreado por ideología. Pasá el mouse para ver detalles.</p>
       <div class="scatter-controls">
@@ -8425,8 +8461,8 @@
       </div>
     </div>
 
-    <div class="chart-card chart-card-wide">
-      <span class="cc-kicker">07 · Rankings</span><h3>Ranking por variable</h3>
+    <div data-atab="rankings" class="chart-card chart-card-wide">
+      <span class="cc-kicker">Rankings</span><h3>Ranking por variable</h3>
       <p class="chart-subtitle">Top 10 países según la variable elegida. Permite ver quiénes lideran
         y quiénes están en el extremo opuesto.</p>
       <div class="ranking-controls">
@@ -8454,8 +8490,8 @@
       <div id="ranking-list"></div>
     </div>
 
-    <div class="chart-card chart-card-wide">
-      <span class="cc-kicker">08 · Un país</span><h3>Perfil comparativo de un país</h3>
+    <div data-atab="pais" class="chart-card chart-card-wide">
+      <span class="cc-kicker">Un país</span><h3>Perfil comparativo de un país</h3>
       <p class="chart-subtitle">Seleccioná un país y mirá en qué puesto está en cada una de las
         ocho variables, comparado con todos los demás. Para el PBI vas a ver además la
         evolución 2020-2025. Opcionalmente, sumá un segundo país para verlos lado a lado.</p>
@@ -8478,19 +8514,9 @@
       <div class="profile-meta" id="profile-meta"></div>
       <div class="profile-grid" id="profile-grid"></div>
     </div>
-  </div>
-</section>
 
-
-  </div>
-  <div class="atlas-view" data-view="cambio">
-    <section class="analytics">
-      <div class="analytics-head">
-        <h2>¿Cambio o continuidad?</h2>
-        <span class="kicker">El humor político post-2023</span>
-      </div>
-        <div class="chart-card chart-card-wide">
-      <span class="cc-kicker">09 · Tendencia</span><h3>¿Cambio o continuidad?</h3>
+    <div class="chart-card chart-card-wide" data-atab="giros">
+      <span class="cc-kicker">Giros desde 2023</span><h3>¿Cambio o continuidad?</h3>
       <p class="chart-subtitle">De todas las elecciones celebradas en el mundo desde 2023, ¿cuántas
         cambiaron el bloque ideológico del gobierno y cuántas lo mantuvieron? El balance entre
         giros a la derecha, giros a la izquierda y continuidades captura el "humor político" de
@@ -8504,8 +8530,15 @@
         caso por caso.
       </p>
     </div>
+  </div>
+</section>
 
-    </section>
+
+  </div>
+  <div class="atlas-view" data-view="cambio"></div>
+
+  <div class="atlas-view" data-view="especiales">
+    <section class="esh" id="especiales-hub" aria-label="Especiales del Atlas"></section>
   </div>
 
   <div class="atlas-view" data-view="brasil">
@@ -9421,6 +9454,75 @@ function renderGenderSection(FC) {
     });
   });
 }
+
+
+/* ===========================================================
+   ANÁLISIS EN SOLAPAS
+   =========================================================== */
+(function () {
+  const TABS = {
+    panorama: { title: 'El mundo, por su signo político', lede: 'Cuántos países gobierna cada orientación, con qué sistema, en qué regiones y cuántas mujeres están al frente.' },
+    economia: { title: 'Economía y sociedad, bloque por bloque', lede: 'Crecimiento, desigualdad, salarios, pobreza, desarrollo humano, deuda y libertad de prensa: cómo les va a los países según quién los gobierna, y cómo se cruzan dos variables.' },
+    rankings: { title: 'Rankings', lede: 'Los primeros y los últimos en cada indicador. Elegí la variable y mirá quién lidera.' },
+    pais: { title: 'Un país, en contexto', lede: 'Elegí un país y mirá en qué puesto está en cada indicador, comparado con el resto del mundo y con su bloque.' },
+    giros: { title: 'Los giros desde 2023', lede: 'De todas las elecciones y cambios de gobierno desde 2023, cuáles giraron a la izquierda, cuáles a la derecha y cuáles mantuvieron el rumbo.' }
+  };
+  let cur = null;
+  try { cur = sessionStorage.getItem('an-tab'); } catch (e) {}
+  if (!TABS[cur]) cur = 'panorama';
+  window.__anTab = cur;
+  function apply() {
+    document.querySelectorAll('[data-antab]').forEach(b => { const on = b.dataset.antab === cur; b.classList.toggle('is-active', on); b.setAttribute('aria-selected', on); });
+    document.querySelectorAll('.atlas-view[data-view="analisis"] [data-atab]').forEach(c => { c.hidden = c.dataset.atab !== cur; });
+    const t = document.getElementById('an-title'), l = document.getElementById('an-lede');
+    if (t) t.textContent = TABS[cur].title;
+    if (l) l.textContent = TABS[cur].lede;
+    setTimeout(() => window.dispatchEvent(new Event('resize')), 30);
+  }
+  window.__setAnTab = function (tab, o) {
+    o = o || {};
+    if (tab && TABS[tab]) cur = tab;
+    window.__anTab = cur;
+    try { sessionStorage.setItem('an-tab', cur); } catch (e) {}
+    apply();
+    if (!o.fromRouter && document.body.getAttribute('data-view') === 'analisis') {
+      history.replaceState({ view: 'analisis' }, '', '#analisis' + (cur !== 'panorama' ? '/' + cur : ''));
+      const nav = document.querySelector('.an-tabs');
+      if (nav && nav.getBoundingClientRect().top < 0) nav.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      if (window.atlasTrack) window.atlasTrack('/analisis/' + cur);
+    }
+  };
+  document.addEventListener('click', e => { const b = e.target.closest('[data-antab]'); if (b) window.__setAnTab(b.dataset.antab); });
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', apply); else apply();
+})();
+
+/* ===========================================================
+   ESPECIALES — índice de las coberturas
+   =========================================================== */
+const ESPECIALES = [
+  { id: 'espana', iso2: 'es', title: 'España 2026', kind: 'Elecciones generales', date: '2026-11-29', desc: 'Se eligen los 350 diputados del Congreso. Encuestas, calculadora de mayorías y cómo se reparten los escaños.' },
+  { id: 'argentina', iso2: 'ar', title: 'Argentina 2027', kind: 'Presidenciales, Congreso y provincias', date: '2027-10-24', desc: 'Candidatos, encuestas con promedio ponderado, las 24 provincias y el calendario provincial: Neuquén vota el 14 de febrero y Chubut el 21 de marzo.' },
+  { id: 'eeuu', iso2: 'us', title: 'EE.UU. 2026', kind: 'Elecciones de medio término', date: '2026-11-03', desc: 'Resultados de la Cámara, el Senado y las gobernaciones, estado por estado.' },
+  { id: 'israel', iso2: 'il', title: 'Israel 2026', kind: 'Elecciones a la Knéset', date: '2026-10-27', desc: 'Resultados oficiales, bancas por lista y la calculadora de coaliciones.' },
+  { id: 'brasil', iso2: 'br', title: 'Brasil 2026', kind: 'Generales · dos vueltas', date: '2026-10-25', desc: 'Lula reelecto en el balotaje: resultados por estado, gobernaciones y el Congreso que viene.' }
+];
+window.renderEspecialesHub = function () {
+  const el = document.getElementById('especiales-hub');
+  if (!el) return;
+  const today = new Date(); today.setHours(12, 0, 0, 0);
+  const MES = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
+  const fdate = d => `${d.getDate()} de ${MES[d.getMonth()]} de ${d.getFullYear()}`;
+  const items = ESPECIALES.map(e => { const d = new Date(e.date + 'T12:00:00'); return Object.assign({}, e, { d, days: Math.round((d - today) / 864e5) }); });
+  const up = items.filter(e => e.days >= 0).sort((a, b) => a.d - b.d), past = items.filter(e => e.days < 0).sort((a, b) => b.d - a.d);
+  const pill = e => e.days === 0 ? '<span class="esh-pill is-live">Hoy</span>' : e.days > 0 ? `<span class="esh-pill is-next">${e.days <= 7 ? 'Esta semana · ' : ''}faltan ${e.days} días</span>` : `<span class="esh-pill">Resultados</span>`;
+  const card = (e, big) => `<a class="esh-card${big ? ' is-big' : ''}" href="#${e.id}" onclick="return window.__atlasGoTo('${e.id}')">
+      <img class="esh-flag" src="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.3.2/flags/4x3/${e.iso2}.svg" alt="" loading="lazy">
+      <span class="esh-body"><span class="esh-kind">${e.kind}</span><b>${e.title}</b><span class="esh-date">${fdate(e.d)}</span>${pill(e)}<span class="esh-desc">${e.desc}</span><span class="esh-cta">Abrir el especial →</span></span>
+    </a>`;
+  el.innerHTML = `<div class="esh-head"><span class="kicker">Especiales</span><h2>Las elecciones que sigue el Atlas</h2><p>Coberturas con datos que se actualizan solos: encuestas, resultados en vivo y lo que hay en juego en cada elección.</p></div>
+    ${up.length ? `<h3 class="esh-sub">En marcha</h3><div class="esh-grid is-up">${up.map((e, i) => card(e, i === 0)).join('')}</div>` : ''}
+    ${past.length ? `<h3 class="esh-sub">Ya votaron</h3><div class="esh-grid">${past.map(e => card(e, false)).join('')}</div>` : ''}`;
+};
 
 /* ===========================================================
    IDEOLOGY DEFINITIONS
@@ -32098,7 +32200,7 @@ function renderElectionsTimeline() {  const today = new Date();
   // Also marks the corresponding nav link as active.
   // ============ SPA ROUTER ============
   // Maps nav hrefs (#nav-map, #nav-calendar, …) and view ids to canonical views.
-  const VIEW_IDS = ['inicio', 'elecciones', 'analisis', 'cambio', 'metodologia', 'brasil', 'eeuu', 'israel', 'espana', 'argentina', 'juegos'];
+  const VIEW_IDS = ['inicio', 'elecciones', 'analisis', 'cambio', 'metodologia', 'especiales', 'brasil', 'eeuu', 'israel', 'espana', 'argentina', 'juegos'];
   const NAV_TO_VIEW = {
     'nav-map': 'inicio',          // the map now lives on the home view
     'nav-calendar': 'elecciones',
@@ -32110,6 +32212,10 @@ function renderElectionsTimeline() {  const today = new Date();
   function showView(view, opts) {
     opts = opts || {};
     if (!VIEW_IDS.includes(view)) view = 'inicio';
+    // "Cambio" ahora es una solapa de Análisis (los enlaces viejos siguen andando)
+    if (view === 'cambio') { view = 'analisis'; opts.atab = 'giros'; }
+    if (view === 'analisis' && window.__setAnTab) window.__setAnTab(opts.atab || null, { fromRouter: true });
+    if (view === 'especiales' && window.renderEspecialesHub) window.renderEspecialesHub();
 
     // Toggle view containers
     document.querySelectorAll('.atlas-view').forEach(v => {
@@ -32121,7 +32227,7 @@ function renderElectionsTimeline() {  const today = new Date();
     // Highlight the active nav link
     document.querySelectorAll('.topic-nav-link').forEach(l => {
       const href = (l.getAttribute('href') || '').replace('#', '');
-      l.classList.toggle('is-active', NAV_TO_VIEW[href] === view || href === view);
+      l.classList.toggle('is-active', NAV_TO_VIEW[href] === view || href === view || (href === 'especiales' && ['brasil', 'eeuu', 'israel'].includes(view)));
     });
 
     // On the map view the filters live inside the map (left panel)
@@ -32142,7 +32248,7 @@ function renderElectionsTimeline() {  const today = new Date();
 
     // Update the URL hash without adding noise to history when restoring
     if (!opts.skipHash) {
-      const newHash = '#' + view;
+      const newHash = '#' + view + (view === 'analisis' && window.__anTab && window.__anTab !== 'panorama' ? '/' + window.__anTab : '');
       if (window.location.hash !== newHash) {
         history.pushState({ view }, '', newHash);
       }
@@ -32171,8 +32277,9 @@ function renderElectionsTimeline() {  const today = new Date();
   // React to hash changes (browser back/forward, manual hash edits, deep links)
   function syncViewFromHash(opts) {
     const raw = (window.location.hash || '').replace('#', '');
-    const view = VIEW_IDS.includes(raw) ? raw : 'inicio';
-    showView(view, Object.assign({ skipHash: true }, opts || {}));
+    const [base, sub] = raw.split('/');
+    const view = VIEW_IDS.includes(base) ? base : 'inicio';
+    showView(view, Object.assign({ skipHash: true, atab: sub || null }, opts || {}));
   }
   window.addEventListener('hashchange', () => syncViewFromHash());
 
