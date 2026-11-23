@@ -3801,6 +3801,43 @@
   @media (max-width: 640px) { .chart-card { padding: 18px 16px !important; } .chart-card h3 { font-size: 21px; } .cc-kicker { padding-right: 112px; } .ideo-row { grid-template-columns: 110px 1fr 70px !important; } }
 
 
+
+  /* ===== Perfil de un país: lectura clara ===== */
+  .profile-controls { align-items: flex-end; }
+  .pf-reset { align-self: flex-end; height: 40px; padding: 0 14px; border: 1px solid var(--line-strong, #CBD2DC); border-radius: 10px; background: var(--surface); font: 600 13px var(--font-sans); color: var(--ink-soft); cursor: pointer; }
+  .pf-reset:hover:not(:disabled) { color: var(--accent); border-color: var(--accent); }
+  .pf-reset:disabled { opacity: .45; cursor: default; }
+  .pf-summary:empty { display: none; }
+  .pf-summary { background: var(--bg); border: 1px solid var(--line); border-radius: 12px; padding: 10px 14px; font-size: 14px; color: var(--ink-soft); margin: 0 0 14px; }
+  .pf-good { color: #1F7A4D; } .pf-bad { color: #B3261E; }
+  .pf-dir { font: 700 10.5px var(--font-sans); letter-spacing: .04em; padding: 3px 8px; border-radius: 999px; background: var(--bg); color: var(--ink-soft); border: 1px solid var(--line); white-space: nowrap; }
+  .pf-dir.is-up, .pf-dir.is-down { color: #1F7A4D; background: rgba(31,122,77,.08); border-color: rgba(31,122,77,.25); }
+  .pf-what { font-size: 12px; color: var(--muted); margin: 4px 0 6px; line-height: 1.35; min-height: 32px; }
+  .pf-muted { color: var(--muted); font-weight: 400; }
+  .profile-card-percentile b { color: var(--ink); }
+  .pf-scale { position: relative; height: 8px; border-radius: 4px; background: linear-gradient(90deg, var(--line), var(--line-strong, #CBD2DC)); margin: 14px 4px 4px; }
+  .pf-mk { position: absolute; top: 50%; width: 14px; height: 14px; border-radius: 50%; transform: translate(-50%, -50%); box-shadow: 0 0 0 2px var(--surface); z-index: 2; }
+  .pf-mk.is-a, .pf-sw.is-a { background: var(--accent); } .pf-mk.is-b, .pf-sw.is-b { background: #2B6CB0; }
+  .pf-tick { position: absolute; top: -4px; bottom: -4px; width: 2px; border-radius: 1px; background: var(--ink-soft); transform: translateX(-1px); }
+  .pf-tick.is-world, .pf-ln.is-world { background: var(--ink); }
+  .pf-ends { display: flex; justify-content: space-between; font-size: 10.5px; color: var(--muted); margin: 2px 2px 6px; }
+  .pf-legend { display: flex; flex-wrap: wrap; gap: 4px 12px; font-size: 11.5px; color: var(--ink-soft); margin-bottom: 8px; }
+  .pf-legend span { display: inline-flex; align-items: center; gap: 5px; }
+  .pf-sw { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+  .pf-ln { width: 2px; height: 11px; display: inline-block; border-radius: 1px; }
+  .pf-vs { border: 1px solid var(--line); border-radius: 12px; padding: 10px 12px; margin: 10px 0; background: var(--bg); }
+  .pf-vs.is-better { border-color: rgba(31,122,77,.35); background: rgba(31,122,77,.05); }
+  .pf-vs.is-worse { border-color: rgba(179,38,30,.3); background: rgba(179,38,30,.04); }
+  .pf-vs-head { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; font-size: 13px; color: var(--ink); }
+  .pf-vs-head .flag-img { width: 20px; height: 15px; border-radius: 2px; }
+  .pf-verdict { margin-left: auto; font: 700 11px var(--font-sans); padding: 2px 8px; border-radius: 999px; background: var(--surface); border: 1px solid var(--line); color: var(--ink-soft); }
+  .pf-vs.is-better .pf-verdict { color: #1F7A4D; border-color: rgba(31,122,77,.35); }
+  .pf-vs.is-worse .pf-verdict { color: #B3261E; border-color: rgba(179,38,30,.3); }
+  .pf-vs-vals { display: flex; flex-wrap: wrap; gap: 4px 14px; font-size: 12.5px; color: var(--ink-soft); margin: 8px 0 2px; }
+  .pf-vs-vals span { display: inline-flex; align-items: center; gap: 5px; } .pf-vs-vals b { color: var(--ink); } .pf-vs-vals small { color: var(--muted); }
+  .pf-vs-text { font-size: 12.5px; color: var(--ink-soft); line-height: 1.45; margin: 8px 0 0; }
+  .pf-nb-title { font: 700 10.5px var(--font-sans); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin: 6px 0 4px; }
+  .profile-card .neighbor .nval { font-family: var(--font-sans) !important; font-variant-numeric: tabular-nums; }
   /* ===== Sección Mapa y globo ===== */
   html.map-page #portada, html.map-page .night-home { display: none !important; }
   html.map-page #map, html.map-page .panel-map { height: calc(100vh - 150px); min-height: 520px; }
@@ -8512,9 +8549,9 @@
 
     <div data-atab="pais" class="chart-card chart-card-wide">
       <span class="cc-kicker">Un país</span><h3>Perfil comparativo de un país</h3>
-      <p class="chart-subtitle">Seleccioná un país y mirá en qué puesto está en cada una de las
-        ocho variables, comparado con todos los demás. Para el PBI vas a ver además la
-        evolución 2020-2025. Opcionalmente, sumá un segundo país para verlos lado a lado.</p>
+      <p class="chart-subtitle">Elegí un país y mirá en qué puesto está en cada uno de los ocho indicadores.
+        Cada tarjeta dice qué mide y si conviene un valor alto o bajo. Si sumás un segundo país,
+        te dice quién está mejor y por cuánto.</p>
       <div class="profile-controls">
         <div class="scatter-control-group">
           <label>País principal</label>
@@ -8527,11 +8564,13 @@
           </select>
         </div>
         <div class="scatter-control-group">
-          <label>Buscar</label>
-          <input type="text" id="profile-search" placeholder="Filtrar nombre…" autocomplete="off">
+          <label>Buscar en las listas</label>
+          <input type="text" id="profile-search" placeholder="Escribí para achicar las listas…" autocomplete="off">
         </div>
+        <button type="button" class="pf-reset" id="profile-reset" title="Quitar la comparación y la búsqueda">✕ Borrar filtros</button>
       </div>
       <div class="profile-meta" id="profile-meta"></div>
+      <p class="pf-summary" id="profile-summary"></p>
       <div class="profile-grid" id="profile-grid"></div>
     </div>
 
@@ -9489,6 +9528,8 @@ function renderGenderSection(FC) {
   };
   let cur = null;
   try { cur = sessionStorage.getItem('an-tab'); } catch (e) {}
+  const fromHash = (location.hash.match(/^#analisis\/(\w+)/) || [])[1];
+  if (fromHash) cur = fromHash;
   if (!TABS[cur]) cur = 'panorama';
   window.__anTab = cur;
   function apply() {
@@ -30982,15 +31023,23 @@ function initProfile(metrics) {
   // The key fix: the human-facing description must say "MORE" or "LESS" of the variable,
   // not "better" or "worse" — that avoids confusion when the variable itself is negative.
   const metricSemantics = {
-    gdp:     { bestIsHigh: true,  positiveLabel: 'mayor crecimiento que', negativeLabel: 'menor crecimiento que' },
-    gini:    { bestIsHigh: false, positiveLabel: 'más desigual que',       negativeLabel: 'más igualitario que'    },
-    wage:    { bestIsHigh: true,  positiveLabel: 'mejor pago que',         negativeLabel: 'peor pago que'          },
-    tax:     { bestIsHigh: null,  positiveLabel: 'mayor presión que',      negativeLabel: 'menor presión que'      },
-    poverty: { bestIsHigh: false, positiveLabel: 'más pobreza que',        negativeLabel: 'menos pobreza que'      },
-    hdi:     { bestIsHigh: true,  positiveLabel: 'mayor IDH que',          negativeLabel: 'menor IDH que'          },
-    debt:    { bestIsHigh: false, positiveLabel: 'más endeudado que',      negativeLabel: 'menos endeudado que'    },
-    press:   { bestIsHigh: true,  positiveLabel: 'más libre que',          negativeLabel: 'menos libre que'        }
+    gdp:     { bestIsHigh: true,  positiveLabel: 'mayor crecimiento que', negativeLabel: 'menor crecimiento que', what: 'Cuánto creció la economía en 2025.', unit: 'pp', more: 'creció más', less: 'creció menos', lowEnd: 'menos crecimiento', highEnd: 'más crecimiento', rank1: 'el que más creció' },
+    gini:    { bestIsHigh: false, positiveLabel: 'más desigual que',       negativeLabel: 'más igualitario que', what: 'Desigualdad del ingreso: 0 es igualdad total y 100, la máxima desigualdad.', unit: 'puntos', more: 'es más desigual', less: 'es más igualitario', lowEnd: 'más igualitario', highEnd: 'más desigual', rank1: 'el más igualitario' },
+    wage:    { bestIsHigh: true,  positiveLabel: 'mejor pago que',         negativeLabel: 'peor pago que', what: 'Salario promedio mensual, en dólares.', unit: 'USD', more: 'paga más', less: 'paga menos', lowEnd: 'salarios más bajos', highEnd: 'salarios más altos', rank1: 'el de salarios más altos' },
+    tax:     { bestIsHigh: null,  positiveLabel: 'mayor presión que',      negativeLabel: 'menor presión que', what: 'Impuestos como % del PBI. No es mejor ni peor: depende del modelo de Estado.', unit: 'pp', more: 'cobra más impuestos', less: 'cobra menos impuestos', lowEnd: 'menos impuestos', highEnd: 'más impuestos', rank1: 'el que más impuestos cobra' },
+    poverty: { bestIsHigh: false, positiveLabel: 'más pobreza que',        negativeLabel: 'menos pobreza que', what: 'Población bajo la línea de pobreza de cada país (cada uno la mide distinto).', unit: 'pp', more: 'tiene más pobreza', less: 'tiene menos pobreza', lowEnd: 'menos pobreza', highEnd: 'más pobreza', rank1: 'el de menos pobreza' },
+    hdi:     { bestIsHigh: true,  positiveLabel: 'mayor IDH que',          negativeLabel: 'menor IDH que', what: 'Índice de Desarrollo Humano (PNUD): salud, educación e ingresos, de 0 a 1.', unit: 'puntos', more: 'tiene más desarrollo humano', less: 'tiene menos desarrollo humano', lowEnd: 'menos desarrollo', highEnd: 'más desarrollo', rank1: 'el de mayor desarrollo' },
+    debt:    { bestIsHigh: false, positiveLabel: 'más endeudado que',      negativeLabel: 'menos endeudado que', what: 'Deuda del Estado como % del PBI.', unit: 'pp', more: 'está más endeudado', less: 'está menos endeudado', lowEnd: 'menos deuda', highEnd: 'más deuda', rank1: 'el menos endeudado' },
+    press:   { bestIsHigh: true,  positiveLabel: 'más libre que',          negativeLabel: 'menos libre que', what: 'Libertad de prensa según Reporteros sin Fronteras, de 0 a 100.', unit: 'puntos', more: 'tiene más libertad de prensa', less: 'tiene menos libertad de prensa', lowEnd: 'menos libertad', highEnd: 'más libertad', rank1: 'el de más libertad de prensa' }
   };
+  const cap = s => s.charAt(0).toUpperCase() + s.slice(1);
+  const fmtDiff = (m, sem, d) => {
+    const a = Math.abs(d);
+    if (sem.unit === 'USD') return 'USD ' + Math.round(a).toLocaleString('es-AR');
+    const s = a.toLocaleString('es-AR', { maximumFractionDigits: m.key === 'hdi' ? 3 : 1, minimumFractionDigits: m.key === 'hdi' ? 3 : 1 });
+    return sem.unit === 'pp' ? s + ' puntos porcentuales' : s + ' puntos';
+  };
+
 
   function render() {
     const iso = sel.value;
@@ -31109,154 +31158,89 @@ function initProfile(metrics) {
       <em>${cleanParty}</em>.
     `;
 
+    let wins = 0, losses = 0, compared = 0;
     const cards = metrics.map(m => {
       const value = m.getValue(c);
       const r = rankings[m.key].map[iso];
-
+      const sem = metricSemantics[m.key] || { bestIsHigh: null, more: 'tiene más', less: 'tiene menos', what: m.sub, unit: 'puntos', lowEnd: 'menos', highEnd: 'más', rank1: 'el primero' };
+      const dirBadge = sem.bestIsHigh === true ? '<span class="pf-dir is-up" title="En este indicador, un valor más alto es mejor">↑ Más alto, mejor</span>'
+        : sem.bestIsHigh === false ? '<span class="pf-dir is-down" title="En este indicador, un valor más bajo es mejor">↓ Más bajo, mejor</span>'
+        : '<span class="pf-dir" title="Este indicador no se juzga como mejor o peor">Ni mejor ni peor</span>';
       if (value == null || r == null) {
         return `<div class="profile-card">
-          <div class="profile-card-head">
-            <div class="profile-card-label">${m.label}</div>
-            <div class="profile-card-rank">sin dato</div>
-          </div>
+          <div class="profile-card-head"><div class="profile-card-label">${m.label}</div>${dirBadge}</div>
+          <p class="pf-what">${sem.what}</p>
           <div class="profile-card-value na">—</div>
-          <div class="profile-card-percentile">${m.sub}</div>
+          <div class="profile-card-percentile">Sin dato para ${c.name}.</div>
         </div>`;
       }
-
-      const total = r.total;
-      // r.rank is high-to-low ranking (rank 1 = highest value).
-      const rank = r.rank;
-      const sem = metricSemantics[m.key] || { bestIsHigh: null, positiveLabel: 'mayor', negativeLabel: 'menor' };
-
-      // Display rank: when "less is better" (gini, poverty, debt), the user-friendly
-      // ranking puts the country with LOWEST value at #1.
-      // When "more is better" or neutral, rank #1 = highest value (no change).
-      let displayRank;
-      if (sem.bestIsHigh === false) {
-        displayRank = total - rank + 1;  // invert: lowest value = #1
-      } else {
-        displayRank = rank;
-      }
-
-      // Number of countries this one is "above" in raw value order
-      // i.e., how many countries have a LOWER value than this one
-      const countriesBelow = total - rank;          // countries with strictly lower value (or tie below)
-      const countriesAbove = rank - 1;              // countries with strictly higher value
-      const pctOnRank = (countriesBelow / (total - 1) * 100); // 100 = highest, 0 = lowest
-
-      // Bar position: where this country sits between min and max of all countries
+      const total = r.total, rank = r.rank; // rank: 1 = valor más alto
       const items = rankings[m.key].items;
-      const min = items[items.length - 1].value;
-      const max = items[0].value;
-      const range = max - min || 1;
-      const pctOnBar = ((value - min) / range) * 100;
-      const wAvg = worldAvg[m.key];
-      const wAvgPct = ((wAvg - min) / range) * 100;
-      const blockAvg = ideoAvg[m.key][c.ideology];
-      const blockAvgPct = blockAvg != null ? ((blockAvg - min) / range) * 100 : null;
-
-      // Neighbors in ranking (high-to-low order)
-      const idx = items.findIndex(x => x.iso === iso);
-      const above = idx > 0 ? items[idx - 1] : null;       // higher value
-      const below = idx < items.length - 1 ? items[idx + 1] : null; // lower value
-
-      const aboveCountry = above ? state.countryByISO[above.iso] : null;
-      const belowCountry = below ? state.countryByISO[below.iso] : null;
-
-      // Special case: GDP shows sparkline
-      let extraVisual = '';
-      if (m.key === 'gdp' && c.economy.gdpGrowth?.length) {
-        extraVisual = renderSparkline(c.economy.gdpGrowth);
-      }
-
-      // Direction text: describe the country in MAGNITUDE language, not moral.
-      const directionText = `${sem.positiveLabel} <span class="accent">${countriesBelow}</span> de ${total - 1} países <span style="opacity:.7">(percentil ${pctOnRank.toFixed(0)})</span>`;
-
-      // ===== Optional second-country comparison =====
-      // When c2 is set, we add a parallel block showing the same metric for
-      // the comparison country plus a "vs" delta line.
+      // Orden "de mejor a peor" (o de mayor a menor si es neutro)
+      const ordered = sem.bestIsHigh === false ? items.slice().reverse() : items;
+      const dRank = i => ordered.findIndex(x => x.iso === i) + 1;
+      const displayRank = dRank(iso);
+      const countriesBelow = total - rank, countriesAbove = rank - 1;
+      const min = items[items.length - 1].value, max = items[0].value, range = max - min || 1;
+      const P = v => Math.max(0, Math.min(100, (v - min) / range * 100));
+      const wAvg = worldAvg[m.key], blockAvg = ideoAvg[m.key][c.ideology];
+      const extraVisual = m.key === 'gdp' && c.economy.gdpGrowth?.length ? renderSparkline(c.economy.gdpGrowth) : '';
+      const posText = `<b>Puesto ${displayRank} de ${total}</b> <span class="pf-muted">(el 1 es ${sem.rank1})</span>. ${cap(sem.more)} que <b>${countriesBelow}</b> ${countriesBelow === 1 ? 'país' : 'países'} y ${sem.less} que <b>${countriesAbove}</b>.`;
+      // ===== Comparación con un segundo país =====
       let comparisonBlock = '';
       if (c2 && c2.iso !== c.iso) {
-        const value2 = m.getValue(c2);
-        const r2 = rankings[m.key].map[c2.iso];
+        const value2 = m.getValue(c2), r2 = rankings[m.key].map[c2.iso];
         if (value2 != null && r2 != null) {
-          const rank2 = r2.rank;
-          const displayRank2 = sem.bestIsHigh === false ? total - rank2 + 1 : rank2;
-          const pctOnBar2 = ((value2 - min) / range) * 100;
-
-          // Compute the delta (sign meaningful for the metric)
-          const delta = value - value2;
-          const deltaSign = delta > 0 ? '+' : (delta < 0 ? '' : '±');
-          const deltaFmt = m.key === 'wage' ? 'USD ' + Math.round(delta).toLocaleString('es-AR')
-                         : m.key === 'hdi' ? delta.toFixed(3)
-                         : m.key === 'gini' || m.key === 'press' ? delta.toFixed(1)
-                         : delta.toFixed(1) + '%';
-
-          // For the rank gap, simpler: just show difference in rank position
-          const rankGap = Math.abs(rank - rank2);
-          const sign1IsBetter = sem.bestIsHigh === false ? rank > rank2 : rank < rank2;
-
+          const d = value - value2, same = Math.abs(d) < (m.key === 'hdi' ? 0.0005 : 0.05);
+          const dr2 = dRank(c2.iso), gap = Math.abs(displayRank - dr2);
+          let verdict = '', cls = '';
+          if (!same && sem.bestIsHigh != null) {
+            const better = sem.bestIsHigh ? d > 0 : d < 0;
+            compared++; if (better) wins++; else losses++;
+            cls = better ? 'is-better' : 'is-worse';
+            verdict = `<span class="pf-verdict ${cls}">${better ? '✓ ' + c.name + ' está mejor' : '✗ ' + c.name + ' está peor'}</span>`;
+          } else if (!same) { verdict = '<span class="pf-verdict">Diferencia de modelo, no de desempeño</span>'; }
           comparisonBlock = `
-            <div class="profile-comparison">
-              <div class="profile-comp-row">
-                <span class="profile-comp-flag">${flagOf(c2.iso, 'fi-md')}</span>
-                <span class="profile-comp-name">${c2.name}</span>
-                <span class="profile-comp-value">${fmtVal(m, value2)}</span>
-                <span class="profile-comp-rank">#${displayRank2}</span>
-              </div>
-              <div class="profile-comp-bar">
-                <div class="profile-card-bar-marker profile-comp-marker-1" style="left:${pctOnBar}%" title="${c.name}: ${fmtVal(m, value)}"></div>
-                <div class="profile-card-bar-marker profile-comp-marker-2" style="left:${pctOnBar2}%" title="${c2.name}: ${fmtVal(m, value2)}"></div>
-              </div>
-              <div class="profile-comp-delta">
-                Diferencia: <strong>${deltaSign}${deltaFmt}</strong>
-                <span style="opacity:.6">·</span>
-                ${rankGap > 0 ? `${rankGap} posiciones de distancia` : 'mismo puesto'}
-              </div>
+            <div class="pf-vs ${cls}">
+              <div class="pf-vs-head">Frente a ${flagOf(c2.iso)} <b>${c2.name}</b>${verdict}</div>
+              <div class="pf-vs-vals"><span><i class="pf-sw is-a"></i>${c.name} <b>${fmtVal(m, value)}</b> <small>puesto ${displayRank}</small></span><span><i class="pf-sw is-b"></i>${c2.name} <b>${fmtVal(m, value2)}</b> <small>puesto ${dr2}</small></span></div>
+              <div class="pf-scale"><span class="pf-mk is-a" style="left:${P(value)}%"></span><span class="pf-mk is-b" style="left:${P(value2)}%"></span></div>
+              <p class="pf-vs-text">${same ? `Están prácticamente igual.` : `${c.name} ${d > 0 ? sem.more : sem.less} que ${c2.name}: <b>${fmtDiff(m, sem, d)}</b> de diferencia${gap ? `, y está <b>${gap} ${gap === 1 ? 'puesto' : 'puestos'} ${displayRank < dr2 ? 'arriba' : 'abajo'}</b> en el ranking` : ''}.`}</p>
             </div>`;
         } else {
-          comparisonBlock = `<div class="profile-comparison"><div class="profile-comp-row" style="opacity:.5">${flagOf(c2.iso, 'fi-md')} ${c2.name}: <em>sin dato</em></div></div>`;
+          comparisonBlock = `<div class="pf-vs"><div class="pf-vs-head">${flagOf(c2.iso)} ${c2.name}: sin dato en este indicador.</div></div>`;
         }
       }
-
+      // Vecinos en el ranking (con el mismo puesto que se muestra arriba)
+      const oi = displayRank - 1, nb = [ordered[oi - 1], ordered[oi], ordered[oi + 1]].map((x, k) => x ? { x, pos: oi - 1 + k } : null).filter(Boolean);
       return `<div class="profile-card${m.key === 'gdp' ? ' signature' : ''}">
-        <div class="profile-card-head">
-          <div class="profile-card-label">${m.label}</div>
-          <div class="profile-card-rank">#${displayRank} de ${total}</div>
-        </div>
+        <div class="profile-card-head"><div class="profile-card-label">${m.label}</div>${dirBadge}</div>
+        <p class="pf-what">${sem.what}</p>
         <div class="profile-card-value">${fmtVal(m, value)}</div>
-        <div class="profile-card-percentile">${directionText}</div>
+        <div class="profile-card-percentile">${posText}</div>
         ${extraVisual || `
-          <div class="profile-card-bar">
-            ${blockAvgPct != null ? `<div class="profile-card-bar-avg" style="left:${blockAvgPct}%; background:${ideoColor}" title="Promedio ${ideoLabel}: ${fmtVal(m, blockAvg)}"></div>` : ''}
-            <div class="profile-card-bar-avg" style="left:${wAvgPct}%; background:var(--c-cright)" title="Promedio mundial: ${fmtVal(m, wAvg)}"></div>
-            <div class="profile-card-bar-fill" style="width:${Math.max(0, Math.min(100, pctOnBar)).toFixed(1)}%"></div>
-            <div class="profile-card-bar-marker" style="left:${pctOnBar}%"></div>
+          <div class="pf-scale is-main">
+            <span class="pf-tick is-world" style="left:${P(wAvg)}%" title="Promedio mundial: ${fmtVal(m, wAvg)}"></span>
+            ${blockAvg != null ? `<span class="pf-tick" style="left:${P(blockAvg)}%;background:${ideoColor}" title="Promedio ${ideoLabel}: ${fmtVal(m, blockAvg)}"></span>` : ''}
+            <span class="pf-mk is-a" style="left:${P(value)}%" title="${c.name}: ${fmtVal(m, value)}"></span>
           </div>
-          <div class="profile-card-bar-legend"><span><i class="lg-world"></i>promedio mundial</span>${blockAvgPct != null ? `<span><i style="background:${ideoColor}"></i>${ideoLabel}</span>` : ''}</div>
+          <div class="pf-ends"><span>← ${sem.lowEnd}</span><span>${sem.highEnd} →</span></div>
+          <div class="pf-legend"><span><i class="pf-sw is-a"></i>${c.name}</span><span><i class="pf-ln is-world"></i>Mundo ${fmtVal(m, wAvg)}</span>${blockAvg != null ? `<span><i class="pf-ln" style="background:${ideoColor}"></i>${ideoLabel} ${fmtVal(m, blockAvg)}</span>` : ''}</div>
         `}
         ${comparisonBlock}
         <div class="profile-card-context">
-          ${aboveCountry ? `
-            <div class="neighbor" onclick="(function(){var s=document.getElementById('profile-country'); s.value='${aboveCountry.iso}'; s.dispatchEvent(new Event('change'));})()">
-              <span>${rank > 1 ? '#' + (rank - 1) : '—'} ${flagOf(aboveCountry.iso)} ${aboveCountry.name}</span>
-              <span class="nval">${fmtVal(m, above.value)}</span>
-            </div>` : ''}
-          <div class="neighbor is-self">
-            <span>#${rank} ${flagOf(c.iso)} ${c.name}</span>
-            <span class="nval">${fmtVal(m, value)}</span>
-          </div>
-          ${belowCountry ? `
-            <div class="neighbor" onclick="(function(){var s=document.getElementById('profile-country'); s.value='${belowCountry.iso}'; s.dispatchEvent(new Event('change'));})()">
-              <span>#${rank + 1} ${flagOf(belowCountry.iso)} ${belowCountry.name}</span>
-              <span class="nval">${fmtVal(m, below.value)}</span>
-            </div>` : ''}
-          <div class="profile-card-avgs"><span><b>Mundial</b> ${fmtVal(m, wAvg)}</span>${blockAvg != null ? `<span><b>${ideoLabel}</b> ${fmtVal(m, blockAvg)}</span>` : ''}</div>
+          <div class="pf-nb-title">Más cerca en el ranking</div>
+          ${nb.map(({ x, pos }) => { const cc = state.countryByISO[x.iso]; const self = x.iso === iso; return `<div class="neighbor${self ? ' is-self' : ''}"${self ? '' : ` onclick="(function(){var s=document.getElementById('profile-country'); s.value='${x.iso}'; s.dispatchEvent(new Event('change'));})()" title="Ver el perfil de ${cc.name}"`}><span>#${pos + 1} ${flagOf(x.iso)} ${cc.name}</span><span class="nval">${fmtVal(m, x.value)}</span></div>`; }).join('')}
         </div>
       </div>`;
     }).join('');
 
+    const sum = document.getElementById('profile-summary');
+    if (sum) sum.innerHTML = c2 && c2.iso !== c.iso && compared
+      ? `<b>${c.name} frente a ${c2.name}:</b> está mejor en <b class="pf-good">${wins}</b> y peor en <b class="pf-bad">${losses}</b> de los ${compared} indicadores donde hay un "mejor" (la presión tributaria no se juzga). Cada tarjeta explica la diferencia.`
+      : '';
+    const rs = document.getElementById('profile-reset');
+    if (rs) rs.disabled = !(sel2 && sel2.value) && !(searchInput && searchInput.value);
     document.getElementById('profile-grid').innerHTML = cards;
   }
 
@@ -31311,6 +31295,13 @@ function initProfile(metrics) {
 
   sel.addEventListener('change', render);
   if (sel2) sel2.addEventListener('change', render);
+  const resetBtn = document.getElementById('profile-reset');
+  if (resetBtn) resetBtn.addEventListener('click', () => {
+    if (searchInput) searchInput.value = '';
+    repopulateSelect('');
+    if (sel2) sel2.value = '';
+    render();
+  });
   if (searchInput) {
     searchInput.addEventListener('input', e => {
       repopulateSelect(e.target.value);
@@ -32516,10 +32507,10 @@ function renderElectionsTimeline() {  const today = new Date();
   // A ?country=XXX param forces the map view.
   (function initView() {
     let startView = 'inicio';
-    const rawHash = (window.location.hash || '').replace('#', '');
+    const [rawHash, sub] = (window.location.hash || '').replace('#', '').split('/');
     if (VIEW_IDS.includes(rawHash)) startView = rawHash;
     if (initIso && state.countryByISO[initIso]) startView = 'mapa';
-    showView(startView, { skipHash: true, instant: true, noScroll: true });
+    showView(startView, { skipHash: true, instant: true, noScroll: true, atab: sub || null });
   })();
 }
 
