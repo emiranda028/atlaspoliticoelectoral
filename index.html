@@ -3777,6 +3777,37 @@
     margin-bottom: 10px;
     font-weight: 600;
   }
+
+  /* ===== Género: mujeres al frente del gobierno ===== */
+  .gx-top { display: grid; grid-template-columns: minmax(220px, 300px) 1fr; gap: 18px 28px; align-items: center; }
+  .gx-stat b { font: 700 64px/1 var(--font-serif); color: var(--accent); display: inline-block; margin-right: 8px; }
+  .gx-stat span { display: block; font-size: 15px; color: var(--ink-soft); margin-top: 4px; max-width: 260px; }
+  .gx-stat em { display: none; font-style: normal; font: 700 13px var(--font-sans); letter-spacing: .06em; color: var(--muted); margin-top: 6px; }
+  .gx-dots { display: grid; grid-template-columns: repeat(auto-fill, minmax(12px, 1fr)); gap: 3px; }
+  .gx-dot { aspect-ratio: 1; border-radius: 50%; background: var(--line-strong, #CBD2DC); }
+  .gx-dot.is-f { background: var(--accent); }
+  .gx-lede { font-size: 14px; color: var(--ink-soft); margin: 14px 0 18px; }
+  .gx-sub { font: 700 11px var(--font-sans); letter-spacing: .1em; text-transform: uppercase; color: var(--accent); margin: 0 0 10px; }
+  .gx-sub small { text-transform: none; letter-spacing: 0; font-weight: 500; color: var(--muted); font-size: 12px; margin-left: 6px; }
+  .gx-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; margin-bottom: 24px; }
+  .gx-card { position: relative; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 3px; padding: 16px 10px 14px; border: 1px solid var(--line); border-radius: 14px; background: var(--surface); cursor: pointer; font: inherit; color: inherit; transition: border-color .15s, box-shadow .15s, transform .15s; }
+  .gx-card:hover, .gx-card:focus-visible { border-color: var(--ink-soft); box-shadow: 0 8px 22px rgba(11,22,40,.10); transform: translateY(-2px); outline: none; }
+  .gx-photo { width: 76px; height: 76px; border-radius: 50%; overflow: hidden; display: grid; place-items: center; background: var(--bg); color: var(--muted); font: 700 22px var(--font-serif); box-shadow: 0 0 0 3px var(--surface), 0 0 0 6px var(--ring); margin-bottom: 8px; }
+  .gx-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 20%; }
+  .gx-flag { position: absolute; top: 74px; left: calc(50% + 20px); }
+  .gx-flag .flag-img { width: 26px; height: 19px; border-radius: 3px; box-shadow: 0 0 0 2px var(--surface); object-fit: cover; }
+  .gx-new { position: absolute; top: 10px; right: 10px; font: 700 10px var(--font-sans); letter-spacing: .06em; text-transform: uppercase; color: #fff; background: var(--accent); border-radius: 999px; padding: 3px 8px; }
+  .gx-name { font: 700 15px/1.2 var(--font-serif); color: var(--ink); }
+  .gx-role { font-size: 12px; color: var(--ink-soft); line-height: 1.3; }
+  .gx-meta { display: block; font-size: 11.5px; color: var(--muted); margin-top: 4px; line-height: 1.35; }
+  .gx-meta i { width: 8px; height: 8px; border-radius: 50%; display: inline-block; margin-right: 4px; vertical-align: 0; }
+  .gx-breaks { display: grid; grid-template-columns: 1fr 1fr; gap: 20px 36px; border-top: 1px solid var(--line); padding-top: 18px; }
+  .gx-row { display: grid; grid-template-columns: 170px 1fr 92px; align-items: center; gap: 10px; margin-bottom: 8px; font-size: 13px; }
+  .gx-k { color: var(--ink); }
+  .gx-track { height: 10px; background: var(--bg); border-radius: 6px; overflow: hidden; }
+  .gx-track span { display: block; height: 100%; background: var(--accent); border-radius: 6px; }
+  .gx-v { font-size: 12px; color: var(--muted); text-align: right; font-variant-numeric: tabular-nums; } .gx-v b { color: var(--ink); }
+  @media (max-width: 760px) { .gx-top, .gx-breaks { grid-template-columns: 1fr; } .gx-stat b { font-size: 52px; } .gx-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; } .gx-row { grid-template-columns: 110px 1fr 84px; } .gx-dots { grid-template-columns: repeat(auto-fill, minmax(10px, 1fr)); } }
   .women-leaders-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(74px, 1fr));
@@ -8268,9 +8299,9 @@
     </div>
 
     <div class="chart-card chart-card-wide">
-      <h3>Género del jefe de gobierno</h3>
-      <p class="chart-subtitle">Las mujeres ocupan el <span id="gender-pct-inline" class="accent">…</span> de los ejecutivos
-        en la muestra. Pasá el mouse sobre cada una para ver detalles.</p>
+      <h3>Mujeres al frente del gobierno</h3>
+      <p class="chart-subtitle">Las mujeres encabezan el <span id="gender-pct-inline" class="accent">…</span> de los gobiernos del mundo:
+        quiénes son, desde cuándo y dónde.</p>
       <div id="gender-dist"></div>
     </div>
     <div class="chart-card chart-card-wide">
@@ -9268,6 +9299,65 @@ function renderWorldGov() {
 
 const POP_2025 = {"ARG":45851378,"BRA":212812405,"CHL":19859921,"URY":3384688,"BOL":12581843,"PER":34576665,"PRY":7013078,"ECU":18289896,"COL":53425635,"VEN":28516896,"USA":341784857,"MEX":131946900,"CAN":41651653,"CRI":5152950,"HND":11005850,"GTM":18687881,"SLV":6365503,"PAN":4571189,"DOM":11520487,"CUB":10937203,"NIC":7007502,"GBR":69487000,"FRA":68720337,"DEU":83491249,"ITA":58915656,"ESP":49355143,"PRT":10804871,"NLD":18087633,"BEL":11941781,"AUT":9208163,"CHE":9092436,"IRL":5484367,"GRC":10413962,"SWE":10596620,"NOR":5610870,"DNK":6009169,"FIN":5646436,"POL":36435861,"HUN":9514251,"CZE":10886878,"ROU":19020271,"JPN":123366734,"IND":1463865525,"CHN":1406585000,"KOR":51684564,"IDN":285721236,"PHL":116786962,"VNM":101598527,"PAK":255219554,"AUS":27614411,"NZL":5324700,"RUS":143513328,"UKR":38980376,"ISR":10122800,"TUR":85878556,"SAU":36973555,"ZAF":64747319,"NGA":237527782,"EGY":118365995,"MAR":38430770,"KEN":57532493,"THA":71619863,"MYS":35977838,"SGP":6111175,"BGD":175686899,"IRN":92417681,"IRQ":47020774,"JOR":11520684,"ARE":11513149,"QAT":2972215,"LBN":5849421,"SVK":5413813,"HRV":3876200,"BGR":6433302,"SRB":6549143,"EST":1366475,"ETH":135472051,"DZA":47435312,"TZA":70545865,"GHA":35064272,"SEN":18931966,"JAM":2837077,"AGO":39040039,"MOZ":35631653,"ZWE":16950795,"RWA":14569341,"UGA":51384894,"CIV":32711547,"TUN":12348573,"CMR":29879337,"COD":112832473,"BFA":24074580,"MLI":25198821,"ZMB":21913874,"BEN":14814460,"MDG":32740678,"NAM":3092816,"KAZ":20843754,"UZB":37053428,"LKA":21756000,"MMR":54850648,"MNG":3568978,"NPL":29618118,"SVN":2130986,"LTU":2888774,"LVA":1847785,"TTO":1367764,"HTI":11906095,"PNG":10762817,"FJI":933154,"ISL":392404,"ALB":2349580,"MDA":2360527,"BLR":9085991,"BIH":3140095,"CYP":1370754,"MLT":579704,"LUX":686970,"GEO":3935766,"ARM":3086700,"AZE":10246996,"PRK":26571036,"AFG":43844111,"KGZ":7343064,"OMN":5494691,"KWT":4865298,"TGO":8591626,"GIN":15099727,"NER":27917831,"SDN":51662147,"SOM":19654739,"BWA":2562122,"BLZ":422924,"GUY":835986,"SUR":639850,"TJK":10786734,"TKM":7618847,"LAO":7873046,"KHM":17847982,"BTN":796682,"MDV":529676,"BRN":466330,"TLS":1418517,"BHR":1600366,"YEM":41773878,"SYR":25620427,"PSE":5413596,"LBY":7458555,"TCD":21003705,"MWI":22216120,"MUS":1243741,"SYC":122730,"GAB":2593130,"BDI":14390003,"GMB":2822093,"MRT":5315065,"SLE":8819794,"LBR":5731206,"ERI":3607003,"MNE":623129,"MKD":1820909,"XKX":1576876,"BHS":403033,"BRB":282623,"WSM":219306,"SLB":838645,"VUT":335169,"SMR":34109,"MCO":38341,"LIE":41024,"AND":82904,"GRD":117303,"KNA":46922,"LCA":180149,"ATG":94209,"DMA":65871,"VCT":99924,"COM":882847,"CPV":527326,"STP":240254,"DJI":1184076,"LSO":2363325,"SWZ":1256174,"GNQ":1938431,"SSD":12188788,"CAF":5513282,"GNB":2249515,"COG":6484437,"TUV":9492,"NRU":12025,"KIR":136488,"TON":103742,"PLW":17663,"FSM":113683,"MHL":36282,"TWN":23340000,"VAT":800}; // Banco Mundial SP.POP.TOTL 2025; TWN (Ministerio del Interior, dic. 2025) y VAT (estimación), fuera de la base del BM
 
+
+/* ===========================================================
+   GÉNERO — mujeres al frente del gobierno (lee leader.gender)
+   =========================================================== */
+const GX_MES = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'];
+function renderGenderSection(FC) {
+  const host = document.getElementById('gender-dist');
+  if (!host) return;
+  const list = FC.filter(c => genderOf(c) === 'M' || genderOf(c) === 'F');
+  const women = list.filter(c => genderOf(c) === 'F').sort((a, b) => String(b.leader.since || '').localeCompare(String(a.leader.since || '')));
+  const N = list.length, F = women.length, pct = N ? F / N * 100 : 0;
+  const pctTxt = pct.toLocaleString('es-AR', { maximumFractionDigits: 1, minimumFractionDigits: 1 }) + '%';
+  const inlineEl = document.getElementById('gender-pct-inline');
+  if (inlineEl) inlineEl.textContent = pctTxt;
+  const today = new Date(), yearAgo = new Date(today.getFullYear() - 1, today.getMonth(), today.getDate()).toISOString().slice(0, 10);
+  const nNew = women.filter(c => (c.leader.since || '') >= yearAgo).length;
+  // mosaico: un punto por país, mujeres primero
+  const dots = women.map(c => `<i class="gx-dot is-f" title="${escapeHtml(c.name)}: ${escapeHtml(c.leader.name)}"></i>`).join('') + Array.from({ length: N - F }, () => '<i class="gx-dot"></i>').join('');
+  const since = d => { if (!d) return ''; const [y, m] = d.split('-'); return `desde ${GX_MES[(+m || 1) - 1]} ${y}`; };
+  const cards = women.map(c => {
+    const I = IDEOLOGIES[c.ideology] || IDEOLOGIES.other, L = c.leader, isNew = (L.since || '') >= yearAgo;
+    const ini = L.name.split(/\s+/).filter(w => /^[A-ZÁÉÍÓÚÑ]/.test(w)).slice(0, 2).map(w => w[0]).join('');
+    return `<button type="button" class="gx-card" data-iso="${c.iso}" title="Abrir la ficha de ${escapeHtml(c.name)}">
+      <span class="gx-photo" id="wl-${c.iso}" style="--ring:${I.color}">${escapeHtml(ini)}</span>
+      <span class="gx-flag">${flagOf(c.iso)}</span>
+      ${isNew ? '<span class="gx-new">Nueva</span>' : ''}
+      <span class="gx-name">${escapeHtml(L.name)}</span>
+      <span class="gx-role">${escapeHtml(L.title || '')} · ${escapeHtml(c.name)}</span>
+      <span class="gx-meta"><i style="background:${I.color}"></i>${escapeHtml(I.short)} · ${since(L.since)}</span>
+    </button>`;
+  }).join('');
+  const bar = (label, f, n) => { const p = n ? f / n * 100 : 0; return `<div class="gx-row"><span class="gx-k">${escapeHtml(label)}</span><span class="gx-track"><span style="width:${Math.max(p, f ? 1.5 : 0)}%"></span></span><span class="gx-v"><b>${Math.round(p)}%</b> ${f} de ${n}</span></div>`; };
+  const regions = (typeof WG_REGIONS !== 'undefined' ? WG_REGIONS.filter(r => r.id !== 'all') : []).map(r => { const cs = list.filter(c => r.test(c.region || '')); return { label: r.label, f: cs.filter(c => genderOf(c) === 'F').length, n: cs.length }; }).filter(x => x.n).sort((a, b) => b.f / b.n - a.f / a.n);
+  const sys = {}; list.forEach(c => { const k = classifySystem(c.system); sys[k] = sys[k] || { f: 0, n: 0 }; sys[k].n++; if (genderOf(c) === 'F') sys[k].f++; });
+  const sysRows = Object.entries(sys).filter(([, v]) => v.n).sort((a, b) => b[1].f / b[1].n - a[1].f / a[1].n).map(([k, v]) => bar(SYSTEM_CATEGORIES[k] ? SYSTEM_CATEGORIES[k].label : k, v.f, v.n)).join('');
+  host.innerHTML = `
+    <div class="gx-top">
+      <div class="gx-stat"><b>${F}</b><span>de ${N} países tienen a una mujer al frente del gobierno</span><em>${pctTxt}</em></div>
+      <div class="gx-dots" role="img" aria-label="${F} de ${N} países con una mujer al frente">${dots}</div>
+    </div>
+    <p class="gx-lede">${nNew ? `<b>${nNew}</b> llegaron al poder en los últimos doce meses. ` : ''}${regions.length && regions[0].f && regions[0].f / regions[0].n < 0.4 ? `Ninguna región se acerca a la paridad: en la que más mujeres tiene (${escapeHtml(regions[0].label)}) es una de cada ${Math.round(regions[0].n / regions[0].f)} países.` : ''}</p>
+    ${F ? `<div class="gx-sub">Las ${F} mujeres en el poder <small>de la llegada más reciente a la más antigua · tocá para abrir la ficha</small></div><div class="gx-grid">${cards}</div>` : ''}
+    <div class="gx-breaks">
+      <div><div class="gx-sub">Por región</div>${regions.map(r => bar(r.label, r.f, r.n)).join('')}</div>
+      <div><div class="gx-sub">Por sistema de gobierno</div>${sysRows}</div>
+    </div>`;
+  host.querySelectorAll('.gx-card').forEach(b => b.addEventListener('click', () => window.__atlasJumpTo && window.__atlasJumpTo(b.dataset.iso)));
+  women.forEach(c => {
+    if (!c.leader.wikiName || typeof fetchWikiPhoto !== 'function') return;
+    fetchWikiPhoto(c.leader.wikiName).then(src => {
+      const el = src && document.getElementById('wl-' + c.iso);
+      if (!el) return;
+      const img = new Image();
+      img.onload = () => { el.innerHTML = ''; el.appendChild(img); };
+      img.alt = c.leader.name; img.src = src;
+    });
+  });
+}
+
 /* ===========================================================
    IDEOLOGY DEFINITIONS
    =========================================================== */
@@ -9324,7 +9414,7 @@ const LEADER_GENDER = {
   CHL: "M",
   URY: "M",
   BOL: "M",
-  PER: "M",
+  PER: "F",
   PRY: "M",
   ECU: "M",
   COL: "M",
@@ -9332,7 +9422,7 @@ const LEADER_GENDER = {
   USA: "M",
   MEX: "F",
   CAN: "M",
-  CRI: "M",
+  CRI: "F",
   HND: "M",
   GTM: "M",
   SLV: "M",
@@ -9349,7 +9439,7 @@ const LEADER_GENDER = {
   NLD: "M",
   BEL: "M",
   AUT: "M",
-  CHE: "F",
+  CHE: "M",
   IRL: "M",
   GRC: "M",
   SWE: "M",
@@ -9421,7 +9511,7 @@ const LEADER_GENDER = {
   LKA: "M",
   MMR: "M",
   MNG: "M",
-  NPL: "F",
+  NPL: "M",
   SVN: "M",
   LTU: "M",
   LVA: "M",
@@ -9487,7 +9577,7 @@ const LEADER_GENDER = {
   WSM: "M",
   SLB: "M",
   VUT: "M",
-  SMR: "F",
+  SMR: "M",
   MCO: "M",
   LIE: "F",
   AND: "M",
@@ -9517,6 +9607,8 @@ const LEADER_GENDER = {
   FSM: "M",
   MHL: "F"
 };
+// El género vale el del líder cargado en COUNTRIES; la tabla queda solo de respaldo
+const genderOf = c => (c && c.leader && c.leader.gender) || LEADER_GENDER[c && c.iso];
 
 /* ===========================================================
    SYSTEM TYPE NORMALIZATION
@@ -20730,7 +20822,7 @@ const COUNTRIES = [
     region: "Europa",
     system: "República federal parlamentaria",
     leader: {
-      title: "Primer Ministro",
+      title: "Presidenta del Consejo de Ministros",
       name: "Borjana Krišto",
       party: "HDZ BiH",
       since: "2023-01-25",
@@ -28316,7 +28408,7 @@ const COUNTRIES = [
     region: "Oceanía",
     system: "República parlamentaria",
     leader: {
-      title: "Presidente",
+      title: "Presidenta",
       name: "Hilda Heine",
       party: "Independiente",
       since: "2024-01-03",
@@ -29075,7 +29167,7 @@ function mapCountrySummaryHTML(country, cta) {
     const monthLbl = ne.month != null ? monthNames[ne.month] + ' ' : '';
     nextElLine = `<div class="map-tt-row map-tt-election"><span class="map-tt-k">Próx. elección</span><span class="map-tt-v">${monthLbl}${ne.year}</span></div>`;
   }
-  const gender = LEADER_GENDER[country.iso];
+  const gender = genderOf(country);
   const genderIcon = gender === 'F' ? ' <span class="map-tt-gender-f" title="Mujer">♀</span>' : '';
   return `
     <div class="map-tt">
@@ -29319,7 +29411,7 @@ function renderDetail(c) {
 
   const upper = c.legislature.upper;
   const lower = c.legislature.lower;
-  const gender = LEADER_GENDER[c.iso];
+  const gender = genderOf(c);
   const genderBadge = gender === 'F' ? '<span style="color:var(--accent); font-weight:600">♀</span>' :
                       gender === 'M' ? '<span style="color:var(--c-cright); font-weight:600">♂</span>' : '';
 
@@ -29518,7 +29610,7 @@ function countryFichaHTML(c) {
   const ideo = IDEOLOGIES[c.ideology];
   const lastEl = c.lastElection || {};
   const initials = c.leader.name.split(' ').slice(0, 2).map(w => w[0]).join('');
-  const gender = LEADER_GENDER[c.iso];
+  const gender = genderOf(c);
   const sysCat = SYSTEM_CATEGORIES[classifySystem(c.system)];
   const e = c.economy || {};
   const results = resultsListHTML(lastEl, ideo.color);
@@ -29932,104 +30024,8 @@ function renderAnalytics() {
     };
   }
 
-  // ===== Gender distribution (overall + list of women + by system) =====
-  let totalM = 0, totalF = 0;
-  const bySys = {};
-  const womenLeaders = [];
-  FC.forEach(c => {
-    const g = LEADER_GENDER[c.iso] || '?';
-    const cat = classifySystem(c.system);
-    if (!bySys[cat]) bySys[cat] = { M: 0, F: 0 };
-    if (g === 'M') { totalM++; bySys[cat].M++; }
-    else if (g === 'F') { totalF++; bySys[cat].F++; womenLeaders.push(c); }
-  });
-  const totalKnown = totalM + totalF;
-  const fPct = totalKnown ? (totalF / totalKnown * 100) : 0;
-
-  // Update inline subtitle (must come BEFORE setting innerHTML below to avoid race)
-  const inlineEl = document.getElementById('gender-pct-inline');
-  if (inlineEl) inlineEl.textContent = fPct.toFixed(1) + '%';
-
-  // SVG donut
-  const r = 28, c2 = 2 * Math.PI * r;
-  const fStroke = (fPct/100) * c2;
-  const donutSVG = `
-    <svg class="gender-donut" viewBox="0 0 64 64">
-      <circle cx="32" cy="32" r="${r}" fill="none" stroke="var(--c-cright)" stroke-width="8"/>
-      <circle cx="32" cy="32" r="${r}" fill="none" stroke="var(--accent)" stroke-width="8"
-        stroke-dasharray="${fStroke} ${c2}"
-        transform="rotate(-90 32 32)"
-        stroke-linecap="butt"/>
-    </svg>`;
-
-  // List of women leaders (sorted alphabetically by country)
-  const womenList = womenLeaders
-    .sort((a, b) => a.name.localeCompare(b.name))
-    .map(c => {
-      const initials = c.leader.name.split(' ').slice(0,2).map(w => w[0]).join('');
-      const ideoColor = IDEOLOGIES[c.ideology].color;
-      return `<div class="women-leader" onclick="window.__atlasJumpTo && window.__atlasJumpTo('${c.iso}')" title="${c.name} — ${c.leader.name}">
-        <div class="women-leader-photo" id="wl-${c.iso}" style="border-color:${ideoColor}">${initials}</div>
-        <div class="women-leader-flag">${flagOf(c.iso, 'fi-md')}</div>
-        <div class="women-leader-name">${c.leader.name.split(' ').slice(-1)[0]}</div>
-        <div class="women-leader-country">${c.name}</div>
-      </div>`;
-    }).join('');
-
-  // By-system breakdown
-  const sysBreakdown = Object.entries(bySys)
-    .filter(([,v]) => (v.M + v.F) > 0)
-    .sort((a,b) => (b[1].M+b[1].F) - (a[1].M+a[1].F))
-    .map(([catId, v]) => {
-      const tot = v.M + v.F;
-      const fW = (v.F / tot * 100);
-      const mW = (v.M / tot * 100);
-      const label = SYSTEM_CATEGORIES[catId].label;
-      return `<div class="gbs-row">
-        <div class="k">${label}</div>
-        <div class="gbs-track">
-          <div class="gbs-fill-f" style="width:${fW}%"></div>
-          <div class="gbs-fill-m" style="width:${mW}%"></div>
-        </div>
-        <div class="gbs-count">${v.F}♀ · ${v.M}♂</div>
-      </div>`;
-    }).join('');
-
-  document.getElementById('gender-dist').innerHTML = `
-    <div class="gender-overall">
-      ${donutSVG}
-      <div class="gender-stat">
-        <div class="gender-stat-big"><span class="accent">${totalF}</span> de ${totalKnown}</div>
-        <div class="gender-stat-sub">jefas de gobierno · ${fPct.toFixed(0)}% de la muestra</div>
-      </div>
-    </div>
-    ${womenLeaders.length ? `
-      <div class="women-leaders-section">
-        <div class="women-leaders-title">Las ${totalF} mujeres en el poder</div>
-        <div class="women-leaders-grid">${womenList}</div>
-      </div>` : ''}
-    <div class="gender-by-sys-title">Por tipo de sistema</div>
-    <div class="gender-by-sys">${sysBreakdown}</div>
-    <div class="gender-legend">
-      <span><span class="gender-legend-dot" style="background:var(--accent)"></span>Mujeres</span>
-      <span><span class="gender-legend-dot" style="background:var(--c-cright)"></span>Hombres</span>
-    </div>
-  `;
-
-  // Async-load photos for women leaders (small, decorative)
-  womenLeaders.forEach(c => {
-    if (!c.leader.wikiName) return;
-    fetchWikiPhoto(c.leader.wikiName).then(src => {
-      if (!src) return;
-      const el = document.getElementById('wl-' + c.iso);
-      if (!el) return;
-      const img = new Image();
-      img.onload = () => {
-        el.innerHTML = `<img src="${src}" alt="${c.leader.name}">`;
-      };
-      img.src = src;
-    });
-  });
+  // ===== Género: mujeres al frente del gobierno =====
+  renderGenderSection(FC);
 
   // ===== MULTI-METRIC: 8 dimensions =====
   // Compute aggregates per ideology block
@@ -31473,7 +31469,7 @@ function renderHeadlinesTicker() {
     const k = classifySystem(c.system);
     sysCounts[k] = (sysCounts[k]||0) + 1;
   });
-  const numWomen = COUNTRIES.filter(c => (LEADER_GENDER[c.iso] || 'M') === 'F').length;
+  const numWomen = COUNTRIES.filter(c => genderOf(c) === 'F').length;
   const womenPct = (numWomen / total * 100).toFixed(1);
   const numAuth = ideoCounts['authoritarian'] || 0;
   const authPct = (numAuth / total * 100).toFixed(0);
@@ -31995,7 +31991,7 @@ function renderElectionsTimeline() {  const today = new Date();
         leader_name: c.leader.name,
         leader_party: c.leader.party,
         leader_since: c.leader.since,
-        leader_gender: c.leader.gender || (LEADER_GENDER[c.iso] || 'M'),
+        leader_gender: genderOf(c) || 'M',
         ideology: c.ideology,
         ideology_label: ideo ? ideo.label : '',
         system_raw: c.system,
