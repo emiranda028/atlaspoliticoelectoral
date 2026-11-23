@@ -6179,7 +6179,13 @@
   .wg-controls { display: flex; flex-direction: column; gap: 8px; align-items: flex-end; }
   .wg-regions { flex-wrap: wrap; }
   .wg-tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 10px; margin-bottom: 16px; }
-  .wg-tile { border: 1px solid var(--line); border-top: 4px solid var(--c); border-radius: 12px; padding: 10px 14px 12px; background: var(--bg); }
+  .wg-tile { display: block; width: 100%; text-align: left; font: inherit; color: inherit; cursor: pointer; border: 1px solid var(--line); border-top: 4px solid var(--c); border-radius: 12px; padding: 10px 14px 12px; background: var(--bg); transition: border-color .15s, box-shadow .15s, opacity .15s, transform .15s; }
+  .wg-tile:hover { border-color: var(--c); box-shadow: 0 6px 18px rgba(11,22,40,.10); transform: translateY(-1px); }
+  .wg-tile:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+  .wg-tile.is-sel { background: var(--surface); border-color: var(--c); box-shadow: 0 0 0 2px var(--c) inset; }
+  .wg-tile.is-dim, .wg-legend .is-dim { opacity: .45; }
+  .wg-tile-cta { display: block; margin-top: 8px; font: 600 12px var(--font-sans); color: var(--ink-soft); }
+  .wg-tile:hover .wg-tile-cta, .wg-tile.is-sel .wg-tile-cta { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }
   .wg-tile-l { display: flex; align-items: center; gap: 6px; font: 700 11px var(--font-sans); letter-spacing: .06em; text-transform: uppercase; color: var(--ink-soft); }
   .wg-tile-l i { width: 9px; height: 9px; border-radius: 50%; background: var(--c); }
   .wg-tile b { display: block; font: 700 34px/1.1 var(--font-serif); color: var(--ink); margin: 4px 0 2px; font-variant-numeric: tabular-nums; }
@@ -6190,11 +6196,15 @@
   .wg-axis { display: flex; font-size: 11.5px; color: var(--muted); margin: 5px 0 10px; }
   .wg-axis span:nth-child(2) { margin-left: auto; margin-right: 24px; } .wg-axis-nd { font-weight: 600; }
   .wg-legend { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 12.5px; color: var(--ink-soft); margin-bottom: 16px; }
-  .wg-legend span { display: inline-flex; align-items: center; gap: 5px; } .wg-legend i { width: 10px; height: 10px; border-radius: 3px; display: inline-block; }
+  .wg-legend button { display: inline-flex; align-items: center; gap: 5px; border: 1px solid transparent; background: none; font: inherit; color: inherit; padding: 3px 8px; margin: -3px -4px; border-radius: 999px; cursor: pointer; } .wg-legend button:hover { border-color: var(--line); background: var(--bg); } .wg-legend button.is-sel { border-color: var(--ink-soft); background: var(--surface); } .wg-legend i { width: 10px; height: 10px; border-radius: 3px; display: inline-block; }
   .wg-waffle { display: grid; grid-template-columns: repeat(auto-fill, minmax(18px, 1fr)); gap: 3px; }
   .wg-waffle.is-pop { grid-template-columns: repeat(25, 1fr); max-width: 640px; }
   .wg-waffle > * { aspect-ratio: 1; border-radius: 3px; border: 0; padding: 0; display: block; }
   .wg-cell { cursor: pointer; transition: transform .12s; } .wg-cell:hover, .wg-cell:focus-visible { transform: scale(1.35); outline: 2px solid var(--surface); box-shadow: 0 0 0 3px var(--ink); z-index: 1; position: relative; }
+  .wg-waffle > .is-dim { opacity: .14; }
+  .wg-sel { margin-top: 14px; border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; background: var(--bg); }
+  .wg-sel-head { display: flex; justify-content: space-between; align-items: center; gap: 10px; font-size: 14px; color: var(--ink); }
+  .wg-sel-x { border: 1px solid var(--line); background: var(--surface); border-radius: 999px; padding: 4px 12px; font: 600 12px var(--font-sans); color: var(--ink-soft); cursor: pointer; }
   .wg-wnote { font-size: 12px; color: var(--muted); margin: 8px 0 0; }
   .wg-tip { position: absolute; z-index: 5; width: 250px; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; box-shadow: 0 10px 28px rgba(11,22,40,.18); padding: 9px 11px; font-size: 12.5px; pointer-events: none; display: grid; grid-template-columns: auto 1fr; gap: 2px 8px; align-items: center; }
   .wg-tip[hidden] { display: none; }
@@ -9130,7 +9140,7 @@ const WG_REGIONS = [
   { id: 'me', label: 'Oriente Medio', test: r => r === 'Oriente Medio' },
   { id: 'af', label: 'África', test: r => r === 'África' }
 ];
-const WG_STATE = { mode: 'countries', region: 'all' };
+const WG_STATE = { mode: 'countries', region: 'all', sel: null }; // sel: id de bloque ('izq'…) o clave de ideología
 function wgData() {
   const reg = WG_REGIONS.find(r => r.id === WG_STATE.region) || WG_REGIONS[0];
   const list = COUNTRIES.filter(c => reg.test(c.region || ''));
@@ -9147,26 +9157,36 @@ function wgHTML() {
   const pct = v => v / D.total * 100;
   const fp = v => { const p = pct(v); return (p > 0 && p < 1 ? '<1' : Math.round(p)) + '%'; };
   const lead = D.blocs.slice(0, 4).slice().sort((a, b) => b.w - a.w)[0];
-  const tiles = D.blocs.filter(b => b.n || b.id !== 'otr').map(b => `<div class="wg-tile" style="--c:${b.color}">
+  const selKeys = WG_STATE.sel ? ((WG_BLOCS.find(b => b.id === WG_STATE.sel) || {}).keys || [WG_STATE.sel]) : null;
+  const tiles = D.blocs.filter(b => b.n || b.id !== 'otr').map(b => `<button type="button" class="wg-tile${WG_STATE.sel === b.id ? ' is-sel' : ''}${WG_STATE.sel && WG_STATE.sel !== b.id ? ' is-dim' : ''}" data-wgsel="${b.id}" aria-pressed="${WG_STATE.sel === b.id}" style="--c:${b.color}">
       <span class="wg-tile-l"><i></i>${b.label}</span>
       <b>${pop ? fp(b.w) : b.n}</b>
       <small>${pop ? `${wgFmtPop(b.w)} de personas · ${b.n} ${b.n === 1 ? 'país' : 'países'}` : `${fp(b.w)} de los países · ${wgFmtPop(b.keys.reduce((a, k) => a + D.byIdeo[k].list.reduce((s, c) => s + (POP_2025[c.iso] || 0), 0), 0))} de personas`}</small>
-    </div>`).join('');
+      <span class="wg-tile-cta">${WG_STATE.sel === b.id ? 'Ocultar países ✕' : 'Ver países →'}</span>
+    </button>`).join('');
   const segs = WG_ORDER.filter(k => D.byIdeo[k].w > 0).map(k => {
     const I = IDEOLOGIES[k], p = pct(D.byIdeo[k].w);
     return `<span class="wg-seg" style="flex:${p} 0 0;background:${I.color}" title="${I.label}: ${pop ? fp(D.byIdeo[k].w) + ' de la población' : D.byIdeo[k].n + ' países'}">${p >= 6 ? `<em>${pop ? fp(D.byIdeo[k].w) : D.byIdeo[k].n}</em>` : ''}</span>`;
   }).join('');
-  const legend = WG_ORDER.filter(k => D.byIdeo[k].n).map(k => `<span><i style="background:${IDEOLOGIES[k].color}"></i>${IDEOLOGIES[k].label} <b>${pop ? fp(D.byIdeo[k].w) : D.byIdeo[k].n}</b></span>`).join('');
+  const legend = WG_ORDER.filter(k => D.byIdeo[k].n).map(k => `<button type="button" data-wgsel="${k}" aria-pressed="${WG_STATE.sel === k}" class="${WG_STATE.sel === k ? 'is-sel' : ''}${selKeys && !selKeys.includes(k) ? ' is-dim' : ''}"><i style="background:${IDEOLOGIES[k].color}"></i>${IDEOLOGIES[k].label} <b>${pop ? fp(D.byIdeo[k].w) : D.byIdeo[k].n}</b></button>`).join('');
+  const dim = k => selKeys && !selKeys.includes(k) ? ' is-dim' : '';
+  let selList = '';
+  if (selKeys) {
+    const cs = selKeys.flatMap(k => D.byIdeo[k] ? D.byIdeo[k].list : []).sort((a, b) => a.name.localeCompare(b.name, 'es'));
+    const ttl = (WG_BLOCS.find(b => b.id === WG_STATE.sel) || {}).label || IDEOLOGIES[WG_STATE.sel].label;
+    selList = `<div class="wg-sel"><div class="wg-sel-head"><b>${escapeHtml(ttl)}: ${cs.length} ${cs.length === 1 ? 'país' : 'países'}${D.reg.id === 'all' ? '' : ' en ' + D.reg.label}</b><button type="button" class="wg-sel-x" data-wgsel="">Ver todos ✕</button></div>
+      <div class="wg-chips">${cs.map(c => `<button type="button" class="wg-chip" data-iso="${c.iso}" title="${escapeHtml(c.name)}: ${escapeHtml((c.leader || {}).name || '')}">${flagOf(c.iso)}<span>${escapeHtml(c.name)}</span><small>${escapeHtml((c.leader || {}).name || '')}</small></button>`).join('')}</div></div>`;
+  }
   let waffle;
   if (pop) {
     // 100 cuadrados = 100% de la población, por mayor resto
     const raw = WG_ORDER.map(k => ({ k, v: pct(D.byIdeo[k].w) })), cells = raw.map(r => ({ k: r.k, n: Math.floor(r.v), r: r.v % 1 }));
     let left = 100 - cells.reduce((a, c) => a + c.n, 0);
     cells.slice().sort((a, b) => b.r - a.r).forEach(c => { if (left > 0) { c.n++; left--; } });
-    waffle = `<div class="wg-waffle is-pop">${cells.map(c => Array.from({ length: c.n }, () => `<span style="background:${IDEOLOGIES[c.k].color}" title="${IDEOLOGIES[c.k].label}"></span>`).join('')).join('')}</div><p class="wg-wnote">Cada cuadrado es el 1% de la población${D.reg.id === 'all' ? ' mundial' : ' de la región'}.</p>`;
+    waffle = `<div class="wg-waffle is-pop">${cells.map(c => Array.from({ length: c.n }, () => `<span class="${dim(c.k).trim()}" style="background:${IDEOLOGIES[c.k].color}" title="${IDEOLOGIES[c.k].label}"></span>`).join('')).join('')}</div><p class="wg-wnote">Cada cuadrado es el 1% de la población${D.reg.id === 'all' ? ' mundial' : ' de la región'}.</p>`;
   } else {
     const sorted = WG_ORDER.flatMap(k => D.byIdeo[k].list.slice().sort((a, b) => a.name.localeCompare(b.name, 'es')));
-    waffle = `<div class="wg-waffle">${sorted.map(c => `<button type="button" class="wg-cell" data-iso="${c.iso}" style="background:${(IDEOLOGIES[c.ideology] || IDEOLOGIES.other).color}" aria-label="${escapeHtml(c.name)}: ${escapeHtml((IDEOLOGIES[c.ideology] || IDEOLOGIES.other).label)}"></button>`).join('')}</div><p class="wg-wnote">Cada cuadrado es un país. Pasá el mouse para ver quién gobierna y tocá para abrir la ficha.</p>`;
+    waffle = `<div class="wg-waffle">${sorted.map(c => `<button type="button" class="wg-cell${dim(c.ideology)}" data-iso="${c.iso}" style="background:${(IDEOLOGIES[c.ideology] || IDEOLOGIES.other).color}" aria-label="${escapeHtml(c.name)}: ${escapeHtml((IDEOLOGIES[c.ideology] || IDEOLOGIES.other).label)}"></button>`).join('')}</div><p class="wg-wnote">Cada cuadrado es un país: pasá el mouse para ver quién gobierna y tocalo para abrir su ficha. Tocá una tarjeta o un color de la leyenda para ver solo esos países.</p>`;
   }
   const head = pop
     ? `<b>${fp(lead.w)}</b> de ${D.reg.id === 'all' ? 'la población mundial' : 'la población de ' + D.reg.label} vive bajo gobiernos de <b>${lead.label.toLowerCase()}</b>.`
@@ -9184,6 +9204,7 @@ function wgHTML() {
     <div class="wg-axis"><span>← Izquierda</span><span>Derecha →</span><span class="wg-axis-nd">Sin democracia</span></div>
     <div class="wg-legend">${legend}</div>
     ${waffle}
+    ${selList}
     ${wgShiftsHTML(D)}
     <div class="wg-tip" hidden></div>
     <p class="wg-src">${D.list.length} países de la base del Atlas, clasificados por la orientación del partido o líder que gobierna (ver Metodología). Población: Banco Mundial, 2025${pop ? ` (${wgFmtPop(D.popTotal)} de personas en total)` : ''}.</p>`;
@@ -9212,6 +9233,13 @@ function renderWorldGov() {
   el.innerHTML = wgHTML();
   el.querySelectorAll('[data-wgmode]').forEach(b => b.addEventListener('click', () => { WG_STATE.mode = b.dataset.wgmode; renderWorldGov(); }));
   el.querySelectorAll('[data-wgreg]').forEach(b => b.addEventListener('click', () => { WG_STATE.region = b.dataset.wgreg; renderWorldGov(); }));
+  el.querySelectorAll('[data-wgsel]').forEach(b => b.addEventListener('click', () => {
+    const v = b.dataset.wgsel || null;
+    WG_STATE.sel = WG_STATE.sel === v ? null : v;
+    renderWorldGov();
+    const s = el.querySelector(WG_STATE.sel ? '.wg-sel' : '.wg-tiles');
+    if (s && WG_STATE.sel) { const r = s.getBoundingClientRect(); if (r.bottom > window.innerHeight) s.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }
+  }));
   const tip = el.querySelector('.wg-tip');
   el.querySelectorAll('.wg-chip').forEach(b => b.addEventListener('click', () => { if (window.__atlasJumpTo) window.__atlasJumpTo(b.dataset.iso); }));
   el.querySelectorAll('.wg-cell').forEach(b => {
