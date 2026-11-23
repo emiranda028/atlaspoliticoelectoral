@@ -6154,7 +6154,7 @@
 
 
   /* ===== Buscador de países (combobox propio) ===== */
-  .cbx-list { position: absolute; left: 0; right: 0; top: calc(100% + 6px); z-index: 1200; list-style: none; margin: 0; padding: 6px; background: var(--surface); border: 1px solid var(--line-strong, #CBD2DC); border-radius: 14px; box-shadow: 0 14px 36px rgba(11,22,40,.18); max-height: min(420px, 60vh); overflow-y: auto; text-align: left; }
+  .cbx-list { position: fixed; z-index: 5000; list-style: none; margin: 0; padding: 6px; background: var(--surface); border: 1px solid var(--line-strong, #CBD2DC); border-radius: 14px; box-shadow: 0 14px 36px rgba(11,22,40,.18); max-height: min(420px, 60vh); overflow-y: auto; text-align: left; }
   .cbx-list[hidden] { display: none; }
   .cbx-head { font: 700 10.5px var(--font-sans); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); padding: 6px 10px 4px; }
   .cbx-item { display: flex; align-items: center; gap: 10px; padding: 8px 10px; border-radius: 10px; cursor: pointer; }
@@ -6167,9 +6167,8 @@
   .cbx-ideo { flex: none; display: inline-flex; align-items: center; gap: 5px; font-size: 11.5px; color: var(--ink-soft); }
   .cbx-ideo i { width: 9px; height: 9px; border-radius: 50%; display: inline-block; }
   .cbx-empty { padding: 12px; font-size: 13px; color: var(--muted); }
-  .cbx-compact { min-width: 300px; }
-  .cbx-compact .cbx-ideo { display: none; }
-  @media (max-width: 600px) { .cbx-ideo { display: none; } .cbx-compact { min-width: 0; } }
+  .cbx-compact .cbx-item { padding: 7px 9px; }
+  @media (max-width: 600px) { .cbx-ideo { display: none; } }
 
   /* ===== Contador de gobiernos ===== */
   .wgov { position: relative; background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 22px 24px 18px; margin: 28px 0 0; }
@@ -9049,12 +9048,25 @@ function attachCountryCombo(input, onPick, opts = {}) {
   input.setAttribute('aria-expanded', 'false');
   const id = (input.id || 'cbx') + '-list';
   input.setAttribute('aria-controls', id);
-  const host = input.parentElement;
-  if (getComputedStyle(host).position === 'static') host.style.position = 'relative';
+  // La lista vive en <body> con position: fixed, así ningún panel con overflow la recorta
   const list = document.createElement('ul');
   list.className = 'cbx-list' + (opts.className ? ' ' + opts.className : '');
   list.id = id; list.setAttribute('role', 'listbox'); list.hidden = true;
-  host.appendChild(list);
+  document.body.appendChild(list);
+  const anchor = opts.anchor ? (input.closest(opts.anchor) || input) : input;
+  const place = () => {
+    if (list.hidden) return;
+    const r = anchor.getBoundingClientRect(), vw = document.documentElement.clientWidth, vh = window.innerHeight, gap = 6, pad = 8;
+    const w = Math.min(Math.max(r.width, opts.minWidth || 0), vw - pad * 2);
+    const left = Math.min(Math.max(r.left, pad), vw - w - pad);
+    const below = vh - r.bottom - gap - pad, above = r.top - gap - pad;
+    const up = below < 220 && above > below;
+    const maxH = Math.min(420, Math.max(140, up ? above : below));
+    Object.assign(list.style, { left: left + 'px', width: w + 'px', maxHeight: maxH + 'px', top: up ? 'auto' : (r.bottom + gap) + 'px', bottom: up ? (vh - r.top + gap) + 'px' : 'auto' });
+    if (r.bottom < 0 || r.top > vh) close();
+  };
+  window.addEventListener('scroll', place, { passive: true, capture: true });
+  window.addEventListener('resize', place);
   let items = [], active = -1;
   const render = () => {
     const q = input.value;
@@ -9071,6 +9083,7 @@ function attachCountryCombo(input, onPick, opts = {}) {
       }).join('');
     }
     list.hidden = false; input.setAttribute('aria-expanded', 'true');
+    place();
   };
   const close = () => { list.hidden = true; active = -1; input.setAttribute('aria-expanded', 'false'); input.removeAttribute('aria-activedescendant'); };
   const pick = i => { const c = items[i]; if (!c) return; input.value = c.name; close(); onPick(c); };
@@ -31032,7 +31045,7 @@ function initProfile(metrics) {
       applyFocus(null, null);
     });
   }
-  attachCountryCombo(input, c => applyFocus(c.iso, c), { className: 'cbx-compact' });
+  attachCountryCombo(input, c => applyFocus(c.iso, c), { className: 'cbx-compact', minWidth: 340, anchor: '.search-box' });
 })();
 setTimeout(renderWorldGov, 0); // PREVIOUS_IDEOLOGY se declara más abajo en este script
 
@@ -33000,7 +33013,7 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
         : `Mostrando ${esc(c.name)} en el mapa.`;
       if (window.__atlasJumpTo) window.__atlasJumpTo(c.iso);
     };
-    if (typeof attachCountryCombo === 'function') attachCountryCombo(input, go);
+    if (typeof attachCountryCombo === 'function') attachCountryCombo(input, go, { anchor: '.portada-search' });
     form.addEventListener('submit', ev => {
       ev.preventDefault();
       const r = typeof cbxSearch === 'function' ? cbxSearch(input.value, 1) : [];
