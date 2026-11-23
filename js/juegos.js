@@ -31,7 +31,7 @@
   // PDF is that same JPEG wrapped in a one-page PDF, so no extra library.
   const CARD_W = 1080, CARD_H = 1350;
   const cardShell = (game, color, body) => `<div class="jgx" style="--jgx:${color}">
-      <div class="jgx-top"><span class="jgx-brand">Atlas Político Mundial</span><span class="jgx-game">${esc(game)}</span></div>
+      <div class="jgx-top"><span class="jgx-brand">Atlas Político Electoral</span><span class="jgx-game">${esc(game)}</span></div>
       <div class="jgx-body">${body}</div>
       <div class="jgx-foot"><span>¿Y vos? Jugá en</span><b>atlaspoliticoelectoral.com/#juegos</b></div>
     </div>`;
@@ -322,7 +322,7 @@
       // Map: economy (x) × society (y)
       const pt = (v0, v1) => [(6 + (v0 + 2) / 4 * 88).toFixed(1), (6 + (v1 + 2) / 4 * 88).toFixed(1)];
       const [mx, my] = pt(me[0], me[1]);
-      const text = `Gobernaría como ${C.name} (${top.sim}% de coincidencia). ¿Y vos? Jugá en el Atlas Político Mundial:`;
+      const text = `Gobernaría como ${C.name} (${top.sim}% de coincidencia). ¿Y vos? Jugá en el Atlas Político Electoral:`;
       const card = cardShell('¿Qué país gobernarías?', '#1F7A5A', `
         <div class="jgx-kicker">Si gobernara, mi país se parecería a…</div>
         <div class="jgx-flag">${flag(top.iso)}${outlineSVG(top.iso, '#1F7A5A', 'jgx-outline')}</div>
@@ -1308,7 +1308,7 @@
       const rec = saveBest(neg ? 'neg:' + S.nb.id : S.role, recVal), recBest = Math.max(rec.prev, recVal);
       const recH = rec.isNew ? `🏆 ¡Nuevo récord personal${neg ? `: ${recVal} de botín` : `: ${recVal} puntos`}!` : recBest ? `🏆 Tu récord${neg ? ' con este bloque' : ''}: ${recBest}${neg ? ' de botín' : ' puntos'}` : '';
       const repH = neg && S.reparto ? S.reparto.map(x => `${x.prov} ${x.v}`).join(' · ') : '';
-      const text = neg ? `Jugué "La rosca" del Atlas Político Mundial de negociador: ${(ROSCA_LINE[kind] || E.title).replace(/^¡|!$/g, '')}. Saqué ${stat('caja')} de botín para mis provincias. ¿Cuánto sacás vos?` : win ? (opp ? `¡Gané la rosca jugando de oposición: frené la ley y hay PASO! ${score} puntos en el Atlas Político Mundial. ¿Te animás?` : `¡Gané la rosca! Saqué la ley sin PASO en el Atlas Político Mundial: ${score} puntos. ¿Te animás?`) : `Jugué "La rosca: PASO o no PASO" ${opp ? 'de oposición ' : ''}en el Atlas Político Mundial y… ${(ROSCA_LINE[kind] || E.title).toLowerCase()}. ¿Te animás?`;
+      const text = neg ? `Jugué "La rosca" del Atlas Político Electoral de negociador: ${(ROSCA_LINE[kind] || E.title).replace(/^¡|!$/g, '')}. Saqué ${stat('caja')} de botín para mis provincias. ¿Cuánto sacás vos?` : win ? (opp ? `¡Gané la rosca jugando de oposición: frené la ley y hay PASO! ${score} puntos en el Atlas Político Electoral. ¿Te animás?` : `¡Gané la rosca! Saqué la ley sin PASO en el Atlas Político Electoral: ${score} puntos. ¿Te animás?`) : `Jugué "La rosca: PASO o no PASO" ${opp ? 'de oposición ' : ''}en el Atlas Político Electoral y… ${(ROSCA_LINE[kind] || E.title).toLowerCase()}. ¿Te animás?`;
       const flashes = S.log.filter(l => l.flash).slice(NEG() ? -2 : -3);
       const card = cardShell('La rosca: PASO o no PASO', '#6C3FB8', `
         <div class="jgx-kicker">${win ? 'Lo logré' : 'Fin del juego'} · ${roleName}${S.scenario ? ` · ${esc(S.scenario.title)}` : ''}</div>
@@ -1500,7 +1500,7 @@
       const n = st.qs.length, ok = st.ok;
       track(`/juego/trivia/fin/${ok}`, `Trivia: ${ok} de ${n}`);
       const verdict = ok >= 9 ? 'Nivel canciller' : ok >= 7 ? 'Analista internacional' : ok >= 5 ? 'Lector de diarios' : ok >= 3 ? 'Turista político' : 'Recién llegado';
-      const text = `Saqué ${ok} de ${n} en "¿Quién gobierna?" del Atlas Político Mundial: ${verdict}. ¿Cuántas sacás vos?`;
+      const text = `Saqué ${ok} de ${n} en "¿Quién gobierna?" del Atlas Político Electoral: ${verdict}. ¿Cuántas sacás vos?`;
       const card = cardShell('¿Quién gobierna?', '#D9822B', `
         <div class="jgx-kicker">Trivia del Atlas · líderes, sistemas, economía y elecciones</div>
         <div class="jgx-tv"><div><div class="jgx-huge"><b>${ok}</b><span>/ ${n}</span></div><div class="jgx-title is-md">${esc(verdict)}</div></div>${triviaArt(ok)}</div>
@@ -1765,7 +1765,7 @@
       const score = judged.reduce((a, x) => a + x.r.pts, 0), max = judged.length * 20;
       const pres = st.picks.pres;
       track(`/juego/prode/fin/${voted.length}`, `Prode: ${voted.length} votos`);
-      const text = `Ya voté en mi prode 2027 del Atlas Político Mundial${pres ? `: ${pres.c} gana con ${pres.pct}%` : ''}${voted.length > 1 ? ` y elegí en ${voted.length - (pres ? 1 : 0)} provincias` : ''}. ¿Cuál es el tuyo?`;
+      const text = `Ya voté en mi prode 2027 del Atlas Político Electoral${pres ? `: ${pres.c} gana con ${pres.pct}%` : ''}${voted.length > 1 ? ` y elegí en ${voted.length - (pres ? 1 : 0)} provincias` : ''}. ¿Cuál es el tuyo?`;
       const rows = voted.filter(S => S.kind === 'prov').slice(0, 8).map(S => `<div><span>${esc(short(S.name))}</span><b>${esc(st.picks[S.id].c)}</b><em>${st.picks[S.id].pct != null ? st.picks[S.id].pct + '%' : ''}</em></div>`).join('');
       const card = cardShell('Prode electoral 2027', '#1F5FAD', `
         <div class="jgx-tv"><div><div class="jgx-kicker">Mi prode 2027</div>

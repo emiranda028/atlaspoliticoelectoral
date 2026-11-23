@@ -1,4 +1,4 @@
-# 🌎 Atlas Político Mundial · 2026
+# 🌎 Atlas Político Electoral · 2026
 
 Cartografía interactiva del poder mundial en 2026: **197 países**, sistemas electorales,
 ideologías de gobiernos, calendario electoral 2026-2027, indicadores socioeconómicos
@@ -237,7 +237,7 @@ agradecemos el reconocimiento. Estos son los formatos sugeridos:
 ### Formato APA (7ma edición)
 
 ```
-Miranda, E., Paratz, M. y Abbott, E. D. (2026). Atlas Político Mundial 2026
+Miranda, E., Paratz, M. y Abbott, E. D. (2026). Atlas Político Electoral 2026
    [Visualización interactiva de datos].
    Recuperado de https://atlaspoliticoelectoral.com
 ```
@@ -245,7 +245,7 @@ Miranda, E., Paratz, M. y Abbott, E. D. (2026). Atlas Político Mundial 2026
 ### Formato breve (notas al pie, redes sociales)
 
 ```
-Miranda, E., Paratz, M. y Abbott, E. D. (2026). Atlas Político Mundial 2026. atlaspoliticoelectoral.com
+Miranda, E., Paratz, M. y Abbott, E. D. (2026). Atlas Político Electoral 2026. atlaspoliticoelectoral.com
 ```
 
 ### BibTeX (LaTeX)
@@ -253,7 +253,7 @@ Miranda, E., Paratz, M. y Abbott, E. D. (2026). Atlas Político Mundial 2026. at
 ```bibtex
 @misc{miranda2026atlas,
   author = {Miranda, Emmanuel and Paratz, Mart{\'i}n and Abbott, Ernesto Demian},
-  title  = {Atlas Pol{\'i}tico Mundial 2026},
+  title  = {Atlas Pol{\'i}tico Electoral 2026},
   year   = {2026},
   note   = {Visualizaci{\'o}n interactiva de datos},
   url    = {https://atlaspoliticoelectoral.com}

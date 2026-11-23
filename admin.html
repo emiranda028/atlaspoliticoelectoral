@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Source+Serif+4:wght@700;800&display=swap" rel="stylesheet">
 <style>
-  /* Panel de métricas privado del Atlas Político Mundial.
+  /* Panel de métricas privado del Atlas Político Electoral.
      Lee las estadísticas de GoatCounter con la clave de API del dueño; la clave
      queda solo en este navegador. Sin clave no se muestra ningún dato. */
   :root {
@@ -162,7 +162,7 @@
   /* ---------------------------------------------- views */
   function login(msg) {
     app.innerHTML = `<div class="login">
-      <span class="brand"><small>Atlas Político Mundial</small></span>
+      <span class="brand"><small>Atlas Político Electoral</small></span>
       <h1>Panel de administración</h1>
       <p>Visitas, secciones, juegos y contenidos compartidos del Atlas. Para entrar, pegá tu clave de acceso.</p>
       <form id="f"><input type="password" id="k" autocomplete="current-password" placeholder="Clave de acceso" required>
@@ -256,7 +256,7 @@
   async function dashboard() {
     const key = store.get();
     if (!key && !DEMO) return login();
-    app.innerHTML = `<header class="top"><div class="brand"><small>Atlas Político Mundial · Administración</small><b>Panel del Atlas</b></div>
+    app.innerHTML = `<header class="top"><div class="brand"><small>Atlas Político Electoral · Administración</small><b>Panel del Atlas</b></div>
       <div class="controls"><div class="seg" role="group" aria-label="Período">${[[1, 'Hoy'], [7, '7 días'], [30, '30 días'], [90, '90 días']].map(([d, l]) => `<button type="button" data-d="${d}" aria-pressed="${d === range}">${l}</button>`).join('')}</div>
         <button class="btn" data-reload type="button">Actualizar</button><button class="btn" data-out type="button">Salir</button></div></header>
       <div id="body"><p class="status">Cargando estadísticas…</p></div>`;
