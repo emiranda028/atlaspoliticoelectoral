@@ -3778,6 +3778,70 @@
     font-weight: 600;
   }
 
+
+
+
+
+  .map-gesture-hint { position: absolute; inset: 0; z-index: 900; display: grid; place-items: center; background: rgba(11,22,40,.45); color: #fff; font: 600 17px var(--font-sans); text-align: center; padding: 20px; opacity: 0; pointer-events: none; transition: opacity .25s; }
+  .map-gesture-hint.is-on { opacity: 1; }
+  /* ===== Análisis: criterio visual unificado ===== */
+  .charts-grid .chart-card, #change-continuity-card, .chart-card { border: 1px solid var(--line); border-radius: 18px; padding: 24px 26px 22px; box-shadow: 0 1px 2px rgba(11,22,40,.04); }
+  .cc-kicker { display: block; font: 700 11px var(--font-sans); letter-spacing: .12em; text-transform: uppercase; color: var(--accent); margin-bottom: 4px; padding-right: 132px; }
+  .chart-card h3 { font: 700 24px/1.15 var(--font-serif); color: var(--ink); letter-spacing: -.01em; margin-bottom: 6px; }
+  .chart-card .chart-subtitle { font: 400 14px/1.5 var(--font-sans); font-style: normal; color: var(--ink-soft); max-width: 860px; margin-bottom: 18px; }
+  .ideo-row { grid-template-columns: 150px 1fr 88px !important; gap: 12px !important; align-items: center; margin-bottom: 9px !important; font-size: 13.5px; }
+  .ideo-row .k { color: var(--ink); }
+  .ideo-track { height: 12px !important; border-radius: 6px !important; background: var(--bg) !important; overflow: hidden; }
+  .ideo-fill { height: 100% !important; border-radius: 6px !important; }
+  .ideo-row .v { font: 600 13px var(--font-sans) !important; font-variant-numeric: tabular-nums; color: var(--ink); }
+  .ideo-row .v span { font-weight: 500; color: var(--muted); opacity: 1 !important; }
+  .cont-bar { border-radius: 8px !important; overflow: hidden; gap: 2px; display: flex; }
+  .cont-segment { border-radius: 0 !important; }
+  .chart-card select { border: 1px solid var(--line-strong, #CBD2DC) !important; border-radius: 10px !important; padding: 8px 12px !important; background-color: var(--surface) !important; font: 500 14px var(--font-sans) !important; color: var(--ink) !important; }
+  @media (max-width: 640px) { .chart-card { padding: 18px 16px !important; } .chart-card h3 { font-size: 21px; } .cc-kicker { padding-right: 112px; } .ideo-row { grid-template-columns: 110px 1fr 70px !important; } }
+  /* ===== Barra común: PNG, minimizar, maximizar ===== */
+  .cc-box { position: relative; }
+  .cc-tools { position: absolute; top: 14px; right: 14px; display: flex; gap: 6px; z-index: 6; }
+  .cc-btn { display: inline-flex; align-items: center; justify-content: center; gap: 4px; min-width: 30px; height: 30px; padding: 0 8px; border: 1px solid var(--line-strong, #CBD2DC); border-radius: 999px; background: var(--surface); color: var(--muted); cursor: pointer; font: 600 11px var(--font-sans); letter-spacing: .06em; text-transform: uppercase; transition: color .15s, border-color .15s, background .15s; }
+  .cc-btn:hover, .cc-btn:focus-visible { color: var(--accent); border-color: var(--accent); background: rgba(194,65,12,.06); outline: none; }
+  .cc-tools .chart-export-btn { position: static; opacity: 1; }
+  .cc-box > h3:first-of-type, .cc-box > .esp-sec-head, .cc-box > .ptr-head, .cc-box > .wg-shifts-head { padding-right: 132px; }
+  .wgov.cc-box > .wg-head { padding-right: 0; margin-top: 34px; }
+  .esp-sec.cc-box > .cc-tools { top: 0; right: 0; }
+  .wg-shifts.cc-box > .cc-tools { top: 16px; right: 0; }
+  .cc-box.is-collapsed > :not(.cc-tools):not(h3):not(.cc-kicker):not(.esp-sec-head):not(.ptr-head):not(.wg-shifts-head):not(.wg-head) { display: none !important; }
+  .cc-box.is-collapsed > .wg-head .wg-controls, .cc-box.is-collapsed > .wg-head .wg-lede, .cc-box.is-collapsed > .esp-sec-head p { display: none; }
+  .cc-box.is-collapsed { padding-bottom: 14px; }
+  .cc-box.is-collapsed > h3 { margin-bottom: 0; }
+  .cc-box.is-max { position: fixed !important; inset: 12px; z-index: 6000; margin: 0 !important; max-width: none !important; overflow: auto; background: var(--surface); border-radius: 16px; box-shadow: 0 0 0 100vmax rgba(11,22,40,.55), 0 30px 80px rgba(0,0,0,.35); padding: 28px 32px !important; }
+  .cc-box.is-max > .cc-tools { position: sticky; top: 0; float: right; margin: -10px -14px 0 12px; }
+  body.cc-lock { overflow: hidden; }
+  @media (max-width: 640px) { .cc-box.is-max { inset: 0; border-radius: 0; padding: 18px 14px !important; } .cc-tools { top: 10px; right: 10px; } .cc-box > h3, .cc-box > .esp-sec-head, .cc-box > .ptr-head, .cc-box > .wg-shifts-head { padding-right: 112px; } .cc-btn { min-width: 28px; height: 28px; } }
+  @media print { .cc-tools { display: none !important; } }
+  /* ===== Ocho miradas: pequeños múltiplos ===== */
+  .multi-metric-wrap { overflow: visible !important; }
+  .mm2 { --mmk: 96px; --mmv: 74px; display: grid !important; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
+  .mm2-panel { border: 1px solid var(--line); border-radius: 14px; padding: 14px 14px 10px; background: var(--surface); min-width: 0; }
+  .mm2-head b { display: block; font: 700 16px var(--font-serif); color: var(--ink); }
+  .mm2-head span { font-size: 11.5px; color: var(--muted); }
+  .mm2-body { position: relative; margin: 10px 0 6px; }
+  .mm2-world { position: absolute; top: -4px; bottom: -4px; width: 0; border-left: 1.5px dashed var(--accent); opacity: .7; z-index: 1; }
+  .mm2-row { display: grid; grid-template-columns: var(--mmk) 1fr var(--mmv); align-items: center; gap: 0; height: 24px; border-radius: 6px; }
+  .mm2-row.is-best { background: rgba(194,65,12,.07); }
+  .mm2-row.is-best .mm2-v { color: var(--accent); }
+  .mm2-row.is-empty { opacity: .45; }
+  .mm2-k { display: flex; align-items: center; gap: 6px; font-size: 11.5px; color: var(--ink-soft); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; padding-left: 4px; }
+  .mm2-k i { width: 8px; height: 8px; border-radius: 50%; flex: none; }
+  .mm2-track { position: relative; height: 100%; }
+  .mm2-track::before { content: ''; position: absolute; left: 0; right: 0; top: 50%; border-top: 1px solid var(--line); }
+  .mm2-range { position: absolute; top: calc(50% - 2px); height: 4px; border-radius: 2px; opacity: .35; }
+  .mm2-dot { position: absolute; top: 50%; width: 11px; height: 11px; border-radius: 50%; transform: translate(-50%, -50%); box-shadow: 0 0 0 2px var(--surface); z-index: 2; }
+  .mm2-v { text-align: right; font: 600 12px var(--font-sans); color: var(--ink); font-variant-numeric: tabular-nums; padding-right: 4px; }
+  .mm2-foot { display: flex; justify-content: space-between; gap: 8px; font-size: 11px; color: var(--muted); border-top: 1px solid var(--line); padding-top: 7px; }
+  .mm2-foot b { color: var(--ink); }
+  .mm2-note { grid-column: 1 / -1; font-size: 12px; color: var(--muted); margin: 2px 0 0; }
+  @media (max-width: 1200px) { .mm2 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 640px) { .mm2 { grid-template-columns: 1fr; } }
   /* ===== Género: mujeres al frente del gobierno ===== */
   .gx-top { display: grid; grid-template-columns: minmax(220px, 300px) 1fr; gap: 18px 28px; align-items: center; }
   .gx-stat b { font: 700 64px/1 var(--font-serif); color: var(--accent); display: inline-block; margin-right: 8px; }
@@ -8277,14 +8341,14 @@
   </div>
   <div class="charts-grid">
     <div class="chart-card">
-      <h3>Distribución por ideología</h3>
+      <span class="cc-kicker">01 · Ideología</span><h3>Distribución por ideología</h3>
       <p class="chart-subtitle">Cantidad de países según el signo del <strong>partido gobernante</strong>.
         Es distinto del sistema institucional: un país puede tener gobierno autoritario en
         ideología pero sistema parlamentario formal.</p>
       <div class="ideo-dist" id="ideo-dist"></div>
     </div>
     <div class="chart-card">
-      <h3>Por tipo de sistema de gobierno</h3>
+      <span class="cc-kicker">02 · Instituciones</span><h3>Por tipo de sistema de gobierno</h3>
       <p class="chart-subtitle">Cómo está organizado <strong>institucionalmente</strong> el poder
         ejecutivo. Distinto del signo político: refleja reglas formales (elecciones,
         separación de poderes) más que orientación.</p>
@@ -8292,20 +8356,20 @@
     </div>
 
     <div class="chart-card chart-card-wide">
-      <h3>El mundo por continente</h3>
+      <span class="cc-kicker">03 · Regiones</span><h3>El mundo por continente</h3>
       <p class="chart-subtitle">Composición ideológica de cada región. Ayuda a ver qué bloques
         dominan en Europa, qué pasa en África, y dónde están los autoritarismos del mundo.</p>
       <div class="continent-dist" id="continent-dist"></div>
     </div>
 
     <div class="chart-card chart-card-wide">
-      <h3>Mujeres al frente del gobierno</h3>
+      <span class="cc-kicker">04 · Género</span><h3>Mujeres al frente del gobierno</h3>
       <p class="chart-subtitle">Las mujeres encabezan el <span id="gender-pct-inline" class="accent">…</span> de los gobiernos del mundo:
         quiénes son, desde cuándo y dónde.</p>
       <div id="gender-dist"></div>
     </div>
     <div class="chart-card chart-card-wide">
-      <h3>Ocho miradas, no una sola</h3>
+      <span class="cc-kicker">05 · Indicadores</span><h3>Ocho miradas, no una sola</h3>
       <p class="chart-subtitle">Promedio por bloque ideológico en ocho dimensiones distintas.
         <strong>Crecer no es lo mismo que repartir</strong>; un país con altos salarios no
         necesariamente tiene baja desigualdad o pobreza. Cada columna cuenta una historia:
@@ -8321,7 +8385,7 @@
     </div>
 
     <div class="chart-card chart-card-wide">
-      <h3>Cruce entre dos variables</h3>
+      <span class="cc-kicker">06 · Cruces</span><h3>Cruce entre dos variables</h3>
       <p class="chart-subtitle">Elegí dos dimensiones y observá cómo se distribuyen los países.
         Cada punto es un país, coloreado por ideología. Pasá el mouse para ver detalles.</p>
       <div class="scatter-controls">
@@ -8362,7 +8426,7 @@
     </div>
 
     <div class="chart-card chart-card-wide">
-      <h3>Ranking por variable</h3>
+      <span class="cc-kicker">07 · Rankings</span><h3>Ranking por variable</h3>
       <p class="chart-subtitle">Top 10 países según la variable elegida. Permite ver quiénes lideran
         y quiénes están en el extremo opuesto.</p>
       <div class="ranking-controls">
@@ -8391,7 +8455,7 @@
     </div>
 
     <div class="chart-card chart-card-wide">
-      <h3>Perfil comparativo de un país</h3>
+      <span class="cc-kicker">08 · Un país</span><h3>Perfil comparativo de un país</h3>
       <p class="chart-subtitle">Seleccioná un país y mirá en qué puesto está en cada una de las
         ocho variables, comparado con todos los demás. Para el PBI vas a ver además la
         evolución 2020-2025. Opcionalmente, sumá un segundo país para verlos lado a lado.</p>
@@ -8426,7 +8490,7 @@
         <span class="kicker">El humor político post-2023</span>
       </div>
         <div class="chart-card chart-card-wide">
-      <h3>¿Cambio o continuidad?</h3>
+      <span class="cc-kicker">09 · Tendencia</span><h3>¿Cambio o continuidad?</h3>
       <p class="chart-subtitle">De todas las elecciones celebradas en el mundo desde 2023, ¿cuántas
         cambiaron el bloque ideológico del gobierno y cuántas lo mantuvieron? El balance entre
         giros a la derecha, giros a la izquierda y continuidades captura el "humor político" de
@@ -28627,7 +28691,7 @@ function renderStatsBar() {
   const total = FC.length;
   const totalAll = COUNTRIES.length;
   const buckets = FC.reduce((a, c) => (a[c.ideology] = (a[c.ideology]||0)+1, a), {});
-  const democracies = total - (buckets['authoritarian']||0);
+  const democracies = total - (buckets['authoritarian']||0) - (buckets['dictatorship']||0);
   const avgGrowth = (() => {
     const last = FC.map(c => c.economy.gdpGrowth.at(-1)?.pct).filter(v => v != null);
     if (!last.length) return '—';
@@ -28636,10 +28700,10 @@ function renderStatsBar() {
   const totalElectors = FC.reduce((s,c)=>s+(c.electors||0),0);
 
   const items = [
-    { label: 'Países en base', value: total, sub: total === totalAll ? 'de 195 del mundo' : `de ${totalAll} (${(total/totalAll*100).toFixed(0)}%) en filtro actual` },
-    { label: 'Democracias', value: democracies, sub: total ? `${(democracies/total*100).toFixed(0)}% de la muestra` : '—' },
-    { label: 'Electorado relevado', value: (totalElectors/1e9).toFixed(2)+'B', sub: 'votantes potenciales' },
-    { label: 'Crecimiento prom.', value: avgGrowth + (avgGrowth !== '—' ? '%' : ''), sub: 'último año disponible' },
+    { label: 'Países en base', value: total, sub: total === totalAll ? '193 de la ONU, más Kosovo, Palestina, Taiwán y el Vaticano' : `de ${totalAll} (${(total/totalAll*100).toFixed(0)}%) en filtro actual` },
+    { label: 'Con gobierno democrático', value: democracies, sub: total ? `${(democracies/total*100).toFixed(0)}% de los países (sin regímenes autoritarios ni dictaduras)` : '—' },
+    { label: 'Electorado relevado', value: (totalElectors/1e9).toLocaleString('es-AR', { maximumFractionDigits: 2 }) + ' mil M', sub: 'personas habilitadas para votar' },
+    { label: 'Crecimiento promedio', value: (avgGrowth !== '—' ? String(avgGrowth).replace('.', ',') + '%' : '—'), sub: 'del PBI en 2025, promedio simple' },
   ];
   document.getElementById('stats-bar').innerHTML = items.map(s => `
     <div class="stat">
@@ -28836,8 +28900,9 @@ try {
     center: [20, 10],
     zoom: 2,
     minZoom: 1,
-    maxZoom: 7,
+    maxZoom: 5,
     zoomSnap: 0.25,
+    scrollWheelZoom: false,   // la rueda sola desplaza la página; Ctrl/⌘ + rueda hace zoom (ver abajo)
     zoomDelta: 0.5,
     wheelPxPerZoomLevel: 120,
     preferCanvas: true,   // one shared canvas: much faster than SVG with ~250 countries
@@ -28855,6 +28920,32 @@ try {
     map.setMinZoom(Math.max(0.5, map.getZoom() - 0.5));
   };
   window.__fitWorld(false);
+  // Gestos cooperativos: la página se sigue desplazando con la rueda o con un dedo;
+  // el mapa se mueve con Ctrl/⌘ + rueda, arrastrando con el mouse o con dos dedos.
+  (function () {
+    const el = map.getContainer();
+    const hint = L.DomUtil.create('div', 'map-gesture-hint', el);
+    const coarse = window.matchMedia && window.matchMedia('(pointer: coarse)').matches;
+    const isFs = () => document.documentElement.classList.contains('map-fs');
+    let t = null;
+    const show = msg => { hint.textContent = msg; hint.classList.add('is-on'); clearTimeout(t); t = setTimeout(() => hint.classList.remove('is-on'), 1300); };
+    el.addEventListener('wheel', e => {
+      if (e.ctrlKey || e.metaKey || isFs()) {
+        e.preventDefault();
+        const step = Math.max(-1, Math.min(1, -e.deltaY / 100)) * 0.5;
+        map.setZoomAround(map.mouseEventToContainerPoint(e), map.getZoom() + step);
+        map.__userZoom = true;
+      } else {
+        show(/Mac|iPhone|iPad/.test(navigator.platform) ? 'Usá ⌘ + rueda para acercar el mapa' : 'Usá Ctrl + rueda para acercar el mapa');
+      }
+    }, { passive: false });
+    if (coarse) {
+      const sync = () => { if (isFs()) map.dragging.enable(); else map.dragging.disable(); };
+      sync();
+      new MutationObserver(sync).observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+      el.addEventListener('touchmove', e => { if (e.touches.length === 1 && !isFs()) show('Usá dos dedos para mover el mapa'); }, { passive: true });
+    }
+  })();
   let mapUserMoved = false;
   map.on('dragstart', () => { mapUserMoved = true; });
   map.getContainer().addEventListener('wheel', () => { mapUserMoved = true; }, { passive: true });
@@ -30099,86 +30190,45 @@ function renderAnalytics() {
     .filter(id => totalByIdeo[id] > 0)
     .sort((a,b) => totalByIdeo[b] - totalByIdeo[a]);
 
-  // Build the grid: header row + one row per ideology
-  let mmHTML = '';
-  // Header
-  mmHTML += '<div class="mm-header">Bloque ideológico</div>';
-  metrics.forEach(m => {
-    mmHTML += `<div class="mm-header">${m.label}<div class="mm-header-sub">${m.sub}</div></div>`;
-  });
-  // Rows
-  orderedIdeos.forEach(id => {
-    const def = IDEOLOGIES[id];
-    mmHTML += `<div class="mm-row-label">
-      <div class="mm-row-label-color" style="background:${def.color}"></div>
-      <div class="mm-row-label-name">${def.label}</div>
-      <div class="mm-row-label-n">n=${totalByIdeo[id]}</div>
+  // Pequeños múltiplos: un panel por variable; en cada uno, el promedio de cada bloque
+  // (punto) y el rango de sus países (línea), sobre la misma escala, con el promedio mundial.
+  const spectrum = ['far-left', 'left', 'center-left', 'center', 'center-right', 'right', 'far-right', 'authoritarian', 'dictatorship', 'other'].filter(id => totalByIdeo[id] > 0);
+  const fmtMM = (m, v) => {
+    if (v == null || isNaN(v)) return '—';
+    if (m.key === 'wage') return 'USD ' + Math.round(v).toLocaleString('es-AR');
+    if (m.key === 'hdi') return v.toFixed(3).replace('.', ',');
+    const s = v.toLocaleString('es-AR', { maximumFractionDigits: 1, minimumFractionDigits: 1 });
+    if (m.key === 'gini' || m.key === 'press') return s;
+    return (m.signed && v > 0 ? '+' : '') + s + '%';
+  };
+  const mmPanels = metrics.map(m => {
+    const st = aggByMetric[m.key];
+    const vals = FC.map(c => m.getValue(c)).filter(v => v != null && !isNaN(v));
+    if (!vals.length) return '';
+    const world = vals.reduce((s, v) => s + v, 0) / vals.length;
+    let lo = Math.min(...vals), hi = Math.max(...vals);
+    if (m.signed) { const q = [...vals].sort((x, y) => x - y); lo = Math.min(q[Math.floor(q.length * 0.03)], 0); hi = q[Math.ceil(q.length * 0.97) - 1]; }
+    const X = v => Math.max(0, Math.min(100, (v - lo) / ((hi - lo) || 1) * 100));
+    const avgs = spectrum.filter(id => st[id]).map(id => st[id].avg);
+    const bestV = m.better === 'high' ? Math.max(...avgs) : m.better === 'low' ? Math.min(...avgs) : null;
+    const rows = spectrum.map(id => {
+      const s = st[id], def = IDEOLOGIES[id];
+      if (!s) return `<div class="mm2-row is-empty"><span class="mm2-k">${def.short}</span><span class="mm2-track"></span><span class="mm2-v">—</span></div>`;
+      const tip = `${def.label} (${s.n} ${s.n === 1 ? 'país' : 'países'}): promedio ${fmtMM(m, s.avg)} · de ${fmtMM(m, s.min.value)} (${s.min.name}) a ${fmtMM(m, s.max.value)} (${s.max.name})`;
+      return `<div class="mm2-row${bestV != null && s.avg === bestV ? ' is-best' : ''}" title="${escapeHtml(tip)}">
+        <span class="mm2-k"><i style="background:${def.color}"></i>${def.short}</span>
+        <span class="mm2-track"><span class="mm2-range" style="left:${X(Math.max(s.min.value, lo))}%;width:${Math.max(0.5, X(Math.min(s.max.value, hi)) - X(Math.max(s.min.value, lo)))}%;background:${def.color}"></span><span class="mm2-dot" style="left:${X(s.avg)}%;background:${def.color}"></span></span>
+        <span class="mm2-v">${fmtMM(m, s.avg)}</span></div>`;
+    }).join('');
+    return `<div class="mm2-panel">
+      <div class="mm2-head"><b>${m.label}</b><span>${m.sub}</span></div>
+      <div class="mm2-body"><span class="mm2-world" style="left:calc(var(--mmk) + (100% - var(--mmk) - var(--mmv)) * ${X(world) / 100})" title="Promedio mundial ${fmtMM(m, world)}"></span>${rows}</div>
+      <div class="mm2-foot"><span>Mundo: <b>${fmtMM(m, world)}</b></span>${m.better ? `<span>${m.better === 'high' ? 'más alto es mejor' : 'más bajo es mejor'}</span>` : ''}</div>
     </div>`;
-
-    metrics.forEach(m => {
-      const stats = aggByMetric[m.key][id];
-      if (!stats) {
-        mmHTML += `<div class="mm-cell" data-label="${m.label}">
-          <div class="mm-cell-value" style="color:var(--muted);font-style:italic">—</div>
-          <div class="mm-cell-range">sin dato</div>
-        </div>`;
-        return;
-      }
-      const scale = scales[m.key];
-      let barHTML = '';
-      if (m.signed) {
-        // Bipolar bar: zero in middle
-        const isNeg = stats.avg < 0;
-        const w = Math.abs(stats.avg) / scale * 50;
-        const left = isNeg ? (50 - w) : 50;
-        barHTML = `<div class="mm-cell-bar">
-          <div class="mm-cell-bar-zero" style="left:50%"></div>
-          <div class="mm-cell-bar-fill ${isNeg?'neg':''}" style="left:${left}%; width:${w}%; background:${def.color}"></div>
-        </div>`;
-      } else {
-        // Unipolar bar: 0 → max
-        const w = (stats.avg / scale) * 100;
-        barHTML = `<div class="mm-cell-bar">
-          <div class="mm-cell-bar-fill" style="width:${w}%; background:${def.color}"></div>
-        </div>`;
-      }
-
-      // Format value
-      let valStr;
-      if (m.key === 'wage') {
-        valStr = 'USD ' + Math.round(stats.avg).toLocaleString('es-AR');
-      } else if (m.key === 'gini' || m.key === 'press' || m.key === 'poverty' || m.key === 'debt') {
-        valStr = stats.avg.toFixed(1) + (m.key === 'gini' || m.key === 'press' ? '' : '%');
-      } else if (m.key === 'hdi') {
-        valStr = stats.avg.toFixed(3);
-      } else {
-        valStr = (m.signed && stats.avg > 0 ? '+' : '') + stats.avg.toFixed(1) + m.unit;
-      }
-
-      // Format range
-      let rangeStr;
-      if (stats.n === 1) {
-        rangeStr = stats.min.name;
-      } else {
-        const fmt = v => {
-          if (m.key === 'wage') return 'USD ' + Math.round(v).toLocaleString('es-AR');
-          if (m.key === 'gini' || m.key === 'press') return v.toFixed(1);
-          if (m.key === 'hdi') return v.toFixed(3);
-          if (m.key === 'poverty' || m.key === 'debt') return v.toFixed(1) + '%';
-          return (m.signed && v > 0 ? '+' : '') + v.toFixed(1) + m.unit;
-        };
-        rangeStr = `${fmt(stats.min.value)} (${stats.min.name.slice(0,12)}) → ${fmt(stats.max.value)} (${stats.max.name.slice(0,12)})`;
-      }
-
-      mmHTML += `<div class="mm-cell" data-label="${m.label}">
-        ${barHTML}
-        <div class="mm-cell-value">${valStr}</div>
-        <div class="mm-cell-range">${rangeStr}</div>
-      </div>`;
-    });
-  });
-
-  document.getElementById('multi-metric').innerHTML = mmHTML;
+  }).join('');
+  const mmEl = document.getElementById('multi-metric');
+  mmEl.className = 'mm2';
+  mmEl.innerHTML = mmPanels + `<p class="mm2-note">Cada punto es el promedio del bloque; la línea va del país más bajo al más alto del bloque (pasá el mouse para verlos). La línea punteada es el promedio mundial. En resaltado, el mejor promedio de cada variable.</p>`;
 
   // Initialize scatter / ranking / profile only ONCE.
   // Subsequent renderAnalytics() calls (triggered by filter changes) will
@@ -32516,7 +32566,7 @@ async function exportSectionAsPNG(sectionEl, sectionTitle) {
   // Clone and append the section content
   const clone = sectionEl.cloneNode(true);
   // Remove any export buttons from the clone so they don't appear in the image
-  clone.querySelectorAll('.chart-export-btn, .export-btn').forEach(b => b.remove());
+  clone.querySelectorAll('.chart-export-btn, .export-btn, .cc-tools').forEach(b => b.remove());
   wrap.appendChild(clone);
 
   // Add citation footer
@@ -32580,31 +32630,64 @@ function exportFullAtlasPDF() {
   window.print();
 }
 
-// Attach export buttons to every .chart-card in the analytics section
+// Barra común de cada gráfico o sección: PNG (en los gráficos), minimizar y maximizar.
+const CC_SEL = '.chart-card, .wgov, .wg-shifts, .esp-sec, .ptr';
+const ccKey = el => 'cc:' + (el.id || ((el.querySelector('h3, h4') || {}).textContent || '').trim().slice(0, 60));
+const ccGet = k => { try { return localStorage.getItem(k); } catch (e) { return null; } };
+const ccSet = (k, v) => { try { v == null ? localStorage.removeItem(k) : localStorage.setItem(k, v); } catch (e) {} };
+const CC_ICON = {
+  png: '<svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M12 3v12m0 0l-4-4m4 4l4-4M5 21h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>PNG</span>',
+  min: '<svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M5 12h14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>',
+  open: '<svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+  max: '<svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+  close: '<svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>'
+};
+function ccSetCollapsed(el, on, save) {
+  el.classList.toggle('is-collapsed', on);
+  const b = el.querySelector(':scope > .cc-tools .cc-min');
+  if (b) { b.innerHTML = on ? CC_ICON.open : CC_ICON.min; b.title = on ? 'Desplegar' : 'Minimizar'; b.setAttribute('aria-expanded', String(!on)); }
+  if (save) ccSet(ccKey(el), on ? '1' : null);
+}
+function ccSetMax(el, on) {
+  if (on) document.querySelectorAll('.is-max').forEach(x => x !== el && ccSetMax(x, false));
+  if (on && el.classList.contains('is-collapsed')) ccSetCollapsed(el, false, false);
+  el.classList.toggle('is-max', on);
+  document.body.classList.toggle('cc-lock', !!document.querySelector('.is-max'));
+  const b = el.querySelector(':scope > .cc-tools .cc-max');
+  if (b) { b.innerHTML = on ? CC_ICON.close : CC_ICON.max; b.title = on ? 'Cerrar pantalla completa (Esc)' : 'Ver en pantalla completa'; }
+  if (on) el.scrollTop = 0; else el.scrollIntoView({ block: 'nearest' });
+  setTimeout(() => window.dispatchEvent(new Event('resize')), 60);
+}
 function attachExportButtons() {
-  document.querySelectorAll('.chart-card').forEach(card => {
-    if (card.querySelector('.chart-export-btn')) return; // already attached
-    const h3 = card.querySelector('h3');
-    const title = h3 ? h3.textContent.trim() : 'Sección';
-    const btn = document.createElement('button');
-    btn.className = 'chart-export-btn';
-    btn.title = 'Exportar como PNG';
-    btn.setAttribute('aria-label', 'Exportar sección como imagen PNG');
-    btn.innerHTML = `
-      <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true">
-        <path d="M12 3v12m0 0l-4-4m4 4l4-4M5 21h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-      <span>PNG</span>
-    `;
-    btn.addEventListener('click', e => {
-      e.stopPropagation();
-      btn.classList.add('is-loading');
-      exportSectionAsPNG(card, title).finally(() => btn.classList.remove('is-loading'));
-    });
-    card.appendChild(btn);
+  document.querySelectorAll(CC_SEL).forEach(card => {
+    if (card.querySelector(':scope > .cc-tools')) return;
+    if (card.matches('.esp-sec') && !card.querySelector(':scope > .esp-sec-head')) return;
+    card.classList.add('cc-box');
+    const old = card.querySelector(':scope > .chart-export-btn'); if (old) old.remove();
+    const tools = document.createElement('div');
+    tools.className = 'cc-tools';
+    const h = card.querySelector('h3, h4');
+    const title = h ? h.textContent.trim() : 'Sección';
+    if (card.matches('.chart-card, .wgov')) {
+      const png = document.createElement('button');
+      png.type = 'button'; png.className = 'cc-btn cc-png chart-export-btn'; png.title = 'Descargar como imagen PNG'; png.innerHTML = CC_ICON.png;
+      png.addEventListener('click', e => { e.stopPropagation(); png.classList.add('is-loading'); exportSectionAsPNG(card, title).finally(() => png.classList.remove('is-loading')); });
+      tools.appendChild(png);
+    }
+    const min = document.createElement('button'); min.type = 'button'; min.className = 'cc-btn cc-min'; min.innerHTML = CC_ICON.min; min.title = 'Minimizar'; min.setAttribute('aria-expanded', 'true');
+    min.addEventListener('click', e => { e.stopPropagation(); if (card.classList.contains('is-max')) ccSetMax(card, false); ccSetCollapsed(card, !card.classList.contains('is-collapsed'), true); });
+    const max = document.createElement('button'); max.type = 'button'; max.className = 'cc-btn cc-max'; max.innerHTML = CC_ICON.max; max.title = 'Ver en pantalla completa';
+    max.addEventListener('click', e => { e.stopPropagation(); ccSetMax(card, !card.classList.contains('is-max')); });
+    tools.append(min, max);
+    card.prepend(tools);
+    if (ccGet(ccKey(card)) === '1') ccSetCollapsed(card, true, false);
   });
 }
-window.addEventListener('load', () => setTimeout(attachExportButtons, 500));
+document.addEventListener('keydown', e => { if (e.key === 'Escape') document.querySelectorAll('.is-max').forEach(x => ccSetMax(x, false)); });
+// Los gráficos que se vuelven a dibujar (contador, especiales) recuperan su barra
+let ccPending = false;
+new MutationObserver(() => { if (ccPending) return; ccPending = true; requestAnimationFrame(() => { ccPending = false; attachExportButtons(); }); }).observe(document.body, { childList: true, subtree: true });
+window.addEventListener('load', () => setTimeout(attachExportButtons, 300));
 window.exportSectionAsPNG = exportSectionAsPNG;
 window.exportFullAtlasPDF = exportFullAtlasPDF;
 
