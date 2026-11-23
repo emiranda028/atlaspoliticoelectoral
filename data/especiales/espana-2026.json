@@ -1,8 +1,8 @@
 {
  "id": "espana-2026",
  "title": "Elecciones generales 2026",
- "updatedAt": "2026-11-10T13:00:00-03:00",
- "lede": "España vuelve a las urnas el domingo 29 de noviembre, ocho meses antes de lo previsto: Pedro Sánchez disolvió las Cortes después de que el Congreso le tumbara dos decretos de vivienda. Todas las encuestas de noviembre menos una ponen primero al PP, y todas le dan a la suma con Vox más de los 176 diputados de la mayoría absoluta; tras el choque de trenes de Urda renunció el ministro Óscar Puente.",
+ "updatedAt": "2026-11-23T22:00:00-03:00",
+ "lede": "España vuelve a las urnas el domingo 29 de noviembre, ocho meses antes de lo previsto: Pedro Sánchez disolvió las Cortes después de que el Congreso le tumbara dos decretos de vivienda. En las últimas encuestas antes de la veda, el PP sale primero en 20 de 23 y la suma con Vox supera los 176 diputados de la mayoría absoluta en 21; el PSOE recortó distancia en la última semana y el CIS, SW Demoscopia y Cluster17 lo ponen adelante. Tras el choque de trenes de Urda renunció el ministro Óscar Puente.",
  "dates": {
   "pollsOpen": "2026-11-29T09:00:00+01:00",
   "pollsClose": "2026-11-29T20:00:00+01:00",
@@ -510,637 +510,1122 @@
  ],
  "polls": [
   {
-   "outlet": "20minutos (Henneo)",
-   "pollster": "DYM",
-   "date": "10 nov",
-   "fieldwork": "4–6 nov",
-   "sample": 1025,
-   "pct": {
-    "PP": 33.1,
-    "PSOE": 27.3,
-    "Vox": 18.6,
-    "Sumar": 5.6,
-    "Podemos": 1.9,
-    "SALF": 0.4
-   },
-   "seats": {
-    "PP": 137,
-    "PSOE": 106,
-    "Vox": 64.5,
-    "Sumar": 9,
-    "Podemos": 1.5,
-    "SALF": 0
-   },
-   "seatsAreMidpoints": true,
-   "seatsRange": {
-    "PP": [
-     135,
-     139
-    ],
-    "PSOE": [
-     104,
-     108
-    ],
-    "Vox": [
-     63,
-     66
-    ],
-    "Sumar": [
-     8,
-     10
-    ],
-    "Podemos": [
-     1,
-     2
-    ]
-   },
-   "url": "https://www.democrata.es/encuestas/elecciones-generales/dym-10-noviembre-2026-pp-psoe-bajan-vox-sube/",
-   "note": "Sumar incluye Compromís; DYM no publica estimación de partidos territoriales."
-  },
-  {
-   "outlet": "La Séptima",
-   "pollster": "SW Demoscopia",
-   "date": "9 nov",
-   "fieldwork": "26 oct–8 nov",
-   "sample": 5500,
-   "pct": {
-    "PP": 28.3,
-    "UPN": 0.2,
-    "PSOE": 31.1,
-    "Vox": 17.3,
-    "Sumar": 7.6,
-    "ERC": 2.6,
-    "Junts": 1.3,
-    "EHBildu": 1.4,
-    "PNV": 0.8,
-    "BNG": 1.0,
-    "CC": 0.4,
-    "AA": 1.4,
-    "Podemos": 1.7,
-    "SALF": 2.0
-   },
-   "seats": {
-    "PP": 114.5,
-    "UPN": 2,
-    "PSOE": 129.5,
-    "Vox": 60.5,
-    "Sumar": 12.5,
-    "ERC": 11,
-    "Junts": 4,
-    "EHBildu": 7,
-    "PNV": 2.5,
-    "BNG": 2,
-    "CC": 1,
-    "AA": 3,
-    "Podemos": 0,
-    "SALF": 0
-   },
-   "seatsAreMidpoints": true,
-   "seatsRange": {
-    "PP": [
-     111,
-     118
-    ],
-    "PSOE": [
-     127,
-     132
-    ],
-    "Vox": [
-     57,
-     64
-    ],
-    "Sumar": [
-     11,
-     14
-    ],
-    "ERC": [
-     10,
-     12
-    ],
-    "Junts": [
-     3,
-     5
-    ],
-    "PNV": [
-     2,
-     3
-    ]
-   },
-   "url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Spanish_general_election",
-   "note": "Barómetro diario nº 5 (tracking); único instituto que sitúa al PSOE primero. Sumar incluye Compromís."
-  },
-  {
-   "outlet": "ABC (Vocento)",
-   "pollster": "GAD3",
-   "date": "9 nov",
-   "fieldwork": "3–5 nov",
-   "sample": 1502,
-   "pct": {
-    "PP": 31.9,
-    "PSOE": 25.9,
-    "Vox": 18.6,
-    "Sumar": 6.0,
-    "Compromis": 1.5,
-    "ERC": 2.7,
-    "Junts": 1.4,
-    "EHBildu": 1.5,
-    "PNV": 0.9,
-    "BNG": 0.9,
-    "CC": 0.4,
-    "AA": 1.6,
-    "Podemos": 1.4,
-    "SALF": 1.3
-   },
-   "seats": {
-    "PP": 136,
-    "PSOE": 103,
-    "Vox": 63,
-    "Sumar": 7,
-    "Compromis": 5,
-    "ERC": 12,
-    "Junts": 5,
-    "EHBildu": 8,
-    "PNV": 4,
-    "BNG": 2,
-    "CC": 1,
-    "AA": 3,
-    "Podemos": 1,
-    "SALF": 0
-   },
-   "url": "https://www.abc.es/espana/accidente-urda-apenas-altera-bloques-29n-derecha-20261108023004-nt.html",
-   "note": "Sumar = FA 5,1% (6) + UPC + CHA + Ara Més (1)."
-  },
-  {
-   "outlet": "La Razón",
-   "pollster": "NC Report",
-   "date": "9 nov",
-   "fieldwork": "2–5 nov",
-   "sample": 1000,
-   "pct": {
-    "PP": 32.6,
-    "UPN": 0.4,
-    "PSOE": 25.6,
-    "Vox": 19.3,
-    "Sumar": 6.9,
-    "ERC": 2.0,
-    "Junts": 1.8,
-    "EHBildu": 1.4,
-    "PNV": 0.9,
-    "BNG": 0.8,
-    "CC": 0.4,
-    "AA": 1.2,
-    "Podemos": 2.4
-   },
-   "seats": {
-    "PP": 137,
-    "UPN": 2,
-    "PSOE": 100,
-    "Vox": 68,
-    "Sumar": 9.5,
-    "ERC": 7.5,
-    "Junts": 8.5,
-    "EHBildu": 6.5,
-    "PNV": 4.5,
-    "BNG": 2,
-    "CC": 1,
-    "AA": 2.5,
-    "Podemos": 0.5
-   },
-   "seatsAreMidpoints": true,
-   "seatsRange": {
-    "PP": [
-     136,
-     138
-    ],
-    "PSOE": [
-     99,
-     101
-    ],
-    "Vox": [
-     67,
-     69
-    ],
-    "Sumar": [
-     9,
-     10
-    ],
-    "ERC": [
-     7,
-     8
-    ],
-    "Junts": [
-     8,
-     9
-    ],
-    "EHBildu": [
-     6,
-     7
-    ],
-    "PNV": [
-     4,
-     5
-    ],
-    "AA": [
-     2,
-     3
-    ],
-    "Podemos": [
-     0,
-     1
-    ]
-   },
-   "url": "https://www.larazon.es/espana/gana-7-puntos-psoe-que-cae-100-escanos_202611096af1319903bbf30bb045239e.html",
-   "note": "Sumar incluye Compromís. Participación estimada 64,3%."
-  },
-  {
-   "outlet": "El País / Cadena SER (Prisa)",
-   "pollster": "40dB",
-   "date": "9 nov",
-   "fieldwork": "2–4 nov",
-   "sample": 2000,
-   "pct": {
-    "PP": 31.9,
-    "PSOE": 29.9,
-    "Vox": 18.0,
-    "Sumar": 3.9,
-    "Compromis": 1.1,
-    "Podemos": 1.2,
-    "SALF": 2.0
-   },
-   "seats": {
-    "PP": 130.5,
-    "UPN": 2,
-    "PSOE": 119,
-    "Vox": 61,
-    "Sumar": 6,
-    "Compromis": 3,
-    "ERC": 10,
-    "Junts": 3,
-    "EHBildu": 7,
-    "PNV": 3,
-    "BNG": 2,
-    "CC": 1,
-    "AA": 3,
-    "Podemos": 0,
-    "SALF": 0
-   },
-   "seatsAreMidpoints": true,
-   "seatsRange": {
-    "PP": [
-     124,
-     137
-    ],
-    "PSOE": [
-     115,
-     123
-    ],
-    "Vox": [
-     58,
-     64
-    ],
-    "Sumar": [
-     4,
-     8
-    ]
-   },
-   "url": "https://elpais.com/espana/elecciones-generales/2026-11-09/el-bloque-de-la-derecha-mantiene-su-ventaja-pero-el-psoe-se-acerca-al-pp.html",
-   "note": "El 31,9% del PP incluye a UPN. 40dB no publica % de los partidos territoriales. Sumar = FA 3,4% (4–6) + UPC + Ara Més."
-  },
-  {
-   "outlet": "OKdiario",
-   "pollster": "Data10",
-   "date": "9 nov",
-   "fieldwork": "2–3 nov",
-   "sample": 1500,
-   "pct": {
-    "PP": 32.4,
-    "PSOE": 24.7,
-    "Vox": 19.8,
-    "Sumar": 6.9,
-    "ERC": 2.3,
-    "Junts": 1.5,
-    "EHBildu": 1.3,
-    "PNV": 0.7,
-    "BNG": 1.0,
-    "CC": 0.4,
-    "AA": 1.3,
-    "Podemos": 3.1,
-    "SALF": 1.5
-   },
-   "seats": {
-    "PP": 134,
-    "PSOE": 97,
-    "Vox": 69,
-    "Sumar": 14,
-    "ERC": 7,
-    "Junts": 6,
-    "EHBildu": 7,
-    "PNV": 4,
-    "BNG": 2,
-    "CC": 1,
-    "AA": 3,
-    "Podemos": 2,
-    "SALF": 0
-   },
-   "url": "https://okdiario.com/espana/psoe-paga-tragedia-urda-hunde-hasta-97-escanos-mientras-pp-vox-suman-203-20728358",
-   "note": "Sumar incluye Compromís. Participación estimada 68,7%."
-  },
-  {
-   "outlet": "El Español",
-   "pollster": "SocioMétrica",
-   "date": "8 nov",
-   "fieldwork": "1 sep–8 nov",
-   "sample": 5460,
-   "pct": {
-    "PP": 32.0,
-    "UPN": 0.3,
-    "PSOE": 27.7,
-    "Vox": 18.9,
-    "Sumar": 5.0,
-    "Compromis": 0.9,
-    "ERC": 2.4,
-    "Junts": 1.4,
-    "EHBildu": 1.6,
-    "PNV": 0.8,
-    "BNG": 1.0,
-    "CC": 0.5,
-    "AA": 1.7,
-    "Podemos": 1.2,
-    "SALF": 2.2
-   },
-   "seats": {
-    "PP": 134,
-    "UPN": 2,
-    "PSOE": 108,
-    "Vox": 66,
-    "Sumar": 6,
-    "Compromis": 2,
-    "ERC": 9,
-    "Junts": 6,
-    "EHBildu": 8,
-    "PNV": 3,
-    "BNG": 2,
-    "CC": 1,
-    "AA": 3,
-    "Podemos": 0,
-    "SALF": 0
-   },
-   "url": "https://www.elespanol.com/espana/politica/20261108/pp-vox-suman-escanos-sanchez-recupera-perdio-urda-dimision-puente-sondeo-noche/1003744450645_0.html",
-   "note": "Panel acumulado desde septiembre. Sumar = FA 4,4% (5) + CHA (1) + UPC + Ara Més."
-  },
-  {
    "outlet": "El Mundo",
    "pollster": "Sigma Dos",
-   "date": "8 nov",
-   "fieldwork": "30 oct–6 nov",
-   "sample": 4172,
+   "date": "23 nov",
+   "fieldwork": "16–23 nov",
+   "sample": 5252,
    "pct": {
-    "PP": 31.0,
-    "PSOE": 25.2,
-    "Vox": 19.4,
-    "Sumar": 6.9,
-    "Compromis": 1.2,
-    "ERC": 2.9,
-    "Junts": 1.2,
-    "EHBildu": 1.3,
+    "PP": 31.9,
+    "PSOE": 28.6,
+    "Vox": 17.8,
+    "Sumar": 5.5,
+    "Compromis": 1.6,
+    "ERC": 2.7,
+    "Junts": 1.4,
+    "EHBildu": 1.6,
     "PNV": 0.9,
-    "BNG": 1.0,
+    "BNG": 1.1,
     "CC": 0.4,
-    "AA": 1.6,
-    "Podemos": 1.6
+    "Podemos": 0.6
    },
    "seats": {
-    "PP": 134,
-    "PSOE": 103.5,
-    "Vox": 66,
-    "Sumar": 11,
+    "PP": 127,
+    "PSOE": 117,
+    "Vox": 60.5,
+    "Sumar": 9,
     "Compromis": 3.5,
-    "ERC": 8.5,
-    "Junts": 5.5,
-    "EHBildu": 7,
-    "PNV": 5,
-    "BNG": 2,
+    "ERC": 11,
+    "Junts": 3.5,
+    "EHBildu": 6.5,
+    "PNV": 3.5,
+    "BNG": 2.5,
     "CC": 0.5,
-    "AA": 3.5,
     "Podemos": 0
    },
    "seatsAreMidpoints": true,
    "seatsRange": {
     "PP": [
-     131,
-     137
+     124,
+     130
     ],
     "PSOE": [
-     101,
-     106
+     114,
+     120
     ],
     "Vox": [
-     62,
-     70
+     58,
+     63
     ],
     "Sumar": [
-     10,
-     12
+     8,
+     10
     ],
     "Compromis": [
      3,
      4
     ],
     "ERC": [
-     8,
-     9
+     10,
+     12
     ],
     "Junts": [
-     5,
-     6
+     3,
+     4
     ],
     "EHBildu": [
      6,
-     8
+     7
     ],
     "PNV": [
-     4,
-     6
+     3,
+     4
+    ],
+    "BNG": [
+     2,
+     3
     ],
     "CC": [
      0,
      1
+    ]
+   },
+   "url": "https://www.elmundo.es/elecciones/elecciones-generales/2026/11/23/6b048219e9cf4a411a8b4580.html",
+   "note": "Datos tomados de Wikipedia EN (tabla con cita a la fuente); fuente original no accesible para verificación directa. Sumar = Frente Amplio con aliados (FA 5.0% (7/9) + UPC 0.5% (1)). Adelante Andalucía (sin clave): 1.8% / 4.5 esc. UPN no desglosado (va dentro de PP si la encuesta lo estima)."
+  },
+  {
+   "outlet": "Electomanía",
+   "pollster": "EM-Analytics",
+   "date": "23 nov",
+   "fieldwork": "9–23 nov",
+   "sample": 9456,
+   "pct": {
+    "PP": 31.5,
+    "PSOE": 28.9,
+    "Vox": 17.9,
+    "Sumar": 5.9,
+    "Compromis": 1.8,
+    "ERC": 2.7,
+    "Junts": 1.2,
+    "EHBildu": 1.5,
+    "PNV": 0.8,
+    "BNG": 0.9,
+    "CC": 0.3,
+    "Podemos": 0.9,
+    "SALF": 2.2
+   },
+   "seats": {
+    "PP": 130,
+    "PSOE": 122,
+    "Vox": 55,
+    "Sumar": 9,
+    "Compromis": 3,
+    "ERC": 9,
+    "Junts": 4,
+    "EHBildu": 7,
+    "PNV": 3,
+    "BNG": 2,
+    "CC": 0,
+    "Podemos": 2,
+    "SALF": 0
+   },
+   "seatsAreMidpoints": false,
+   "url": "https://electomania.es/tracking-electopanel-23-nov-la-prohibicion-de-publicar-sondeos-entra-en-vigor-con-pp-y-psoe-en-empate-tecnico-y-un-vox-en-descenso/",
+   "note": "Verificado en Electomanía (ERC figura como ERC-Podemos). Adelante Andalucía (sin clave): 1.7% / 4 esc. UPN no desglosado (va dentro de PP si la encuesta lo estima)."
+  },
+  {
+   "outlet": "El Español",
+   "pollster": "SocioMétrica",
+   "date": "23 nov",
+   "fieldwork": "1 sep–23 nov",
+   "sample": 7781,
+   "pct": {
+    "PP": 32.0,
+    "UPN": 0.4,
+    "PSOE": 29.0,
+    "Vox": 18.1,
+    "Sumar": 5.0,
+    "Compromis": 1.1,
+    "ERC": 2.4,
+    "Junts": 1.2,
+    "EHBildu": 1.5,
+    "PNV": 0.8,
+    "BNG": 0.9,
+    "CC": 0.4,
+    "Podemos": 1.0,
+    "SALF": 2.1
+   },
+   "seats": {
+    "PP": 133,
+    "UPN": 2,
+    "PSOE": 115,
+    "Vox": 61,
+    "Sumar": 6,
+    "Compromis": 3,
+    "ERC": 9,
+    "Junts": 5,
+    "EHBildu": 7,
+    "PNV": 3,
+    "BNG": 2,
+    "CC": 1,
+    "Podemos": 0,
+    "SALF": 0
+   },
+   "seatsAreMidpoints": false,
+   "url": "https://www.elespanol.com/espana/politica/20261123/ultimo-sondeo-feijoo-sanchez-alza-puntos-escanos-favor-pp-mayoria-absoluta-derecha/1003744469260_0.html",
+   "note": "Verificado en El Español: PP 32,0% (133) + UPN 2 escaños; FA 4,6% (5) + Ara Més 1 escaño incluidos en Sumar; muestra 7.781 es acumulada desde 1 sep. Sumar = Frente Amplio con aliados (FA 4.6% (5) + UPC 0.2% (0) + Ara Més 0.2% (1)). Adelante Andalucía (sin clave): 1.7% / 3 esc."
+  },
+  {
+   "outlet": "La Voz de Galicia",
+   "pollster": "Sondaxe",
+   "date": "23 nov",
+   "fieldwork": "18–22 nov",
+   "sample": 1000,
+   "pct": {
+    "PP": 31.8,
+    "PSOE": 27.8,
+    "Vox": 16.4,
+    "Sumar": 6.9,
+    "Compromis": 2.0
+   },
+   "seats": {
+    "PP": 131,
+    "PSOE": 113,
+    "Vox": 55,
+    "Sumar": 11,
+    "Compromis": 6,
+    "ERC": 9,
+    "Junts": 8,
+    "EHBildu": 7,
+    "PNV": 3,
+    "BNG": 3,
+    "CC": 1,
+    "Podemos": 0,
+    "SALF": 0
+   },
+   "seatsAreMidpoints": false,
+   "url": "https://www.lavozdegalicia.es/noticia/espana/2026/11/23/ultima-encuesta-sondaxe-feijoo-logra-mejor-resultado-tracking-gobernar-vox/00031795453504723384652.htm",
+   "note": "Datos tomados de Wikipedia EN (tabla con cita a la fuente); fuente original no accesible para verificación directa. Sumar = Frente Amplio con aliados (FA 6.4% (10) + Ara Més 0.4% (1) + UPC 0.1% (0)). Adelante Andalucía (sin clave): ?% / 3 esc. UPN no desglosado (va dentro de PP si la encuesta lo estima)."
+  },
+  {
+   "outlet": "La Séptima",
+   "pollster": "SW Demoscopia",
+   "date": "23 nov",
+   "fieldwork": "26 oct–22 nov",
+   "sample": 12500,
+   "pct": {
+    "PP": 30.1,
+    "UPN": 0.2,
+    "PSOE": 32.9,
+    "Vox": 15.3,
+    "Sumar": 6.8
+   },
+   "seats": {
+    "PP": 124,
+    "UPN": 2,
+    "PSOE": 135,
+    "Vox": 48.5,
+    "Sumar": 10,
+    "ERC": 11,
+    "Junts": 3.5,
+    "EHBildu": 7,
+    "PNV": 3,
+    "BNG": 2,
+    "CC": 1,
+    "Podemos": 0,
+    "SALF": 0
+   },
+   "seatsAreMidpoints": true,
+   "seatsRange": {
+    "PP": [
+     121,
+     127
     ],
-    "AA": [
+    "PSOE": [
+     132,
+     138
+    ],
+    "Vox": [
+     45,
+     52
+    ],
+    "Sumar": [
+     9,
+     11
+    ],
+    "ERC": [
+     10,
+     12
+    ],
+    "Junts": [
      3,
      4
     ]
    },
-   "url": "https://www.elmundo.es/espana/encuestas/2026/11/08/6af066bee85eceae5a8b4598.html",
-   "note": "PP+Vox: 199 escaños y 50,4% según el titular. Sumar = FA 6,5% (9–11) + UPC (1)."
+   "url": "https://x.com/la_septima_tv/status/2124960796455125198",
+   "note": "Datos tomados de Wikipedia EN (tabla con cita a la fuente); fuente original no accesible para verificación directa. Wikipedia agrupa Frente Amplio y Compromís-Front Valencià en una sola cifra: Compromís queda dentro de Sumar. Adelante Andalucía (sin clave): ?% / 3 esc."
   },
   {
-   "outlet": "El Confidencial",
-   "pollster": "IMOP Insights",
-   "date": "8 nov",
-   "fieldwork": "2–6 nov",
-   "sample": 1000,
+   "outlet": "El Debate",
+   "pollster": "Target Point",
+   "date": "23 nov",
+   "fieldwork": "20–21 nov",
+   "sample": 1206,
    "pct": {
-    "PP": 29.8,
-    "PSOE": 25.9,
-    "Vox": 19.9,
-    "Sumar": 8.1,
-    "ERC": 2.6,
-    "Junts": 1.2,
+    "PP": 31.5,
+    "PSOE": 28.8,
+    "Vox": 17.4,
+    "Sumar": 7.3,
+    "Podemos": 1.0
+   },
+   "seats": {
+    "PP": 129,
+    "PSOE": 116,
+    "Vox": 61,
+    "Sumar": 11.5,
+    "ERC": 11,
+    "Junts": 4.5,
+    "EHBildu": 6.5,
+    "PNV": 3.5,
+    "Podemos": 0.5
+   },
+   "seatsAreMidpoints": true,
+   "seatsRange": {
+    "PP": [
+     127,
+     131
+    ],
+    "PSOE": [
+     114,
+     118
+    ],
+    "Vox": [
+     59,
+     63
+    ],
+    "Sumar": [
+     11,
+     12
+    ],
+    "ERC": [
+     10,
+     12
+    ],
+    "Junts": [
+     4,
+     5
+    ],
+    "EHBildu": [
+     6,
+     7
+    ],
+    "PNV": [
+     3,
+     4
+    ],
+    "Podemos": [
+     0,
+     1
+    ]
+   },
+   "url": "https://www.eldebate.com/espana/20261123/feijoo-sanchez-crecen-pelean-primer-puesto-mayoria-absoluta-derecha-sigue-solida_483831.html",
+   "note": "Datos tomados de Wikipedia EN (tabla con cita a la fuente); fuente original no accesible para verificación directa. Wikipedia agrupa Frente Amplio y Compromís-Front Valencià en una sola cifra: Compromís queda dentro de Sumar. UPN no desglosado (va dentro de PP si la encuesta lo estima)."
+  },
+  {
+   "outlet": "Agenda Pública",
+   "pollster": "Cluster17",
+   "date": "23 nov",
+   "fieldwork": "19–21 nov",
+   "sample": 1358,
+   "pct": {
+    "PP": 30.2,
+    "PSOE": 32.6,
+    "Vox": 16.9,
+    "Sumar": 5.2,
+    "Podemos": 1.0,
+    "SALF": 1.4
+   },
+   "seats": {
+    "PP": 123,
+    "PSOE": 133,
+    "Vox": 57,
+    "Sumar": 7,
+    "ERC": 8,
+    "Junts": 6,
+    "EHBildu": 8,
+    "PNV": 3,
+    "BNG": 2,
+    "CC": 1,
+    "Podemos": 0,
+    "SALF": 0
+   },
+   "seatsAreMidpoints": false,
+   "url": "https://agendapublica.es/noticia/21726/encuesta-29n-mayoria-absoluta-de-pp-y-vox-con-un-psoe-lider-a-costa-de-su-izquierda",
+   "note": "Datos tomados de Wikipedia EN (tabla con cita a la fuente); fuente original no accesible para verificación directa. Wikipedia agrupa Frente Amplio y Compromís-Front Valencià en una sola cifra: Compromís queda dentro de Sumar. Sumar = Frente Amplio con aliados (FA 4.2% (?) + FV 1.0% (?)). Adelante Andalucía (sin clave): ?% / 2 esc. UPN no desglosado (va dentro de PP si la encuesta lo estima)."
+  },
+  {
+   "outlet": "Prensa Ibérica",
+   "pollster": "GESOP",
+   "date": "23 nov",
+   "fieldwork": "18–21 nov",
+   "sample": 905,
+   "pct": {
+    "PP": 32.9,
+    "PSOE": 29.0,
+    "Vox": 17.5,
+    "Sumar": 6.7,
+    "ERC": 2.5,
+    "Junts": 1.1,
+    "Podemos": 0.7,
+    "SALF": 1.3
+   },
+   "seats": {
+    "PP": 133.5,
+    "PSOE": 113,
+    "Vox": 59.5,
+    "Sumar": 8.5,
+    "ERC": 10.5,
+    "Junts": 4,
+    "Podemos": 0,
+    "SALF": 0
+   },
+   "seatsAreMidpoints": true,
+   "seatsRange": {
+    "PP": [
+     131,
+     136
+    ],
+    "PSOE": [
+     110,
+     116
+    ],
+    "Vox": [
+     56,
+     63
+    ],
+    "Sumar": [
+     7,
+     10
+    ],
+    "ERC": [
+     10,
+     11
+    ],
+    "Junts": [
+     3,
+     5
+    ]
+   },
+   "url": "https://www.elperiodico.com/es/politica/20261123/encuesta-elecciones-generales-espana-2026-sondeo-29n-136693938",
+   "note": "Datos tomados de Wikipedia EN (tabla con cita a la fuente); fuente original no accesible para verificación directa. Wikipedia agrupa Frente Amplio y Compromís-Front Valencià en una sola cifra: Compromís queda dentro de Sumar. UPN no desglosado (va dentro de PP si la encuesta lo estima)."
+  },
+  {
+   "outlet": "Prisa",
+   "pollster": "40dB",
+   "date": "23 nov",
+   "fieldwork": "10–21 nov",
+   "sample": 7500,
+   "pct": {
+    "PP": 31.8,
+    "PSOE": 30.9,
+    "Vox": 17.3,
+    "Sumar": 4.4,
+    "Compromis": 1.3,
+    "Podemos": 1.1,
+    "SALF": 1.3
+   },
+   "seats": {
+    "PP": 129.5,
+    "UPN": 2,
+    "PSOE": 121.5,
+    "Vox": 56,
+    "Sumar": 6.5,
+    "Compromis": 3,
+    "ERC": 10,
+    "Junts": 4,
+    "EHBildu": 7,
+    "PNV": 3,
+    "BNG": 2,
+    "CC": 1,
+    "Podemos": 0.5,
+    "SALF": 0
+   },
+   "seatsAreMidpoints": true,
+   "seatsRange": {
+    "PP": [
+     125,
+     134
+    ],
+    "PSOE": [
+     116,
+     127
+    ],
+    "Vox": [
+     51,
+     61
+    ],
+    "Sumar": [
+     5,
+     8
+    ],
+    "Podemos": [
+     0,
+     1
+    ]
+   },
+   "url": "https://elpais.com/espana/elecciones-generales/2026-11-23/la-ventaja-de-la-derecha-no-cede-mientras-el-psoe-pugna-por-el-primer-puesto.html",
+   "note": "Datos tomados de Wikipedia EN (tabla con cita a la fuente); fuente original no accesible para verificación directa. Sumar = Frente Amplio con aliados (FA 3.9% (5/6) + UPC 0.3% (0/1) + Ara Més 0.2% (0/1)). Adelante Andalucía (sin clave): ?% / 3 esc."
+  },
+  {
+   "outlet": "Convergent Opinion",
+   "pollster": "Convergent Opinion",
+   "date": "23 nov",
+   "fieldwork": "14–21 nov",
+   "sample": 6848,
+   "pct": {
+    "PP": 31.5,
+    "PSOE": 29.3,
+    "Vox": 17.4,
+    "Sumar": 6.5,
+    "ERC": 3.5,
+    "Junts": 1.4,
     "EHBildu": 1.6,
-    "PNV": 0.7,
-    "BNG": 1.3,
-    "CC": 0.5,
-    "AA": 1.8,
-    "Podemos": 1.2,
-    "SALF": 1.7
+    "PNV": 0.8
    },
    "seats": {
     "PP": 126,
-    "PSOE": 106,
-    "Vox": 70,
-    "Sumar": 13,
-    "ERC": 11,
-    "Junts": 4,
+    "PSOE": 119,
+    "Vox": 60,
+    "Sumar": 11,
+    "ERC": 12,
+    "Junts": 5,
     "EHBildu": 7,
     "PNV": 4,
-    "BNG": 3,
-    "CC": 1,
-    "AA": 4,
-    "Podemos": 1,
-    "SALF": 0
-   },
-   "url": "https://www.elconfidencial.com/espana/2026-11-08/derecha-recupera-seis-escanos-izquierda-castigo-psoe-urda-cbtr_4460900/",
-   "note": "Sumar incluye Compromís."
-  },
-  {
-   "outlet": "Electomanía",
-   "pollster": "EM-Analytics (ElectoPanel)",
-   "date": "8 nov",
-   "fieldwork": "1–6 nov",
-   "sample": 1860,
-   "pct": {
-    "PP": 31.1,
-    "PSOE": 25.3,
-    "Vox": 19.2,
-    "Sumar": 6.1,
-    "Compromis": 1.5,
-    "ERC": 2.2,
-    "Junts": 1.2,
-    "EHBildu": 1.4,
-    "PNV": 0.9,
-    "BNG": 0.9,
-    "CC": 0.3,
-    "AA": 1.0,
-    "Podemos": 1.8,
-    "SALF": 1.9
-   },
-   "seats": {
-    "PP": 131,
-    "PSOE": 108,
-    "Vox": 66,
-    "Sumar": 12,
-    "Compromis": 3,
-    "ERC": 8,
-    "Junts": 5,
-    "EHBildu": 8,
-    "PNV": 4,
     "BNG": 2,
-    "CC": 0,
-    "AA": 2,
-    "Podemos": 1,
+    "CC": 1,
+    "Podemos": 0,
     "SALF": 0
    },
-   "url": "https://electomania.es/electopanel-8-nov-el-bipartidismo-cede-terreno-vox-sube-en-escanos-y-eh-bildu-se-distancia-del-pnv/",
-   "note": "Panel online."
+   "seatsAreMidpoints": false,
+   "url": "https://x.com/convergentrsrch/status/2124613694394859794",
+   "note": "Datos tomados de Wikipedia EN (tabla con cita a la fuente); fuente original no accesible para verificación directa. Wikipedia agrupa Frente Amplio y Compromís-Front Valencià en una sola cifra: Compromís queda dentro de Sumar. Adelante Andalucía (sin clave): ?% / 2 esc. UPN no desglosado (va dentro de PP si la encuesta lo estima)."
   },
   {
    "outlet": "elDiario.es",
    "pollster": "Ateneo del Dato",
-   "date": "8 nov",
-   "fieldwork": "2–5 nov",
+   "date": "23 nov",
+   "fieldwork": "18–20 nov",
    "sample": 2000,
    "pct": {
-    "PP": 31.5,
-    "PSOE": 28.6,
-    "Vox": 18.6,
-    "Sumar": 6.1,
-    "Podemos": 1.5
+    "PP": 32.1,
+    "PSOE": 30.8,
+    "Vox": 17.6,
+    "Sumar": 6.0,
+    "Podemos": 0.7
    },
    "seats": {
-    "PP": 128,
-    "PSOE": 112,
-    "Vox": 65,
+    "PP": 132.5,
+    "PSOE": 120.5,
+    "Vox": 56.5,
     "Sumar": 10,
     "Podemos": 0
    },
    "seatsAreMidpoints": true,
    "seatsRange": {
     "PP": [
-     123,
-     133
+     126,
+     139
     ],
     "PSOE": [
-     108,
-     116
+     112,
+     129
     ],
     "Vox": [
-     61,
-     69
+     50,
+     63
     ],
     "Sumar": [
-     9,
-     11
+     8,
+     12
     ]
    },
-   "url": "https://www.eldiario.es/politica/psoe-crece-dimision-oscar-puente-pp-vox-mantienen-mayoria-absoluta_1_13643551.html",
-   "note": "Sumar incluye Compromís; no publica datos de partidos territoriales."
+   "url": "https://www.eldiario.es/politica/pp-gana-minima-psoe-derecha-supera-izquierda-ultima-encuesta-29n_1_13684963.html",
+   "note": "Datos tomados de Wikipedia EN (tabla con cita a la fuente); fuente original no accesible para verificación directa. Wikipedia agrupa Frente Amplio y Compromís-Front Valencià en una sola cifra: Compromís queda dentro de Sumar. UPN no desglosado (va dentro de PP si la encuesta lo estima)."
   },
   {
    "outlet": "Onda Cero",
    "pollster": "Celeste-Tel",
-   "date": "6 nov",
-   "fieldwork": "29 oct–3 nov",
+   "date": "23 nov",
+   "fieldwork": "16–20 nov",
    "sample": 1100,
    "pct": {
-    "PP": 31.4,
+    "PP": 31.8,
     "UPN": 0.4,
-    "PSOE": 25.7,
-    "Vox": 19.2,
-    "Sumar": 6.8,
-    "Compromis": 1.2,
-    "ERC": 2.2,
-    "Junts": 1.5,
-    "EHBildu": 1.4,
-    "PNV": 0.9,
-    "BNG": 0.8,
-    "CC": 0.5,
-    "AA": 1.2,
-    "Podemos": 1.9,
-    "SALF": 1.6
+    "PSOE": 28.1,
+    "Vox": 18.9,
+    "Sumar": 5.7,
+    "Compromis": 1.3,
+    "ERC": 2.4,
+    "Junts": 1.3,
+    "EHBildu": 1.6,
+    "PNV": 0.8,
+    "BNG": 0.9,
+    "CC": 0.4,
+    "Podemos": 0.8,
+    "SALF": 1.8
    },
    "seats": {
-    "PP": 136,
+    "PP": 130,
     "UPN": 2,
-    "PSOE": 101,
-    "Vox": 66,
+    "PSOE": 112,
+    "Vox": 61,
     "Sumar": 10,
     "Compromis": 3,
-    "ERC": 8,
+    "ERC": 9,
     "Junts": 6,
     "EHBildu": 7,
     "PNV": 4,
     "BNG": 2,
     "CC": 1,
-    "AA": 3,
+    "Podemos": 0,
+    "SALF": 0
+   },
+   "seatsAreMidpoints": false,
+   "url": "https://www.electografica.com/2026/11/encuesta-celeste-tel-261123.html",
+   "note": "Verificado en electografica.com (ficha Onda Cero). Adelante Andalucía (sin clave): 1.7% / 3 esc."
+  },
+  {
+   "outlet": "La Razón",
+   "pollster": "NC Report",
+   "date": "23 nov",
+   "fieldwork": "16–20 nov",
+   "sample": 1000,
+   "pct": {
+    "PP": 31.9,
+    "UPN": 0.4,
+    "PSOE": 27.2,
+    "Vox": 19.0,
+    "Sumar": 6.0,
+    "Compromis": 1.3,
+    "ERC": 2.4,
+    "Junts": 1.4,
+    "EHBildu": 1.5,
+    "PNV": 0.8,
+    "BNG": 0.9,
+    "CC": 0.4,
+    "Podemos": 0.8
+   },
+   "seats": {
+    "PP": 131.5,
+    "UPN": 2,
+    "PSOE": 109.5,
+    "Vox": 65,
+    "Sumar": 9.5,
+    "Compromis": 3,
+    "ERC": 9.5,
+    "Junts": 6.5,
+    "EHBildu": 7.5,
+    "PNV": 3.5,
+    "BNG": 2,
+    "CC": 1,
+    "Podemos": 0
+   },
+   "seatsAreMidpoints": true,
+   "seatsRange": {
+    "PP": [
+     130,
+     133
+    ],
+    "PSOE": [
+     108,
+     111
+    ],
+    "Vox": [
+     64,
+     66
+    ],
+    "Sumar": [
+     9,
+     10
+    ],
+    "ERC": [
+     9,
+     10
+    ],
+    "Junts": [
+     6,
+     7
+    ],
+    "EHBildu": [
+     7,
+     8
+    ],
+    "PNV": [
+     3,
+     4
+    ]
+   },
+   "url": "https://www.larazon.es/espana/sanchez-remonta-alterar-mayoria-ppvox_202611236b032823c0d5c85b96c4a76e.html",
+   "note": "Datos tomados de Wikipedia EN (tabla con cita a la fuente); fuente original no accesible para verificación directa. Sumar = Frente Amplio con aliados (FA 5.6% (8/9) + UPC 0.4% (1)). Adelante Andalucía (sin clave): 1.7% / 3.5 esc."
+  },
+  {
+   "outlet": "El Confidencial",
+   "pollster": "IMOP",
+   "date": "23 nov",
+   "fieldwork": "17–19 nov",
+   "sample": 1200,
+   "pct": {
+    "PP": 31.7,
+    "PSOE": 27.4,
+    "Vox": 18.3,
+    "Sumar": 7.4,
+    "ERC": 2.6,
+    "Junts": 1.1,
+    "EHBildu": 1.6,
+    "PNV": 1.0,
+    "BNG": 1.2,
+    "CC": 0.5,
+    "Podemos": 0.7,
+    "SALF": 1.9
+   },
+   "seats": {
+    "PP": 131,
+    "PSOE": 110,
+    "Vox": 64,
+    "Sumar": 11,
+    "ERC": 12,
+    "Junts": 4,
+    "EHBildu": 7,
+    "PNV": 4,
+    "BNG": 3,
+    "CC": 1,
+    "Podemos": 0,
+    "SALF": 0
+   },
+   "seatsAreMidpoints": false,
+   "url": "https://www.elconfidencial.com/espana/2026-11-23/pp-vox-recta-final-margen-19-escanos-investidura-2023_4470100/",
+   "note": "Datos tomados de Wikipedia EN (tabla con cita a la fuente); fuente original no accesible para verificación directa. Wikipedia agrupa Frente Amplio y Compromís-Front Valencià en una sola cifra: Compromís queda dentro de Sumar. Adelante Andalucía (sin clave): 2.0% / 3 esc. UPN no desglosado (va dentro de PP si la encuesta lo estima)."
+  },
+  {
+   "outlet": "Artículo14",
+   "pollster": "Winston",
+   "date": "23 nov",
+   "fieldwork": "17–19 nov",
+   "sample": 1482,
+   "pct": {
+    "PP": 31.1,
+    "PSOE": 28.2,
+    "Vox": 17.7,
+    "Sumar": 6.4,
+    "ERC": 2.7,
+    "Junts": 1.4,
+    "EHBildu": 1.3,
+    "PNV": 0.9,
+    "BNG": 0.9,
+    "CC": 0.3,
+    "Podemos": 1.6,
+    "SALF": 2.6
+   },
+   "seats": {
+    "PP": 130,
+    "PSOE": 116,
+    "Vox": 61,
+    "Sumar": 9,
+    "ERC": 11,
+    "Junts": 5,
+    "EHBildu": 6,
+    "PNV": 3,
+    "BNG": 2,
+    "CC": 1,
+    "Podemos": 0,
+    "SALF": 0
+   },
+   "seatsAreMidpoints": false,
+   "url": "https://www.articulo14.es/politica/sanchez-recorta-distancias-a-feijoo-pero-la-mayoria-de-pp-y-vox-supera-los-190-escanos-20261123.html",
+   "note": "Datos tomados de Wikipedia EN (tabla con cita a la fuente); fuente original no accesible para verificación directa. Wikipedia agrupa Frente Amplio y Compromís-Front Valencià en una sola cifra: Compromís queda dentro de Sumar. Adelante Andalucía (sin clave): 2.4% / 6 esc. UPN no desglosado (va dentro de PP si la encuesta lo estima)."
+  },
+  {
+   "outlet": "Okdiario",
+   "pollster": "Data10",
+   "date": "22 nov",
+   "fieldwork": "19–22 nov",
+   "sample": 3000,
+   "pct": {
+    "PP": 31.7,
+    "PSOE": 27.3,
+    "Vox": 19.1,
+    "Sumar": 6.5
+   },
+   "seats": {
+    "PP": 130,
+    "PSOE": 113,
+    "Vox": 64,
+    "Sumar": 9
+   },
+   "seatsAreMidpoints": false,
+   "url": "https://okdiario.com/espana/derecha-aguanta-empuje-sanchez-pp-vox-sumarian-194-escanos-mayoria-absoluta-holgada-seis-dias-del-29-n-21244630",
+   "note": "Datos tomados de Wikipedia EN (tabla con cita a la fuente); fuente original no accesible para verificación directa. Wikipedia agrupa Frente Amplio y Compromís-Front Valencià en una sola cifra: Compromís queda dentro de Sumar. UPN no desglosado (va dentro de PP si la encuesta lo estima)."
+  },
+  {
+   "outlet": "La Vanguardia",
+   "pollster": "Ipsos",
+   "date": "22 nov",
+   "fieldwork": "13–20 nov",
+   "sample": 1999,
+   "pct": {
+    "PP": 30.3,
+    "PSOE": 29.8,
+    "Vox": 17.9,
+    "Sumar": 4.8,
+    "Compromis": 1.0,
+    "ERC": 2.7,
+    "Junts": 1.3,
+    "EHBildu": 1.4,
+    "PNV": 0.8,
+    "BNG": 0.6,
+    "CC": 0.4,
+    "Podemos": 1.1,
+    "SALF": 1.9
+   },
+   "seats": {
+    "PP": 127,
+    "PSOE": 119,
+    "Vox": 63,
+    "Sumar": 6,
+    "Compromis": 3,
+    "ERC": 11,
+    "Junts": 5,
+    "EHBildu": 7,
+    "PNV": 3,
+    "BNG": 1,
+    "CC": 1,
+    "Podemos": 0,
+    "SALF": 0
+   },
+   "seatsAreMidpoints": false,
+   "url": "https://www.lavanguardia.com/politica/20261122/11689982/derecha-suma-mayoria-absoluta-psoe-acerca-pp.html",
+   "note": "Datos tomados de Wikipedia EN (tabla con cita a la fuente); fuente original no accesible para verificación directa. Adelante Andalucía (sin clave): 2.1% / 4 esc. UPN no desglosado (va dentro de PP si la encuesta lo estima)."
+  },
+  {
+   "outlet": "Vozpópuli",
+   "pollster": "Hamalgama Métrica",
+   "date": "22 nov",
+   "fieldwork": "10–20 nov",
+   "sample": 1000,
+   "pct": {
+    "PP": 31.8,
+    "UPN": 0.4,
+    "PSOE": 25.4,
+    "Vox": 20.6,
+    "Sumar": 6.5,
+    "ERC": 2.2,
+    "Junts": 1.5,
+    "EHBildu": 1.4,
+    "PNV": 0.9,
+    "BNG": 0.8,
+    "Podemos": 1.2
+   },
+   "seats": {
+    "PP": 130,
+    "UPN": 2,
+    "PSOE": 98,
+    "Vox": 80,
+    "Sumar": 9,
+    "ERC": 9,
+    "Junts": 6,
+    "EHBildu": 7,
+    "PNV": 4,
+    "BNG": 2,
+    "Podemos": 0
+   },
+   "seatsAreMidpoints": false,
+   "url": "https://www.vozpopuli.com/espana/politica/pp-y-vox-se-disparan-a-210-escanos-y-frenan-en-seco-el-espiritu-de-remontada-del-psoe.html",
+   "note": "Datos tomados de Wikipedia EN (tabla con cita a la fuente); fuente original no accesible para verificación directa. Wikipedia agrupa Frente Amplio y Compromís-Front Valencià en una sola cifra: Compromís queda dentro de Sumar. Adelante Andalucía (sin clave): 1.5% / 3 esc."
+  },
+  {
+   "outlet": "Henneo",
+   "pollster": "DYM",
+   "date": "22 nov",
+   "fieldwork": "17–19 nov",
+   "sample": 1010,
+   "pct": {
+    "PP": 33.0,
+    "PSOE": 28.0,
+    "Vox": 18.0,
+    "Sumar": 6.9,
+    "Podemos": 1.3,
+    "SALF": 1.0
+   },
+   "seats": {
+    "PP": 135.5,
+    "PSOE": 110.5,
+    "Vox": 61,
+    "Sumar": 10.5,
+    "Podemos": 0,
+    "SALF": 0
+   },
+   "seatsAreMidpoints": true,
+   "seatsRange": {
+    "PP": [
+     132,
+     139
+    ],
+    "PSOE": [
+     107,
+     114
+    ],
+    "Vox": [
+     58,
+     64
+    ],
+    "Sumar": [
+     8,
+     13
+    ]
+   },
+   "url": "https://www.diariodenavarra.es/noticias/actualidad/nacional/2026/11/22/pp-vox-consolidan-ventaja-semana-elecciones-843312-28.html",
+   "note": "Datos tomados de Wikipedia EN (tabla con cita a la fuente); fuente original no accesible para verificación directa. Wikipedia agrupa Frente Amplio y Compromís-Front Valencià en una sola cifra: Compromís queda dentro de Sumar. UPN no desglosado (va dentro de PP si la encuesta lo estima)."
+  },
+  {
+   "outlet": "Vocento",
+   "pollster": "GAD3",
+   "date": "22 nov",
+   "fieldwork": "16–19 nov",
+   "sample": 1501,
+   "pct": {
+    "PP": 31.1,
+    "PSOE": 28.4,
+    "Vox": 18.1,
+    "Sumar": 6.5,
+    "Compromis": 1.5,
+    "ERC": 2.6,
+    "Junts": 1.1,
+    "EHBildu": 1.6,
+    "PNV": 1.0,
+    "BNG": 0.9,
+    "CC": 0.3,
+    "Podemos": 1.1,
+    "SALF": 1.3
+   },
+   "seats": {
+    "PP": 131,
+    "PSOE": 110,
+    "Vox": 63,
+    "Sumar": 9,
+    "Compromis": 5,
+    "ERC": 11,
+    "Junts": 4,
+    "EHBildu": 7,
+    "PNV": 4,
+    "BNG": 2,
+    "CC": 1,
     "Podemos": 1,
     "SALF": 0
    },
-   "url": "https://www.ondacero.es/elecciones/generales/encuestas-vox-lograrian-absolutisima-segun-celeste-tel_202611066aedd355ea8d8979977bbe63.html",
-   "note": "Participación estimada 65,5%."
+   "seatsAreMidpoints": false,
+   "url": "https://www.abc.es/espana/derecha-mantiene-holgada-mayoria-194-escanos-semana-20261122023225-nt.html",
+   "note": "Datos tomados de Wikipedia EN (tabla con cita a la fuente); fuente original no accesible para verificación directa. Sumar = Frente Amplio con aliados (FA 6.1% (8) + Ara Més 0.2% (1) + UPC 0.2% (0)). Adelante Andalucía (sin clave): 1.9% / 3 esc. UPN no desglosado (va dentro de PP si la encuesta lo estima)."
+  },
+  {
+   "outlet": "La Región",
+   "pollster": "Infortécnica",
+   "date": "22 nov",
+   "fieldwork": "26 oct–16 nov",
+   "sample": 1910,
+   "pct": {},
+   "seats": {
+    "PP": 137,
+    "PSOE": 113,
+    "Vox": 58,
+    "Sumar": 10,
+    "BNG": 1.5
+   },
+   "seatsAreMidpoints": true,
+   "seatsRange": {
+    "PP": [
+     134,
+     140
+    ],
+    "PSOE": [
+     110,
+     116
+    ],
+    "Vox": [
+     56,
+     60
+    ],
+    "Sumar": [
+     9,
+     11
+    ],
+    "BNG": [
+     1,
+     2
+    ]
+   },
+   "url": "https://www.laregion.es/espana/encuesta-29n-pp-psoe-vox-bng_1_20261122-4503029.html",
+   "note": "Datos tomados de Wikipedia EN (tabla con cita a la fuente); fuente original no accesible para verificación directa. Wikipedia agrupa Frente Amplio y Compromís-Front Valencià en una sola cifra: Compromís queda dentro de Sumar. UPN no desglosado (va dentro de PP si la encuesta lo estima)."
+  },
+  {
+   "outlet": "Ara",
+   "pollster": "YouGov",
+   "date": "14 nov",
+   "fieldwork": "26 oct–2 nov",
+   "sample": 1221,
+   "pct": {
+    "PP": 29.6,
+    "PSOE": 25.9,
+    "Vox": 20.3,
+    "Sumar": 9.2,
+    "ERC": 2.9,
+    "Junts": 1.3,
+    "EHBildu": 1.1,
+    "PNV": 0.7,
+    "Podemos": 1.8
+   },
+   "seats": {
+    "PP": 121,
+    "PSOE": 104.5,
+    "Vox": 72,
+    "Sumar": 18.5,
+    "ERC": 12.5,
+    "Junts": 4.5,
+    "EHBildu": 7,
+    "PNV": 3.5,
+    "BNG": 2,
+    "CC": 1,
+    "Podemos": 0.5
+   },
+   "seatsAreMidpoints": true,
+   "seatsRange": {
+    "PP": [
+     112,
+     130
+    ],
+    "PSOE": [
+     96,
+     113
+    ],
+    "Vox": [
+     64,
+     80
+    ],
+    "Sumar": [
+     12,
+     25
+    ],
+    "ERC": [
+     10,
+     15
+    ],
+    "Junts": [
+     3,
+     6
+    ],
+    "EHBildu": [
+     5,
+     9
+    ],
+    "PNV": [
+     2,
+     5
+    ],
+    "Podemos": [
+     0,
+     1
+    ]
+   },
+   "url": "https://www.ara.cat/politica/eleccions-generals/fort-ascens-vox-garanteix-majoria-absoluta-dretes-29-n_1_5907814.html",
+   "note": "Datos tomados de Wikipedia EN (tabla con cita a la fuente); fuente original no accesible para verificación directa. Wikipedia agrupa Frente Amplio y Compromís-Front Valencià en una sola cifra: Compromís queda dentro de Sumar. Adelante Andalucía (sin clave): 1.8% / 3.0 esc. UPN no desglosado (va dentro de PP si la encuesta lo estima)."
+  },
+  {
+   "outlet": "CIS",
+   "pollster": "CIS",
+   "date": "12 nov",
+   "fieldwork": "7–30 oct",
+   "sample": 45074,
+   "pct": {
+    "PSOE": 33.3,
+    "PP": 25.5,
+    "Vox": 18.4,
+    "Sumar": 4.7,
+    "ERC": 3.1,
+    "EHBildu": 1.8,
+    "Compromis": 1.6,
+    "Junts": 1.2,
+    "Podemos": 1.1,
+    "BNG": 1.0,
+    "PNV": 0.7,
+    "SALF": 1.4,
+    "CC": 0.2
+   },
+   "seats": {
+    "PSOE": 138.5,
+    "PP": 102,
+    "Vox": 61,
+    "Sumar": 9,
+    "ERC": 12,
+    "EHBildu": 8.5,
+    "Compromis": 5,
+    "Junts": 3,
+    "Podemos": 0.5,
+    "BNG": 2.5,
+    "PNV": 3,
+    "SALF": 0,
+    "CC": 0
+   },
+   "seatsAreMidpoints": true,
+   "seatsRange": {
+    "PSOE": [
+     134,
+     143
+    ],
+    "PP": [
+     98,
+     106
+    ],
+    "Vox": [
+     57,
+     65
+    ],
+    "Sumar": [
+     7,
+     11
+    ],
+    "ERC": [
+     10,
+     14
+    ],
+    "EHBildu": [
+     7,
+     10
+    ],
+    "Compromis": [
+     4,
+     6
+    ],
+    "Junts": [
+     2,
+     4
+    ],
+    "Podemos": [
+     0,
+     1
+    ],
+    "BNG": [
+     2,
+     3
+    ],
+    "PNV": [
+     2,
+     4
+    ]
+   },
+   "url": "https://www.cis.es/documents/d/cis/3584_estimacion-pdf",
+   "note": "Macroencuesta preelectoral (Estudio 3584), verificado en el PDF del CIS. ERC = ERC-Podemos (campaña conjunta en Cataluña). Sumar = solo Frente Amplio; aparte UPC 0,4% (0–2) y Ara Més-Front Ampli 0,2% (0–1). Adelante Andalucía 1,5% (3–4). SALF y CC sin escaños (\"-\"). UPN no desglosado."
   }
  ],
- "pollsNote": "Encuestas de institutos independientes publicadas entre el 1 y el 10 de noviembre de 2026 que estiman escaños; del tracking diario de SW Demoscopia solo se incluye la última entrega y se excluyen los sondeos internos de partidos. Si la encuesta da un rango de escaños se toma el punto medio, y si no separa a Compromís va incluido en Sumar (Frente Amplio). El CIS no publicó barómetro de noviembre a esta fecha; la veda de encuestas empieza el 23 de noviembre.",
+ "pollsNote": "Última entrega de cada instituto publicada entre el 12 y el 23 de noviembre de 2026 (el 23 fue el último día legal: la ley prohíbe difundir encuestas en los cinco días previos a la votación). Solo entran las que estiman escaños; se excluyen los sondeos internos de partidos y las reestimaciones de terceros sobre datos del CIS. Si la encuesta da un rango de escaños se toma el punto medio. Sumar es el Frente Amplio con sus aliados; si la encuesta no separa a Compromís, va incluido en Sumar. Adelante Andalucía no tiene columna propia. El CIS entra con su macroencuesta preelectoral (estudio 3584, 45.074 entrevistas, campo del 7 al 30 de octubre); su barómetro de noviembre no estima escaños. Los datos de la mayoría de las encuestas salen de la tabla de Wikipedia, que cita la nota de cada medio; EM-Analytics, SocioMétrica, Celeste-Tel y el CIS se verificaron en la fuente.",
  "results2023": {
   "turnout": 66.59,
   "parties": [
@@ -1286,7 +1771,7 @@
  ],
  "keyFacts": [
   "Es la primera elección general desde julio de 2023 y la XV Legislatura termina un año antes de lo previsto.",
-  "Hacen falta 176 diputados para la investidura en primera votación. Las encuestas le dan a PP + Vox entre 198 y 212.",
+  "Hacen falta 176 diputados para la investidura en primera votación. En las últimas encuestas, PP + Vox suman entre 163 (CIS) y 212 (Hamalgama Métrica); la mediana es 191.",
   "Votan 38.728.356 personas: 35,96 millones residen en España y 2,77 millones en el exterior.",
   "Madrid elige 38 diputados (uno más que en 2023) y Cádiz 8 (uno menos). Soria es la provincia que menos elige: 2.",
   "El piso del 3 % se cuenta en cada provincia, no a nivel nacional, y por eso los partidos regionales consiguen bancas.",

@@ -6152,6 +6152,69 @@
   .pol-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 26px 20px; padding: 6px 4px 10px; }
   .ar-offices { font-size: 13px; margin: 6px 0 8px; } .ar-offices ul { margin: 4px 0 0 18px; padding: 0; } .ar-offices li { margin: 2px 0; color: var(--ink-soft); }
 
+
+  /* ===== Buscador de países (combobox propio) ===== */
+  .cbx-list { position: absolute; left: 0; right: 0; top: calc(100% + 6px); z-index: 1200; list-style: none; margin: 0; padding: 6px; background: var(--surface); border: 1px solid var(--line-strong, #CBD2DC); border-radius: 14px; box-shadow: 0 14px 36px rgba(11,22,40,.18); max-height: min(420px, 60vh); overflow-y: auto; text-align: left; }
+  .cbx-list[hidden] { display: none; }
+  .cbx-head { font: 700 10.5px var(--font-sans); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); padding: 6px 10px 4px; }
+  .cbx-item { display: flex; align-items: center; gap: 10px; padding: 8px 10px; border-radius: 10px; cursor: pointer; }
+  .cbx-item.is-active, .cbx-item:hover { background: var(--bg); }
+  .cbx-item .flag-img.cbx-flag { width: 28px; height: 21px; border-radius: 3px; flex: none; box-shadow: 0 0 0 1px rgba(0,0,0,.08); object-fit: cover; }
+  .cbx-main { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+  .cbx-main b { font: 600 14.5px var(--font-sans); color: var(--ink); }
+  .cbx-main small { font-size: 12px; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .cbx-main mark { background: rgba(194,65,12,.16); color: inherit; border-radius: 3px; padding: 0 1px; }
+  .cbx-ideo { flex: none; display: inline-flex; align-items: center; gap: 5px; font-size: 11.5px; color: var(--ink-soft); }
+  .cbx-ideo i { width: 9px; height: 9px; border-radius: 50%; display: inline-block; }
+  .cbx-empty { padding: 12px; font-size: 13px; color: var(--muted); }
+  .cbx-compact { min-width: 300px; }
+  .cbx-compact .cbx-ideo { display: none; }
+  @media (max-width: 600px) { .cbx-ideo { display: none; } .cbx-compact { min-width: 0; } }
+
+  /* ===== Contador de gobiernos ===== */
+  .wgov { position: relative; background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 22px 24px 18px; margin: 28px 0 0; }
+  .wg-head { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 14px 24px; align-items: flex-end; margin-bottom: 16px; }
+  .wg-kicker { font: 700 11px var(--font-sans); letter-spacing: .12em; text-transform: uppercase; color: var(--accent); }
+  .wg-head h3 { font: 700 30px/1.1 var(--font-serif); color: var(--ink); margin: 4px 0 6px; }
+  .wg-lede { margin: 0; font-size: 15px; color: var(--ink-soft); max-width: 560px; }
+  .wg-controls { display: flex; flex-direction: column; gap: 8px; align-items: flex-end; }
+  .wg-regions { flex-wrap: wrap; }
+  .wg-tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 10px; margin-bottom: 16px; }
+  .wg-tile { border: 1px solid var(--line); border-top: 4px solid var(--c); border-radius: 12px; padding: 10px 14px 12px; background: var(--bg); }
+  .wg-tile-l { display: flex; align-items: center; gap: 6px; font: 700 11px var(--font-sans); letter-spacing: .06em; text-transform: uppercase; color: var(--ink-soft); }
+  .wg-tile-l i { width: 9px; height: 9px; border-radius: 50%; background: var(--c); }
+  .wg-tile b { display: block; font: 700 34px/1.1 var(--font-serif); color: var(--ink); margin: 4px 0 2px; font-variant-numeric: tabular-nums; }
+  .wg-tile small { font-size: 12px; color: var(--muted); }
+  .wg-bar { display: flex; gap: 2px; height: 30px; border-radius: 8px; overflow: hidden; }
+  .wg-seg { display: flex; align-items: center; justify-content: center; min-width: 2px; }
+  .wg-seg em { font: 700 12px var(--font-sans); font-style: normal; color: #fff; text-shadow: 0 1px 2px rgba(0,0,0,.35); }
+  .wg-axis { display: flex; font-size: 11.5px; color: var(--muted); margin: 5px 0 10px; }
+  .wg-axis span:nth-child(2) { margin-left: auto; margin-right: 24px; } .wg-axis-nd { font-weight: 600; }
+  .wg-legend { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 12.5px; color: var(--ink-soft); margin-bottom: 16px; }
+  .wg-legend span { display: inline-flex; align-items: center; gap: 5px; } .wg-legend i { width: 10px; height: 10px; border-radius: 3px; display: inline-block; }
+  .wg-waffle { display: grid; grid-template-columns: repeat(auto-fill, minmax(18px, 1fr)); gap: 3px; }
+  .wg-waffle.is-pop { grid-template-columns: repeat(25, 1fr); max-width: 640px; }
+  .wg-waffle > * { aspect-ratio: 1; border-radius: 3px; border: 0; padding: 0; display: block; }
+  .wg-cell { cursor: pointer; transition: transform .12s; } .wg-cell:hover, .wg-cell:focus-visible { transform: scale(1.35); outline: 2px solid var(--surface); box-shadow: 0 0 0 3px var(--ink); z-index: 1; position: relative; }
+  .wg-wnote { font-size: 12px; color: var(--muted); margin: 8px 0 0; }
+  .wg-tip { position: absolute; z-index: 5; width: 250px; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; box-shadow: 0 10px 28px rgba(11,22,40,.18); padding: 9px 11px; font-size: 12.5px; pointer-events: none; display: grid; grid-template-columns: auto 1fr; gap: 2px 8px; align-items: center; }
+  .wg-tip[hidden] { display: none; }
+  .wg-tip .flag-img { width: 24px; height: 18px; border-radius: 2px; } .wg-tip span, .wg-tip em { grid-column: 1 / -1; color: var(--muted); } .wg-tip em { font-style: normal; display: flex; align-items: center; gap: 5px; color: var(--ink-soft); } .wg-tip em i { width: 9px; height: 9px; border-radius: 50%; display: inline-block; }
+  .wg-shifts { border-top: 1px solid var(--line); margin-top: 18px; padding-top: 16px; }
+  .wg-shifts-head h4 { margin: 0 0 4px; font: 700 20px var(--font-serif); color: var(--ink); }
+  .wg-shifts-head p { margin: 0 0 12px; font-size: 13.5px; color: var(--ink-soft); }
+  .wg-shift-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .wg-shift-col { border: 1px solid var(--line); border-left: 4px solid var(--c); border-radius: 12px; padding: 12px 14px; background: var(--bg); }
+  .wg-shift-col > b { font: 700 30px var(--font-serif); color: var(--ink); margin-right: 6px; } .wg-shift-col > span { font-size: 14px; font-weight: 600; color: var(--ink-soft); }
+  .wg-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+  .wg-chip { display: inline-flex; align-items: center; gap: 6px; border: 1px solid var(--line); background: var(--surface); border-radius: 999px; padding: 4px 10px 4px 5px; font: 500 12.5px var(--font-sans); color: var(--ink); cursor: pointer; }
+  .wg-chip:hover { border-color: var(--ink-soft); }
+  .wg-chip .flag-img { width: 20px; height: 15px; border-radius: 2px; object-fit: cover; }
+  .wg-chip small { color: var(--muted); font-size: 11px; }
+  .wg-shift-rest { font-size: 13px; color: var(--ink-soft); margin: 12px 0 0; line-height: 1.5; } .wg-shift-rest a { color: var(--accent); font-weight: 600; }
+  @media (max-width: 700px) { .wg-shift-cols { grid-template-columns: 1fr; } .wg-chip small { display: none; } }
+  .wg-src { font-size: 11.5px; color: var(--muted); margin: 12px 0 0; line-height: 1.45; }
+  @media (max-width: 700px) { .wgov { padding: 16px 14px; } .wg-head h3 { font-size: 24px; } .wg-controls { align-items: flex-start; } .wg-tiles { grid-template-columns: 1fr 1fr; } .wg-tile b { font-size: 28px; } .wg-waffle { grid-template-columns: repeat(auto-fill, minmax(15px, 1fr)); } .wg-waffle.is-pop { grid-template-columns: repeat(20, 1fr); } .wg-axis span:nth-child(2) { margin-right: 0; } .wg-axis-nd { display: none; } }
   /* ===================== JUEGOS ===================== */
   .jg-root { max-width: 1080px; margin: 0 auto; padding: 24px 16px 60px; }
   .jg-loading { padding: 60px 0; text-align: center; color: var(--muted); }
@@ -7955,7 +8018,7 @@
         </p>
         <form class="portada-search" id="portada-search" role="search" autocomplete="off">
           <label for="portada-search-input" class="sr-only">Buscar país</label>
-          <input id="portada-search-input" type="search" placeholder="Ej: Brasil, Francia, Japón…" list="search-suggestions">
+          <input id="portada-search-input" type="search" placeholder="Ej: Brasil, Francia, Japón, Milei…" autocomplete="off">
           <button type="submit">Ver ficha</button>
         </form>
         <div class="portada-search-hint" id="portada-search-hint" aria-live="polite"></div>
@@ -7971,6 +8034,8 @@
       </div>
       <aside class="next-card" id="next-card" aria-live="polite"></aside>
     </div>
+
+    <section class="wgov" id="world-gov" aria-label="Quién gobierna el mundo"></section>
 
     <section class="portada-games" aria-label="Juegos del Atlas">
       <div class="pg-head">
@@ -8029,7 +8094,7 @@
     <span class="filter-bar-label">Por ideología del partido:</span>
     <!-- chips injected by JS -->
     <label class="search-box">
-      <input id="search" type="search" placeholder="Buscar país…" autocomplete="off" list="search-suggestions">
+      <input id="search" type="search" placeholder="Buscar país o líder…" autocomplete="off">
       <datalist id="search-suggestions"></datalist>
       <button id="search-clear" class="search-clear-btn" type="button" aria-label="Limpiar enfoque" title="Limpiar enfoque" style="display:none">×</button>
     </label>
@@ -8063,8 +8128,8 @@
 <div class="map-insight-band">
   <div class="map-insight-band-inner">
     <span class="mib-kicker"><span class="hero-stat-pulse"></span>El dato que define 2026</span>
-    <span class="mib-number">1 de 4</span>
-    <span class="mib-text">países <strong>no tiene gobierno democrático</strong>. Hoy son
+    <span class="mib-number" id="mib-number">1 de 4</span>
+    <span class="mib-text" id="mib-text">países <strong>no tiene gobierno democrático</strong>. Hoy son
       <strong>48 de 197</strong>: 22 regímenes autoritarios y 26 dictaduras.</span>
   </div>
 </div>
@@ -8932,6 +8997,235 @@ function flagOf(iso3, sizeClass = '') {
   const url = `https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.3.2/flags/4x3/${iso2}.svg`;
   return `<img class="flag-img ${sizeClass}" src="${url}" alt="Bandera ${iso3}" loading="lazy" decoding="async" crossorigin="anonymous">`;
 }
+
+
+/* ===========================================================
+   COUNTRY COMBOBOX — buscador de países propio (reemplaza al
+   <datalist> nativo): banderas, sin acentos, busca también por
+   líder y alias, navegación con teclado.
+   =========================================================== */
+const COUNTRY_ALIASES = {
+  USA: ['eeuu', 'ee uu', 'usa', 'estados unidos de america', 'norteamerica'], GBR: ['uk', 'inglaterra', 'gran bretana', 'britain'],
+  NLD: ['holanda'], CZE: ['republica checa', 'chequia'], KOR: ['corea'], PRK: ['corea del norte'], ARE: ['emiratos', 'eau'],
+  RUS: ['rusia'], VAT: ['vaticano'], COD: ['congo kinshasa', 'rdc'], COG: ['congo brazzaville'], CIV: ['costa de marfil'],
+  BIH: ['bosnia'], MKD: ['macedonia'], TLS: ['timor'], MMR: ['birmania'], SWZ: ['suazilandia'], CPV: ['cabo verde'], DEU: ['germany'], FRA: ['france'], ESP: ['spain'], ITA: ['italy'], JPN: ['japan'], CHN: ['china']
+};
+const cbxNorm = s => String(s || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/[.\-]/g, ' ').replace(/\s+/g, ' ').trim();
+let CBX_INDEX = null;
+function cbxIndex() {
+  if (CBX_INDEX) return CBX_INDEX;
+  CBX_INDEX = COUNTRIES.map(c => ({ c, n: cbxNorm(c.name), l: cbxNorm(c.leader && c.leader.name), a: (COUNTRY_ALIASES[c.iso] || []).map(cbxNorm) }));
+  return CBX_INDEX;
+}
+function cbxSearch(q, max = 8) {
+  const nq = cbxNorm(q);
+  if (!nq) return [];
+  const out = [];
+  cbxIndex().forEach(x => {
+    let s = null, via = null;
+    if (x.n === nq || x.c.iso.toLowerCase() === nq || x.a.includes(nq)) s = 0;
+    else if (x.n.startsWith(nq)) s = 1;
+    else if (x.n.split(' ').some(w => w.startsWith(nq)) || x.a.some(a => a.startsWith(nq))) s = 2;
+    else if (nq.length >= 3 && x.n.includes(nq)) s = 3;
+    else if (nq.length >= 3 && x.l && x.l.split(' ').some(w => w.startsWith(nq))) { s = 4; via = 'leader'; }
+    if (s != null) out.push({ c: x.c, s, via });
+  });
+  return out.sort((a, b) => a.s - b.s || a.c.name.localeCompare(b.c.name, 'es')).slice(0, max);
+}
+const CBX_POPULAR = ['ARG', 'ESP', 'USA', 'BRA', 'MEX', 'CHL', 'COL', 'FRA'];
+function cbxHighlight(text, q) {
+  const nt = cbxNorm(text), nq = cbxNorm(q);
+  const i = nq ? nt.indexOf(nq) : -1;
+  // cbxNorm keeps length for letters with accents (NFD strip removes combining marks only)
+  if (i < 0 || nt.length !== text.length) return escapeHtml(text);
+  return escapeHtml(text.slice(0, i)) + '<mark>' + escapeHtml(text.slice(i, i + nq.length)) + '</mark>' + escapeHtml(text.slice(i + nq.length));
+}
+function attachCountryCombo(input, onPick, opts = {}) {
+  if (!input || input.__cbx) return;
+  input.__cbx = true;
+  input.removeAttribute('list');
+  input.setAttribute('role', 'combobox');
+  input.setAttribute('aria-autocomplete', 'list');
+  input.setAttribute('aria-expanded', 'false');
+  const id = (input.id || 'cbx') + '-list';
+  input.setAttribute('aria-controls', id);
+  const host = input.parentElement;
+  if (getComputedStyle(host).position === 'static') host.style.position = 'relative';
+  const list = document.createElement('ul');
+  list.className = 'cbx-list' + (opts.className ? ' ' + opts.className : '');
+  list.id = id; list.setAttribute('role', 'listbox'); list.hidden = true;
+  host.appendChild(list);
+  let items = [], active = -1;
+  const render = () => {
+    const q = input.value;
+    const res = q.trim() ? cbxSearch(q) : CBX_POPULAR.map(i => ({ c: COUNTRIES.find(c => c.iso === i), s: 9 })).filter(x => x.c);
+    items = res.map(r => r.c);
+    if (!items.length) {
+      list.innerHTML = `<li class="cbx-empty">No encontramos "${escapeHtml(q)}". Probá con el nombre en español o el apellido del líder.</li>`;
+    } else {
+      list.innerHTML = (q.trim() ? '' : '<li class="cbx-head" role="presentation">Más consultados</li>') + res.map((r, i) => {
+        const c = r.c, id3 = IDEOLOGIES[c.ideology] || IDEOLOGIES.other, L = c.leader || {};
+        return `<li role="option" id="${id}-${i}" data-i="${i}" class="cbx-item${i === active ? ' is-active' : ''}" aria-selected="${i === active}">
+          ${flagOf(c.iso, 'cbx-flag')}<span class="cbx-main"><b>${cbxHighlight(c.name, q)}</b><small>${r.via === 'leader' ? cbxHighlight(L.name || '', q) : escapeHtml(L.name || '')}${L.title ? ' · ' + escapeHtml(L.title) : ''}</small></span>
+          <span class="cbx-ideo"><i style="background:${id3.color}"></i>${escapeHtml(id3.short)}</span></li>`;
+      }).join('');
+    }
+    list.hidden = false; input.setAttribute('aria-expanded', 'true');
+  };
+  const close = () => { list.hidden = true; active = -1; input.setAttribute('aria-expanded', 'false'); input.removeAttribute('aria-activedescendant'); };
+  const pick = i => { const c = items[i]; if (!c) return; input.value = c.name; close(); onPick(c); };
+  const move = d => {
+    if (list.hidden) render();
+    if (!items.length) return;
+    active = (active + d + items.length) % items.length;
+    list.querySelectorAll('.cbx-item').forEach((el, i) => { el.classList.toggle('is-active', i === active); el.setAttribute('aria-selected', i === active); });
+    const el = list.querySelector(`[data-i="${active}"]`); if (el) { el.scrollIntoView({ block: 'nearest' }); input.setAttribute('aria-activedescendant', el.id); }
+  };
+  input.addEventListener('input', () => { active = -1; render(); });
+  input.addEventListener('focus', render);
+  input.addEventListener('keydown', e => {
+    if (e.key === 'ArrowDown') { e.preventDefault(); move(1); }
+    else if (e.key === 'ArrowUp') { e.preventDefault(); move(-1); }
+    else if (e.key === 'Enter') { if (!list.hidden && items.length) { e.preventDefault(); pick(active >= 0 ? active : 0); } }
+    else if (e.key === 'Escape') close();
+  });
+  list.addEventListener('mousedown', e => e.preventDefault());
+  list.addEventListener('click', e => { const li = e.target.closest('.cbx-item'); if (li) pick(+li.dataset.i); });
+  input.addEventListener('blur', () => setTimeout(close, 120));
+  return { close };
+}
+function escapeHtml(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[ch]); }
+
+/* ===========================================================
+   CONTADOR DE GOBIERNOS — ¿quién gobierna el mundo?
+   Población: Banco Mundial (SP.POP.TOTL, 2025); Taiwán y Vaticano,
+   estimaciones oficiales (no están en la base del Banco Mundial).
+   =========================================================== */
+const WG_ORDER = ['far-left', 'left', 'center-left', 'center', 'center-right', 'right', 'far-right', 'other', 'authoritarian', 'dictatorship'];
+const WG_BLOCS = [
+  { id: 'izq', label: 'Izquierda', sub: 'izquierda radical, izquierda y centroizquierda', keys: ['far-left', 'left', 'center-left'], color: 'var(--c-left)' },
+  { id: 'cen', label: 'Centro', sub: 'centro', keys: ['center'], color: 'var(--c-center)' },
+  { id: 'der', label: 'Derecha', sub: 'centroderecha, derecha y derecha radical', keys: ['center-right', 'right', 'far-right'], color: 'var(--c-right)' },
+  { id: 'nod', label: 'Sin democracia', sub: 'regímenes autoritarios y dictaduras', keys: ['authoritarian', 'dictatorship'], color: 'var(--c-auth)' },
+  { id: 'otr', label: 'Otro / transición', sub: 'gobiernos de transición o sin clasificar', keys: ['other'], color: 'var(--c-other)' }
+];
+const WG_REGIONS = [
+  { id: 'all', label: 'Mundo', test: () => true },
+  { id: 'am', label: 'América', test: r => /Am[eé]rica|Caribe|Centroam/.test(r) },
+  { id: 'eu', label: 'Europa', test: r => /^Europa/.test(r) || r === 'Eurasia' },
+  { id: 'as', label: 'Asia y Oceanía', test: r => r === 'Asia' || r === 'Oceanía' },
+  { id: 'me', label: 'Oriente Medio', test: r => r === 'Oriente Medio' },
+  { id: 'af', label: 'África', test: r => r === 'África' }
+];
+const WG_STATE = { mode: 'countries', region: 'all' };
+function wgData() {
+  const reg = WG_REGIONS.find(r => r.id === WG_STATE.region) || WG_REGIONS[0];
+  const list = COUNTRIES.filter(c => reg.test(c.region || ''));
+  const w = c => WG_STATE.mode === 'pop' ? (POP_2025[c.iso] || 0) : 1;
+  const total = list.reduce((a, c) => a + w(c), 0) || 1;
+  const byIdeo = {}; WG_ORDER.forEach(k => { byIdeo[k] = { n: 0, w: 0, list: [] }; });
+  list.forEach(c => { const k = byIdeo[c.ideology] ? c.ideology : 'other'; byIdeo[k].n++; byIdeo[k].w += w(c); byIdeo[k].list.push(c); });
+  const blocs = WG_BLOCS.map(b => ({ ...b, n: b.keys.reduce((a, k) => a + byIdeo[k].n, 0), w: b.keys.reduce((a, k) => a + byIdeo[k].w, 0) }));
+  return { reg, list, total, byIdeo, blocs, popTotal: list.reduce((a, c) => a + (POP_2025[c.iso] || 0), 0) };
+}
+const wgFmtPop = v => v >= 1e9 ? (v / 1e9).toLocaleString('es-AR', { maximumFractionDigits: 2 }) + ' mil millones' : (v / 1e6).toLocaleString('es-AR', { maximumFractionDigits: v >= 1e8 ? 0 : 1 }) + ' millones';
+function wgHTML() {
+  const D = wgData(), pop = WG_STATE.mode === 'pop';
+  const pct = v => v / D.total * 100;
+  const fp = v => { const p = pct(v); return (p > 0 && p < 1 ? '<1' : Math.round(p)) + '%'; };
+  const lead = D.blocs.slice(0, 4).slice().sort((a, b) => b.w - a.w)[0];
+  const tiles = D.blocs.filter(b => b.n || b.id !== 'otr').map(b => `<div class="wg-tile" style="--c:${b.color}">
+      <span class="wg-tile-l"><i></i>${b.label}</span>
+      <b>${pop ? fp(b.w) : b.n}</b>
+      <small>${pop ? `${wgFmtPop(b.w)} de personas · ${b.n} ${b.n === 1 ? 'país' : 'países'}` : `${fp(b.w)} de los países · ${wgFmtPop(b.keys.reduce((a, k) => a + D.byIdeo[k].list.reduce((s, c) => s + (POP_2025[c.iso] || 0), 0), 0))} de personas`}</small>
+    </div>`).join('');
+  const segs = WG_ORDER.filter(k => D.byIdeo[k].w > 0).map(k => {
+    const I = IDEOLOGIES[k], p = pct(D.byIdeo[k].w);
+    return `<span class="wg-seg" style="flex:${p} 0 0;background:${I.color}" title="${I.label}: ${pop ? fp(D.byIdeo[k].w) + ' de la población' : D.byIdeo[k].n + ' países'}">${p >= 6 ? `<em>${pop ? fp(D.byIdeo[k].w) : D.byIdeo[k].n}</em>` : ''}</span>`;
+  }).join('');
+  const legend = WG_ORDER.filter(k => D.byIdeo[k].n).map(k => `<span><i style="background:${IDEOLOGIES[k].color}"></i>${IDEOLOGIES[k].label} <b>${pop ? fp(D.byIdeo[k].w) : D.byIdeo[k].n}</b></span>`).join('');
+  let waffle;
+  if (pop) {
+    // 100 cuadrados = 100% de la población, por mayor resto
+    const raw = WG_ORDER.map(k => ({ k, v: pct(D.byIdeo[k].w) })), cells = raw.map(r => ({ k: r.k, n: Math.floor(r.v), r: r.v % 1 }));
+    let left = 100 - cells.reduce((a, c) => a + c.n, 0);
+    cells.slice().sort((a, b) => b.r - a.r).forEach(c => { if (left > 0) { c.n++; left--; } });
+    waffle = `<div class="wg-waffle is-pop">${cells.map(c => Array.from({ length: c.n }, () => `<span style="background:${IDEOLOGIES[c.k].color}" title="${IDEOLOGIES[c.k].label}"></span>`).join('')).join('')}</div><p class="wg-wnote">Cada cuadrado es el 1% de la población${D.reg.id === 'all' ? ' mundial' : ' de la región'}.</p>`;
+  } else {
+    const sorted = WG_ORDER.flatMap(k => D.byIdeo[k].list.slice().sort((a, b) => a.name.localeCompare(b.name, 'es')));
+    waffle = `<div class="wg-waffle">${sorted.map(c => `<button type="button" class="wg-cell" data-iso="${c.iso}" style="background:${(IDEOLOGIES[c.ideology] || IDEOLOGIES.other).color}" aria-label="${escapeHtml(c.name)}: ${escapeHtml((IDEOLOGIES[c.ideology] || IDEOLOGIES.other).label)}"></button>`).join('')}</div><p class="wg-wnote">Cada cuadrado es un país. Pasá el mouse para ver quién gobierna y tocá para abrir la ficha.</p>`;
+  }
+  const head = pop
+    ? `<b>${fp(lead.w)}</b> de ${D.reg.id === 'all' ? 'la población mundial' : 'la población de ' + D.reg.label} vive bajo gobiernos de <b>${lead.label.toLowerCase()}</b>.`
+    : `<b>${lead.n} de ${D.list.length}</b> países${D.reg.id === 'all' ? '' : ' de ' + D.reg.label} tienen gobiernos de <b>${lead.label.toLowerCase()}</b>, el bloque más grande.`;
+  return `<div class="wg-head">
+      <div><span class="wg-kicker">El mundo hoy</span><h3>¿Quién gobierna el mundo?</h3>
+      <p class="wg-lede">${head}</p></div>
+      <div class="wg-controls">
+        <div class="seg" role="tablist" aria-label="Contar por">${[['countries', 'Países'], ['pop', 'Población']].map(([k, l]) => `<button type="button" data-wgmode="${k}" class="${WG_STATE.mode === k ? 'is-active' : ''}">${l}</button>`).join('')}</div>
+        <div class="seg wg-regions" role="tablist" aria-label="Región">${WG_REGIONS.map(r => `<button type="button" data-wgreg="${r.id}" class="${WG_STATE.region === r.id ? 'is-active' : ''}">${r.label}</button>`).join('')}</div>
+      </div>
+    </div>
+    <div class="wg-tiles">${tiles}</div>
+    <div class="wg-bar" role="img" aria-label="Distribución por orientación del gobierno">${segs}</div>
+    <div class="wg-axis"><span>← Izquierda</span><span>Derecha →</span><span class="wg-axis-nd">Sin democracia</span></div>
+    <div class="wg-legend">${legend}</div>
+    ${waffle}
+    ${wgShiftsHTML(D)}
+    <div class="wg-tip" hidden></div>
+    <p class="wg-src">${D.list.length} países de la base del Atlas, clasificados por la orientación del partido o líder que gobierna (ver Metodología). Población: Banco Mundial, 2025${pop ? ` (${wgFmtPop(D.popTotal)} de personas en total)` : ''}.</p>`;
+}
+function wgShiftsHTML(D) {
+  if (typeof PREVIOUS_IDEOLOGY === 'undefined' || typeof classifyShift !== 'function') return '';
+  const it = D.list.filter(c => PREVIOUS_IDEOLOGY[c.iso] && c.lastElection && c.lastElection.year >= 2023)
+    .map(c => ({ c, p: PREVIOUS_IDEOLOGY[c.iso], s: classifyShift(PREVIOUS_IDEOLOGY[c.iso], c.ideology) }));
+  if (!it.length) return '';
+  const g = k => it.filter(x => x.s === k).sort((a, b) => a.c.name.localeCompare(b.c.name, 'es'));
+  const L = g('shift-left'), R = g('shift-right'), C0 = g('continuity'), O = g('shift-other');
+  const lab = k => (IDEOLOGIES[k] || IDEOLOGIES.other).short;
+  const chips = arr => arr.map(x => `<button type="button" class="wg-chip" data-iso="${x.c.iso}" title="${escapeHtml(x.c.name)}: ${escapeHtml(lab(x.p))} → ${escapeHtml(lab(x.c.ideology))}">${flagOf(x.c.iso)}<span>${escapeHtml(x.c.name)}</span><small>${escapeHtml(lab(x.p))} → ${escapeHtml(lab(x.c.ideology))}</small></button>`).join('');
+  return `<div class="wg-shifts">
+      <div class="wg-shifts-head"><h4>Los giros desde 2023</h4><p>En ${it.length} países${D.reg.id === 'all' ? '' : ' de ' + D.reg.label} hubo elecciones o cambio de gobierno desde 2023. Se compara la orientación del gobierno anterior con la del actual.</p></div>
+      <div class="wg-shift-cols">
+        <div class="wg-shift-col" style="--c:var(--c-left)"><b>${L.length}</b><span>giraron a la izquierda</span><div class="wg-chips">${chips(L)}</div></div>
+        <div class="wg-shift-col" style="--c:var(--c-right)"><b>${R.length}</b><span>giraron a la derecha</span><div class="wg-chips">${chips(R)}</div></div>
+      </div>
+      <p class="wg-shift-rest"><b>${C0.length}</b> mantuvieron la misma orientación${O.length ? ` y <b>${O.length}</b> tuvieron cambios fuera del eje izquierda-derecha (golpes, transiciones o gobiernos interinos: ${O.map(x => escapeHtml(x.c.name)).join(', ')})` : ''}. <a href="#cambio" onclick="return window.__atlasGoTo && window.__atlasGoTo('cambio')">Ver el detalle en ¿Cambio o continuidad? →</a></p>
+    </div>`;
+}
+function renderWorldGov() {
+  const el = document.getElementById('world-gov');
+  if (!el) return;
+  el.innerHTML = wgHTML();
+  el.querySelectorAll('[data-wgmode]').forEach(b => b.addEventListener('click', () => { WG_STATE.mode = b.dataset.wgmode; renderWorldGov(); }));
+  el.querySelectorAll('[data-wgreg]').forEach(b => b.addEventListener('click', () => { WG_STATE.region = b.dataset.wgreg; renderWorldGov(); }));
+  const tip = el.querySelector('.wg-tip');
+  el.querySelectorAll('.wg-chip').forEach(b => b.addEventListener('click', () => { if (window.__atlasJumpTo) window.__atlasJumpTo(b.dataset.iso); }));
+  el.querySelectorAll('.wg-cell').forEach(b => {
+    const show = () => {
+      const c = COUNTRIES.find(x => x.iso === b.dataset.iso); if (!c) return;
+      const I = IDEOLOGIES[c.ideology] || IDEOLOGIES.other, L = c.leader || {};
+      tip.innerHTML = `${flagOf(c.iso)} <b>${escapeHtml(c.name)}</b><span>${escapeHtml(L.name || '')}${L.party ? ' · ' + escapeHtml(L.party) : ''}</span><em><i style="background:${I.color}"></i>${escapeHtml(I.label)}</em>`;
+      tip.hidden = false;
+      const r = b.getBoundingClientRect(), h = el.getBoundingClientRect();
+      tip.style.left = Math.max(0, Math.min(r.left - h.left - 110, h.width - 250)) + 'px';
+      tip.style.top = (r.bottom - h.top + 8) + 'px';
+    };
+    b.addEventListener('mouseenter', show); b.addEventListener('focus', show);
+    b.addEventListener('mouseleave', () => { tip.hidden = true; }); b.addEventListener('blur', () => { tip.hidden = true; });
+    b.addEventListener('click', () => { if (window.__atlasJumpTo) window.__atlasJumpTo(b.dataset.iso); });
+  });
+  // El dato de la banda del mapa, calculado con la base (antes estaba fijo)
+  const nd = COUNTRIES.filter(c => c.ideology === 'authoritarian' || c.ideology === 'dictatorship');
+  const band = document.getElementById('mib-text');
+  if (band) {
+    const a = nd.filter(c => c.ideology === 'authoritarian').length, d = nd.length - a;
+    band.innerHTML = `países <strong>no tiene gobierno democrático</strong>. Hoy son <strong>${nd.length} de ${COUNTRIES.length}</strong>: ${a} regímenes autoritarios y ${d} dictaduras.`;
+    const num = document.getElementById('mib-number'); if (num) num.textContent = `1 de ${Math.round(COUNTRIES.length / nd.length)}`;
+  }
+}
+
+const POP_2025 = {"ARG":45851378,"BRA":212812405,"CHL":19859921,"URY":3384688,"BOL":12581843,"PER":34576665,"PRY":7013078,"ECU":18289896,"COL":53425635,"VEN":28516896,"USA":341784857,"MEX":131946900,"CAN":41651653,"CRI":5152950,"HND":11005850,"GTM":18687881,"SLV":6365503,"PAN":4571189,"DOM":11520487,"CUB":10937203,"NIC":7007502,"GBR":69487000,"FRA":68720337,"DEU":83491249,"ITA":58915656,"ESP":49355143,"PRT":10804871,"NLD":18087633,"BEL":11941781,"AUT":9208163,"CHE":9092436,"IRL":5484367,"GRC":10413962,"SWE":10596620,"NOR":5610870,"DNK":6009169,"FIN":5646436,"POL":36435861,"HUN":9514251,"CZE":10886878,"ROU":19020271,"JPN":123366734,"IND":1463865525,"CHN":1406585000,"KOR":51684564,"IDN":285721236,"PHL":116786962,"VNM":101598527,"PAK":255219554,"AUS":27614411,"NZL":5324700,"RUS":143513328,"UKR":38980376,"ISR":10122800,"TUR":85878556,"SAU":36973555,"ZAF":64747319,"NGA":237527782,"EGY":118365995,"MAR":38430770,"KEN":57532493,"THA":71619863,"MYS":35977838,"SGP":6111175,"BGD":175686899,"IRN":92417681,"IRQ":47020774,"JOR":11520684,"ARE":11513149,"QAT":2972215,"LBN":5849421,"SVK":5413813,"HRV":3876200,"BGR":6433302,"SRB":6549143,"EST":1366475,"ETH":135472051,"DZA":47435312,"TZA":70545865,"GHA":35064272,"SEN":18931966,"JAM":2837077,"AGO":39040039,"MOZ":35631653,"ZWE":16950795,"RWA":14569341,"UGA":51384894,"CIV":32711547,"TUN":12348573,"CMR":29879337,"COD":112832473,"BFA":24074580,"MLI":25198821,"ZMB":21913874,"BEN":14814460,"MDG":32740678,"NAM":3092816,"KAZ":20843754,"UZB":37053428,"LKA":21756000,"MMR":54850648,"MNG":3568978,"NPL":29618118,"SVN":2130986,"LTU":2888774,"LVA":1847785,"TTO":1367764,"HTI":11906095,"PNG":10762817,"FJI":933154,"ISL":392404,"ALB":2349580,"MDA":2360527,"BLR":9085991,"BIH":3140095,"CYP":1370754,"MLT":579704,"LUX":686970,"GEO":3935766,"ARM":3086700,"AZE":10246996,"PRK":26571036,"AFG":43844111,"KGZ":7343064,"OMN":5494691,"KWT":4865298,"TGO":8591626,"GIN":15099727,"NER":27917831,"SDN":51662147,"SOM":19654739,"BWA":2562122,"BLZ":422924,"GUY":835986,"SUR":639850,"TJK":10786734,"TKM":7618847,"LAO":7873046,"KHM":17847982,"BTN":796682,"MDV":529676,"BRN":466330,"TLS":1418517,"BHR":1600366,"YEM":41773878,"SYR":25620427,"PSE":5413596,"LBY":7458555,"TCD":21003705,"MWI":22216120,"MUS":1243741,"SYC":122730,"GAB":2593130,"BDI":14390003,"GMB":2822093,"MRT":5315065,"SLE":8819794,"LBR":5731206,"ERI":3607003,"MNE":623129,"MKD":1820909,"XKX":1576876,"BHS":403033,"BRB":282623,"WSM":219306,"SLB":838645,"VUT":335169,"SMR":34109,"MCO":38341,"LIE":41024,"AND":82904,"GRD":117303,"KNA":46922,"LCA":180149,"ATG":94209,"DMA":65871,"VCT":99924,"COM":882847,"CPV":527326,"STP":240254,"DJI":1184076,"LSO":2363325,"SWZ":1256174,"GNQ":1938431,"SSD":12188788,"CAF":5513282,"GNB":2249515,"COG":6484437,"TUV":9492,"NRU":12025,"KIR":136488,"TON":103742,"PLW":17663,"FSM":113683,"MHL":36282,"TWN":23340000,"VAT":800}; // Banco Mundial SP.POP.TOTL 2025; TWN (Ministerio del Interior, dic. 2025) y VAT (estimación), fuera de la base del BM
 
 /* ===========================================================
    IDEOLOGY DEFINITIONS
@@ -22110,22 +22404,22 @@ const COUNTRIES = [
       results: [
         {
           party: "UDC (Boko)",
-          pct: 36.9,
-          seats: 35
+          pct: 37.2,
+          seats: 36
         },
         {
           party: "BCP",
-          pct: 19.1,
+          pct: 21.1,
           seats: 15
         },
         {
           party: "BPF",
-          pct: 19.0,
+          pct: 8.3,
           seats: 5
         },
         {
           party: "BDP (53 años de poder)",
-          pct: 30.4,
+          pct: 30.5,
           seats: 4
         }
       ]
@@ -30687,11 +30981,6 @@ function initProfile(metrics) {
   const clearBtn = document.getElementById('search-clear');
   if (!input || !datalist) return;
 
-  // Populate the datalist with all country names (alphabetical)
-  datalist.innerHTML = [...COUNTRIES]
-    .sort((a, b) => a.name.localeCompare(b.name, 'es'))
-    .map(c => `<option value="${c.name}" data-iso="${c.iso}"></option>`)
-    .join('');
 
   function applyFocus(iso, country) {
     state.focusedISO = iso;
@@ -30743,7 +31032,9 @@ function initProfile(metrics) {
       applyFocus(null, null);
     });
   }
+  attachCountryCombo(input, c => applyFocus(c.iso, c), { className: 'cbx-compact' });
 })();
+setTimeout(renderWorldGov, 0); // PREVIOUS_IDEOLOGY se declara más abajo en este script
 
 /* ===========================================================
    LOAD GEOJSON
@@ -30777,21 +31068,22 @@ async function loadGeo() {
    the world has trended toward change or continuity recently.
 
    PREVIOUS_IDEOLOGY_BY_ISO: ideology of the government BEFORE
-   the most recent election. Manually curated for the ~80 countries
-   that had elections (or transitions) between 2023 and 2026.
+   the most recent election (or, if the leader changed without one,
+   the last election that changed the government). Reviewed in Nov 2026
+   against the leaders in COUNTRIES.
    =========================================================== */
 const PREVIOUS_IDEOLOGY = {
   // ===== AMÉRICA =====
   'ARG': 'center-left',   // Fernández (FdT) → Milei (LLA)            CAMBIO
-  'BRA': 'far-right',     // Bolsonaro → Lula (2022)                  CAMBIO
+  'BRA': 'center-left',    // Lula reelecto (2026)                       CONTINUIDAD
   'CHL': 'left',          // Boric → Kast (2025)                      CAMBIO
   'URY': 'center-right',  // Lacalle Pou → Orsi (2024)                CAMBIO
   'VEN': 'authoritarian', // Maduro (PSUV autoritario) → Rodríguez (transición, captura ene 2026) CAMBIO
   'BOL': 'left',          // Arce (MAS) → Paz (PDC, 2025)             CAMBIO
-  'PER': 'left',          // Castillo/Boluarte → Balcázar interino    CAMBIO
+  'PER': 'other',          // Balcázar (interino) → Fujimori (2026)       CAMBIO
   'PRY': 'right',         // Abdo Benítez → Peña (Colorados)          CONTINUIDAD
-  'ECU': 'left',          // Lasso → Noboa (2023)                     CAMBIO (de izq a derecha)
-  'COL': 'center-right',  // Duque → Petro (2022)                     CAMBIO
+  'ECU': 'right',          // Noboa reelecto (2025)                      CONTINUIDAD
+  'COL': 'left',           // Petro → De la Espriella (2026)             CAMBIO
   'MEX': 'left',          // AMLO → Sheinbaum (Morena)                CONTINUIDAD
   'USA': 'center-left',   // Biden → Trump (2024)                     CAMBIO
   'CAN': 'center-left',   // Trudeau → Carney (Liberales)             CONTINUIDAD
@@ -30803,43 +31095,47 @@ const PREVIOUS_IDEOLOGY = {
   'SLV': 'right',         // Bukele continúa                          CONTINUIDAD
   'JAM': 'center-right',  // Holness continúa                         CONTINUIDAD
   'TTO': 'center-right',  // Rowley (PNM) → Persad-Bissessar (UNC)    CAMBIO
-  'BHS': 'center-right',  // Minnis → Davis (PLP)                     CAMBIO
-  'BLZ': 'center-right',  // Barrow → Briceño (PUP)                   CAMBIO
+  'BHS': 'center',         // Davis reelecto (2026)                      CONTINUIDAD
+  'BLZ': 'center-left',    // Briceño reelecto (2025)                    CONTINUIDAD
   'GUY': 'center-left',   // Ali continúa                             CONTINUIDAD
   'SUR': 'center-right',  // Santokhi → Geerlings-Simons (NDP)        CAMBIO
-  'VCT': 'center-left',   // Gonsalves continúa                       CONTINUIDAD
-  'GRD': 'center-right',  // Mitchell → Mitchell (NDC)                CAMBIO
-  'KNA': 'center-right',  // Harris → Drew (SKNLP)                    CAMBIO
+  'VCT': 'center-left',    // Gonsalves (ULP) → Friday (NDP, 2025)       CAMBIO
+  'GRD': 'center-left',    // Mitchell reelecto (2026)                   CONTINUIDAD
+  'KNA': 'center-right',   // Harris → Drew (SKNLP)                      CAMBIO
+
+  'BRB': 'center-left',    // Mottley reelecta (2026)                    CONTINUIDAD
+  'LCA': 'center-left',    // Pierre reelecto (2025)                     CONTINUIDAD
+  'ATG': 'center-left',    // Browne reelecto (2026)                     CONTINUIDAD
 
   // ===== EUROPA =====
-  'GBR': 'center-right',  // Sunak → Starmer (Labour, 2024)           CAMBIO
+  'GBR': 'center-right',   // Sunak → Starmer (2024); Burnham, 2026, sin elecciones CAMBIO
   'FRA': 'center',        // Continuidad Macron (2017-)               CONTINUIDAD
   'DEU': 'center-left',   // Scholz (SPD) → Merz (CDU)                CAMBIO
   'ITA': 'center-left',   // Draghi → Meloni (FdI, 2022)              CAMBIO
   'ESP': 'center-left',   // Sánchez continúa                         CONTINUIDAD
-  'PRT': 'center-left',   // Rebelo de Sousa → Seguro                 CONTINUIDAD (apoyo PS)
+  'PRT': 'center-right',   // Rebelo de Sousa (PSD) → Seguro (2026)      CAMBIO
   'NLD': 'center-right',  // Rutte → Schoof → Jetten (D66)            CAMBIO
   'BEL': 'center-left',   // De Croo → De Wever (N-VA)                CAMBIO
-  'AUT': 'center',        // Nehammer → Stocker (ÖVP)                 CONTINUIDAD
+  'AUT': 'center-right',   // Nehammer → Stocker (ÖVP)                   CONTINUIDAD
   'CHE': 'center-right',  // Rotación Consejo Federal                 CONTINUIDAD
   'IRL': 'center',        // Varadkar → Harris → Martin (FF)          CONTINUIDAD
   'GRC': 'center-right',  // Mitsotakis continúa                      CONTINUIDAD
-  'SWE': 'center-left',   // Andersson → Kristersson (M)              CAMBIO
+  'SWE': 'center-right',   // Kristersson reelecto (2026)                CONTINUIDAD
   'NOR': 'center-left',   // Støre continúa                           CONTINUIDAD
   'DNK': 'center-left',   // Frederiksen continúa                     CONTINUIDAD
   'FIN': 'center-left',   // Marin (SDP) → Orpo (KOK)                 CAMBIO
   'POL': 'right',         // Morawiecki (PiS) → Tusk (KO)             CAMBIO
   'HUN': 'right',         // Orbán → Magyar (Tisza, 2026)             CAMBIO
   'CZE': 'center-right',  // Fiala (SPOLU) → Babiš (ANO)              CAMBIO
-  'ROU': 'center-left',   // Iohannis → Nicușor Dan                   CAMBIO
+  'ROU': 'center-right',   // Iohannis (PNL) → Nicușor Dan (2025)        CAMBIO
   'SVK': 'center-right',  // Heger → Fico (Smer)                      CAMBIO
   'HRV': 'center-right',  // Plenković continúa                       CONTINUIDAD
-  'BGR': 'center-right',  // Inestabilidad → Zhelyazkov (GERB)        CONTINUIDAD
-  'SRB': 'right',         // Vučić continúa                           CONTINUIDAD
+  'BGR': 'center-right',   // Zhelyazkov (GERB) → Radev (2026)           CAMBIO
+  'SRB': 'right',          // SNS continúa; Brnabić primera ministra (2026) CONTINUIDAD
   'EST': 'center',        // Kallas → Michal (Reform)                 CONTINUIDAD
-  'LTU': 'center-right',  // Šimonytė (TS-LKD) → Paluckas (LSDP)      CAMBIO
-  'LVA': 'center-right',  // Kariņš → Siliņa (JV)                     CONTINUIDAD
-  'SVN': 'right',         // Janša (SDS) → Golob (GS)                 CAMBIO
+  'LTU': 'center-right',   // Šimonytė (TS-LKD) → Paluckas → Sinkevičius (LSDP) CAMBIO
+  'LVA': 'center-right',   // Siliņa (JV) → Kulbergs (Lista Unida, 2026) CONTINUIDAD
+  'SVN': 'center',         // Golob (GS) → Janša (SDS, 2026)             CAMBIO
   'ISL': 'center-right',  // Benediktsson → Frostadóttir (SDA)        CAMBIO
   'ALB': 'center-left',   // Rama continúa                            CONTINUIDAD
   'MDA': 'center-right',  // Sandu/PAS continúa                       CONTINUIDAD
@@ -30849,6 +31145,12 @@ const PREVIOUS_IDEOLOGY = {
   'BIH': 'center-right',  // Krišto continúa                          CONTINUIDAD
   'GEO': 'right',         // Sueño Georgiano continúa                 CONTINUIDAD
 
+  'CYP': 'center-right',   // Christodoulides continúa (legislativas 2026) CONTINUIDAD
+  'MLT': 'center-left',    // Abela reelecto (2026)                      CONTINUIDAD
+  'ARM': 'center',         // Pashinián reelecto (2026)                  CONTINUIDAD
+  'LUX': 'center',         // Bettel (DP) → Frieden (CSV, 2023)          CAMBIO
+  'LIE': 'center-right',   // Risch → Haas (VU, 2025)                    CONTINUIDAD
+  'AND': 'center-right',   // Espot reelecto (2023)                      CONTINUIDAD
   // ===== ASIA =====
   'JPN': 'right',         // Kishida → Ishiba → Takaichi (LDP)        CONTINUIDAD
   'IND': 'right',         // Modi continúa                            CONTINUIDAD
@@ -30856,26 +31158,28 @@ const PREVIOUS_IDEOLOGY = {
   'IDN': 'right',         // Jokowi → Prabowo (Gerindra)              CONTINUIDAD
   'PHL': 'right',         // Marcos Jr continúa                       CONTINUIDAD
   'PAK': 'center-right',  // Khan/Kakar → Sharif (PML-N)              CONTINUIDAD
-  'BGD': 'center-left',   // Hasina → Yunus (interino)                CAMBIO
+  'BGD': 'other',          // Yunus (interino) → Rahman (BNP, 2026)      CAMBIO
   'LKA': 'center-right',  // Wickremesinghe → Dissanayake (NPP)       CAMBIO
-  'NPL': 'center-left',   // Coalición → Karki (interino)             CAMBIO
-  'THA': 'center-left',   // Move Forward → Anutin (Bhumjaithai)      CAMBIO
+  'NPL': 'other',          // Karki (interina) → Balen Shah (RSP, 2026)  CAMBIO
+  'THA': 'right',          // Anutin ratificado en las urnas (2026)      CONTINUIDAD
   'MYS': 'right',         // Ismail Sabri → Anwar (PH)                CAMBIO
   'SGP': 'center-right',  // Lee Hsien Loong → Wong (PAP)             CONTINUIDAD
-  'MNG': 'center-right',  // Oyun-Erdene → MPP                        CONTINUIDAD
+  'MNG': 'center-left',    // PPM continúa (2024)                        CONTINUIDAD
   'KHM': 'authoritarian', // Hun Sen → Hun Manet (CPP)                CONTINUIDAD
   'BTN': 'center-left',   // Tshering → Tobgay (PDP)                  CAMBIO
   'MDV': 'center-left',   // Solih (MDP) → Muizzu (PNC)               CAMBIO
-  'MMR': 'center-left',   // NLD → Junta militar                      CAMBIO
+  'MMR': 'dictatorship',   // Junta militar → Min Aung Hlaing "electo" (2026) CAMBIO
 
+  'TWN': 'center-left',    // Tsai → Lai (DPP, 2024)                     CONTINUIDAD
+  'TLS': 'center-left',    // Taur Matan Ruak → Xanana Gusmão (2023)     CAMBIO
   // ===== ORIENTE MEDIO =====
-  'IRN': 'authoritarian', // Raisi → Pezeshkian (reformista)          CAMBIO
-  'IRQ': 'center',        // Sudani continúa                          CONTINUIDAD
-  'JOR': 'authoritarian', // Khasawneh → Hassan (designados)          CONTINUIDAD
+  'IRN': 'dictatorship',   // Pezeshkian (2024); Mojtaba Jameneí líder supremo (2026) CONTINUIDAD
+  'IRQ': 'center',         // Sudani → al-Zaidi (2026)                   CONTINUIDAD
+  'JOR': 'dictatorship',   // Khasawneh → Hassan (designados)            CONTINUIDAD
   'LBN': 'other',         // Vacancia → Aoun                          CONTINUIDAD
   'TUR': 'right',         // Erdoğan continúa                         CONTINUIDAD
   'ISR': 'right',         // Netanyahu continúa                       CONTINUIDAD
-  'KWT': 'authoritarian', // Sucesión emir                            CONTINUIDAD
+  'KWT': 'dictatorship',   // Sucesión emir                              CONTINUIDAD
 
   // ===== ÁFRICA =====
   'GHA': 'right',         // Akufo-Addo (NPP) → Mahama (NDC)          CAMBIO
@@ -30887,34 +31191,44 @@ const PREVIOUS_IDEOLOGY = {
   'MUS': 'center-right',  // Jugnauth → Ramgoolam (PTr)               CAMBIO
   'CMR': 'authoritarian', // Biya continúa                            CONTINUIDAD
   'EGY': 'authoritarian', // Sisi continúa                            CONTINUIDAD
-  'TUN': 'center-right',  // Saied (transición de demócrata a autor.) CAMBIO
+  'TUN': 'authoritarian',  // Saied reelecto (2024)                      CONTINUIDAD
   'CIV': 'center-right',  // Ouattara continúa                        CONTINUIDAD
   'TGO': 'authoritarian', // Gnassingbé continúa                      CONTINUIDAD
   'BFA': 'center-left',   // Damiba → Traoré                          CONTINUIDAD (junta)
   'NER': 'center',        // Bazoum → Tchiani (junta)                 CAMBIO
   'GAB': 'authoritarian', // Bongo → Oligui Nguema                    CAMBIO
-  'GNB': 'center-left',   // Embaló continúa                          CONTINUIDAD
+  'GNB': 'center-right',   // Embaló → junta militar (golpe, nov 2025)   CAMBIO
   'LBR': 'right',         // Weah (CDC) → Boakai (UP)                 CAMBIO
   'COD': 'center',        // Tshisekedi continúa                      CONTINUIDAD
   'AGO': 'center-left',   // Lourenço continúa                        CONTINUIDAD
   'RWA': 'authoritarian', // Kagame continúa                          CONTINUIDAD
   'MWI': 'center-left',   // Chakwera (MCP) → Mutharika (DPP)         CAMBIO
   'COM': 'right',         // Azali continúa                           CONTINUIDAD
-  'STP': 'center-right',  // Jorge → Trovoada (ADI)                   CAMBIO
+  'STP': 'center-right',   // Trovoada → Ramos (ADI)                     CONTINUIDAD
   'SYC': 'center-right',  // Ramkalawan → Herminie (US)               CAMBIO
   'MDG': 'center',        // Rajoelina → Randrianirina (junta)        CAMBIO
   'ZWE': 'authoritarian', // Mnangagwa continúa                       CONTINUIDAD
-  'ZMB': 'left',          // Lungu (PF) → Hichilema (UPND)            CAMBIO
+  'ZMB': 'center-right',   // Hichilema reelecto (2026)                  CONTINUIDAD
 
+  'ZAF': 'center-left',    // ANC continúa en gobierno de unidad (2024)  CONTINUIDAD
+  'NGA': 'right',          // Buhari → Tinubu (APC, 2023)                CONTINUIDAD
+  'MAR': 'center-right',   // Akhannouch (RNI) → El Mansouri (PAM, 2026) CONTINUIDAD
+  'ETH': 'center',         // Abiy reelecto (2026)                       CONTINUIDAD
+  'BEN': 'center-right',   // Talon → Wadagni (2026)                     CONTINUIDAD
+  'CPV': 'center-right',   // Correia e Silva (MpD) → Carvalho (PAICV, 2026) CAMBIO
+  'SLE': 'center-left',    // Bio reelecto (2023)                        CONTINUIDAD
+  'MRT': 'center-right',   // Ghazouani reelecto (2024)                  CONTINUIDAD
+  'CAF': 'right',          // Touadéra reelecto (2025)                   CONTINUIDAD
+  'GIN': 'dictatorship',   // Junta militar → Doumbouya "electo" (2025)  CAMBIO
   // ===== OCEANÍA =====
   'AUS': 'center-right',  // Morrison (LNP) → Albanese (Labor)        CAMBIO
-  'NZL': 'center-left',   // Hipkins (Labor) → Luxon (National)       CAMBIO
+  'NZL': 'center-right',   // Luxon reelecto (2026)                      CONTINUIDAD
   'PNG': 'center',        // Marape continúa                          CONTINUIDAD
   'FJI': 'right',         // Bainimarama → Rabuka                     CAMBIO
   'WSM': 'center',        // Mata'afa → Schmidt                       CONTINUIDAD
-  'SLB': 'center',        // Sogavare → Manele (OUR)                  CONTINUIDAD
+  'SLB': 'center',         // Sogavare → Manele (2024) → Wale (2026)     CONTINUIDAD
   'VUT': 'center',        // Salwai → Napat (Leaders)                 CONTINUIDAD
-  'TON': 'center',        // Sovaleni → Eke                           CONTINUIDAD
+  'TON': 'center',         // Eke → Fakafānua (2025)                     CONTINUIDAD
   'KIR': 'center',        // Maamau continúa                          CONTINUIDAD
   'MHL': 'center',        // Heine fue antes (alternancia)            CONTINUIDAD
   'TUV': 'center',        // Natano → Teo                             CONTINUIDAD
@@ -32679,9 +32993,18 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
     const input = document.getElementById('portada-search-input');
     const hint = document.getElementById('portada-search-hint');
     if (!form || !input) return;
+    const go = c => {
+      hint.classList.remove('is-error');
+      hint.innerHTML = c.iso === 'BRA'
+        ? `Mostrando ${esc(c.name)} en el mapa. También podés abrir el <a href="#brasil" onclick="return window.__atlasGoTo('brasil')">especial Brasil 2026</a>.`
+        : `Mostrando ${esc(c.name)} en el mapa.`;
+      if (window.__atlasJumpTo) window.__atlasJumpTo(c.iso);
+    };
+    if (typeof attachCountryCombo === 'function') attachCountryCombo(input, go);
     form.addEventListener('submit', ev => {
       ev.preventDefault();
-      const c = findCountry(input.value);
+      const r = typeof cbxSearch === 'function' ? cbxSearch(input.value, 1) : [];
+      const c = (r[0] && r[0].c) || findCountry(input.value);
       if (!c) {
         hint.textContent = `No encontramos "${input.value}". Probá con el nombre en español (ej: "Alemania").`;
         hint.classList.add('is-error');
