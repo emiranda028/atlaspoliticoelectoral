@@ -743,17 +743,17 @@
     {
      "name": "Pedro Sánchez",
      "party": "PSOE",
-     "note": "Presidente del Gobierno; segundo en todas las encuestas."
+     "note": "Presidente del Gobierno; recortó distancia en la última semana y el CIS, SW Demoscopia y Cluster17 lo ponen primero."
     },
     {
      "name": "Alberto Núñez Feijóo",
      "party": "PP",
-     "note": "Lidera los sondeos, pero necesitaría a Vox para gobernar."
+     "note": "Primero en 20 de las 23 últimas encuestas, pero necesitaría a Vox para gobernar."
     },
     {
      "name": "Santiago Abascal",
      "party": "Vox",
-     "note": "Derecha radical, en alza: cerca del 18-19%."
+     "note": "Derecha radical: entre el 15% y el 20,6% en las últimas encuestas."
     },
     {
      "name": "Ione Belarra",
@@ -766,9 +766,9 @@
      "note": "Candidatura a definir (17 de octubre); Yolanda Díaz no se presenta."
     }
    ],
-   "polls": "El bloque PP-Vox supera con comodidad la mayoría de 176: GAD3/Vocento (6-8/10) da PP 31,4% (133 bancas), PSOE 26,4% (107), Vox 18,2% (65) y Sumar 7,4% (10); Sigma Dos/El Mundo (11/10) da PP 31,9% (135), PSOE 25,3% (103) y Vox 19,1% (68).",
+   "polls": "En las últimas encuestas antes de la veda (23/11), PP + Vox suman entre 163 escaños (CIS) y 212 (Hamalgama), con una mediana de 191: Sigma Dos/El Mundo da PP 31,9% (127), PSOE 28,6% (117) y Vox 17,8% (60,5); 40dB/El País, PP 31,8% (129,5), PSOE 30,9% (121,5) y Vox 17,3% (56); el CIS (preelectoral, octubre) pone primero al PSOE con 33,3% (138,5).",
    "stake": "¿Logra Sánchez volver a desafiar las encuestas o PP y Vox suman la mayoría absoluta para formar el primer gobierno con la derecha radical adentro?",
-   "summary": "Pedro Sánchez adelantó las generales al 29 de noviembre después de que el Congreso rechazara sus decretos de emergencia habitacional, en medio de una fuerte bronca social por el precio de la vivienda. Todos los sondeos dan ventaja al PP de Feijóo y una mayoría holgada para el bloque PP-Vox. La izquierda a la izquierda del PSOE llega fragmentada entre el nuevo Frente Amplio y Podemos.",
+   "summary": "Pedro Sánchez adelantó las generales al 29 de noviembre después de que el Congreso rechazara sus decretos de emergencia habitacional, en medio de una fuerte bronca social por el precio de la vivienda. Casi todos los sondeos dan ventaja al PP de Feijóo y mayoría absoluta al bloque PP-Vox, aunque el PSOE recortó distancia en la última semana. La izquierda a la izquierda del PSOE llega fragmentada entre el nuevo Frente Amplio y Podemos.",
    "why": "España es la cuarta economía de la eurozona y uno de los últimos grandes gobiernos socialdemócratas de Europa; un relevo con Vox en el gobierno movería el mapa político de la UE. La votación funciona además como plebiscito sobre la crisis de la vivienda, el gran tema social del país.",
    "sources": [
     {
