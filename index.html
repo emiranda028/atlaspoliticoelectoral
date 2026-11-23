@@ -3800,6 +3800,25 @@
   .chart-card select { border: 1px solid var(--line-strong, #CBD2DC) !important; border-radius: 10px !important; padding: 8px 12px !important; background-color: var(--surface) !important; font: 500 14px var(--font-sans) !important; color: var(--ink) !important; }
   @media (max-width: 640px) { .chart-card { padding: 18px 16px !important; } .chart-card h3 { font-size: 21px; } .cc-kicker { padding-right: 112px; } .ideo-row { grid-template-columns: 110px 1fr 70px !important; } }
 
+
+  /* ===== Sección Mapa y globo ===== */
+  html.map-page #portada, html.map-page .night-home { display: none !important; }
+  html.map-page #map, html.map-page .panel-map { height: calc(100vh - 150px); min-height: 520px; }
+  .panel-map { position: relative; }
+  .map-mode { position: absolute; top: 12px; left: 50%; transform: translateX(-50%); z-index: 1000; display: flex; background: var(--surface); border: 1px solid var(--line-strong, #CBD2DC); border-radius: 999px; padding: 3px; box-shadow: 0 4px 14px rgba(11,22,40,.14); }
+  .map-mode button { border: 0; background: none; padding: 6px 16px; border-radius: 999px; font: 600 13px var(--font-sans); color: var(--ink-soft); cursor: pointer; }
+  .map-mode button.is-active { background: var(--ink); color: var(--surface); }
+  .globe-canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: none; cursor: grab; touch-action: pan-y; background: radial-gradient(ellipse at center, #F4F7FB 0%, #E9EEF4 70%); }
+  .globe-canvas:active { cursor: grabbing; }
+  html.map-globe .globe-canvas { display: block; z-index: 500; }
+  html.map-globe #map { visibility: hidden; }
+  .globe-zoom { position: absolute; left: 12px; bottom: 16px; z-index: 600; display: none; flex-direction: column; gap: 4px; }
+  html.map-globe .globe-zoom { display: flex; }
+  .globe-zoom button { width: 34px; height: 34px; border-radius: 10px; border: 1px solid var(--line-strong, #CBD2DC); background: var(--surface); font: 600 18px var(--font-sans); color: var(--ink); cursor: pointer; box-shadow: 0 2px 6px rgba(11,22,40,.1); }
+  .globe-tip { position: absolute; z-index: 700; width: 220px; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; box-shadow: 0 10px 28px rgba(11,22,40,.18); padding: 8px 10px; font-size: 12.5px; pointer-events: none; display: grid; grid-template-columns: auto 1fr; gap: 2px 8px; align-items: center; }
+  .globe-tip[hidden] { display: none; }
+  .globe-tip .flag-img { width: 22px; height: 16px; border-radius: 2px; } .globe-tip span, .globe-tip em { grid-column: 1 / -1; color: var(--muted); } .globe-tip em { font-style: normal; display: flex; align-items: center; gap: 5px; color: var(--ink-soft); } .globe-tip em i { width: 9px; height: 9px; border-radius: 50%; display: inline-block; }
+  @media (max-width: 760px) { html.map-page #map, html.map-page .panel-map { height: 70vh; min-height: 420px; } .map-mode { top: 10px; } }
   /* ===== Navegación: Especiales ===== */
   .topic-nav-link.is-especiales .topic-nav-num { color: var(--accent); }
   /* ===== Análisis en solapas ===== */
@@ -8267,6 +8286,7 @@
 </div>
 <div class="layout">
   <div class="panel-map">
+    <div class="map-mode" role="group" aria-label="Vista del mapa"><button type="button" data-mapmode="flat" class="is-active" aria-pressed="true">Plano</button><button type="button" data-mapmode="globe" aria-pressed="false">Globo</button></div>
     <div id="map"></div>
     <div class="map-overlay-loading" id="map-loading">
       <div class="spinner"></div>
@@ -29241,6 +29261,17 @@ const NAME_TO_ISO = (() => {
   return m;
 })();
 
+const GEO_NAME_FIX = {
+  'republic of serbia': 'SRB', 'serbia': 'SRB', 'são tomé and principe': 'STP', 'sao tome and principe': 'STP',
+  'greenland': 'DNK', 'faroe islands': 'DNK', 'aland': 'FIN',
+  'puerto rico': 'USA', 'united states virgin islands': 'USA', 'guam': 'USA', 'american samoa': 'USA', 'northern mariana islands': 'USA', 'united states minor outlying islands': 'USA', 'us naval base guantanamo bay': 'CUB',
+  'new caledonia': 'FRA', 'french polynesia': 'FRA', 'saint martin': 'FRA', 'saint barthelemy': 'FRA', 'saint pierre and miquelon': 'FRA', 'wallis and futuna': 'FRA', 'clipperton island': 'FRA', 'french southern and antarctic lands': 'FRA',
+  'sint maarten': 'NLD', 'curaçao': 'NLD', 'aruba': 'NLD',
+  'bermuda': 'GBR', 'cayman islands': 'GBR', 'turks and caicos islands': 'GBR', 'anguilla': 'GBR', 'british virgin islands': 'GBR', 'montserrat': 'GBR', 'saint helena': 'GBR', 'pitcairn islands': 'GBR', 'british indian ocean territory': 'GBR', 'jersey': 'GBR', 'guernsey': 'GBR', 'isle of man': 'GBR',
+  'hong kong s.a.r.': 'CHN', 'macao s.a.r': 'CHN', 'baykonur cosmodrome': 'KAZ',
+  'norfolk island': 'AUS', 'coral sea islands': 'AUS', 'ashmore and cartier islands': 'AUS', 'heard island and mcdonald islands': 'AUS', 'indian ocean territories': 'AUS',
+  'cook islands': 'NZL', 'niue': 'NZL'
+};
 function getFeatureISO(feature) {
   if (!feature) return null;
   const p = feature.properties || {};
@@ -29261,6 +29292,12 @@ function getFeatureISO(feature) {
   if (checkISO === 'SGS' || checkName.includes('south georgia') || checkName.includes('georgias del sur')) {
     return 'ARG';
   }
+
+  // Nombres que la cartografía escribe distinto y territorios dependientes, que se pintan
+  // con el país del que dependen (Groenlandia con Dinamarca, Puerto Rico con EE.UU., etc.).
+  // Quedan sin asignar las zonas en disputa (Chipre del Norte, Siachen, Bir Tawil, Spratly…).
+  const byName = GEO_NAME_FIX[checkName];
+  if (byName) return byName;
 
   // Try every common property name across Natural Earth, datasets/geo-countries, etc.
   const candidates = [
@@ -29465,7 +29502,135 @@ function onEachFeature(feature, layer) {
 
 function restyleMap() {
   if (state.geoLayer) state.geoLayer.setStyle(styleFeature);
+  if (window.__globe) window.__globe.redraw();
 }
+
+/* ===========================================================
+   GLOBO TERRÁQUEO — proyección ortográfica (d3-geo) sobre canvas,
+   con los mismos colores y filtros que el mapa plano.
+   =========================================================== */
+window.__globe = (function () {
+  let canvas, ctx, tip, proj, path, grat, feats = null, rot = [20, -18, 0], zoom = 1, auto = true, raf = null, dirty = true, W = 0, H = 0, hoverIso = null, loading = null;
+  const D3 = 'https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js';
+  const loadD3 = () => loading || (loading = window.d3 ? Promise.resolve() : new Promise((ok, ko) => { const s = document.createElement('script'); s.src = D3; s.onload = ok; s.onerror = ko; document.head.appendChild(s); }));
+  const active = () => document.documentElement.classList.contains('map-globe') && canvas && canvas.offsetParent !== null;
+  function size() {
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    W = canvas.clientWidth; H = canvas.clientHeight;
+    canvas.width = Math.round(W * dpr); canvas.height = Math.round(H * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    proj.translate([W / 2, H / 2]).scale((Math.min(W, H) / 2 - 14) * zoom);
+    dirty = true;
+  }
+  function draw() {
+    if (!ctx || !feats) return;
+    ctx.clearRect(0, 0, W, H);
+    proj.rotate(rot);
+    ctx.beginPath(); path({ type: 'Sphere' }); ctx.fillStyle = '#E3ECF5'; ctx.fill();
+    ctx.beginPath(); path(grat); ctx.strokeStyle = 'rgba(11,22,40,.07)'; ctx.lineWidth = 0.6; ctx.stroke();
+    let sel = null;
+    feats.forEach(f => {
+      const st = styleFeature(f);
+      if (!st || st.fillOpacity === 0) return;
+      ctx.beginPath(); path(f);
+      ctx.globalAlpha = st.fillOpacity != null ? st.fillOpacity : 0.86; ctx.fillStyle = st.fillColor; ctx.fill();
+      ctx.globalAlpha = 1; ctx.strokeStyle = 'rgba(255,255,255,.85)'; ctx.lineWidth = 0.5; ctx.stroke();
+      const iso = getFeatureISO(f);
+      if (iso && (iso === state.selectedISO || iso === hoverIso)) (sel = sel || []).push(f);
+    });
+    (sel || []).forEach(f => { ctx.beginPath(); path(f); ctx.strokeStyle = '#0B1628'; ctx.lineWidth = 1.6; ctx.stroke(); });
+    ctx.beginPath(); path({ type: 'Sphere' }); ctx.strokeStyle = 'rgba(11,22,40,.25)'; ctx.lineWidth = 1; ctx.stroke();
+    dirty = false;
+  }
+  function loop() {
+    raf = null;
+    if (!active()) return;
+    if (auto) { rot[0] = (rot[0] + 0.12) % 360; dirty = true; }
+    if (dirty) draw();
+    raf = requestAnimationFrame(loop);
+  }
+  const kick = () => { if (!raf && active()) raf = requestAnimationFrame(loop); };
+  function featAt(x, y) {
+    const ll = proj.invert([x, y]);
+    if (!ll || isNaN(ll[0])) return null;
+    // fuera de la cara visible: distancia angular al centro mayor a 90°
+    if (d3.geoDistance(ll, [-rot[0], -rot[1]]) > Math.PI / 2) return null;
+    return feats.find(f => getFeatureISO(f) && d3.geoContains(f, ll)) || null;
+  }
+  function centerOn(iso) {
+    const f = feats && feats.find(x => getFeatureISO(x) === iso);
+    if (!f) return;
+    const c = d3.geoCentroid(f), from = rot.slice(), to = [-c[0], -c[1], 0];
+    if (to[0] - from[0] > 180) from[0] += 360; else if (from[0] - to[0] > 180) from[0] -= 360;
+    auto = false;
+    const t0 = performance.now();
+    const step = t => { const k = Math.min(1, (t - t0) / 700), e = k < .5 ? 2 * k * k : 1 - Math.pow(-2 * k + 2, 2) / 2; rot = [from[0] + (to[0] - from[0]) * e, from[1] + (to[1] - from[1]) * e, 0]; dirty = true; draw(); if (k < 1) requestAnimationFrame(step); };
+    requestAnimationFrame(step);
+  }
+  function setup() {
+    const host = document.querySelector('.panel-map');
+    if (!host || canvas) return;
+    canvas = document.createElement('canvas'); canvas.className = 'globe-canvas'; canvas.setAttribute('aria-label', 'Globo terráqueo: arrastrá para girarlo y tocá un país para ver su ficha');
+    tip = document.createElement('div'); tip.className = 'globe-tip'; tip.hidden = true;
+    host.append(canvas, tip);
+    ctx = canvas.getContext('2d');
+    proj = d3.geoOrthographic().clipAngle(90).precision(0.6);
+    path = d3.geoPath(proj, ctx); grat = d3.geoGraticule10();
+    let drag = null, moved = false;
+    canvas.addEventListener('pointerdown', e => { drag = { x: e.clientX, y: e.clientY, r: rot.slice() }; moved = false; auto = false; canvas.setPointerCapture(e.pointerId); });
+    canvas.addEventListener('pointermove', e => {
+      const r = canvas.getBoundingClientRect(), x = e.clientX - r.left, y = e.clientY - r.top;
+      if (drag) {
+        const k = 0.28 / zoom, dx = e.clientX - drag.x, dy = e.clientY - drag.y;
+        if (Math.abs(dx) + Math.abs(dy) > 3) moved = true;
+        rot = [drag.r[0] + dx * k, Math.max(-75, Math.min(75, drag.r[1] - dy * k)), 0]; dirty = true; kick();
+        return;
+      }
+      if (e.pointerType !== 'mouse') return;
+      const f = featAt(x, y), iso = f ? getFeatureISO(f) : null, c = iso && state.countryByISO[iso];
+      if (iso !== hoverIso) { hoverIso = iso; dirty = true; kick(); }
+      if (c) { const I = IDEOLOGIES[c.ideology] || IDEOLOGIES.other; tip.innerHTML = `${flagOf(c.iso)} <b>${escapeHtml(c.name)}</b><span>${escapeHtml(c.leader.name)}</span><em><i style="background:${I.color}"></i>${escapeHtml(I.label)}</em>`; tip.hidden = false; tip.style.left = Math.min(x + 14, W - 230) + 'px'; tip.style.top = Math.min(y + 14, H - 90) + 'px'; canvas.style.cursor = 'pointer'; }
+      else { tip.hidden = true; canvas.style.cursor = 'grab'; }
+    });
+    const end = e => {
+      if (!drag) return;
+      const was = moved; drag = null;
+      if (!was) {
+        const r = canvas.getBoundingClientRect(), f = featAt(e.clientX - r.left, e.clientY - r.top), iso = f && getFeatureISO(f);
+        if (iso && state.countryByISO[iso]) { centerOn(iso); if (window.__atlasJumpTo) window.__atlasJumpTo(iso); }
+      }
+    };
+    canvas.addEventListener('pointerup', end); canvas.addEventListener('pointercancel', () => { drag = null; });
+    canvas.addEventListener('pointerleave', () => { hoverIso = null; tip.hidden = true; dirty = true; kick(); });
+    canvas.addEventListener('wheel', e => {
+      if (!(e.ctrlKey || e.metaKey || document.documentElement.classList.contains('map-fs'))) return;
+      e.preventDefault(); zoom = Math.max(0.8, Math.min(4, zoom * (e.deltaY < 0 ? 1.12 : 1 / 1.12))); size(); kick();
+    }, { passive: false });
+    window.addEventListener('resize', () => { if (active()) { size(); kick(); } });
+    const zc = document.createElement('div'); zc.className = 'globe-zoom';
+    zc.innerHTML = '<button type="button" data-z="1" aria-label="Acercar">+</button><button type="button" data-z="-1" aria-label="Alejar">−</button><button type="button" data-z="0" aria-label="Girar solo" title="Girar solo">⟳</button>';
+    zc.addEventListener('click', e => { const b = e.target.closest('button'); if (!b) return; const z = +b.dataset.z; if (z === 0) auto = !auto; else { zoom = Math.max(0.8, Math.min(4, zoom * (z > 0 ? 1.3 : 1 / 1.3))); size(); } kick(); });
+    host.appendChild(zc);
+  }
+  function show() {
+    return loadD3().then(() => {
+      feats = (state.geo && state.geo.features) || feats;
+      setup();
+      if (!feats) return;
+      size(); dirty = true; kick();
+      if (state.selectedISO) centerOn(state.selectedISO);
+    });
+  }
+  function setMode(mode, save) {
+    const g = mode === 'globe';
+    document.documentElement.classList.toggle('map-globe', g);
+    document.querySelectorAll('[data-mapmode]').forEach(b => { const on = b.dataset.mapmode === mode; b.classList.toggle('is-active', on); b.setAttribute('aria-pressed', on); });
+    if (save) { try { localStorage.setItem('atlas-map-mode', mode); } catch (e) {} }
+    if (g) show().catch(() => { setMode('flat', false); });
+    else if (window.map) setTimeout(() => map.invalidateSize(), 30);
+  }
+  return { setMode, show, redraw: () => { dirty = true; kick(); }, centerOn: iso => feats && d3 && centerOn(iso) };
+})();
 
 /* ===========================================================
    DETAIL PANEL
@@ -32090,7 +32255,7 @@ function renderElectionsTimeline() {  const today = new Date();
     state.selectedISO = iso;
     // Ensure we're on the home view where the map lives
     if (window.__atlasGoTo && document.body.getAttribute('data-view') !== 'inicio') {
-      window.__atlasGoTo('inicio', { noScroll: true });
+      window.__atlasGoTo('mapa', { noScroll: true });
     }
     renderDetail(c);
     if (state.geoLayer) {
@@ -32200,9 +32365,9 @@ function renderElectionsTimeline() {  const today = new Date();
   // Also marks the corresponding nav link as active.
   // ============ SPA ROUTER ============
   // Maps nav hrefs (#nav-map, #nav-calendar, …) and view ids to canonical views.
-  const VIEW_IDS = ['inicio', 'elecciones', 'analisis', 'cambio', 'metodologia', 'especiales', 'brasil', 'eeuu', 'israel', 'espana', 'argentina', 'juegos'];
+  const VIEW_IDS = ['inicio', 'mapa', 'elecciones', 'analisis', 'cambio', 'metodologia', 'especiales', 'brasil', 'eeuu', 'israel', 'espana', 'argentina', 'juegos'];
   const NAV_TO_VIEW = {
-    'nav-map': 'inicio',          // the map now lives on the home view
+    'nav-map': 'mapa',            // the map lives on the home view; #mapa shows it alone, on top
     'nav-calendar': 'elecciones',
     'nav-analytics': 'analisis',
     'nav-change': 'cambio',       // "Cambio" is now its own view
@@ -32212,6 +32377,10 @@ function renderElectionsTimeline() {  const today = new Date();
   function showView(view, opts) {
     opts = opts || {};
     if (!VIEW_IDS.includes(view)) view = 'inicio';
+    // "Mapa": la misma vista de inicio, sin la portada, con el mapa arriba
+    const mapPage = view === 'mapa';
+    document.documentElement.classList.toggle('map-page', mapPage);
+    if (mapPage) view = 'inicio';
     // "Cambio" ahora es una solapa de Análisis (los enlaces viejos siguen andando)
     if (view === 'cambio') { view = 'analisis'; opts.atab = 'giros'; }
     if (view === 'analisis' && window.__setAnTab) window.__setAnTab(opts.atab || null, { fromRouter: true });
@@ -32227,7 +32396,7 @@ function renderElectionsTimeline() {  const today = new Date();
     // Highlight the active nav link
     document.querySelectorAll('.topic-nav-link').forEach(l => {
       const href = (l.getAttribute('href') || '').replace('#', '');
-      l.classList.toggle('is-active', NAV_TO_VIEW[href] === view || href === view || (href === 'especiales' && ['brasil', 'eeuu', 'israel'].includes(view)));
+      l.classList.toggle('is-active', mapPage ? href === 'nav-map' : (NAV_TO_VIEW[href] === view || href === view || (href === 'especiales' && ['brasil', 'eeuu', 'israel'].includes(view))));
     });
 
     // On the map view the filters live inside the map (left panel)
@@ -32248,7 +32417,7 @@ function renderElectionsTimeline() {  const today = new Date();
 
     // Update the URL hash without adding noise to history when restoring
     if (!opts.skipHash) {
-      const newHash = '#' + view + (view === 'analisis' && window.__anTab && window.__anTab !== 'panorama' ? '/' + window.__anTab : '');
+      const newHash = '#' + (mapPage ? 'mapa' : view) + (view === 'analisis' && window.__anTab && window.__anTab !== 'panorama' ? '/' + window.__anTab : '');
       if (window.location.hash !== newHash) {
         history.pushState({ view }, '', newHash);
       }
@@ -32441,6 +32610,7 @@ async function fetchWikiPhoto(wikiName) {
 
   try {
     const geo = await loadGeo();
+    state.geo = geo;
     state.geoLayer = L.geoJSON(geo, {
       style: styleFeature,
       onEachFeature: onEachFeature,
@@ -32795,6 +32965,8 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') document.que
 let ccPending = false;
 new MutationObserver(() => { if (ccPending) return; ccPending = true; requestAnimationFrame(() => { ccPending = false; attachExportButtons(); }); }).observe(document.body, { childList: true, subtree: true });
 window.addEventListener('load', () => setTimeout(attachExportButtons, 300));
+document.addEventListener('click', e => { const b = e.target.closest('[data-mapmode]'); if (b && window.__globe) window.__globe.setMode(b.dataset.mapmode, true); });
+window.addEventListener('load', () => { let m = null; try { m = localStorage.getItem('atlas-map-mode'); } catch (e) {} if (m === 'globe' && window.__globe) setTimeout(() => window.__globe.setMode('globe', false), 400); });
 window.exportSectionAsPNG = exportSectionAsPNG;
 window.exportFullAtlasPDF = exportFullAtlasPDF;
 
