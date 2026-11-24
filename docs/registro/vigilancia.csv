@@ -1,0 +1,28 @@
+prioridad,tipo,pais_o_distrito,que_vigilar,fecha,fuente_oficial,frecuencia,estado,donde_impacta
+alta,eleccion,España,Resultados de las generales (provisorio y definitivo),2026-11-29,Ministerio del Interior (infoelectoral.interior.gob.es); Junta Electoral Central,noche electoral y al definitivo,en curso,especial España; ficha ESP; calendario; contador de gobiernos
+alta,pendiente,EE.UU.,Senado: banca de Alaska sin definir,2026-11-03,Secretaría de Estado / División Electoral de Alaska (certificación),semanal hasta certificar,pendiente,especial EE.UU.; ficha USA
+alta,eleccion,Gambia,Presidencial,2026-12-05,Comisión Electoral Independiente de Gambia,noche electoral,proxima,ficha GMB; calendario
+alta,eleccion,Fiyi,Parlamentarias,2027-01-15,Oficina Electoral de Fiyi,semana de la elección,proxima,ficha FJI; calendario
+alta,eleccion,Nigeria,Presidencial y Asamblea Nacional,2027-01-16,INEC (Comisión Electoral Nacional Independiente),semana de la elección,proxima,ficha NGA; calendario
+alta,eleccion,Argentina · Neuquén,Gobernador y Legislatura,2027-02-14,Justicia electoral de Neuquén; Boletín Oficial de Neuquén,semanal hasta la elección,confirmada,especial Argentina 2027; prode
+alta,eleccion,Argentina · Chubut,Gobernador y Legislatura,2027-03-21,Tribunal Electoral de Chubut; Boletín Oficial de Chubut,semanal hasta la elección,confirmada,especial Argentina 2027; prode
+media,eleccion,Micronesia,Congreso,2027-03-02,Organismo electoral nacional,semana de la elección,proxima,ficha FSM; calendario
+media,eleccion,Estonia,Riigikogu,2027-03-07,Comisión Electoral Nacional de Estonia,semana de la elección,proxima,ficha EST; calendario
+media,eleccion,Finlandia,Eduskunta,2027-04-18,Ministerio de Justicia de Finlandia (vaalit.fi),semana de la elección,proxima,ficha FIN; calendario
+alta,eleccion,Francia,Presidencial (1.ª vuelta; 2.ª el 2 de mayo),2027-04-18,Ministerio del Interior de Francia; Consejo Constitucional,mensual y semana de la elección,proxima,ficha FRA; calendario
+alta,eleccion,Argentina · Tucumán,Gobernador,2027-05-09,Junta Electoral Provincial de Tucumán; Boletín Oficial,mensual,confirmada,especial Argentina 2027; prode
+media,convocatoria,Argentina · Salta,Fecha tentativa: confirmar decreto,2027-05-16,Boletín Oficial de Salta,mensual,tentativa,especial Argentina 2027
+media,convocatoria,Argentina · Santa Fe,Fecha tentativa: confirmar decreto,2027-06-13,Tribunal Electoral de Santa Fe; Boletín Oficial,mensual,tentativa,especial Argentina 2027
+media,convocatoria,Argentina · provincias desdobladas sin fecha,"Decretos de convocatoria: Chaco, Corrientes, Jujuy, Mendoza, Misiones, Río Negro, San Luis y Tierra del Fuego",,Boletín oficial de cada provincia (ver fuentes-provincias.csv),semanal,sin fecha,especial Argentina 2027; calendario
+alta,ley,Argentina,Reforma de las PASO (suspensión o eliminación) en el Senado,,Senado de la Nación; Boletín Oficial,semanal,en tramite,especial Argentina 2027; La rosca
+alta,encuestas,Argentina,Encuestas nacionales para 2027 (1.ª vuelta; balotaje; aprobación),,Consultoras y medios con ficha técnica,semanal,continuo,especial Argentina 2027 (promedio ponderado)
+media,pendiente,Serbia,Presidencial anticipada: fecha por fijar,,Comisión Electoral de la República de Serbia,quincenal,pendiente,ficha SRB; calendario
+baja,postergada,"Bahréin, Nicaragua y Haití",Elecciones postergadas o sin fecha,,Organismo electoral de cada país,mensual,postergada,calendario
+alta,dato,Argentina · INDEC,Inflación (IPC) mensual,,INDEC (calendario de difusión),mensual,continuo,ficha ARG; especial Argentina 2027
+alta,dato,Argentina · INDEC,Desocupación (EPH) trimestral,,INDEC (calendario de difusión),trimestral,continuo,ficha ARG; especial Argentina 2027; test de percepción
+alta,dato,Argentina · INDEC,Pobreza e indigencia (EPH) semestral,,INDEC (calendario de difusión),semestral,continuo,ficha ARG; especial Argentina 2027; test de percepción; prode
+media,dato,Mundo,Crecimiento y deuda (FMI WEO),,FMI World Economic Outlook (abril y octubre),semestral,continuo,fichas; análisis
+media,dato,Mundo,Gini; pobreza; población (Banco Mundial),,Banco Mundial (World Development Indicators),trimestral,continuo,fichas; análisis; contador
+media,dato,Mundo,Libertad de prensa (RSF),,Reporteros sin Fronteras (clasificación anual de mayo),anual,continuo,fichas; análisis
+media,dato,Mundo,Índice de Desarrollo Humano (PNUD),,PNUD Informe sobre Desarrollo Humano,anual,continuo,fichas; análisis
+alta,gobiernos,Mundo,Cambios de jefe de gobierno o de Estado fuera de elecciones (renuncias; golpes; mociones de censura),,Gobierno o boletín oficial de cada país (prensa solo como pista),semanal,continuo,fichas; contador; giros; mujeres al frente; juegos

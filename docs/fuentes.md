@@ -1,8 +1,8 @@
 # Manual de fuentes y criterios — Atlas Político Electoral
 
-> Borrador v0.1 (24/11/2026). Es la regla que siguen los agentes del equipo de datos (Vigía, Editor,
+> Versión 1.0 (24/11/2026), aprobada por Emmanuel Miranda. Es la regla que siguen los agentes del equipo de datos (Vigía, Editor,
 > Verificador y Jefe de redacción) y cualquier persona que actualice el Atlas.
-> **Lo que está marcado con ☐ lo decide Emmanuel.** Hasta que lo decida, los agentes frenan y preguntan.
+> Cualquier caso que este manual no cubra lo decide Emmanuel: los agentes frenan y preguntan.
 
 ---
 
@@ -20,7 +20,7 @@ valor nuevo, URL de la fuente, fecha de consulta y quién lo verificó.
 | Nivel | Qué es | Se publica |
 |---|---|---|
 | **Alta** | Fuente oficial primaria: organismo electoral, boletín oficial, organismo estadístico, parlamento, gobierno | Sí |
-| **Media** | Fuente oficial secundaria (organismo internacional que cita a la oficial) o dos medios de referencia independientes que coinciden, mientras no hay publicación oficial | ☐ Solo marcado "provisorio" |
+| **Media** | Fuente oficial secundaria (organismo internacional que cita a la oficial) o dos medios de referencia independientes que coinciden, mientras no hay publicación oficial | Sí, con la etiqueta visible "provisorio" |
 | **Baja** | Un solo medio, redes sociales, Wikipedia, comunicados de partidos | No. Queda en "pendiente" |
 
 Si dos fuentes oficiales se contradicen, **no se elige**: se reporta a Emmanuel.
@@ -29,8 +29,8 @@ Si dos fuentes oficiales se contradicen, **no se elige**: se reporta a Emmanuel.
 
 | Hecho | Se confirma con | Mientras tanto |
 |---|---|---|
-| Resultado de una elección | Escrutinio provisorio del organismo electoral (al 95% o más de mesas) | ☐ ¿Se publica el provisorio o se espera el definitivo? Propuesta: publicar el provisorio con la etiqueta "provisorio" y actualizar con el definitivo |
-| Ganador en EE.UU. | Certificación de cada estado | ☐ ¿Se acepta el "llamado" de Associated Press como provisorio? Es el estándar de los medios, pero no es oficial |
+| Resultado de una elección | Escrutinio provisorio del organismo electoral (al 95% o más de mesas) | Se publica el provisorio con la etiqueta "provisorio" y se actualiza con el definitivo |
+| Ganador en EE.UU. | Certificación de cada estado | Se acepta el "llamado" de Associated Press como provisorio, aclarándolo, hasta la certificación |
 | Cambio de jefe de gobierno o de Estado | Asunción efectiva (jura o decreto publicado), no el anuncio | Se anota como "asume el día X" en la ficha |
 | Fecha de una elección | Decreto o resolución de convocatoria del organismo competente | Se carga como "tentativa" con la fuente del anuncio |
 | Dato económico o social | Publicación del organismo (informe, base de datos o API) | No se estima ni se interpola |
@@ -43,7 +43,7 @@ Si dos fuentes oficiales se contradicen, **no se elige**: se reporta a Emmanuel.
 - Dirección Nacional Electoral (resultados provisorios, calendario): argentina.gob.ar/dine
 - Boletín Oficial de la República Argentina (decretos de convocatoria, designaciones): boletinoficial.gob.ar
 - Cámara de Diputados y Senado (composición de bloques, bancas): hcdn.gob.ar y senado.gob.ar
-- **Provincias:** el tribunal o junta electoral de cada provincia y su boletín oficial (convocatorias, desdoblamientos, resultados). ☐ Completar la lista de las 24 en la hoja de fuentes.
+- **Provincias:** el tribunal o junta electoral de cada provincia y su boletín oficial (convocatorias, desdoblamientos, resultados). La lista de las 24 está en la hoja "Registro de fuentes".
 
 ### Argentina — economía y sociedad
 - INDEC (pobreza, indigencia, desocupación, inflación, Censo): indec.gob.ar
@@ -76,13 +76,13 @@ Regla: se usa **la última edición publicada** y se anota el año del dato. No 
 - Se cargan desde la consultora o el medio que la publicó, con ficha técnica.
 - Agregadores (Wikipedia, Electomanía y similares) solo para encontrar encuestas, nunca como fuente final, salvo que la fuente original no se pueda abrir. En ese caso se anota "tomada del agregador, sin verificar en la fuente".
 - No entran: sondeos internos de partidos, "voto seguro" o "techo" (no son intención de voto) ni encuestas sin fecha de campo.
-- ☐ ¿Se marcan las consultoras con cercanía política conocida? Propuesta: sí, en la nota metodológica, sin excluirlas.
+- Las consultoras con cercanía política conocida se incluyen y se marcan en la nota metodológica.
 
 ## 5. Criterios editoriales
 
 - **Malvinas, Georgias y Sandwich del Sur:** territorio argentino (Resolución 2065 de la ONU). Así en mapas, fichas y textos.
 - **Clasificación ideológica de cada gobierno:** la decide Emmanuel. Los agentes **nunca** cambian una clasificación por su cuenta. Si cambia el gobierno, proponen una clasificación con su justificación y esperan el OK.
-- **Territorios dependientes:** se pintan con el país del que dependen. Las zonas en disputa quedan sin color. ☐ Confirmar el criterio para Gibraltar y Chipre del Norte (hoy sin color).
+- **Territorios dependientes:** se pintan con el país del que dependen. Las zonas en disputa (Gibraltar, Chipre del Norte, Siachen, Spratly, Bir Tawil) quedan sin color.
 - **Lenguaje:** neutral y descriptivo. Se dice "ganó con el 51%", no "arrasó". Sin adjetivos que valoren a candidatos o partidos.
 - **Cifras:** coma decimal y punto de miles (32,3%; 1.329). Siempre con unidad y año.
 - **Fechas:** día de mes de año ("29 de noviembre de 2026").
