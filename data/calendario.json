@@ -199,7 +199,7 @@
    ],
    "polls": "Encuestas de 2026 (Reale Dalla Torre, Mide, entre otras) ubican a Milei primero y a Kicillof segundo, con balotaje ajustado entre ambos.",
    "stake": "¿Logra Milei la reelección o el peronismo recupera la Casa Rosada?",
-   "summary": "Argentina elige presidente el cuarto domingo de octubre de 2027, según el Código Electoral. Las PASO fueron suspendidas en 2025 por la Ley 27.783 y su realización en 2027 depende de la reforma electoral que el Gobierno negocia en el Congreso, sin resolución a septiembre de 2026.",
+   "summary": "Argentina elige presidente el cuarto domingo de octubre de 2027, según el Código Electoral. Las PASO fueron suspendidas en 2025 por la Ley 27.783 y su realización en 2027 depende de la reforma electoral que se discute en el Congreso: el 18 de noviembre de 2026 pasó a la firma en el Senado un dictamen que las suspende solo para 2027; falta la votación en el recinto.",
    "result": null,
    "sources": [
     {
@@ -1046,7 +1046,7 @@
    ],
    "polls": null,
    "stake": "¿Retiene Rabuka el poder en la primera elección tras la disolución de FijiFirst, el partido de Bainimarama?",
-   "summary": "Todavía no hay convocatoria: la Oficina Electoral no publicó fecha. La Constitución obliga a votar a más tardar el 6 de febrero de 2027 (la fecha que se muestra es ese límite), y Rabuka anticipó que sería entre el 24 de diciembre de 2026 y la primera semana de febrero. Antes, la Oficina Electoral propone un referéndum nacional para el 9 de diciembre de 2026. Hay un récord de diez partidos registrados.",
+   "summary": "Todavía no hay convocatoria: la Oficina Electoral no publicó fecha. La Constitución obliga a votar a más tardar el 6 de febrero de 2027 (la fecha que se muestra es ese límite), y Rabuka anticipó que sería entre el 24 de diciembre de 2026 y la primera semana de febrero. Antes, la Oficina Electoral informó en octubre de 2026 un referéndum nacional propuesto para el 9 de diciembre de 2026 (pendiente confirmar si ya está convocado). Hay un récord de diez partidos registrados.",
    "result": null,
    "sources": [
     {
@@ -3037,8 +3037,8 @@
    ],
    "polls": "Las encuestas divergen: Faktor Plus (publicada el 21 de septiembre) da 48,6% a la lista de Vučić y 37,1% a la Lista Estudiantil, mientras que NSPM (publicada el 30 de septiembre, campo de comienzos de septiembre) pone adelante a los estudiantes con 44,4% contra 41,7%.",
    "stake": "¿Puede la lista surgida de las protestas estudiantiles terminar con más de una década de dominio del SNS?",
-   "summary": "La Lista Estudiantil puede gobernar sin socios, pero todavía no presentó candidato a primer ministro. Entre los nombres que circulan figuran el cardiólogo Ilija Srdanović y el exgobernador del Banco Nacional Dejan Šoškić. La Asamblea debe constituirse dentro de los 30 días posteriores a la proclamación de los resultados oficiales, y la propuesta de primer ministro le corresponde al presidente interino, Aleksandar Čupić (presidente de la Asamblea desde el 19/11); el primer ministro saliente es Đuro Macut (independiente).",
-   "result": "La Lista Estudiantil ganó por mayoría absoluta (140 de 250 escaños) y terminó con 14 años de gobiernos del SNS. Vučić, que había dimitido como presidente para encabezar la lista, reconoció la derrota. El nuevo parlamento se constituyó el 17 nov y eligió presidente de la Asamblea a Aleksandar Čupić el 19 nov. Desde ese día, por la Constitución (art. 120), Čupić ejerce también la presidencia de la República de forma interina; la presidencial anticipada todavía no tiene fecha.",
+   "summary": "La Lista Estudiantil puede gobernar sin socios, pero todavía no presentó candidato a primer ministro. Entre los nombres que circulan figuran el cardiólogo Ilija Srdanović y el exgobernador del Banco Nacional Dejan Šoškić. La Asamblea debe constituirse dentro de los 30 días posteriores a la proclamación de los resultados oficiales, y la propuesta de primer ministro le corresponde al presidente interino, Aleksandar Čupić (presidente de la Asamblea desde el 19 de noviembre; provisorio); el primer ministro saliente es Đuro Macut (independiente).",
+   "result": "La Lista Estudiantil ganó por mayoría absoluta (140 de 250 escaños) y terminó con 14 años de gobiernos del SNS. Vučić, que había dimitido como presidente para encabezar la lista, reconoció la derrota. El nuevo parlamento se constituyó el 17 nov y eligió presidente de la Asamblea a Aleksandar Čupić el 19 de noviembre. Según el art. 120 de la Constitución, el presidente de la Asamblea ejerce la presidencia de la República de forma interina (dato provisorio: falta el acto oficial de asunción); la presidencial anticipada todavía no tiene fecha.",
    "sources": [
     {
      "label": "Gobierno de Serbia: Čupić, presidente de la Asamblea (19/11/2026)",
@@ -3372,11 +3372,11 @@
     }
    ],
    "stake": "¿Recuperan los demócratas la Cámara y también el Senado?",
-   "result": "Los demócratas ganaron el control de las dos cámaras: al menos 257 bancas en la Cámara de Representantes (7 sin definir) y 56 en el Senado contando a los independientes. En Alaska ganó Mary Peltola (50,1% contra 45,8% de Dan Sullivan, con el 100% de las mesas; llamado de AP el 17/11); el resultado es provisorio hasta la certificación estatal, prevista para el 25/11. Trump sigue como presidente, pero desde enero de 2027 tendrá un Congreso opositor.",
+   "result": "Los demócratas ganaron el control de las dos cámaras: al menos 257 bancas en la Cámara de Representantes (7 sin definir) y 56 en el Senado contando a los independientes. Dos bancas del Senado son provisorias hasta la certificación estatal: en Alaska ganó Mary Peltola (50,1% contra 45,8% de Dan Sullivan, con el 100% de las mesas; llamado de AP el 17 de noviembre; certificación prevista para el 25 de noviembre) y en Misisipi, Scott Colom a Cindy Hyde-Smith (llamado de AP el 11 de noviembre). Trump sigue como presidente, pero desde enero de 2027 tendrá un Congreso opositor.",
    "sources": [
     {
-     "label": "División Electoral de Alaska: resultados",
-     "url": "https://www.elections.alaska.gov/election-results/"
+     "label": "División Electoral de Alaska: resultados oficiales (informe resumen)",
+     "url": "https://www.elections.alaska.gov/enr/26GENR/results/ElectionSummaryReportRPT.pdf"
     },
     {
      "label": "www.yahoo.com",

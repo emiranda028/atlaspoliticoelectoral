@@ -16,7 +16,7 @@ media,convocatoria,Argentina · Santa Fe,Fecha tentativa: confirmar decreto,2027
 media,convocatoria,Argentina · provincias desdobladas sin fecha,"Decretos de convocatoria: Chaco, Corrientes, Jujuy, Mendoza, Misiones, Río Negro, San Luis y Tierra del Fuego",,Boletín oficial de cada provincia (ver fuentes-provincias.csv),semanal,sin fecha,especial Argentina 2027; calendario
 alta,ley,Argentina,Reforma electoral: dictamen a la firma el 18/11 (suspende las PASO solo para 2027; quita colectoras); falta el recinto,,Senado de la Nación; Boletín Oficial,semanal,dictamen,especial Argentina 2027; La rosca
 alta,encuestas,Argentina,Encuestas nacionales para 2027 (1.ª vuelta; balotaje; aprobación),,Consultoras y medios con ficha técnica,semanal,continuo,especial Argentina 2027 (promedio ponderado)
-media,pendiente,Serbia,"Presidencial anticipada: fecha por fijar (Čupić, interino desde el 19/11)",,Comisión Electoral de la República de Serbia,quincenal,pendiente,ficha SRB; calendario
+media,pendiente,Serbia,"Presidencial anticipada: fecha por fijar (Čupić, interino desde el 19/11); buscar acto oficial de asunción interina",,Comisión Electoral de la República de Serbia,quincenal,pendiente,ficha SRB; calendario
 baja,postergada,"Bahréin, Nicaragua y Haití",Elecciones postergadas o sin fecha,,Organismo electoral de cada país,mensual,postergada,calendario
 alta,dato,Argentina · INDEC,Inflación (IPC) mensual,2026-12-15,INDEC (calendario de difusión),mensual,continuo,ficha ARG; especial Argentina 2027
 alta,dato,Argentina · INDEC,Desocupación (EPH) trimestral,2026-12-18,INDEC (calendario de difusión),trimestral,continuo,ficha ARG; especial Argentina 2027; test de percepción
@@ -26,10 +26,10 @@ media,dato,Mundo,Gini; pobreza; población (Banco Mundial),,Banco Mundial (World
 media,dato,Mundo,Libertad de prensa (RSF),,Reporteros sin Fronteras (clasificación anual de mayo),anual,continuo,fichas; análisis
 media,dato,Mundo,Índice de Desarrollo Humano (PNUD),,PNUD Informe sobre Desarrollo Humano,anual,continuo,fichas; análisis
 alta,gobiernos,Mundo,Cambios de jefe de gobierno o de Estado fuera de elecciones (renuncias; golpes; mociones de censura),,Gobierno o boletín oficial de cada país (prensa solo como pista),semanal,continuo,fichas; contador; giros; mujeres al frente; juegos
-alta,pendiente,EE.UU.,Senado: Misisipi (Colom-Hyde-Smith) sin llamado en la foto de AP del 10/11; confirmar resultado,,Secretaría de Estado de Misisipi (certificación),semanal hasta certificar,pendiente,especial EE.UU.; ficha USA
+alta,pendiente,EE.UU.,Senado: certificación de Misisipi (Colom ganó por llamado de AP el 11/11; provisorio),,Secretaría de Estado de Misisipi (certificación),semanal hasta certificar,provisorio,especial EE.UU.; ficha USA
 alta,ley,Argentina,"Sesión del Senado para votar la reforma electoral (pista de prensa, sin confirmar)",2026-11-26,Senado de la Nación (orden del día),semana de la sesión,pista,especial Argentina 2027; La rosca
 alta,convocatoria,Argentina · Chubut,Adhesión de los municipios a la fecha del 21/3 (intendentes y concejales),2026-12-19,Boletín Oficial del Chubut; Portal Electoral de Chubut,semanal hasta el plazo,plazo abierto,especial Argentina 2027
-media,eleccion,Fiyi,Referéndum nacional propuesto por la Oficina Electoral,2026-12-09,Oficina Electoral de Fiyi (feo.org.fj),semana del referéndum,propuesto,ficha FJI; calendario
+media,eleccion,Fiyi,"Referéndum nacional: confirmar si ya está convocado (la portada de la Oficina Electoral dice ""anunciado"")",2026-12-09,Oficina Electoral de Fiyi (feo.org.fj),semana del referéndum,propuesto,ficha FJI; calendario
 media,dato,Argentina · INDEC,Estimador mensual de actividad (EMAE),2026-12-21,INDEC (calendario de difusión),mensual,continuo,ficha ARG; especial Argentina 2027
 media,dato,Argentina · INDEC,Distribución del ingreso (EPH),2026-12-23,INDEC (calendario de difusión),trimestral,continuo,ficha ARG; especial Argentina 2027
 media,pendiente,Botsuana,Porcentajes de las legislativas 2024 en la fuente oficial (sitio del IEC caído),,Comisión Electoral Independiente de Botsuana,mensual,pendiente,ficha BWA

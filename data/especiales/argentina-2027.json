@@ -10,8 +10,8 @@
   "inauguration": "2027-12-10"
  },
  "nacional": {
-  "pasoStatus": "Siguen vigentes por ley (Ley 26.571), aunque en 2025 se suspendieron solo para las legislativas. Si el Congreso no cambia nada, se harían el segundo domingo de agosto: el 8 de agosto de 2027. El 18/11/2026 la comisión de Asuntos Constitucionales del Senado puso a la firma el dictamen de la reforma electoral, que las suspende solo para 2027 (no las elimina) y quita las listas colectoras; falta la votación en el recinto, donde necesita 37 votos (Senado de la Nación, 18/11/2026). Por eso la fecha del 8 de agosto queda sujeta a cambios.",
-  "reform": "Desde 2025 se vota con Boleta Única de Papel (BUP) en las categorías nacionales: se usó por primera vez en las legislativas del 26 de octubre de 2025 (Ley 27.781). La reforma política del Ejecutivo sigue pendiente en el Congreso a octubre de 2026. Según Perfil (7/7/2026) incluye: eliminar las PASO y que los partidos definan candidatos con mecanismos propios; Ficha Limpia, que impide ser candidato con condena confirmada en segunda instancia por delitos dolosos graves, sobre todo de corrupción; exigir reconocimiento en al menos 10 distritos para ser partido nacional; terminar con el financiamiento estatal de campañas y con la publicidad electoral gratuita; eliminar los debates presidenciales obligatorios; y permitir votar la lista completa con una sola marca en la BUP. En la Acordada Extraordinaria 155/2026 (septiembre de 2026), la Cámara Nacional Electoral advirtió que se acortan los plazos para cambiar las reglas a tiempo para 2027.",
+  "pasoStatus": "Siguen vigentes por ley (Ley 26.571), aunque en 2025 se suspendieron solo para las legislativas. Si el Congreso no cambia nada, se harían el segundo domingo de agosto: el 8 de agosto de 2027. El 18 de noviembre de 2026 la comisión de Asuntos Constitucionales del Senado puso a la firma el dictamen de la reforma electoral, que las suspende solo para 2027 (no las elimina) y quita las listas colectoras; falta la votación en el recinto (Senado de la Nación, 18 de noviembre de 2026). Por eso la fecha del 8 de agosto queda sujeta a cambios.",
+  "reform": "Desde 2025 se vota con Boleta Única de Papel (BUP) en las categorías nacionales: se usó por primera vez en las legislativas del 26 de octubre de 2025 (Ley 27.781). El 18 de noviembre de 2026 el dictamen de la reforma electoral pasó a la firma en la comisión de Asuntos Constitucionales del Senado: suspende las PASO solo para 2027 (no las elimina) y quita las listas colectoras; falta la votación en el recinto. El proyecto original del Ejecutivo, según Perfil (7 de julio de 2026), proponía: eliminar las PASO y que los partidos definan candidatos con mecanismos propios; Ficha Limpia, que impide ser candidato con condena confirmada en segunda instancia por delitos dolosos graves, sobre todo de corrupción; exigir reconocimiento en al menos 10 distritos para ser partido nacional; terminar con el financiamiento estatal de campañas y con la publicidad electoral gratuita; eliminar los debates presidenciales obligatorios; y permitir votar la lista completa con una sola marca en la BUP. En la Acordada Extraordinaria 155/2026 (septiembre de 2026), la Cámara Nacional Electoral advirtió que se acortan los plazos para cambiar las reglas a tiempo para 2027.",
   "offices": [
    {
     "value": "1",
@@ -492,7 +492,7 @@
   "calendar": [
    {
     "date": "2026-12",
-    "label": "Plazo informal que maneja el oficialismo para votar la suspensión o eliminación de las PASO en el Congreso (sin fecha confirmada)"
+    "label": "Plazo informal que maneja el oficialismo para votar en el Senado la suspensión de las PASO para 2027 (dictamen a la firma el 18 de noviembre de 2026; sin fecha de sesión confirmada)"
    },
    {
     "date": "2027-02-14",
@@ -2511,7 +2511,7 @@
    "incumbentRunning": "no",
    "date2027": null,
    "dateStatus": "sin definir",
-   "dateNote": "Kicillof no definió. Las PASO bonaerenses están atadas por ley al régimen nacional, por eso la decisión depende de lo que resuelva el Congreso sobre las PASO nacionales (la suspensión no tenía los votos en el Senado a octubre de 2026). En 2025 la provincia desdobló sus legislativas.",
+   "dateNote": "Kicillof no definió. Las PASO bonaerenses están atadas por ley al régimen nacional, por eso la decisión depende de lo que resuelva el Congreso sobre las PASO nacionales (el 18 de noviembre de 2026 el dictamen que las suspende para 2027 pasó a la firma en el Senado; falta el recinto). En 2025 la provincia desdobló sus legislativas.",
    "system": "PASO (ley provincial vinculada al régimen nacional)",
    "candidates": [
     {
@@ -2859,7 +2859,7 @@
    "incumbentRunning": "sí",
    "date2027": "2027-03-21",
    "dateStatus": "confirmada",
-   "dateNote": "Torres firmó el 19/11/2026 el Decreto 1872/26 (Boletín Oficial N° 14.977 del 20/11) y convocó para el domingo 21 de marzo de 2027 a elegir gobernador y vice, los 27 diputados provinciales (16 para la lista ganadora y 11 por D'Hondt), consejeros populares del Consejo de la Magistratura, autoridades de comunas rurales y el juez de paz de Aldea Epulef. No convoca a intendentes ni concejales: invita a los municipios a adherir a la misma fecha dentro de los 30 días (hasta el 19/12/2026).",
+   "dateNote": "Torres firmó el 19 de noviembre de 2026 el Decreto 1872/26 (Boletín Oficial N° 14.977 del 20 de noviembre) y convocó para el domingo 21 de marzo de 2027 a elegir gobernador y vice, los 27 diputados provinciales (16 para la lista ganadora y 11 por D'Hondt), consejeros populares del Consejo de la Magistratura, autoridades de comunas rurales y el juez de paz de Aldea Epulef. No convoca a intendentes ni concejales: invita a los municipios a adherir a la misma fecha dentro de los 30 días (hasta el 19 de diciembre de 2026).",
    "system": "Primera elección con el Código Electoral provincial (2024): sin PASO, Boleta Única de Papel, Ficha Limpia y debate obligatorio entre candidatos a gobernador; gobernador por mayoría simple, sin balotaje.",
    "candidates": [
     {
