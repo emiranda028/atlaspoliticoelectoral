@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-11-19",
+ "updatedAt": "2026-11-24",
  "note": "Resúmenes elaborados por el equipo del Atlas a partir de organismos electorales y prensa. Las fechas marcadas como estimadas no están oficialmente convocadas.",
  "briefs": {
   "AGO": {
@@ -1010,7 +1010,7 @@
    }
   },
   "FJI": {
-   "date": "2027-01-15",
+   "date": "2027-02-06",
    "dateConfirmed": false,
    "status": "upcoming",
    "offices": "Los 55 escaños del Parlamento",
@@ -1046,9 +1046,13 @@
    ],
    "polls": null,
    "stake": "¿Retiene Rabuka el poder en la primera elección tras la disolución de FijiFirst, el partido de Bainimarama?",
-   "summary": "La fecha no está fijada: la Constitución habilita la votación entre el 7 de agosto de 2026 y el 6 de febrero de 2027, y Rabuka anticipó que sería entre el 24 de diciembre de 2026 y la primera semana de febrero de 2027. Hay un récord de diez partidos registrados.",
+   "summary": "Todavía no hay convocatoria: la Oficina Electoral no publicó fecha. La Constitución obliga a votar a más tardar el 6 de febrero de 2027 (la fecha que se muestra es ese límite), y Rabuka anticipó que sería entre el 24 de diciembre de 2026 y la primera semana de febrero. Antes, la Oficina Electoral propone un referéndum nacional para el 9 de diciembre de 2026. Hay un récord de diez partidos registrados.",
    "result": null,
    "sources": [
+    {
+     "label": "Oficina Electoral de Fiyi: preparativos de la elección y del referéndum",
+     "url": "https://www.feo.org.fj/supervisor-of-elections-briefs-political-parties-on-general-election-and-national-referendum-preparations/"
+    },
     {
      "label": "FijiGlobalNews – ventana electoral",
      "url": "https://fijiglobalnews.com/fiji-election-window-set-for-december-24-2026-to-early-february-2027-rabuka-says/"
@@ -1302,9 +1306,13 @@
    ],
    "polls": "La encuesta de CepRass para Gambia Participates (agosto de 2026) da Barrow 32%, Darboe 25%, Bensouda 19% y 17% de indecisos.",
    "stake": "¿Consigue Barrow un tercer mandato frente a una oposición dividida?",
-   "summary": "La Comisión Electoral Independiente confirmó el 5 de diciembre como fecha de la elección y fijó la presentación de candidaturas entre el 3 y el 14 de noviembre, así que todavía no hay lista oficial de candidatos. Se vota a una sola vuelta, por mayoría simple.",
+   "summary": "La Comisión Electoral Independiente confirmó el 5 de diciembre y aceptó 8 candidaturas: Adama Barrow (NPP), Ousainou Darboe (UDP), Talib Ahmed Bensouda (UNITE), Modou Lamin Sima (APC), Ebrima Tabora Manneh (PAP) y tres independientes, Isatou Touray, Lamin J. Darbo y Almameh Gibba. Se vota a una sola vuelta, por mayoría simple.",
    "result": null,
    "sources": [
+    {
+     "label": "Comisión Electoral Independiente de Gambia",
+     "url": "https://iec.gm/"
+    },
     {
      "label": "Wikipedia – 2026 Gambian presidential election",
      "url": "https://en.wikipedia.org/wiki/2026_Gambian_presidential_election"
@@ -2995,10 +3003,10 @@
    "electorate": null,
    "electorateNote": "Sin dato verificado",
    "incumbent": {
-    "name": "Aleksandar Vučić",
-    "title": "Presidente",
-    "running": true,
-    "note": "no puede ser reelecto presidente; se postula a primer ministro"
+    "name": "Aleksandar Čupić",
+    "title": "Presidente interino (presidente de la Asamblea)",
+    "running": false,
+    "note": "ejerce la presidencia por el art. 120 de la Constitución hasta la presidencial anticipada"
    },
    "contenders": [
     {
@@ -3029,9 +3037,13 @@
    ],
    "polls": "Las encuestas divergen: Faktor Plus (publicada el 21 de septiembre) da 48,6% a la lista de Vučić y 37,1% a la Lista Estudiantil, mientras que NSPM (publicada el 30 de septiembre, campo de comienzos de septiembre) pone adelante a los estudiantes con 44,4% contra 41,7%.",
    "stake": "¿Puede la lista surgida de las protestas estudiantiles terminar con más de una década de dominio del SNS?",
-   "summary": "La Lista Estudiantil puede gobernar sin socios, pero todavía no presentó candidato a primer ministro. Entre los nombres que circulan figuran el cardiólogo Ilija Srdanović y el exgobernador del Banco Nacional Dejan Šoškić. La Asamblea debe constituirse dentro de los 30 días posteriores a la proclamación de los resultados oficiales, y la propuesta de primer ministro le corresponde a la presidenta interina Ana Brnabić; el primer ministro saliente es Đuro Macut (independiente).",
-   "result": "La Lista Estudiantil ganó por mayoría absoluta (140 de 250 escaños) y terminó con 14 años de gobiernos del SNS. Vučić, que había dimitido como presidente para encabezar la lista, reconoció la derrota. El nuevo parlamento se constituyó el 17 nov y eligió presidente de la Asamblea a Aleksandar Čupić el 19 nov.",
+   "summary": "La Lista Estudiantil puede gobernar sin socios, pero todavía no presentó candidato a primer ministro. Entre los nombres que circulan figuran el cardiólogo Ilija Srdanović y el exgobernador del Banco Nacional Dejan Šoškić. La Asamblea debe constituirse dentro de los 30 días posteriores a la proclamación de los resultados oficiales, y la propuesta de primer ministro le corresponde al presidente interino, Aleksandar Čupić (presidente de la Asamblea desde el 19/11); el primer ministro saliente es Đuro Macut (independiente).",
+   "result": "La Lista Estudiantil ganó por mayoría absoluta (140 de 250 escaños) y terminó con 14 años de gobiernos del SNS. Vučić, que había dimitido como presidente para encabezar la lista, reconoció la derrota. El nuevo parlamento se constituyó el 17 nov y eligió presidente de la Asamblea a Aleksandar Čupić el 19 nov. Desde ese día, por la Constitución (art. 120), Čupić ejerce también la presidencia de la República de forma interina; la presidencial anticipada todavía no tiene fecha.",
    "sources": [
+    {
+     "label": "Gobierno de Serbia: Čupić, presidente de la Asamblea (19/11/2026)",
+     "url": "https://www.srbija.gov.rs/vest/1011624/aleksandar-cupic-izabran-za-predsednika-skupstine-srbije.php"
+    },
     {
      "label": "en.wikipedia.org",
      "url": "https://en.wikipedia.org/wiki/2026_Serbian_parliamentary_election"
@@ -3360,8 +3372,12 @@
     }
    ],
    "stake": "¿Recuperan los demócratas la Cámara y también el Senado?",
-   "result": "Los demócratas ganaron el control de las dos cámaras: al menos 257 bancas en la Cámara de Representantes (7 sin definir) y 55 en el Senado contando a los independientes, con Alaska todavía en recuento (Peltola adelante). Trump sigue como presidente, pero desde enero de 2027 tendrá un Congreso opositor.",
+   "result": "Los demócratas ganaron el control de las dos cámaras: al menos 257 bancas en la Cámara de Representantes (7 sin definir) y 56 en el Senado contando a los independientes. En Alaska ganó Mary Peltola (50,1% contra 45,8% de Dan Sullivan, con el 100% de las mesas; llamado de AP el 17/11); el resultado es provisorio hasta la certificación estatal, prevista para el 25/11. Trump sigue como presidente, pero desde enero de 2027 tendrá un Congreso opositor.",
    "sources": [
+    {
+     "label": "División Electoral de Alaska: resultados",
+     "url": "https://www.elections.alaska.gov/election-results/"
+    },
     {
      "label": "www.yahoo.com",
      "url": "https://www.yahoo.com/news/politics/article/lots-of-2026-midterm-races-still-havent-been-called-heres-where-things-stand-205425643.html"
