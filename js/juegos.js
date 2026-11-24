@@ -195,7 +195,7 @@
           <button type="button" class="jg-card is-rosca" data-go="rosca">
             <span class="jg-card-ico">🏛️</span>
             <b>La rosca: PASO o no PASO</b>
-            <span>Llevás adelante la Jefatura de Gabinete y tenés que eliminar las PASO. Negociá con gobernadores, aguantá paros y escándalos, y contá los votos banca por banca.</span>
+            <span>Llevás adelante la Jefatura de Gabinete y tenés que sacar las PASO de 2027. Negociá con gobernadores, aguantá paros y escándalos, y contá los votos banca por banca.</span>
             <em>Estrategia · 8 semanas de rosca</em>
           </button>
           <button type="button" class="jg-card is-trivia" data-go="trivia">
@@ -243,7 +243,7 @@
     const top = g.getBoundingClientRect().top;
     if (top < off || top > off + 60) window.scrollTo({ top: top + window.scrollY - off - 8, behavior: 'smooth' });
   }
-  const GAMES = { rosca: ['🏛️', 'La rosca: PASO o no PASO', 'Eliminá las PASO negociando con gobernadores y bloques'], pais: ['🌎', '¿Qué país gobernarías?', 'Tomá 14 decisiones y descubrí a qué país te parecés'], trivia: ['❓', '¿Quién gobierna?', 'Líderes, sistemas, economía y elecciones del mundo'], percepcion: ['🔍', 'Test de percepción', '¿Cuánto sabés de la Argentina real? Pobreza, votos y poder'], prode: ['🗳️', 'Prode electoral 2027', 'Predecí quién gana la presidencia y cada provincia'] };
+  const GAMES = { rosca: ['🏛️', 'La rosca: PASO o no PASO', 'Sacá las PASO de 2027 negociando con gobernadores y bloques'], pais: ['🌎', '¿Qué país gobernarías?', 'Tomá 14 decisiones y descubrí a qué país te parecés'], trivia: ['❓', '¿Quién gobierna?', 'Líderes, sistemas, economía y elecciones del mundo'], percepcion: ['🔍', 'Test de percepción', '¿Cuánto sabés de la Argentina real? Pobreza, votos y poder'], prode: ['🗳️', 'Prode electoral 2027', 'Predecí quién gana la presidencia y cada provincia'] };
   const moreGames = cur => `<div class="jg-more"><h4>Seguí jugando</h4><div class="jg-more-list">${Object.keys(GAMES).filter(k => k !== cur).map(k => `<button type="button" class="jg-more-card" data-play="${k}"><span class="jg-more-ico">${GAMES[k][0]}</span><span><b>${esc(GAMES[k][1])}</b><small>${esc(GAMES[k][2])}</small></span><em>Jugar →</em></button>`).join('')}</div></div>`;
   const wireMore = el => el.querySelectorAll('[data-play]').forEach(b => b.addEventListener('click', () => go(b.getAttribute('data-play'))));
   const backBtn = () => `<button type="button" class="jg-back" data-back>← Todos los juegos</button>`;
@@ -404,7 +404,7 @@
     function pickRole() {
       root.innerHTML = `<section class="jg-game is-rosca">${backBtn()}
         <div class="jg-intro"><span class="jg-kicker">Simulación</span><h2>${esc(D.title)}</h2>
-          <p>El Gobierno quiere eliminar las PASO antes de 2027 y la pelea se define en el Congreso. <b>¿De qué lado de la rosca jugás?</b></p>
+          <p>El Gobierno quiere sacar las PASO de 2027 (el dictamen del Senado las suspende solo para esa elección) y la pelea se define en el Congreso. <b>¿De qué lado de la rosca jugás?</b></p>
           <div class="rs-roles">
             <button type="button" class="rs-role" data-role="gov">${ROLE_ART.gov}<div><b>Gobierno</b><span>Llevás adelante la Jefatura de Gabinete. Conseguí los votos para que no haya PASO.</span></div></button>
             <button type="button" class="rs-role" data-role="opp">${ROLE_ART.opp}<div><b>Oposición</b><span>Coordinás la oposición en el Congreso. Frená la ley mientras la Casa Rosada negocia.</span></div></button>

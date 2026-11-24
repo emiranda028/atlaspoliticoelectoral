@@ -1,8 +1,8 @@
 {
  "id": "argentina-2027",
  "title": "Elecciones 2027",
- "updatedAt": "2026-11-21T12:00:00-03:00",
- "lede": "El 24 de octubre de 2027 la Argentina elige presidente y vice, renueva 130 de las 257 bancas de Diputados y 24 de las 72 del Senado (ocho provincias). Javier Milei va por la reelección después de ganar las legislativas de 2025 con el 40,7% y quedar como primera minoría en Diputados; enfrente, Axel Kicillof se perfila como la principal figura del peronismo. A un año de la votación, las encuestas muestran un escenario parejo, la desaprobación del Gobierno ronda el 60% y todavía no está claro si habrá PASO: el oficialismo busca suspenderlas o eliminarlas, pero a mediados de noviembre la reforma seguía trabada en el Senado. Neuquén abre el calendario provincial el 14 de febrero y Chubut vota el 21 de marzo.",
+ "updatedAt": "2026-11-24T12:00:00-03:00",
+ "lede": "El 24 de octubre de 2027 la Argentina elige presidente y vice, renueva 130 de las 257 bancas de Diputados y 24 de las 72 del Senado (ocho provincias). Javier Milei va por la reelección después de ganar las legislativas de 2025 con el 40,7% y quedar como primera minoría en Diputados; enfrente, Axel Kicillof se perfila como la principal figura del peronismo. A un año de la votación, las encuestas muestran un escenario parejo, la desaprobación del Gobierno ronda el 60% y todavía no está claro si habrá PASO: el 18 de noviembre el dictamen que las suspende solo para 2027 pasó a la firma en la comisión de Asuntos Constitucionales del Senado, pero todavía falta la votación en el recinto. Neuquén abre el calendario provincial el 14 de febrero y Chubut vota el 21 de marzo.",
  "dates": {
   "paso": "2027-08-08",
   "general": "2027-10-24",
@@ -10,8 +10,8 @@
   "inauguration": "2027-12-10"
  },
  "nacional": {
-  "pasoStatus": "Siguen vigentes por ley (Ley 26.571), aunque en 2025 se suspendieron solo para las legislativas. Si el Congreso no cambia nada, se harían el segundo domingo de agosto: el 8 de agosto de 2027. El Gobierno mandó una reforma para eliminarlas y después evaluó suspenderlas solo para 2027. A mediados de octubre de 2026 el proyecto no tenía dictamen y el oficialismo todavía no sumaba los 37 votos que necesita en el Senado (La Nación, 22/10/2026; noticiasd, 16/10/2026). Por eso la fecha del 8 de agosto queda sujeta a cambios.",
-  "reform": "Desde 2025 se vota con Boleta Única de Papel (BUP) en las categorías nacionales: se usó por primera vez en las legislativas del 26 de octubre de 2025 (Ley 27.781). La reforma política del Ejecutivo sigue pendiente en el Congreso a octubre de 2026. Según Perfil (7/7/2026) incluye: eliminar las PASO y que los partidos definan candidatos con mecanismos propios; Ficha Limpia, que impide ser candidato con condena confirmada en segunda instancia por delitos dolosos graves, sobre todo de corrupción; exigir reconocimiento en al menos 10 distritos para ser partido nacional; terminar con el financiamiento estatal de campañas y con la publicidad electoral gratuita; eliminar los debates presidenciales obligatorios; y permitir votar la lista completa con una sola marca en la BUP. En la Acordada Extraordinaria 155/2026 (septiembre de 2026), la Cámara Nacional Electoral advirtió que se acortan los plazos para cambiar las reglas a tiempo para 2027.",
+  "pasoStatus": "Siguen vigentes por ley (Ley 26.571), aunque en 2025 se suspendieron solo para las legislativas. Si el Congreso no cambia nada, se harían el segundo domingo de agosto: el 8 de agosto de 2027. El 18 de noviembre de 2026 la comisión de Asuntos Constitucionales del Senado puso a la firma el dictamen de la reforma electoral, que las suspende solo para 2027 (no las elimina) y quita las listas colectoras; falta la votación en el recinto (Senado de la Nación, 18 de noviembre de 2026). Por eso la fecha del 8 de agosto queda sujeta a cambios.",
+  "reform": "Desde 2025 se vota con Boleta Única de Papel (BUP) en las categorías nacionales: se usó por primera vez en las legislativas del 26 de octubre de 2025 (Ley 27.781). El 18 de noviembre de 2026 el dictamen de la reforma electoral pasó a la firma en la comisión de Asuntos Constitucionales del Senado: suspende las PASO solo para 2027 (no las elimina) y quita las listas colectoras; falta la votación en el recinto. El proyecto original del Ejecutivo, según Perfil (7 de julio de 2026), proponía: eliminar las PASO y que los partidos definan candidatos con mecanismos propios; Ficha Limpia, que impide ser candidato con condena confirmada en segunda instancia por delitos dolosos graves, sobre todo de corrupción; exigir reconocimiento en al menos 10 distritos para ser partido nacional; terminar con el financiamiento estatal de campañas y con la publicidad electoral gratuita; eliminar los debates presidenciales obligatorios; y permitir votar la lista completa con una sola marca en la BUP. En la Acordada Extraordinaria 155/2026 (septiembre de 2026), la Cámara Nacional Electoral advirtió que se acortan los plazos para cambiar las reglas a tiempo para 2027.",
   "offices": [
    {
     "value": "1",
@@ -492,7 +492,7 @@
   "calendar": [
    {
     "date": "2026-12",
-    "label": "Plazo informal que maneja el oficialismo para votar la suspensión o eliminación de las PASO en el Congreso (sin fecha confirmada)"
+    "label": "Plazo informal que maneja el oficialismo para votar en el Senado la suspensión de las PASO para 2027 (dictamen a la firma el 18 de noviembre de 2026; sin fecha de sesión confirmada)"
    },
    {
     "date": "2027-02-14",
@@ -500,7 +500,7 @@
    },
    {
     "date": "2027-03-21",
-    "label": "Chubut elige gobernador, Legislatura, intendentes y concejales, con Boleta Única de Papel y sin PASO (Decreto 1872/26)"
+    "label": "Chubut elige gobernador y los 27 diputados provinciales, con Boleta Única de Papel y sin PASO (Decreto 1872/26); los municipios pueden sumar intendentes y concejales"
    },
    {
     "date": "2027-04/05",
@@ -2511,7 +2511,7 @@
    "incumbentRunning": "no",
    "date2027": null,
    "dateStatus": "sin definir",
-   "dateNote": "Kicillof no definió. Las PASO bonaerenses están atadas por ley al régimen nacional, por eso la decisión depende de lo que resuelva el Congreso sobre las PASO nacionales (la suspensión no tenía los votos en el Senado a octubre de 2026). En 2025 la provincia desdobló sus legislativas.",
+   "dateNote": "Kicillof no definió. Las PASO bonaerenses están atadas por ley al régimen nacional, por eso la decisión depende de lo que resuelva el Congreso sobre las PASO nacionales (el 18 de noviembre de 2026 el dictamen que las suspende para 2027 pasó a la firma en el Senado; falta el recinto). En 2025 la provincia desdobló sus legislativas.",
    "system": "PASO (ley provincial vinculada al régimen nacional)",
    "candidates": [
     {
@@ -2859,7 +2859,7 @@
    "incumbentRunning": "sí",
    "date2027": "2027-03-21",
    "dateStatus": "confirmada",
-   "dateNote": "Torres firmó el 20/11/2026 el Decreto 1872/26 y convocó a elecciones provinciales desdobladas para el domingo 21 de marzo de 2027: gobernador y vice, los 27 diputados provinciales, intendentes y concejales (2027-2031). Los municipios tienen 30 días para adherir y votar el mismo día.",
+   "dateNote": "Torres firmó el 19 de noviembre de 2026 el Decreto 1872/26 (Boletín Oficial N° 14.977 del 20 de noviembre) y convocó para el domingo 21 de marzo de 2027 a elegir gobernador y vice, los 27 diputados provinciales (16 para la lista ganadora y 11 por D'Hondt), consejeros populares del Consejo de la Magistratura, autoridades de comunas rurales y el juez de paz de Aldea Epulef. No convoca a intendentes ni concejales: invita a los municipios a adherir a la misma fecha dentro de los 30 días (hasta el 19 de diciembre de 2026).",
    "system": "Primera elección con el Código Electoral provincial (2024): sin PASO, Boleta Única de Papel, Ficha Limpia y debate obligatorio entre candidatos a gobernador; gobernador por mayoría simple, sin balotaje.",
    "candidates": [
     {
@@ -2889,12 +2889,12 @@
    "summary": "Torres, uno de los gobernadores de Provincias Unidas, busca la reelección con un partido provincial y sin acuerdo con LLA, que ganó en 2025 por un margen mínimo. Al no haber segunda vuelta, la fragmentación opositora es clave.",
    "sources": [
     {
-     "label": "El Chubut (20/11/2026): Torres confirmó que Chubut votará el 21 de marzo",
-     "url": "https://www.elchubut.com.ar/regionales/2026-11-20-21-35-0-torres-confirmo-que-chubut-votara-el-21-de-marzo"
+     "label": "Boletín Oficial del Chubut N° 14.977 (20/11/2026): Decreto 1872/26",
+     "url": "https://boletin.chubut.gov.ar/archivos/boletines/Noviembre%2020,%202026.pdf"
     },
     {
-     "label": "Noticias Argentinas: Chubut elegirá gobernador el 21 de marzo de 2027",
-     "url": "https://noticiasargentinas.com/politica/chubut-elegira-gobernador-el-21-de-marzo-de-2027-con-nuevas-reglas-electorales_a6b0067f5f48d6d3ab47d4078"
+     "label": "Portal Electoral de Chubut: Decreto 1872/26",
+     "url": "https://electoralchubut.gob.ar/wp-content/uploads/2026/11/DTO-1872.pdf"
     },
     {
      "label": "Letra P (7/10/2026): Torres analiza votar en agosto",
@@ -4938,6 +4938,10 @@
   }
  },
  "sources": [
+  {
+   "label": "Senado de la Nación: dictamen de la reforma electoral a la firma (18/11/2026)",
+   "url": "https://www.senado.gob.ar/prensa/24630/noticias"
+  },
   {
    "label": "Wikipedia — 2027 Argentine general election",
    "url": "https://en.wikipedia.org/wiki/2027_Argentine_general_election"

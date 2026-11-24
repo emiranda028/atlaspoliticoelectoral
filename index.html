@@ -8233,7 +8233,7 @@
         <a class="pg-all" href="#juegos" onclick="return window.__playGame()">Ver los juegos <span aria-hidden="true">→</span></a>
       </div>
       <div class="pg-cards">
-        <a class="pg-card is-rosca" href="#juegos" onclick="return window.__playGame('rosca')"><span class="pg-ico">🏛️</span><b>La rosca: PASO o no PASO</b><span>Llevás adelante la Jefatura de Gabinete y tenés que eliminar las PASO. Gobernadores, bloques, paros y escándalos.</span><em>Jugar →</em></a>
+        <a class="pg-card is-rosca" href="#juegos" onclick="return window.__playGame('rosca')"><span class="pg-ico">🏛️</span><b>La rosca: PASO o no PASO</b><span>Llevás adelante la Jefatura de Gabinete y tenés que sacar las PASO de 2027. Gobernadores, bloques, paros y escándalos.</span><em>Jugar →</em></a>
         <a class="pg-card is-pais" href="#juegos" onclick="return window.__playGame('pais')"><span class="pg-ico">🌎</span><b>¿Qué país gobernarías?</b><span>14 decisiones sorteadas de un banco de más de 100. Descubrí a qué país del mundo se parece tu forma de gobernar.</span><em>Jugar →</em></a>
         <a class="pg-card is-prode" href="#juegos" onclick="return window.__playGame('prode')"><span class="pg-ico">🗳️</span><b>Prode electoral 2027</b><span>Predecí quién gana la presidencia y cada gobernación. Neuquén vota primero, en febrero.</span><em>Jugar →</em></a>
         <a class="pg-card is-percep" href="#juegos" onclick="return window.__playGame('percepcion')"><span class="pg-ico">🔍</span><b>Test de percepción</b><span>¿Cuánto sabés de la Argentina real? Pobreza, desempleo, votos y bancas.</span><em>Jugar →</em></a>
@@ -10857,16 +10857,12 @@ const COUNTRIES = [
           seats: 7
         },
         {
-          party: "Partido Demócrata (Senado, incl. 2 independientes)",
-          seats: 55
+          party: "Partido Demócrata (Senado, incl. 2 independientes; Alaska y Misisipi provisorios por llamado de AP)",
+          seats: 56
         },
         {
           party: "Partido Republicano (Senado)",
           seats: 44
-        },
-        {
-          party: "Sin definir (Senado: Alaska)",
-          seats: 1
         }
       ]
     },
@@ -17170,12 +17166,11 @@ const COUNTRIES = [
     region: "Europa",
     system: "República parlamentaria",
     leader: {
-      title: "Presidenta interina",
-      name: "Ana Brnabić",
-      party: "Partido Progresista Serbio (SNS)",
-      since: "2026-09-28",
-      gender: "F",
-      wikiName: "Ana_Brnabić"
+      title: "Presidente interino (presidente de la Asamblea; provisorio)",
+      name: "Aleksandar Čupić",
+      party: "Lista Estudiantil",
+      since: "2026-11-19",
+      gender: "M"
     },
     ideology: "right",
     legislature: {
@@ -22778,9 +22773,13 @@ const COUNTRIES = [
           seats: 5
         },
         {
-          party: "BDP (53 años de poder)",
+          party: "BDP (58 años de poder)",
           pct: 30.5,
           seats: 4
+        },
+        {
+          party: "Independiente (Edwin Dikoloti)",
+          seats: 1
         }
       ]
     },
@@ -31476,7 +31475,7 @@ const PREVIOUS_IDEOLOGY = {
   'SVK': 'center-right',  // Heger → Fico (Smer)                      CAMBIO
   'HRV': 'center-right',  // Plenković continúa                       CONTINUIDAD
   'BGR': 'center-right',   // Zhelyazkov (GERB) → Radev (2026)           CAMBIO
-  'SRB': 'right',          // SNS continúa; Brnabić primera ministra (2026) CONTINUIDAD
+  'SRB': 'right',          // SNS continúa en funciones; Čupić, presidente interino desde el 19/11 (2026) CONTINUIDAD
   'EST': 'center',        // Kallas → Michal (Reform)                 CONTINUIDAD
   'LTU': 'center-right',   // Šimonytė (TS-LKD) → Paluckas → Sinkevičius (LSDP) CAMBIO
   'LVA': 'center-right',   // Siliņa (JV) → Kulbergs (Lista Unida, 2026) CONTINUIDAD
@@ -31987,7 +31986,7 @@ const KNOWN_ELECTION_DATES = {
   'ESP': { day: 29, month: 10, year: 2026 },   // España — generales anticipadas 29 nov 2026 (convocadas el 5 oct)
   'ITA': { day: 30, month: 5,  year: 2027 },   // Italia — generales 2027
 
-  'FJI': { day: 1, month: 0, year: 2027 },   // estimado: entre dic 2026 y feb 2027
+  'FJI': { day: 6, month: 1, year: 2027 },   // plazo constitucional máximo; sin convocatoria (FEO, 24/11/2026)
   'FRA': { day: 18, month: 3, year: 2027 },   // actualizado sep 2026
   'MEX': { day: 6, month: 5, year: 2027 },   // actualizado sep 2026
   'FIN': { day: 18, month: 3, year: 2027 },   // actualizado sep 2026
