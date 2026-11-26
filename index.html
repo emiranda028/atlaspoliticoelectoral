@@ -33179,7 +33179,7 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
       return;
     }
     const newest = stamps.length ? new Date(Math.max(...stamps)) : null;
-    el.textContent = newest ? `actualizado ${relTime(newest)}` : 'conectado';
+    el.textContent = newest ? `datos verificados al ${newest.getDate()} de ${MONTHS[newest.getMonth()]} de ${newest.getFullYear()}` : 'conectado';
     if (dot) dot.classList.toggle('is-stale', !live.fetchOk);
   }
 
