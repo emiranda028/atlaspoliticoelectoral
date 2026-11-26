@@ -8070,7 +8070,7 @@
   <div class="masthead-content">
     <div class="masthead-top">
       <div class="masthead-meta">
-        <span>Edición Beta</span>
+        <span>Edición 2026</span>
         <span id="meta-date-time">Mayo 2026</span>
         <span id="meta-count">— países en base</span>
       </div>
@@ -8098,7 +8098,7 @@
         <div class="masthead-text">
           <div class="masthead-kicker">
             <span class="masthead-kicker-dash"></span>
-            <span class="masthead-kicker-label">Cartografía del poder · Edición Beta 2026</span>
+            <span class="masthead-kicker-label">Cartografía del poder · Edición 2026</span>
           </div>
           <h1 class="title">Atlas <em>Político</em> Electoral</h1>
           <p class="subtitle">
@@ -32782,7 +32782,7 @@ function getCitationFooterHTML() {
   const dateStr = today.toLocaleDateString('es-AR', { day: '2-digit', month: 'long', year: 'numeric' });
   return `
     <div class="export-citation">
-      <div class="export-citation-title"><strong>Atlas Político Electoral 2026</strong> · Edición Beta</div>
+      <div class="export-citation-title"><strong>Atlas Político Electoral 2026</strong></div>
       <div class="export-citation-author">Por Mg. Emmanuel Miranda, Lic. Martín Paratz y Abg. Ernesto Demian Abbott</div>
       <div class="export-citation-meta">
         Cómo citar (APA): Miranda, E., Paratz, M. y Abbott, E. D. (2026). <em>Atlas Político Electoral: cartografía
@@ -36527,7 +36527,9 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
   function loadJuegos() {
     const el = document.getElementById('juegos-root');
     if (!el) return;
-    const game = pendingGame; pendingGame = null;
+    // Enlace directo a un juego: #juegos/trivia, #juegos/pais, etc.
+    const hm = (window.location.hash || '').match(/^#juegos\/(rosca|pais|trivia|percepcion|prode)$/);
+    const game = pendingGame || (hm ? hm[1] : null); pendingGame = null;
     if (window.AtlasJuegos) return window.AtlasJuegos.render(el, game);
     if (document.getElementById('juegos-js')) { pendingGame = game; return; }
     const sc = document.createElement('script');
