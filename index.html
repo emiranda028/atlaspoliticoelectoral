@@ -29614,7 +29614,50 @@ window.__globe = (function () {
     });
     (sel || []).forEach(f => { ctx.beginPath(); path(f); ctx.strokeStyle = '#0B1628'; ctx.lineWidth = 1.6; ctx.stroke(); });
     ctx.beginPath(); path({ type: 'Sphere' }); ctx.strokeStyle = 'rgba(11,22,40,.25)'; ctx.lineWidth = 1; ctx.stroke();
+    drawLabels();
     dirty = false;
+  }
+  // Nombres de los países, con el mismo criterio que el mapa plano: solo si entran en el país
+  let labels = null;
+  function buildLabels() {
+    labels = [];
+    const seen = new Set();
+    feats.forEach(f => {
+      const iso = getFeatureISO(f), c = iso && state.countryByISO[iso];
+      if (!c || iso === 'ATA' || seen.has(iso)) return;
+      seen.add(iso);
+      const g = f.geometry; if (!g) return;
+      const polys = g.type === 'MultiPolygon' ? g.coordinates.map(co => ({ type: 'Polygon', coordinates: co })) : [g];
+      let main = polys[0], best = -1;
+      polys.forEach(pg => { const a = d3.geoArea(pg); if (a > best) { best = a; main = pg; } });
+      const b = d3.geoBounds(main), w = Math.min(((b[1][0] - b[0][0]) + 360) % 360 || 360, 120), h = b[1][1] - b[0][1];
+      const at = typeof LABEL_AT !== 'undefined' && LABEL_AT[iso] ? [LABEL_AT[iso][1], LABEL_AT[iso][0]] : d3.geoCentroid(main);
+      const name = c.name.length > 16 && c.shortName ? c.shortName : c.name;
+      labels.push({ iso, at, w, h, name: name.toUpperCase(), big: w * h > 900, area: best });
+    });
+    labels.sort((a, b) => b.area - a.area);
+  }
+  function drawLabels() {
+    if (!labels) buildLabels();
+    const k = proj.scale() * Math.PI / 180, center = [-rot[0], -rot[1]], placed = [];
+    ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.lineJoin = 'round';
+    labels.forEach(l => {
+      const dist = d3.geoDistance(l.at, center);
+      const focus = l.iso === hoverIso || l.iso === state.selectedISO;
+      if (dist > (focus ? 1.45 : 1.25)) return;
+      const shrink = Math.cos(dist), lat = Math.cos(l.at[1] * Math.PI / 180);
+      const wPx = l.w * k * lat * shrink, hPx = l.h * k * shrink;
+      const fs = l.big ? 12.5 : 10.5, need = l.name.length * (l.big ? 8.4 : 6.8) + 6;
+      if (!(focus || l.iso === 'ARG' || (wPx * 0.85 >= need && hPx >= 12))) return;
+      const pt = proj(l.at); if (!pt) return;
+      const box = [pt[0] - need / 2, pt[1] - fs, pt[0] + need / 2, pt[1] + fs];
+      if (!focus && placed.some(q => box[0] < q[2] && box[2] > q[0] && box[1] < q[3] && box[3] > q[1])) return;
+      placed.push(box);
+      ctx.font = `650 ${fs}px Inter, system-ui, sans-serif`;
+      if (ctx.letterSpacing !== undefined) ctx.letterSpacing = l.big ? '1px' : '0.4px';
+      ctx.globalAlpha = 0.9; ctx.strokeStyle = 'rgba(255,255,255,.92)'; ctx.lineWidth = 3.2; ctx.strokeText(l.name, pt[0], pt[1]);
+      ctx.fillStyle = '#0B1628'; ctx.fillText(l.name, pt[0], pt[1]); ctx.globalAlpha = 1;
+    });
   }
   function loop() {
     raf = null;
