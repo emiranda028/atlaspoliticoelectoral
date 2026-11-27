@@ -5698,7 +5698,7 @@
   .es-badge.is-flip { color: #fff; }
   .es-pcard-seats { display: flex; flex-wrap: wrap; gap: 4px 10px; }
   .es-seat i { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 4px; }
-  .es-seat small, .es-pcard-pct small { font-size: 10px; margin-left: 3px; color: var(--muted); }
+  .es-seat small, .es-pcard-pct small { font-size: 10px; margin-left: 3px; color: var(--muted); white-space: nowrap; }
   .es-pcard small.up { color: #1F7A5A; } .es-pcard small.down { color: #B42318; }
   .es-pcard-pct { display: grid; grid-template-columns: repeat(2, 1fr); gap: 3px 10px; }
   .es-pcard-pct div { display: flex; gap: 4px; align-items: baseline; } .es-pcard-pct span { flex: 1; color: var(--ink-soft); }
@@ -36166,7 +36166,7 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
   // Colores propios de cada partido para el mapa de ganadores (el hemiciclo usa la orientación)
   const ES_PCOL = { PP: '#1D84CE', PSOE: '#E30613', Vox: '#63BE21', Sumar: '#E51C55', Podemos: '#6B2E68', ERC: '#F6A623', Junts: '#20C0B2', EHBildu: '#A3C940', PNV: '#1E7F3E', BNG: '#76B6E4', CC: '#F2D600', UPN: '#2B4D9B', SALF: '#5A5A5A', Compromis: '#E8792E', AA: '#2E9E6B' };
   const esPCol = (id, es) => ES_PCOL[id] || leanColor((((es || live.espana || {}).lists || []).find(l => l.id === id) || {}).lean || 'other');
-  const ES_NOCOMP = new Set(['Sumar', 'Podemos']);
+  const ES_NOCOMP = new Set(['Sumar', 'Podemos', 'Compromis']);
   function esProvShort(id, es) { const l = ((es || live.espana || {}).lists || []).find(x => x.id === id); return (l && l.short) || id; }
   function esProvInfo(pr) {
     const ps = (pr.parties || []).slice().sort((a, b) => (b.pct || 0) - (a.pct || 0));
