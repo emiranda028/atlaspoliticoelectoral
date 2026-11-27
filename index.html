@@ -5668,6 +5668,40 @@
   .chamber-name { font-family: 'Newsreader', serif; font-size: 21px; font-weight: 700; }
   .chamber-meta { font-size: 12.5px; color: var(--muted); }
   .hemicycle { width: 100%; height: auto; display: block; margin: 8px 0 4px; }
+  .es-live { border-top: 3px solid #AA151B; }
+  .es-live-progress { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px; margin: 0 0 18px; }
+  .es-live-progress > div { background: var(--paper-2, #F5F2EC); border-radius: 10px; padding: 12px 14px; display: grid; gap: 4px; }
+  .es-live-progress span { font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); }
+  .es-live-progress b { font-size: 26px; font-family: 'Newsreader', Georgia, serif; }
+  .es-live-progress small { color: var(--muted); font-size: 12px; }
+  .es-live .pbar-track { position: relative; }
+  .es-need { position: absolute; top: -3px; bottom: -3px; width: 2px; background: var(--ink); }
+  .es-map-head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px; margin: 26px 0 10px; }
+  .es-map-head h4 { margin: 0; }
+  .es-map-wrap { display: grid; gap: 8px; }
+  .es-map { position: relative; max-width: 860px; margin: 0 auto; width: 100%; }
+  .es-map-svg { width: 100%; height: auto; display: block; }
+  .es-map-svg path { stroke: #fff; stroke-width: 1.2; cursor: pointer; transition: opacity .15s; }
+  .es-map-svg path:hover { opacity: .8; }
+  .es-can-box { fill: none; stroke: var(--line); stroke-dasharray: 4 3; }
+  .es-labels text { paint-order: stroke; stroke-width: 2.5px; pointer-events: none; font-family: 'Inter', sans-serif; font-weight: 700; }
+  .es-lbl-pct { font-size: 15px; } .es-lbl-pct.is-sm { font-size: 11px; } .es-lbl-party { font-size: 10px; font-weight: 600; }
+  .es-map-legend { display: flex; flex-wrap: wrap; gap: 6px 14px; justify-content: center; font-size: 13px; color: var(--ink-soft); }
+  .es-map-legend i { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 5px; vertical-align: -1px; }
+  .es-prov-res { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 10px; margin-top: 16px; }
+  .es-pcard { background: var(--paper, #fff); border: 1px solid var(--line); border-top: 4px solid; border-radius: 10px; padding: 10px 12px; display: grid; gap: 7px; font-size: 13px; transition: box-shadow .2s; }
+  .es-pcard.is-hl { box-shadow: 0 0 0 3px var(--accent); }
+  .es-pcard-head { display: flex; justify-content: space-between; gap: 8px; align-items: baseline; }
+  .es-pcard-head b { font-family: 'Newsreader', Georgia, serif; font-size: 16px; }
+  .es-pcard-head span { color: var(--muted); font-size: 11px; text-align: right; }
+  .es-badge { justify-self: start; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 999px; background: var(--paper-2, #F1EEE8); color: var(--ink-soft); }
+  .es-badge.is-flip { color: #fff; }
+  .es-pcard-seats { display: flex; flex-wrap: wrap; gap: 4px 10px; }
+  .es-seat i { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 4px; }
+  .es-seat small, .es-pcard-pct small { font-size: 10px; margin-left: 3px; color: var(--muted); }
+  .es-pcard small.up { color: #1F7A5A; } .es-pcard small.down { color: #B42318; }
+  .es-pcard-pct { display: grid; grid-template-columns: repeat(2, 1fr); gap: 3px 10px; }
+  .es-pcard-pct div { display: flex; gap: 4px; align-items: baseline; } .es-pcard-pct span { flex: 1; color: var(--ink-soft); }
   .hemicycle circle { transition: opacity .15s; }
   .hemicycle.is-dimmed circle:not(.is-hl) { opacity: .15; }
   .hemicycle-total {
@@ -33032,6 +33066,10 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
   const US_RES_URL = 'data/especiales/eeuu-2026-resultados.json';
   const ISRAEL_URL = 'data/especiales/israel-2026.json';
   const ESPANA_URL = 'data/especiales/espana-2026.json';
+  // Noche electoral: escrutinio provisional del Ministerio del Interior, escrito por tools/es_resultados.py
+  const ES_RES_URL = 'data/especiales/espana-2026-resultados.json';
+  const ES_GEO_URL = 'data/geo/espana-provincias.json';
+  const ES_23_URL = 'data/especiales/espana-2023-provincias.json';
   const ARGENTINA_URL = 'data/especiales/argentina-2027.json';
   const AR_GEO_URL = 'data/geo/argentina.json';
   const MONTHS = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
@@ -33172,7 +33210,7 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
     const el = document.getElementById('live-updated');
     const dot = document.getElementById('live-dot');
     if (!el) return;
-    const stamps = [live.data, live.brasil, live.eeuu, live.usRes, live.israel, live.espana, live.argentina].map(x => x && x.updatedAt).filter(Boolean).map(s => new Date(s)).filter(d => !isNaN(d) && d <= Date.now() + 3600000);
+    const stamps = [live.data, live.brasil, live.eeuu, live.usRes, live.israel, live.espana, live.esRes, live.argentina].map(x => x && x.updatedAt).filter(Boolean).map(s => new Date(s)).filter(d => !isNaN(d) && d <= Date.now() + 3600000);
     if (!live.fetchOk && !stamps.length) {
       el.textContent = 'datos del atlas (sin conexión a la fuente en vivo)';
       if (dot) dot.classList.add('is-stale');
@@ -33239,7 +33277,7 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
     if (!card) return;
     if (live.data && live.data.featured === 'espana' && live.espana) {
       card.className = 'next-card is-es';
-      card.innerHTML = esNextCardHTML(live.espana);
+      card.innerHTML = esResHas() ? esResultsNextCardHTML(live.espana) : esNextCardHTML(live.espana);
       tickCountdowns();
       return;
     }
@@ -36059,6 +36097,175 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
      Snap general election of 29 Nov 2026: 350 deputies in 52 provinces
      (D'Hondt, closed lists, 3% per province), 176 for an absolute
      majority at the investiture. Calculator fed by the poll average. */
+  // ---- Resultados en vivo (escrutinio provisional) ----
+  function esResHas() { const R = live.esRes; return !!(R && (R.parties || []).length && R.pctCounted > 0); }
+  function esResParties(es) {
+    const R = live.esRes || { parties: [] };
+    return (R.parties || []).filter(p => p.seats > 0 || p.pct >= 0.5).map(p => {
+      const l = (es.lists || []).find(x => x.id === p.id) || {};
+      return { id: p.id, party: l.short || p.short || p.name || p.id, name: l.name || p.name || p.id, lean: l.lean || p.lean || 'other', bloc: l.bloc, color: (typeof ES_PCOL !== 'undefined' && ES_PCOL[p.id]) || undefined,
+        seats: p.seats || 0, pct: p.pct, votes: p.votes, avg: p.seats || 0, pctAvg: p.pct };
+    }).sort((a, b) => b.seats - a.seats || (b.pct || 0) - (a.pct || 0));
+  }
+  function esResStatus() {
+    const R = live.esRes; if (!R) return '';
+    const t = R.updatedAt ? new Date(R.updatedAt).toLocaleTimeString('es-AR', { hour: '2-digit', minute: '2-digit', hour12: false, timeZone: 'Europe/Madrid' }) : '';
+    return `${fmtPct(R.pctCounted, 2)} escrutado${t ? ` · ${t} h de Madrid` : ''}`;
+  }
+  function esResultsHTML(es) {
+    const R = live.esRes, total = (es.system && es.system.seats) || 350, need = (es.system && es.system.majority) || 176;
+    const ps = esResParties(es);
+    const seated = ps.reduce((a, p) => a + p.seats, 0);
+    const r23 = {}; ((es.results2023 || {}).parties || []).forEach(p => { r23[p.party] = p; });
+    const noCompare = new Set(['Sumar', 'Podemos']);
+    const sum = ids => ps.filter(p => ids.includes(p.id)).reduce((a, p) => a + p.seats, 0);
+    const inv = ps.filter(p => p.bloc === 'gobierno' || p.bloc === 'socios').reduce((a, p) => a + p.seats, 0);
+    const combos = [
+      { label: 'PP + Vox', seats: sum(['PP', 'Vox']) },
+      { label: 'PP + Vox + UPN + CC', seats: sum(['PP', 'Vox', 'UPN', 'CC']) },
+      { label: 'Bloque de la investidura de 2023', seats: inv },
+      { label: 'PP + PSOE', seats: sum(['PP', 'PSOE']) },
+    ];
+    const final = R.pctCounted >= 100;
+    return `<section class="esp-sec es-live" id="es-sec-resultados">
+      <div class="esp-sec-head"><span class="kicker">${final ? 'Resultado' : 'En vivo'} · Escrutinio ${final ? 'provisional completo' : 'provisional'}</span>
+        <h3>${final ? 'Así queda el Congreso' : 'El Congreso, escaño por escaño'}</h3>
+        <p>${final ? 'Reparto de los 350 escaños con el 100% escrutado.' : `Se actualiza solo a medida que avanza el conteo. Con el ${fmtPct(R.pctCounted, 1)} escrutado los escaños todavía pueden moverse, sobre todo en las provincias más chicas.`} Es el escrutinio provisional del Ministerio del Interior: el definitivo lo hacen las juntas electorales a partir del miércoles.</p></div>
+      <div class="es-live-progress">
+        <div><span>Escrutado</span><b>${fmtPct(R.pctCounted, 2)}</b><div class="pbar-track"><div class="pbar-fill" style="width:${Math.min(R.pctCounted, 100)}%;background:#AA151B"></div></div></div>
+        ${R.turnout != null ? `<div><span>Participación</span><b>${fmtPct(R.turnout, 2)}</b><small>${es.results2023 && es.results2023.turnout ? `${R.turnout >= es.results2023.turnout ? '+' : ''}${(R.turnout - es.results2023.turnout).toFixed(2).replace('.', ',')} p.p. contra 2023` : ''}</small></div>` : ''}
+        <div><span>Escaños asignados</span><b>${seated} de ${total}</b></div>
+      </div>
+      <div class="race-grid">
+        <div class="il-knesset">${chamberCard({ name: 'Congreso de los Diputados · XVI Legislatura', total, term: final ? 'resultado provisional' : 'proyección con el escrutinio en curso', asOf: esResStatus(), parties: ps, note: 'cada punto es un escaño' }, 12)}</div>
+        <div class="poll-box">
+          <h4>Votos y escaños por partido</h4>
+          <div class="muted">Entre paréntesis, escaños de 2023</div>
+          ${ps.map(p => { const o = r23[p.id]; const d = o && !noCompare.has(p.id) ? p.seats - o.seats : null;
+            return `<div class="pbar"><div class="pbar-top"><span>${esc(p.name)} <small class="muted">${p.pct != null ? fmtPct(p.pct, 2) : ''}</small></span><b>${p.seats}${o && !noCompare.has(p.id) ? ` <small class="muted">(${o.seats}) ${d > 0 ? '▲' + d : d < 0 ? '▼' + (-d) : '='}</small>` : ''}</b></div>
+            <div class="pbar-track"><div class="pbar-fill" style="width:${(p.seats / need * 100).toFixed(1)}%;background:${leanColor(p.lean)}"></div></div></div>`; }).join('')}
+          <h4 style="margin-top:18px">¿Quién llega a ${need}?</h4>
+          ${combos.map(c => `<div class="pbar"><div class="pbar-top"><span>${esc(c.label)}</span><b>${c.seats} ${c.seats >= need ? '<small style="color:var(--c-center,#1F7A5A)">✔ mayoría absoluta</small>' : `<small class="muted">faltan ${need - c.seats}</small>`}</b></div>
+            <div class="pbar-track"><div class="pbar-fill" style="width:${Math.min(c.seats / total * 100, 100).toFixed(1)}%;background:#13305A"></div><i class="es-need" style="left:${(need / total * 100).toFixed(2)}%"></i></div></div>`).join('')}
+          <span class="poll-src">Fuente: Ministerio del Interior, escrutinio provisional${R.source && R.source.url ? ` (<a href="${esc(R.source.url)}" target="_blank" rel="noopener">${esc(R.source.label || 'resultados oficiales')}</a>)` : ''}. Sin valor jurídico: los resultados oficiales son los del escrutinio general.</span>
+        </div>
+      </div>
+      ${(R.provinces || []).length ? `
+      <div class="es-map-head">
+        <h4>Provincia por provincia</h4>
+        <div class="seg" id="es-map-mode">
+          <button type="button" data-esmode="win" class="${live.esMapMode !== 'change' ? 'is-on' : ''}">Quién gana</button>
+          <button type="button" data-esmode="change" class="${live.esMapMode === 'change' ? 'is-on' : ''}">Qué cambió desde 2023</button>
+        </div>
+      </div>
+      <div class="es-map-wrap"><div id="es-map" class="es-map"><div class="esp-loading">Cargando mapa…</div></div><div class="es-map-legend" id="es-map-legend"></div></div>
+      <div class="es-prov-res" id="es-prov-res">${esProvCardsHTML(es)}</div>
+      <p class="poll-src">${live.es23 && live.es23.source ? `Comparación con las generales del 23 de julio de 2023: ${esc(live.es23.source.label || '')}${live.es23.source.note ? ' (' + esc(live.es23.source.note) + ')' : ''}.` : ''} Las variaciones en puntos porcentuales (p.p.) comparan el % de voto en la misma provincia. En 2023 Sumar incluía a Podemos, así que esos dos partidos no se comparan.</p>` : ''}
+    </section>`;
+  }
+  // Colores propios de cada partido para el mapa de ganadores (el hemiciclo usa la orientación)
+  const ES_PCOL = { PP: '#1D84CE', PSOE: '#E30613', Vox: '#63BE21', Sumar: '#E51C55', Podemos: '#6B2E68', ERC: '#F6A623', Junts: '#20C0B2', EHBildu: '#A3C940', PNV: '#1E7F3E', BNG: '#76B6E4', CC: '#F2D600', UPN: '#2B4D9B', SALF: '#5A5A5A', Compromis: '#E8792E', AA: '#2E9E6B' };
+  const esPCol = (id, es) => ES_PCOL[id] || leanColor((((es || live.espana || {}).lists || []).find(l => l.id === id) || {}).lean || 'other');
+  const ES_NOCOMP = new Set(['Sumar', 'Podemos']);
+  function esProvShort(id, es) { const l = ((es || live.espana || {}).lists || []).find(x => x.id === id); return (l && l.short) || id; }
+  function esProvInfo(pr) {
+    const ps = (pr.parties || []).slice().sort((a, b) => (b.pct || 0) - (a.pct || 0));
+    const prev = live.es23 && live.es23.provinces && live.es23.provinces[pr.id];
+    const prevPs = prev ? Object.entries(prev.parties || {}).map(([id, v]) => Object.assign({ id }, v)).sort((a, b) => (b.pct || 0) - (a.pct || 0)) : [];
+    const win = ps[0], win23 = prevPs[0];
+    const changed = !!(win && win23 && win.id !== win23.id && !(ES_NOCOMP.has(win.id) && ES_NOCOMP.has(win23.id)));
+    return { ps, prev, win, win23, changed };
+  }
+  function esProvCardsHTML(es) {
+    const R = live.esRes; if (!R || !(R.provinces || []).length) return '';
+    return R.provinces.slice().sort((a, b) => (b.seats || 0) - (a.seats || 0) || String(a.name).localeCompare(String(b.name))).map(pr => {
+      const { ps, prev, win, win23, changed } = esProvInfo(pr);
+      const seatsP = ps.filter(p => p.seats > 0).sort((a, b) => b.seats - a.seats);
+      const badge = !win ? '' : !win23 ? `<span class="es-badge">Gana ${esc(esProvShort(win.id, es))}</span>`
+        : changed ? `<span class="es-badge is-flip" style="background:${esPCol(win.id, es)}">Gana ${esc(esProvShort(win.id, es))} · antes ${esc(esProvShort(win23.id, es))}</span>`
+        : `<span class="es-badge">${esc(esProvShort(win.id, es))} repite</span>`;
+      return `<div class="es-pcard" data-prov="${esc(pr.id)}" style="border-top-color:${win ? esPCol(win.id, es) : 'var(--line)'}">
+        <div class="es-pcard-head"><b>${esc(pr.name)}</b><span>${pr.seats || ''} esc. · ${pr.pctCounted != null ? fmtPct(pr.pctCounted, 1) + ' escrutado' : ''}</span></div>
+        ${badge}
+        <div class="es-pcard-seats">${seatsP.map(p => { const o = prev && prev.parties && prev.parties[p.id]; const d = o && !ES_NOCOMP.has(p.id) ? p.seats - (o.seats || 0) : null;
+          return `<span class="es-seat"><i style="background:${esPCol(p.id, es)}"></i>${esc(esProvShort(p.id, es))} <b>${p.seats}</b>${d ? `<small class="${d > 0 ? 'up' : 'down'}">${d > 0 ? '+' : ''}${d}</small>` : ''}</span>`; }).join('') || '<span class="muted">sin escaños asignados todavía</span>'}</div>
+        <div class="es-pcard-pct">${ps.slice(0, 4).map(p => { const o = prev && prev.parties && prev.parties[p.id]; const d = o && o.pct != null && !ES_NOCOMP.has(p.id) ? p.pct - o.pct : null;
+          return `<div><span>${esc(esProvShort(p.id, es))}</span><b>${fmtPct(p.pct, 1)}</b><small class="${d == null ? '' : d >= 0 ? 'up' : 'down'}">${d == null ? (o || !prev ? '' : 'nuevo') : (d >= 0 ? '+' : '') + d.toFixed(1).replace('.', ',') + ' p.p.'}</small></div>`; }).join('')}</div>
+      </div>`;
+    }).join('');
+  }
+  function renderEsMap() {
+    const host = document.getElementById('es-map'); const es = live.espana, R = live.esRes;
+    if (!host || !es || !R || !live.esGeo) return;
+    const mode = live.esMapMode === 'change' ? 'change' : 'win';
+    const byId = Object.fromEntries((R.provinces || []).map(p => [p.id, p]));
+    const paths = live.esGeo.locations.map(loc => {
+      const pr = byId[loc.id]; const inf = pr ? esProvInfo(pr) : {};
+      const fill = !inf.win ? 'var(--c-unknown)' : mode === 'change' ? (inf.changed ? esPCol(inf.win.id, es) : 'var(--line)') : esPCol(inf.win.id, es);
+      return `<path d="${loc.path}" data-prov="${loc.id}" tabindex="0" role="button" aria-label="${esc(loc.name)}" style="fill:${fill}"></path>`;
+    }).join('');
+    const cb = live.esGeo.canariasBox;
+    host.innerHTML = `<svg class="es-map-svg" viewBox="${live.esGeo.viewBox}" role="img" aria-label="Mapa de España por provincia">
+      ${cb ? `<rect x="${cb[0]}" y="${cb[1]}" width="${cb[2]}" height="${cb[3]}" class="es-can-box"></rect>` : ''}${paths}<g class="es-labels"></g></svg><div class="br-tooltip" id="es-tooltip"></div>`;
+    const svg = host.querySelector('svg'), g = svg.querySelector('.es-labels'), tip = host.querySelector('#es-tooltip');
+    svg.querySelectorAll('path').forEach(pth => {
+      const pr = byId[pth.getAttribute('data-prov')]; if (!pr) return;
+      const inf = esProvInfo(pr); if (!inf.win) return;
+      let bb; try { bb = pth.getBBox(); } catch (e) { return; }
+      const small = bb.width < 46 || bb.height < 34;
+      const cx = bb.x + bb.width / 2, cy = bb.y + bb.height / 2;
+      const id = pth.getAttribute('data-prov');
+      const out = ['07', '35', '38', '51', '52'].includes(id); // islas y ciudades: etiqueta fuera del contorno
+      const dim = out || (mode === 'change' && !inf.changed);
+      const col = dim ? '#0B1628' : '#fff', stroke = dim ? 'rgba(255,255,255,.85)' : 'rgba(0,0,0,.35)';
+      if (out) {
+        const lx = id === '51' ? cx - 30 : id === '52' ? cx + 30 : cx, ly = id === '07' ? bb.y + bb.height + 14 : id === '35' || id === '38' ? bb.y - 6 : cy + 4;
+        g.insertAdjacentHTML('beforeend', `<text x="${lx}" y="${ly}" text-anchor="middle" style="fill:${col};stroke:${stroke}" class="es-lbl-pct is-sm">${esc(esProvShort(inf.win.id, es))} ${Math.round(inf.win.pct)}%</text>`);
+        return;
+      }
+      g.insertAdjacentHTML('beforeend', `<text x="${cx}" y="${small ? cy + 3 : cy - 4}" text-anchor="middle" style="fill:${col};stroke:${stroke}" class="es-lbl-pct ${small ? 'is-sm' : ''}">${Math.round(inf.win.pct)}%</text>`
+        + (small ? '' : `<text x="${cx}" y="${cy + 11}" text-anchor="middle" style="fill:${col};stroke:${stroke}" class="es-lbl-party">${esc(esProvShort(inf.win.id, es))}</text>`));
+    });
+    const show = (ev, id) => {
+      const pr = byId[id]; if (!pr) return; const inf = esProvInfo(pr);
+      tip.innerHTML = `<b>${esc(pr.name)}</b> · ${pr.seats} esc.${pr.pctCounted != null ? ' · ' + fmtPct(pr.pctCounted, 1) + ' escrutado' : ''}<br>${inf.ps.slice(0, 5).map(p => { const o = inf.prev && inf.prev.parties && inf.prev.parties[p.id]; const d = o && !ES_NOCOMP.has(p.id) ? p.pct - o.pct : null;
+        return `<span style="color:${esPCol(p.id, es)}">●</span> ${esc(esProvShort(p.id, es))} ${fmtPct(p.pct, 1)}${p.seats ? ` · ${p.seats} esc.` : ''}${d != null ? ` <small>(${d >= 0 ? '+' : ''}${d.toFixed(1).replace('.', ',')})</small>` : ''}`; }).join('<br>')}${inf.changed ? `<br><b>Cambia: antes ganaba ${esc(esProvShort(inf.win23.id, es))}</b>` : ''}`;
+      const r = host.getBoundingClientRect(); tip.style.left = Math.max(100, Math.min(ev.clientX - r.left, r.width - 100)) + 'px'; tip.style.top = (ev.clientY - r.top) + 'px'; tip.classList.add('is-visible');
+    };
+    svg.querySelectorAll('path[data-prov]').forEach(pth => {
+      const id = pth.getAttribute('data-prov');
+      pth.addEventListener('mousemove', ev => show(ev, id));
+      pth.addEventListener('mouseleave', () => tip.classList.remove('is-visible'));
+      pth.addEventListener('click', () => { const c = document.querySelector(`.es-pcard[data-prov="${id}"]`); if (c) { c.scrollIntoView({ behavior: 'smooth', block: 'center' }); c.classList.add('is-hl'); setTimeout(() => c.classList.remove('is-hl'), 1600); } });
+    });
+    const wins = {}; (R.provinces || []).forEach(pr => { const w = esProvInfo(pr); if (w.win) { const k = w.win.id; wins[k] = (wins[k] || 0) + 1; } });
+    const flips = (R.provinces || []).filter(pr => esProvInfo(pr).changed).length;
+    const lg = document.getElementById('es-map-legend');
+    if (lg) lg.innerHTML = mode === 'change'
+      ? `<b>${flips}</b> de ${(R.provinces || []).length} provincias cambian de ganador respecto de 2023 (en color, el nuevo ganador; en gris, las que repiten).`
+      : Object.entries(wins).sort((a, b) => b[1] - a[1]).map(([id, n]) => `<span><i style="background:${esPCol(id, es)}"></i>${esc(esProvShort(id, es))} gana en <b>${n}</b></span>`).join('');
+  }
+  function wireEsMap() {
+    document.querySelectorAll('#es-map-mode [data-esmode]').forEach(b => b.addEventListener('click', () => {
+      live.esMapMode = b.getAttribute('data-esmode');
+      document.querySelectorAll('#es-map-mode [data-esmode]').forEach(x => x.classList.toggle('is-on', x === b));
+      renderEsMap();
+    }));
+    renderEsMap();
+  }
+  function esResultsNextCardHTML(es) {
+    const R = live.esRes, need = (es.system && es.system.majority) || 176;
+    const ps = esResParties(es).slice(0, 5);
+    const pv = ps.filter(p => p.id === 'PP' || p.id === 'Vox').reduce((a, p) => a + p.seats, 0);
+    const COL = { PP: '#1D84CE', PSOE: '#E30613', Vox: '#63BE21', Sumar: '#E51C55', Podemos: '#6B2E68' };
+    const final = R.pctCounted >= 100;
+    return `
+      <div class="next-card-kicker"><span class="live-dot" style="background:#F1BF00"></span>${final ? 'Elecciones generales · resultado provisional' : 'En vivo · ' + esc(esResStatus())}</div>
+      <div class="next-card-title">${flagOf('ESP')} España: ${final ? 'así queda el Congreso' : 'el escrutinio, en vivo'}</div>
+      <div class="nc-res">${ps.map(p => `<div class="nc-row"><span>${esc(p.party)} <small>${p.pct != null ? fmtPct(p.pct, 1) : ''}</small></span><b>${p.seats} <small>escaños</small></b><div class="nc-track"><div style="width:${Math.min(p.seats / need * 100, 100)}%;background:${COL[p.id] || leanColor(p.lean)}"></div></div></div>`).join('')}</div>
+      <div class="next-card-sub">PP + Vox: <b>${pv}</b> escaños (${pv >= need ? 'superan' : 'no llegan a'} los ${need})${R.turnout != null ? ` · participación ${fmtPct(R.turnout, 1)}` : ''}</div>
+      <a class="next-card-cta" href="#espana" onclick="return window.__atlasGoTo('espana')">Ver el Congreso escaño por escaño <span aria-hidden="true">→</span></a>`;
+  }
   function esPhase(es, now = new Date()) {
     const t = now.getTime(), d = es.dates;
     const open = new Date(d.pollsOpen).getTime(), close = new Date(d.pollsClose).getTime();
@@ -36087,7 +36294,8 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
     const es = live.espana;
     if (!el || !es) return;
     const total = (es.system && es.system.seats) || 350, need = (es.system && es.system.majority) || 176;
-    const lists = esAverages(es).filter(l => l.avg > 0);
+    const resMode = esResHas();
+    const lists = resMode ? esResParties(es).filter(l => l.seats > 0) : esAverages(es).filter(l => l.avg > 0);
     const right = l => ['PP', 'Vox', 'UPN', 'SALF'].includes(l.id) || (l.bloc === 'oposicion' && ['center-right', 'right', 'far-right'].includes(l.lean));
     if (!live.esPicked) live.esPicked = new Set(lists.filter(right).map(l => l.id));
     const picked = live.esPicked;
@@ -36113,9 +36321,9 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
       </div>
       <div class="il-chips">${lists.map(l => `
         <button type="button" class="il-chip ${picked.has(l.id) ? 'is-on' : ''}" data-list="${esc(l.id)}" aria-pressed="${picked.has(l.id)}">
-          <i style="background:${leanColor(l.lean)}"></i><span class="il-chip-name">${esc(l.short || l.name)}</span><b>${l.avg.toFixed(1)}</b>
+          <i style="background:${leanColor(l.lean)}"></i><span class="il-chip-name">${esc(l.short || l.party || l.name)}</span><b>${resMode ? l.avg : l.avg.toFixed(1)}</b>
         </button>`).join('')}</div>
-      <p class="il-calc-note">Escaños promedio de ${(es.polls || []).filter(p => p.seats).length} encuestas. Tocá los partidos para sumar. En la investidura alcanza la mayoría simple en la segunda votación (más síes que noes), así que las abstenciones también cuentan.</p>`;
+      <p class="il-calc-note">${resMode ? `Escaños del escrutinio provisional (${esc(esResStatus())}).` : `Escaños promedio de ${(es.polls || []).filter(p => p.seats).length} encuestas.`} Tocá los partidos para sumar. En la investidura alcanza la mayoría simple en la segunda votación (más síes que noes), así que las abstenciones también cuentan.</p>`;
     el.querySelectorAll('[data-list]').forEach(b => b.addEventListener('click', () => {
       const id = b.getAttribute('data-list');
       picked.has(id) ? picked.delete(id) : picked.add(id);
@@ -36173,7 +36381,7 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
       <section class="esp-hero es-hero">
         <div class="esp-hero-grid">
           <div>
-            <span class="esp-status"><span class="live-dot"></span>${esc(ph.label)}</span>
+            <span class="esp-status"><span class="live-dot"></span>${esc(ph.label)}${esResHas() ? ' · ' + esc(esResStatus()) : ''}</span>
             <h2>España <em>2026</em></h2>
             <p class="esp-hero-lede">${esc(es.lede || '')}</p>
             ${facesRow('Los candidatos', esAverages(es).filter(l => l.wiki && l.leader).slice(0, 4).map(l => ({ name: l.faceName || l.leader, role: l.short || l.name, wiki: l.wiki, color: leanColor(l.lean) })))}
@@ -36192,7 +36400,10 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
         </div>
       </section>
 
+      ${esResHas() ? esResultsHTML(es) : ''}
+
       <nav class="esp-nav" aria-label="Secciones del especial">
+        ${esResHas() ? '<a href="#es-sec-resultados">Resultados</a>' : ''}
         <a href="#es-sec-sistema">Cómo se vota</a>
         <a href="#es-sec-congreso">Congreso actual</a>
         <a href="#es-sec-calc">Calculadora de mayorías</a>
@@ -36220,7 +36431,7 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
 
       <section class="esp-sec" id="es-sec-calc">
         <div class="esp-sec-head"><span class="kicker">03 · La aritmética</span><h3>Calculadora de mayorías</h3>
-          <p>Para ser investido en la primera votación hacen falta ${need} síes; en la segunda, más síes que noes. Sumá partidos con el promedio de las encuestas.</p></div>
+          <p>Para ser investido en la primera votación hacen falta ${need} síes; en la segunda, más síes que noes. Sumá partidos con ${esResHas() ? 'los escaños del escrutinio' : 'el promedio de las encuestas'}.</p></div>
         <div class="il-calc" id="es-calc"></div>
       </section>
 
@@ -36273,6 +36484,7 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
     activateFaces(root);
     renderEsCalculator();
     renderEsPolls();
+    if (esResHas()) wireEsMap();
     const cal = document.getElementById('es-cal');
     if (cal) {
       const items = (es.calendar || []).map(c => ({ ...c, d: new Date(c.date + 'T12:00:00') })).sort((a, b) => a.d - b.d);
@@ -36445,8 +36657,13 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
     const [liveRes, brRes, usRes, ilRes, esRes, arRes] = await Promise.allSettled([fetchJSON(LIVE_URL), fetchJSON(BRASIL_URL), fetchJSON(EEUU_URL), fetchJSON(ISRAEL_URL), fetchJSON(ESPANA_URL), fetchJSON(ARGENTINA_URL)]);
     const prevAr = live.argentina ? JSON.stringify(live.argentina) : null;
     if (arRes.status === 'fulfilled') live.argentina = arRes.value;
-    const prevEs = live.espana ? JSON.stringify(live.espana) : null;
+    const prevEs = live.espana ? JSON.stringify(live.espana) + JSON.stringify(live.esRes || {}) : null;
     if (esRes.status === 'fulfilled') live.espana = esRes.value;
+    if (live.espana && esPhase(live.espana).id !== 'campaign') {
+      try { live.esRes = await fetchJSON(ES_RES_URL); } catch (e) { /* todavía no publicado */ }
+      if (esResHas() && !live.esGeo) { try { live.esGeo = await fetchJSON(ES_GEO_URL); } catch (e) {} }
+      if (esResHas() && !live.es23) { try { live.es23 = await fetchJSON(ES_23_URL); } catch (e) {} }
+    }
     live.lastFetch = new Date();
     live.fetchOk = [liveRes, brRes, usRes, ilRes].some(r => r.status === 'fulfilled');
     const prevIl = live.israel ? JSON.stringify(live.israel) : null;
@@ -36483,7 +36700,7 @@ window.exportFullAtlasPDF = exportFullAtlasPDF;
       renderBrUpdated();
     }
     if (isViewActive('israel') && live.israel && (JSON.stringify(live.israel) !== prevIl || !document.querySelector('#esp-israel .esp-hero'))) renderIsrael();
-    if (isViewActive('espana') && live.espana && (JSON.stringify(live.espana) !== prevEs || !document.querySelector('#esp-espana .esp-hero'))) renderEspana();
+    if (isViewActive('espana') && live.espana && (JSON.stringify(live.espana) + JSON.stringify(live.esRes || {}) !== prevEs || !document.querySelector('#esp-espana .esp-hero'))) renderEspana();
     if (isViewActive('argentina') && live.argentina && (JSON.stringify(live.argentina) !== prevAr || !document.querySelector('#esp-argentina .esp-hero'))) renderArgentina();
     if (isViewActive('eeuu') && live.eeuu && (JSON.stringify(live.eeuu) !== prevUs || !document.querySelector('#esp-eeuu .esp-hero'))) renderEeuu();
     else if (isViewActive('eeuu')) renderUsResults();

@@ -1,0 +1,1386 @@
+{
+  "election": "2023-07-23",
+  "source": {
+    "label": "Wikipedia (en): Results of the 2023 Spanish Congress election y páginas 'X (Congress of Deputies constituency)'; cotejado con es.wikipedia 'Elecciones generales de España de 2023'",
+    "url": "https://en.wikipedia.org/wiki/Results_of_the_2023_Spanish_Congress_election",
+    "note": "tomada del agregador, sin verificar en la fuente oficial (infoelectoral no accesible). Porcentajes sobre voto válido (incluye blanco); turnout = votantes / censo total (incluye CERA)."
+  },
+  "provinces": {
+    "01": {
+      "name": "Araba/Álava",
+      "seats": 4,
+      "turnout": 65.54,
+      "parties": {
+        "PSOE": {
+          "pct": 27.66,
+          "seats": 1
+        },
+        "EHBildu": {
+          "pct": 19.51,
+          "seats": 1
+        },
+        "PP": {
+          "pct": 17.87,
+          "seats": 1
+        },
+        "PNV": {
+          "pct": 16.6,
+          "seats": 1
+        },
+        "Sumar": {
+          "pct": 12.75,
+          "seats": 0
+        },
+        "Vox": {
+          "pct": 3.89,
+          "seats": 0
+        }
+      }
+    },
+    "02": {
+      "name": "Albacete",
+      "seats": 4,
+      "turnout": 72.7,
+      "parties": {
+        "PP": {
+          "pct": 39.92,
+          "seats": 2
+        },
+        "PSOE": {
+          "pct": 34.51,
+          "seats": 2
+        },
+        "Vox": {
+          "pct": 16.61,
+          "seats": 0
+        },
+        "Sumar": {
+          "pct": 7.16,
+          "seats": 0
+        }
+      }
+    },
+    "03": {
+      "name": "Alicante/Alacant",
+      "seats": 12,
+      "turnout": 69.57,
+      "parties": {
+        "PP": {
+          "pct": 36.73,
+          "seats": 5
+        },
+        "PSOE": {
+          "pct": 32.0,
+          "seats": 4
+        },
+        "Vox": {
+          "pct": 16.25,
+          "seats": 2
+        },
+        "Sumar": {
+          "pct": 12.88,
+          "seats": 1
+        }
+      }
+    },
+    "04": {
+      "name": "Almería",
+      "seats": 6,
+      "turnout": 62.86,
+      "parties": {
+        "PP": {
+          "pct": 40.94,
+          "seats": 3
+        },
+        "PSOE": {
+          "pct": 29.04,
+          "seats": 2
+        },
+        "Vox": {
+          "pct": 21.28,
+          "seats": 1
+        },
+        "Sumar": {
+          "pct": 6.69,
+          "seats": 0
+        }
+      }
+    },
+    "05": {
+      "name": "Ávila",
+      "seats": 3,
+      "turnout": 72.53,
+      "parties": {
+        "PP": {
+          "pct": 43.25,
+          "seats": 2
+        },
+        "PSOE": {
+          "pct": 27.39,
+          "seats": 1
+        },
+        "Vox": {
+          "pct": 15.38,
+          "seats": 0
+        },
+        "XAV": {
+          "pct": 7.52,
+          "seats": 0
+        },
+        "Sumar": {
+          "pct": 5.13,
+          "seats": 0
+        }
+      }
+    },
+    "06": {
+      "name": "Badajoz",
+      "seats": 5,
+      "turnout": 72.31,
+      "parties": {
+        "PSOE": {
+          "pct": 39.21,
+          "seats": 2
+        },
+        "PP": {
+          "pct": 37.82,
+          "seats": 2
+        },
+        "Vox": {
+          "pct": 13.66,
+          "seats": 1
+        },
+        "Sumar": {
+          "pct": 6.84,
+          "seats": 0
+        }
+      }
+    },
+    "07": {
+      "name": "Illes Balears",
+      "seats": 8,
+      "turnout": 61.32,
+      "parties": {
+        "PP": {
+          "pct": 35.63,
+          "seats": 3
+        },
+        "PSOE": {
+          "pct": 30.16,
+          "seats": 3
+        },
+        "Sumar": {
+          "pct": 16.59,
+          "seats": 1
+        },
+        "Vox": {
+          "pct": 15.21,
+          "seats": 1
+        }
+      }
+    },
+    "08": {
+      "name": "Barcelona",
+      "seats": 32,
+      "turnout": 63.36,
+      "parties": {
+        "PSOE": {
+          "pct": 35.7,
+          "seats": 13
+        },
+        "Sumar": {
+          "pct": 15.22,
+          "seats": 5
+        },
+        "PP": {
+          "pct": 13.78,
+          "seats": 5
+        },
+        "ERC": {
+          "pct": 12.32,
+          "seats": 4
+        },
+        "Junts": {
+          "pct": 9.68,
+          "seats": 3
+        },
+        "Vox": {
+          "pct": 7.56,
+          "seats": 2
+        },
+        "CUP": {
+          "pct": 2.52,
+          "seats": 0
+        },
+        "PACMA": {
+          "pct": 1.06,
+          "seats": 0
+        }
+      }
+    },
+    "09": {
+      "name": "Burgos",
+      "seats": 4,
+      "turnout": 69.12,
+      "parties": {
+        "PP": {
+          "pct": 40.64,
+          "seats": 2
+        },
+        "PSOE": {
+          "pct": 34.45,
+          "seats": 2
+        },
+        "Vox": {
+          "pct": 12.77,
+          "seats": 0
+        },
+        "Sumar": {
+          "pct": 8.64,
+          "seats": 0
+        }
+      }
+    },
+    "10": {
+      "name": "Cáceres",
+      "seats": 4,
+      "turnout": 70.62,
+      "parties": {
+        "PSOE": {
+          "pct": 38.88,
+          "seats": 2
+        },
+        "PP": {
+          "pct": 38.0,
+          "seats": 2
+        },
+        "Vox": {
+          "pct": 13.6,
+          "seats": 0
+        },
+        "Sumar": {
+          "pct": 6.93,
+          "seats": 0
+        }
+      }
+    },
+    "11": {
+      "name": "Cádiz",
+      "seats": 9,
+      "turnout": 63.34,
+      "parties": {
+        "PP": {
+          "pct": 34.8,
+          "seats": 4
+        },
+        "PSOE": {
+          "pct": 33.15,
+          "seats": 3
+        },
+        "Vox": {
+          "pct": 15.18,
+          "seats": 1
+        },
+        "Sumar": {
+          "pct": 12.89,
+          "seats": 1
+        },
+        "AA": {
+          "pct": 1.44,
+          "seats": 0
+        }
+      }
+    },
+    "12": {
+      "name": "Castellón/Castelló",
+      "seats": 5,
+      "turnout": 72.32,
+      "parties": {
+        "PP": {
+          "pct": 35.17,
+          "seats": 2
+        },
+        "PSOE": {
+          "pct": 32.65,
+          "seats": 2
+        },
+        "Vox": {
+          "pct": 15.88,
+          "seats": 1
+        },
+        "Sumar": {
+          "pct": 14.35,
+          "seats": 0
+        }
+      }
+    },
+    "13": {
+      "name": "Ciudad Real",
+      "seats": 5,
+      "turnout": 73.28,
+      "parties": {
+        "PP": {
+          "pct": 40.54,
+          "seats": 2
+        },
+        "PSOE": {
+          "pct": 35.37,
+          "seats": 2
+        },
+        "Vox": {
+          "pct": 16.27,
+          "seats": 1
+        },
+        "Sumar": {
+          "pct": 6.15,
+          "seats": 0
+        }
+      }
+    },
+    "14": {
+      "name": "Córdoba",
+      "seats": 6,
+      "turnout": 70.6,
+      "parties": {
+        "PP": {
+          "pct": 37.89,
+          "seats": 2
+        },
+        "PSOE": {
+          "pct": 32.12,
+          "seats": 2
+        },
+        "Vox": {
+          "pct": 13.94,
+          "seats": 1
+        },
+        "Sumar": {
+          "pct": 13.73,
+          "seats": 1
+        }
+      }
+    },
+    "15": {
+      "name": "A Coruña",
+      "seats": 8,
+      "turnout": 62.93,
+      "parties": {
+        "PP": {
+          "pct": 43.13,
+          "seats": 4
+        },
+        "PSOE": {
+          "pct": 28.17,
+          "seats": 2
+        },
+        "Sumar": {
+          "pct": 12.19,
+          "seats": 1
+        },
+        "BNG": {
+          "pct": 9.98,
+          "seats": 1
+        },
+        "Vox": {
+          "pct": 5.08,
+          "seats": 0
+        }
+      }
+    },
+    "16": {
+      "name": "Cuenca",
+      "seats": 3,
+      "turnout": 75.5,
+      "parties": {
+        "PP": {
+          "pct": 39.76,
+          "seats": 2
+        },
+        "PSOE": {
+          "pct": 37.37,
+          "seats": 1
+        },
+        "Vox": {
+          "pct": 15.55,
+          "seats": 0
+        },
+        "Sumar": {
+          "pct": 5.56,
+          "seats": 0
+        }
+      }
+    },
+    "17": {
+      "name": "Girona",
+      "seats": 6,
+      "turnout": 59.88,
+      "parties": {
+        "PSOE": {
+          "pct": 28.93,
+          "seats": 2
+        },
+        "Junts": {
+          "pct": 19.58,
+          "seats": 2
+        },
+        "ERC": {
+          "pct": 14.72,
+          "seats": 1
+        },
+        "Sumar": {
+          "pct": 10.94,
+          "seats": 1
+        },
+        "PP": {
+          "pct": 9.7,
+          "seats": 0
+        },
+        "Vox": {
+          "pct": 7.03,
+          "seats": 0
+        },
+        "CUP": {
+          "pct": 5.64,
+          "seats": 0
+        },
+        "PACMA": {
+          "pct": 1.09,
+          "seats": 0
+        },
+        "PDeCAT": {
+          "pct": 1.05,
+          "seats": 0
+        }
+      }
+    },
+    "18": {
+      "name": "Granada",
+      "seats": 7,
+      "turnout": 66.56,
+      "parties": {
+        "PP": {
+          "pct": 36.99,
+          "seats": 3
+        },
+        "PSOE": {
+          "pct": 32.98,
+          "seats": 2
+        },
+        "Vox": {
+          "pct": 16.12,
+          "seats": 1
+        },
+        "Sumar": {
+          "pct": 11.65,
+          "seats": 1
+        }
+      }
+    },
+    "19": {
+      "name": "Guadalajara",
+      "seats": 3,
+      "turnout": 72.47,
+      "parties": {
+        "PP": {
+          "pct": 36.33,
+          "seats": 1
+        },
+        "PSOE": {
+          "pct": 32.98,
+          "seats": 1
+        },
+        "Vox": {
+          "pct": 19.25,
+          "seats": 1
+        },
+        "Sumar": {
+          "pct": 9.16,
+          "seats": 0
+        }
+      }
+    },
+    "20": {
+      "name": "Gipuzkoa",
+      "seats": 6,
+      "turnout": 64.68,
+      "parties": {
+        "EHBildu": {
+          "pct": 31.15,
+          "seats": 2
+        },
+        "PSOE": {
+          "pct": 23.29,
+          "seats": 2
+        },
+        "PNV": {
+          "pct": 22.58,
+          "seats": 2
+        },
+        "Sumar": {
+          "pct": 10.64,
+          "seats": 0
+        },
+        "PP": {
+          "pct": 8.69,
+          "seats": 0
+        },
+        "Vox": {
+          "pct": 2.09,
+          "seats": 0
+        }
+      }
+    },
+    "21": {
+      "name": "Huelva",
+      "seats": 5,
+      "turnout": 64.81,
+      "parties": {
+        "PP": {
+          "pct": 36.43,
+          "seats": 2
+        },
+        "PSOE": {
+          "pct": 35.95,
+          "seats": 2
+        },
+        "Vox": {
+          "pct": 14.63,
+          "seats": 1
+        },
+        "Sumar": {
+          "pct": 10.42,
+          "seats": 0
+        }
+      }
+    },
+    "22": {
+      "name": "Huesca",
+      "seats": 3,
+      "turnout": 69.87,
+      "parties": {
+        "PP": {
+          "pct": 38.19,
+          "seats": 2
+        },
+        "PSOE": {
+          "pct": 33.62,
+          "seats": 1
+        },
+        "Vox": {
+          "pct": 12.64,
+          "seats": 0
+        },
+        "Sumar": {
+          "pct": 11.49,
+          "seats": 0
+        },
+        "EV": {
+          "pct": 1.09,
+          "seats": 0
+        }
+      }
+    },
+    "23": {
+      "name": "Jaén",
+      "seats": 5,
+      "turnout": 72.08,
+      "parties": {
+        "PP": {
+          "pct": 37.32,
+          "seats": 2
+        },
+        "PSOE": {
+          "pct": 36.29,
+          "seats": 2
+        },
+        "Vox": {
+          "pct": 14.75,
+          "seats": 1
+        },
+        "Sumar": {
+          "pct": 7.99,
+          "seats": 0
+        },
+        "JM": {
+          "pct": 2.25,
+          "seats": 0
+        }
+      }
+    },
+    "24": {
+      "name": "León",
+      "seats": 4,
+      "turnout": 65.67,
+      "parties": {
+        "PP": {
+          "pct": 36.92,
+          "seats": 2
+        },
+        "PSOE": {
+          "pct": 33.64,
+          "seats": 2
+        },
+        "Vox": {
+          "pct": 12.88,
+          "seats": 0
+        },
+        "UPL": {
+          "pct": 8.24,
+          "seats": 0
+        },
+        "Sumar": {
+          "pct": 6.75,
+          "seats": 0
+        }
+      }
+    },
+    "25": {
+      "name": "Lleida",
+      "seats": 4,
+      "turnout": 58.93,
+      "parties": {
+        "PSOE": {
+          "pct": 29.49,
+          "seats": 2
+        },
+        "ERC": {
+          "pct": 18.6,
+          "seats": 1
+        },
+        "Junts": {
+          "pct": 18.01,
+          "seats": 1
+        },
+        "PP": {
+          "pct": 12.84,
+          "seats": 0
+        },
+        "Sumar": {
+          "pct": 7.89,
+          "seats": 0
+        },
+        "Vox": {
+          "pct": 6.81,
+          "seats": 0
+        },
+        "CUP": {
+          "pct": 2.95,
+          "seats": 0
+        },
+        "PDeCAT": {
+          "pct": 1.01,
+          "seats": 0
+        }
+      }
+    },
+    "26": {
+      "name": "La Rioja",
+      "seats": 4,
+      "turnout": 70.19,
+      "parties": {
+        "PP": {
+          "pct": 45.64,
+          "seats": 2
+        },
+        "PSOE": {
+          "pct": 35.68,
+          "seats": 2
+        },
+        "Vox": {
+          "pct": 9.77,
+          "seats": 0
+        },
+        "Sumar": {
+          "pct": 6.57,
+          "seats": 0
+        }
+      }
+    },
+    "27": {
+      "name": "Lugo",
+      "seats": 4,
+      "turnout": 59.42,
+      "parties": {
+        "PP": {
+          "pct": 50.24,
+          "seats": 3
+        },
+        "PSOE": {
+          "pct": 30.3,
+          "seats": 1
+        },
+        "BNG": {
+          "pct": 8.66,
+          "seats": 0
+        },
+        "Sumar": {
+          "pct": 5.18,
+          "seats": 0
+        },
+        "Vox": {
+          "pct": 4.35,
+          "seats": 0
+        }
+      }
+    },
+    "28": {
+      "name": "Madrid",
+      "seats": 37,
+      "turnout": 69.66,
+      "parties": {
+        "PP": {
+          "pct": 40.55,
+          "seats": 16
+        },
+        "PSOE": {
+          "pct": 27.84,
+          "seats": 10
+        },
+        "Sumar": {
+          "pct": 15.46,
+          "seats": 6
+        },
+        "Vox": {
+          "pct": 14.03,
+          "seats": 5
+        }
+      }
+    },
+    "29": {
+      "name": "Málaga",
+      "seats": 11,
+      "turnout": 64.41,
+      "parties": {
+        "PP": {
+          "pct": 38.31,
+          "seats": 5
+        },
+        "PSOE": {
+          "pct": 30.34,
+          "seats": 3
+        },
+        "Vox": {
+          "pct": 16.46,
+          "seats": 2
+        },
+        "Sumar": {
+          "pct": 12.26,
+          "seats": 1
+        },
+        "PACMA": {
+          "pct": 1.08,
+          "seats": 0
+        }
+      }
+    },
+    "30": {
+      "name": "Murcia",
+      "seats": 10,
+      "turnout": 68.68,
+      "parties": {
+        "PP": {
+          "pct": 41.18,
+          "seats": 4
+        },
+        "PSOE": {
+          "pct": 25.3,
+          "seats": 3
+        },
+        "Vox": {
+          "pct": 21.81,
+          "seats": 2
+        },
+        "Sumar": {
+          "pct": 9.57,
+          "seats": 1
+        }
+      }
+    },
+    "31": {
+      "name": "Navarra",
+      "seats": 5,
+      "turnout": 66.37,
+      "parties": {
+        "PSOE": {
+          "pct": 27.37,
+          "seats": 2
+        },
+        "EHBildu": {
+          "pct": 17.25,
+          "seats": 1
+        },
+        "PP": {
+          "pct": 16.71,
+          "seats": 1
+        },
+        "UPN": {
+          "pct": 15.27,
+          "seats": 1
+        },
+        "Sumar": {
+          "pct": 12.85,
+          "seats": 0
+        },
+        "Vox": {
+          "pct": 5.7,
+          "seats": 0
+        },
+        "GBai": {
+          "pct": 2.91,
+          "seats": 0
+        }
+      }
+    },
+    "32": {
+      "name": "Ourense",
+      "seats": 4,
+      "turnout": 52.86,
+      "parties": {
+        "PP": {
+          "pct": 50.02,
+          "seats": 3
+        },
+        "PSOE": {
+          "pct": 30.08,
+          "seats": 1
+        },
+        "BNG": {
+          "pct": 8.22,
+          "seats": 0
+        },
+        "Sumar": {
+          "pct": 5.46,
+          "seats": 0
+        },
+        "Vox": {
+          "pct": 4.87,
+          "seats": 0
+        }
+      }
+    },
+    "33": {
+      "name": "Asturias",
+      "seats": 7,
+      "turnout": 62.9,
+      "parties": {
+        "PP": {
+          "pct": 35.65,
+          "seats": 3
+        },
+        "PSOE": {
+          "pct": 34.34,
+          "seats": 2
+        },
+        "Sumar": {
+          "pct": 14.85,
+          "seats": 1
+        },
+        "Vox": {
+          "pct": 12.49,
+          "seats": 1
+        }
+      }
+    },
+    "34": {
+      "name": "Palencia",
+      "seats": 3,
+      "turnout": 71.26,
+      "parties": {
+        "PP": {
+          "pct": 41.98,
+          "seats": 2
+        },
+        "PSOE": {
+          "pct": 34.67,
+          "seats": 1
+        },
+        "Vox": {
+          "pct": 12.9,
+          "seats": 0
+        },
+        "Sumar": {
+          "pct": 6.06,
+          "seats": 0
+        },
+        "VP": {
+          "pct": 1.98,
+          "seats": 0
+        }
+      }
+    },
+    "35": {
+      "name": "Las Palmas",
+      "seats": 8,
+      "turnout": 59.51,
+      "parties": {
+        "PSOE": {
+          "pct": 33.19,
+          "seats": 3
+        },
+        "PP": {
+          "pct": 25.85,
+          "seats": 3
+        },
+        "Vox": {
+          "pct": 14.61,
+          "seats": 1
+        },
+        "Sumar": {
+          "pct": 10.27,
+          "seats": 1
+        },
+        "NC": {
+          "pct": 8.02,
+          "seats": 0
+        },
+        "CC": {
+          "pct": 6.34,
+          "seats": 0
+        }
+      }
+    },
+    "36": {
+      "name": "Pontevedra",
+      "seats": 7,
+      "turnout": 63.68,
+      "parties": {
+        "PP": {
+          "pct": 39.72,
+          "seats": 3
+        },
+        "PSOE": {
+          "pct": 31.36,
+          "seats": 3
+        },
+        "Sumar": {
+          "pct": 13.19,
+          "seats": 1
+        },
+        "BNG": {
+          "pct": 9.39,
+          "seats": 0
+        },
+        "Vox": {
+          "pct": 4.81,
+          "seats": 0
+        }
+      }
+    },
+    "37": {
+      "name": "Salamanca",
+      "seats": 4,
+      "turnout": 67.03,
+      "parties": {
+        "PP": {
+          "pct": 46.87,
+          "seats": 3
+        },
+        "PSOE": {
+          "pct": 30.49,
+          "seats": 1
+        },
+        "Vox": {
+          "pct": 14.67,
+          "seats": 0
+        },
+        "Sumar": {
+          "pct": 5.53,
+          "seats": 0
+        }
+      }
+    },
+    "38": {
+      "name": "Santa Cruz de Tenerife",
+      "seats": 7,
+      "turnout": 56.83,
+      "parties": {
+        "PP": {
+          "pct": 35.35,
+          "seats": 3
+        },
+        "PSOE": {
+          "pct": 33.49,
+          "seats": 3
+        },
+        "CC": {
+          "pct": 16.75,
+          "seats": 1
+        },
+        "Sumar": {
+          "pct": 10.85,
+          "seats": 0
+        },
+        "PACMA": {
+          "pct": 1.24,
+          "seats": 0
+        }
+      }
+    },
+    "39": {
+      "name": "Cantabria",
+      "seats": 5,
+      "turnout": 69.94,
+      "parties": {
+        "PP": {
+          "pct": 42.08,
+          "seats": 2
+        },
+        "PSOE": {
+          "pct": 33.3,
+          "seats": 2
+        },
+        "Vox": {
+          "pct": 14.06,
+          "seats": 1
+        },
+        "Sumar": {
+          "pct": 8.49,
+          "seats": 0
+        }
+      }
+    },
+    "40": {
+      "name": "Segovia",
+      "seats": 3,
+      "turnout": 75.3,
+      "parties": {
+        "PP": {
+          "pct": 45.02,
+          "seats": 2
+        },
+        "PSOE": {
+          "pct": 30.6,
+          "seats": 1
+        },
+        "Vox": {
+          "pct": 14.12,
+          "seats": 0
+        },
+        "Sumar": {
+          "pct": 8.05,
+          "seats": 0
+        }
+      }
+    },
+    "41": {
+      "name": "Sevilla",
+      "seats": 12,
+      "turnout": 68.74,
+      "parties": {
+        "PSOE": {
+          "pct": 36.6,
+          "seats": 5
+        },
+        "PP": {
+          "pct": 33.38,
+          "seats": 4
+        },
+        "Sumar": {
+          "pct": 14.04,
+          "seats": 2
+        },
+        "Vox": {
+          "pct": 13.32,
+          "seats": 1
+        }
+      }
+    },
+    "42": {
+      "name": "Soria",
+      "seats": 2,
+      "turnout": 67.52,
+      "parties": {
+        "PP": {
+          "pct": 37.22,
+          "seats": 1
+        },
+        "PSOE": {
+          "pct": 29.48,
+          "seats": 1
+        },
+        "SY": {
+          "pct": 19.1,
+          "seats": 0
+        },
+        "Vox": {
+          "pct": 9.81,
+          "seats": 0
+        },
+        "Sumar": {
+          "pct": 3.37,
+          "seats": 0
+        }
+      }
+    },
+    "43": {
+      "name": "Tarragona",
+      "seats": 6,
+      "turnout": 62.42,
+      "parties": {
+        "PSOE": {
+          "pct": 32.91,
+          "seats": 2
+        },
+        "ERC": {
+          "pct": 15.07,
+          "seats": 1
+        },
+        "PP": {
+          "pct": 13.87,
+          "seats": 1
+        },
+        "Sumar": {
+          "pct": 11.34,
+          "seats": 1
+        },
+        "Junts": {
+          "pct": 11.08,
+          "seats": 1
+        },
+        "Vox": {
+          "pct": 10.34,
+          "seats": 0
+        },
+        "CUP": {
+          "pct": 2.36,
+          "seats": 0
+        },
+        "PACMA": {
+          "pct": 1.03,
+          "seats": 0
+        }
+      }
+    },
+    "44": {
+      "name": "Teruel",
+      "seats": 3,
+      "turnout": 71.99,
+      "parties": {
+        "PP": {
+          "pct": 35.02,
+          "seats": 2
+        },
+        "PSOE": {
+          "pct": 29.28,
+          "seats": 1
+        },
+        "TE": {
+          "pct": 14.95,
+          "seats": 0
+        },
+        "Vox": {
+          "pct": 13.08,
+          "seats": 0
+        },
+        "Sumar": {
+          "pct": 5.44,
+          "seats": 0
+        }
+      }
+    },
+    "45": {
+      "name": "Toledo",
+      "seats": 6,
+      "turnout": 72.43,
+      "parties": {
+        "PP": {
+          "pct": 37.84,
+          "seats": 3
+        },
+        "PSOE": {
+          "pct": 32.56,
+          "seats": 2
+        },
+        "Vox": {
+          "pct": 19.64,
+          "seats": 1
+        },
+        "Sumar": {
+          "pct": 8.23,
+          "seats": 0
+        }
+      }
+    },
+    "46": {
+      "name": "Valencia/València",
+      "seats": 16,
+      "turnout": 72.58,
+      "parties": {
+        "PP": {
+          "pct": 33.64,
+          "seats": 6
+        },
+        "PSOE": {
+          "pct": 32.1,
+          "seats": 5
+        },
+        "Sumar": {
+          "pct": 16.9,
+          "seats": 3
+        },
+        "Vox": {
+          "pct": 15.21,
+          "seats": 2
+        }
+      }
+    },
+    "47": {
+      "name": "Valladolid",
+      "seats": 5,
+      "turnout": 74.02,
+      "parties": {
+        "PP": {
+          "pct": 40.84,
+          "seats": 2
+        },
+        "PSOE": {
+          "pct": 32.75,
+          "seats": 2
+        },
+        "Vox": {
+          "pct": 15.16,
+          "seats": 1
+        },
+        "Sumar": {
+          "pct": 8.87,
+          "seats": 0
+        }
+      }
+    },
+    "48": {
+      "name": "Bizkaia",
+      "seats": 8,
+      "turnout": 65.21,
+      "parties": {
+        "PNV": {
+          "pct": 26.93,
+          "seats": 2
+        },
+        "PSOE": {
+          "pct": 25.82,
+          "seats": 2
+        },
+        "EHBildu": {
+          "pct": 20.64,
+          "seats": 2
+        },
+        "PP": {
+          "pct": 11.57,
+          "seats": 1
+        },
+        "Sumar": {
+          "pct": 10.92,
+          "seats": 1
+        },
+        "Vox": {
+          "pct": 2.64,
+          "seats": 0
+        }
+      }
+    },
+    "49": {
+      "name": "Zamora",
+      "seats": 3,
+      "turnout": 64.22,
+      "parties": {
+        "PP": {
+          "pct": 44.67,
+          "seats": 2
+        },
+        "PSOE": {
+          "pct": 32.49,
+          "seats": 1
+        },
+        "Vox": {
+          "pct": 13.2,
+          "seats": 0
+        },
+        "Sumar": {
+          "pct": 5.65,
+          "seats": 0
+        },
+        "ZSi": {
+          "pct": 1.78,
+          "seats": 0
+        }
+      }
+    },
+    "50": {
+      "name": "Zaragoza",
+      "seats": 7,
+      "turnout": 70.73,
+      "parties": {
+        "PP": {
+          "pct": 36.01,
+          "seats": 3
+        },
+        "PSOE": {
+          "pct": 30.82,
+          "seats": 2
+        },
+        "Vox": {
+          "pct": 15.3,
+          "seats": 1
+        },
+        "Sumar": {
+          "pct": 13.48,
+          "seats": 1
+        },
+        "EV": {
+          "pct": 1.5,
+          "seats": 0
+        }
+      }
+    },
+    "51": {
+      "name": "Ceuta",
+      "seats": 1,
+      "turnout": 53.19,
+      "parties": {
+        "PP": {
+          "pct": 38.77,
+          "seats": 1
+        },
+        "PSOE": {
+          "pct": 34.01,
+          "seats": 0
+        },
+        "Vox": {
+          "pct": 23.26,
+          "seats": 0
+        },
+        "Sumar": {
+          "pct": 2.46,
+          "seats": 0
+        }
+      }
+    },
+    "52": {
+      "name": "Melilla",
+      "seats": 1,
+      "turnout": 45.24,
+      "parties": {
+        "PP": {
+          "pct": 49.16,
+          "seats": 1
+        },
+        "PSOE": {
+          "pct": 25.39,
+          "seats": 0
+        },
+        "Vox": {
+          "pct": 15.94,
+          "seats": 0
+        },
+        "CpM": {
+          "pct": 4.75,
+          "seats": 0
+        },
+        "Sumar": {
+          "pct": 3.02,
+          "seats": 0
+        }
+      }
+    }
+  }
+}
